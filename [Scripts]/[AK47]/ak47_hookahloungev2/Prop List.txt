@@ -1,0 +1,5 @@
+## Whitelist props in your anti-cheat (if you are using any)
+
+prop_bong_01
+ba_prop_battle_vape_01
+prop_cooker_03

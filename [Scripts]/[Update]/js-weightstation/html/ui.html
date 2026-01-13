@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weegstation</title>
+    <link rel="stylesheet" href="ui.css">
+</head>
+<body>
+    <div id="weight-container" class="container hidden">
+        <div class="weight-card">
+            <div class="header">
+                <h1 id="ui-title">Weight Station</h1>
+                <button id="close-btn" class="close-btn">&times;</button>
+            </div>
+            
+            <div class="content">
+                <div class="vehicle-info">
+                    <div class="info-row">
+                        <span class="label" id="ui-vehicle-label">Vehicle:</span>
+                        <span class="value" id="vehicle-name">-</span>
+                    </div>
+                </div>
+                
+                <div class="weight-section">
+                    <div class="weight-item">
+                        <div class="weight-label" id="ui-vehicle-weight-label">Vehicle Weight</div>
+                        <div class="weight-value" id="base-weight">0 lbs</div>
+                    </div>
+                    
+                    <div class="weight-item">
+                        <div class="weight-label" id="ui-items-weight-label">Items Weight</div>
+                        <div class="weight-value" id="items-weight">0 lbs</div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="weight-item total">
+                        <div class="weight-label" id="ui-total-weight-label">Total Weight</div>
+                        <div class="weight-value" id="total-weight">0 lbs</div>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button id="refresh-btn" class="refresh-btn">Refresh</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="ui.js"></script>
+</body>
+</html>

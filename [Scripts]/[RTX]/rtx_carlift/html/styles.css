@@ -1,0 +1,1156 @@
+@import url('https://kit-pro.fontawesome.com/releases/v5.14.0/css/pro.min.css');
+
+:root {
+  --color: #ff66ff;
+}
+
+@font-face {
+  font-family: BebasNeueBold;
+  src: url(BebasNeueBold.ttf);
+}
+
+*{
+	user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+html {
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+	display: none;
+	color: #a8a8aa;
+}
+
+.lift-container {
+	width: 14%;
+	height: 25%;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-bottom: 3px solid var(--color);
+	border-radius: 1px;
+	margin: 0;
+	position: absolute;
+	top: 82%;
+	left: 90%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	border-radius: 10px;
+	display: none;
+}
+
+.closelift {
+	position: absolute;
+	margin: 0;
+	top: 10%;
+	left: 90%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.buttonup {
+	position: absolute;
+	margin: 0;
+	color: #ffffff;
+	font-size: 75px;
+	text-decoration: none;
+	text-align: center;
+	top: 58%;
+	left: 27%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	padding-right: 8px;	
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.buttonup:hover {
+	cursor: pointer;
+	color: var(--color);
+	text-decoration: none;
+}
+
+.buttondown {
+	position: absolute;
+	margin: 0;
+	color: #ffffff;
+	font-size: 75px;
+	text-decoration: none;
+	text-align: center;
+	top: 58%;
+	left: 73%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-left: 8px;
+	padding-right: 8px;	
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.buttondown:hover {
+	cursor: pointer;
+	color: var(--color);
+	text-decoration: none;
+}
+
+.liftheadertext {
+	position: absolute;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	top: 14%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);	
+	font-size: 40px;
+	color: var(--color);
+	text-align:center;
+	font-family: BebasNeueBold;
+}
+
+.liftmaintext {
+	position: absolute;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	top: 32%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);	
+	font-size: 20px;
+	color: #ffffff;
+	text-align:center;
+	font-family: BebasNeueBold;
+}
+
+.liftuptext {
+	position: absolute;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	top: 85%;
+	left: 27%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);	
+	font-size: 30px;
+	color: var(--color);
+	text-align:center;
+	font-family: BebasNeueBold;
+}
+
+.liftdowntext {
+	position: absolute;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	top: 85%;
+	left: 73%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);	
+	font-size: 30px;
+	color: var(--color);
+	text-align:center;
+	font-family: BebasNeueBold;
+}
+
+.infonotify-container {
+	width: 17%;
+	background-color: rgba(0, 0, 0, 0.70);
+	border-bottom: 3px solid var(--color);	
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	border-radius: 10px;
+	display: none;
+}
+
+.infonotifytext {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 2px;
+	padding-right: 2px;	
+	vertical-align: middle;
+	text-align: center;
+	font-size: 25px;
+	font-family: BebasNeueBold;
+	color: #ffffff;
+}
+
+#infobindcolor {
+	color: var(--color);
+}
+
+.liftpos-container {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.0);
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	display: none;
+}
+
+.liftposinfosettings {
+	width: 16%;
+	height: 86%;
+	background-color: rgba(0, 0, 0, 0.70);
+	border-bottom: 3px solid var(--color);	
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 90%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	border-radius: 10px;
+}
+
+.poscreatormaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 12%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.poscreatortext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 30px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.posspacemaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 18.5%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.posspacetext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 22px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.posspacebuttons {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.buttontypespace {
+	display: inline-block;
+	margin: 0;
+	background-color: rgba(255, 255, 255, 1);
+	color: #000000;
+	font-size: 15px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+	width: 25%;
+}
+
+.buttontypespace.active  {
+  background-color: var(--color);
+  color: #ffffff;
+}
+
+#spacebuttonworld  {
+	position: absolute;
+	margin: 0;
+	top: 19%;
+	left: 35%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 99999999;
+}
+
+#spacebuttonlocal  {
+	position: absolute;
+	margin: 0;
+	top: 19%;
+	left: 65%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 99999999;
+}
+
+.buttontypelist {
+	display: inline-block;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.0);
+	color: #ffffff;
+	height: 100%;
+	width: 30%;
+	font-size: 14px;
+	margin-left: 1px;
+	margin-right: 1px;
+	text-decoration: none;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.buttontypelist.active  {
+  border-bottom: 16px solid var(--color);
+  color: #ffffff;
+}
+
+.posmodemaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 27%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.posmodetext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 22px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.posmodebuttons {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 28.5%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.buttontypemode {
+	display: inline-block;
+	margin: 0;
+	background-color: rgba(255, 255, 255, 1);
+	color: #000000;
+	font-size: 15px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+	width: 25%;
+}
+
+.buttontypemode.active  {
+  background-color: var(--color);
+  color: #ffffff;
+}
+
+
+#posmoretranslate  {
+	position: absolute;
+	margin: 0;
+	top: 19%;
+	left: 35%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 99999999;
+}
+
+#posmorerotation  {
+	position: absolute;
+	margin: 0;
+	top: 19%;
+	left: 65%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 99999999;
+}
+
+.poscamerasettingsmaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 38%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.poscamerasettingstext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 22px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.poscamerasettingsspeedmaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 42%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	padding-left: 7%;
+}
+
+.poscamerasettingsspeedtext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 15px;
+	padding-left: 7px;
+	padding-right: 7px;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.poscamerasettingslookxspeedmaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	padding-left: 7%;
+}
+
+.poscamerasettingslookxspeedtext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 15px;
+	padding-left: 7px;
+	padding-right: 7px;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.poscamerasettingslookyspeedmaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 57.5%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	padding-left: 7%;
+}
+
+.poscamerasettingslookyspeedtext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 15px;
+	padding-left: 7px;
+	padding-right: 7px;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.posmovementsettingsmaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 68%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.posmovementsettingstext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 22px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.posmovementsettingstranslatemaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 73%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	padding-left: 7%;
+}
+
+.posmovementsettingstranslatetext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 15px;
+	padding-left: 7px;
+	padding-right: 7px;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.posmovementsettingsrotationmaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 83%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	padding-left: 7%;
+}
+
+.posmovementsettingsrotationtext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 15px;
+	padding-left: 7px;
+	padding-right: 7px;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.cameraspeed {
+	-webkit-appearance: none;
+	appearance: none;	
+	position: absolute;
+	margin: 0;
+	background-color: rgba(202, 205, 198, 1.0);
+	color: #ffffff;
+	font-size: 35px;
+	text-decoration: none;
+	text-align: center;
+	top: 36%;
+	left: 49%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	z-index: 99999999;
+	width: 96%;
+	height: 13%;
+	outline: none;
+	display: block;
+}
+    
+#cameraspeeddata {
+	background: linear-gradient(to right, var(--color) 0%, var(--color) 50%, #ccccc8 50%, #ccccc8 100%);
+	border-radius: 5px;
+	width: 86%;
+	height: 0.5%;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+.cameraspeed::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%; 
+  background-color: #fffefb;
+}
+
+.lookspeedx {
+	-webkit-appearance: none;
+	appearance: none;	
+	position: absolute;
+	margin: 0;
+	background-color: rgba(202, 205, 198, 1.0);
+	color: #ffffff;
+	font-size: 35px;
+	text-decoration: none;
+	text-align: center;
+	top: 43.5%;
+	left: 49%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	z-index: 99999999;
+	width: 96%;
+	height: 13%;
+	outline: none;
+	display: block;
+}
+    
+#lookspeedxdata {
+	background: linear-gradient(to right, var(--color) 0%, var(--color) 50%, #ccccc8 50%, #ccccc8 100%);
+	border-radius: 5px;
+	width: 86%;
+	height: 0.5%;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+.lookspeedx::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%; 
+  background-color: #fffefb;
+}
+
+.lookspeedy {
+	-webkit-appearance: none;
+	appearance: none;	
+	position: absolute;
+	margin: 0;
+	background-color: rgba(202, 205, 198, 1.0);
+	color: #ffffff;
+	font-size: 35px;
+	text-decoration: none;
+	text-align: center;
+	top: 51.5%;
+	left: 49%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	z-index: 99999999;
+	width: 96%;
+	height: 13%;
+	outline: none;
+	display: block;
+}
+    
+#lookspeedydata {
+	background: linear-gradient(to right, var(--color) 0%, var(--color) 50%, #ccccc8 50%, #ccccc8 100%);
+	border-radius: 5px;
+	width: 86%;
+	height: 0.5%;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+.lookspeedy::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%; 
+  background-color: #fffefb;
+}
+
+.translatesnap {
+	-webkit-appearance: none;
+	appearance: none;	
+	position: absolute;
+	margin: 0;
+	background-color: rgba(202, 205, 198, 1.0);
+	color: #ffffff;
+	font-size: 35px;
+	text-decoration: none;
+	text-align: center;
+	top: 67%;
+	left: 49%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	z-index: 99999999;
+	width: 96%;
+	height: 13%;
+	outline: none;
+	display: block;
+}
+    
+#translatesnapdata {
+	background: linear-gradient(to right, var(--color) 0%, var(--color) 50%, #ccccc8 50%, #ccccc8 100%);
+	border-radius: 5px;
+	width: 86%;
+	height: 0.5%;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+.translatesnap::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%; 
+  background-color: #fffefb;
+}
+
+.rotationsnap {
+	-webkit-appearance: none;
+	appearance: none;	
+	position: absolute;
+	margin: 0;
+	background-color: rgba(202, 205, 198, 1.0);
+	color: #ffffff;
+	font-size: 35px;
+	text-decoration: none;
+	text-align: center;
+	top: 77%;
+	left: 49%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	z-index: 99999999;
+	width: 96%;
+	height: 13%;
+	outline: none;
+	display: block;
+}
+    
+#rotationsnapdata {
+	background: linear-gradient(to right, var(--color) 0%, var(--color) 50%, #ccccc8 50%, #ccccc8 100%);
+	border-radius: 5px;
+	width: 86%;
+	height: 0.5%;
+	outline: none;
+	-webkit-appearance: none;
+}
+
+.rotationsnap::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%; 
+  background-color: #fffefb;
+}
+
+.poscarliftypemaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 91%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.poscarliftypetext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 22px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.poscarliftypedatamaintext {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 95%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.poscarliftypedatatext {
+	margin: 0;
+	color: var(--color);
+	font-size: 35px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.poscarlifleftmain {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 96%;
+	left: 35%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.poscarliflefttext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 25px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.poscarlifrightmain {
+	width: 100%;
+	height: 20%;
+	background-color: rgba(0, 0, 0, 0.0);	
+	margin: 0;
+	position: absolute;
+	top: 96%;
+	left: 65%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.poscarlifrighttext {
+	margin: 0;
+	color: #ffffff;
+	font-size: 25px;
+	text-decoration: none;
+	text-align: center;
+	float: center;
+	overflow: hidden;
+	z-index: 99999999;
+	font-family: BebasNeueBold;
+	border: none;
+}
+
+.createcarliftbutton {
+	position: absolute;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 1);
+	border-bottom: 3px solid var(--color);
+	color: #ffffff;
+	font-size: 25px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-decoration: none;
+	text-align: center;
+	top: 95%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 99999999;
+	width: 60%;
+	border-radius: 8px;
+}
+
+.createcarliftbutton:hover {
+	background: var(--color);
+	text-decoration: none;	
+	color: #ffffff;
+}
+
+.liftposfinish-container {
+	width: 35%;
+	height: 60%;
+	background-color: rgba(0, 0, 0, 0.70);
+	border-bottom: 3px solid var(--color);
+	border-radius: 10px;	
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 80%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	display: none;
+}
+
+.headerliftposfinish {
+	position: absolute;
+	width:100%;
+	height: 2%;
+	color: #ffffff;
+	display: flex;
+	background-color: rgba(0, 0, 0, 1);
+	border-bottom: 3px solid var(--color);  
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding-bottom:5%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);  
+	top: 4%;
+	left: 50%;	
+}
+
+.headerliftposfinishtext {
+	position: absolute;
+	margin: 0;
+	font-size: 32px;
+	color: #ffffff;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.closeliftposfinish {
+	position: absolute;
+	margin: 0;
+	top: 50%;
+	left: 95%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+}
+
+.offsetspreviewtext {
+	position: absolute;
+	margin: 0;
+	text-decoration: none;
+	text-align: center;
+	top: 17%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);	
+	font-size: 37px;
+	color: #ffffff;
+	text-align:center;
+	font-family: BebasNeueBold;
+}
+
+.liftposfinishcopytextdatamain {
+	width: 80%;
+	height: 50%;
+	background-color: rgba(0, 0, 0, 0.70);
+	border: 2px solid var(--color);
+	border-radius: 10px;	
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 9999999;
+	color: #ffffff;
+	display: block;	
+}
+
+.liftposfinishcopytextdata {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.0);
+	margin: 0;
+	overflow: hidden;
+	z-index: 9999999;
+	color: #ffffff;
+	display: block;	
+	font-size: 15px;
+	padding-top: 5%;
+}
+
+.liftposfinishcopytextdata textarea {
+	font-weight: 100;
+	border: none;
+	outline: none;
+	background: none;
+	color: #ffffff;
+	font-size: 15px;	
+	resize: none;
+	outline: none;
+}
+
+.buttoncopy {
+	position: absolute;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 1);
+	border-bottom: 3px solid var(--color);
+	color: #ffffff;
+	font-size: 35px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-decoration: none;
+	text-align: center;
+	top: 87%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+	z-index: 99999999;
+	width: 40%;
+	border-radius: 8px;
+}
+
+.buttoncopy:hover {
+	background: var(--color);
+	text-decoration: none;	
+	color: #ffffff;
+}
+
+.buttoncopy:hover > #copyicon {
+	color: #ffffff;
+}
+
+#copyicon {
+    color: var(--color);
+}
+
+.full-screen {
+  width: 100%;
+  height:100%;
+  display: flex;
+  align-items: center;
+}
+
+*{
+	font-family: BebasNeueBold;
+}

@@ -1,0 +1,1 @@
+anim@male@holding_radio.ycd is from rp-emotes-reborn

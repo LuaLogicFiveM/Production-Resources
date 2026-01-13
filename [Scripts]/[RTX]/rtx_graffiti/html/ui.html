@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graffiti Creator Menu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+  <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="drawcreator.css">
+<link rel="stylesheet" href="textcreator.css">
+<link rel="stylesheet" href="imagecreator.css">
+<link rel="stylesheet" href="controls.css">
+<link rel="stylesheet" href="progress.css">
+</head>
+<body>
+   <div class="graffiti-menu-container" id="graffiti-menu-container">
+    <button id="menu-close-btn" class="menu-close-btn"><i class="fas fa-times"></i></button>
+    
+    <div class="graffiti-menu-content">
+      <div class="menu-header">
+        <h1><span class="gradient-text">GRAFFITI</span> CREATOR</h1>
+        <div class="menu-subtitle">SELECT YOUR CREATION STYLE</div>
+        <div class="spray-effect">
+          <div class="spray-dot"></div>
+          <div class="spray-dot"></div>
+          <div class="spray-dot"></div>
+        </div>
+      </div>
+      
+      <div class="creation-options">
+        <div class="creation-option" id="draw-option">
+          <div class="option-icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <div class="option-content">
+            <h3>FREEHAND DRAW</h3>
+            <p>Create graffiti from scratch with drawing tools</p>
+          </div>
+          <div class="option-selector">
+            <div class="selector-circle"></div>
+          </div>
+        </div>
+        
+        <div class="creation-option" id="text-option">
+          <div class="option-icon">
+            <i class="fas fa-font"></i>
+          </div>
+          <div class="option-content">
+            <h3>TEXT DESIGN</h3>
+            <p>Create stylized text graffiti with custom fonts</p>
+          </div>
+          <div class="option-selector">
+            <div class="selector-circle"></div>
+          </div>
+        </div>
+        
+        <div class="creation-option" id="image-option">
+          <div class="option-icon">
+            <i class="fas fa-image"></i>
+          </div>
+          <div class="option-content">
+            <h3>IMAGE EDITOR</h3>
+            <p>Create graffiti from images and templates</p>
+          </div>
+          <div class="option-selector">
+            <div class="selector-circle"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="menu-footer">
+        <div class="tagline">EXPRESS YOURSELF</div>
+        <div class="spray-can-icon">
+          <i class="fas fa-spray-can"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="controls-container" id="controls-container">
+    <div class="controls-header">
+
+      GRAFFITI CONTROLS
+    </div>
+    
+    <div class="controls-grid">
+      <div class="key">SHIFT</div>
+      <div class="key-description">Cycle scale mode</div>
+      
+      <div class="key">SCROLL ↑</div>
+      <div class="key-description">Increase scale</div>
+      
+      <div class="key">SCROLL ↓</div>
+      <div class="key-description">Decrease scale</div>
+	  
+      <div class="key">+</div>
+      <div class="key-description">Forward</div>
+      
+      <div class="key">-</div>
+      <div class="key-description">Backward</div>	  
+      
+      <div class="key">G</div>
+      <div class="key-description">Toggle move mode</div>
+      
+     <div class="key">ARROWS</div>
+      <div class="key-description">Move graffiti</div>
+      
+      <div class="key">F</div>
+      <div class="key-description">Cancel</div>
+      <div class="key">ENTER</div>
+      <div class="key-description">Place graffiti</div>	  
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="mode-indicator">
+      <span id="value-type">Placement:</span>
+      <span class="mode-value" id="placement-mode">AUTO</span>
+    </div>
+    
+    <div class="mode-indicator">
+      <span id="value-type">Scale Mode:</span>
+      <span class="mode-value" id="scale-mode">COMBINED</span>
+    </div>
+  </div>
+  
+  <div class="spray2-container" id="spray2-container">
+    <div class="spray2-progress">
+      <i class="fas fa-spray-can spray2-icon"></i>
+      <span class="spray2-text">Spray in progress</span>
+    </div>
+    <div class="spray2-dots">
+      <div class="spray2-dot"></div>
+      <div class="spray2-dot"></div>
+      <div class="spray2-dot"></div>
+      <div class="spray2-dot"></div>
+    </div>
+    
+    <div class="spray2-bar" id="spray2-bar"></div>
+  </div>
+
+<div class="graffiti-container" id="graffiti-container">
+    <button id="close-editor-btn" class="close-btn"><i class="fas fa-times"></i></button>
+    <div class="editor-container" id="editor-container">
+      <div class="editor-header">
+        <h1><span class="gradient-text">GRAFFITI</span> CREATOR</h1>
+      </div>
+
+      <div class="canvas-container">
+        <div class="canvas-wrapper">
+          <canvas id="graffiti-canvas" width="800" height="400"></canvas>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        
+        <div class="tool-section color-tools">
+          <div class="tool-label"><i class="fas fa-palette"></i> COLOR TOOLS</div>
+          <div class="color-options">
+            <input type="color" id="color-picker" value="#ff66ff" title="Select color">
+            <div class="color-presets">
+              <div class="preset-colors-row">
+                
+                <div class="color-swatch" style="background:#ff66ff" data-color="#ff66ff"></div>
+                <div class="color-swatch" style="background:#000000" data-color="#000000"></div>
+                <div class="color-swatch" style="background:#ffffff" data-color="#ffffff"></div>
+                <div class="color-swatch" style="background:#ff0000" data-color="#ff0000"></div>
+                <div class="color-swatch" style="background:#00ff00" data-color="#00ff00"></div>
+              </div>
+              <div class="preset-colors-row">
+                
+                <div class="color-swatch" style="background:#20c0ff" data-color="#20c0ff"></div>
+                <div class="color-swatch" style="background:#cc00ff" data-color="#cc00ff"></div>
+                <div class="color-swatch" style="background:#ffcc00" data-color="#ffcc00"></div>
+                <div class="color-swatch" style="background:#00ffff" data-color="#00ffff"></div>
+                <div class="color-swatch" style="background:#ff0066" data-color="#ff0066"></div>
+              </div>
+              <div class="preset-colors-row">
+                
+                <div class="color-swatch" style="background:#9900ff" data-color="#9900ff"></div>
+                <div class="color-swatch" style="background:#ff6600" data-color="#ff6600"></div>
+                <div class="color-swatch" style="background:#33cc33" data-color="#33cc33"></div>
+                <div class="color-swatch" style="background:#0066ff" data-color="#0066ff"></div>
+                <div class="color-swatch" style="background:#ff0099" data-color="#ff0099"></div>
+              </div>
+              <div class="preset-colors-row">
+                
+                <div class="color-swatch" style="background:#6600cc" data-color="#6600cc"></div>
+                <div class="color-swatch" style="background:#ff3300" data-color="#ff3300"></div>
+                <div class="color-swatch" style="background:#00cc66" data-color="#00cc66"></div>
+                <div class="color-swatch" style="background:#0099ff" data-color="#0099ff"></div>
+                <div class="color-swatch" style="background:#cc00cc" data-color="#cc00cc"></div>
+              </div>
+            </div>
+            <div class="color-actions">
+              <button id="random-color-btn" class="color-action-btn">
+                <i class="fas fa-random"></i> Random
+              </button>
+              <button id="color-picker-btn" class="color-action-btn">
+                <i class="fas fa-eye-dropper"></i> Pick
+              </button>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="tool-section brush-tools">
+          <div class="tool-label"><i class="fas fa-paint-brush"></i> BRUSH TOOLS</div>
+          <div class="brush-control-grid">
+            <div class="brush-control">
+              <label>Size <span id="brush-size-value">8px</span></label>
+              <input type="range" id="brush-slider" min="1" max="50" value="8">
+            </div>
+            <div class="brush-control">
+              <label>Opacity <span id="opacity-value">100%</span></label>
+              <input type="range" id="opacity-slider" min="10" max="100" value="100">
+            </div>
+            <div class="brush-control">
+              <label>Flow <span id="flow-value">80%</span></label>
+              <input type="range" id="flow-slider" min="10" max="100" value="80">
+            </div>
+            <div class="brush-control">
+              <label>Hardness <span id="hardness-value">50%</span></label>
+              <input type="range" id="hardness-slider" min="0" max="100" value="50">
+            </div>
+            <div class="brush-control">
+              <label>Spacing <span id="spacing-value">25%</span></label>
+              <input type="range" id="spacing-slider" min="1" max="100" value="25">
+            </div>
+            <div class="brush-control">
+              <label>Jitter <span id="jitter-value">0%</span></label>
+              <input type="range" id="jitter-slider" min="0" max="100" value="0">
+            </div>
+          </div>
+          <div class="brush-presets">
+            <div class="tool-label"><i class="fas fa-prescription-bottle"></i> PRESETS</div>
+            <div class="preset-buttons">
+              <button class="brush-preset-btn" data-size="3" data-opacity="100" data-flow="100" data-hardness="100">Thin</button>
+              <button class="brush-preset-btn" data-size="8" data-opacity="100" data-flow="80" data-hardness="70">Spray</button>
+              <button class="brush-preset-btn" data-size="15" data-opacity="70" data-flow="60" data-hardness="40">Fat</button>
+              <button class="brush-preset-btn" data-size="5" data-opacity="50" data-flow="30" data-hardness="20">Sketch</button>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="tool-section mode-tools">
+          <div class="tool-label"><i class="fas fa-tools"></i> TOOLS</div>
+          <div class="mode-buttons">
+            <button id="draw-mode" class="tool-btn active" data-tool="draw">
+              <i class="fas fa-paint-brush"></i> DRAW
+            </button>
+            <button id="erase-mode" class="tool-btn" data-tool="erase">
+              <i class="fas fa-eraser"></i> ERASE
+            </button>
+            
+          </div>
+          
+
+<div class="pattern-tools">
+            <div class="tool-label"><i class="fas fa-spray-can"></i> PATTERNS</div>
+            <div class="pattern-grid">
+              <button class="pattern-btn active" data-pattern="solid">
+                <div class="pattern-preview solid-pattern"></div>
+                <span>Solid</span>
+              </button>
+              <button class="pattern-btn" data-pattern="dotted">
+                <div class="pattern-preview dotted-pattern"></div>
+                <span>Dotted</span>
+              </button>
+              <button class="pattern-btn" data-pattern="spray">
+                <div class="pattern-preview spray-pattern"></div>
+                <span>Spray</span>
+              </button>
+              <button class="pattern-btn" data-pattern="chalk">
+                <div class="pattern-preview chalk-pattern"></div>
+                <span>Chalk</span>
+              </button>
+              <button class="pattern-btn" data-pattern="marker">
+                <div class="pattern-preview marker-pattern"></div>
+                <span>Marker</span>
+              </button>
+              <button class="pattern-btn" data-pattern="ink">
+                <div class="pattern-preview ink-pattern"></div>
+                <span>Ink</span>
+              </button>
+              <button class="pattern-btn" data-pattern="crayon">
+                <div class="pattern-preview crayon-pattern"></div>
+                <span>Crayon</span>
+              </button>
+              <button class="pattern-btn" data-pattern="neon">
+                <div class="pattern-preview neon-pattern"></div>
+                <span>Neon</span>
+              </button>
+              <button class="pattern-btn" data-pattern="hatch">
+                <div class="pattern-preview hatch-pattern"></div>
+                <span>Hatch</span>
+              </button>
+              <button class="pattern-btn" data-pattern="grid">
+                <div class="pattern-preview grid-pattern"></div>
+                <span>Grid</span>
+              </button>
+              <button class="pattern-btn" data-pattern="stipple">
+                <div class="pattern-preview stipple-pattern"></div>
+                <span>Stipple</span>
+              </button>
+              <button class="pattern-btn" data-pattern="crosshatch">
+                <div class="pattern-preview crosshatch-pattern"></div>
+                <span>Crosshatch</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <div class="action-group">
+          <button id="clear-btn" class="action-btn danger">
+            <i class="fas fa-trash-alt"></i> CLEAR
+          </button>
+          <button id="undo-btn" class="action-btn secondary">
+            <i class="fas fa-undo"></i> UNDO
+          </button>
+          <button id="redo-btn" class="action-btn secondary">
+            <i class="fas fa-redo"></i> REDO
+          </button>
+        </div>
+        <div class="action-group">
+          <button id="save-load-btn" class="action-btn primary">
+            <i class="fas fa-save"></i> SAVE/LOAD
+          </button>
+          <button id="submit-btn" class="action-btn success">
+            <i class="fas fa-check-circle"></i> DONE
+          </button>
+        </div>
+      </div>
+
+      
+      <div class="popup" id="save-load-popup">
+        <div class="popup-content">
+          <div class="popup-tabs">
+            <button class="tab-btn active" data-tab="save">SAVE</button>
+            <button class="tab-btn" data-tab="load">LOAD</button>
+          </div>
+          <div class="tab-content" id="save-tab">
+            <input type="text" id="design-name" placeholder="Design name">
+            <button id="save-confirm-btn" class="action-btn primary">CONFIRM</button>
+          </div>
+          <div class="tab-content" id="load-tab" style="display:none">
+            <select id="design-select">
+              <option value="">Select design</option>
+            </select>
+            <button id="load-confirm-btn" class="action-btn primary">CONFIRM</button>
+          </div>
+          <button class="action-btn popup-close">CLOSE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="text-graffiti-container" id="text-graffiti-container">
+    <button id="text-close-btn" class="text-close-btn"><i class="fas fa-times"></i></button>
+    <div class="text-editor-container" id="text-editor-container">
+      <div class="text-editor-header">
+        <h1><span class="text-gradient">GRAFFITI</span> CREATOR</h1>
+      </div>
+
+      <div class="text-canvas-container">
+        <div class="text-canvas-wrapper">
+          <canvas id="text-graffiti-canvas" width="800" height="400"></canvas>
+        </div>
+      </div>
+
+      <div class="text-toolbar">
+        <div class="text-tool-section text-input-section">
+          <div class="text-tool-label"><i class="fas fa-font"></i> TEXT</div>
+          <input type="text" id="text-input" placeholder="Enter your text" class="text-input-field">
+				  <div class="text-char-count"><span id="char-count">0</span>/50</div>
+			<div class="text-input-buttons">
+			<button id="text-delete-btn" class="text-action-btn text-danger" style="display: none;">
+			  <i class="fas fa-trash"></i> DELETE SELECTED
+			<button id="text-add-btn" class="text-action-btn text-primary"><i class="fas fa-plus"></i> ADD TEXT</button>
+		</div>
+        </div>
+
+        <div class="text-tool-section text-font-tools">
+          <div class="text-tool-label"><i class="fas fa-text-height"></i> FONT</div>
+          <div class="text-font-controls">
+            <div class="text-font-control">
+              <label>Font <span id="text-font-value">Bebas</span></label>
+              <select id="text-font-select" class="text-font-select">
+						
+					<option value="Afronsu">Afronsu</option>
+					<option value="CuezVer3">Cuez Ver3</option>
+					<option value="Boostery">Boostery</option>
+					<option value="FatCap">Fat & Cap</option>
+					<option value="JuicyBombs">Juicy Bombs</option>
+					<option value="Russelot">Russelot</option>
+					<option value="Strafer">Strafer</option>
+					<option value="FromStreetArt">From Street Art</option>
+					<option value="GraffitiDesiderium">Graffiti Desiderium</option>
+					<option value="GraffitiStyle">Graffiti Style</option>
+
+					<option value="BebasNeueBold">Bebas</option>
+					<option value="Arial">Arial</option>
+					<option value="Impact">Impact</option>
+					<option value="Courier">Courier</option>
+					<option value="'Times New Roman'">Times</option>
+					<option value="Verdana">Verdana</option>
+					<option value="'Comic Sans MS'">Comic Sans</option>
+					<option value="'Brush Script MT'">Brush Script</option>
+
+              </select>
+            </div>
+            <div class="text-font-control">
+              <label>Size <span id="text-size-value">40px</span></label>
+              <input type="range" id="text-size-slider" min="10" max="100" value="40">
+            </div>
+            <div class="text-font-control">
+              <label>Letter Spacing <span id="text-spacing-value">0px</span></label>
+              <input type="range" id="text-spacing-slider" min="-5" max="20" value="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="text-tool-section text-style-tools">
+          <div class="text-tool-label"><i class="fas fa-brush"></i> STYLE</div>
+          <div class="text-style-buttons">
+            <button id="text-bold-btn" class="text-style-btn" data-style="bold" title="Bold">
+              <i class="fas fa-bold"></i>
+            </button>
+            <button id="text-italic-btn" class="text-style-btn" data-style="italic" title="Italic">
+              <i class="fas fa-italic"></i>
+            </button>
+            <button id="text-underline-btn" class="text-style-btn" data-style="underline" title="Underline">
+              <i class="fas fa-underline"></i>
+            </button>
+            <button id="text-strikethrough-btn" class="text-style-btn" data-style="strikethrough" title="Strikethrough">
+              <i class="fas fa-strikethrough"></i>
+            </button>
+            <button id="text-shadow-btn" class="text-style-btn" data-style="shadow" title="Shadow">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button id="text-gradient-btn" class="text-style-btn" data-style="gradient" title="Gradient">
+              <i class="fas fa-sun"></i>
+            </button>
+          </div>
+          <div class="text-outline-control">
+            <label>Outline <span id="text-outline-value">0px</span></label>
+            <input type="range" id="text-outline-slider" min="0" max="10" value="0">
+          </div>
+          <div class="text-rotation-control">
+            <label>Rotation <span id="text-rotation-value">0°</span></label>
+            <input type="range" id="text-rotation-slider" min="0" max="360" value="0">
+          </div>
+        </div>
+
+        <div class="text-tool-section text-color-tools">
+          <div class="text-tool-label"><i class="fas fa-palette"></i> COLORS</div>
+          <div class="text-color-options">
+            <input type="color" id="text-color-picker" value="#ff66ff" title="Text color">
+            <input type="color" id="text-outline-picker" value="#000000" title="Outline color">
+            <input type="color" id="text-shadow-picker" value="#000000" title="Shadow color">
+            <input type="color" id="text-gradient-picker" value="#20c0ff" title="Gradient color" style="display: none;">
+            <div class="text-color-presets">
+              <div class="text-preset-colors-row">
+                <div class="text-color-swatch" style="background:#ff66ff" data-color="#ff66ff"></div>
+                <div class="text-color-swatch" style="background:#000000" data-color="#000000"></div>
+                <div class="text-color-swatch" style="background:#ffffff" data-color="#ffffff"></div>
+                <div class="text-color-swatch" style="background:#ff0000" data-color="#ff0000"></div>
+                <div class="text-color-swatch" style="background:#00ff00" data-color="#00ff00"></div>
+              </div>
+              <div class="text-preset-colors-row">
+                <div class="text-color-swatch" style="background:#20c0ff" data-color="#20c0ff"></div>
+                <div class="text-color-swatch" style="background:#ff00ff" data-color="#ff00ff"></div>
+                <div class="text-color-swatch" style="background:#ffff00" data-color="#ffff00"></div>
+                <div class="text-color-swatch" style="background:#00ffff" data-color="#00ffff"></div>
+                <div class="text-color-swatch" style="background:#ff9900" data-color="#ff9900"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-tool-section text-effects-tools">
+          <div class="text-tool-label"><i class="fas fa-magic"></i> EFFECTS</div>
+          <div class="text-effects-buttons">
+            <button id="text-bubble-btn" class="text-effect-btn" data-effect="bubble" title="Bubble Effect">
+              <i class="fas fa-circle"></i>
+            </button>
+            <button id="text-drip-btn" class="text-effect-btn" data-effect="drip" title="Drip Effect">
+              <i class="fas fa-tint"></i>
+            </button>
+            <button id="text-spray-btn" class="text-effect-btn" data-effect="spray" title="Spray Effect">
+              <i class="fas fa-spray-can"></i>
+            </button>
+            <button id="text-3d-btn" class="text-effect-btn" data-effect="3d" title="3D Effect">
+              <i class="fas fa-cube"></i>
+            </button>
+            <button id="text-grunge-btn" class="text-effect-btn" data-effect="grunge" title="Grunge Effect">
+              <i class="fas fa-brush"></i>
+            </button>
+          </div>
+          <div class="text-effect-control">
+            <label>Effect Intensity <span id="text-effect-value">50%</span></label>
+            <input type="range" id="text-effect-slider" min="0" max="100" value="50">
+          </div>
+        </div>
+
+        <div class="text-tool-section text-background-tools">
+          <div class="text-tool-label"><i class="fas fa-image"></i> BACKGROUND</div>
+          <div class="text-background-options">
+            <button id="text-bg-color-btn" class="text-bg-option-btn active" data-bgtype="color">
+              <i class="fas fa-fill-drip"></i> Color
+            </button>
+            <button id="text-bg-pattern-btn" class="text-bg-option-btn" data-bgtype="pattern">
+              <i class="fas fa-th-large"></i> Pattern
+            </button>
+            <div class="text-bg-color-control" id="text-bg-color-control">
+              <input type="color" id="text-bg-color-picker" value="#121212" title="Background color">
+              <label>Opacity <span id="text-bg-opacity-value">70%</span></label>
+              <input type="range" id="text-bg-opacity-slider" min="0" max="100" value="70">
+            </div>
+            <div class="text-bg-pattern-control" id="text-bg-pattern-control" style="display: none;">
+              <select id="text-bg-pattern-select" class="text-bg-pattern-select">
+                <option value="grid">Grid</option>
+                <option value="bricks">Bricks</option>
+                <option value="concrete">Concrete</option>
+                <option value="noise">Noise</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-action-buttons">
+        <div class="text-action-group">
+          <button id="text-clear-btn" class="text-action-btn text-danger">
+            <i class="fas fa-trash-alt"></i> CLEAR
+          </button>
+          
+          <button id="text-duplicate-btn" class="text-action-btn text-secondary">
+            <i class="fas fa-copy"></i> DUPLICATE
+          </button>
+          <button id="text-bring-front-btn" class="text-action-btn text-secondary">
+            <i class="fas fa-layer-group"></i> BRING TO FRONT
+          </button>
+          <button id="text-save-template-btn" class="text-action-btn text-secondary">
+            <i class="fas fa-save"></i> SAVE
+          </button>
+          <button id="text-load-template-btn" class="text-action-btn text-secondary">
+            <i class="fas fa-folder-open"></i> LOAD
+          </button>
+        </div>
+        <div class="text-action-group">
+          <button id="text-submit-btn" class="text-action-btn text-success">
+            <i class="fas fa-check-circle"></i> DONE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <div class="modal" id="text-input-modal">
+        <div class="modal-content">
+            <h3>Enter name</h3>
+            <input type="text" id="modal-text-input" placeholder="Template name">
+            <div class="modal-buttons">
+                <button id="modal-cancel-btn">Cancel</button>
+                <button id="modal-confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="modal" id="template-select-modal">
+        <div class="modal-content">
+            <h3>Select template</h3>
+            <select id="template-select">
+                
+            </select>
+            <div class="modal-buttons">
+                <button id="template-cancel-btn">Cancel</button>
+                <button id="template-confirm-btn">Confirm</button>
+            </div>
+        </div>
+    </div>  
+
+<div class="image-graffiti-container" id="image-graffiti-container">
+    <button id="image-close-btn" class="image-close-btn"><i class="fas fa-times"></i></button>
+    <div class="image-editor-container" id="image-editor-container">
+      <div class="image-editor-header">
+        <h1><span class="image-gradient">GRAFFITI</span> CREATOR</h1>
+      </div>
+
+      <div class="image-canvas-container">
+        <div class="image-canvas-wrapper">
+          <canvas id="image-graffiti-canvas" width="800" height="400"></canvas>
+        </div>
+      </div>
+
+      <div class="image-toolbar">
+        <div class="image-tool-section image-selection-section">
+          <div class="image-tool-label"><i class="fas fa-images"></i> IMAGE SELECTION</div>
+          <div class="image-select-container">
+            <select id="image-select" class="image-select">
+              
+            </select>
+            <div class="image-preview-container" id="image-preview-container">
+              <div class="image-preview-placeholder">
+                <i class="fas fa-image"></i>
+                <span>Select an image</span>
+              </div>
+              <img id="image-preview" class="image-preview" style="display: none;">
+            </div>
+          </div>
+<div class="image-input-buttons">
+  <div class="image-button-row">
+    <button id="image-delete-btn" class="image-action-btn image-danger">
+      <i class="fas fa-trash"></i> DELETE
+    </button>
+    <button id="image-add-btn" class="image-action-btn image-primary">
+      <i class="fas fa-plus"></i> ADD IMAGE
+    </button>
+  </div>
+  <div class="image-button-row">
+    <button id="image-add-url-btn" class="image-action-btn image-secondary">
+      <i class="fas fa-link"></i> ADD FROM URL
+    </button>
+  </div>
+</div>
+        </div>
+
+        <div class="image-tool-section image-transform-tools">
+          <div class="image-tool-label"><i class="fas fa-arrows-alt"></i> TRANSFORM</div>
+          <div class="image-transform-controls">
+            <div class="image-transform-control">
+              <label>Width <span id="image-width-value">200px</span></label>
+              <input type="range" id="image-width-slider" min="50" max="800" value="200">
+            </div>
+            <div class="image-transform-control">
+              <label>Height <span id="image-height-value">200px</span></label>
+              <input type="range" id="image-height-slider" min="50" max="600" value="200">
+            </div>
+            <div class="image-transform-control">
+              <label>Rotation <span id="image-rotation-value">0°</span></label>
+              <input type="range" id="image-rotation-slider" min="0" max="360" value="0">
+            </div>
+          </div>
+        </div>
+
+        <div class="image-tool-section image-filter-tools">
+          <div class="image-tool-label"><i class="fas fa-sliders-h"></i> FILTERS</div>
+          <div class="image-filter-buttons">
+            <button id="image-grayscale-btn" class="image-filter-btn" data-filter="grayscale" title="Grayscale">
+              <i class="fas fa-moon"></i>
+            </button>
+            <button id="image-sepia-btn" class="image-filter-btn" data-filter="sepia" title="Sepia">
+              <i class="fas fa-sun"></i>
+            </button>
+            <button id="image-invert-btn" class="image-filter-btn" data-filter="invert" title="Invert">
+              <i class="fas fa-adjust"></i>
+            </button>
+            <button id="image-blur-btn" class="image-filter-btn" data-filter="blur" title="Blur">
+              <i class="fas fa-burst"></i>
+            </button>
+            <button id="image-hue-btn" class="image-filter-btn" data-filter="hue" title="Hue Rotate">
+              <i class="fas fa-palette"></i>
+            </button>
+            <button id="image-brightness-btn" class="image-filter-btn" data-filter="brightness" title="Brightness">
+              <i class="fas fa-sun"></i>
+            </button>
+            <button id="image-contrast-btn" class="image-filter-btn" data-filter="contrast" title="Contrast">
+              <i class="fas fa-sliders-h"></i>
+            </button>
+            <button id="image-saturate-btn" class="image-filter-btn" data-filter="saturate" title="Saturate">
+              <i class="fas fa-fill-drip"></i>
+            </button>
+            <button id="image-vintage-btn" class="image-filter-btn" data-filter="vintage" title="Vintage">
+              <i class="fas fa-camera-retro"></i>
+            </button>
+            <button id="image-pixelate-btn" class="image-filter-btn" data-filter="pixelate" title="Pixelate">
+              <i class="fas fa-th-large"></i>
+            </button>
+          </div>
+          <div class="image-filter-control">
+            <label>Filter Intensity <span id="image-filter-value">50%</span></label>
+            <input type="range" id="image-filter-slider" min="0" max="100" value="50">
+          </div>
+        </div>
+
+        <div class="image-tool-section image-background-tools">
+          <div class="image-tool-label"><i class="fas fa-image"></i> BACKGROUND</div>
+          <div class="image-background-options">
+            <button id="image-bg-color-btn" class="image-bg-option-btn active" data-bgtype="color">
+              <i class="fas fa-fill-drip"></i> Color
+            </button>
+            <button id="image-bg-pattern-btn" class="image-bg-option-btn" data-bgtype="pattern">
+              <i class="fas fa-th-large"></i> Pattern
+            </button>
+            <div class="image-bg-color-control" id="image-bg-color-control">
+              <input type="color" id="image-bg-color-picker" value="#121212" title="Background color">
+              <label>Opacity <span id="image-bg-opacity-value">0%</span></label>
+              <input type="range" id="image-bg-opacity-slider" min="0" max="100" value="0">
+            </div>
+            <div class="image-bg-pattern-control" id="image-bg-pattern-control" style="display: none;">
+              <select id="image-bg-pattern-select" class="image-bg-pattern-select">
+                <option value="grid">Grid</option>
+                <option value="bricks">Bricks</option>
+                <option value="concrete">Concrete</option>
+                <option value="noise">Noise</option>
+                <option value="metal">Metal</option>
+                <option value="wood">Wood</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-action-buttons">
+        <div class="image-action-group">
+          <button id="image-clear-btn" class="image-action-btn image-danger">
+            <i class="fas fa-trash-alt"></i> CLEAR
+          </button>
+          <button id="image-bring-front-btn" class="image-action-btn image-secondary">
+            <i class="fas fa-layer-group"></i> BRING TO FRONT
+          </button>
+          <button id="image-save-template-btn" class="image-action-btn image-secondary">
+            <i class="fas fa-save"></i> SAVE
+          </button>
+          <button id="image-load-template-btn" class="image-action-btn image-secondary">
+            <i class="fas fa-folder-open"></i> LOAD
+          </button>
+        </div>
+        <div class="image-action-group">
+          <button id="image-submit-btn" class="image-action-btn image-success">
+            <i class="fas fa-check-circle"></i> DONE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<div class="modal" id="image-url-modal">
+	  <div class="modal-content">
+		<h3>Enter image URL</h3>
+		<input type="text" id="modal-image-url-input" placeholder="https://example.com/image.png">
+		<div class="modal-buttons">
+		  <button id="image-url-cancel-btn">Cancel</button>
+		  <button id="image-url-confirm-btn">Confirm</button>
+		</div>
+	  </div>
+	</div>  
+  
+  <div class="modal" id="image-input-modal">
+    <div class="modal-content">
+      <h3>Enter name</h3>
+      <input type="text" id="modal-image-input" placeholder="Template name">
+      <div class="modal-buttons">
+        <button id="image-modal-cancel-btn">Cancel</button>
+        <button id="image-modal-confirm-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="image-template-select-modal">
+    <div class="modal-content">
+      <h3>Select template</h3>
+      <select id="image-template-select">
+        
+      </select>
+      <div class="modal-buttons">
+        <button id="image-template-cancel-btn">Cancel</button>
+        <button id="image-template-confirm-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="nui://game/ui/jquery.js"></script>
+   <script src="scripts.js"></script>
+  <script src="imagecreator.js"></script>
+
+<script src="drawcreator.js"></script>
+<script src="textcreator.js"></script>
+<script src="imagecreator.js"></script>
+<script src="controls.js"></script>
+</body>
+</html>

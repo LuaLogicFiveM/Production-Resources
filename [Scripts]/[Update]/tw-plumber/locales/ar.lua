@@ -1,0 +1,177 @@
+Locales = Locales or {}
+Locales['ar'] = {
+    ['jobName'] = 'سباك',
+    ['homePage'] = 'الصفحة الرئيسية',
+    ['settings'] = 'الإعدادات',
+    ['LVL'] = 'المستوى',
+    ['Level'] = 'المستوى',
+    ['Exp'] = 'الخبرة',
+    ['Choose'] = "اختر",
+    ['Region'] = "المنطقة",
+    ['LevelRequired'] = "المستوى المطلوب",
+    ["NoLevelRequired"] = "لا يوجد مستوى مطلوب",
+    ['1-4Players'] = "1-4 لاعبين",
+    ['XP'] = "نقاط الخبرة",
+    ['PlayerList'] = "قائمة اللاعبين",
+    ['AddInvite'] = "دعوة",
+    ['jobDetails'] = "تفاصيل العمل",
+    ['jobStep'] = "خطوة العمل",
+    ['JOBNOTSELECTED'] = "لم يتم اختيار المهمة",
+    ['jobReset'] = "إعادة تعيين المهمة",
+    ['jobStart'] = "بدء المهمة",
+
+    -- Settings
+    ['GeneralTaskList'] = "قائمة المهام العامة",
+    ['HistoryList'] = "قائمة السجل",
+    ['Task'] = "مهمة",
+    ['MenuJobSounds'] = "أصوات القائمة/العمل",
+    ['UIMove'] = "حركة الواجهة",
+    ['MoveIt'] = "تحريك",
+    ['Save'] = "حفظ",
+    ['Reset'] = "إعادة تعيين",
+    ['InviteRequest'] = "طلب دعوة",
+    ['InviteText'] = "تمت دعوتك إلى وظيفة السباك.",
+    ['Reject'] = "رفض",
+    ['Accept'] = "قبول",
+    ['jobMission'] = "مهمة السباك",
+    ['BonusMission'] = "مهمة إضافية",
+
+    ['MissionCompleted'] = "اكتملت المهمة",
+    ['Score'] = "النتيجة",
+    ['BonusScore'] = "نتيجة إضافية",
+    ['YourTeam'] = "فريقك",
+    ['NoInformation'] = "لا توجد معلومات",
+    ['YourEarning'] = "أرباحك",
+    ['Bonus'] = "مكافأة",
+    ['SkipInformation'] = "تخطي المعلومات",
+
+    ['Info'] = "معلومات",
+    ['Error'] = "خطأ",
+    ['Success'] = "نجاح",
+
+    -- Configuration
+    ['deliveryVehicle'] = "مركبة التوصيل",
+    ['pedDrawText'] = "اضغط ~g~[E]~s~ لفتح قائمة ~g~السباك~s~",
+    ['regionJobTask'] = "اذهب إلى المنطقة المحددة بالمركبة المعطاة ثم أكمل المهام المحددة.",
+    ['missionOneBlips'] = "وضع الأنابيب",
+    ['missionTwoBlips'] = "إصلاح الأنابيب",
+    ['missionThreeBlips'] = "إصلاح المرحاض",
+    ['missionFourBlips'] = "إصلاح الصمام",
+    ['missionFiveBlips'] = "التحكم بالمفتاح",
+    ['wateringcan'] = "سقاية الأزهار",
+    ['takebranch'] = "جمع الفروع",
+    ['jobtask'] = "مهمة العمل",
+
+    -- Daily tasks
+    ['dailyjobone'] = "قم بـ 50 مهمة سباكة",
+    ['dailyjobtwo'] = "أكمل 10 مهام",
+    ['dailyjobthree'] = "اكسب 10000 من المال",
+    ['dailyjobfour'] = "قم بـ 20 مهمة مع أصدقائك",
+
+    -- Notifications
+    ['vehicleexist'] = "لا يمكنك بدء المهمة لأن هناك مركبة في منطقة الظهور",
+    ['wrongjob'] = "لا يمكنك القيام بهذه الوظيفة.",
+    ['jobcooldown'] = "لا يمكنك بدء وظيفة جديدة الآن.",
+    ['delivervehicle'] = "قم بتوصيل المركبة إلى الموقع المحدد وإنهاء المهمة.",
+    ['playerfaraway'] = "الشخص الذي دعوته بعيد جدًا",
+    ['lobbyfull'] = "الردهة ممتلئة.",
+    ['jobnotstarted'] = "لم تبدأ المهمة بعد.",
+    ['jobalreadystarted'] = "لقد بدأت المهمة بالفعل.",
+    ['maxlevel'] = "لقد وصلت إلى الحد الأقصى للمستوى.",
+    ['playeralreadyinlobby'] = "أنت بالفعل في الردهة.",
+    ['missionnotselected'] = "لم تختر مهمة.",
+    ['playerleftlobby'] = "تم إنهاء المهمة لأن أحد اللاعبين في الردهة غادر اللعبة.",
+    ['deliverVehile'] = "قم بتوصيل المركبة",
+    ['resetJob'] = "لقد أعدت تعيين المهمة.",
+    ['notowner'] = "أنت لست مالك المركبة.",
+    ['usedtbxid'] = "تم استخدام هذا المعرف من قبل",
+    ['successfullyExp'] = "لقد اشتريت نقاط الخبرة بنجاح",
+    ['notfoundtbxid'] = "لا يمكننا العثور على هذا المعرف",
+    ['getontruck'] = "اصعد إلى الشاحنة لبدء مهمة السباك واذهب إلى الموقع المحدد",
+    ['notenoughmoney'] = "ليس لديك ما يكفي من المال",
+    ['finishBoxDelivery'] = "تم الانتهاء من نقطة التوصيل!",
+    ['joblevelnotenough'] = "ليس لدى الجميع في المجموعة المؤهلات الكافية للقيام بهذه الوظيفة.",
+    ['alreadyarea'] = "هذه المنطقة قيد الاستخدام بالفعل، يرجى اختيار منطقة أخرى",
+    ['isownernotleave'] = "لا يمكن لصاحب المجموعة مغادرة المجموعة، فقط صاحب المجموعة يمكنه إعادة تعيين المهمة.",
+    ['invehicle'] = "أنت في مركبة",
+    ['bonusjobtask'] = "لقد تلقيت مهمة إضافية",
+    ['invitePlayer'] = "دعوة",
+    ['valveBeingUsed'] = "هذا الصمام يستخدمه سباك آخر حاليًا!",
+
+    -- Client
+    ['interactionDoor'] = "باب التفاعل",
+    ['backPut'] = "إعادة وضع",
+    ['deliveryVehicle'] = "مركبة التوصيل",
+    ['shortbend'] = "خذ المنحنى القصير",
+    ['longbend'] = "خذ المنحنى الطويل",
+    ['tpipe'] = "خذ أنبوب على شكل T",
+    ['valve'] = "خذ الصمام",
+    ['shortpipe'] = "خذ الأنبوب القصير",
+    ['longpipe'] = "خذ الأنبوب الطويل",
+    ['openJobMenu'] = "فتح قائمة العمل",
+
+    -- Client Text Indicators
+    ['missionBlip'] = "مهمة",
+
+    ['cantentervehicle'] = "لا يمكنك دخول مركبة أثناء حمل شيء",
+    ['settingssaved'] = "تم حفظ الإعدادات",
+
+    
+    --- Insert Pipe
+    ['insertPipe'] = "إدخال أنبوب",
+    ['insertValve'] = "إدخال صمام",
+    ['pipeAlreadyProcessing'] = "يتم وضع هذا الأنبوب حاليًا بواسطة لاعب آخر",
+    ['notCorrectPipe'] = "ليس الأنبوب الصحيح",
+    ['required'] = "مطلوب",
+    ['valveReparing'] = "يتم إصلاح هذا الصمام حاليًا بواسطة لاعب آخر",
+
+    --Notification
+    ['successOpenValve'] = "تم فتح الصمام",
+    ['allPipesPlaced'] = "تم وضع جميع الأنابيب",
+    ['valvePlaced'] = "تم وضع الصمام بنجاح، يمكنك الآن فتحه",
+
+    --Repair Pipe
+    ['removePipe'] = "إزالة الأنبوب",
+    ['alreadyHaveItem'] = "لديك بالفعل شيء في يدك",
+    ['successRepairPipe'] = "تم إصلاح الأنبوب",
+    ['closeValve'] = "إغلاق الصمام",
+    ['openValve'] = "فتح الصمام",
+    ['allPipesRepaired'] = "تم إصلاح جميع الأنابيب",
+    ['valveClosed'] = "تم إغلاق الصمام بنجاح، يمكنك الآن إصلاح الأنابيب",
+    ['valvePressureFailed'] = "مستوى الماء ليس في النطاق المستهدف!",
+
+    --Switch Mission
+    ['repairSwitch'] = "إصلاح التحكم بالمفتاح",
+    ['failedSwitch'] = "فشل إصلاح التحكم بالمفتاح",
+    ['successSwitch'] = "تم إصلاح التحكم بالمفتاح",
+
+    --Toilet Choked
+    ['successToilet'] = "تم تنظيف المرحاض",
+    ['failedToilet'] = "المرحاض مسدود",
+    ['cleanToilet'] = "تنظيف المرحاض",
+
+    --Valve
+    ['successValve'] = "تم إصلاح الصمام",
+    ['failedValve'] = "فشل إصلاح الصمام",
+    -- progressbar
+    ['insertPipeProgress'] = "وضع الأنبوب",
+    ['insertValveProgress'] = "وضع الصمام",
+    ['removePipeProgress'] = "إزالة الأنبوب",
+    ['receivingMaterials'] = "استلام المواد",
+    ['putBackMaterials'] = "إعادة وضع المواد",
+    -- Tutorial
+    ['tutorialTitle1'] = "بدء وظيفة السباك",
+    ['tutorialDescription1'] = "ابدأ المهمة، ثم اركب المركبة واذهب إلى المنطقة المحددة على الخريطة وأكمل المهام المحددة",
+    ['tutorialTitle2'] = "وضع الأنابيب",
+    ['tutorialDescription2'] = "اذهب إلى المنطقة وخذ الأنابيب المطلوبة من المركبة، وضعها واحدة تلو الأخرى، ثم قم بتركيب الصمام وافتحه",
+    ['tutorialTitle3'] = "إصلاح الصمام",
+    ['tutorialDescription3'] = "اذهب إلى منطقة إصلاح الصمام وتفاعل لإصلاحه، ثم أدر الصمام إلى اليمين لضبط الضغط على المستوى المبين باللون الأخضر",
+    ['tutorialTitle4'] = "إصلاح الأنبوب",
+    ['tutorialDescription4'] = "اذهب إلى منطقة إصلاح الأنبوب ولإصلاح الأنبوب، أغلق الصمام أولاً، ثم قم بإزالة الأنبوب المكسور وضعه في السيارة، ثم خذ أنبوبًا من السيارة وأعد تركيبه، ثم افتح الصمام",
+    ['tutorialTitle5'] = "إصلاح المرحاض",
+    ['tutorialDescription5'] = "اذهب إلى منطقة إصلاح المرحاض، ثم تفاعل وحرك المكبس لأعلى ولأسفل لإصلاح الانسداد",
+    ['tutorialTitle6'] = "إصلاح المفتاح (مكافأة)",
+    ['tutorialDescription6'] = "للقيام بالمهمة الإضافية، اذهب إلى المنطقة وتفاعل، ثم قم بتنشيط المفاتيح غير المضاءة",
+    ['howtomake'] = "كيفية القيام بذلك",
+    ['howtomakeDescription'] = "يمكنك تعلم كيفية القيام بوظيفة السباك من أدناه وكسب المال"
+}

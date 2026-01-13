@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+     <div class="wrapper">
+        <div class="container">
+            <div class="main">
+                <div class="primary-header">
+                    <div class="panel-title">
+                        <i class="fa-brands fa-slack"></i>
+                        <div>Job Selector</div>
+                    </div>
+                    <div class="panel-close-btn">Close</div>
+                </div>
+                <div class="secondary-header">
+                    <div class="job-name"></div>
+                </div>
+                <div class="job-container">
+                    <div class="slide-left">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    <div class="box-container centered middle baseline" id="box-container"></div>
+                    <div class="slide-right">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="job-status">
+                        <div>Toggle Duty</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pop-up-cont">
+            <div class="confirmation-cont">
+                <div class="confirmation-text">Are you sure you want to delete this job?</div>
+                <div class="confirmation-buttons">
+                    <div class="confirmation-yes">Yes</div>
+                    <div class="confirmation-no">No</div>
+                </div>
+            </div>
+        </div>
+     </div>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+     <script src="main.js"></script>
+</body>
+</html>

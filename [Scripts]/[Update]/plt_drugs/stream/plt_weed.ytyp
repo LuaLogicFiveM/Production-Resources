@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<CMapTypes>
+  <extensions/>
+  <archetypes>
+    <Item type="CBaseArchetypeDef">
+      <lodDist value="100.00000000"/>
+      <flags value="537002016"/>
+      <specialAttribute value="0"/>
+      <bbMin x="-0.26006600" y="-0.25728400" z="-0.00010700"/>
+      <bbMax x="0.24927700" y="0.22931800" z="0.99669000"/>
+      <bsCentre x="-0.00539449" y="-0.01398300" z="0.49829150"/>
+      <bsRadius value="0.61029010"/>
+      <hdTextureDist value="5.00000000"/>
+      <name>plt_weed_small_a</name>
+      <textureDictionary>plt_weed_textures</textureDictionary>
+      <clipDictionary/>
+      <drawableDictionary/>
+      <physicsDictionary>mp_biker_weed</physicsDictionary>
+      <assetType>ASSET_TYPE_DRAWABLE</assetType>
+      <assetName>plt_weed_small_a</assetName>
+      <extensions/>
+    </Item>
+    <Item type="CBaseArchetypeDef">
+      <lodDist value="100.00000000"/>
+      <flags value="537002016"/>
+      <specialAttribute value="0"/>
+      <bbMin x="-0.26006600" y="-0.25728400" z="-0.00010700"/>
+      <bbMax x="0.24927700" y="0.22931800" z="0.99669000"/>
+      <bsCentre x="-0.00539449" y="-0.01398300" z="0.49829150"/>
+      <bsRadius value="0.61029010"/>
+      <hdTextureDist value="5.00000000"/>
+      <name>plt_weed_med_b</name>
+      <textureDictionary>plt_weed_textures</textureDictionary>
+      <clipDictionary/>
+      <drawableDictionary/>
+      <physicsDictionary>mp_biker_weed</physicsDictionary>
+      <assetType>ASSET_TYPE_DRAWABLE</assetType>
+      <assetName>plt_weed_med_b</assetName>
+      <extensions/>
+    </Item>
+    <Item type="CBaseArchetypeDef">
+      <lodDist value="100.00000000"/>
+      <flags value="537002016"/>
+      <specialAttribute value="0"/>
+      <bbMin x="-0.26006600" y="-0.25728400" z="-0.00010700"/>
+      <bbMax x="0.24927700" y="0.22931800" z="0.99669000"/>
+      <bsCentre x="-0.00539449" y="-0.01398300" z="0.49829150"/>
+      <bsRadius value="0.61029010"/>
+      <hdTextureDist value="5.00000000"/>
+      <name>plt_weed_lrg_b</name>
+      <textureDictionary>plt_weed_textures</textureDictionary>
+      <clipDictionary/>
+      <drawableDictionary/>
+      <physicsDictionary>mp_biker_weed</physicsDictionary>
+      <assetType>ASSET_TYPE_DRAWABLE</assetType>
+      <assetName>plt_weed_lrg_b</assetName>
+      <extensions/>
+    </Item>
+    <Item type="CBaseArchetypeDef">
+      <lodDist value="100.00000000"/>
+      <flags value="537002016"/>
+      <specialAttribute value="0"/>
+      <bbMin x="-0.26006600" y="-0.25728400" z="-0.00010700"/>
+      <bbMax x="0.24927700" y="0.22931800" z="0.99669000"/>
+      <bsCentre x="-0.00539449" y="-0.01398300" z="0.49829150"/>
+      <bsRadius value="0.61029010"/>
+      <hdTextureDist value="5.00000000"/>
+      <name>plt_weed_lrg_a</name>
+      <textureDictionary>plt_weed_textures</textureDictionary>
+      <clipDictionary/>
+      <drawableDictionary/>
+      <physicsDictionary>mp_biker_weed</physicsDictionary>
+      <assetType>ASSET_TYPE_DRAWABLE</assetType>
+      <assetName>plt_weed_lrg_a</assetName>
+      <extensions/>
+    </Item>
+    <Item type="CBaseArchetypeDef">
+      <lodDist value="100.00000000"/>
+      <flags value="537002016"/>
+      <specialAttribute value="0"/>
+      <bbMin x="-0.24927700" y="-0.22678400" z="-0.00010700"/>
+      <bbMax x="0.24927700" y="0.22931800" z="1.08194200"/>
+      <bsCentre x="0.00000000" y="0.00126700" z="0.54091750"/>
+      <bsRadius value="0.63785090"/>
+      <hdTextureDist value="5.00000000"/>
+      <name>plt_weed_small_b</name>
+      <textureDictionary>plt_weed_textures</textureDictionary>
+      <clipDictionary/>
+      <drawableDictionary/>
+      <physicsDictionary>mp_biker_weed</physicsDictionary>
+      <assetType>ASSET_TYPE_DRAWABLE</assetType>
+      <assetName>plt_weed_small_b</assetName>
+      <extensions/>
+    </Item>
+    <Item type="CBaseArchetypeDef">
+      <lodDist value="100.00000000"/>
+      <flags value="536870912"/>
+      <specialAttribute value="0"/>
+      <bbMin x="-0.24927700" y="-0.22678400" z="-0.00010700"/>
+      <bbMax x="0.24927700" y="0.22931800" z="0.76155000"/>
+      <bsCentre x="0.00000000" y="0.00126700" z="0.38072150"/>
+      <bsRadius value="0.50909390"/>
+      <hdTextureDist value="5.00000000"/>
+      <name>plt_weed_small_c</name>
+      <textureDictionary>plt_weed_textures</textureDictionary>
+      <clipDictionary/>
+      <drawableDictionary/>
+      <physicsDictionary>mp_biker_weed</physicsDictionary>
+      <assetType>ASSET_TYPE_DRAWABLE</assetType>
+      <assetName>plt_weed_small_c</assetName>
+      <extensions/>
+    </Item>
+  </archetypes>
+  <name>plt_weed</name>
+  <dependencies/>
+  <compositeEntityTypes/>
+</CMapTypes>

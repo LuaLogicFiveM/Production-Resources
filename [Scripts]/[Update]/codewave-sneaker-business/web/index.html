@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sneakers & Collections</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body style="display: none;">
+    <div id="menu-container">
+        <div id="menu-header">
+            <img src="image/left_shoe.png" alt="Left Sneaker" class="header-icon shoe-logo">
+            <img src="image/solesanc.png" alt="Sneaker Logo" class="header-logo">
+            <img src="image/right_shoe.png" alt="Right Sneaker" class="header-icon shoe-logo">
+            <button id="close-button">X</button>
+        </div>
+        <div id="menu"></div>
+    </div>
+
+    <div id="crafting-container" style="display: none;">
+        <div id="crafting-header">
+            <img src="image/left_shoe.png" alt="Left Sneaker" class="header-icon shoe-logo">
+            <img src="image/solesanc.png" alt="Sneaker Logo" class="header-logo">
+            <img src="image/right_shoe.png" alt="Right Sneaker" class="header-icon shoe-logo">
+            <button id="close-crafting-button">X</button>
+        </div>
+        <div id="crafting-menu"></div>
+        <button id="more-info-button" class="themed-button">More Info</button>
+        <div id="loading-spinner" class="spinner" style="display: none;">
+            <i class="fas fa-cog spinner-icon"></i>
+        </div>
+    </div>
+
+    <!-- New UI container moved out as a sibling -->
+<!-- New UI container -->
+<div id="newui-container" style="display: none;">
+    <div id="newui-header">
+        <div class="header-row">
+            <img src="image/left_shoe.png" alt="Left Sneaker" class="header-icon shoe-logo">
+            <img src="image/authed.png" alt="Sneaker Logo" class="header-logo">
+            <img src="image/right_shoe.png" alt="Right Sneaker" class="header-icon shoe-logo">
+            <button id="close-newui-button">X</button>
+        </div>
+        <h1>GET YOUR SHOES VERIFIED BY US TODAY</h1>
+    </div>
+    
+    <div id="newui-menu"></div>
+    <h1>SIMPLY PASS US YOUR SHOE OVER, WE WILL INSPECT IT & THEN GRADE IT FOR YOU!</h1>
+    
+    <!-- New button to open the modal -->
+    <button id="open-modal-button" class="themed-button">Find out how this works?!</button>
+    
+    <div id="newui-loading-spinner" class="spinner" style="display: none;">
+        <i class="fas fa-cog spinner-icon"></i>
+    </div>
+</div>
+
+
+<div id="modal-container" class="modal">
+    <div class="modal-content">
+         <span class="modal-close">&times;</span>
+         <div class="modal-images">
+             <img src="image/breeze_95s.png" alt="First image">
+             <span class="modal-arrow">&#8594;</span>
+             <img src="image/breeze_95s_verified.png" alt="Second image">
+         </div>
+         <!-- Description box (read-only) -->
+         <div class="modal-description">
+             This NPC will grade your shoe quality, keep in mind if the quality is deemed low, you will be given a "ACCEPTABLE" Badge, this lowers the value of the shoe typically.
+         </div>
+    </div>
+</div>
+
+
+
+    <div id="info-container" style="display: none;">
+        <div id="info-header">
+            <img src="image/solesanc.png" alt="Sneaker Logo" class="header-logo">
+            <button id="close-info-button">X</button>
+        </div>
+        <div id="info-content">
+            <h1>What can I do with my collected sneakers?</h1>
+            <h2>
+                Sneakers collected here can be sold to clients around the city in two ways! 
+                The first way is using /sellsneakers which will make clients come to you to sell!
+                The second way is to buy a client phone & use that to deliver the sneakers across the city, 
+                which usually earns more money!
+            </h2>
+        </div>
+    </div>
+    <div id="notification-container"></div>
+    <script src="script.js"></script>
+</body>

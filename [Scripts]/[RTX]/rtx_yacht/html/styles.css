@@ -1,0 +1,1470 @@
+:root {
+--color: var(--color);
+}
+@import url('https://kit-pro.fontawesome.com/releases/v5.14.0/css/pro.min.css');
+@font-face {
+font-family: BebasNeueBold;
+src: url(BebasNeueBold.ttf);
+}
+*{
+user-select: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+}
+html {
+overflow: hidden;
+font-family: 'Open Sans', sans-serif;
+}
+body{
+display: none;
+color: #a8a8aa;
+}
+::-webkit-scrollbar
+{
+width: 4px;
+}
+::-webkit-scrollbar-thumb
+{
+background-color: rgba(0, 0, 0, 0.0);
+}
+.infonotify-container {
+width: 17%;
+background-color: rgba(0, 0, 0, 0.70);
+border-bottom: 3px solid var(--color);
+margin: 0;
+position: absolute;
+top: 50%;
+left: 10%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+overflow: hidden;
+z-index: 9999999;
+border-radius: 10px;
+display: none;
+}
+.infonotifytext {
+padding-top: 10px;
+padding-bottom: 10px;
+padding-left: 2px;
+padding-right: 2px;
+vertical-align: middle;
+text-align: center;
+font-size: 25px;
+font-family: BebasNeueBold;
+color: #ffffff;
+}
+#infobindcolor {
+color: var(--color);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+h1 {
+font-size: 24px;
+margin-bottom: 20px;
+color: #ffffff;
+text-align: center;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+h3 {
+font-size: 16px;
+margin-bottom: 10px;
+color: #ffffff;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+.yachtbuy-container {
+width: 100%;
+height: 100%;
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+overflow: hidden;
+z-index: 9999999;
+font-family: 'Bahnschrift', sans-serif;
+font-weight: bold;
+background-color: transparent;
+color: #ffffff;
+justify-content: space-between;
+align-items: center;
+height: 100vh;
+overflow: hidden;
+padding: 0 20px;
+display: none;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.yachtbuy-container button,
+.yachtbuy-container input,
+.yachtbuy-container select {
+width: 100%;
+padding: 12px;
+margin: 10px 0;
+border: none;
+border-radius: 10px;
+background-color: rgba(255, 255, 255, 0.1);
+color: white;
+font-size: 14px;
+font-family: 'Bahnschrift', sans-serif;
+font-weight: bold;
+transition: all 0.3s ease;
+}
+.yachtbuy-container button:hover,
+.yachtbuy-container input:hover,
+.yachtbuy-container select:hover {
+background-color: rgba(255, 255, 255, 0.2);
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.yachtbuy-container button:focus,
+.yachtbuy-container input:focus,
+.yachtbuy-container select:focus {
+outline: none;
+background-color: rgba(255, 255, 255, 0.2);
+}
+.yachtbuy-container #change-camera {
+position: fixed;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%);
+background-color: rgba(108, 92, 231, 0.8);
+font-weight: bold;
+width: auto;
+padding: 12px 30px;
+font-size: 16px;
+border-radius: 25px;
+box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+.yachtbuy-container #change-camera:hover {
+background-color: rgba(90, 77, 204, 0.8);
+transform: translateX(-50%) translateY(-2px);
+}
+.yachtbuy-container #close-menu {
+position: fixed;
+top: 20px;
+right: 20px;
+background-color: rgba(255, 59, 48, 0.8);
+font-weight: bold;
+width: auto;
+padding: 12px 20px;
+font-size: 16px;
+border-radius: 25px;
+box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+}
+.yachtbuy-container #close-menu:hover {
+background-color: rgba(255, 0, 0, 0.8);
+transform: translateY(-2px);
+}
+.yachtbuy-container .color-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.yachtbuy-container .color-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+background-size: cover;
+background-position: center;
+border: 2px solid rgba(255, 255, 255, 0.1);
+}
+.yachtbuy-container .color-picker div:hover {
+transform: scale(1.1);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+border-color: rgba(255, 255, 255, 0.3);
+}
+.yachtbuy-container .light-type-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.yachtbuy-container .light-type-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(255, 255, 255, 0.1);
+font-size: 14px;
+text-transform: uppercase;
+}
+.yachtbuy-container .light-type-picker div.selected {
+background-color: rgba(108, 92, 231, 0.8);
+}
+.yachtbuy-container .light-type-picker div:hover {
+transform: scale(1.05);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+.yachtbuy-container .light-color-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.yachtbuy-container .light-color-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(255, 255, 255, 0.1);
+}
+.yachtbuy-container .light-color-picker div:hover {
+transform: scale(1.1);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+.yachtbuy-container #yachtcolorlight1 { background-color: rgba(255, 234, 0, 0.90); }
+.yachtbuy-container #yachtcolorlight2 { background-color: rgba(0, 150, 255, 0.90); }
+.yachtbuy-container #yachtcolorlight3 { background-color: rgba(255, 102, 255, 0.90); }
+.yachtbuy-container #yachtcolorlight4 { background-color: rgba(80, 200, 120, 0.90); }
+.yachtbuy-container #yachtcolorlight5 { background-color: rgba(220, 20, 60, 0.90); }
+.yachtbuy-container #yachtcolorlight6 { background-color: rgba(138, 43, 226, 0.90); }
+.yachtbuy-container #yachtcolorlight7 { background-color: rgba(255, 191, 0, 0.90); }
+.yachtbuy-container #yachtcolorlight8 { background-color: rgba(255, 255, 255, 0.90); }
+.yachtbuy-container .railing-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.yachtbuy-container .railing-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+background-size: cover;
+background-position: center;
+border: 2px solid rgba(255, 255, 255, 0.1);
+}
+.yachtbuy-container .railing-picker div:hover {
+transform: scale(1.1);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+border-color: rgba(255, 255, 255, 0.3);
+}
+.yachtbuy-container .railing-picker div:nth-child(1) {
+background-image: url('img/yachtcolors/chrome.jpg');
+}
+.yachtbuy-container .railing-picker div:nth-child(2) {
+background-image: url('img/yachtcolors/gold.jpg');
+}
+.yachtbuy-container .flag-picker select {
+width: 100%;
+padding: 12px;
+margin: 10px 0;
+border: none;
+border-radius: 10px;
+background-color: rgba(255, 255, 255, 0.1);
+color: white;
+font-size: 14px;
+font-family: 'Bahnschrift', sans-serif;
+font-weight: bold;
+transition: all 0.3s ease;
+appearance: none;
+cursor: pointer;
+}
+.yachtbuy-container .flag-picker option {
+background-color: #444;
+}
+.yachtbuy-container .flag-picker select:hover {
+background-color: rgba(255, 255, 255, 0.2);
+}
+.yachtbuy-container .flag-picker select:focus {
+outline: none;
+background-color: rgba(255, 255, 255, 0.2);
+}
+.yachtbuy-container .flag-picker {
+position: relative;
+}
+.yachtbuy-container .flag-picker::after {
+content: "▼";
+position: absolute;
+top: 50%;
+right: 15px;
+transform: translateY(-50%);
+color: white;
+pointer-events: none;
+}
+.yachtbuy-container .final-price {
+text-align: center;
+font-size: 20px;
+font-weight: bold;
+margin: 20px 0;
+color: #6c5ce7;
+text-shadow: 0 0 10px rgba(108, 92, 231, 0.6);
+}
+.yachtbuy-container #purchase-yacht {
+background-color: rgba(0, 184, 148, 0.8);
+font-weight: bold;
+margin-top: 20px;
+font-size: 16px;
+border-radius: 25px;
+box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+}
+.yachtbuy-container #purchase-yacht:hover {
+background-color: rgba(0, 163, 131, 0.8);
+transform: translateY(-2px);
+}
+.yachtbuy-container .notification {
+position: fixed;
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
+padding: 15px 30px;
+border-radius: 10px;
+color: white;
+font-family: 'Bahnschrift', sans-serif;
+font-weight: bold;
+z-index: 10000;
+animation: slideIn 0.5s ease-in-out;
+display: flex;
+align-items: center;
+gap: 10px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.yachtbuy-container .notification.warning {
+background-color: rgba(255, 59, 48, 0.9);
+}
+.yachtbuy-container .notification.success {
+background-color: rgba(0, 184, 148, 0.9);
+}
+.yachtbuy-container .notification i {
+font-size: 20px;
+}
+@keyframes slideIn {
+from {
+transform: translateX(-50%) translateY(-100%);
+opacity: 0;
+}
+to {
+transform: translateX(-50%) translateY(0);
+opacity: 1;
+}
+}
+.yachtbuy-container .equipment-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.yachtbuy-container .equipment-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(255, 255, 255, 0.1);
+font-size: 14px;
+text-transform: uppercase;
+}
+.yachtbuy-container .equipment-picker div:hover {
+transform: scale(1.05);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+.yachtbuy-container .equipment-picker div.selected {
+background-color: rgba(108, 92, 231, 0.8);
+}
+.left-panel, .right-panel {
+background: rgba(10, 10, 20, 0.9);
+border-radius: 15px;
+padding: 20px;
+width: 320px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.left-panel {
+margin: 0;
+position: absolute;
+top: 50%;
+left: 10%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+overflow: hidden;
+z-index: 9999999;
+}
+.right-panel {
+margin: 0;
+position: absolute;
+top: 50%;
+left: 90%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+overflow: hidden;
+z-index: 9999999;
+}
+.left-panel {
+margin-right: 20px;
+}
+.right-panel {
+margin-left: 20px;
+}
+#change-camera {
+position: fixed;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%);
+background-color: rgba(108, 92, 231, 0.8);
+font-weight: bold;
+width: auto;
+padding: 12px 30px;
+font-size: 16px;
+border-radius: 25px;
+box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+#change-camera:hover {
+background-color: rgba(90, 77, 204, 0.8);
+transform: translateX(-50%) translateY(-2px);
+}
+#close-menu {
+position: fixed;
+top: 20px;
+right: 20px;
+background-color: rgba(255, 59, 48, 0.8);
+font-weight: bold;
+width: auto;
+padding: 12px 20px;
+font-size: 16px;
+border-radius: 25px;
+box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+}
+#close-menu:hover {
+background-color: rgba(255, 0, 0, 0.8);
+transform: translateY(-2px);
+}
+.color-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.color-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+background-size: cover;
+background-position: center;
+border: 2px solid rgba(255, 255, 255, 0.1);
+}
+.color-picker div:hover {
+transform: scale(1.1);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+border-color: rgba(255, 255, 255, 0.3);
+}
+.light-type-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.light-type-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(255, 255, 255, 0.1);
+font-size: 14px;
+text-transform: uppercase;
+}
+.light-type-picker div.selected {
+background-color: rgba(108, 92, 231, 0.8);
+}
+.light-type-picker div:hover {
+transform: scale(1.05);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+.light-color-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.light-color-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(255, 255, 255, 0.1);
+}
+.light-color-picker div:hover {
+transform: scale(1.1);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+#yachtcolorlight1 { background-color: rgba(255, 234, 0, 0.90); }
+#yachtcolorlight2 { background-color: rgba(0, 150, 255, 0.90); }
+#yachtcolorlight3 { background-color: rgba(255, 102, 255, 0.90); }
+#yachtcolorlight4 { background-color: rgba(80, 200, 120, 0.90); }
+#yachtcolorlight5 { background-color: rgba(220, 20, 60, 0.90); }
+#yachtcolorlight6 { background-color: rgba(138, 43, 226, 0.90); }
+#yachtcolorlight7 { background-color: rgba(255, 191, 0, 0.90); }
+#yachtcolorlight8 { background-color: rgba(255, 255, 255, 0.90); }
+.railing-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.railing-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+background-size: cover;
+background-position: center;
+border: 2px solid rgba(255, 255, 255, 0.1);
+}
+.railing-picker div:hover {
+transform: scale(1.1);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+border-color: rgba(255, 255, 255, 0.3);
+}
+.railing-picker div:nth-child(1) {
+background-image: url('img/yachtcolors/chrome.jpg');
+}
+.railing-picker div:nth-child(2) {
+background-image: url('img/yachtcolors/gold.jpg');
+}
+.flag-picker select {
+width: 100%;
+padding: 12px;
+margin: 10px 0;
+border: none;
+border-radius: 10px;
+background-color: rgba(255, 255, 255, 0.1);
+color: white;
+font-size: 14px;
+font-family: 'Bahnschrift', sans-serif;
+font-weight: bold;
+transition: all 0.3s ease;
+appearance: none;
+cursor: pointer;
+}
+.flag-picker option {
+background-color: #444;
+}
+.flag-picker select:hover {
+background-color: rgba(255, 255, 255, 0.2);
+}
+.flag-picker select:focus {
+outline: none;
+background-color: rgba(255, 255, 255, 0.2);
+}
+.flag-picker {
+position: relative;
+}
+.flag-picker::after {
+content: "▼";
+position: absolute;
+top: 50%;
+right: 15px;
+transform: translateY(-50%);
+color: white;
+pointer-events: none;
+}
+.final-price {
+text-align: center;
+font-size: 20px;
+font-weight: bold;
+margin: 20px 0;
+color: #6c5ce7;
+text-shadow: 0 0 10px rgba(108, 92, 231, 0.6);
+}
+#purchase-yacht {
+background-color: rgba(0, 184, 148, 0.8);
+font-weight: bold;
+margin-top: 20px;
+font-size: 16px;
+border-radius: 25px;
+box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+}
+#purchase-yacht:hover {
+background-color: rgba(0, 163, 131, 0.8);
+transform: translateY(-2px);
+}
+.notification {
+position: fixed;
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
+padding: 15px 30px;
+border-radius: 10px;
+color: white;
+font-family: 'Bahnschrift', sans-serif;
+font-weight: bold;
+z-index: 10000;
+animation: slideIn 0.5s ease-in-out;
+display: flex;
+align-items: center;
+gap: 10px;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.notification.warning {
+background-color: rgba(255, 59, 48, 0.9);
+}
+.notification.success {
+background-color: rgba(0, 184, 148, 0.9);
+}
+.notification i {
+font-size: 20px;
+}
+@keyframes slideIn {
+from {
+transform: translateX(-50%) translateY(-100%);
+opacity: 0;
+}
+to {
+transform: translateX(-50%) translateY(0);
+opacity: 1;
+}
+}
+.equipment-picker {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+gap: 10px;
+margin: 15px 0;
+}
+.equipment-picker div {
+height: 50px;
+border-radius: 10px;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(255, 255, 255, 0.1);
+font-size: 14px;
+text-transform: uppercase;
+}
+.equipment-picker div:hover {
+transform: scale(1.05);
+box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+.equipment-picker div.selected {
+background-color: rgba(108, 92, 231, 0.8);
+}
+.furniture-menu-container {
+width: 100%;
+height: 300px;
+background-color: rgba(0, 0, 0, 0.85);
+position: fixed;
+bottom: 0;
+left: 0;
+z-index: 9999999;
+display: none;
+flex-direction: row;
+padding: 15px;
+box-sizing: border-box;
+font-family: 'BebasNeueBold', sans-serif;
+font-weight: bold;
+overflow: hidden;
+box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+animation: slideUp 0.5s ease-in-out;
+}
+@keyframes slideUp {
+from { transform: translateY(100%); }
+to { transform: translateY(0); }
+}
+.furniture-categories {
+width: 200px;
+display: flex;
+height: 95%;
+flex-direction: column;
+gap: 10px;
+padding-right: 15px;
+border-right: 1px solid rgba(255, 102, 255, 1.0);
+overflow-y: auto;
+}
+.category-button {
+padding: 12px;
+background-color: rgba(0, 0, 0, 0.9);
+border: none;
+border-radius: 8px;
+border-bottom: 2px solid rgba(255, 102, 255, 1.0);
+color: #ffffff;
+font-size: 16px;
+font-family: 'BebasNeueBold', sans-serif;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.3s ease;
+display: flex;
+align-items: center;
+gap: 10px;
+text-align: center;
+}
+.category-button:hover {
+background-color: #444;
+transform: translateX(5px);
+}
+.category-button.active {
+background-color: #555;
+}
+.category-button i {
+font-size: 18px;
+color: #ff66ff;
+}
+.furniture-list {
+flex: 1;
+display: flex;
+flex-direction: column;
+padding-left: 15px;
+overflow: hidden;
+height: 95%;
+}
+.back-section {
+display: flex;
+align-items: center;
+margin-bottom: 15px;
+animation: slideLeft 0.5s ease-in-out;
+}
+@keyframes slideLeft {
+from { transform: translateX(-20px); opacity: 0; }
+to { transform: translateX(0); opacity: 1; }
+}
+.back-arrow {
+color: #ffffff;
+font-size: 20px;
+cursor: pointer;
+margin-right: 10px;
+transition: color 0.3s ease;
+}
+.back-arrow:hover {
+color: #ff66ff;
+}
+.category-name {
+color: #ffffff;
+font-size: 20px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.furniture-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+gap: 10px;
+overflow-y: auto;
+padding: 5px;
+height: 90%;
+}
+.furniture-item {
+background-color: rgba(0, 0, 0, 0.9);
+border-bottom: 3px solid rgba(255, 102, 255, 1.0);
+border-radius: 8px;
+overflow: hidden;
+cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+font-family: 'BebasNeueBold', sans-serif;
+padding: 5px;
+height: 120px;
+}
+.furniture-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 4px 10px rgba(255, 102, 255, 0.3);
+}
+.furniture-item img {
+width: 100%;
+height: 60px;
+object-fit: contain;
+border-radius: 8px;
+margin-bottom: 8px;
+}
+.furniture-item .furniture-name {
+font-size: 14px;
+color: #ffffff;
+margin-bottom: 4px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+font-family: 'BebasNeueBold', sans-serif;
+max-width: 100%;
+line-height: 1.2;
+}
+.furniture-item .furniture-price {
+font-size: 12px;
+color: #ff66ff;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.search-container {
+position: absolute;
+top: 15px;
+right: 15px;
+width: 200px;
+font-family: 'BebasNeueBold', sans-serif;
+z-index: 1;
+}
+.search-input {
+width: 100%;
+padding: 10px;
+background-color: rgba(0, 0, 0, 0.9);
+border: none;
+border-radius: 8px;
+color: #ffffff;
+font-family: 'BebasNeueBold', sans-serif;
+font-size: 14px;
+transition: background-color 0.3s ease;
+border-bottom: 2px solid rgba(255, 102, 255, 1.0);
+}
+.search-input:focus {
+background-color: rgba(0, 0, 0, 0.9);
+font-family: 'BebasNeueBold', sans-serif;
+}
+.objecteditorpos-container {
+display: none;
+}
+.objecteditorposinfosettings {
+width: 17%;
+background-color: rgba(0, 0, 0, 0.85);
+border-radius: 12px;
+padding: 20px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+border: 1px solid rgba(255, 255, 255, 0.1);
+position: absolute;
+top: 8%;
+left: 84%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+z-index: 99999999;
+overflow: hidden;
+font-family: BebasNeueBold;
+transform: scale(0.9);
+transform-origin: 0 0;
+}
+.poscreatormaintext {
+text-align: center;
+margin-bottom: 20px;
+font-family: BebasNeueBold;
+}
+.poscreatortext {
+font-size: 24px;
+color: #ffffff;
+font-family: BebasNeueBold;
+}
+.posspacemaintext, .posmodemaintext, .poscamerasettingsmaintext, .posmovementsettingsmaintext {
+margin-bottom: 10px;
+font-family: BebasNeueBold;
+}
+.posmovementsettingsmaintext {
+margin-top: 10px;
+font-family: BebasNeueBold;
+}
+.posspacetext, .posmodetext, .poscamerasettingstext, .posmovementsettingstext {
+font-size: 18px;
+color: #ffffff;
+font-family: BebasNeueBold;
+}
+.posspacebuttons, .posmodebuttons {
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+font-family: BebasNeueBold;
+}
+.buttontypespace, .buttontypemode {
+flex: 1;
+padding: 10px;
+background-color: #333333;
+border: none;
+border-radius: 8px;
+color: #ffffff;
+font-size: 14px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+font-family: BebasNeueBold;
+}
+.buttontypespace.active, .buttontypemode.active {
+background-color: #ff66ff;
+font-family: BebasNeueBold;
+color: #ffffff;
+}
+.buttontypespace:hover, .buttontypemode:hover {
+background-color: #444444;
+font-family: BebasNeueBold;
+}
+.poscamerasettingsspeedmaintext, .poscamerasettingslookxspeedmaintext, .poscamerasettingslookyspeedmaintext,
+.posmovementsettingstranslatemaintext, .posmovementsettingsrotationmaintext {
+margin-bottom: 10px;
+margin-top: 10px;
+font-family: BebasNeueBold;
+}
+.cameraspeed, .lookspeedx, .lookspeedy, .translatesnap, .rotationsnap {
+width: 100%;
+-webkit-appearance: none;
+appearance: none;
+background: #333333;
+height: 6px;
+border-radius: 3px;
+outline: none;
+opacity: 1.0;
+transition: opacity 0.3s ease;
+font-family: BebasNeueBold;
+}
+.cameraspeed:hover, .lookspeedx:hover, .lookspeedy:hover, .translatesnap:hover, .rotationsnap:hover {
+opacity: 1;
+}
+.cameraspeed::-webkit-slider-thumb, .lookspeedx::-webkit-slider-thumb, .lookspeedy::-webkit-slider-thumb,
+.translatesnap::-webkit-slider-thumb, .rotationsnap::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+background: #ff66ff;
+font-family: BebasNeueBold;
+cursor: pointer;
+}
+.createobjecteditorcreatorbutton {
+width: calc(100% - 40px);
+padding: 15px;
+background-color: #ff66ff;
+border: none;
+border-radius: 8px;
+color: #ffffff;
+font-size: 16px;
+text-align: center;
+cursor: pointer;
+transition: background-color 0.3s ease;
+margin: 20px auto;
+display: block;
+}
+.createobjecteditorcreatorbutton:hover {
+background-color: #ff99ff;
+font-family: BebasNeueBold;
+}
+.createobjecteditordeletebutton {
+width: calc(100% - 40px);
+padding: 15px;
+background-color: #ff66ff;
+border: none;
+border-radius: 8px;
+color: #ffffff;
+font-size: 16px;
+text-align: center;
+cursor: pointer;
+transition: background-color 0.3s ease;
+margin: 20px auto;
+display: block;
+font-family: BebasNeueBold;
+}
+.createobjecteditordeletebutton:hover {
+background-color: #ff99ff;
+font-family: BebasNeueBold;
+}
+.createobjecteditorbuybutton {
+width: calc(100% - 40px);
+padding: 15px;
+background-color: #ff66ff;
+border: none;
+border-radius: 8px;
+color: #ffffff;
+font-size: 16px;
+text-align: center;
+cursor: pointer;
+transition: background-color 0.3s ease;
+margin: 20px auto;
+display: block;
+font-family: BebasNeueBold;
+}
+.createobjecteditorbuybutton:hover {
+background-color: #ff99ff;
+font-family: BebasNeueBold;
+}
+.buyobjecttextname {
+border: none;
+color: #ffffff;
+font-size: 20px;
+text-align: center;
+padding: 5px;
+margin: 20px auto;
+display: block;
+}
+.buyobjecttextprice {
+border: none;
+color: #ff66ff;
+font-size: 18px;
+text-align: center;
+padding: 2px;
+margin: 10px auto;
+display: block;
+}
+.furnitureown-menu-container {
+width: 100%;
+height: 300px;
+background-color: rgba(0, 0, 0, 0.85);
+position: fixed;
+bottom: 0;
+left: 0;
+z-index: 9999999;
+display: none;
+flex-direction: row;
+padding: 15px;
+box-sizing: border-box;
+font-family: 'BebasNeueBold', sans-serif;
+font-weight: bold;
+overflow: hidden;
+box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+animation: slideUp 0.5s ease-in-out;
+}
+@keyframes slideUp {
+from { transform: translateY(100%); }
+to { transform: translateY(0); }
+}
+.furnitureown-list {
+flex: 1;
+display: flex;
+flex-direction: column;
+padding-left: 15px;
+overflow: hidden;
+height: 95%;
+}
+.furnitureown-section {
+display: flex;
+align-items: center;
+margin-bottom: 15px;
+animation: slideLeft 0.5s ease-in-out;
+}
+@keyframes slideLeft {
+from { transform: translateX(-20px); opacity: 0; }
+to { transform: translateX(0); opacity: 1; }
+}
+.furnitureownmenu-name {
+color: #ffffff;
+font-size: 20px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.furnitureown-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+gap: 10px;
+overflow-y: auto;
+padding: 10px;
+height: 95%;
+}
+.furnitureown-item {
+background-color: rgba(0, 0, 0, 0.9);
+border-bottom: 3px solid rgba(255, 102, 255, 1.0);
+border-radius: 8px;
+overflow: hidden;
+cursor: pointer;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+font-family: 'BebasNeueBold', sans-serif;
+padding: 5px;
+height: 120px;
+}
+.furnitureown-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 4px 10px rgba(255, 102, 255, 0.3);
+}
+.furnitureown-item img {
+width: 100%;
+height: 60px;
+object-fit: contain;
+padding-top: 15px;
+border-radius: 8px;
+margin-bottom: 8px;
+}
+.furnitureown-item .furnitureown-name {
+font-size: 14px;
+color: #ffffff;
+padding-top: 8px;
+margin-bottom: 4px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+font-family: 'BebasNeueBold', sans-serif;
+max-width: 100%;
+line-height: 1.2;
+}
+.furnitureown-item .furnitureown-price {
+font-size: 12px;
+color: #ff66ff;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.searchown-container {
+position: absolute;
+top: 15px;
+right: 15px;
+width: 200px;
+font-family: 'BebasNeueBold', sans-serif;
+z-index: 1;
+}
+.searchown-input {
+width: 100%;
+padding: 10px;
+background-color: rgba(0, 0, 0, 0.9);
+border: none;
+border-radius: 8px;
+color: #ffffff;
+font-family: 'BebasNeueBold', sans-serif;
+font-size: 14px;
+transition: background-color 0.3s ease;
+border-bottom: 2px solid rgba(255, 102, 255, 1.0);
+}
+.searchown-input:focus {
+background-color: rgba(0, 0, 0, 0.9);
+font-family: 'BebasNeueBold', sans-serif;
+}
+.furnitureobjecttextname {
+border: none;
+color: #ffffff;
+font-size: 20px;
+text-align: center;
+padding: 5px;
+margin: 20px auto;
+display: block;
+}
+.buttonsfurnitureedit {
+display: none;
+}
+.buttonsfurniturebuy {
+display: none;
+}
+#root {
+height: 100%;
+z-index: 9999999;
+}
+.gizmoshow-container {
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.0);
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+overflow: hidden;
+z-index: 9999999;
+display: block;
+}
+.yacht-management-container {
+width: 400px;
+background-color: rgba(0, 0, 0, 1.0);
+border-radius: 15px;
+padding: 20px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+border: 1px solid rgba(255, 255, 255, 0.1);
+text-align: center;
+animation: fadeIn 0.5s ease-in-out;
+max-height: 80vh;
+overflow-y: auto;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+overflow: hidden;
+z-index: 9999999;
+display: none;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.headermmanagment h1 {
+font-size: 24px;
+margin-bottom: 20px;
+color: #ff66ff;
+text-shadow: 0 0 10px rgba(255, 102, 255, 0.6);
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.categorymanagment {
+margin-bottom: 20px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.categorymanagment h2 {
+font-size: 20px;
+color: #ffffff;
+margin-bottom: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.buttonsmanagment {
+display: flex;
+flex-direction: column;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.action-button {
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 8px;
+background-color: rgba(255, 255, 255, 0.1);
+color: white;
+font-size: 14px;
+font-family: 'BebasNeueBold', sans-serif;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.action-button:hover {
+background-color: rgba(255, 255, 255, 0.2);
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.playersaddnew-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.playerspermissions-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.playerstransfer-list {
+display: flex;
+flex-direction: column;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.playermanagment {
+display: flex;
+flex-direction: column;
+padding: 10px;
+background-color: rgba(255, 255, 255, 0.1);
+border-radius: 8px;
+transition: all 0.3s ease;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.player-name {
+font-size: 16px;
+color: #ffffff;
+margin-bottom: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.permissions {
+display: flex;
+flex-direction: column;
+gap: 8px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.switch {
+display: flex;
+align-items: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.switch input {
+display: none;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.slider {
+width: 40px;
+height: 20px;
+background-color: #333;
+border-radius: 20px;
+position: relative;
+cursor: pointer;
+transition: background-color 0.3s ease;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.slider::before {
+content: "";
+position: absolute;
+width: 16px;
+height: 16px;
+background-color: #fff;
+border-radius: 50%;
+top: 2px;
+left: 2px;
+transition: transform 0.3s ease;
+font-family: 'BebasNeueBold', sans-serif;
+}
+input:checked + .slider {
+background-color: #ff66ff;
+}
+input:checked + .slider::before {
+transform: translateX(20px);
+}
+.permission-text {
+font-size: 14px;
+color: #ffffff;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.save-permissions-button {
+width: 100%;
+padding: 10px;
+margin-top: 10px;
+border: none;
+border-radius: 8px;
+background-color: #ff66ff;
+color: white;
+font-size: 14px;
+font-family: 'BebasNeueBold', sans-serif;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.save-permissions-button:hover {
+background-color: #ff99ff;
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(255, 102, 255, 0.4);
+}
+.delete-player-button {
+width: 100%;
+padding: 10px;
+margin-top: 10px;
+border: none;
+border-radius: 8px;
+background-color: #ff66ff;
+color: white;
+font-size: 14px;
+font-family: 'BebasNeueBold', sans-serif;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.delete-player-button:hover {
+background-color: #ff99ff;
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(255, 102, 255, 0.4);
+}
+.add-permission-button {
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 8px;
+background-color: #ff66ff;
+color: white;
+font-size: 14px;
+font-family: 'BebasNeueBold', sans-serif;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.add-permission-button:hover {
+background-color: #ff99ff;
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(255, 102, 255, 0.4);
+}
+.transfer-yacht-button {
+width: 100%;
+padding: 12px;
+border: none;
+border-radius: 8px;
+background-color: #ff66ff;
+color: white;
+font-size: 14px;
+font-family: 'BebasNeueBold', sans-serif;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.transfer-yacht-button:hover {
+background-color: #ff99ff;
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(255, 102, 255, 0.4);
+}
+.close-button {
+width: 100%;
+padding: 12px;
+margin-top: 20px;
+border: none;
+border-radius: 8px;
+background-color: #ff66ff;
+color: white;
+font-size: 14px;
+font-family: 'BebasNeueBold', sans-serif;
+cursor: pointer;
+transition: all 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-family: 'BebasNeueBold', sans-serif;
+}
+.close-button:hover {
+background-color: #ff99ff;
+transform: translateY(-2px);
+box-shadow: 0 4px 15px rgba(255, 102, 255, 0.4);
+}
+.seat-container {
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.0);
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+overflow: hidden;
+z-index: 9999999;
+display: none;
+}
+.seatleavetext {
+position: absolute;
+margin: 0;
+text-decoration: none;
+text-align: center;
+top: 98%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%);
+font-size: 22px;
+color: #ffffff;
+text-align:center;
+font-family: BebasNeueBold;
+}
+#seatleavetextkey {
+font-size: 22px;
+color: var(--color);
+text-align:center;
+font-family: BebasNeueBold;
+}
+*{
+font-family: BebasNeueBold;
+}

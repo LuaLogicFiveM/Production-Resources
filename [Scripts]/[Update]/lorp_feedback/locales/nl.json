@@ -1,0 +1,16 @@
+{
+
+    "feedback_title" : "Server Feedback",
+    "webhook" : "**Feedback**: %s\n \n **Auteur**: %s *(%s)*\n \n-# De inhoud van dit bericht is niet verbonden aan Stevo Scripts",
+    "feedback_confirmation" : "Feedback ontvangen",
+    "feedback_cooldown" : "Je hebt te recent feedback ingediend",
+
+    "input" : {
+        "title" : "Titel",
+        "title_description" : "Kort overzicht van de feedback (bijv. Gevangenissysteem)",
+        "feedback" : "Feedback",
+        "feedback_description" : "Uitgebreid overzicht van de feedback",
+        "category" : "Feedbackcategorie",
+        "checkbox" : "Beloof je dat dit serieus is? *-*"
+    }
+}

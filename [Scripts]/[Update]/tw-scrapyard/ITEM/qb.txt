@@ -1,0 +1,7 @@
+    gold_dust          = { name = 'gold_dust', label = 'Golden Dust', weight = 100, type = 'item', image = 'gold_dust.png', unique = false, useable = false, shouldClose = true, description = 'A golden dust seems like the jackpot to me!' },
+    pistol_part1      = { name = 'pistol_part1', label = 'Pistol Part 1', weight = 100, type = 'item', image = 'pistol_part1.png', unique = false, useable = false, shouldClose = true, description = '' },
+    pistol_part2      = { name = 'pistol_part2', label = 'Pistol Part 2', weight = 100, type = 'item', image = 'pistol_part2.png', unique = false, useable = false, shouldClose = true, description = '' },
+    pistol_part3      = { name = 'pistol_part3', label = 'Pistol Part 3', weight = 100, type = 'item', image = 'pistol_part3.png', unique = false, useable = false, shouldClose = true, description = '' },
+    pistol_part4      = { name = 'pistol_part4', label = 'Pistol Part 4', weight = 100, type = 'item', image = 'pistol_part4.png', unique = false, useable = false, shouldClose = true, description = '' },
+
+    iron                         = { name = 'iron', label = 'Iron', weight = 100, type = 'item', image = 'iron.png', unique = false, useable = false, shouldClose = false, description = 'Handy piece of metal that you can probably use for something' },

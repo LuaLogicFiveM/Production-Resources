@@ -1,0 +1,364 @@
+@font-face {
+    font-family: 'Nove';
+    src: url(./fonts/Novecentosanswide-DemiBold.ttf);
+}
+
+@font-face {
+    font-family: 'Organetto';
+    src: url(./fonts/Organetto.otf);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+  
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    user-select: none;
+    overflow: none;
+}  
+
+.wrapper{
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.container{
+    height: 55%;
+    width: 55%;
+    background-color: #0d0b0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    border-radius: 1vh;
+}
+
+.main{
+    height: 100%;
+    width: 100%;
+    background-color: #181718;
+    border-radius: 1vh;
+}
+
+.primary-header{
+    height: 10%;
+    width: 100%;
+    border-bottom: 1px solid #ffffff1c;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vh 2vh;
+}
+
+.panel-title{
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    gap: 1vh;
+    font-size: 1.8vh;
+    font-family: 'Nove';
+    text-transform: uppercase;
+}
+
+.fa-slack{
+    color: #7a8cbd;
+    font-size: 2.5vh;
+}
+
+.panel-close-btn{
+    height: 60%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1vh;
+    font-size: 1.3vh;
+    background-color: #0d0b0d;
+}
+
+.panel-close-btn:hover{
+    cursor: pointer;
+    background-color: #7a8cbd48;
+}
+
+.secondary-header{
+    height: 12%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0vh 5vh;
+}
+
+.job-name{
+    background-color: #ffffff0d;
+    padding: 0.5vh 1vh;
+    color: #7a8cbd;
+    font-family: 'Organetto';
+    font-size: 1.8vh;
+    font-weight: 400;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.job-container{
+    height: 64%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1vh;
+    gap: 1vh;
+}
+
+.box-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4vh; 
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 95%;
+    padding: 1vh;
+    white-space: nowrap; 
+}
+
+.box-container::-webkit-scrollbar {
+    display: none;
+}
+
+.job-box {
+    min-width: 25vh;
+    text-align: center;
+    height: 100%;
+    background-color: rgb(255 255 255 / 3%);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin-right: 1vh;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+    flex: 0 0 auto;
+}
+
+.job-box:hover {
+    transform: scale(1.05); 
+}
+
+.box-container.centered {
+    justify-content: center;
+}
+
+.box-container.middle{
+    justify-content: space-around;
+}
+
+.box-container.baseline {
+    justify-content: flex-start;
+}
+
+.job-icon-box {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-icon {
+    height: 7vh;
+    width: 7vh;
+    background-color: #fff;
+    border-radius: 18vh;
+    border: 1px solid #ffffff1c;
+    background-color: #ffffff0d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7a8cbd;
+    font-size: 3vh;
+}
+
+.job-name-box,
+.job-secondary-name-box,
+.job-pay-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7a8cbd;
+}
+
+.job-name-box {
+    height: 15%;
+    font-size: 2.2vh;
+    font-family: 'Organetto';
+    padding: 0vh 1vh;
+    background-color: #ffffff0d;
+}
+
+.job-secondary-name-box {
+    height: 12%;
+    font-size: 1.8vh;
+    font-family: 'Organetto';
+    color: white;
+}
+
+.job-pay-box {
+    height: 12%;
+    font-size: 2vh;
+    font-family: 'Nove';
+    color: #459545;
+    color: #7a8cbd;
+}
+
+.job-buttons-box {
+    height: 25%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.job-select-btn,
+.job-delete-btn,
+.job-selected-btn {
+    width: 40%;
+    height: 50%;
+    background-color: #181718;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3vh;
+    border-radius: 1vh;
+    font-family: 'Nove';
+    color: #ffffffa6;
+}
+
+.job-selected-btn {
+    width: 80%;
+}
+
+
+.job-select-btn:hover,
+.confirmation-yes:hover{
+    background-color: #7a8cbd48;
+    cursor: pointer;
+}
+
+.job-delete-btn:hover,
+.confirmation-no:hover{
+    cursor: pointer;
+    background-color: rgba(255, 109, 109, 0.349);
+}
+
+.slide-left,
+.slide-right{
+    background-color: #7a8cbd;
+    height: 2.5vh;
+    width: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8vh;
+    font-size: 1.2vh;
+}
+
+.slide-left:hover,
+.slide-right:hover{
+    cursor: pointer;
+    background-color: #ffffff52;
+}
+
+.footer{
+    height: 13%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.job-status{
+    background-color: #ffffff0d;
+    padding: 0.5vh 1vh;
+    color: #7a8cbd;
+    font-family: 'Organetto';
+    font-size: 1.8vh;
+    font-weight: 400;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: none;
+    gap: 1vh;
+    align-items: center;
+    cursor: pointer;
+}
+
+.job-name-title{
+    height: 100%;
+    width: 98%;
+    word-wrap: break-word;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+}
+
+.pop-up-cont{
+    height: 55%;
+    width: 55%;
+    position: absolute;
+    background-color: #0d0b0da3;
+    border-radius: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    display: none;
+}
+
+.confirmation-cont{
+    height: 30%;
+    width: 35%;
+    background-color: #1c1c1c6b;
+    border-radius: 1vh;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.confirmation-text{
+    height: 65%;
+    width: 100%;
+    padding: 2vh;
+    text-align: center;
+    font-size: 1.8vh;
+}
+
+.confirmation-buttons{
+    height: 30%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.confirmation-yes,
+.confirmation-no{
+    height: 90%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0c0c0c;
+    border-radius: 1vh;
+}

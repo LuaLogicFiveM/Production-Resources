@@ -1,0 +1,99 @@
+<head>
+	<link rel="stylesheet" href="styles.css" type="text/css">
+	<link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.2.0/css/pro.min.css">
+	<script type="module" crossorigin src="gizmoapi.js"></script>
+</head>
+
+<body>
+	<div class="full-screen">			
+		<div class="lift-container" id="liftshow">
+			<img class="closelift" src="img/close.png" style="width:25px;height:25px"/>
+			<div class="liftheadertext">LIFT</div>
+			<div class="liftmaintext">Use the buttons to control lift</div>
+			<div class="buttonup"><i class="fas fa-arrow-circle-up"></i></div>
+			<div class="liftuptext">UP</div>
+			<div class="buttondown"><i class="fas fa-arrow-circle-down"></i></div>
+			<div class="liftdowntext">DOWN</div>
+		</div>	
+		<div class="infonotify-container" id="infonotifyshow">	
+			<div class="infonotifytext">Text</div>
+		</div>	
+		<div class="liftpos-container" id="liftposshow">
+			<div id="root"></div>						
+			<div class="liftposinfosettings">
+				<div class="poscreatormaintext">
+					<div class="poscreatortext">CARLIFT CREATOR</div>
+				</div>					
+				<div class="posspacemaintext">
+					<div class="posspacetext">Space:</div>
+				</div>					
+				<div class="posspacebuttons">
+					<button class="buttontypespace active" style="active" id="spacebuttonworld">World</button>
+					<button class="buttontypespace" id="spacebuttonlocal">Local</button>
+				</div>	
+				<div class="posmodemaintext">
+					<div class="posmodetext">Mode:</div>
+				</div>		
+				<div class="posmodebuttons">
+					<button class="buttontypemode active" style="active" id="posmoretranslate">Translate</button>
+					<button class="buttontypemode" id="posmorerotation">Rotate</button>
+				</div>
+				<div class="poscamerasettingsmaintext">
+					<div class="poscamerasettingstext">Camera Settings</div>
+				</div>	
+				<div class="poscamerasettingsspeedmaintext">
+					<div class="poscamerasettingsspeedtext">Camera Speed:</div>
+				</div>		
+
+				<input type="range" min="1" max="20" value="10" class="cameraspeed" id="cameraspeeddata" onchange="cameraspeedchange(this)">					
+				<div class="poscamerasettingslookxspeedmaintext">
+					<div class="poscamerasettingslookxspeedtext">Look Speed X:</div>
+				</div>	
+				<input type="range" min="1" max="20" value="10" class="lookspeedx" id="lookspeedxdata" onchange="lookspeedxchange(this)">
+				<div class="poscamerasettingslookyspeedmaintext">
+					<div class="poscamerasettingslookyspeedtext">Look Speed Y:</div>
+				</div>	
+				<input type="range" min="1" max="20" value="10" class="lookspeedy" id="lookspeedydata" onchange="lookspeedychange(this)">
+				<div class="posmovementsettingsmaintext">
+					<div class="posmovementsettingstext">Movement Settings</div>
+				</div>	
+				<div class="posmovementsettingstranslatemaintext">
+					<div class="posmovementsettingstranslatetext">Translate Snap</div>
+				</div>			
+				<input type="range" min="1" max="10" value="1" class="translatesnap" id="translatesnapdata" onchange="translatesnapchange(this)">
+				<div class="posmovementsettingsrotationmaintext">
+					<div class="posmovementsettingsrotationtext">Rotation Snap</div>
+				</div>	
+				<input type="range" min="1" max="10" value="1" class="rotationsnap" id="rotationsnapdata" onchange="rotationsnapchange(this)">	
+				<div class="poscarliftypemaintext">
+					<div class="poscarliftypetext">CAR LIFT TYPE</div>
+				</div>	
+				<div class="poscarliftypedatamaintext">
+					<div class="poscarliftypedatatext">1</div>
+				</div>	
+				<div class="poscarlifleftmain">
+					<div class="poscarliflefttext"><i class="fa-solid fa-left"></i></div>
+				</div>		
+				<div class="poscarlifrightmain">
+					<div class="poscarlifrighttext"><i class="fa-solid fa-right"></i></div>
+				</div>		
+				<div class="createcarliftbutton">CREATE CAR LIFT</div>
+			</div>			
+		</div>	
+		<div class="liftposfinish-container" id="liftposfinishshow">
+			<div class="headerliftposfinish">
+				<h1 class="headerliftposfinishtext">Car Lift Creator</h1>
+				<img class="closeliftposfinish" src="img/close.png" style="width:30px;height:30px"/>
+			</div>
+			<div class="offsetspreviewtext">Offsets preview</div>
+			<div class="liftposfinishcopytextdatamain">
+				<textarea class="liftposfinishcopytextdata" id="liftposfinishcopydata" placeholder="" type="text"></textarea>
+			</div>
+			<div class="buttoncopy"><i class="fa-solid fa-copy" id="copyicon"></i>&ensp;Copy offsets</div>
+		</div>				
+	</div>
+
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	<script src="scripts.js" type="text/javascript"></script>
+	<script src="debounce.min.js" type="text/javascript"></script>
+</body>

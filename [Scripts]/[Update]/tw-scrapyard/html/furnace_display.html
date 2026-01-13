@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furnace Control Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 512px;
+            height: 512px;
+            background: #1a1a1a;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: #00ff00;
+        }
+
+        .panel {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border: 3px solid #333;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* Header */
+        .panel-header {
+            text-align: center;
+            border-bottom: 2px solid #444;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .panel-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .panel-subtitle {
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Display Grid */
+        .display-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .display-box {
+            background: #0a0a0a;
+            border: 2px solid #333;
+            border-radius: 4px;
+            padding: 12px;
+            position: relative;
+        }
+
+        .display-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff00, transparent);
+            opacity: 0.3;
+        }
+
+        .display-label {
+            font-size: 9px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .display-label::before {
+            content: '▸';
+            color: #00ff00;
+            font-size: 8px;
+        }
+
+        .display-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #00ff00;
+            text-shadow: 0 0 15px #00ff00;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .display-value.warning {
+            color: #ffaa00;
+            text-shadow: 0 0 15px #ffaa00;
+        }
+
+        .display-value.critical {
+            color: #ff3300;
+            text-shadow: 0 0 15px #ff3300;
+            animation: blink 0.8s infinite;
+        }
+
+        .display-unit {
+            font-size: 12px;
+            color: #555;
+            margin-left: 5px;
+        }
+
+        /* Main Status Display */
+        .main-display {
+            background: #0a0a0a;
+            border: 3px solid #333;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-display::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,0,0.1), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        .status-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .status-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00ff00;
+            text-shadow: 0 0 20px #00ff00;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        .status-value.idle {
+            color: #666;
+            text-shadow: none;
+        }
+
+        .status-value.active {
+            color: #00ff00;
+            text-shadow: 0 0 20px #00ff00;
+        }
+
+        .status-value.warning {
+            color: #ffaa00;
+            text-shadow: 0 0 20px #ffaa00;
+        }
+
+        .status-value.critical {
+            color: #ff3300;
+            text-shadow: 0 0 20px #ff3300;
+            animation: blink 0.8s infinite;
+        }
+
+        .status-detail {
+            font-size: 11px;
+            color: #555;
+            text-align: center;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* Progress Bars */
+        .progress-container {
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px #00ff00;
+        }
+
+        .progress-fill.warning {
+            background: linear-gradient(90deg, #ffaa00, #ff8800);
+            box-shadow: 0 0 10px #ffaa00;
+        }
+
+        .progress-fill.critical {
+            background: linear-gradient(90deg, #ff3300, #cc0000);
+            box-shadow: 0 0 10px #ff3300;
+            animation: pulse 1s infinite;
+        }
+
+        /* Indicator Lights */
+        .indicator-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .indicator {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 9px;
+            color: #555;
+            text-transform: uppercase;
+        }
+
+        .indicator-light {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+        }
+
+        .indicator-light.on {
+            background: #00ff00;
+            box-shadow: 0 0 10px #00ff00, inset 0 0 5px #00ff00;
+        }
+
+        .indicator-light.warning {
+            background: #ffaa00;
+            box-shadow: 0 0 10px #ffaa00, inset 0 0 5px #ffaa00;
+            animation: pulse 1.5s infinite;
+        }
+
+        .indicator-light.critical {
+            background: #ff3300;
+            box-shadow: 0 0 10px #ff3300, inset 0 0 5px #ff3300;
+            animation: blink 0.8s infinite;
+        }
+
+        /* Animations */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Grid Lines Effect */
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,0,0.03) 2px, rgba(0,255,0,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,255,0,0.03) 2px, rgba(0,255,0,0.03) 4px);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <!-- Header -->
+        <div class="panel-header">
+            <div class="panel-title">CONTROL PANEL</div>
+            <div class="panel-subtitle">Melting Furnace System</div>
+        </div>
+
+        <!-- Display Grid -->
+        <div class="display-grid">
+            <!-- Furnace Capacity -->
+            <div class="display-box">
+                <div class="display-label">Furnace Capacity</div>
+                <div id="furnaceFill" class="display-value">0/0<span class="display-unit"> items</span></div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div id="furnaceFillBar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cauldron Fill Level -->
+            <div class="display-box">
+                <div class="display-label">Cauldron Fill</div>
+                <div id="cauldronFill" class="display-value">0.0<span class="display-unit"> units</span></div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div id="cauldronFillBar" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Temperature -->
+            <div class="display-box">
+                <div class="display-label">Temperature</div>
+                <div id="temperature" class="display-value">0<span class="display-unit">°C</span></div>
+            </div>
+
+            <!-- Process Rate -->
+            <div class="display-box">
+                <div class="display-label">Process Rate</div>
+                <div id="processRate" class="display-value">0<span class="display-unit">/s</span></div>
+            </div>
+        </div>
+
+        <!-- Main Status Display -->
+        <div class="main-display">
+            <div class="status-label">SYSTEM STATUS</div>
+            <div id="systemStatus" class="status-value idle">IDLE</div>
+            <div id="systemDetail" class="status-detail">System ready</div>
+        </div>
+
+        <!-- Indicator Lights -->
+        <div class="indicator-row">
+            <div class="indicator">
+                <div id="powerLight" class="indicator-light on"></div>
+                <span>POWER</span>
+            </div>
+            <div class="indicator">
+                <div id="heatingLight" class="indicator-light"></div>
+                <span>HEATING</span>
+            </div>
+            <div class="indicator">
+                <div id="meltingLight" class="indicator-light"></div>
+                <span>MELTING</span>
+            </div>
+            <div class="indicator">
+                <div id="alertLight" class="indicator-light"></div>
+                <span>ALERT</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let currentState = {
+            furnaceFill: 0,
+            cauldronFill: 0,
+            isMelting: false,
+            itemCount: 0,
+            totalItems: 0
+        };
+
+        let locales = {};
+
+        // DUI Message Handler
+        window.addEventListener('message', function(event) {
+            const data = event.data;
+
+            if (data.type === 'updateFurnace') {
+                updateDisplay(data);
+            }
+        });
+
+        // Update Display Function
+        function updateDisplay(data) {
+            // Update locales if provided
+            if (data.locales) {
+                locales = data.locales;
+                updateStaticTexts();
+            }
+            // Kazan doluluk
+            const cauldronFill = parseFloat(data.fillLevel) || 0;
+            const cauldronCapacity = parseFloat(data.capacity) || 100;
+            const cauldronPercentage = Math.floor((cauldronFill / cauldronCapacity) * 100);
+
+            // Fırın doluluk (items based)
+            const itemCount = parseInt(data.itemCount) || 0;
+            const totalItems = parseInt(data.totalItems) || 100;
+            const furnacePercentage = Math.floor((itemCount / totalItems) * 100);
+
+            // Eritme durumu
+            const isMelting = data.isMelting || false;
+
+            // State güncelle
+            currentState.furnaceFill = furnacePercentage;
+            currentState.cauldronFill = cauldronPercentage;
+            currentState.isMelting = isMelting;
+            currentState.itemCount = itemCount;
+            currentState.totalItems = totalItems;
+
+            // Furnace capacity - Display as "X/Y items" format
+            document.getElementById('furnaceFill').innerHTML = `${itemCount}/${totalItems}<span class="display-unit"> ${locales.furnace_dui_items_unit || 'items'}</span>`;
+            const furnaceBar = document.getElementById('furnaceFillBar');
+            furnaceBar.style.width = furnacePercentage + '%';
+            furnaceBar.className = 'progress-fill';
+            if (furnacePercentage >= 90) furnaceBar.classList.add('critical');
+            else if (furnacePercentage >= 70) furnaceBar.classList.add('warning');
+
+            // Cauldron fill - Display with decimal precision (0.1, 0.2, etc.)
+            document.getElementById('cauldronFill').innerHTML = `${cauldronFill.toFixed(1)}<span class="display-unit"> ${locales.furnace_dui_units_unit || 'units'}</span>`;
+            const cauldronBar = document.getElementById('cauldronFillBar');
+            cauldronBar.style.width = cauldronPercentage + '%';
+            cauldronBar.className = 'progress-fill';
+            if (cauldronPercentage >= 90) cauldronBar.classList.add('critical');
+            else if (cauldronPercentage >= 70) cauldronBar.classList.add('warning');
+
+            // Temperature (simulated based on melting)
+            const temp = isMelting ? 1200 + Math.floor(Math.random() * 50) : 25;
+            document.getElementById('temperature').textContent = temp;
+
+            // Process rate
+            const rate = isMelting ? (Math.random() * 2 + 1).toFixed(1) : 0;
+            document.getElementById('processRate').textContent = rate;
+
+            // System status
+            const statusEl = document.getElementById('systemStatus');
+            const detailEl = document.getElementById('systemDetail');
+
+            if (cauldronPercentage >= 100) {
+                statusEl.textContent = locales.furnace_dui_status_cauldron_full || 'CAULDRON FULL';
+                statusEl.className = 'status-value critical';
+                detailEl.textContent = locales.furnace_dui_detail_cauldron_full || 'Cauldron must be emptied!';
+            } else if (furnacePercentage >= 100) {
+                statusEl.textContent = locales.furnace_dui_status_furnace_full || 'FURNACE FULL';
+                statusEl.className = 'status-value warning';
+                detailEl.textContent = locales.furnace_dui_detail_furnace_full || 'Furnace capacity reached';
+            } else if (isMelting) {
+                statusEl.textContent = locales.furnace_dui_status_melting || 'MELTING ACTIVE';
+                statusEl.className = 'status-value active';
+                detailEl.textContent = (locales.furnace_dui_detail_processing || 'Processing: %d/%d items').replace('%d', itemCount).replace('%d', itemCount);
+            } else if (itemCount > 0) {
+                statusEl.textContent = locales.furnace_dui_status_waiting || 'WAITING';
+                statusEl.className = 'status-value warning';
+                detailEl.textContent = (locales.furnace_dui_detail_waiting || '%d items waiting to process').replace('%d', itemCount);
+            } else {
+                statusEl.textContent = locales.furnace_dui_status_idle || 'IDLE';
+                statusEl.className = 'status-value idle';
+                detailEl.textContent = locales.furnace_dui_detail_ready || 'System ready';
+            }
+
+            // Indicator lights
+            document.getElementById('powerLight').className = 'indicator-light on';
+
+            const heatingLight = document.getElementById('heatingLight');
+            heatingLight.className = 'indicator-light';
+            if (temp > 500) heatingLight.classList.add('on');
+
+            const meltingLight = document.getElementById('meltingLight');
+            meltingLight.className = 'indicator-light';
+            if (isMelting) meltingLight.classList.add('on');
+
+            const alertLight = document.getElementById('alertLight');
+            alertLight.className = 'indicator-light';
+            if (cauldronPercentage >= 90 || furnacePercentage >= 90) {
+                alertLight.classList.add('critical');
+            } else if (cauldronPercentage >= 70 || furnacePercentage >= 70) {
+                alertLight.classList.add('warning');
+            }
+        }
+
+        // Initial update
+        updateDisplay({
+            fillLevel: 0,
+            capacity: 100,
+            itemCount: 0,
+            totalItems: 100,
+            isMelting: false
+        });
+
+
+        // Update static texts with locales
+        function updateStaticTexts() {
+            if (!locales || Object.keys(locales).length === 0) return;
+
+            // Header
+            const titleEl = document.querySelector('.panel-title');
+            const subtitleEl = document.querySelector('.panel-subtitle');
+            if (titleEl) titleEl.textContent = locales.furnace_dui_title || 'CONTROL PANEL';
+            if (subtitleEl) subtitleEl.textContent = locales.furnace_dui_subtitle || 'Melting Furnace System';
+
+            // Labels
+            const labels = document.querySelectorAll('.display-label');
+            if (labels[0]) labels[0].textContent = locales.furnace_dui_capacity || 'Furnace Capacity';
+            if (labels[1]) labels[1].textContent = locales.furnace_dui_cauldron || 'Cauldron Fill';
+            if (labels[2]) labels[2].textContent = locales.furnace_dui_temperature || 'Temperature';
+            if (labels[3]) labels[3].textContent = locales.furnace_dui_process_rate || 'Process Rate';
+
+            // System status
+            const statusLabel = document.querySelector('.status-label');
+            if (statusLabel) statusLabel.textContent = locales.furnace_dui_system_status || 'SYSTEM STATUS';
+
+            // Indicators
+            const indicators = document.querySelectorAll('.indicator span');
+            if (indicators[0]) indicators[0].textContent = locales.furnace_dui_power || 'POWER';
+            if (indicators[1]) indicators[1].textContent = locales.furnace_dui_heating || 'HEATING';
+            if (indicators[2]) indicators[2].textContent = locales.furnace_dui_melting || 'MELTING';
+            if (indicators[3]) indicators[3].textContent = locales.furnace_dui_alert || 'ALERT';
+        }
+
+    </script>
+</body>
+</html>

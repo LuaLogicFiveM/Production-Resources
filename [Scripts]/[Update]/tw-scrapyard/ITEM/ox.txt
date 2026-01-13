@@ -1,0 +1,50 @@
+	["gold_dust"] = {
+		label = "Gold Dust",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["iron"] = {
+		label = "Iron",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["pistol_part1"] = {
+		label = "Pistol Part 1",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["pistol_part2"] = {
+		label = "Pistol Part 2",
+		weight = 100,
+		stack = true,
+		description = 'A component used in assembling a pistol.',
+		client = {
+			image = 'pistol_part2.png'
+		}
+	},
+
+	["pistol_part3"] = {
+		label = "Pistol Part 3",
+		weight = 100,
+		stack = true,
+		description = 'A component used in assembling a pistol.',
+		client = {
+			image = 'pistol_part3.png'
+		}
+	},
+
+	["pistol_part4"] = {
+		label = "Pistol Part 4",
+		weight = 100,
+		stack = true,
+		description = 'A component used in assembling a pistol.',
+		client = {
+			image = 'pistol_part4.png'
+		}
+	},

@@ -1,0 +1,19 @@
+{
+    "error_rate_limit": "Te snel, wacht even...",
+    "error_invalid_station": "Ongeldig weegstation",
+    "error_no_vehicle": "Geen voertuig gevonden op de weegschaal",
+    "error_no_access": "Je hebt geen toegang tot dit weegstation",
+    "error_vehicle_not_found": "Voertuig niet gevonden",
+    "error_unknown": "Onbekend",
+    "ui_use_station": "Weegstation Gebruiken",
+    "ui_no_access": "Geen Toegang",
+    "vehicle_unknown": "Onbekend",
+    "blip_label": "Weegstation",
+
+    "ui_title": "Weegstation",
+    "ui_vehicle": "Voertuig:",
+    "ui_vehicle_weight": "Voertuig Gewicht",
+    "ui_items_weight": "Items Gewicht",
+    "ui_total_weight": "Totaal Gewicht",
+    "ui_refresh": "Ververs"
+}

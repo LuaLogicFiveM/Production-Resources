@@ -1,0 +1,19 @@
+{
+    "error_rate_limit": "Too fast, wait a moment...",
+    "error_invalid_station": "Invalid weigh station",
+    "error_no_vehicle": "No vehicle found on the scale",
+    "error_no_access": "You don't have access to this weigh station",
+    "error_vehicle_not_found": "Vehicle not found",
+    "error_unknown": "Unknown",
+    "ui_use_station": "Use Weigh Station",
+    "ui_no_access": "No Access",
+    "vehicle_unknown": "Unknown",
+    "blip_label": "Weigh Station",
+
+    "ui_title": "Weigh Station",
+    "ui_vehicle": "Vehicle:",
+    "ui_vehicle_weight": "Vehicle Weight",
+    "ui_items_weight": "Items Weight",
+    "ui_total_weight": "Total Weight",
+    "ui_refresh": "Refresh"
+}
