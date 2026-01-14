@@ -1,0 +1,2 @@
+DOCUMENTATION: https://didfivem.gitbook.io/docs/scritps/doitdigital-chat
+

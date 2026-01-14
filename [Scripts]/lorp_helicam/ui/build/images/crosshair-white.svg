@@ -1,0 +1,46 @@
+<svg width="201" height="201" viewBox="0 0 201 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Frame 2" clip-path="url(#clip0_0_1)">
+        <g id="Group 7">
+            <g id="Group 1">
+                <path id="Ellipse 7"
+                    d="M201 100.5C201 156.005 156.005 201 100.5 201C44.9954 201 0 156.005 0 100.5C0 44.9954 44.9954 0 100.5 0C156.005 0 201 44.9954 201 100.5ZM3.99948 100.5C3.99948 153.796 47.2042 197.001 100.5 197.001C153.796 197.001 197.001 153.796 197.001 100.5C197.001 47.2042 153.796 3.99948 100.5 3.99948C47.2042 3.99948 3.99948 47.2042 3.99948 100.5Z"
+                    fill="#D9D9D9" fill-opacity="0.2" />
+                <rect id="Rectangle 1" x="99" y="4" width="4" height="193" fill="#D9D9D9"
+                    fill-opacity="0.2" />
+                <rect id="Rectangle 2" x="4" y="99" width="95" height="4" fill="#D9D9D9"
+                    fill-opacity="0.2" />
+                <rect id="Rectangle 3" x="103" y="99" width="94" height="4" fill="#D9D9D9"
+                    fill-opacity="0.2" />
+            </g>
+            <g id="Group 4">
+                <rect id="Rectangle 4" x="99" y="52" width="4" height="24" fill="#D9D9D9"
+                    fill-opacity="0.7" />
+            </g>
+            <g id="Group 5">
+                <rect id="Rectangle 4_2" width="4" height="24" transform="matrix(1 0 0 -1 99 150)"
+                    fill="#D9D9D9" fill-opacity="0.7" />
+            </g>
+            <g id="Group 2">
+                <rect id="Rectangle 6" width="4" height="24" transform="matrix(0 -1 -1 0 150 103)"
+                    fill="#D9D9D9" fill-opacity="0.7" />
+            </g>
+            <g id="Group 3">
+                <rect id="Rectangle 6_2" x="52" y="103" width="4" height="24"
+                    transform="rotate(-90 52 103)" fill="#D9D9D9" fill-opacity="0.7" />
+            </g>
+            <g id="Group 6">
+                <rect id="Rectangle 7" x="90.3933" y="93.2218" width="4" height="11"
+                    transform="rotate(-45 90.3933 93.2218)" fill="#fff" />
+                <rect id="Rectangle 8" x="101" y="103.828" width="4" height="11"
+                    transform="rotate(-45 101 103.828)" fill="#fff" />
+                <rect id="Rectangle 7_2" x="93.2219" y="111.607" width="4" height="26"
+                    transform="rotate(-135 93.2219 111.607)" fill="#fff" />
+            </g>
+        </g>
+    </g>
+    <defs>
+        <clipPath id="clip0_0_1">
+            <rect width="1920" height="1080" fill="white" transform="translate(-859 -439)" />
+        </clipPath>
+    </defs>
+</svg>

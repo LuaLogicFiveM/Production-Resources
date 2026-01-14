@@ -1,0 +1,34 @@
+shared_script "@ReaperV4/imports/bypass.lua"
+shared_script "@ReaperV4/imports/bypass_s.lua"
+shared_script "@ReaperV4/imports/bypass_c.lua"
+lua54 "yes" -- needed for Reaper
+
+fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
+version '1.1.2'
+client_scripts {
+    'client/init.lua',
+    'client/evidences/evidence_at_coords.lua'
+}
+server_scripts {
+    '@oxmysql/lib/MySQL.lua',
+    'server/init.lua'
+}
+shared_scripts {
+    '@ox_lib/init.lua'
+}
+files {
+    'locales/*.json',
+    'config.lua',
+    'common/*.lua',
+    'common/events/**.lua',
+    'common/frameworks/**/client.lua',
+    'common/frameworks/framework.lua',
+    
+    'html/dui/laptop/dist/**',
+    'html/dui/scanner/**',
+    'html/nui/**',
+    'client/**'
+}
+ui_page 'html/nui/index.html'

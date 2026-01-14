@@ -1,0 +1,76 @@
+---UPDATE 06/01/2025----
+badword filter is now opensource so you can customize it exactly on your server needs (located in server/editable.lua)
+added codeSnippets.lua its a lua file with code examples created by us or the community so you can achieve extra things in our chat system.
+added framework doIHaveItem function in our server/editable.lua 
+
+
+To Update Without Loosing Your Settings:
+*Do Not Replace chatsettings.json 
+*Do Not Replace bridge.css
+*Do Not Replace s_config.lua just add this 
+
+---UPDATE 05/27/2025----
+added the ability to add many auto announcements! see server/editable.lua
+!!! replace only editable.lua file to keep your other settings untouched! !!!
+
+---UPDATE 05/22/2025----
+Name Perk System Added
+BadWords Filter Added 
+To Update Without Loosing Your Settings:
+*Do Not Replace chatsettings.json 
+*Do Not Replace s_config.lua just add this 
+
+--ENABLE NAME PERKS SYSTEM
+enableNamePerks = true -- Enable Name Perks System [you can edit namePerksEditable.lua to add your own logic]
+namePerksPrice = 50000 -- Price For Name Perks [you can edit namePerksEditable.lua to add your own logic]
+defaultNamePerk = "chatfx1" -- range from chatfx1 to chatfx8
+
+
+--BAD WORDS FILTER
+badWords = {
+    "badword1",
+    "badword2",
+    "anotherbadword"
+}
+--------------------------------------------
+*Do Not Replace c_config.lua just add this 
+
+obtainPerksMsg = "You need to purchase the Playername Perks option in order to be able to add effects to your name when typing in any chat. You need 50000$ to unlock this option."
+--------------------------------------------
+*Do Not Replace bridge.css just add this after /* THEME 9 */
+
+/* PLAYERNAME PERKS */
+.chat-message.chatfx1 .chat-sender {background: -webkit-linear-gradient(0deg, rgba(0,255,120,1), rgba(0,220,255,1));-webkit-background-clip: text;-webkit-text-fill-color: transparent;text-shadow:0 0 0.6vw rgba(50,120,255,1);}
+.chat-message.chatfx2 .chat-sender {background: -webkit-linear-gradient(0deg, rgba(255,220,50,1), rgba(255,120,50,1));-webkit-background-clip: text;-webkit-text-fill-color: transparent;text-shadow:0 0 0.6vw rgba(255,80,50,1);}
+.chat-message.chatfx3 .chat-sender {background:url('../images/chat-appearance/chat-appearance-style-3.gif') center center;background-size:cover;color:rgba(255,90,150,1);text-shadow:0 0 0.6vw rgba(255,70,180,1);}
+.chat-message.chatfx4 .chat-sender {background:url('../images/chat-appearance/chat-appearance-style-4.gif') center center;background-size:50%;color:rgba(90,180,255,1);text-shadow:0 0 0.6vw rgba(40,120,255,1);}
+.chat-message.chatfx5 .chat-sender {background:url('../images/chat-appearance/chat-appearance-style-5.gif') center center;color:rgba(255,255,255,1);text-shadow:0 0 0.6vw rgba(255,255,255,0.3);}
+.chat-message.chatfx6 .chat-sender {background: -webkit-linear-gradient(0deg, rgba(200,255,50,1), rgba(90,255,50,1));-webkit-background-clip: text;-webkit-text-fill-color: transparent;text-shadow:0 0 0.6vw rgba(0,255,0,0.5);}
+.chat-message.chatfx7 .chat-sender {background:url('../images/chat-appearance/chat-appearance-style-7.png') 97% 0% no-repeat;background-size:0.75vw;padding:0 1.1vw 0 0;color:rgba(255,200,60,1);text-shadow:0 0 0.6vw rgba(255,100,50,0.5);}
+.chat-message.chatfx8 .chat-sender {background:url('../images/chat-appearance/chat-appearance-style-8.gif') 0% 115%;background-size:140%;color:rgba(255,255,255,1);text-shadow:0 0 0.6vw rgba(255,70,50,1);}
+
+-------------------------------------------------
+
+
+
+
+---UPDATE 05/16/2025----
+Chat Theme9 Added
+(to add theme9 support to chat categories you already created please open a ticket and we will guide you )
+Special Updated coming!!!
+
+---UPDATE 05/12/2025 ----
+*Fixed An Issue With Font Selection 
+*Fixed An Issue Not Recodnized Staffs On First Login
+
+---UPDATE 05/02/2025 ----
+*Added Scroll Ability In Chat Window
+*Added Config To Enable Or Disable Players Ability To Change Chat Position / Font / Size 
+*Added Ability For Server Owners To Set Default Chat Position / Font / Size 
+*Added Support For QBox Framework
+
+If You want to keep the changes you already made: 
+
+*Do Not Replace chatsettings.json 
+*Do Not Replace bridge.css
+*Do Not Replace s_config.lua just add this ( AllowUsersToChangeSettings = true )

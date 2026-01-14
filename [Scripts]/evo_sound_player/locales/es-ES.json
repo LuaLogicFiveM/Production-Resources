@@ -1,0 +1,51 @@
+{
+    "scriptname": "evo_sound_player",
+    "menuHome": "Inicio",
+    "menuSearch": "Buscar",
+    "loaderText": "cargando",
+    "loaderTextPlayer": "cargando...",
+    "errorTextPlayer": "Error!",
+    "liveTagPlayer": "En Vivo",
+
+    "playlistModalTitle": "Añadir a Lista",
+    "menuPlaylists": "Tus Listas",
+    "defaultPlaylistName": "Mi lista #%s",
+    "playlistCreateFirst": "Crea tu primera lista",
+    "playlistDeleteWarning": "Seguro que quieres eliminar esta lista?",
+    "playlistDeleteTitle": "Eliminar Lista",
+    "playlistEditTitle": "Editar informacion",
+    "playlistEditName": "Nombre de la lista",
+    "playlistEditThumbnail": "URL de la miniatura",
+    "playlistHeaderTitle": "Titulo",
+    "playlistEmptyString1": "Esta playlist no tiene ninguna cancion, puedes añadir mas através de ",
+    "playlistEmptyString2": "busqueda",
+    "playlistEmptyString3": "y el boton",
+    "playlistEmptyString4": " ",
+    "playlistSongSingle": "canción",
+    "playlistSongPlural": "canciones",
+    "playlistName": "Lista",
+
+    "radiosTitle": "Radios en Vivo",
+    "radiosName": "Radio",
+    "radiosNameUnknown": "Radio Desconocida",
+
+    "timeMinute": "min",
+    "timeSecond": "s",
+
+    "searchPlaceHolder": "Buscar canciones",
+    "searchNoPrevText": "Busca cualquier canción que quieras reproducir",
+    "searchClearAll": "Limpiar todo",
+    "searchLoading": "Cargando",
+    "searchTitle": "Titulo",
+    
+    "searchButton": "Buscar",
+    "radioButton": "Radio",
+    "playButton": "Reproducir",
+    "deleteButton": "Eliminar",
+    "saveButton": "Guardar",
+    "playPlaceholder": "URL",
+    "playText": "Puedes reproducir cualquier cancion de Youtube, Spotify o Soundcloud, asi como streams y canciones en formato mp3, ogg, opus, flac, webm, wav, caf y aac",
+
+    "boomboxHelpText1": "Pulsa",
+    "boomboxHelpText2": "para dejar la boombox en el suelo"
+}

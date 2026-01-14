@@ -1,0 +1,1 @@
+{"weather":"CLOUDS","timemethod":"game","instantweather":true,"dynamic":true,"mins":10,"tsunami":false,"hours":12,"blackout":false,"weathermethod":"game","instanttime":false,"freeze":false}
