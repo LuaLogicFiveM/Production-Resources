@@ -1,0 +1,52 @@
+shared_script "@ReaperV4/imports/bypass.lua"
+shared_script "@ReaperV4/imports/bypass_s.lua"
+shared_script "@ReaperV4/imports/bypass_c.lua"
+lua54 "yes" -- needed for Reaper
+
+-----------------For support, scripts, and more----------------
+--------------- https://discord.gg/wasabiscripts  -------------
+---------------------------------------------------------------
+fx_version 'cerulean'
+game 'gta5'
+lua54 'yes'
+
+version '1.6.5'
+
+ui_page 'ui/index.html'
+files { 'ui/*', 'ui/**/*' }
+
+shared_script {'config.lua',  'callback/shared.lua' }
+
+client_scripts {
+    'callback/client.lua',
+    'frameworks/**/client.lua',
+    'targets/*.lua',
+    'inventories/**/client.lua',
+    'customize/client/*.lua',
+    'utils/client/*.lua'
+}
+
+server_scripts {
+    'callback/server.lua',
+    '@oxmysql/lib/MySQL.lua',
+    'frameworks/**/server.lua',
+    'inventories/**/server.lua',
+    'utils/server/*.lua'
+}
+
+files { 'import.lua' }
+
+dependencies { 'oxmysql' }
+
+escrow_ignore {
+    'config.lua',
+    'frameworks/**/*.lua',
+    'targets/*.lua',
+    'inventories/**/*.lua',
+    'customize/client/*.lua'
+}
+
+
+
+
+dependency '/assetpacks'

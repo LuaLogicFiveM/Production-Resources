@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K9 Status</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="menu-container" v-if="menuVisible" :class="menuContainerClasses">
+            <div class="menu-bar">
+                <div v-for="(menu, index) in menus" :key="index" :class="['menu-item', { active: activeMenuIndex === index }]">
+                    <i :class="menu.icon"></i>
+                    <span v-if="menu.name !== false">{{ menu.name }}</span>
+                </div>
+            </div>
+
+            <div class="sub-menu" v-if="showSubMenu" :class="subMenuClasses">
+                <div v-for="(option, index) in currentMenuOptions" :key="index" :class="['sub-menu-item', { active: activeOptionIndex === index }]">
+                    <span class="option-name">
+                        <i :class="option.icon"></i>
+                        {{ option.name }}
+                    </span>
+                    <span class="option-value" v-if="option.type === 'selector'">
+                        <i class="fas fa-chevron-left arrow"></i>
+                        {{ option.values[option.currentIndex] }}
+                        <i class="fas fa-chevron-right arrow"></i>
+                    </span>
+                    <span class="option-button" v-if="option.type === 'button'">
+                        <i :class="option.icon"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="k9-status-window" 
+            v-if="isVisible"
+            :style="{ ...statusWindowStyle, cursor: dragMode ? 'move' : 'default' }"
+            @mousedown="handleStatusMouseDown($event)">
+
+            <div class="drag-controls" v-if="dragMode">
+                <i class="fas fa-times drag-control-btn close-drag" 
+                @click="disableDragMode" 
+                @mousedown.stop
+                title="Exit Drag Mode"></i>
+                <i class="fas fa-undo drag-control-btn reset-position" 
+                @click="resetStatusPosition" 
+                @mousedown.stop
+                title="Reset Position"></i>
+            </div>
+
+            <div class="header">
+                <h2><i class="fas fa-paw"></i> K9 Status</h2>
+            </div>
+            <div class="content">
+                <div class="status-grid">
+                    <div class="status-item" v-for="(value, key) in dogStatus" :key="key">
+                        <div class="square-progress" 
+                        :class="[
+                        key, 
+                        { 'danger': key !== 'armor' && isDangerValue(value) },
+                        { 'updating': updatingStatus[key] }
+                        ]">
+                            <div class="progress-fill" :style="{ height: value + '%' }"></div>
+                            <i :class="statusIcons[key]"></i>
+                        </div>
+                        <span class="status-label">{{ statusLabels[key] }}</span>
+                    </div>
+                </div>
+                <div class="level-xp" v-if="showLevelCategory">
+                    <div class="level-info">
+                        <div class="level-badge">
+                            <i class="fas fa-star"></i>
+                            <span>{{ statusLabels.level }} {{ dog.level }}</span>
+                        </div>
+                        <span class="xp-text">{{ dog.xp }} / {{ dog.xpToNextLevel }} XP</span>
+                    </div>
+                    <div class="xp-bar">
+                        <div class="xp-fill" :style="{ width: (dog.xp / dog.xpToNextLevel * 100) + '%' }"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

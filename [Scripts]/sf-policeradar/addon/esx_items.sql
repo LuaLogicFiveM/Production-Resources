@@ -1,0 +1,1 @@
+INSERT INTO `items` (`name`, `label`, `weight`, `rare`, `can_remove`) VALUES ('radar_scrambler', 'Radar scrambler', 50, 0, 1);
