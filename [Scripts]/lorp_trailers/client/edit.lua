@@ -91,7 +91,7 @@ function VehicleAttachedOnTrailer(vehicle)
     --exports["qs-vehiclekeys"]:DoorLogic(vehicle, true, 2, true, true, true)
 
     SetVehicleEngineOn(vehicle, false, true, true)
-    SetVehicleDoorsLocked(vehicle, 2)
+    --SetVehicleDoorsLocked(vehicle, 2)
 end
 
 -- Purpose: Function triggered when a vehicle has been detached from trailer.
