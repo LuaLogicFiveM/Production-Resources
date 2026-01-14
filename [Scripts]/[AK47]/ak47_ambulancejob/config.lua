@@ -7,7 +7,9 @@ Config.DeathScreenKillerName = true -- Set to false to hide Killer Name on the d
 
 Config.DisableFadeAfterRevive = false
 
-Config.JobNames = { ['ems'] = true }
+Config.JobNames = {
+    ['ems'] = true
+}
 
 Config.UseDiscordLog = false -- if log is not working in your country, you can disable here
 

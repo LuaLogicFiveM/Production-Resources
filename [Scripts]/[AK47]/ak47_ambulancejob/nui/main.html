@@ -228,14 +228,30 @@
                 </div>
             </div>
 
-            <div id="distress-container" class="transition-opacity duration-300 hidden">
-                <div class="flex items-center bg-yellow-500/10 border border-yellow-500/20 px-6 py-3 rounded-lg animate-pulse">
-                    <div class="keycap text-yellow-500 border-yellow-500/30">G</div>
-                    <span id="ui-distress" class="text-yellow-100 font-semibold tracking-wide text-sm uppercase">Distress Signal Available</span>
+            <div class="flex gap-4">
+                <div id="distress-container" class="transition-opacity duration-300 hidden">
+                    <div class="flex items-center bg-yellow-500/10 border border-yellow-500/20 px-6 py-3 rounded-lg animate-pulse">
+                        <div class="keycap text-yellow-500 border-yellow-500/30">G</div>
+                        <span id="ui-distress" class="text-yellow-100 font-semibold tracking-wide text-sm uppercase">Distress Signal</span>
+                    </div>
+                </div>
+
+                <div id="aidoc-container" class="transition-opacity duration-300 hidden">
+                    <div class="flex items-center bg-cyan-500/10 border border-cyan-500/20 px-6 py-3 rounded-lg animate-pulse">
+                        <div class="keycap text-cyan-500 border-cyan-500/30">H</div>
+                        <span id="ui-callaidoc" class="text-cyan-100 font-semibold tracking-wide text-sm uppercase">Call AI Doctor</span>
+                    </div>
                 </div>
             </div>
 
             <div class="text-center space-y-2 py-2">
+                <div id="aidoc-timer-container" class="hidden">
+                     <div class="text-lg font-bold text-cyan-400 text-glow">
+                        <i class="fa-solid fa-user-doctor mr-2"></i>
+                        <span id="ui-doctor-arriving">Doctor Arriving in</span>: <span id="aidoc-timer" class="text-white">0s</span>
+                     </div>
+                </div>
+
                 <div id="status-text" class="text-3xl font-semibold tracking-wide text-glow text-gray-100"></div>
                 <div id="respawn-text" class="text-xl font-light opacity-90 h-8 text-glow text-gray-300"></div>
             </div>

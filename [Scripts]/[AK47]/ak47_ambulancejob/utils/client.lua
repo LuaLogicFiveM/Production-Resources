@@ -152,6 +152,7 @@ end
 
 DisableDownControls = function()
 	DisableAllControlActions(0)
+	EnableControlAction(0, 74, true) 	--H
 	EnableControlAction(0, 47, true) 	--G
 	EnableControlAction(0, 245, true) 	--T
 	EnableControlAction(0, 249, true) 	--N
@@ -169,6 +170,7 @@ end
 
 DisableDeadControls = function()
 	DisableAllControlActions(0)
+	EnableControlAction(0, 74, true) 	--H
 	EnableControlAction(0, 47, true) 	--G
 	EnableControlAction(0, 245, true) 	--T
 	EnableControlAction(0, 249, true) 	--N

@@ -180,4 +180,6 @@ Locales['en'] = {
     ui_killed_by = 'KILLED BY',
     ui_weapon = 'WEAPON',
     ui_distress = 'DISTRESS SIGNAL AVAILABLE',
+    ui_callaidoc = 'Call AI Doctor',
+    ui_doctor_arriving = 'Doctor Arriving in',
 }

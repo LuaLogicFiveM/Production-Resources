@@ -60,7 +60,12 @@ const ui = {
     weaponName: document.getElementById('weapon-name'),
     holdIndicator: document.getElementById('hold-indicator'),
     distressContainer: document.getElementById('distress-container'),
-    circle: document.querySelector('.progress-ring__circle')
+    aidocContainer: document.getElementById('aidoc-container'),
+    aidocTimerContainer: document.getElementById('aidoc-timer-container'),
+    aidocTimerText: document.getElementById('aidoc-timer'),
+    circle: document.querySelector('.progress-ring__circle'),
+    doctorArrivingLabel: document.getElementById('ui-doctor-arriving'),
+    callaidoc: document.getElementById('ui-callaidoc'),
 };
 
 const circumference = 40 * 2 * Math.PI; 
@@ -78,7 +83,10 @@ function parseFiveMText(text) {
 
 function formatString(str, ...args) {
     let i = 0;
-    return str.replace(/%s/g, () => args[i++] || '');
+    return str.replace(/%s/g, () => {
+        const val = args[i++];
+        return (val !== undefined && val !== null) ? val : '';
+    });
 }
 
 function formatTimerString(template, totalSeconds) {
@@ -170,6 +178,8 @@ window.addEventListener('message', function(event) {
             if(ui.killedByLabel) ui.killedByLabel.innerText = item.locales.killed_by;
             if(ui.weaponLabel) ui.weaponLabel.innerText = item.locales.weapon;
             if(ui.distressLabel) ui.distressLabel.innerText = item.locales.distress;
+            if(ui.callaidoc) ui.callaidoc.innerText = item.locales.callaidoc;
+            if(ui.doctorArrivingLabel) ui.doctorArrivingLabel.innerText = item.locales.doctor_arriving;
         }
         
         ui.killerName.textContent = item.killer || "Unknown";
@@ -187,6 +197,8 @@ window.addEventListener('message', function(event) {
         }
         
         ui.distressContainer.classList.add('hidden');
+        ui.aidocContainer.classList.add('hidden');
+        ui.aidocTimerContainer.classList.add('hidden');
         
         ui.app.style.display = 'flex';
         setTimeout(() => { ui.app.style.opacity = '1'; }, 50);
@@ -230,6 +242,28 @@ window.addEventListener('message', function(event) {
 
     if (item.action === 'hideDistress') {
         ui.distressContainer.classList.add('hidden');
+    }
+
+    // AI DOC ACTIONS
+    if (item.action === 'showAiDocPrompt') {
+        if (item.state) {
+            ui.aidocContainer.classList.remove('hidden');
+        } else {
+            ui.aidocContainer.classList.add('hidden');
+        }
+    }
+
+    if (item.action === 'showAiDocTimer') {
+        ui.aidocTimerContainer.classList.remove('hidden');
+        ui.aidocContainer.classList.add('hidden'); // Hide prompt when called
+    }
+
+    if (item.action === 'updateAiDocTimer') {
+        ui.aidocTimerText.innerText = item.time + 's';
+    }
+
+    if (item.action === 'hideAiDocTimer') {
+        ui.aidocTimerContainer.classList.add('hidden');
     }
 
     if (item.action === 'setProgress') {

@@ -5,13 +5,6 @@ lua54 'yes'
 
 version '1.0.5'
 
-author 'Mosoto Scripts'
-description 'The most advanced seatbelt system for FiveM'
-
-dependencies {
-    'interact-sound'
-}
-
 shared_scripts {
     'config.lua',
     '@ox_lib/init.lua',

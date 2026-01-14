@@ -1,13 +1,8 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'adamant'
 game 'gta5'
 description 'Ak47 Ambulance Job'
 author 'MenanAk47'
-version '7.0'
+version '7.1'
 
 shared_script '@es_extended/imports.lua'
 
@@ -39,7 +34,7 @@ client_scripts {
 }
 
 server_scripts {
-    "@oxmysql/lib/MySQL.lua",
+    "@mysql-async/lib/MySQL.lua",
     "config.lua",
     "modules/**/config.lua",
 
@@ -62,5 +57,6 @@ escrow_ignore {
 }
 
 lua54 'yes'
+
 
 dependency '/assetpacks'
