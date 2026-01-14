@@ -1,1 +1,10 @@
 /\[Assets\]
+/ReaperV4/cache
+*.json
+/ReaperV4/logs
+*.json
+/\[Scripts\]/\[AK47\]/ak47_khusbites/server/datastore
+/\[Scripts\]/\[AK47\]/ak47_hookahloungev2/server/datastore
+/\[Scripts\]/\[AK47\]/ak47_leafnlatte/server/datastore
+/\[Scripts\]/\[AK47\]/ak47_whitewidowv2/server/datastore
+*.txt
