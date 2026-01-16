@@ -1,14 +1,9 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version "cerulean"
 game "gta5"
 author "Malizniak - 17Movement"
 lua54 "yes"
 this_is_a_map 'yes'
-version "2.0.72"
+version "2.0.73"
 
 files {
     "web/**/*.**",
@@ -55,4 +50,5 @@ data_file 'HANDLING_FILE'            'stream/**/**/handling.meta'
 data_file 'VEHICLE_LAYOUTS_FILE'     'stream/**/**/vehiclelayouts.meta'
 data_file 'VEHICLE_METADATA_FILE'    'stream/**/**/vehicles.meta'
 data_file 'VEHICLE_VARIATION_FILE'   'stream/**/**/carvariations.meta'
+
 dependency '/assetpacks'
