@@ -45,7 +45,7 @@ RegisterNetEvent('r_handcuffs:server:cuffs', function(pid)
     local src = source
     local tgt = pid
     if not hasJob(src) then return end
-    --if not IsPlayerBehind(pid, src) then return end
+    if not IsPlayerBehind(pid, src) then return end
 
     if Player(tgt).state[Config.StatebagsName.handcuffs] or Player(tgt).state[Config.StatebagsName.rope] then return end
     if Player(src).state[Config.StatebagsName.handcuffs] or Player(src).state[Config.StatebagsName.rope] then return end

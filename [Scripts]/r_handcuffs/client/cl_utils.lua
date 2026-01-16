@@ -1,3 +1,10 @@
+/*--------------------------------------
+  % Made with ❤️ for: Rytrak Store
+  % Author: Rytrak https://rytrak.fr
+  % Script documentation: https://docs.rytrak.fr/scripts/advanced-handcuffs-system
+  % Full support on discord: https://discord.gg/k22buEjnpZ
+--------------------------------------*/
+
 -- [[ Variables ]]
 
 local keys = {

@@ -47,6 +47,8 @@ Config = {
 
     SyncedCuffs = true, -- Keeps the player handcuffed even if he disconnects and reconnects later (this setting works with the player's GTA V license and is saved only in a temporary server table)
 
+    NeedToBeBehind = false, -- Set this option to “true” if you want the player to be behind the person in order to handcuff/unhandcuff them. (if false, the player can be in front of the other player to cuff/uncuff him)
+
     -- Props configuration
     Props = {
         Cuffs = {
