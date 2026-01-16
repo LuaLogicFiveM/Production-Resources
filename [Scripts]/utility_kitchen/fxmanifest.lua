@@ -1,12 +1,9 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 game "gta5"
 fx_version "cerulean"
 lua54 "yes"
+
 author "MXC, XenoS"
+
 client_scripts {
     "@utility_lib/client/native.lua",
     "build/client/modules/objectify.lua",
@@ -17,6 +14,7 @@ client_scripts {
     "build/client/*.lua",
     "build/client/modules/localazy.lua",
     "configs/interactions.lua",
+
     "build/client/functions/*.lua",
     "build/client/objects/*.lua",
     "build/client/objects/shared/**.lua",
@@ -26,6 +24,7 @@ client_scripts {
     "build/client/objects/content/**.lua",
     "build/client/expansions/**.lua",
 }
+
 server_scripts {
     "@utility_lib/server/native.lua",
     "build/server/modules/objectify.lua",
@@ -37,6 +36,7 @@ server_scripts {
     "build/server/prefabs/*.lua",
     "build/server/expansions/**.lua",
 }
+
 shared_scripts {
     "configs/general.lua",
     "configs/items.lua",
@@ -44,17 +44,20 @@ shared_scripts {
     "configs/config_functions.lua",
     "build/shared/*.lua"
 }
+
 files {
     "imgs/**.*",
     "audiodirectory/**.*",
     "configs/expansions/*.lua",
 }
+
 escrow_ignore {
     "configs/*.lua",
     "configs/expansions/*.lua",
     "[items]/**.lua",
     "[compatibility]/**.*",
 }
+
 leap_ignore {
     "configs/*.lua",
     "configs/general.lua",
@@ -66,8 +69,12 @@ leap_ignore {
     "[items]/**.lua",
     "[compatibility]/**.*",
 }
+
 file 'stream/**.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/**.ytyp'
+
 data_file 'AUDIO_WAVEPACK' 'audiodirectory'
 data_file 'AUDIO_SOUNDDATA' 'audiodirectory/kitchen_sounds.dat'
+
+
 dependency '/assetpacks'
