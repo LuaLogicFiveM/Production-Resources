@@ -55,15 +55,17 @@ if Config.TargetSystem.UseQBTarget then
                 icon = "fa-solid fa-car-rear",
                 label = Config.Languages[Config.Language]['removeplayerfromvehicle'],
                 canInteract = function(entity)
-                    local occupants = vehicleData[NetworkGetNetworkIdFromEntity(entity)]
+                    if DoesEntityExist(entity) and NetworkGetEntityIsNetworked(entity) then
+                        local occupants = vehicleData[NetworkGetNetworkIdFromEntity(entity)]
 
-                    if occupants then
-                        for i = 1, #occupants do
-                            local pedToCheck = GetPlayerPed(GetPlayerFromServerId(occupants[i]))
-                            local isNearby = #(GetEntityCoords(pedToCheck) - coords) < 2.5
-                            
-                            if isNearby then
-                                return true and verifyPlayerJob()
+                        if occupants then
+                            for i = 1, #occupants do
+                                local pedToCheck = GetPlayerPed(GetPlayerFromServerId(occupants[i]))
+                                local isNearby = #(GetEntityCoords(pedToCheck) - coords) < 2.5
+                                
+                                if isNearby then
+                                    return true and verifyPlayerJob()
+                                end
                             end
                         end
                     end

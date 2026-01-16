@@ -38,15 +38,17 @@ if Config.TargetSystem.UseOXTarget then
             label = Config.Languages[Config.Language]['removeplayerfromvehicle'],
             distance = 2.5,
             canInteract = function(entity, distance, coords, name, bone)
-                local occupants = vehicleData[NetworkGetNetworkIdFromEntity(entity)]
+                if DoesEntityExist(entity) and NetworkGetEntityIsNetworked(entity) then
+                    local occupants = vehicleData[NetworkGetNetworkIdFromEntity(entity)]
 
-                if occupants then
-                    for i = 1, #occupants do
-                        local pedToCheck = GetPlayerPed(GetPlayerFromServerId(occupants[i]))
-                        local isNearby = #(GetEntityCoords(pedToCheck) - coords) < 2.5
-                        
-                        if isNearby then
-                            return true and verifyPlayerJob()
+                    if occupants then
+                        for i = 1, #occupants do
+                            local pedToCheck = GetPlayerPed(GetPlayerFromServerId(occupants[i]))
+                            local isNearby = #(GetEntityCoords(pedToCheck) - coords) < 2.5
+                            
+                            if isNearby then
+                                return true and verifyPlayerJob()
+                            end
                         end
                     end
                 end

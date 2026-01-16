@@ -11,6 +11,23 @@ function verifyPlayerJob()
     return playerData and jobs[playerData.job.name] or false
 end
 
+-- Function to verify if the player's job matches the allowed jobs in the script configuration
+function verifyPlayerJob()
+    if Config.Framework.ESX.enabled then
+        local playerData = ESX.GetPlayerData()
+
+        for _, job in ipairs(Config.Framework.ESX.jobs) do
+            if playerData.job and playerData.job.name == job then
+                return true
+            end
+        end
+    else
+        return true -- No framework is enabled, default to allowing access
+    end
+
+    return false -- Player's job is not authorized
+end
+
 -- Function to display a notification
 function showHint(message)
     AddTextEntry('r_grab', message)
