@@ -183,8 +183,8 @@
         scale = 0.8,
         color = 0,
         data = {
-                title = 'CS Firearms co.',
-                description = 'Owner: Chappo & Saxton',
+                title = 'SAXTONS GUN STORE',
+                description = 'Owner: Saxton',
          },
      },
      {
@@ -275,7 +275,7 @@
         color = 0,
         data = {
             title = '🏍️ Motorcycle Club',
-            description = 'Owner: Reapers MC',
+            description = 'Owner: Deadly Angels MC',
         },
     },
     {
