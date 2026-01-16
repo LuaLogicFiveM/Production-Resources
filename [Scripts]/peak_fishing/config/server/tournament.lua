@@ -1,22 +1,6 @@
 return {
     enabled = true,
 
-    organizer = {
-        coords = vec4(238.81, 1135.75, 224.62, 280.17),
-
-        model = 'a_m_y_beach_01',
-        scenario = 'WORLD_HUMAN_CLIPBOARD',
-
-        blip = {
-            enabled = true,
-            sprite = 267,
-            display = 4,
-            scale = 0.7,
-            colour = 46,
-            label = 'Tournament Organizer'
-        }
-    },
-
     tournamentBlip = {
         sprite = 68,
         display = 4,
