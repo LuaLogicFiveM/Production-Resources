@@ -1235,6 +1235,7 @@ CreateThread(function()
                         options = {
                             {
                                 event = 'wasabi_police:toggleDuty',
+                                args = k,
                                 icon = 'fa-solid fa-business-time',
                                 label = v.clockInAndOut.target.label,
                                 distance = v.clockInAndOut.target.distance or 2.0,

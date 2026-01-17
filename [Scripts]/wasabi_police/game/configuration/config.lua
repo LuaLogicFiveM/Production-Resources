@@ -418,26 +418,31 @@ Config.policeJobs = { -- Police jobs
     'sahp'
 }
 
-Config.GPSBlips = {
-    enabled = false,     -- Enabled?
-    item = false,        -- Item required? Note: You have to use it then
-    sprites = {
-        none = 443,      -- Blip for when not in a vehicle
-        car = 672,       -- Blip for when in vehicles
-        bike = 226,      -- Blip for when on bikes
-        boat = 427,      -- Blip for when in boats
-        helicopter = 43, -- Blip for when in helicopters
-        plane = 307,     -- Blip for when in planes
-    },
-    settings = {
-        color = {
-            default = 1, -- Default blip color
-            sahp = 5, -- Blip color for sheriff
-            sheriff = 5, -- Blip color for sheriff
+Config.GPSBlips = { -- wasabi_gps required, get it free: https://wasabiscripts.com/product/7093977
+    enabled = false, -- Enabled?
+    jobs = {         --- wasabi_gps job registration
+        ['police'] = {
+            -- item = 'gps', -- optional item required to use gps
+            subscribers = { --- who can see these blips?
+                'police',
+                -- 'sheriff'
+            },
+            blipSettings = { --- what does the blip look like?
+                color = 3,   -- blue
+                scale = 0.75,
+                short = false,
+                category = 7
+            }
         },
-        scale = 0.5,
-        short = false,
-        category = 7
+        -- ['sheriff'] = {
+        --     subscribers = { 'sheriff', 'police' }, --- who can see these blips?
+        --     blipSettings = {
+        --         color = 17,                        -- Orange
+        --         scale = 1.0,
+        --         short = false,
+        --         category = 7
+        --     }
+        -- },
     }
 }
 

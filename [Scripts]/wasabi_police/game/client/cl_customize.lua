@@ -93,23 +93,31 @@ deathCheck = function(serverId)
 end
 
 -- Personal locker access
---[[function OpenPersonalStash(station)
+function OpenPersonalStash(station)
     if not Config.Locations[station] or not Config.Locations[station].personalLocker then return end
     if #(GetEntityCoords(PlayerPedId()) - Config.Locations[station].personalLocker.coords) > Config.Locations[station].personalLocker.range then return end
     if not wsb.inventorySystem then return end
     if not wsb.hasGroup(Config.policeJobs) then return end
 
-    station = station .. '_' .. wsb.getIdentifier()
-
+    local id = station .. '_' .. wsb.getIdentifier()
+    if wsb.awaitServerCallback('wasabi_police:registerStash', {
+        name = id,
+        slots = 30,
+        maxWeight = 50000,
+        station = station,
+        location = 'personalLocker'
+        
+    }) then 
     wsb.inventory.openStash({
-        name = station,
+        name = id,
         maxWeight = 50000,
         slots = 30
     })
-end]]
+    end
+end
 
 -- Evidence locker access
---[[function OpenEvidenceLocker(station)
+function OpenEvidenceLocker(station)
     if not Config.Locations[station] or not Config.Locations[station].evidenceLocker then return end
     if #(GetEntityCoords(PlayerPedId()) - Config.Locations[station].evidenceLocker.coords) > Config.Locations[station].evidenceLocker.range then return end
     if not wsb.inventorySystem then return end
@@ -132,14 +140,21 @@ end]]
 
     input = math.floor(input)
 
-    station = station .. '_evidence_' .. input
-
-    wsb.inventory.openStash({
-        name = station,
+    local id = station .. '_evidence_' .. input
+    if wsb.awaitServerCallback('wasabi_police:registerStash', {
+        name = id,
+        slots = 100,
         maxWeight = 500000,
-        slots = 100
+        station = station,
+        location = 'evidenceLocker'
+    }) then
+        wsb.inventory.openStash({
+            name = id,
+            maxWeight = 500000,
+            slots = 100
     })
-end]]
+    end
+end
 
 --Search player
 searchPlayer = function(player)
@@ -404,7 +419,7 @@ openJobMenu = function()
 
     Options[#Options + 1] = {
         title = 'Create Zone',
-        description = 'Restrict a zone to warn citizens of a dangerous area',
+        description = 'Restrict a zone to warn citizens of a dangerous area.',
         icon = 'map-pin',
         arrow = false,
         event = 'SDAS:Client:OpenAreaMenu',

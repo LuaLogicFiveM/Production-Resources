@@ -12,14 +12,31 @@ Citizen.CreateThread(function()
 end)
 -----------------------------------------------------------------------------------------
 
+local hasJob = nil
+
 local allAreas = {}
 local blipedAreas = {}
 local inmenu = nil
 local nearVehs = {}
 
+Citizen.CreateThread(function()
+    while true do
+        if loadedClient then
+            if SDC.AllowedJobs[GetCurrentJob()] then
+                hasJob = GetCurrentJob()
+            else
+                hasJob = nil
+            end
+        end
+        Citizen.Wait(5000)
+    end
+end)
 RegisterNetEvent("SDAS:Client:UpdateAreas")
 AddEventHandler("SDAS:Client:UpdateAreas", function(tab, spec, edited)
     allAreas = tab
+
+    local ped = PlayerPedId()
+    local coords = GetEntityCoords(ped)
 
     if edited then
         if blipedAreas[tostring(spec.x.."_"..spec.y.."_"..spec.z)] then
@@ -43,7 +60,8 @@ end)
 
 RegisterNetEvent("SDAS:Client:OpenAreaMenu")
 AddEventHandler("SDAS:Client:OpenAreaMenu", function()
-    local coords = GetEntityCoords(cache.ped)
+    local ped = PlayerPedId()
+    local coords = GetEntityCoords(ped)
 
     if inmenu then
         lib.hideContext(true)
@@ -72,7 +90,6 @@ AddEventHandler("SDAS:Client:OpenAreaMenu", function()
                         TriggerEvent("SDAS:Client:Notification", SDC.Lang.TooClose, "error")
                         lib.showContext('sdas:mainmenu')
                     else
-                        local hasJob = GetCurrentJob()
                         local input = lib.inputDialog(SDC.Lang.SelectAreaSize, {
                             {type = 'slider', label = SDC.Lang.SelectAreaSize2, icon = 'expand', default = 25, min = 10, max = SDC.AllowedJobs[hasJob].MaxAreaSize},
                         })
@@ -116,7 +133,8 @@ end)
 
 RegisterNetEvent("SDAS:Client:OpenEditMenu")
 AddEventHandler("SDAS:Client:OpenEditMenu", function()
-    local coords = GetEntityCoords(cache.ped)
+    local ped = PlayerPedId()
+    local coords = GetEntityCoords(ped)
 
     inmenu = "edit"
 
@@ -128,7 +146,6 @@ AddEventHandler("SDAS:Client:OpenEditMenu", function()
             description = SDC.Lang.Size..": "..allAreas[i].AreaSize.."m | "..SDC.Lang.CreatedBy..": "..allAreas[i].Creator,
             icon = 'map-location',
             onSelect = function()
-                local hasJob = GetCurrentJob()
                 local input = lib.inputDialog(SDC.Lang.SelectAreaSize, {
                     {type = 'slider', label = SDC.Lang.SelectAreaSize2, icon = 'expand', default = allAreas[i].AreaSize, min = 10, max = SDC.AllowedJobs[hasJob].MaxAreaSize},
                 })
@@ -173,7 +190,8 @@ end)
 
 RegisterNetEvent("SDAS:Client:OpenRemoveMenu")
 AddEventHandler("SDAS:Client:OpenRemoveMenu", function()
-    local coords = GetEntityCoords(cache.ped)
+    local ped = PlayerPedId()
+    local coords = GetEntityCoords(ped)
 
     inmenu = "remove"
 
@@ -219,7 +237,8 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        local coords = GetEntityCoords(cache.ped)
+        local ped = PlayerPedId()
+        local coords = GetEntityCoords(ped)
 
         if allAreas[1] then
             for i=1, #allAreas do
@@ -285,7 +304,7 @@ Citizen.CreateThread(function()
             end
             blipedAreas = {}
         end
-        Citizen.Wait(5000)
+        Citizen.Wait(1500)
     end
 end)
 
@@ -293,18 +312,21 @@ end)
 
 Citizen.CreateThread(function()
     Citizen.Wait(2000)
-    while loadedClient do
-        local nearVehs2 = {}
-        local coords = GetEntityCoords(cache.ped)
-        for veh in EnumerateVehicles() do
-            local vcoords = GetEntityCoords(veh)
-            if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, vcoords.x, vcoords.y, vcoords.z, false) <= 150 then
-                table.insert(nearVehs2, veh)
+    while true do
+        if loadedClient then
+            local nearVehs2 = {}
+            local ped = PlayerPedId()
+            local coords = GetEntityCoords(ped)
+            for veh in EnumerateVehicles() do
+                local vcoords = GetEntityCoords(veh)
+                if GetDistanceBetweenCoords(coords.x, coords.y, coords.z, vcoords.x, vcoords.y, vcoords.z, false) <= 150 then
+                    table.insert(nearVehs2, veh)
+                end
             end
+    
+            nearVehs = nearVehs2
         end
-
-        nearVehs = nearVehs2
-        Citizen.Wait(5000)
+        Citizen.Wait(1500)
     end
 end)
 
@@ -312,14 +334,12 @@ end)
 if SDC.MenuCommand.Keybind.Enabled then
     RegisterKeyMapping('sdas:openmenu:'..SDC.MenuCommand.Keybind.Key, SDC.Lang.OpenAreaMenu, 'keyboard', SDC.MenuCommand.Keybind.Key)
     RegisterCommand('sdas:openmenu:'..SDC.MenuCommand.Keybind.Key, function()
-        local hasJob = GetCurrentJob()
         if hasJob and SDC.AllowedJobs[hasJob] then
             TriggerEvent("SDAS:Client:OpenAreaMenu")
         end
     end, false)
 else
     RegisterCommand(SDC.MenuCommand.CommandName, function()
-        local hasJob = GetCurrentJob()
         if hasJob and SDC.AllowedJobs[hasJob] then
             TriggerEvent("SDAS:Client:OpenAreaMenu")
         else

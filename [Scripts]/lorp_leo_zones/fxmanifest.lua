@@ -5,6 +5,9 @@ lua54 "yes" -- needed for Reaper
 
 fx_version 'cerulean'
 games { 'gta5' }
+
+author 'HoboDevCo#3011'
+description 'SDC | Area Shutdown'
 version '1.0.0'
 
 shared_script {
