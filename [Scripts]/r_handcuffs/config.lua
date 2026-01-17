@@ -10,20 +10,20 @@
 Config = {
     Language = 'en', -- Language library used for the script, see the last lines to modify the text of the language. (Config.Languages)
 
-    EnableCommands = false, -- Don't activate if you're using a framework
+    EnableCommands = true, -- Don't activate if you're using a framework
 
     -- IMPORTANT : Follow our documentation on this subject:
     -- For ESX: https://docs.rytrak.fr/scripts/advanced-handcuffs-system/make-esx-compatible
     -- For QBCore: https://docs.rytrak.fr/scripts/advanced-handcuffs-system/make-qbcore-compatible
     -- For OX-Inventory: https://docs.rytrak.fr/scripts/advanced-handcuffs-system/make-ox-inventory-compatible
     Framework = {
-        ESX = false,
+        ESX = false, 
         QBCore = false,
         OXInventory = true,
 
         -- Config for those using a framework
-        UniqueCuffs = true, -- Removes x1 of the handcuffs item when you handcuff someone, and as soon as you unhandcuff someone you get a pair of handcuffs back.
-        NeedItemToCutRope = {'knife', 'weapon_knife'}, -- List of possible items for cutting rope (If the table is empty, the key system will appear, when you stand behind a player, the script proposes to untie the person)
+        UniqueCuffs = false, -- Removes x1 of the handcuffs item when you handcuff someone, and as soon as you unhandcuff someone you get a pair of handcuffs back.
+        NeedItemToCutRope = {'knife'}, -- List of possible items for cutting rope (If the table is empty, the key system will appear, when you stand behind a player, the script proposes to untie the person)
         NeedWeaponToCutRope = {'weapon_knife'} -- List of possible weapons for cutting rope.
     },
 

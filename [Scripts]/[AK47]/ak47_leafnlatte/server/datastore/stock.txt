@@ -68,7 +68,7 @@
         "price": 500
     },
     "hightimebrownies": {
-        "stock": 73,
+        "stock": 74,
         "price": 500
     },
     "marathon": {
@@ -116,7 +116,7 @@
         "price": 500
     },
     "kushkrisps": {
-        "stock": 73,
+        "stock": 74,
         "price": 500
     },
     "blueberry_jam_cookie": {
@@ -316,7 +316,7 @@
         "price": 500
     },
     "chroniccrunchcookies": {
-        "stock": 73,
+        "stock": 74,
         "price": 500
     },
     "collins_ave_joint": {
@@ -324,11 +324,11 @@
         "price": 500
     },
     "herbaldelightgummies": {
-        "stock": 73,
+        "stock": 74,
         "price": 500
     },
     "blazebites": {
-        "stock": 73,
+        "stock": 74,
         "price": 500
     },
     "georgia_pie_joint": {

@@ -1,15 +1,16 @@
 -- [[ Compatibility Initialization ]]
 
-local ESX = exports["es_extended"]:getSharedObject()
+local ESX = nil
+local QBCore = nil
+
+-- Initialize framework based on the configuration
+if Config.Framework.ESX.enabled then
+    ESX = exports["es_extended"]:getSharedObject()
+elseif Config.Framework.QB.enabled then
+    QBCore = exports['qb-core']:GetCoreObject()
+end
 
 -- [[ Functions ]]
-
-local jobs = { ['sheriff'] = 0, ['sahp'] = 0 }
-
-function verifyPlayerJob()
-    local playerData = ESX.GetPlayerData()
-    return playerData and jobs[playerData.job.name] or false
-end
 
 -- Function to verify if the player's job matches the allowed jobs in the script configuration
 function verifyPlayerJob()
@@ -17,6 +18,14 @@ function verifyPlayerJob()
         local playerData = ESX.GetPlayerData()
 
         for _, job in ipairs(Config.Framework.ESX.jobs) do
+            if playerData.job and playerData.job.name == job then
+                return true
+            end
+        end
+    elseif Config.Framework.QB.enabled then
+        local playerData = QBCore.Functions.GetPlayerData()
+
+        for _, job in ipairs(Config.Framework.QB.jobs) do
             if playerData.job and playerData.job.name == job then
                 return true
             end
@@ -53,58 +62,44 @@ RegisterCommand(Config.CommandSystem.Grab, function()
     if verifyPlayerJob() then
         grabPlayer(getPedInFront())
     end
-end, false)
+end)
 
 -- Command to put the grabbed player into a vehicle
 RegisterCommand(Config.CommandSystem.PutPlayer, function()
     if verifyPlayerJob() then
         putPlayerInVehicle(true)
     end
-end, false)
+end)
 
 -- Command to remove the player from a vehicle
 RegisterCommand(Config.CommandSystem.RemovePlayer, function()
     if verifyPlayerJob() then
         fExitCar(true)
     end
-end, false)
+end)
 
---if not Config.CommandSystem.Enabled and not Config.TargetSystem.UseOXTarget and not Config.TargetSystem.UseQBTarget and not Config.TargetSystem.CustomTarget then
+if not Config.CommandSystem.Enabled and not Config.TargetSystem.UseOXTarget and not Config.TargetSystem.UseQBTarget and not Config.TargetSystem.CustomTarget then
     -- Key mapping for grab functionality if commands and target system are disabled
-    RegisterKeyMapping(Config.CommandSystem.Grab, '[LEO] - Escort Ped', 'keyboard', 'V')
---end
+    RegisterKeyMapping(Config.CommandSystem.Grab, 'Grab Ped Key', 'keyboard', 'F2')
+end
 
 -- [[ Events ]]
 
 -- Event to grab or release a player.
 -- @param targetId integer The server ID of the target player to grab.
 RegisterNetEvent('r_grab:client:grabPlayer', function()
-    if verifyPlayerJob() then
-        grabPlayer(getPedInFront())
-    end
-    --ExecuteCommand('grab')
-    --[[local closestPlayer = lib.getClosestPlayer(GetEntityCoords(cache.ped), 2.0)
-    grabPlayer(closestPlayer)]]
+    local pid = lib.getClosestPlayer(GetEntityCoords(cache.ped), 2.0, false)
+    if not pid then return end
+    local serverId = GetPlayerServerId(pid)
+    grabPlayer(serverId)
 end)
 
 -- Handles placing the grabbed player into a vehicle.
 RegisterNetEvent('r_grab:client:putPlayerInVehicle', function()
-    if verifyPlayerJob() then
-        putPlayerInVehicle(true)
-    end
+    putPlayerInVehicle(true)
 end)
 
 -- Handles removing a grabbed player from a vehicle.
 RegisterNetEvent('r_grab:client:removePlayerFromVehicle', function()
-    if verifyPlayerJob() then
-        removePlayerFromVehicle(true)
-    end
-end)
-
-RegisterNetEvent('r_grab:client:init', function()
-    if verifyPlayerJob() then
-        --local player = lib.getClosestPlayer(GetEntityCoords(cache.ped), 2.0, false)
-        --exports.ox_inventory:openInventory('player', player)
-        exports.ox_inventory:openNearbyInventory()
-    end
+    removePlayerFromVehicle(true)
 end)

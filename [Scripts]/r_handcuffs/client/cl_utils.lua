@@ -85,46 +85,23 @@ local keys = {
     ["N9"] = 118
 }
 
-local ESX = exports.es_extended:getSharedObject()
-
-local jobs = { ['sheriff'] = 0, ['sahp'] = 0 }
-
-local function hasJob()
-    local PlayerData = ESX.GetPlayerData()
-    return PlayerData and jobs[PlayerData.job.name] or false
-end
-
 -- [[ Commands ]]
 
-local inv = exports.ox_inventory
-
 local function cuffs()
-    if not hasJob() then return end
-    local count = inv:Search('slots', 'handcuffs')
-    if count == 0 then return end
-    --local pedInFront = GetPedInFront()
-    --if pedInFront == 0 then return end
-    local pid = lib.getClosestPlayer(GetEntityCoords(cache.ped), 2.0, false)
-    if not pid then return lib.notify({title = 'Law Enforcement', description = 'There is no player nearby', type = 'error', position = 'top'}) end
+    local pedInFront = GetPedInFront()
+    if pedInFront == 0 then return end
 
-    local serverId = GetPlayerServerId(pid)
-    TriggerServerEvent('r_handcuffs:server:cuffs', serverId)
+    TriggerServerEvent('r_handcuffs:server:cuffs', pedInFront)
 end
 
 local function uncuffs()
-    if not hasJob() then return end
-    --local pedInFront = GetPedInFront()
-    --if pedInFront == 0 then return end
-    local pid = lib.getClosestPlayer(GetEntityCoords(cache.ped), 2.0, false)
-    if not pid then return lib.notify({title = 'Law Enforcement', description = 'There is no player nearby', type = 'error', position = 'top'}) end
+    local pedInFront = GetPedInFront()
+    if pedInFront == 0 then return end
 
-    local serverId = GetPlayerServerId(pid)
-    TriggerServerEvent('r_handcuffs:server:uncuffs', serverId)
+    TriggerServerEvent('r_handcuffs:server:uncuffs', pedInFront)
 end
 
 local function rope()
-    local count = inv:Search('slots', 'rope')
-    if count == 0 then return end
     local pedInFront = GetPedInFront()
     if pedInFront == 0 then return end
 
@@ -132,8 +109,6 @@ local function rope()
 end
 
 local function unrope()
-    local count = inv:Search('slots', 'WEAPON_KNIFE')
-    if count == 0 then return end
     local pedInFront = GetPedInFront()
     if pedInFront == 0 then return end
 
@@ -141,8 +116,6 @@ local function unrope()
 end
 
 local function grinder()
-    local count = inv:Search('slots', 'grinder')
-    if count == 0 then return end
     local pedInFront = GetPedInFront()
     if pedInFront == 0 then return end
 
@@ -152,24 +125,25 @@ end
 if Config.EnableCommands then
     RegisterCommand('cuffs', function()
         cuffs()
-    end, false)
+    end)
 
     RegisterCommand('uncuffs', function()
         uncuffs()
-    end, false)
+    end)
 
     RegisterCommand('rope', function()
         rope()
-    end, false)
+    end)
 
     RegisterCommand('unrope', function()
         unrope()
-    end, false)
+    end)
 
     RegisterCommand('grinder', function()
         grinder()
-    end, false)
+    end)
 end
+
 
 local cooldown = false
 local emsjob = exports['ak47_ambulancejob']
@@ -237,7 +211,7 @@ function Hint(message)
 end
 
 RegisterNetEvent('r_handcuffs:client:sendNotification', function(message)
-    --PlaySound(-1, "Mission_Pass_Notify", "DLC_HEISTS_GENERAL_FRONTEND_SOUNDS", 0, 0, 1)
+    PlaySound(-1, "Mission_Pass_Notify", "DLC_HEISTS_GENERAL_FRONTEND_SOUNDS", 0, 0, 1)
     
     SetNotificationTextEntry("STRING")
     AddTextComponentSubstringPlayerName(message)
@@ -254,10 +228,10 @@ function DisableControl()
         DisableControlAction(0, keys[v], true)
     end
 
-    DisablePlayerFiring(cache.ped, true)
-    SetPedPathCanUseLadders(cache.ped, false)
+    DisablePlayerFiring(PlayerPedId(), true)
+    SetPedPathCanUseLadders(PlayerPedId(), false)
 
-    if IsPedInAnyVehicle(cache.ped, false) then
+    if IsPedInAnyVehicle(PlayerPedId(), false) then
         DisableControlAction(0, 59, true)
         DisableControlAction(0, 69, true) -- INPUT_VEH_ATTACK
         DisableControlAction(0, 70, true) -- INPUT_VEH_ATTACK2
@@ -267,7 +241,7 @@ end
 
 function FreezePlayer()
     DisableControlAction(0, 24, true)
-    DisablePlayerFiring(cache.ped, true)
+    DisablePlayerFiring(PlayerPedId(), true)
     DisableControlAction(0, 142, true)
     DisableControlAction(0, 25, true)
     DisableControlAction(0, 30, true)
@@ -313,7 +287,7 @@ if #Config.Framework.NeedWeaponToCutRope > 0 then
             sleep = 500
 
             for _,v in pairs(Config.Framework.NeedWeaponToCutRope) do
-                local _, weaponPlayer = GetCurrentPedWeapon(cache.ped)
+                local _, weaponPlayer = GetCurrentPedWeapon(PlayerPedId())
                 
                 if weaponPlayer == GetHashKey(v) then
                     local pedInFront = GetPedInFront()

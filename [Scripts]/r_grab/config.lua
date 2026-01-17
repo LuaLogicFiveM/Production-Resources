@@ -29,11 +29,11 @@ Config = {
     },
 
     CommandSystem = {
-        Enabled = true, -- Enable/disable the command-based interaction system. (WARNING! If you are using a system in the Target System, disable the command system)
-
+        Enabled = false, -- Enable/disable the command-based interaction system. (WARNING! If you are using a system in the Target System, disable the command system)
+        
         Grab = 'grab', -- Command to grab a person (modifiable in cl_utils.lua).
-        PutPlayer = 'grabvehicle', -- Command to put a person into a vehicle (modifiable in cl_utils.lua).
-        RemovePlayer = 'grabvehicler', -- Command to remove a person from a vehicle (modifiable in cl_utils.lua).
+        PutPlayer = 'putplayer', -- Command to put a person into a vehicle (modifiable in cl_utils.lua).
+        RemovePlayer = 'removeplayer', -- Command to remove a person from a vehicle (modifiable in cl_utils.lua).
     },
 
     -- Target System Configuration

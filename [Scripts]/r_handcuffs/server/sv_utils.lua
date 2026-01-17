@@ -7,8 +7,57 @@
 
 -- [[ Framework Part ]]
 
-ESX = exports["es_extended"]:getSharedObject()
-local ox_inventory = exports.ox_inventory
+if Config.Framework.ESX then
+    ESX = exports["es_extended"]:getSharedObject()
+
+    ESX.RegisterUsableItem('handcuffs', function(playerId)
+        TriggerClientEvent('r_handcuffs:client:execCuffs', playerId)
+    end)
+
+    ESX.RegisterUsableItem('handcuff_keys', function(playerId)
+        TriggerClientEvent('r_handcuffs:client:execUncuffs', playerId)
+    end)
+
+    ESX.RegisterUsableItem('rope', function(playerId)
+        TriggerClientEvent('r_handcuffs:client:execRope', playerId)
+    end)
+
+    ESX.RegisterUsableItem('grinder', function(playerId)
+        TriggerClientEvent('r_handcuffs:client:execGrinder', playerId)
+    end)
+
+    for _,v in pairs(Config.Framework.NeedItemToCutRope) do
+        ESX.RegisterUsableItem(v, function(playerId)
+            TriggerClientEvent('r_handcuffs:client:execUnrope', playerId)
+        end)
+    end
+end
+
+if Config.Framework.QBCore then
+    QBCore = exports['qb-core']:GetCoreObject()
+
+    QBCore.Functions.CreateUseableItem('handcuffs', function(source)
+        TriggerClientEvent('r_handcuffs:client:execCuffs', source)
+    end)
+
+    QBCore.Functions.CreateUseableItem('handcuff_keys', function(source)
+        TriggerClientEvent('r_handcuffs:client:execUncuffs', source)
+    end)
+
+    QBCore.Functions.CreateUseableItem('rope', function(source)
+        TriggerClientEvent('r_handcuffs:client:execRope', source)
+    end)
+
+    QBCore.Functions.CreateUseableItem('grinder', function(source)
+        TriggerClientEvent('r_handcuffs:client:execGrinder', source)
+    end)
+
+    for _,v in pairs(Config.Framework.NeedItemToCutRope) do
+        QBCore.Functions.CreateUseableItem(v, function(source)
+            TriggerClientEvent('r_handcuffs:client:execUnrope', source)
+        end)
+    end
+end
 
 if Config.Framework.OXInventory then
     exports('handcuffs', function(event, item, inventory, slot, data)
@@ -34,66 +83,87 @@ end
 
 -- [[ Event ]]
 
-local jobs = { ['sheriff'] = 0, ['sahp'] = 0 }
-
-local function hasJob(source)
-    local xPlayer = ESX.GetPlayerFromId(source)
-    return xPlayer and jobs[xPlayer.getJob().name] or false
-end
-
 RegisterNetEvent('r_handcuffs:server:cuffs', function(pid)
-    local src = source
-    local tgt = pid
-    if not hasJob(src) then return end
-    if not IsPlayerBehind(pid, src) then return end
+    if not IsPlayerBehind(pid, source) then return end
+    if Player(pid).state[Config.StatebagsName.handcuffs] or Player(pid).state[Config.StatebagsName.rope] then return end
+    if Player(source).state[Config.StatebagsName.handcuffs] or Player(source).state[Config.StatebagsName.rope] then return end
 
-    if Player(tgt).state[Config.StatebagsName.handcuffs] or Player(tgt).state[Config.StatebagsName.rope] then return end
-    if Player(src).state[Config.StatebagsName.handcuffs] or Player(src).state[Config.StatebagsName.rope] then return end
+    if Config.Framework.UniqueCuffs and Config.Framework.ESX then
+        local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.removeInventoryItem('handcuffs', 1)
+    elseif Config.Framework.UniqueCuffs and Config.Framework.QBCore then
+        exports['qb-inventory']:RemoveItem(source, 'handcuffs', 1, false)
+    elseif Config.Framework.UniqueCuffs and Config.Framework.OXInventory then
+        exports.ox_inventory:RemoveItem(source, 'handcuffs', 1)
+    end
 
-    ox_inventory:RemoveItem(src, 'handcuffs', 1)
-    ox_inventory:AddItem(src, 'handcuff_keys', 1)
-    exports.lorp_packed:SendLog('__**Cuff Logs**__', "\nSource Name: "..GetPlayerName(src).. "\nSource Identifiers: "..json.encode(GetPlayerIdentifiers(src)).. "\nTarget Name: "..GetPlayerName(tgt)..'\nTarget Identifiers: '..json.encode(GetPlayerIdentifiers(tgt)), 'https://ptb.discord.com/api/webhooks/1193124191340351488/ifh1J_EzZ7ZIHB_31nBAXTjXnEgK3NMZIVdAjxR4pK9PfGvuw4ZzYNP_V0ldZ9Gb3ptB')
-    CuffPlayer(src, tgt, 'cuffs')
+    if Config.Framework.ESX then
+        local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.addInventoryItem('handcuff_keys', 1)
+    elseif Config.Framework.QBCore then
+        exports['qb-inventory']:AddItem(source, 'handcuff_keys', 1, false, false)
+    elseif Config.Framework.OXInventory then
+        exports.ox_inventory:AddItem(source, 'handcuff_keys', 1)
+    end
+
+    CuffPlayer(source, pid, 'cuffs')
 end)
 
 RegisterNetEvent('r_handcuffs:server:uncuffs', function(pid)
-    local src = source
-    if not hasJob(src) then return end
-    if not IsPlayerBehind(pid, src) then return end
+    if not IsPlayerBehind(pid, source) then return end
     if not Player(pid).state[Config.StatebagsName.handcuffs] then return end
-    if Player(src).state[Config.StatebagsName.handcuffs] or Player(src).state[Config.StatebagsName.rope] then return end
+    if Player(source).state[Config.StatebagsName.handcuffs] or Player(source).state[Config.StatebagsName.rope] then return end
 
-    UncuffPlayer(src, pid, 'cuffs')
-    ox_inventory:AddItem(src, 'handcuffs', 1)
-    ox_inventory:RemoveItem(src, 'handcuff_keys', 1)
-    exports.lorp_packed:SendLog('__**Uncuff Logs**__', "\nSource Name: "..GetPlayerName(src).. "\nSource Identifiers: "..json.encode(GetPlayerIdentifiers(src)).. "\nTarget Name: "..GetPlayerName(pid)..'\nTarget Identifiers: '..json.encode(GetPlayerIdentifiers(pid)), 'https://ptb.discord.com/api/webhooks/1193124191340351488/ifh1J_EzZ7ZIHB_31nBAXTjXnEgK3NMZIVdAjxR4pK9PfGvuw4ZzYNP_V0ldZ9Gb3ptB')
+    local src = source
+
+    UncuffPlayer(source, pid, 'cuffs')
+
+    if Config.Framework.UniqueCuffs and Config.Framework.ESX then
+        local xPlayer = ESX.GetPlayerFromId(src)
+        xPlayer.addInventoryItem('handcuffs', 1)
+    elseif Config.Framework.UniqueCuffs and Config.Framework.QBCore then
+        exports['qb-inventory']:AddItem(src, 'handcuffs', 1, false, false)
+    elseif Config.Framework.UniqueCuffs and Config.Framework.OXInventory then
+        exports.ox_inventory:AddItem(src, 'handcuffs', 1)
+    end
+
+    if Config.Framework.ESX then
+        local xPlayer = ESX.GetPlayerFromId(src)
+        xPlayer.removeInventoryItem('handcuff_keys', 1)
+    elseif Config.Framework.QBCore then
+        exports['qb-inventory']:RemoveItem(src, 'handcuff_keys', 1, false)
+    elseif Config.Framework.OXInventory then
+        exports.ox_inventory:RemoveItem(src, 'handcuff_keys', 1)
+    end
 end)
 
 RegisterNetEvent('r_handcuffs:server:rope', function(pid)
-    local src = source
-    if not IsPlayerBehind(pid, src) then return end
+    if not IsPlayerBehind(pid, source) then return end
     if Player(pid).state[Config.StatebagsName.handcuffs] or Player(pid).state[Config.StatebagsName.rope] then return end
-    if Player(src).state[Config.StatebagsName.handcuffs] or Player(src).state[Config.StatebagsName.rope] then return end    
-    ox_inventory:RemoveItem(src, 'rope', 1)
+    if Player(source).state[Config.StatebagsName.handcuffs] or Player(source).state[Config.StatebagsName.rope] then return end
+
+    if Config.Framework.UniqueCuffs and Config.Framework.ESX then
+        local xPlayer = ESX.GetPlayerFromId(source)
+        xPlayer.removeInventoryItem('rope', 1)
+    elseif Config.Framework.UniqueCuffs and Config.Framework.QBCore then
+        exports['qb-inventory']:RemoveItem(source, 'rope', 1, false)
+    elseif Config.Framework.UniqueCuffs and Config.Framework.OXInventory then
+        exports.ox_inventory:RemoveItem(source, 'rope', 1)
+    end
 
     CuffPlayer(source, pid, 'rope')
-    exports.lorp_packed:SendLog('__**Rope Logs**__', "\nSource Name: "..GetPlayerName(src).. "\nSource Identifiers: "..json.encode(GetPlayerIdentifiers(src)).. "\nTarget Name: "..GetPlayerName(pid)..'\nTarget Identifiers: '..json.encode(GetPlayerIdentifiers(pid)), 'https://ptb.discord.com/api/webhooks/1193124191340351488/ifh1J_EzZ7ZIHB_31nBAXTjXnEgK3NMZIVdAjxR4pK9PfGvuw4ZzYNP_V0ldZ9Gb3ptB')
 end)
 
 RegisterNetEvent('r_handcuffs:server:unrope', function(pid)
-    local src = source
-    if not IsPlayerBehind(pid, src) then return end
+    if not IsPlayerBehind(pid, source) then return end
 
-    UncuffPlayer(src, pid, 'rope')
-    exports.lorp_packed:SendLog('__**Unrope Logs**__', "\nSource Name: "..GetPlayerName(src).. "\nSource Identifiers: "..json.encode(GetPlayerIdentifiers(src)).. "\nTarget Name: "..GetPlayerName(pid)..'\nTarget Identifiers: '..json.encode(GetPlayerIdentifiers(pid)), 'https://ptb.discord.com/api/webhooks/1193124191340351488/ifh1J_EzZ7ZIHB_31nBAXTjXnEgK3NMZIVdAjxR4pK9PfGvuw4ZzYNP_V0ldZ9Gb3ptB')
+    UncuffPlayer(source, pid, 'rope')
 end)
 
 RegisterNetEvent('r_handcuffs:server:grinder', function(pid)
-    local src = source
-    if not IsPlayerBehind(pid, src) then return end
+    if not IsPlayerBehind(pid, source) then return end
 
-    GrinderPlayer(src, pid)
-    exports.lorp_packed:SendLog('__**Grinder Logs**__', "\nSource Name: "..GetPlayerName(src).. "\nSource Identifiers: "..json.encode(GetPlayerIdentifiers(src)).. "\nTarget Name: "..GetPlayerName(pid)..'\nTarget Identifiers: '..json.encode(GetPlayerIdentifiers(pid)), 'https://ptb.discord.com/api/webhooks/1193124191340351488/ifh1J_EzZ7ZIHB_31nBAXTjXnEgK3NMZIVdAjxR4pK9PfGvuw4ZzYNP_V0ldZ9Gb3ptB')
+    GrinderPlayer(source, pid)
 end)
 
 -- [[ Functions ]]

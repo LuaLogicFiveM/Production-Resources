@@ -12,7 +12,3 @@ end)
 exports('IsPlayerRope', function(sid)
     return Player(sid).state[Config.StatebagsName.rope] or false
 end)
-
-exports('uncuffPlayer', function(sid)
-    UncuffPlayer(sid, sid, 'cuffs')
-end)
