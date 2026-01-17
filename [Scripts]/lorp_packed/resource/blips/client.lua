@@ -54,7 +54,7 @@
             description = 'A dirt racing track is an unpaved oval or circuit used for high-speed motorsport racing.',
         },
     },
-    {
+    --[[{
         label = 'Dirt Bike Track', ---@location 566
         coords = vec3(2726.6729, -704.3539, 12.8682),
         sprite = 792,
@@ -64,7 +64,7 @@
             title = '🏁 Dirt Bike Track',
             description = 'A dirt bike track is a rugged course designed for off-road motorcycle riding and racing.',
         },
-    },
+    },]]
     {
         label = 'Sheriff\'s Office', ---@location 098
         coords = vec3(2805.6375, 4738.3364, 48.6270),
@@ -453,8 +453,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 The Racers Edge',
-            description = 'Owner: Fin_Ghurmiaz',
+            title = '🔧 Hayes Auto Body Shop',
+            description = 'Owner: V3NOM',
         },
     },
     {

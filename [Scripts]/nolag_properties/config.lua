@@ -879,7 +879,12 @@ Config = {
     --- Toggle HUD
     ---@param toggle boolean true to show, false to hide
     ToggleHud = function(toggle)
-        exports["17mov_Hud"]:ToggleDisplay(toggle)
+        if toggle then
+            exports['InsaneScripts_hud']:showHud()
+        else
+            exports['InsaneScripts_hud']:hideHud()
+        end
+        --exports["17mov_Hud"]:ToggleDisplay(toggle)
     end,
 
     --- Lockpick function
