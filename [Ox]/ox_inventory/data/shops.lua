@@ -215,6 +215,7 @@ return {
             { name = 'lockpick', price = math.random(2500, 5000), currency = 'black_money' },
             { name = 'lockpick_door', price = math.random(2500, 5000), currency = 'black_money' },
             { name = 'lockpick_house', price = math.random(2500, 5000), currency = 'black_money' },
+            { name = 'bobby_pin', price = math.random(10000, 15000), currency = 'black_money' },
 		}, locations = {
 			vec3(412.0476, 315.0938, 103.1327),
 		},

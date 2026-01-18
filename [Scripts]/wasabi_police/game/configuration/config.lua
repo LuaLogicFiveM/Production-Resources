@@ -380,7 +380,7 @@ Config.handcuff = {                             -- Config in regards to cuffing
     cuffDeadPlayers = false,                    -- Allow cuffing dead players?
     skilledEscape = {
         enabled = true,                         -- Allow criminal to simulate resisting by giving them a chance to break free from cuffs via skill check
-        difficulty = { 'easy', 'easy', 'easy' } -- Options: 'easy' / 'medium' / 'hard' (Can be stringed along as they are in config)
+        difficulty = { 'easy', 'medium', 'hard' } -- Options: 'easy' / 'medium' / 'hard' (Can be stringed along as they are in config)
     },
     cuffItem = {                                -- Have handcuffs as usable item? (ITEM NAME MUST BE IN ITEMS / YOU MUST ADD YOURSELF)
         enabled = false,                        -- Enable a handcuff usable item?? Must be in items table/database with name defined below
@@ -388,10 +388,10 @@ Config.handcuff = {                             -- Config in regards to cuffing
         item = 'handcuffs'                      -- Item name (DONT FORGET to make sure its in your items)
     },
     lockpicking = {                             -- Lockpicking someone else out of handcuffs
-        enabled = false,                        -- Enable handcuffs to be able to be lockpicked off(MUST HAVE LOCKPICK ITEM IN ITEMS)
+        enabled = true,                        -- Enable handcuffs to be able to be lockpicked off(MUST HAVE LOCKPICK ITEM IN ITEMS)
         item = 'bobby_pin',
-        breakChance = 50,                       -- Chance of lockpick breaking if failed (Set to 100 for 100% or 0 for never breaking)
-        difficulty = { 'easy', 'easy', 'easy' } -- Options: 'easy' / 'medium' / 'hard' (Can be stringed along as they are in config)
+        breakChance = 80,                       -- Chance of lockpick breaking if failed (Set to 100 for 100% or 0 for never breaking)
+        difficulty = { 'easy', 'medium', 'medium' } -- Options: 'easy' / 'medium' / 'hard' (Can be stringed along as they are in config)
     }
 }
 
