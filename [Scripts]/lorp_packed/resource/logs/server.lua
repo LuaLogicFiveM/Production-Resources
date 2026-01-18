@@ -1,4 +1,5 @@
 --exports['lorp_packed']:SendLog(title, message, webhook)
+local ox_inventory = exports.ox_inventory
 
 function SendLog(title, message, webhook)
     local embedData = {
@@ -37,8 +38,8 @@ AddEventHandler('playerDropped', function(reason)
         local job = xPlayer.getJob()
         local charName = xPlayer.getName()
         local bank = xPlayer.getAccount('bank').money
-        local cash = exports.ox_inventory:Search(target, 'count', 'money')
-        local dirty = exports.ox_inventory:Search(target, 'count', 'black_money')
+        local cash = ox_inventory:GetItemCount(source, 'money')
+        local dirty = ox_inventory:GetItemCount(source, 'black_money')
         local ped = GetPlayerPed(source)
         local coords = ped and GetEntityCoords(ped) or 'N/A'
 
@@ -48,7 +49,7 @@ AddEventHandler('playerDropped', function(reason)
     end
 end)
 
-AddEventHandler('esx:playerLoaded', function (playerId, xPlayer, isNew)
+AddEventHandler('esx:playerLoaded', function(playerId, xPlayer, isNew)
     local target = playerId
     local name = GetPlayerName(target)
     local playerPing = GetPlayerPing(target)
@@ -57,8 +58,8 @@ AddEventHandler('esx:playerLoaded', function (playerId, xPlayer, isNew)
     local job = xPlayer.getJob()
     local charName = xPlayer.getName()
     local bank = xPlayer.getAccount('bank').money
-    local cash = exports.ox_inventory:Search(target, 'count', 'money')
-    local dirty = exports.ox_inventory:Search(target, 'count', 'black_money')
+    local cash = ox_inventory:GetItemCount(target, 'money')
+    local dirty = ox_inventory:GetItemCount(target, 'black_money')
 
     SendLog('__**Join Logs**__', "### Identifier\n**"..xPlayer.identifier.. "**\n### Name \n**"..name.. " ("..target..")**\n### Character Name\n**"..charName.."**\n### Character Job\n**"..job.label.."**\n### Character Job Rank\n**"..job.grade_label.." ("..job.grade..")**\n### Cash\n**"..cash.."**\n### Bank\n**"..bank.."**\n### Dirty Cash\n**"..dirty.."**"..bank.."**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**\n### Ping\n**"..playerPing.. "**", 'https://ptb.discord.com/api/webhooks/1173404494411878440/cW-T0XXoKaxglcblnXg7urTfKUYFTd2kyX8E4JmE44DSTXCng3gxWGtVs9R76ox1RnCu')
 end)

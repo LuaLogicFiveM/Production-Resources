@@ -3,3 +3,8 @@
 /ReaperV4/logs
 *.txt
 *.json
+*.meta
+*.ydr
+*.yft
+*.ytd
+*.ydd
