@@ -75,7 +75,7 @@ local hookId_open = ox_inventory:registerHook('openInventory', function(payload)
         return false, ReaperV4:InvokeSPlayer(payload.source, 'addDetection', 'ban', 'Attempted to open player inventory [CD-1]')
     end
 
-    SendLog('Player Inventory Opened', '**[Source Name]:** '..GetPlayerName(payload.source)..' ('..payload.source..')\n **[Source Discord]:** <@'..GetDiscordIdentifier(payload.source) or 'Console'..'>  \n **[Target Name]:** '..GetPlayerName(payload.inventoryId)..' ('..payload.inventoryId..')\n **[Target Discord]:** <@'..GetDiscordIdentifier(payload.inventoryId)..'>\n **[Data]:** '..json.encode(payload), 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4')
+    exports.lorp_packed:SendLog('Player Inventory Opened', '**[Source Name]:** '..GetPlayerName(payload.source)..' ('..payload.source..')\n **[Source Discord]:** <@'..GetDiscordIdentifier(payload.source) or 'Console'..'>  \n **[Target Name]:** '..GetPlayerName(payload.inventoryId)..' ('..payload.inventoryId..')\n **[Target Discord]:** <@'..GetDiscordIdentifier(payload.inventoryId)..'>\n **[Data]:** '..json.encode(payload), 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4')
 end, {
     typeFilter = {['player'] = true}
 })
@@ -84,10 +84,10 @@ local hookId_swap = ox_inventory:registerHook('swapItems', function(payload)
     if payload.toInventory ~= payload.fromInventory then
         if payload.count > DROP_LIMIT then
             if payload.toSlot and (payload.toSlot.count or payload.toSlot) > DROP_LIMIT then
-                SendLog('Player Inventory Flag 1', '**[Source Name]:** '..GetPlayerName(payload.source)..' ('..payload.source..')  \n **[Source Discord]:** <@'..GetDiscordIdentifier(payload.source) or 'Console'..'>  \n **[Target Name]:** '..GetPlayerName(payload.inventoryId)..' ('..payload.inventoryId..')\n **[Target Discord]:** <@'..GetDiscordIdentifier(payload.inventoryId)..'>\n **[Item]:** '..payload.fromSlot.name..'\n **[Item Count]:** '..payload.fromSlot.count..'\n **[Data]:** '..json.encode(payload), 'https://discord.com/api/webhooks/1426030730034811040/28zCuiFSEx4kj_rX2eIiFYFbi6yj9azR8RAFLZTk3URo9bfdDtOhaa8O5uw9kizTmyXH')
+                exports.lorp_packed:SendLog('Player Inventory Flag 1', '**[Source Name]:** '..GetPlayerName(payload.source)..' ('..payload.source..')  \n **[Source Discord]:** <@'..GetDiscordIdentifier(payload.source) or 'Console'..'>  \n **[Target Name]:** '..GetPlayerName(payload.inventoryId)..' ('..payload.inventoryId..')\n **[Target Discord]:** <@'..GetDiscordIdentifier(payload.inventoryId)..'>\n **[Item]:** '..payload.fromSlot.name..'\n **[Item Count]:** '..payload.fromSlot.count..'\n **[Data]:** '..json.encode(payload), 'https://discord.com/api/webhooks/1426030730034811040/28zCuiFSEx4kj_rX2eIiFYFbi6yj9azR8RAFLZTk3URo9bfdDtOhaa8O5uw9kizTmyXH')
                 return false
             end
-            SendLog('Player Inventory Flag 2', '**[Source Name]:** '..GetPlayerName(payload.source)..' ('..payload.source..')  \n **[Source Discord]:** <@'..GetDiscordIdentifier(payload.source) or 'Console'..'>  \n **[Target Name]:** '..GetPlayerName(payload.inventoryId)..' ('..payload.inventoryId..')\n **[Target Discord]:** <@'..GetDiscordIdentifier(payload.inventoryId)..'>\n **[Item]:** '..payload.fromSlot.name..'\n **[Item Count]:** '..payload.fromSlot.count..'\n **[Data]:** '..json.encode(payload), 'https://discord.com/api/webhooks/1426030730034811040/28zCuiFSEx4kj_rX2eIiFYFbi6yj9azR8RAFLZTk3URo9bfdDtOhaa8O5uw9kizTmyXH')
+            exports.lorp_packed:SendLog('Player Inventory Flag 2', '**[Source Name]:** '..GetPlayerName(payload.source)..' ('..payload.source..')  \n **[Source Discord]:** <@'..GetDiscordIdentifier(payload.source) or 'Console'..'>  \n **[Target Name]:** '..GetPlayerName(payload.inventoryId)..' ('..payload.inventoryId..')\n **[Target Discord]:** <@'..GetDiscordIdentifier(payload.inventoryId)..'>\n **[Item]:** '..payload.fromSlot.name..'\n **[Item Count]:** '..payload.fromSlot.count..'\n **[Data]:** '..json.encode(payload), 'https://discord.com/api/webhooks/1426030730034811040/28zCuiFSEx4kj_rX2eIiFYFbi6yj9azR8RAFLZTk3URo9bfdDtOhaa8O5uw9kizTmyXH')
             return false
         end
     end
@@ -129,7 +129,7 @@ local function check_players()
                     if v.money >= MAX_MONEY[v.name] then
                         Wait(1000)
                         local target = xPlayer.source
-                        SendLog('Money Limit Exceeded', ('```Account: %s | Amount: %s | Player: %s (ID: %s)```'):format(v.label, v.money, GetPlayerName(target), target), LOG_WEBHOOK)
+                        exports.lorp_packed:SendLog('Money Limit Exceeded', ('```Account: %s | Amount: %s | Player: %s (ID: %s)```'):format(v.label, v.money, GetPlayerName(target), target), LOG_WEBHOOK)
                         ReaperV4:InvokeSPlayer(target, 'addDetection', 'ban', 'Attempted to Spawn Money - [CD-2]')
                     end
                 end
