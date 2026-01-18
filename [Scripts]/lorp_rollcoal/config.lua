@@ -15,6 +15,14 @@ Config.defaultParticleDuration          = -1            -- after how long the pa
 
 Config.useWhitelistedOnly               = true
 Config.whitelist                        = {
+    ["tremburd5th"] = {
+        sizeScale = "DEFAULT",
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
     ["drewscostal"] = {
         sizeScale = "DEFAULT",
         engineUpgradeRequired = "DEFAULT",

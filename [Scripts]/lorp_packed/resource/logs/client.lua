@@ -1,11 +1,26 @@
+local ignored_models = {
+    ['kosatka'] = true,
+    ['tug'] = true,
+}
+
+local limitations = {
+    mass = 5000,
+    force = 0.7,
+}
+
 lib.onCache('vehicle', function(vehicle)
     if vehicle then
         local vehicleMass = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fMass')
-        local vehicleForce = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fInitialDriveForce')
-        if vehicleMass > 8000 and vehicleForce > 0.8 then
+        local vehicleDriveForce = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fInitialDriveForce')
+        local vehicleBrakeForce = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fBrakeForce')
+
+        if vehicleMass > limitations.mass and limitations.force > 0.7 then
             local gameName = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
-            local data = {force = vehicleForce, mass = vehicleMass, model = gameName}
-            TriggerServerEvent('lorp_packed:server:handling', data)
+
+            if not ignored_models[gameName] then
+                local data = {driveForce = vehicleDriveForce, brakeForce = vehicleBrakeForce, mass = vehicleMass, model = gameName}
+                TriggerServerEvent('lorp_packed:server:handling', data)
+            end
         end
     end
 end)
