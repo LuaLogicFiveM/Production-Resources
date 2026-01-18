@@ -1,4 +1,3 @@
-/\[Assets\]
 /ReaperV4/cache
 /ReaperV4/logs
 *.txt
@@ -8,3 +7,13 @@
 *.yft
 *.ytd
 *.ydd
+*.ycd
+*.ymt
+*.ymap
+*.ytyp
+*.ybn
+*.ymf
+*.rel
+*.nametable
+*.awc
+*.ini
