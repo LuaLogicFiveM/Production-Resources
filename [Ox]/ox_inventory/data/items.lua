@@ -3833,7 +3833,7 @@ return {
 		}
 	},
 
-	["grinder"] = {
+	--[[["grinder"] = {
 		label = "Grinder",
 		weight = 1,
 		stack = true,
@@ -3888,7 +3888,7 @@ return {
 		server = {
 			export = 'r_handcuffs.knife'
 		}
-	},
+	},]]
 
 	-- leo end
 

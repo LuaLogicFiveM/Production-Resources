@@ -28,11 +28,11 @@ end)
 
 AddEventHandler('wasabi_bridge:onPlayerSpawn', function()
     isDead = false
-    --[[if escorted.active then
+    if escorted.active then
         TriggerServerEvent('wasabi_police:escortPlayerStop', escorted.pdId, true)
         escorted.active = nil
         escorted.pdId = nil
-    end]]
+    end
     if Config.UseRadialMenu then
         DisableRadial(false)
     end
@@ -44,11 +44,11 @@ AddEventHandler('wasabi_bridge:onPlayerLogout', function()
 end)
 
 AddEventHandler('wasabi_bridge:onPlayerDeath', function()
-    --    isDead = true
+    isDead = true
     --[[if RadarPostProp and DoesEntityExist(RadarPostProp) then
         DeleteEntity(RadarPostProp)
         RadarPostProp = nil
-    end
+    end]]
     if isCuffed and not Config.handcuff.cuffDeadPlayers then
         uncuffed()
     end
@@ -60,7 +60,7 @@ AddEventHandler('wasabi_bridge:onPlayerDeath', function()
         TriggerServerEvent('wasabi_police:escortPlayerStop', escorted.pdId, true)
         escorted.active = nil
         escorted.pdId = nil
-    end]]
+    end
     if Config.UseRadialMenu then
         DisableRadial(true)
     end
@@ -69,7 +69,7 @@ end)
 --PersistentCuff and update PoliceCount
 RegisterNetEvent('wasabi_bridge:playerLoaded', function()
     playerLoaded = true
-    --PersistentCuffCheck()
+    PersistentCuffCheck()
     --CheckJailTime()
     --SpeedTraps = InitializeSpeedTraps()
     CCTVCameras = InitializeCCTVCameras()
@@ -192,7 +192,7 @@ AddEventHandler('wasabi_police:spawnVehicle', function(data)
     end
 end)
 
---[[AddEventHandler('gameEventTriggered', function(event, data)
+AddEventHandler('gameEventTriggered', function(event, data)
     if event ~= 'CEventNetworkEntityDamage' then return end
     local playerPed = wsb.cache.ped
     local victim, victimDied = data[1], data[4]
@@ -205,7 +205,7 @@ end)
         escorting.active = nil
         escorting.target = nil
     end
-end)]]
+end)
 
 RegisterNetEvent('wasabi_police:trackPlayer', function()
     local job, grade = wsb.hasGroup(Config.policeJobs)
@@ -283,7 +283,7 @@ RegisterNetEvent('wasabi_police:removeTrackedPlayer', function(target)
     end
 end)
 
---[[RegisterNetEvent('wasabi_police:arrested', function(pdId, type)
+RegisterNetEvent('wasabi_police:arrested', function(pdId, type)
     isBusy = true
     local escaped
     local pdPed = GetPlayerPed(GetPlayerFromServerId(pdId))
@@ -314,10 +314,10 @@ RegisterNetEvent('wasabi_police:arrest', function()
     TaskPlayAnim(wsb.cache.ped, 'mp_arrest_paired', 'cop_p2_back_left', 8.0, -8.0, 3400, 33, 0, false, false, false)
     Wait(3000)
     isBusy = false
-end)]]
+end)
 
 local handCuffing = false
---[[RegisterNetEvent('wasabi_police:handcuffPlayer', function(args)
+RegisterNetEvent('wasabi_police:handcuffPlayer', function(args)
     if handCuffing then return end
     handCuffing = true
     local approved = IsTriggerApproved(GetInvokingResource())
@@ -348,7 +348,7 @@ local handCuffing = false
     SetTimeout(7000, function()
         handCuffing = false
     end)
-end)]]
+end)
 
 RegisterNetEvent('wasabi_police:uncuffAnim', function(target)
     local targetPed = GetPlayerPed(GetPlayerFromServerId(target))
@@ -390,17 +390,17 @@ RegisterNetEvent('wasabi_police:lockpickHandcuffs', function()
     ClearPedTasks(wsb.cache.ped)
 end)
 
---[[RegisterNetEvent('wasabi_police:uncuff', function()
+RegisterNetEvent('wasabi_police:uncuff', function()
     uncuffed()
-end)]]
+end)
 
---[[RegisterNetEvent('wasabi_police:stopEscorting', function(targetId)
+RegisterNetEvent('wasabi_police:stopEscorting', function(targetId)
     if not escorting.active or escorting.target ~= targetId then return end
     escorting.active = nil
     escorting.target = nil
-end)]]
+end)
 
---[[AddEventHandler('wasabi_police:escortPlayer', function()
+AddEventHandler('wasabi_police:escortPlayer', function()
     local approved = IsTriggerApproved(GetInvokingResource())
     if not approved then return end
     local coords = GetEntityCoords(wsb.cache.ped)
@@ -410,7 +410,7 @@ end)]]
     else
         escortPlayer(GetPlayerServerId(player))
     end
-end)]]
+end)
 
 AddEventHandler('wasabi_police:lockpickVehicle', function()
     local coords = GetEntityCoords(wsb.cache.ped)
@@ -470,7 +470,7 @@ AddEventHandler('wasabi_police:weaponLicense', function(data)
     GiveWeaponLicense(data.args and data.args.id or data.id)
 end)
 
---[[RegisterNetEvent('wasabi_police:escortedPlayer', function(pdId)
+RegisterNetEvent('wasabi_police:escortedPlayer', function(pdId)
     if isCuffed or deathCheck(GetPlayerServerId(PlayerId())) then
         escorted.active = not escorted.active
         escorted.pdId = pdId
@@ -480,9 +480,9 @@ end)
 RegisterNetEvent('wasabi_police:setEscort', function(targetId)
     escorting.active = not escorting.active
     escorting.target = targetId
-end)]]
+end)
 
---[[RegisterNetEvent('wasabi_police:seizeCash', function()
+RegisterNetEvent('wasabi_police:seizeCash', function()
     if not wsb.hasGroup(Config.policeJobs) then return end
     local coords = GetEntityCoords(wsb.cache.ped)
     local target = wsb.getClosestPlayer(vec3(coords.x, coords.y, coords.z), 5.0, false)
@@ -491,9 +491,9 @@ end)]]
     else
         TriggerServerEvent('wasabi_police:seizeCash', GetPlayerServerId(target))
     end
-end)]]
+end)
 
---[[RegisterNetEvent('wasabi_police:putInVehicle', function()
+RegisterNetEvent('wasabi_police:putInVehicle', function()
     if isCuffed or deathCheck(GetPlayerServerId(PlayerId())) then
         if escorted.active then
             escorted.active = nil
@@ -564,7 +564,7 @@ AddEventHandler('wasabi_police:outVehiclePlayer', function()
     if IsPedSittingInAnyVehicle(wsb.cache.ped) then return end -- to prevent someone in a vehicle to remove target player from the vehicle
 
     TriggerServerEvent('wasabi_police:outVehiclePlayer', GetPlayerServerId(player))
-end)]]
+end)
 
 AddEventHandler('wasabi_police:vehicleInteractions', function()
     vehicleInteractionMenu()
@@ -816,7 +816,7 @@ RegisterNetEvent('wasabi_police:releasePlayerFromEscort', function(pdID)
 end)
 
 -- Escorting loop
---[[CreateThread(function()
+CreateThread(function()
     local alrEscorting, textUI
     while true do
         local sleep = 1500
@@ -866,7 +866,7 @@ end)
                 TriggerEvent('wasabi_bridge:notify', Strings.cant_wield, Strings.cant_wield_desc, 'error')
                 SetCurrentPedWeapon(wsb.cache.ped, `WEAPON_UNARMED`, false)
             end
-            if IsControlJustReleased(0, 38) or IsDisabledControlJustReleased(0, 38) or IsPedRagdoll(wsb.cache.ped) then
+            if IsControlJustReleased(0, 47) or IsDisabledControlJustReleased(0, 47) or IsPedRagdoll(wsb.cache.ped) then
                 alrEscorting = nil
                 escorting.active = nil
                 ClearPedTasks(wsb.cache.ped)
@@ -892,10 +892,10 @@ end)
         end
         Wait(sleep)
     end
-end)]]
+end)
 
 -- Being escorted loop
---[[CreateThread(function()
+CreateThread(function()
     local alrEscorted
     while true do
         local sleep = 1500
@@ -964,7 +964,7 @@ end)]]
         end
         Wait(sleep)
     end
-end)]]
+end)
 
 -- GSR thread
 if Config.GSR.enabled then
@@ -1104,8 +1104,8 @@ CreateThread(function()
         }]]
         options[#options + 1] = {
             num = #options + 1,
-            --args = { type = 'hard' },
-            event = 'r_handcuffs:client:execCuffs',
+            args = { type = 'hard' },
+            event = 'wasabi_police:handcuffPlayer',
             icon = 'fas fa-bandage',
             label = Strings.handcuff_hard_player,
             canInteract = function()
@@ -1115,10 +1115,10 @@ CreateThread(function()
             job = pdJobs,
             groups = pdJobs,
         }
-        --[[options[#options + 1] = {
+        options[#options + 1] = {
             num = #options + 1,
             args = { type = 'soft' },
-            event = 'r_handcuffs:client:execCuffs',
+            event = 'wasabi_police:handcuffPlayer',
             icon = 'fas fa-bandage',
             label = Strings.handcuff_soft_player,
             canInteract = function()
@@ -1127,10 +1127,10 @@ CreateThread(function()
             end,
             job = pdJobs,
             groups = pdJobs,
-        }]]
+        }
         options[#options + 1] = {
             num = #options + 1,
-            event = 'r_grab:client:grabPlayer',
+            event = 'wasabi_police:escortPlayer',
             icon = 'fas fa-hand-holding-hand',
             label = Strings.escort_player,
             canInteract = function()
@@ -1142,7 +1142,7 @@ CreateThread(function()
         }
         options[#options + 1] = {
             num = #options + 1,
-            event = 'r_grab:client:putPlayerInVehicle',
+            event = 'wasabi_police:inVehiclePlayer',
             icon = 'fas fa-arrow-right-to-bracket',
             label = Strings.put_in_vehicle,
             canInteract = function()
@@ -1154,7 +1154,7 @@ CreateThread(function()
         }
         options[#options + 1] = {
             num = #options + 1,
-            event = 'r_grab:client:removePlayerFromVehicle',
+            event = 'wasabi_police:outVehiclePlayer',
             icon = 'fas fa-arrow-right-from-bracket',
             label = Strings.take_out_vehicle,
             canInteract = function()
@@ -2185,8 +2185,8 @@ end
 
 AddEventHandler('onResourceStart', function(resourceName)
     if GetCurrentResourceName() ~= resourceName or not wsb?.playerLoaded then return end
-    --[[PersistentCuffCheck()
-    if Config.Jail.BuiltInPrison.enabled and Config.Jail.BuiltInPrison.persistentJail then
+    PersistentCuffCheck()
+    --[[if Config.Jail.BuiltInPrison.enabled and Config.Jail.BuiltInPrison.persistentJail then
         CheckJailTime()
     end]]
     if not Config.UseRadialMenu then return end
@@ -2536,7 +2536,7 @@ if wsb.framework == 'qb' then -- QBCore Compatibility
         end
     end)
 
-    --[[RegisterNetEvent('police:client:CuffPlayerSoft', function()
+    RegisterNetEvent('police:client:CuffPlayerSoft', function()
         TriggerEvent('wasabi_police:handcuffPlayer')
     end)
 
@@ -2554,7 +2554,7 @@ if wsb.framework == 'qb' then -- QBCore Compatibility
 
     RegisterNetEvent('police:client:SearchPlayer', function()
         TriggerEvent('wasabi_police:searchPlayer')
-    end)]]
+    end)
 
     -- QB-Radialmenu Object Spawn compatibility
     if GetResourceState('qb-radialmenu') == 'started' then

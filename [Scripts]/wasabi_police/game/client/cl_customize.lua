@@ -305,36 +305,28 @@ openJobMenu = function()
             event = 'wasabi_police:sendToJail',
         }
     end
-    --[[Options[#Options + 1] = {
+    Options[#Options + 1] = {
         title = Strings.handcuff_soft_player,
         description = Strings.handcuff_soft_player_desc,
         icon = 'hands-bound',
         arrow = false,
         args = { type = 'soft' },
         event = 'wasabi_police:handcuffPlayer',
-    }]]
+    }
     Options[#Options + 1] = {
         title = Strings.handcuff_hard_player,
         description = Strings.handcuff_hard_player_desc,
         icon = 'hands-bound',
         arrow = false,
-        --args = { type = 'hard' },
-        event = 'r_handcuffs:client:execCuffs',
-    }
-    Options[#Options + 1] = {
-        title = 'Uncuff Player',
-        description = 'Removed handcuffs from player',
-        icon = 'hands-bound',
-        arrow = false,
-        --args = { type = 'hard' },
-        event = 'r_handcuffs:client:execUncuffs',
+        args = { type = 'hard' },
+        event = 'wasabi_police:handcuffPlayer',
     }
     Options[#Options + 1] = {
         title = Strings.escort_player,
         description = Strings.escort_player_desc,
         icon = 'hand-holding-hand',
         arrow = false,
-        event = 'r_grab:client:grabPlayer',
+        event = 'wasabi_police:escortPlayer',
     }
     if Config.GSR.enabled then
         Options[#Options + 1] = {
@@ -350,14 +342,14 @@ openJobMenu = function()
         description = Strings.put_in_vehicle_desc,
         icon = 'arrow-right-to-bracket',
         arrow = false,
-        event = 'r_grab:client:putPlayerInVehicle',
+        event = 'wasabi_police:inVehiclePlayer',
     }
     Options[#Options + 1] = {
         title = Strings.take_out_vehicle,
         description = Strings.take_out_vehicle_desc,
         icon = 'arrow-right-from-bracket',
         arrow = false,
-        event = 'r_grab:client:removePlayerFromVehicle',
+        event = 'wasabi_police:outVehiclePlayer',
     }
     Options[#Options + 1] = {
         title = Strings.vehicle_interactions,

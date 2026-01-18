@@ -6,6 +6,7 @@ local ignored_models = {
 local limitations = {
     mass = 5000,
     force = 0.7,
+    inertia = 1.0,
 }
 
 lib.onCache('vehicle', function(vehicle)
@@ -13,8 +14,9 @@ lib.onCache('vehicle', function(vehicle)
         local vehicleMass = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fMass')
         local vehicleDriveForce = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fInitialDriveForce')
         local vehicleBrakeForce = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fBrakeForce')
+        local vehicleInertia = GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fDriveInertia')
 
-        if vehicleMass > limitations.mass and limitations.force > 0.7 then
+        if vehicleMass > limitations.mass or vehicleDriveForce > limitations.force or vehicleInertia > limitations.inertia then
             local gameName = GetDisplayNameFromVehicleModel(GetEntityModel(vehicle))
 
             if not ignored_models[gameName] then
