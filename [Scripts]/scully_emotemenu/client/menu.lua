@@ -12,7 +12,7 @@ local mainMenuOptions = {
 }
 
 local preview = require 'client.modules.preview'
-local handcuffs = exports['r_handcuffs']
+--local handcuffs = exports['r_handcuffs']
 
 ---Close the emote menu
 function CloseMenu()
@@ -28,7 +28,7 @@ exports('closeMenu', CloseMenu)
 function ToggleMenu()
     if PlayerState.isLimited then return end
 
-    if handcuffs:IsPlayerCuffed(cache.serverId) or handcuffs:IsPlayerRope(cache.serverId) then return end
+    --if handcuffs:IsPlayerCuffed(cache.serverId) or handcuffs:IsPlayerRope(cache.serverId) then return end
 
     local currentMenu = lib.getOpenMenu()
 
