@@ -40,7 +40,7 @@ function WSB.skillCheck(data)
     if not data.keys then data.keys = 'e' end
 
     if uikitFound then
-        return exports.wasabi_uikit:SkillCheck(data.difficulty, type(data.keys) == 'table' and data.keys or {data.keys}) or false
+        return exports.wasabi_uikit:SkillCircle(data.difficulty, type(data.keys) == 'table' and data.keys or {data.keys}) or false
     end
 
     return SkillCheck(data.difficulty, data.keys, data.color) or false

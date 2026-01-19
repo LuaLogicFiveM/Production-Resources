@@ -212,8 +212,19 @@ Configuration = {
         ['Empty Sim Card'] = "simcard"
     },
 }
-
 Locales = {
+    --- 3rd Eye Locales
+    ['FRAUD_SELL_CHECK_3RD_EYE'] = "Cash in Check",
+    ['FRAUD_SELL_SIM_3RD_EYE'] = "Sell Sim Card",
+    ['FRAUD_SELL_CLONES_3RD_EYE'] = "Sell Clones",
+    ['FRAUD_SHOP_3RD_EYE'] = "Open Shop",
+
+    --- Text UI Locales
+    ['FRAUD_SELL_CHECK_TEXTUI'] = "[E] Cash Check",
+    ['FRAUD_SELL_SIMS_TEXTUI'] = "[E] Sell Sim Card",
+    ['FRAUD_SELL_CLONE_TEXTUI'] = "[G] Insert Clone",
+    ['FRAUD_OPEN_TEXTUI'] = "[E] Open Shop",
+
     ['FRAUD_INVALID_JOB'] = "You don't have the required job.",
     ['FRAUD_LAPTOP_OUT'] = "You already have a laptop out.",
     ['FRAUD_NO_PRINTER'] = "You don't have a printer connected.",
@@ -244,7 +255,7 @@ Locales = {
     ['FRAUD_SELL_NO_POLICE'] = "There are not enough police officers online to sell this product.",
     ['FRAUD_STORE_PURCHASE_SUCCESSFUL'] = "You purchased %sx %s(s)!",
     ['FRAUD_STORE_PURCHASE_FAIL'] = "You don't have enough money for this purchase",
-    ['FRAUD_INTERACTION_SUCCESS'] = "You've received 1x %s!",
+    ['FRAUD_INTERACTION_SUCCESS'] = "You've received %dx %s!",
     ['FRAUD_PROGRESS_CALLING'] = "Calling Phone Carrier",
     ['FRAUD_PROGRESS_INSERTING_CHECK'] = "Inserting check into printer",
     ['FRAUD_PROGRESS_SWIPING_CARD'] = "Swiping card",

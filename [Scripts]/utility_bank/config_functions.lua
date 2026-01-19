@@ -93,7 +93,7 @@ Config.Functions = {
     StartAlarm = function(bankId)
         local bankCoords = Config.Banks[bankId].interior.pos
         TriggerEvent('cd_dispatch:AddNotification', {
-            job_table = {'sheriff', 'sahp'},
+            job_table = {'sheriff', 'sahp', 'police'},
             coords = bankCoords,
             title = '10-35 - Bank Heist',
             message = 'Person reported robbing a bank',

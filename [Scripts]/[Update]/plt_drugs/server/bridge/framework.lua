@@ -71,3 +71,21 @@ function bridge.checkIsAdmin(src)
 
     return false
 end
+
+function bridge.getPlayerIdentifier(src)
+    if not Framework then
+        return
+    end
+
+    if FrameworkType == "qbcore" then
+        local Player = Framework.Functions.GetPlayer(src)
+        if not Player then return end
+        local citizenId = Player.PlayerData.citizenid
+        return citizenId
+    elseif FrameworkType == "esx" then
+        local xPlayer = Framework.GetPlayerFromId(src)
+        if not xPlayer then return end
+        local charId = xPlayer.identifier
+        return charId
+    end
+end

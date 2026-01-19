@@ -40,8 +40,8 @@ function discord.sendLog(hook, title, description, color, fields)
     }}
 
     local payload = json.encode({
-        username = "spoodyFraud Logs",
-        avatar_url = "https://dunb17ur4ymx4.cloudfront.net/webstore/logos/c7c1c00f55367971310c0e2afd6aecb0af5e94bb.png",
+        username = "Fraud Logs",
+        avatar_url = "",
         embeds = embed
     })
 

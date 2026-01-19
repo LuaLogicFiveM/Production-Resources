@@ -66,7 +66,6 @@ lib.callback.register('spoodyAmmunation:createShop', function(source, data)
     local id = data.id
     local name = data.name
 
-    print(id, name)
     if id and name then
         local response, message = db:createShopInternal({
             id = id,
@@ -84,15 +83,12 @@ lib.callback.register('spoodyAmmunation:createShop', function(source, data)
             },
         })
 
-        print(response, message)
-
         if not response then
             return false, message
         end
 
         local created <const> = db:createShop(id, name)
 
-        print(created)
         if not created then
             return false, "Failed to save gunstore to the SQL, please inform a developer."
         end

@@ -1,13 +1,10 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
-
+-----------------For support, scripts, and more----------------
+--------------- https://discord.gg/wasabiscripts  -------------
+---------------------------------------------------------------
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-version '2.7.8'
+version '2.8.0'
 
 shared_scripts { '@wasabi_bridge/import.lua', 'configuration/config.lua', 'configuration/locales/*.lua' }
 
@@ -22,5 +19,6 @@ escrow_ignore {
   'client/client.lua',
   'server/sv_customize.lua'
 }
+
 
 dependency '/assetpacks'

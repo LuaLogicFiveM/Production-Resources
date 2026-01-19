@@ -42,12 +42,12 @@ Config.lockNPCVehicles   = false                                                
 
 Config.robPedKeys        = {                                                                   -- Ability to rob peds at gun point for their keys
     enabled = false,                                                                            -- Enable robbing peds for their car keys?
-    timeToRob = 4,                                                                             -- Duration(In seconds) to rob ped when approaching at gunpoint
+    timeToRob = 5,                                                                             -- Duration(In seconds) to rob ped when approaching at gunpoint
     label = 'Stealing Keys. . .'
 }
 
 Config.notifyPolice      = {
-    enabled = true,      -- Chance of notifying police when lockpicking, hotwiring, and/or robbing peds
+    enabled = false,      -- Chance of notifying police when lockpicking, hotwiring, and/or robbing peds
     hotwire = 50,        -- Chance % of notifying police when hotwiring (50 = 50% chance)
     lockpick = 30,       -- Chance % of notifying police when lockpicking (30 = 30% chance)
     robPed = 70,         -- Chance % of notifying police when robbing ped (70 = 70% chance)
@@ -61,8 +61,9 @@ Config.notifyPolice      = {
         duration = 20    -- Duration of blip on map (In seconds)
     },
     policeJobs = {       -- Jobs that are considered police to notify
+        'police',
         'sheriff',
-        'sahp'
+        --      'highway'
     }
 }
 
@@ -83,16 +84,14 @@ Config.givingKeys        = { -- Giving keys options (only with metadata keys dis
     enabled = true,          -- Enable giving keys feature?
     command = 'givekey',     -- Desired command to give key
     removeKey = true,        -- Remove the key to vehicle from person giving key
-    menuPosition =
-    'bottom-right'           -- Choose where player selection menu is positioned. Options : 'top-left' or 'top-right' or 'bottom-left' or 'bottom-right'
+    menuPosition = 'bottom-right'           -- Choose where player selection menu is positioned. Options : 'top-left' or 'top-right' or 'bottom-left' or 'bottom-right'
 }
 
 Config.manageKeys        = { -- Manage keys in hand via menu (only with metadata keys disabled)
     enabled = true,          -- Enable this feature
     command = 'managekeys',  -- Command to open menu for opening key management menu (Set to false if not desired)
     allowRemove = true,      -- Allow removal of keys that were given
-    menuPosition =
-    'bottom-right'           -- Choose where key selection menu is positioned. Options : 'top-left' or 'top-right' or 'bottom-left' or 'bottom-right'
+    menuPosition = 'bottom-right'           -- Choose where key selection menu is positioned. Options : 'top-left' or 'top-right' or 'bottom-left' or 'bottom-right'
 }
 
 Config.noKeysNeeded      = { -- Vehicle models that don't require keys
@@ -108,14 +107,11 @@ Config.noKeysNeeded      = { -- Vehicle models that don't require keys
 }
 
 Config.WhitelistedJobs   = { -- Jobs that don't require keys
-    --'gdsp',
-    --  'sheriff',
-    -- Add more as desired
+    --'police',
 }
 
 Config.WhitelistedPlates = { -- Vehicle plates that don't require keys
     --'ADMIN',
-    -- Add more plates as desired
 }
 
 Config.hotwire           = {  -- Hotwire options
@@ -152,8 +148,8 @@ Config.hotwire           = {  -- Hotwire options
 }
 
 Config.lockpick          = {
-    enabled = true,    -- Enable lockpick functionality?
-    item = 'lockpick_car',
+    enabled = false,    -- Enable lockpick functionality?
+    item = 'lockpick',
     chanceOfLoss = 50, -- Chance of bending lockpick and losing item
     difficulties = {
         -- Comment out if you want no lockpick for category(Like cycles below)

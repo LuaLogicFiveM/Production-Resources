@@ -1,8 +1,3 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 -----------------For support, scripts, and more----------------
 --------------- https://discord.gg/wasabiscripts  -------------
 ---------------------------------------------------------------
@@ -10,7 +5,7 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-version '1.6.5'
+version '1.6.6'
 
 ui_page 'ui/index.html'
 files { 'ui/*', 'ui/**/*' }
@@ -45,6 +40,8 @@ escrow_ignore {
     'inventories/**/*.lua',
     'customize/client/*.lua'
 }
+
+
 
 
 

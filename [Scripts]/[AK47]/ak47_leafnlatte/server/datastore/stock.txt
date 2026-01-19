@@ -89,7 +89,7 @@
     },
     "banana_backwoods": {
         "price": 500,
-        "stock": 98
+        "stock": 100
     },
     "marshmallow_og_joint": {
         "price": 500,
@@ -141,7 +141,7 @@
     },
     "moon_rock": {
         "price": 500,
-        "stock": 97
+        "stock": 100
     },
     "runtz_og_joint": {
         "price": 500,
@@ -181,7 +181,7 @@
     },
     "gmo_cookies": {
         "price": 500,
-        "stock": 100
+        "stock": 99
     },
     "sour_diesel": {
         "price": 500,
@@ -237,7 +237,7 @@
     },
     "grabba_leaf": {
         "price": 500,
-        "stock": 100
+        "stock": 99
     },
     "gelatti_joint": {
         "price": 500,

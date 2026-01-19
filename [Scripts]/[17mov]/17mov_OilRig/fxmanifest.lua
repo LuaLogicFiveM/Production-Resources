@@ -1,11 +1,7 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version "cerulean"
-version "1.0.49"
+version "1.0.52"
 game "gta5"
+author "17Movement"
 this_is_a_map 'yes'
 lua54 "yes"
 

@@ -113,10 +113,4 @@
       </firstPersonDrivebyData>
     </Item>
  </InitDatas>
- <txdRelationships>
-     <Item>
-      <parent>vehicles_sultan_interior</parent>
-      <child>police3</child>
-    </Item>
-  </txdRelationships>
-  </CVehicleModelInfo__InitDataList>
+</CVehicleModelInfo__InitDataList>

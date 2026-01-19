@@ -829,7 +829,6 @@ Config.Shops = {
         }
     },
 }
-
 Config.Translations = {
     Interact = 'Interact',
     Delete = 'Delete',
@@ -855,6 +854,7 @@ Config.Translations = {
     BrickPressError = 'This Brick Press does not exists anymore...',
     BrickPressError2 = 'Wrong weed name...',
     DrugCauldronError = 'This Drug Cauldron does not exists anymore...',
+    ChemistryStationError = 'This Chemistry Station does not exists anymore...',
     WeedError = 'This Pot Plant does not exists anymore...',
     WeedError2 = 'This Pot is already planted',
     ItemError = 'You do not have required item to do that!',
