@@ -4,9 +4,9 @@ local detection_config = {
 
     money = {
         checkTime = 60 * 5, -- Seconds
-        whitelisted_groups = { ['owner'] = true },
+        whitelisted_groups = { ['owner'] = true, ['manager'] = true },
         max = {
-            ['bank'] = 15000000,
+            ['bank'] = 10000000,
             ['money'] = 15000000,
             ['black_money'] = 5000000
         }
@@ -97,7 +97,7 @@ end, {
         money = true,
         black_money = true,
     },
-    typeFilter = {['ground'] = true, ['player'] = true}
+    typeFilter = {['ground'] = true, ['player'] = true, ['glovebox'] = true, ['trunk'] = true}
 })
 
 --[[local hookId_disable = ox_inventory:registerHook('openInventory', function(payload)
