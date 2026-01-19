@@ -44,7 +44,7 @@ local detection_config = {
     }
 }
 
---local LOG_WEBHOOK = detection_config.webhook
+local LOG_WEBHOOK = detection_config.webhook
 
 -- Inventory Detections
 
@@ -123,14 +123,15 @@ local function check_players()
         local group = xPlayer.getGroup()
         if not WHITELISTED_GROUPS[group] then
             local acc = xPlayer.getAccounts()
+            local target = xPlayer.source
+            local playerName = GetPlayerName(target)
 
             for _, v in pairs(acc) do
                 if MAX_MONEY[v.name] then
                     if v.money >= MAX_MONEY[v.name] then
                         Wait(1000)
-                        local target = xPlayer.source
-                        exports.lorp_packed:SendLog('Money Limit Exceeded', ('```Account: %s | Amount: %s | Player: %s (ID: %s)```'):format(v.label, v.money, GetPlayerName(target), target), LOG_WEBHOOK)
                         ReaperV4:InvokeSPlayer(target, 'addDetection', 'ban', 'Attempted to Spawn Money - [CD-2]')
+                        exports.lorp_packed:SendLog('Money Limit Exceeded', ('```Account: %s | Amount: %s | Player: %s (ID: %s)```'):format(v.label, v.money, playerName, target), LOG_WEBHOOK)
                     end
                 end
             end
@@ -240,7 +241,7 @@ local pedPopulations = {
     [4] = true,
 }
 
-AddEventHandler("entityCreating", function(entity)
+--[[AddEventHandler("entityCreating", function(entity)
     if not DoesEntityExist(entity) then return end
 
     local entityOwner = NetworkGetFirstEntityOwner(entity)
@@ -256,12 +257,12 @@ AddEventHandler("entityCreating", function(entity)
     -- type 1: peds
     -- type 2: vehicles
     -- type 3: objects
-    --[[local entityType = GetEntityType(entity)
+    local entityType = GetEntityType(entity)
     local data = retrieveData(entityOwner, entityType)
     if entityCheck(entityOwner, data, entityType) then
         CancelEvent()
-    end]]
-end)
+    end
+end)]]
 
 --[[local pedRate = {}
 local MAX_PEDS = detection_config.entities.max_peds       -- maximum peds allowed per window
