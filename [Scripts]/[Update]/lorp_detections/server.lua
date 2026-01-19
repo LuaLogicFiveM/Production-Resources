@@ -176,7 +176,7 @@ end)]]
 
 -- Entity Rate Limit Detections
 
-local rateLimits = {
+--[[local rateLimits = {
     [1] = {},
     [2] = {},
     [3] = {}
@@ -239,7 +239,7 @@ local pedPopulations = {
     [2] = true,
     [5] = true,
     [4] = true,
-}
+}]]
 
 --[[AddEventHandler("entityCreating", function(entity)
     if not DoesEntityExist(entity) then return end
