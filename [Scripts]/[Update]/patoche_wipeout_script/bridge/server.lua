@@ -44,7 +44,7 @@ function GetRPPlayerName(player)
     if framework == 'qb' then
         return player.PlayerData.charinfo.firstname .. ' ' .. player.PlayerData.charinfo.lastname
     elseif framework == 'esx' then
-        return GetPlayerName(player.source)
+        return player.getName()
     elseif framework == 'custom' then
         warn('Add your own GetPlayerName in bridge/server.lua at line 49')
     end

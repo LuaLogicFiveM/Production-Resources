@@ -9,7 +9,8 @@ function Notification(data)
         lib.notify({
             type = data.type,
             title = data.msg,
-            duration = data.duration
+            duration = data.duration,
+            position = 'top'
         })
     elseif notif == 'qb' then
         local notify = exports['qb-core']:GetCoreObject().Functions.Notify
@@ -27,7 +28,7 @@ RegisterNetEvent('patoche:wipeout:client:notif', Notification)
 
 ---@param data table {coords (vector3), size (vector3), debug (boolean), rotation (number), options (table {groups (table), onSelect (function), icon (string), label (string)}
 function CustomTarget(data)
-    -- EXAMPLE : 
+    print('Target zone added')
     exports.ox_target:addBoxZone({
         coords = data.coords,
         size = data.size,
@@ -39,6 +40,6 @@ end
 
 ---@param zoneName string
 function RemoveCustomTarget(zoneName)
-    -- EXAMPLE :
+    print('Target zone removed')
     exports.ox_target:removeZone(zoneName)
 end
