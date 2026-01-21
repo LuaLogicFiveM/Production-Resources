@@ -1033,3 +1033,86 @@ exports('IsVehicleOwnedHash', IsVehicleOwnedHash)
 lib.callback.register('lualogic_trust:server:IsVehicleOwnedHash', function(source, model)
 	return IsVehicleOwnedHash(model)
 end)
+
+local function GeneratePlate()
+    local format = 'XXX ###'
+    local plate = ''
+
+    for i = 1, #format do
+        local char = format:sub(i, i)
+
+        if char == 'X' then
+            plate = plate .. string.char(math.random(65, 90))
+        elseif char == '#' then
+            plate = plate .. tostring(math.random(0, 9))
+        else
+            plate = plate .. char
+        end
+    end
+
+    return plate
+end
+
+local function PlateExists(plate)
+    local result = MySQL.scalar.await('SELECT plate FROM owned_vehicles WHERE plate = ?', { plate })
+    return result ~= nil
+end
+
+local function GenerateUniquePlate()
+    local plate
+    local attempts = 0
+    local maxAttempts = 100
+
+    repeat
+        plate = GeneratePlate()
+        attempts = attempts + 1
+    until not PlateExists(plate) or attempts >= maxAttempts
+
+    if attempts >= maxAttempts then
+        return nil
+    end
+
+    return plate
+end
+
+local transferred = {}
+
+RegisterCommand('transfer_vehicles_owned', function(source, args)
+	if source >= 1 then return end
+
+	local targetSource = args[1] and args[1] or false
+
+	if targetSource then
+		if transferred[targetSource] then
+			return Notify(source, 'This players vehicles are already transferred', 'error')
+		end
+
+		local identifier = GetIdentifier(targetSource) or targetSource
+		local player_vehicles = identifier and vehicles[identifier] or false
+
+		if player_vehicles then
+			local queries = {}
+
+			for vehicle, owned in pairs(player_vehicles) do
+				if owned == true then
+					local properties = {plate = GenerateUniquePlate(), model = GetHashKey(vehicle)}
+					queries[#queries+1] = { query = 'INSERT INTO `owned_vehicles` (owner, plate, vehicle, type) VALUES (?, ?, ?, ?)', values = { identifier, properties.plate, json.encode(properties), 'car' } }
+				end
+			end
+
+			MySQL.transaction(queries, function(success)
+				if success then
+					Notify(source, ('You have transferred all the vehicles to the garages for %s (%i)'):format(GetPlayerName(targetSource), targetSource), 'success')
+					Notify(targetSource, ('Your owned vehicles have been transferred the garages by %s (%i)'):format(GetPlayerName(source), source), 'success')
+					transferred[targetSource] = true
+				else
+					Notify(source, 'The player already has one of his owned vehicles in the garages', 'error')
+				end
+			end)
+		else
+			return Notify(source, 'Unable to fetch targets vehicles', 'error')
+		end
+	else
+		return Notify(source, 'Invalid command usage (/transfer_vehicles_owned [id])', 'error')
+	end
+end, false)
