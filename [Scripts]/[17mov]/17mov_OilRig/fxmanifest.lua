@@ -1,3 +1,8 @@
+shared_script "@ReaperV4/imports/bypass.lua"
+shared_script "@ReaperV4/imports/bypass_s.lua"
+shared_script "@ReaperV4/imports/bypass_c.lua"
+lua54 "yes" -- needed for Reaper
+
 fx_version "cerulean"
 version "1.0.52"
 game "gta5"
@@ -56,5 +61,4 @@ data_file 'DLC_ITYP_REQUEST' 'stream/ytyp/platform2.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/ytyp/v_int_59.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/ytyp/xm_x17dlc_props_base.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/ytyp/17mov_contpod_02.ytyp'
-
 dependency '/assetpacks'
