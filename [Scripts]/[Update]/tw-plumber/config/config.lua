@@ -9,7 +9,7 @@ Config.Inventory             =
 Config.ServerName            = "LORP"   -- Server Name MAX 10
 Config.MoneyType             = "$"        -- Money Type
 Config.MoneyType2            = "bank"     -- Money Type bank / cash
-Config.InteractionHandler    = 'drawtext' --  drawtext, scriptbase -- currently only drawtext will be updated soon
+Config.InteractionHandler    = 'scriptbase' --  drawtext, scriptbase -- currently only drawtext will be updated soon
 Config.ExampleProfilePicture = "https://i.ibb.co/YLLNHJP/lorp-logo-main.png"
 
 Config.Command               = {
