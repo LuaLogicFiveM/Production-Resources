@@ -9,7 +9,7 @@ Config.Inventory             =
 Config.ServerName            = "LORP"     -- Server Name MAX 10
 Config.MoneyType             = "$"          -- Money Type
 Config.MoneyType2            = "bank"       -- Money Type bank / cash
-Config.InteractionHandler    = 'scriptbase' --  qb-target, drawtext,ox-target,scriptbase
+Config.InteractionHandler    = 'ox-target' --  qb-target, drawtext,ox-target,scriptbase
 Config.ExampleProfilePicture = "https://i.ibb.co/YLLNHJP/lorp-logo-main.png"
 
 Config.Command               = {
