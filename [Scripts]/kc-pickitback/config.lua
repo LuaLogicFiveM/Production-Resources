@@ -25,6 +25,7 @@ Config.DropAccessories             = {                      -- This table determ
 -- Interaction
 Config.InteractionType              = 'Target'             -- 'Default' for DrawText3D method, 'Target' for Target scripts or 'Custom' to use 'custom_export.lua'
 ---- Default
+Config.NotificationMode             = 'continuous'          -- 'continuous' (called every frame) or 'toggle' (show/hide once, for systems like ox_lib)
 Config.CommandTitle                 = 'Pick Up'        -- Key title in GTA 5 control settings
 Config.CommandInputMapper           = 'KEYBOARD'            -- Input Mapper (https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/)
 Config.CommandInputParameter        = 'E'                   -- Input Parameter (https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/)
@@ -43,3 +44,48 @@ Config.Debug        				= false   	            -- If you think something is not 
 Config.DebugDistance        		= 12.0   	            -- Maximum distance to show debug infos
 Config.UpdateChecker                = false                 -- Set to false if you don't want to check for resource update on start (No need to change this if you're using fivem-checker)
 Config.ChangeLog					= false		            -- Set to false if you don't want to display the changelog if new version is find (No need to change this if you're using fivem-checker)
+
+------------------------------------------------------------------------------------------------------------------------------------------
+-- NOTIFICATION FUNCTION
+------------------------------------------------------------------------------------------------------------------------------------------
+-- Notification function that supports both continuous and toggle modes
+-- message: The notification text to display (or nil when hiding)
+-- entity: The entity being looked at (used for position in continuous mode)
+-- operation: 'show' or 'hide' (only used in toggle mode)
+--
+-- IMPORTANT DISCLAIMER: If you use a custom notification system (anything other than AdvancedDrawText3D),
+-- you need to modify the locale file to properly format the "DefaultInteractionText" message.
+-- The default locale uses GetInputInstructionalButtonString formatting (e.g., "~INPUT_PICKUP~")
+-- which only works with AdvancedDrawText3D. For custom notifications, change it to plain text like "Press E to pick up"
+-- in your locale files (en.lua, fr.lua, etc.)
+function PickupNotification(message, entity, operation)
+    if Config.NotificationMode == 'toggle' then
+        -- Toggle mode: Uses show/hide operations (for systems like ox_lib)
+        -- The 'operation' parameter will be either 'show' or 'hide'
+        if operation == 'hide' then
+            -- Hide the notification
+            -- Example for ox_lib:
+            -- lib.hideTextUI()
+
+            -- Example for custom notification:
+            -- TriggerEvent('myNotification:hide')
+        elseif operation == 'show' and message then
+            -- Show the notification
+            -- Example for ox_lib:
+            --[[ lib.showTextUI(message, {
+                position = 'left-center',
+                icon = 'hand'
+            }) ]]
+
+            -- Example for custom notification:
+            -- TriggerEvent('myNotification:show', message)
+        end
+    else
+        -- Continuous mode (default): Called every frame while looking at entity
+        -- The 'operation' parameter is not used in this mode
+        if entity and message then
+            local entityCoords = GetEntityCoords(entity)
+            AdvancedDrawText3D(entityCoords, message)
+        end
+    end
+end

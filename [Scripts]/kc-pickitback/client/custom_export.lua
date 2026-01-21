@@ -2,28 +2,28 @@
 
 -- Here's an example with 'ox_target'
 --[[ exports[Config.TargetName]:addModel({
-        'physics_hat',
-        'physics_hat2',
-        'physics_glasses'
-    },
+    'physics_hat',
+    'physics_hat2',
+    'physics_glasses'
+},
+{
     {
-        {
-            name = 'PickUp',
-            event = 'kc-pickitback:PickUp',
-            icon = Config.Icon,
-            label = Config.TargetText,
-            distance = Config.PickUpDistance,
-            canInteract = function(entity, distance, coords, type)
-                if not Entity(entity).state.Params then return end
-                if Config.PreventIfAlreadyEquipped and GetPedPropIndex(PlayerPedId(), Entity(entity).state.Params[3]) ~= -1 then return end
-                if Config.PreventItemPickupByGender then
-                    return GetPedGender(PlayerPedId()) == Entity(entity).state.Params[4]
-                else
-                    return true
-                end
+        name = 'PickUp',
+        event = 'kc-pickitback:PickUp',
+        icon = Config.Icon,
+        label = Config.TargetText,
+        distance = Config.PickUpDistance,
+        canInteract = function(entity, distance, coords, type)
+            if not Entity(entity).state.Params then return end
+            if Config.PreventIfAlreadyEquipped and GetPedPropIndex(PlayerPedId(), Entity(entity).state.Params[3]) ~= -1 then return end
+            if Config.PreventItemPickupByGender then
+                return GetPedGender(PlayerPedId()) == Entity(entity).state.Params[4]
+            else
+                return true
             end
-        }
-    })  ]]
+        end
+    }
+}) ]]
 
 -- /!\ /!\ /!\ /!\ /!\ BE SURE TO SET 'InteractionType' IN THE CONFIG.LUA FILE TO "custom" /!\ /!\ /!\ /!\ /!\
 
