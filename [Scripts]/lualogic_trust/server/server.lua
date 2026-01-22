@@ -1102,9 +1102,9 @@ RegisterCommand('transfer_vehicles_owned', function(source, args)
 
 			MySQL.transaction(queries, function(success)
 				if success then
-					Notify(source, ('You have transferred all the vehicles to the garages for %s (%i)'):format(GetPlayerName(targetSource), targetSource), 'success')
-					Notify(targetSource, ('Your owned vehicles have been transferred the garages by %s (%i)'):format(GetPlayerName(source), source), 'success')
 					transferred[targetSource] = true
+					Notify(source, ('You have transferred all the vehicles to the garages for %s (%i)'):format(GetPlayerName(targetSource), targetSource), 'success')
+					Notify(targetSource, ('Your owned vehicles have been transferred the garages by %s (%i)'):format(source ~= 0 and GetPlayerName(source) or 'Server Console', source), 'success')
 				else
 					Notify(source, 'The player already has one of his owned vehicles in the garages', 'error')
 				end
