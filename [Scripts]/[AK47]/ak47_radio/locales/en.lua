@@ -29,4 +29,6 @@ Locales['en'] = {
     ui_no_recents = "No recent channels.",
     ui_channel_empty = "Channel is empty.",
     ui_animation = "Animation",
+    ui_callsign = "Callsign",
+    callsign_updated = "Callsign updated successfully.",
 }

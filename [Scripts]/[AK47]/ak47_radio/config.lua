@@ -1,10 +1,10 @@
 Config = {}
 Config.Locale = 'en'
 
-Config.UsableItem = "radio" -- The item name in qb-core/shared/items.lua that will open the radio.
+Config.UsableItem = "radio" -- The item name that will open the radio.
 Config.ResetRadioCmd = "radioreset" -- The will reset radio cache setting
 
-Config.MaxChannelLength = 6 -- The maximum character length for a channel (e.g., 999.99)
+Config.MaxChannelLength = 4 -- The maximum character length for a channel (e.g., 999.99)
 
 Config.DisconnectWhenDead = false
 
@@ -16,7 +16,7 @@ Config.DefaultUISettings = {
     uiZoom = 70,
     playerListZoom = 100,
     clickSound = true,
-    uiVolume = 0.25,
+    uiVolume = 0.5,
     positions = {
         radio = { top = '60%', left = '70%' },
         playerList = { top = '26rem', right = '0rem' }
@@ -27,16 +27,22 @@ Config.DefaultUISettings = {
 -- Channels restricted to specific jobs.
 -- Players without the specified job will not be able to connect.
 Config.JobOnlyChannels = {
-    ['1'] = { 'sheriff', 'sahp', 'ems' },
+    ['1'] = { 'sheriff', 'sahp', 'ems' }, -- Only players with the 'police' or 'lspd' job can access channel '1'
     ['2'] = { 'sheriff', 'sahp', 'ems' },
     ['3'] = { 'sheriff', 'sahp', 'ems' },
     ['4'] = { 'sheriff', 'sahp', 'ems' },
     ['5'] = { 'sheriff', 'sahp', 'ems' },
     ['6'] = { 'sheriff', 'sahp', 'ems' },
     ['7'] = { 'sheriff', 'sahp', 'ems' },
-    ['8'] = { 'sheriff', 'sahp', 'ems' },
-    ['9'] = { 'sheriff', 'sahp', 'ems' },
+    ['8'] = { 'sheriff', 'sahp', 'ems', 'dot' },
+    ['9'] = { 'sheriff', 'sahp', 'ems', 'dot' },
     ['10'] = { 'sheriff', 'sahp', 'ems', 'dot' },
+}
+
+Config.AllowCallSignChangeJobs = {
+    sheriff = true,
+    sahp = true,
+    dot = true,
 }
 
 Config.Animations = {

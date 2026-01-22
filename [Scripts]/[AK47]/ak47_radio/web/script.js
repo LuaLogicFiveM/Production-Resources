@@ -1,4 +1,3 @@
-// --- NUI Communication ---
 const resourceName = window.GetParentResourceName ? window.GetParentResourceName() : 'ak47_radio';
 let translations = {}; // Global object to store translations
 
@@ -65,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const uiVolumeSlider = document.getElementById('ui-volume');
     const animSelect = document.getElementById('anim-select');
     const clickSoundToggle = document.getElementById('click-sound');
+    
+    // Callsign elements
+    const callsignContainer = document.getElementById('callsign-container');
+    const callsignInput = document.getElementById('callsign-input');
+    const saveCallsignBtn = document.getElementById('save-callsign');
 
     // --- Animation & Position Functions ---
 
@@ -166,6 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         animSelect.appendChild(option);
                     });
+                }
+
+                // Handle callsign logic
+                if (data.canChangeCallsign) {
+                    callsignContainer.classList.remove('hidden-view');
+                    callsignContainer.style.display = 'flex';
+                    callsignInput.value = data.callsign || '';
+                } else {
+                    callsignContainer.classList.add('hidden-view');
+                    callsignContainer.style.display = 'none';
                 }
               
                 openRadio();
@@ -444,6 +458,11 @@ document.addEventListener('DOMContentLoaded', () => {
             radioState.settings.animationIndex = val;
             saveSettings();
             sendNuiMessage('setAnimation', { index: val });
+        });
+
+        saveCallsignBtn.addEventListener('click', () => {
+            const val = callsignInput.value;
+            sendNuiMessage('saveCallsign', { callsign: val });
         });
 
         setupDraggable(radioWrapper);
