@@ -1,21 +1,22 @@
+shared_script "@ReaperV4/imports/bypass.lua"
+shared_script "@ReaperV4/imports/bypass_s.lua"
+shared_script "@ReaperV4/imports/bypass_c.lua"
+lua54 "yes" -- needed for Reaper
+
 fx_version 'adamant'
 game 'gta5'
 author 'CodeWave, Jamie'
 lua54 'yes'
 description 'Codewaves Sneaker Phone'
-
 shared_scripts {
     '@ox_lib/init.lua',
     'config.lua'
 }
-
 client_scripts {
     'client/client.lua',
     'notify.lua'
 }
-
 ui_page "web/index.html"
-
 files {
     "web/index.html",
     'web/script.js',
@@ -24,16 +25,11 @@ files {
 	'web/sounds/*.mp3',
     'web/image/*.png'
 }
-
-
 server_scripts {
     'server/server.lua'
 }
-
 escrow_ignore {
     'config.lua',  -- 
     'notify.lua'
-
   }
-
 dependency '/assetpacks'

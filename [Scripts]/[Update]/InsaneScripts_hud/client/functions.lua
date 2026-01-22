@@ -94,7 +94,7 @@ function updateHud()
             if dataTable['health'] < 0 then dataTable['health'] = 0 end
 
             dataTable['mic'] = LocalPlayer.state['proximity'] and LocalPlayer.state['proximity'].distance or 1.5
-            dataTable['playerCount'] = #GetActivePlayers()
+            dataTable['playerCount'] = GlobalState.playerCount or 0
             dataTable['hour'] = GetClockHours()
             dataTable['playerId'] = playerServerId
 
