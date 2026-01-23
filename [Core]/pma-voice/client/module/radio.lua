@@ -142,6 +142,10 @@ exports('getRadioAnimState', function()
 	return disableRadioAnim
 end)
 
+exports('setDisableRadioAnim', function()
+	return disableRadioAnim
+end)
+
 --- check if the player is dead
 --- seperating this so if people use different methods they can customize
 --- it to their need as this will likely never be changed

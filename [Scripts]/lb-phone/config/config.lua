@@ -103,6 +103,7 @@ Config.DisableOpenNUI = true -- disable the phone from opening if another script
 
 Config.DynamicIsland = true -- if enabled, the phone will have a Iphone 14 Pro inspired Dynamic Island.
 Config.SetupScreen = true -- if enabled, the phone will have a setup screen when the player first uses the phone.
+Config.AppDownloadTime = 5000 -- time (in ms) it takes to download an app from the app store
 
 Config.AutoDisableSparkAccounts = true -- automatically disable inactive spark accounts? This can be set to the amount of days the account needs to be inactive to disable it, or true to disable after 7 days.
 Config.AutoDeleteNotifications = true -- notifications that are more than X hours old, will be deleted. set to false to disable. if set to true, it will delete 1 week old notifications.
@@ -110,6 +111,11 @@ Config.MaxNotifications = 50 -- the maximum amount of notifications a player can
 Config.NotificationsUpdateZIndex = true -- update the z-index when receiving notifications? this makes the notifications appear above your hud
 Config.DisabledNotifications = { -- an array of apps that should not send notifications, note that you should use the app identifier, found in config.json
     -- "DarkChat",
+}
+
+-- These channels will be automatically joined when a user first creates their DarkChat account
+Config.AutoJoinDarkChat = {
+    -- "general",
 }
 
 --[[
@@ -171,7 +177,16 @@ Config.Companies.Services = {
                 x = 2841.1575,
                 y = 4733.4136
             }
-        }
+        },
+        quickReplies = {
+            ["APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.MESSAGE",
+            ["APPS.SERVICES.QUICK_REPLIES.OFFICER_EN_ROUTE.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.OFFICER_EN_ROUTE.MESSAGE",
+            -- ["Officer en route"] = "An officer is on the way.",
+        },
+        -- customIcon = "IoShield", -- if you want to use a custom icon for the company, set it here: https://react-icons.github.io/react-icons/icons?name=io5
+        -- onCustomIconClick = function()
+        --    print("Clicked")
+        -- end
     },
     {
         job = "sahp",
@@ -186,7 +201,12 @@ Config.Companies.Services = {
                 x = 833.9344,
                 y = -1292.6493
             }
-        }
+        },
+        quickReplies = {
+            ["APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.MESSAGE",
+            ["APPS.SERVICES.QUICK_REPLIES.OFFICER_EN_ROUTE.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.OFFICER_EN_ROUTE.MESSAGE",
+            -- ["Officer en route"] = "An officer is on the way.",
+        },
     },
     {
         job = "realestate",
@@ -201,7 +221,11 @@ Config.Companies.Services = {
                 x = -684.7641,
                 y = 275.8139
             }
-        }
+        },
+        quickReplies = {
+            ["Budget inquiry"] = "What is your budget?",
+            ["Meet at office"] = "Meet me here at the real estate agency office",
+        },
     },
     {
         job = "ems",
@@ -216,7 +240,11 @@ Config.Companies.Services = {
                 x = 293.6984,
                 y = -1407.4742
             }
-        }
+        },
+        quickReplies = {
+            ["APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.MESSAGE",
+            ["Emergency services en route"] = "An ambulance is on the way",
+        },
     },
     {
         job = "safd",
@@ -231,7 +259,11 @@ Config.Companies.Services = {
                 x = 1690.2843,
                 y = 3574.2388
             }
-        }
+        },
+        quickReplies = {
+            ["APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.MESSAGE",
+            ["Fire services en route"] = "A fire truck is on the way",
+        },
     }
 }
 
@@ -772,10 +804,46 @@ Config.DynamicWebRTC.RemoveStun = false -- remove the stun servers?
 
 Config.Crypto = {}
 Config.Crypto.Enabled = false
-Config.Crypto.Coins = {"bitcoin","ethereum","tether","binancecoin","usd-coin","ripple","binance-usd","cardano","dogecoin","solana","shiba-inu","polkadot","litecoin","bitcoin-cash"}
-Config.Crypto.Currency = "usd" -- currency to use for crypto prices. https://api.coingecko.com/api/v3/simple/supported_vs_currencies
-Config.Crypto.Refresh = 5 * 60 * 1000 -- how often should the crypto prices be refreshed (client cache)? (Default 5 minutes)
-Config.Crypto.QBit = false -- support QBit? (requires qb-crypto & qb-core)
+Config.Crypto.Refund = false --[[
+    The method used to refund users with old (real-life) cryptocurrencies.
+    Can be set to:
+    - "invested" to refund the amount they invested
+    - "lastValue" to refund the last known value of their crypto holdings,
+    - "convert" to convert to "LB Coin" (lbc)
+]]
+Config.Crypto.UpdateInterval = 5 -- how often (in minutes) should the crypto prices be updated?
+Config.Crypto.Coins = {
+    ["lbc"] = {
+        name = "LB Coin",
+        icon = "./assets/img/icons/crypto/coins/lbc.webp",
+        initialValue = 50.0,
+        changes = {
+            {
+                weight = 500,
+                change = { 0.0, 2.0 } -- 0.0 - 2.0% increase
+            },
+            {
+                weight = 490,
+                change = { -2.0, -0.0 } -- 0.0 - 2.0% decrease
+            },
+            {
+                weight = 5,
+                change = { 5.0, 15.0 }
+            },
+            {
+                weight = 5,
+                change = { -15.0, -5.0 }
+            }
+        },
+        permissions = {
+            buy = true,
+            sell = true,
+            transfer = true
+        }
+    }
+}
+
+Config.Crypto.QBit = true -- support QBit? (requires qb-crypto & qb-core)
 Config.Crypto.Limits = {}
 Config.Crypto.Limits.Buy = 1000000 -- how much ($) you can buy for at once
 Config.Crypto.Limits.Sell = 1000000 -- how much ($) you can sell at once

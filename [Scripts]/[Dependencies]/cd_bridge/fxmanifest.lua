@@ -1,12 +1,8 @@
-shared_script "@ReaperV4/imports/bypass.js"
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'cerulean'
 game 'gta5'
-version '1.0.18'
+author 'discord.gg/codesign'
+description 'Codesign bridge'
+version '1.0.19'
 lua54 'yes'
 
 shared_scripts {
@@ -21,13 +17,6 @@ client_scripts {
 }
 
 server_scripts {
-    --OPTIONAL DEPENDENCY INTEGRATIONS--
-    --'@mysql-async/lib/MySQL.lua', --⚠️PLEASE READ⚠️; Uncomment this line if you use 'mysql-async'.⚠️
-
-    --'@vrp/lib/utils.lua', --⚠️PLEASE READ⚠️; Uncomment this line if you use 'vrp'.⚠️
-    --'@vrp/lib/Tunnel.lua', --⚠️PLEASE READ⚠️; Uncomment this line if you use 'vrp'.⚠️
-	--'@vrp/lib/Proxy.lua', --⚠️PLEASE READ⚠️; Uncomment this line if you use 'vrp'.⚠️
-
    'server/**/*.lua',
    'server/core/read_directory.js'
 }

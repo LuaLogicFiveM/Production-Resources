@@ -1,5 +1,5 @@
 local function running(res)
-    return GetResourceState(res) == 'started'
+    return GetResourceState(res) == 'started' or GetResourceState(res) == 'starting'
 end
 
 local function detect(list, fallback)
@@ -23,14 +23,16 @@ function RunAutoDetect()
             Cfg.Framework = 'vrp'
         else
             Cfg.Framework = 'standalone'
+            if Cfg.BridgeDebug then
+                Citizen.Trace(string.format('^1[cd_bridge INFO]^7 No supported framework detected — defaulting to %s.\n'), Cfg.Framework)
+            end
         end
     end
 
     if Cfg.Database == 'auto_detect' then
         Cfg.Database = detect({
             'oxmysql',
-            'mysql-async',
-            'ghmattimysql',
+            'ghmattimysql'
         }, 'none')
     end
 
@@ -54,6 +56,9 @@ function RunAutoDetect()
                 Cfg.Inventory = 'ox_inventory'
             else
                 Cfg.Inventory = 'none'
+            end
+            if Cfg.BridgeDebug then
+                Citizen.Trace(string.format('^1[cd_bridge INFO]^7 No supported inventory detected — defaulting to %s.\n'), Cfg.Inventory)
             end
         end
     end
@@ -79,6 +84,9 @@ function RunAutoDetect()
             else
                 Cfg.Notification = 'chat'
             end
+            if Cfg.BridgeDebug then
+                Citizen.Trace(string.format('^1[cd_bridge INFO]^7 No supported notification detected — defaulting to %s.\n'), Cfg.Notification)
+            end
         end
     end
 
@@ -90,6 +98,7 @@ function RunAutoDetect()
             'okokTextUI',
             'ps-ui',
             'vms_notifyv2',
+            'ZSX_UIV2',
             'qb-core'
         }, 'none')
     end
@@ -159,11 +168,14 @@ function RunAutoDetect()
 
     if Cfg.Phone == 'auto_detect' then
         Cfg.Phone = detect({
+            'esx_phone',
             'gcphone',
+            'gksphone',
             'lb-phone',
             'npwd',
             'okokPhone',
-            'qb-phone'
+            'qb-phone',
+            'qbx_npwd'
         }, 'none')
     end
 
@@ -180,6 +192,13 @@ function RunAutoDetect()
             'qs-dispatch',
             'rcore_dispatch',
             'tk_dispatch'
+        }, 'none')
+    end
+
+    if Cfg.PersistentVehicles == 'auto_detect' then
+        Cfg.PersistentVehicles = detect({
+            'cd_garage',
+            'AdvancedParking'
         }, 'none')
     end
 
@@ -209,9 +228,8 @@ function RunAutoDetect()
             users_identifier = 'citizenid',
         }
     end
+    FW = Cfg.FrameworkSQLtables
 end
-
-RunAutoDetect()
 
 local function DetectResourceStart(resourceName)
     if resourceName == 'cd_garage' then
@@ -221,8 +239,13 @@ local function DetectResourceStart(resourceName)
         local ok, config = pcall(function()
             return exports['cd_garage']:GetConfig()
         end)
-        if ok and config ~= nil and config.VehicleKeys.ENABLE then
-            Cfg.VehicleKeys = 'cd_garage'
+        if ok and config ~= nil then
+            if config.VehicleKeys.ENABLE then
+                Cfg.VehicleKeys = 'cd_garage'
+            end
+            if config.PersistentVehicles.ENABLE then
+                Cfg.PersistentVehicles = 'cd_garage'
+            end
         end
 
     elseif resourceName == 'cd_dispatch' then
@@ -240,5 +263,70 @@ if IsDuplicityVersion() then
 else
     AddEventHandler('onClientResourceStart', function(resourceName)
         DetectResourceStart(resourceName)
+    end)
+end
+
+RunAutoDetect()
+
+if GetCurrentResourceName() == 'cd_bridge' then
+    CreateThread(function()
+        Wait(5000)
+
+        local firstDetect = {
+            Framework = Cfg.Framework,
+            Database = Cfg.Database,
+            Inventory = Cfg.Inventory,
+            Notification = Cfg.Notification,
+            DrawTextUI = Cfg.DrawTextUI,
+            Target = Cfg.Target,
+            VehicleFuel = Cfg.VehicleFuel,
+            VehicleKeys = Cfg.VehicleKeys,
+            TimeWeather = Cfg.TimeWeather,
+            Phone = Cfg.Phone,
+            Dispatch = Cfg.Dispatch,
+            PersistentVehicles = Cfg.PersistentVehicles,
+        }
+
+        for key, value in pairs(firstDetect) do
+            if value == 'none' then
+                Cfg[key] = 'auto_detect'
+            end
+        end
+
+        RunAutoDetect()
+
+        local lateDetected = {}
+
+        for key, before in pairs(firstDetect) do
+            local after = Cfg[key]
+
+            if before == 'none' and after ~= 'none' then
+                table.insert(lateDetected, after)
+            end
+        end
+
+        for key, value in pairs(firstDetect) do
+            Cfg[key] = value
+        end
+
+        if #lateDetected > 0 then
+           Citizen.Trace(([[
+            ^5===============================================================
+            ^3[cd_bridge]^7 Late resource start detected
+
+            ^7The following resources were detected ^1AFTER^7 cd_bridge started:
+
+            ^6• %s
+
+            ^7This means these resources are starting ^1AFTER^7 cd_bridge
+            ^7and may not auto-detect correctly.
+
+            ^7To fix this:
+            ^6• Move ^2cd_bridge^6 below these resources in your ^2server.cfg^6
+            ^6• Restart your server
+
+            ^5===============================================================
+            ]]):format(table.concat(lateDetected, ', ')) .. '^0\n')
+        end
     end)
 end

@@ -8,6 +8,10 @@ function AddTransaction(phoneNumber, amount, company, logo)
         return
     end
 
+    if #company > 50 then
+        company = company:sub(1, 47) .. "..."
+    end
+
     MySQL.insert.await("INSERT INTO phone_wallet_transactions (phone_number, amount, company, logo) VALUES (@phoneNumber, @amount, @company, @logo)", {
         ["@phoneNumber"] = phoneNumber,
         ["@amount"] = amount,

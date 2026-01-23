@@ -49,8 +49,20 @@ Config = {
         K4mb1StarterShells = false, -- [FREE] https://k4mb1maps.com/product/5015840
         EnviShells = true,        -- [FREE] https://envi-scripts.tebex.io/package/6407814
 
-        AllShellsBundle = false,   -- [PAID] https://k4mb1maps.com/product/4741607 (Lifetime) | https://k4mb1maps.com/product/5107241-1 (Monthly)
-        AllShellsBundle2 = false,  -- [PAID] https://k4mb1maps.com/product/4741607 (Lifetime) | https://k4mb1maps.com/product/5107241-1 (Monthly)
+        -- [[ K4MB1 ]]
+        PremiumHousingPack = false, -- https://k4mb1maps.com/product/7166889
+        ExclusiveHousingPack = false, -- https://k4mb1maps.com/product/7166895
+        MainHousingPack = false, -- https://k4mb1maps.com/product/4673316
+        FurnishedHousingPack = false, -- https://k4mb1maps.com/product/7166890
+        IllegalOperationsPack = false, -- https://k4mb1maps.com/product/7166896
+        GaragesPack = false, -- https://k4mb1maps.com/product/7166893
+        MiscPack = false, -- https://k4mb1maps.com/product/7166894
+        -- [[ K4MB1 ]]
+
+        -- [[ OLD K4MB1 KEPT FOR COMPATIBILITY ]]
+        AllShellsBundle = false,   -- [PAID]
+        AllShellsBundle2 = false,  -- [PAID]
+        -- [[ OLD K4MB1 KEPT FOR COMPATIBILITY ]]
 
         JamaringV1 = false,        -- [PAID] https://jamaring-maps.tebex.io/package/6095279
         JamaringV2 = false,        -- [PAID] https://jamaring-maps.tebex.io/package/6274927
@@ -69,7 +81,7 @@ Config = {
     -- Enable the offset finder used to find the offset of the shells
     -- This is useful if you want to add custom shells
     -- It will register new commands that everyone can use so it's recommended to disable this in production
-    EnableOffsetFinder = false, -- Enable the offset finder
+    EnableOffsetFinder = true, -- Enable the offset finder
 
     --[[
         Supported Frameworks:
@@ -337,6 +349,8 @@ Config = {
     DisableSocietyRenting = true, -- Disable renting properties as a society
     RequireBossGradeForSocietyBuying = true, -- Require boss grade to buy properties as a society
     RequireBossGradeForSocietyRenting = true, -- Require boss grade to rent properties as a society
+
+    ProcessPropertiesCron = "*/30 * * * *", -- The cron job to process the properties (Auto-rent, inactivity, etc) (default: */30 * * * *)
 
     --[[ Renting ]]
     OwnerCanCancelRent = false,       -- Enable the owner to cancel the rent (default: false)
@@ -930,6 +944,7 @@ Config = {
     CheckForUpdates = true,     -- Check for updates on start
 }
 
+
 if Config.Framework == 'auto' then
     lib.print.debug('Detecting framework...')
 
@@ -996,7 +1011,16 @@ if Config.Inventory == 'auto' then
 
     for i = 1, #inventories do
         if GetResourceState(inventories[i]):find('start') then
-            Config.Inventory = inventories[i]
+            if inventories[i] == 'qb-inventory' then
+                local version = GetResourceMetadata('qb-inventory', 'version', 0)
+                if version and tonumber(string.sub(version, 1, 1)) >= 2 then
+                    Config.Inventory = 'qb-inventory-v2'
+                else
+                    Config.Inventory = 'qb-inventory-v1'
+                end
+            else
+                Config.Inventory = inventories[i]
+            end
             break
         end
     end
@@ -1011,6 +1035,7 @@ if Config.Clothes == 'auto' then
         'illenium-appearance',
         'qb-clothing',
         'fivem-appearance',
+        'rcore_clothing',
         'rcore_clothes',
         'vms_clothestore',
         '17mov_CharacterSystem',
@@ -1039,6 +1064,7 @@ if Config.Weather == 'auto' then
         'av_weather',
         'cd_easytime',
         'vSync',
+        'night_natural_disasters',
     }
 
     for i = 1, #weathers do

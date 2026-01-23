@@ -51,7 +51,7 @@ function GiveVehicleKeys(plate, vehicle) -- Triggered when giving keys to a vehi
         exports['xd_locksystem']:SetVehicleKey(plate) -- v2
 
     elseif keysResource == 'qbx_vehiclekeys' then
-        TriggerServerEvent('qbx_vehiclekeys:server:tookKeys', VehToNet(vehicle))
+        TriggerServerEvent('qbx_vehiclekeys:server:tookKeys', NetworkGetNetworkIdFromEntity(vehicle))
 
     elseif keysResource == 'qb-vehiclekeys' then
         TriggerServerEvent('qb-vehiclekeys:server:AcquireVehicleKeys', plate)

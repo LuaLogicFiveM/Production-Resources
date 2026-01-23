@@ -20,6 +20,13 @@ Config.Functions["OpenGarageMenu"] = {
     label = "Garage Menu",
     icon = "fas fa-car",
     onSelect = function(property)
+        if property.metadata?.lockdown and Config.PoliceLockdown.DisableGarage then
+            Framework.Notify({
+                description = locale("property_under_police_lockdown"),
+                type = "error"
+            })
+            return
+        end
         local vehicle = cache.vehicle
         if vehicle then
             local garage = property.id

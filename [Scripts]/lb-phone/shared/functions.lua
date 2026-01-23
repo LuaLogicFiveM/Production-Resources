@@ -54,7 +54,7 @@ function debugprint(...)
         end
     end
 
-    print("^6[LB Phone" .. phoneVersion .. "] ^3[Debug] ^5[" .. GetGameTimer() .. "]^7: " .. str)
+    print("^6[LB Phone " .. phoneVersion .. "] ^3[Debug] ^5[" .. GetGameTimer() .. "]^7: " .. str)
 end
 
 if Config.HouseScript == "auto" then
@@ -160,6 +160,7 @@ function table.deep_clone(og)
         if type(v) == "table" then
             v = table.deep_clone(v)
         end
+
         copy[k] = v
     end
 
@@ -369,4 +370,15 @@ function GetPlayerDataFromStateBag(bagName)
     end
 
     return source, ped, player
+end
+
+---@param text string
+---@param length number
+---@return string
+function LimitStringLength(text, length)
+    if #text > length then
+        return text:sub(1, length - 3) .. "..."
+    end
+
+    return text
 end

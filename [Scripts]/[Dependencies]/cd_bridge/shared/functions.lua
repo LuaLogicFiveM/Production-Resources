@@ -1,44 +1,67 @@
-function RoundDecimals(data) --converts to table and rounds to 2 decimal places.
+-- Rounds numbers to a specified number of decimal places.
+function RoundDecimals(data, decimalPlaces)
+    decimalPlaces = decimalPlaces or 2
+    local mult = 10 ^ decimalPlaces
+
+    local function r(n)
+        return Round(n * mult) / mult
+    end
+
     if type(data) == 'vector4' then
-        local x = math.floor(data.x * 100 + 0.5) / 100
-        local y = math.floor(data.y * 100 + 0.5) / 100
-        local z = math.floor(data.z * 100 + 0.5) / 100
-        local h = math.floor(data.w * 100 + 0.5) / 100
-        return { x = x, y = y, z = z, h = h }
+        return {x = r(data.x), y = r(data.y), z = r(data.z), h = r(data.w)}
 
     elseif type(data) == 'vector3' then
-        local x = math.floor(data.x * 100 + 0.5) / 100
-        local y = math.floor(data.y * 100 + 0.5) / 100
-        local z = math.floor(data.z * 100 + 0.5) / 100
-        return { x = x, y = y, z = z }
+        return {x = r(data.x), y = r(data.y), z = r(data.z)}
 
     elseif type(data) == 'number' then
-        return math.floor(data * 100 + 0.5) / 100
+        return r(data)
 
     elseif type(data) == 'table' then
-        for c, d in pairs(data) do
-            d = math.floor(d * 100 + 0.5) / 100
+        for k, v in pairs(data) do
+            if type(v) == 'number' then
+                data[k] = r(v)
+            end
         end
         return data
     end
 end
 
+-- Rounds a number to the nearest integer.
 function Round(num)
     return num >= 0 and math.floor(num + 0.5) or math.ceil(num - 0.5)
 end
 
+-- Trims whitespace from both ends of a string.
 function Trim(str)
     return str:match("^%s*(.-)%s*$")
 end
 
-function CapitalizeFirst(str)
+-- Capitalizes the first letter of a string.
+function CapitalizeFirstLetter(str)
     return (str:gsub("^%l", string.upper))
 end
 
+-- Checks if a string is nil, not a string, or consists only of whitespace.
 function IsBlankString(str)
     return type(str) ~= 'string' or str:match('^%s*$') ~= nil
 end
 
+-- Normalizes the case of a string to either upper or lower case.
+function FormatTextCase(string, mode)
+    if type(string) ~= 'string' then
+        return string
+    end
+
+    mode = mode and string.lower(mode) or 'upper'
+
+    if mode == 'lower' then
+        return string.lower(string)
+    end
+
+    return string.upper(string)
+end
+
+-- Generates a unique identifier string.
 local __uid_counter = 0
 function GenerateUniqueId(length)
     length = length or 16
@@ -98,4 +121,35 @@ function GenerateUniqueId(length)
     end
 
     return table.concat(out)
+end
+
+-- Registers a legacy export for a resource.
+function RegisterLegacyExport(resourceName, exportName, callback)
+    if not TypeCheck(resourceName, 'string', '4993', '"resourceName" must be a string.') then
+        return
+    end
+
+    if not TypeCheck(exportName, 'string', '4994', '"exportName" must be a string.') then
+        return
+    end
+
+    if not TypeCheck(callback, 'function', '4995', '"callback" must be a function.') then
+        return
+    end
+
+    if resourceName == '' or exportName == '' then
+        ERROR('4996', 'resourceName and exportName cannot be empty strings.')
+        return
+    end
+
+    AddEventHandler(('__cfx_export_%s_%s'):format(resourceName, exportName), function(register)
+        register(function(...)
+            local ok, result = pcall(callback, ...)
+            if ok then
+                return result
+            end
+            ERROR('4996', ('[RegisterLegacyExport] %s:%s failed: %s'):format(resourceName, exportName, tostring(result)))
+            return nil
+        end)
+    end)
 end

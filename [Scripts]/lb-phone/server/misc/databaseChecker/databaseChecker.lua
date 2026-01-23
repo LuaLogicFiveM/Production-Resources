@@ -850,6 +850,25 @@ local function AddIndexes()
     end
 end
 
+local function AddCryptoCoins()
+    if tables.phone_crypto_coins then
+        return
+    end
+
+    MySQL.rawExecute.await([[
+        CREATE TABLE IF NOT EXISTS `phone_crypto_coins` (
+            `coin` VARCHAR(15) NOT NULL,
+            `coin_value` DOUBLE NOT NULL DEFAULT 0,
+
+            PRIMARY KEY (`coin`)
+        ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+    ]])
+
+    infoprint("info", "Added phone_crypto_coins table.")
+
+    updateChanges = true
+end
+
 if Config.DatabaseChecker.AutoFix then
     ValidatePhotoAlbums()
     ValidateNotificationsId()
@@ -860,6 +879,7 @@ if Config.DatabaseChecker.AutoFix then
     ValidateAutoIncrementUpdate()
     AddSharedAlbums()
     AddIndexes()
+    AddCryptoCoins()
 end
 
 if updateChanges then

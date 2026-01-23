@@ -9,7 +9,7 @@ Cfg = {}
 -- auto_detect | esx | qbcore | qbox | vrp | standalone | other
 Cfg.Framework = 'auto_detect'
 
--- auto_detect | mysql-async | ghmattimysql | oxmysql | none
+-- auto_detect | ghmattimysql | oxmysql | none
 Cfg.Database = 'auto_detect'
 
 Cfg.BridgeDebugSQL = false -- Print SQL queries
@@ -19,16 +19,16 @@ Cfg.DisableDuty = false -- Disable the built-in framework duty system. Set this 
 
 Cfg.Language = 'EN' -- EN | ES | FR | DE | IT | PT | PT-BR | NL | PL | RU | TR | ZH | JA | AR | UA | CZ | DK | SE | NO | KR | HI
 
--- auto_detect | cd_notification | chat |  esx | mythic_notify | okokNotify | origen_notify | ox_lib | pNotify | ps-ui | qbcore | qbox | rtx_notify | vms_notifyv2 | other
+-- auto_detect | cd_notification | chat | esx | mythic_notify | okokNotify | origen_notify | ox_lib | pNotify | ps-ui | qbcore | qbox | rtx_notify | vms_notifyv2 | ZSX_UIV2 | other
 Cfg.Notification = 'auto_detect'
 
--- auto_detect | cd_drawtextui | jg-textui | ox_lib | okokTextUI | ps-ui | vms_notifyv2 | qb-core | none | other
+-- auto_detect | cd_drawtextui | jg-textui | ox_lib | okokTextUI | ps-ui | qb-core | vms_notifyv2 | ZSX_UIV2 | none | other
 Cfg.DrawTextUI = 'auto_detect'
 
 -- auto_detect | ox_target | qb-target | none
 Cfg.Target = 'auto_detect'
 
--- auto_detect | ox_inventory | qs-inventory | qb-inventory | tgiann-inventory | esx | qbcore | none | other
+-- auto_detect | esx | ox_inventory | qs-inventory | qb-inventory | qbcore | tgiann-inventory | none | other
 Cfg.Inventory = 'auto_detect'
 
 -- auto_detect | cd_easytime | qb-weathersync | vSync | none | other
@@ -37,14 +37,17 @@ Cfg.TimeWeather = 'auto_detect'
 -- auto_detect | F_RealCarKeysSystem | ak47_qb_vehiclekeys | ak47_vehiclekeys | fivecode_carkeys | loaf_keysystem | mk_vehiclekeys | MrNewbVehicleKeys | qs-vehiclekeys | stasiek_vehiclekeys | t1ger_keys | tgiann-hotwire | ti_vehicleKeys | vehicles_keys | wasabi_carlock | xd_locksystem | qbx_vehiclekeys | qb-vehiclekeys | none  | other
 Cfg.VehicleKeys = 'auto_detect'
 
--- auto_detect | BigDaddy-Fuel | cdn-fuel | esx-sna-fuel | FRFuel | lc_fuel | LegacyFuel | lj-fuel | lyre_fuel | mnr_fuel | myFuel | ND_Fuel | okokGasStation | ox_fuel | ps-fuel | qb-sna-fuel | qs-fuelstations | rcore_fuel | Renewed-Fuel | ti_fuel | x-fuel | qb-fuel | none | other
+-- auto_detect | BigDaddy-Fuel | cdn-fuel | esx-sna-fuel | FRFuel | lc_fuel | LegacyFuel | lj-fuel | lyre_fuel | mnr_fuel | myFuel | ND_Fuel | okokGasStation | ox_fuel | ps-fuel | qb-fuel | qb-sna-fuel | qs-fuelstations | rcore_fuel | Renewed-Fuel | ti_fuel | x-fuel | none | other
 Cfg.VehicleFuel = 'auto_detect'
 
--- auto_detect | gcphone | lb-phone | npwd | okokPhone | qb-phone | esx | none | other
+-- auto_detect | esx_phone | gcphone | gksphone | lb-phone | npwd | okokPhone | qb-phone | qbx_npwd | none | other
 Cfg.Phone = 'auto_detect'
 
 -- auto_detect | cd_dispatch | cd_dispatch3d | codem-dispatch | core_dispatch | esx_outlawalert | emergencydispatch | lb-tablet | ps-dispatch | qs-dispatch | rcore_dispatch | tk_dispatch | none | other
 Cfg.Dispatch = 'auto_detect'
+
+-- auto_detect | cd_garage | AdvancedParking | none | other
+Cfg.PersistentVehicles = 'auto_detect'
 
 ---------------------------------------------------------------------
 

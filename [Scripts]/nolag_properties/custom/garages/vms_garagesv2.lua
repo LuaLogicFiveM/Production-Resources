@@ -19,7 +19,7 @@ Config.Functions["OpenGarageMenu"] = {
     hideTextUI = true,
     label = "Enter Garage",
     onSelect = function(property)
-        if property.metadata.lockdown and Config.PoliceLockdown.DisableGarage then
+        if property.metadata?.lockdown and Config.PoliceLockdown.DisableGarage then
             Framework.Notify({
                 description = locale("property_under_police_lockdown"),
                 type = "error"

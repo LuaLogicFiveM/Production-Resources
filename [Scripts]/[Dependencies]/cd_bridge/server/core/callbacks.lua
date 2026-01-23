@@ -24,6 +24,33 @@ RegisterNetEvent('cd_bridge:Callback', function(id, action, ...)
     end
 end)
 
-RegisterServerCallback('cd_bridge:GetSharedVehicles', function(source)
+RegisterServerCallback('cd_bridge:GetSharedVehicles', function(src, ...)
     return GetSharedVehicles()
+end)
+
+RegisterServerCallback('cd_bridge:GetAdminPerms', function(src, ...)
+    return GetAdminPerms(src)
+end)
+
+RegisterServerCallback('cd_bridge:HasAdminPerms', function(src, ...)
+    return HasAdminPerms(src, ...)
+end)
+
+RegisterServerCallback('cd_bridge:KickOutPlayersInVehicle', function(src, ...)
+    local players, netID = ...
+    local entID = NetworkGetEntityFromNetworkId(netID)
+    local vehicle = entID and DoesEntityExist(entID) and entID or nil
+    for _, source in pairs(players) do
+        if source and source ~= 0 then
+            local ped = GetPlayerPed(source)
+            if vehicle then
+                TaskLeaveVehicle(ped, vehicle, 256)
+                TaskLeaveAnyVehicle(ped, 0, 0)
+            else
+                local coords = GetEntityCoords(ped)
+                SetEntityCoords(ped, coords.x, coords.y, coords.z + 5.0)
+            end
+        end
+    end
+    return true
 end)

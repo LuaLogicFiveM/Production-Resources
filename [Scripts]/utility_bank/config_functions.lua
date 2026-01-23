@@ -91,24 +91,11 @@ Config.Functions = {
     end,
 
     StartAlarm = function(bankId)
-        local bankCoords = Config.Banks[bankId].interior.pos
-        TriggerEvent('cd_dispatch:AddNotification', {
-            job_table = {'sheriff', 'sahp', 'police'},
-            coords = bankCoords,
-            title = '10-35 - Bank Heist',
-            message = 'Person reported robbing a bank',
-            flash = 1,
-            sound = 1,
-            blip = {
-                sprite = 108,
-                scale = 1.5,
-                colour = 1,
-                flashes = true,
-                text = '911 - Bank Heist',
-                time = 5,
-                radius = 25,
-            }
-        })
+        if IsDuplicityVersion() then
+            TriggerEvent('cd_dispatch:PreSet:JewelryRobbery')
+        else
+            TriggerServerEvent('cd_dispatch:PreSet:JewelryRobbery')
+        end
     end,
 
     CanStartVaultHacking = function(source, bankId)

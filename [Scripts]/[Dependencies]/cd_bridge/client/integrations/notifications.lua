@@ -44,7 +44,7 @@ local notifTypeConfig = {
         [2] = 'primary',
         [3] = 'error',
     },
-    ['custom'] = {
+    ['other'] = {
         [1] = 'success',
         [2] = 'info',
         [3] = 'error',
@@ -56,14 +56,11 @@ local notifTypeConfig = {
 function Notification(notif_type, message)
     if not notif_type or not  message then ERROR('7231', 'Notifications arguments error') return end
 
+    local title = Locale('title')
     local newNotifType = notifTypeConfig[Cfg.Notification] and notifTypeConfig[Cfg.Notification][notif_type]
 
     if Cfg.Notification == 'cd_notifications' then
-        TriggerEvent('cd_notifications:Add',{
-            title = Locale('title'),
-            message = message,
-            type = newNotifType,
-        })
+        TriggerEvent('cd_notifications:Add',{title = title, message = message, type = newNotifType})
 
     elseif Cfg.Notification == 'chat' then
         TriggerEvent('chatMessage', message)
@@ -72,13 +69,13 @@ function Notification(notif_type, message)
         exports.mythic_notify:DoLongHudText(message, newNotifType)
 
     elseif Cfg.Notification == 'okokNotify' then
-        exports.okokNotify:Alert(Locale('title'), message, 5000, newNotifType)
+        exports.okokNotify:Alert(title, message, 5000, newNotifType)
 
     elseif Cfg.Notification == 'origen_notify' then
         exports['origen_notify']:ShowNotification(message)
 
     elseif Cfg.Notification == 'ox_lib' then
-        exports.ox_lib:notify({title = Locale('title'), description = message, type = newNotifType})
+        exports.ox_lib:notify({title = title, description = message, type = newNotifType})
 
     elseif Cfg.Notification == 'pNotify' then
         exports.pNotify:SendNotification({text = message, type = newNotifType, timeout = 5000})
@@ -87,10 +84,13 @@ function Notification(notif_type, message)
         exports['ps-ui']:Notify(message, newNotifType, 5000)
 
     elseif Cfg.Notification == 'rtx_notify' then
-        TriggerEvent('rtx_notify:Notify', Locale('title'), newNotifType, message, 5000)
+        TriggerEvent('rtx_notify:Notify', title, newNotifType, message, 5000)
 
     elseif Cfg.Notification == 'vms_notifyv2' then
-        exports['vms_notifyv2']:Notification({title = Locale('title'), description = message, time = 5000, color = '#34ebe8', icon = 'fa-solid fa-check'})
+        exports['vms_notifyv2']:Notification({title = title, description = message, time = 5000, color = '#34ebe8', icon = 'fa-solid fa-check'})
+
+    elseif Cfg.Notification == 'ZSX_UIV2' then
+        exports['ZSX_UIV2']:Notification(title, message)
 
     elseif Cfg.Notification == 'esx' then
         ESX.ShowNotification(message)

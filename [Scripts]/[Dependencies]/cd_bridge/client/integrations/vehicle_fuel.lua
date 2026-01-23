@@ -1,84 +1,91 @@
 --- @param vehicle number       The vehicle entity.
 --- @param plate string         The vehicle plate.
 --- @return number|nil          --The fuel level of the vehicle, 0.0-100.0.
-function GetFuel(vehicle, plate) -- This gets triggered just before you store your vehicle.
+function GetFuel(vehicle, plate)
     local fuelResource = Cfg.VehicleFuel
+    local fuel
     if fuelResource == 'BigDaddy-Fuel' then
-        return exports['BigDaddy-Fuel']:GetFuel(vehicle)
+        fuel = exports['BigDaddy-Fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'cdn-fuel' then
-        return exports['cdn-fuel']:GetFuel(vehicle)
+        fuel = exports['cdn-fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'esx-sna-fuel' then
-        return exports['esx-sna-fuel']:GetFuel(vehicle)
+        fuel = exports['esx-sna-fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'FRFuel' then
-        return math.ceil((100 / GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fPetrolTankVolume')) * math.ceil(GetVehicleFuelLevel(vehicle)))
+        fuel = math.ceil((100 / GetVehicleHandlingFloat(vehicle, 'CHandlingData', 'fPetrolTankVolume')) * math.ceil(GetVehicleFuelLevel(vehicle)))
 
     elseif fuelResource == 'lc_fuel' then
-        return exports['lc_fuel']:GetFuel(vehicle)
+        fuel = exports['lc_fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'LegacyFuel' then
-        return exports['LegacyFuel']:GetFuel(vehicle)
+        fuel = exports['LegacyFuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'lj-fuel' then
-        return exports['lj-fuel']:GetFuel(vehicle)
+        fuel = exports['lj-fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'lyre_fuel' then
-        exports['lyre_fuel']:GetFuel(vehicle)
+        fuel = exports['lyre_fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'mnr_fuel' then
-        return GetVehicleFuelLevel(vehicle)
+        fuel = GetVehicleFuelLevel(vehicle)
 
     elseif fuelResource == 'myFuel' then
-        return exports['myFuel']:GetFuel(vehicle)
+        fuel = exports['myFuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'ND_Fuel' then
-        return DecorGetFloat(vehicle, '_ANDY_FUEL_DECORE_')
+        fuel = DecorGetFloat(vehicle, '_ANDY_FUEL_DECORE_')
 
     elseif fuelResource == 'okokGasStation' then
-        return exports['okokGasStation']:GetFuel(vehicle)
+        fuel = exports['okokGasStation']:GetFuel(vehicle)
 
     elseif fuelResource == 'ox_fuel' then
-        return GetVehicleFuelLevel(vehicle)
+        fuel = GetVehicleFuelLevel(vehicle)
 
     elseif fuelResource == 'ps-fuel' then
-        return exports['ps-fuel']:GetFuel(vehicle)
+        fuel = exports['ps-fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'qb-sna-fuel' then
-        return exports['qb-sna-fuel']:GetFuel(vehicle)
+        fuel = exports['qb-sna-fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'qs-fuelstations' then
-        return exports['qs-fuelstations']:GetFuel(vehicle)
+        fuel = exports['qs-fuelstations']:GetFuel(vehicle)
 
     elseif fuelResource == 'rcore_fuel' then
-        return exports['rcore_fuel']:GetVehicleFuelPercentage(vehicle)
+        fuel = exports['rcore_fuel']:GetVehicleFuelPercentage(vehicle)
 
     elseif fuelResource == 'Renewed-Fuel' then
-        return Entity(vehicle).state.fuel
+        fuel = Entity(vehicle).state.fuel
 
     elseif fuelResource == 'ti_fuel' then
-        return exports['ti_fuel']:getFuel(vehicle)
+        fuel = exports['ti_fuel']:getFuel(vehicle)
 
     elseif fuelResource == 'x-fuel' then
-        return exports['x-fuel']:GetFuel(vehicle)
+        fuel = exports['x-fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'qb-fuel' then
-        return exports['qb-fuel']:GetFuel(vehicle)
+        fuel = exports['qb-fuel']:GetFuel(vehicle)
 
     elseif fuelResource == 'other' then
         --- Implement other fuel get method here.
-        return 100.0
+        fuel = 100.0
 
     elseif fuelResource == 'none' then
-        return nil
+        fuel = GetVehicleFuelLevel(vehicle)
+    end
+
+    if fuel then
+        fuel = RoundDecimals(fuel, 1)
+    else
+        fuel = 0.0
     end
 end
 
 --- @param vehicle number        The vehicle entity.
 --- @param fuel_level number     The fuel level to set, 0.0-100.0.
-function SetFuel(vehicle, plate, fuel_level) -- This gets triggered after you spawn your vehicle.
-    local fuel_level = fuel_level+0.0
+function SetFuel(vehicle, plate, fuel_level)
+    fuel_level = (fuel_level ~= nil and fuel_level or 0) + 0.0
     local fuelResource = Cfg.VehicleFuel
 
     if fuelResource == 'BigDaddy-Fuel' then
@@ -149,6 +156,6 @@ function SetFuel(vehicle, plate, fuel_level) -- This gets triggered after you sp
         --- Implement other fuel set method here.
 
     elseif fuelResource == 'none' then
-
+        SetVehicleFuelLevel(vehicle, fuel_level)
     end
 end

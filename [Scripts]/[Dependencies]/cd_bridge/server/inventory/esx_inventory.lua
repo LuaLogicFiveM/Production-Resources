@@ -63,7 +63,7 @@ function GetItemList()
     if next(ItemList) ~= nil then
         return ItemList
     end
-    local DB_items = DB.fetch('SELECT name FROM items')
+    local DB_items = DB.fetch('SELECT name, label FROM items')
     if DB_items then
         for _, row in pairs(DB_items) do
             ItemList[row.name] = {

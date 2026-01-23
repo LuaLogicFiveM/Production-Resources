@@ -1,16 +1,20 @@
 NUI_status = false
 
+-- Enables NUI focus.
 function EnableNuiFocus()
     SetNuiFocus(true, true)
     NUI_status = true
 end
 
+-- Disables NUI focus.
 function DisableNuiFocus()
     SetNuiFocus(false, false)
     NUI_status = false
 end
 
-function PlayAnimation(animDict, animName, duration)
+local InAnimation = false
+-- Plays an animation on the player ped.
+function PlayAnimation(animDict, animName, duration, loop)
     local ped = PlayerPedId()
     if not DoesEntityExist(ped) then return end
 
@@ -23,13 +27,32 @@ function PlayAnimation(animDict, animName, duration)
     end
 
     if not HasAnimDictLoaded(animDict) then
-        ERROR('2358', '[PlayAnimation] Timed out waiting for anim dict '..animDict..' to load')
+        ERROR('2358', '[PlayAnimation] Timed out waiting for anim dict '..tostring(animDict)..' to load')
         return
     end
 
     TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, duration, 49, 0.0, false, false, false)
 
-    if duration and duration > 0 then
+    if loop then
+        CreateThread(function()
+            if InAnimation then return end
+            InAnimation = true
+
+            while InAnimation do
+                Wait(100)
+
+                if not DoesEntityExist(ped) then
+                    break
+                end
+
+                if not IsEntityPlayingAnim(ped, animDict, animName, 3) and InAnimation then
+                    TaskPlayAnim(ped, animDict, animName, 1.0, -1.0, duration, 49, 0.0, false, false, false)
+                end
+            end
+        end)
+    end
+
+    if duration and duration > 0 and not loop then
         CreateThread(function()
             Wait(duration + 100)
             RemoveAnimDict(animDict)
@@ -37,6 +60,21 @@ function PlayAnimation(animDict, animName, duration)
     end
 end
 
+-- Stops the current animation.
+function StopAnimation(anim_dict, anim_name)
+    local ped = PlayerPedId()
+    if not DoesEntityExist(ped) then return end
+
+    InAnimation = false
+
+    if anim_dict and anim_name then
+        StopAnimTask(ped, anim_dict, anim_name, 2.0)
+    else
+        ClearPedTasks(ped)
+    end
+end
+
+-- Returns the closest player.
 function GetClosestPlayer(maxDistance, returnData)
     local myPed = PlayerPedId()
     local myCoords = GetEntityCoords(myPed)
@@ -68,6 +106,7 @@ function GetClosestPlayer(maxDistance, returnData)
     return closestPlayer
 end
 
+-- Returns all players within a certain distance.
 function GetClosestPlayers(maxDistance, returnData)
     local players = {}
     local myPed = PlayerPedId()
@@ -98,6 +137,7 @@ function GetClosestPlayers(maxDistance, returnData)
     return players
 end
 
+-- Gets the key label for a given command.
 local specialKeyCodes = { ['b_100']='LMB',['b_101']='RMB',['b_102']='MMB',['b_103']='Mouse.ExtraBtn1',['b_104']='Mouse.ExtraBtn2',['b_105']='Mouse.ExtraBtn3',['b_106']='Mouse.ExtraBtn4',['b_107']='Mouse.ExtraBtn5',['b_108']='Mouse.ExtraBtn6',['b_109']='Mouse.ExtraBtn7',['b_110']='Mouse.ExtraBtn8',['b_115']='MouseWheel.Up',['b_116']='MouseWheel.Down',['b_130']='NumSubstract',['b_131']='NumAdd',['b_134']='Num Multiplication',['b_135']='Num Enter',['b_137']='Num1',['b_138']='Num2',['b_139']='Num3',['b_140']='Num4',['b_141']='Num5',['b_142']='Num6',['b_143']='Num7',['b_144']='Num8',['b_145']='Num9',['b_170']='F1',['b_171']='F2',['b_172']='F3',['b_173']='F4',['b_174']='F5',['b_175']='F6',['b_176']='F7',['b_177']='F8',['b_178']='F9',['b_179']='F10',['b_180']='F11',['b_181']='F12',['b_182']='F13',['b_183']='F14',['b_184']='F15',['b_185']='F16',['b_186']='F17',['b_187']='F18',['b_188']='F19',['b_189']='F20',['b_190']='F21',['b_191']='F22',['b_192']='F23',['b_193']='F24',['b_194']='Arrow Up',['b_195']='Arrow Down',['b_196']='Arrow Left',['b_197']='Arrow Right',['b_198']='Delete',['b_199']='Escape',['b_200']='Insert',['b_201']='End',['b_210']='Delete',['b_211']='Insert',['b_212']='End',['b_1000']='Shift',['b_1002']='Tab',['b_1003']='Enter',['b_1004']='Backspace',['b_1009']='PageUp',['b_1008']='Home',['b_1010']='PageDown',['b_1012']='CapsLock',['b_1013']='Control',['b_1014']='Right Control',['b_1015']='Alt',['b_1055']='Home',['b_1056']='PageUp',['b_2000']='Space' }
 function GetKeyMappingKeyLabel(command)
     local hashKey = GetHashKey(command)
@@ -108,4 +148,86 @@ function GetKeyMappingKeyLabel(command)
     else
         return specialKeyCodes[key] or nil
     end
+end
+
+-- Loads a model into memory.
+function LoadModel(model_hash)
+    if not IsModelInCdimage(model_hash) or not IsModelValid(model_hash) then
+        Notif(3, 'invalid_model', model_hash)
+        return false
+    end
+
+    local timeout = 2000
+    local start = GetGameTimer()
+    while not HasModelLoaded(model_hash) and (GetGameTimer() - start) < timeout do
+        RequestModel(model_hash)
+        Wait(10)
+    end
+
+    if not HasModelLoaded(model_hash) then
+        Notif(3, 'loading_model_failed', model_hash)
+        return false
+    else
+        return true
+    end
+end
+
+-- Ensures network control of an entity.
+function EnsureNetworkControl(entity)
+    if not entity or entity == 0 or not DoesEntityExist(entity) then
+        return false
+    end
+
+    local timeoutMs = 2000
+    local start = GetGameTimer()
+
+    SetEntityAsMissionEntity(entity, true, true)
+
+    local netId = NetworkGetNetworkIdFromEntity(entity)
+    if not netId or netId == 0 then
+        return false
+    end
+
+    SetNetworkIdExistsOnAllMachines(netId, true)
+    SetNetworkIdCanMigrate(netId, true)
+
+    while not NetworkHasControlOfEntity(entity) and (GetGameTimer() - start) < timeoutMs do
+        NetworkRequestControlOfEntity(entity)
+        NetworkRequestControlOfNetworkId(netId)
+        Wait(10)
+    end
+    return NetworkHasControlOfEntity(entity)
+end
+
+-- Ensures collision is loaded for an entity.
+function RequestEntityCollision(entity)
+    if not entity or entity == 0 or not DoesEntityExist(entity) then
+        return false
+    end
+
+    local timeoutMs = 2000
+    local start = GetGameTimer()
+    local coords = GetEntityCoords(entity)
+
+    RequestCollisionAtCoord(coords.x, coords.y, coords.z)
+    SetEntityCollision(entity, true, true)
+
+    while not HasCollisionLoadedAroundEntity(entity) and (GetGameTimer() - start) < timeoutMs do
+        RequestCollisionAtCoord(coords.x, coords.y, coords.z)
+        Wait(10)
+    end
+    return HasCollisionLoadedAroundEntity(entity)
+end
+
+-- Draws 3D text.
+function Draw3DText(x, y, z, text)
+    local onScreen, sx, sy = World3dToScreen2d(x, y, z)
+    if not onScreen then return end
+    SetTextScale(0.32, 0.32)
+    SetTextFont(4)
+    SetTextProportional(1)
+    SetTextCentre(1)
+    SetTextEntry('STRING')
+    AddTextComponentString(text)
+    DrawText(sx, sy)
 end

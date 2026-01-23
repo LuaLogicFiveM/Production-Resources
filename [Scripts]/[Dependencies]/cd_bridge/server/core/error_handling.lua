@@ -63,8 +63,7 @@ end)
 
 local function DebugPrints(source)
     Citizen.Trace('^6-----------------------^0\n')
-    Citizen.Trace('^1CODESIGN DEBUG^0 ('..GetCurrentResourceName()..' - v'..GetResourceMetadata(GetCurrentResourceName(), 'version', 0)..')\n')
-
+    Citizen.Trace(string.format('^1CODESIGN DEBUG^0 (%s - v%s - %s)\n', GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'version', 0), source and 'client' or 'server'))
     if source then
         Citizen.Trace('^3PLAYER^0\n')
         Citizen.Trace(string.format('^6Source:^0 %s\n', source))
@@ -110,17 +109,21 @@ end
 
 if GetCurrentResourceName() == 'cd_bridge' then
     RegisterCommand('debugbridge', function(source)
-        local isServerConsole = type(source) ~= 'number' or source == 0
-        local isAdmin = not isServerConsole and HasAdminPerms(source, {'owner', 'superadmin', 'god', 'admin', 'mod'}) or false
-        local isDebugEnabled = Cfg.BridgeDebug
+        local isConsole = source == 0
+        local isAdmin = HasAdminPerms(source, {'owner', 'superadmin', 'god', 'admin', 'moderator', 'mod'})
+        local debugEnabled = Cfg.BridgeDebug
 
-        if isServerConsole then
+        if isConsole then
             DebugPrints(nil)
-        elseif isDebugEnabled or isAdmin then
-            DebugPrints(source)
-        else
-            Citizen.Trace('You cannot use this command. You must have admin permissions, enable Cfg.BridgeDebug, or run it from the server console.\n')
+            return
         end
+
+        if isAdmin or debugEnabled then
+            DebugPrints(source)
+            return
+        end
+
+        Citizen.Trace('You cannot use this command. You must have admin permissions, enable Cfg.BridgeDebug, or run it from the server console.\n')
     end, false)
 end
 

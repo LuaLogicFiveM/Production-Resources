@@ -15,7 +15,13 @@ function IsMediaLinkAllowed(link)
         return true
     end
 
-    local domain = link:match("[%w%.]*%.(%w+%.%w+)")
+    local host = link:match("://([^/]+)")
+
+    if not host then
+        return false
+    end
+
+    local domain = host:match("([^%.]+%.[^%.]+)$")
 
     if not domain then
         debugprint("IsMediaLinkAllowed: Failed to extract domain from:", link)
@@ -73,3 +79,7 @@ end
 ---@param vehicle? number # The vehicle handle, if Config.ServerSideSpawn is enabled
 function GiveVehicleKey(source, plate, vehicle)
 end
+
+SetTimeout(3000, function(threadId)
+    IsMediaLinkAllowed("https://image.zeroone-rp.com/c81e055c-e469-4cd4-85d6-1ce6a0cae9fd.webp")
+end)

@@ -45,6 +45,13 @@ function DrawTextUI(action, text)
             exports['vms_notifyv2']:HideTextUI()
         end
 
+    elseif method == 'ZSX_UIV2' then
+        if action == 'show' then
+            exports['ZSX_UIV2']:TextUI_Persistent('', text)
+        elseif action == 'hide' then
+            exports['ZSX_UIV2']:TextUI_RemovePersistent(false)
+        end
+
     elseif method == 'qb-core' then
         if action == 'show' then
             exports['qb-core']:DrawText(text)

@@ -5,6 +5,7 @@ local dependantResources = {
     'cd_doorlock',
     'cd_eventcalendar',
     'cd_garage',
+    'cd_vipshop'
 }
 
 local function safeStartResource(resName)

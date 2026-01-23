@@ -30,6 +30,7 @@ Include('client/integrations/drawtextui.lua')
 Include('client/integrations/gang.lua')
 Include('client/integrations/job_duty.lua')
 Include('client/integrations/notifications.lua')
+Include('client/integrations/persistent_vehicle.lua')
 Include('client/integrations/vehicle_fuel.lua')
 Include('client/integrations/vehicle_keys.lua')
 

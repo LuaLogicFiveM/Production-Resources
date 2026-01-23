@@ -1,3 +1,4 @@
+-- Get all possible plate variations for a given plate.
 function GetAllPossiblePlates(plate)
     local results = {}
     local seen = {}
@@ -21,43 +22,69 @@ function GetAllPossiblePlates(plate)
     return results
 end
 
--- If plate is a string, fetch all possible plates using GetAllPossiblePlates().
--- Use {plate} to check only that specific plate.
+-- Check if a vehicle exists in the database.
 function IsVehicleOwned(plate)
-    local plates = type(plate) == 'string' and GetAllPossiblePlates(plate) or plate
-    if not plates or #plates == 0 then
+    local exists = DB.exists('SELECT 1 FROM '..FW.vehicle_table..' WHERE plate = ? LIMIT 1', { plate })
+    if exists then
+        return true
+    else
         return false
     end
-
-    local placeholders = {}
-    for cd = 1, #plates do
-        placeholders[cd] = '?'
-    end
-
-    local query = ('SELECT plate FROM %s WHERE plate IN (%s) LIMIT 1'):format(FW.vehicle_table, table.concat(placeholders, ','))
-
-    local result = DB.fetch(query, plates)
-    return result and result[1] ~= nil
 end
 
--- If plate is a string, fetch all possible plates using GetAllPossiblePlates().
--- Use {plate} to check only that specific plate.
+-- Check if a player owns a vehicle.
 function DoesPlayerOwnVehicle(source, plate)
-    local plates = type(plate) == 'string' and GetAllPossiblePlates(plate) or plate
-    if not plates or #plates == 0 then
+    if type(plate) ~= 'string' or plate == '' then
         return false
     end
+    local identifier = GetIdentifier(source)
 
-    local placeholders = {}
-    for cd = 1, #plates do
-        placeholders[cd] = '?'
+    return DB.exists(('SELECT 1 FROM '..FW.vehicle_table..' WHERE plate = ? AND '..FW.vehicle_identifier..' = ? LIMIT 1'), { plate, identifier }) == true
+end
+
+-- Generate a random vehicle plate.
+function GenerateRandomVehiclePlate(plateFormat)
+    local plate = ''
+    local letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    local numbers = '0123456789'
+
+    for cd = 1, #Config.NewPlateFormat do
+        local char = string.sub(Config.NewPlateFormat, cd, cd)
+        if char == 'A' then
+            local random_index = math.random(1, #letters)
+            local random_char = string.sub(letters, random_index, random_index)
+            plate = plate..random_char
+        elseif char == '1' then
+            local random_index = math.random(1, #numbers)
+            local random_char = string.sub(numbers, random_index, random_index)
+            plate = plate..random_char
+        else
+            plate = plate..char
+        end
     end
 
-    local query = ('SELECT plate FROM %s WHERE plate IN (%s) AND %s = ? LIMIT 1'):format(FW.vehicle_table, table.concat(placeholders, ','), FW.vehicle_owner)
+    local Result = DB.fetch('SELECT plate FROM '..FW.vehicle_table..' WHERE plate=?', {plate})
+    if Result and Result[1] == nil then
+        return plate
+    else
+        return GenerateRandomVehiclePlate()
+    end
+end
 
-    local params = plates
-    params[#params + 1] = GetIdentifier(source)
+-- Fetch vehicle properties from the database.
+function GetVehiclePropertiesFromDatabase(plate)
+    local vehicle = DB.fetch('SELECT '..FW.vehicle_props..' FROM '..FW.vehicle_table..' WHERE plate=?', {plate})
+    if vehicle and vehicle[1] and vehicle[1][FW.vehicle_props] then
+        return json.decode(vehicle[1][FW.vehicle_props] or '{}')
+    end
+    return {}
+end
 
-    local result = DB.fetch(query, params)
-    return result and result[1] ~= nil
+-- Gets vehicles license plate.
+function GetVehiclePlate(vehicle)
+    if not vehicle then
+        return
+    end
+    local plate = GetVehicleNumberPlateText(vehicle)
+    return string.gsub(plate, "^%s*(.-)%s*$", "%1")
 end

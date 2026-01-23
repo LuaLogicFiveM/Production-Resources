@@ -51,9 +51,9 @@ function GetItemList()
     end
     local qb_items = QBCore.Shared.Items
     if qb_items then
-        for _, row in pairs(qb_items) do
-            ItemList[row.name] = {
-                name = row.name,
+        for name, row in pairs(qb_items) do
+            ItemList[name or row.name] = {
+                name = name or row.name,
                 label = row.label
             }
         end

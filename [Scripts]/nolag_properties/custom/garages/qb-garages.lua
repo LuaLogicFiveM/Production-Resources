@@ -23,7 +23,7 @@ Config.Functions["OpenGarageMenu"] = {
         TriggerEvent('qb-garages:client:setHouseGarage', 'Property_' .. tostring(property.id), false)
     end,
     onEnter = function(property)
-        if property.metadata.lockdown and Config.PoliceLockdown.DisableGarage then
+        if property.metadata?.lockdown and Config.PoliceLockdown.DisableGarage then
             -- Framework.Notify({
             --     description = locale("property_under_police_lockdown"),
             --     type = "error"

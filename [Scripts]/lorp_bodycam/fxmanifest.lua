@@ -25,5 +25,4 @@ client_script {
 
 files {
   'web/**',
-  "node_modules/fivem-game-view/**/*",
 }

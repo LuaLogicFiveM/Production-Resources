@@ -35,6 +35,23 @@ end
 initateFramework()
 
 -- ┌──────────────────────────────────────────────────────────────────┐
+-- │                               PERMS                              │
+-- └──────────────────────────────────────────────────────────────────┘
+
+-- Get the admin permissions/group of a player
+function GetAdminPerms()
+    return exports.cd_bridge:Callback('cd_bridge:GetAdminPerms')
+end
+
+-- Check if a player has admin permissions
+function HasAdminPerms(perms)
+    if not perms then
+        return false
+    end
+    return exports.cd_bridge:Callback('cd_bridge:HasAdminPerms', perms)
+end
+
+-- ┌──────────────────────────────────────────────────────────────────┐
 -- │                                JOB                               │
 -- └──────────────────────────────────────────────────────────────────┘
 
@@ -65,10 +82,6 @@ end
 --- Check if a player is on duty
 --- @return boolean         --True if the player is on duty, false otherwise.
 function GetJobDuty()
-    if Cfg.DisableDuty then
-        return true
-    end
-
     local customDuty = GetCustomJobDuty()
     if customDuty ~= nil then
         return customDuty
@@ -189,4 +202,13 @@ function GetSharedVehicles()
         SharedVehicles = exports.cd_bridge:Callback('cd_bridge:GetSharedVehicles')
         return SharedVehicles
     end
+end
+
+-- ┌──────────────────────────────────────────────────────────────────┐
+-- │                              VEHICLE                             │
+-- └──────────────────────────────────────────────────────────────────┘
+
+function FrameworkCreateVehicle(model, coords)
+    local heading = coords.w or coords.h or 0.0
+    return CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, false)
 end
