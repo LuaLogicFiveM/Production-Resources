@@ -1,18 +1,4 @@
 {
-    "tequilashots": [
-        0,
-        0
-    ],
-    "daiquiri": [
-        0,
-        0,
-        0
-    ],
-    "champagne": [
-        0,
-        0,
-        0
-    ],
     "leaflatte": [
         0,
         0,
@@ -21,13 +7,28 @@
     "mojito": [
         0
     ],
-    "tequila": [
+    "cocktail": [
+        0,
+        0,
+        0
+    ],
+    "redwine": [
+        0,
         0
     ],
     "whitewine": [
         0
     ],
-    "cocktail": [
+    "daiquiri": [
+        0,
+        0,
+        0
+    ],
+    "tequilashots": [
+        0,
+        0
+    ],
+    "champagne": [
         0,
         0,
         0
@@ -36,8 +37,7 @@
         0,
         0
     ],
-    "redwine": [
-        0,
+    "tequila": [
         0
     ]
 }

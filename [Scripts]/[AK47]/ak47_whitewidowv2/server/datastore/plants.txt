@@ -1,119 +1,119 @@
 [
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1712.23681640625,
             "y": -1122.216796875,
             "z": 13.21909999847412
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 1
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1713.0074462890626,
             "y": -1121.5848388671876,
             "z": 13.23950004577636
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 2
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1711.8006591796876,
             "y": -1121.316650390625,
             "z": 13.2200002670288
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 3
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1731.4130859375,
             "y": -1120.6832275390626,
             "z": 13.27540016174316
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 4
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1730.8134765625,
             "y": -1121.15869140625,
             "z": 13.27540016174316
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 5
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1731.327392578125,
             "y": -1122.248779296875,
             "z": 13.27070045471191
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 6
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1721.1842041015626,
             "y": -1133.123779296875,
             "z": 13.25259971618652
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 7
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1720.472412109375,
             "y": -1132.306396484375,
             "z": 13.25259971618652
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 8
     },
     {
+        "fertilizer": 0,
+        "stage": 0,
         "pos": {
             "x": -1723.0006103515626,
             "y": -1131.693359375,
             "z": 13.27070045471191
         },
         "time": 0,
-        "spray": 0,
-        "fertilizer": 0,
         "growing": 0,
-        "stage": 0,
+        "spray": 0,
         "id": 9
     }
 ]
