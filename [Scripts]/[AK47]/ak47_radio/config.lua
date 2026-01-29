@@ -8,6 +8,12 @@ Config.MaxChannelLength = 5 -- The maximum character length for a channel (e.g.,
 
 Config.DisconnectWhenDead = false
 
+Config.VoiceJitterRange = 300.0
+Config.RadioItems = {
+    radio = -1, -- no range applied
+    civradio = 1000,
+}
+
 -- Default UI settings for first-time users or after cache is cleared.
 -- These values will be sent to the UI when it opens.
 Config.DefaultUISettings = {
