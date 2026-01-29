@@ -42,7 +42,8 @@ function giveKeys(vehicle, model, plate)
     elseif Config.KeysDependency == "jaksam_keys" then
         TriggerServerEvent("vehicles_keys:selfGiveCurrentVehicleKeys")
     elseif Config.KeysDependency == "0r-vehiclekeys" then
-        exports['0r-vehiclekeys']:GiveKeys(plate)
+        local rplate = GetVehicleNumberPlateText(vehicle)
+        exports['0r-vehiclekeys']:GiveKeys(rplate)
     elseif Config.KeysDependency =="msk_vehiclekeys" then 
         exports.msk_vehiclekeys:AddKey(vehicle, type)
     end
@@ -89,7 +90,8 @@ function removeKeys(vehicle, model, plate)
         TriggerServerEvent('vehiclekeys:server:RemoveKeys', plate, identifier)
     elseif Config.KeysDependency == "wx_carlock" then
     elseif Config.KeysDependency == "0r-vehiclekeys" then
-        exports['0r-vehiclekeys']:RemoveKeys(plate)
+        local rplate = GetVehicleNumberPlateText(vehicle)
+        exports['0r-vehiclekeys']:RemoveKeys(rplate)
     elseif Config.KeysDependency == "msk_vehiclekeys" then 
         exports.msk_vehiclekeys:RemoveKey(vehicle, type)
     end

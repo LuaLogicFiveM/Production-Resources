@@ -1,11 +1,18 @@
 ScriptFunctions = {}
 
 ScriptFunctions.GetVehicleDeformation = function(vehicle)
+    if GetResourceState('VehicleDeformation') ~= 'missing' then
+        local deformation = exports["VehicleDeformation"]:GetVehicleDeformation(vehicle)
+        return deformation
+    end
+
     return {}
 end
 
 ScriptFunctions.SetVehicleDeformation = function(vehicle, deformation)
-    
+    if GetResourceState('VehicleDeformation') ~= 'missing' then
+        exports["VehicleDeformation"]:SetVehicleDeformation(vehicle, deformation)
+    end
 end
 
 ScriptFunctions.GetClosestPlayers = function(maxDistance)

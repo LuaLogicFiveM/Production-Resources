@@ -4,6 +4,8 @@ shared_script "@ReaperV4/imports/bypass_c.lua"
 lua54 "yes" -- needed for Reaper
 
 fx_version "cerulean"
+description "Best Garage System for fivem servers."
+author "OTHERPLANET"
 version '2.5.7'
 lua54 'yes'
 game 'gta5'

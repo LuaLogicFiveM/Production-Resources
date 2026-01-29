@@ -67,6 +67,7 @@ Config.Misc = {
     VehicleBackToGarage = false, -- using this function, vehicles will back to player's garage once he disconnect from the server.
     ReverseGradeCheck = true, -- examples: True = vehicle with minimum grade 3 will be available for grades higher than 3. False = vehicle with minimum grade 3 will be available for grades lower than 3. 
     DisableVehiclesTransferButKeepUniqueGarages = false, -- If this is true, it will keep vehicles in garages where they were stored but do not allow to transfer between garages.
+    GiveKeysToSubownerWhenTakenOut = true, -- If true - script will give keys to subowner when vehicle is taken out from garage / remove keys from subowner when vehicle is stored.
 }
 
 ----------------------------------------------------------------------------
