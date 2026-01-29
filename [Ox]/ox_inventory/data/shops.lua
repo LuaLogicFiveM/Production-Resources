@@ -42,6 +42,7 @@ return {
             { name = 'WEAPON_FLASHLIGHT', price = 500 },
             { name = 'WEAPON_KNIFE', price = 500 },
 		}, locations = {
+			vec3(42.7479, -1490.0276, 29.7974), -- Addon Forum
 			vec3(2004.0485, 3783.9221, 32.2032), -- Addon Sandy
 			vec3(1961.3939, 3740.9080, 32.3435), -- Sandy
 			vec3(-710.3340, -912.0389, 19.2162), -- Little Seoul (726)

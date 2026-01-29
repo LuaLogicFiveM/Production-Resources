@@ -709,7 +709,7 @@ Config.Stores = {
     },
     {
         type = "clothing",
-        coords = vector4(75.39, -1398.28, 29.38, 6.73),
+        coords = vector4(-7.0922, -1546.4426, 29.2494, 93.5872),
         size = vector3(4, 4, 4),
         rotation = 45,
         usePoly = false,

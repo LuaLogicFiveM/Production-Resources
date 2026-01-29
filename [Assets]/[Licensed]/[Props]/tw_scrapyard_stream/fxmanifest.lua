@@ -8,7 +8,4 @@ data_file 'DLC_ITYP_REQUEST' 'stream/tw_grinder_props.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/tw_melting_int.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/yusufunezikproplari.ytyp'
 
-escrow_ignore {}
-
-
 dependency '/assetpacks'
