@@ -7,7 +7,7 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 author 'damianpetrow https://github.com/damianpetrow'
-version '1.1.1'
+version '1.1.2'
 this_is_a_map 'yes'
 shared_scripts {
     'config/config.lua',
