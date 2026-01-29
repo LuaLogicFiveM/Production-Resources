@@ -138,6 +138,15 @@ Config.TelevisionObjects = {
 		nonobjectcoords = vector3(-298.64, 740.55, 211.6), -- screen cordinates
 		nonobjectrotation = vector3(0.0, 0.0, 53.6), -- screen rotation
 	},
+	{ --539
+		scale = vector3(0.38, 0.158, 0.1), -- rendertarget scale
+		maxdistance = 100.0, --max distance for display screen--max distance for view screen
+		maxcontroldistance = 10.0, -- max distance for control tv (its cannot be higher than maxdistance)
+		rendertarget = true, -- enable render target
+		nonobject = false,  -- enable this if you want use just screen, withount rendering on object
+		nonobjectcoords = vector3(1396.2919, 1055.3732, 117.1341), -- screen cordinates
+		nonobjectrotation = vector3(0.0, 0.0, 180.0), -- screen rotation
+	},
 	{
 		scale = vector3(1.5, 0.8, 1.0), -- rendertarget scale
 		maxdistance = 100.0, --max distance for display screen--max distance for view screen

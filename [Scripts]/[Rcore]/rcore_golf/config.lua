@@ -132,7 +132,7 @@ Config = {
     MinigameRandomForce = 0.0,
 
     -- Adds prints to the server console that are relevant to the RCore developers. Do not enable unless asked by RCore support.
-    Debug = true,
+    Debug = false,
 }
 
 ---@type table<string, LocationConfig>
