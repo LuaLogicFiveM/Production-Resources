@@ -5,7 +5,7 @@
 RegisterNetEvent('cd_dispatch:PreSet:StoreRobbery', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-15 - Store Robbery',
         message   = 'A ' .. data.sex .. ' robbing a store at ' .. data.street,
@@ -18,7 +18,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:BankRobbery', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-90 - Bank Robbery',
         message   = 'Silent alarm triggered at a bank on ' .. data.street,
@@ -31,7 +31,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:JewelryRobbery', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-16 - Jewelry Robbery',
         message   = 'Break-in reported at a jewelry store near ' .. data.street,
@@ -44,12 +44,12 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:HouseBurglary', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-62B - Burglary in Progress',
         message   = 'Residential burglary reported at ' .. data.street,
         flash     = true,
-        sound     = 1,
+        sound     = 2,
         blip = { sprite=40, scale=1.15, colour=46, flashes=true, text='911 - Burglary', time=6, radius=0 }
     })
 end)
@@ -57,7 +57,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:Carjacking', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-16C - Carjacking',
         message   = 'Carjacking in progress by a ' .. data.sex .. ' at ' .. data.street,
@@ -74,7 +74,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:ShotsFired', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-71 - Shots Fired',
         message   = 'Multiple shots fired by a ' .. data.sex .. ' near ' .. data.street,
@@ -87,7 +87,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:PersonWithGun', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-32 - Person With a Gun',
         message   = 'Armed ' .. data.sex .. ' seen at ' .. data.street,
@@ -100,7 +100,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:Stabbing', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-54 - Stabbing',
         message   = 'Reported stabbing near ' .. data.street,
@@ -113,7 +113,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:FightInProgress', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-10 - Fight in Progress',
         message   = 'Physical altercation on ' .. data.street,
@@ -126,7 +126,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:Kidnapping', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-92 - Kidnapping / Hostage',
         message   = 'Possible kidnapping near ' .. data.street,
@@ -143,7 +143,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:OfficerDown', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-13 - Officer Down',
         message   = 'Officer requires immediate assistance at ' .. data.street,
@@ -156,7 +156,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:PanicButton', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = 'Panic Button',
         message   = 'Active panic near ' .. data.street,
@@ -169,7 +169,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:BackupRequest', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-78 - Backup Request',
         message   = 'Unit requesting Code 3 backup at ' .. data.street,
@@ -182,7 +182,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:Pursuit', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-80 - Pursuit',
         message   = 'Pursuit in progress near ' .. data.street,
@@ -195,7 +195,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:PrisonBreak', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-98 - Prison Break',
         message   = 'Prison break reported! All units respond.',
@@ -212,7 +212,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:StolenVehicle', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-60 - Stolen Vehicle',
         message   = 'Reported stolen vehicle near ' .. data.street,
@@ -225,7 +225,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:SuspiciousVehicle', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-66 - Suspicious Vehicle',
         message   = 'Suspicious vehicle at ' .. data.street,
@@ -238,7 +238,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:RecklessDriver', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-76 - Reckless Driving',
         message   = 'Reckless driver reported on ' .. data.street,
@@ -251,7 +251,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:TrafficCollision', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-50 - Vehicle Accident',
         message   = 'Traffic collision at ' .. data.street,
@@ -264,7 +264,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:StreetRacing', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-70 - Street Racing',
         message   = 'Illegal racing near ' .. data.street,
@@ -281,7 +281,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:ATMAlarm', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-52A - ATM Tampering',
         message   = 'ATM tamper alarm at ' .. data.street,
@@ -294,7 +294,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:BusinessAlarm', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-52 - Business Alarm',
         message   = 'Commercial alarm at ' .. data.street,
@@ -311,7 +311,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:DrugActivity', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-72 - Drug Activity',
         message   = 'Possible narcotics activity near ' .. data.street,
@@ -324,7 +324,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:SuspiciousPerson', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-37 - Suspicious Person',
         message   = 'Suspicious ' .. data.sex .. ' at ' .. data.street,
@@ -341,7 +341,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:StructureFire', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems', 'fire'},
+        job_table = {'police', 'ambulance', 'fire'},
         coords    = data.coords,
         title     = '10-70F - Structure Fire',
         message   = 'Structure fire at ' .. data.street,
@@ -354,7 +354,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:VehicleFire', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems', 'fire'},
+        job_table = {'police', 'ambulance', 'fire'},
         coords    = data.coords,
         title     = '10-70V - Vehicle Fire',
         message   = 'Vehicle fire reported near ' .. data.street,
@@ -367,7 +367,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:Explosion', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems', 'fire'},
+        job_table = {'police', 'ambulance', 'fire'},
         coords    = data.coords,
         title     = '10-44 - Explosion',
         message   = 'Explosion near ' .. data.street,
@@ -380,7 +380,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:MedicalEmergency', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'ambulance', 'police'},
         coords    = data.coords,
         title     = 'Medical - Emergency',
         message   = 'Medical call at ' .. data.street,
@@ -393,7 +393,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:Overdose', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'ambulance', 'police'},
         coords    = data.coords,
         title     = 'Medical - Overdose',
         message   = 'Possible overdose at ' .. data.street,
@@ -406,7 +406,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:DeadBody', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'ambulance', 'police'},
         coords    = data.coords,
         title     = 'Medical - Possible DOA',
         message   = 'Possible deceased person at ' .. data.street,
@@ -423,7 +423,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:NoiseComplaint', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff'},
+        job_table = {'police'},
         coords    = data.coords,
         title     = '10-85 - Noise Complaint',
         message   = 'Loud noise reported at ' .. data.street,
@@ -436,7 +436,7 @@ end)
 RegisterNetEvent('cd_dispatch:PreSet:AnimalAttack', function()
     local data = GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'police', 'sahp', 'sheriff', 'ems'},
+        job_table = {'police', 'ambulance'},
         coords    = data.coords,
         title     = '10-91 - Animal Attack',
         message   = 'Animal attack reported near ' .. data.street,

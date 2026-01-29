@@ -18,37 +18,39 @@ function GetPlayerInfo()
     if IsPedInAnyVehicle(ped, false) then
         vehicle = GetVehiclePedIsIn(ped, false)
         if vehicle and vehicle ~= 0 then
-            vehicle_label  = GetVehicleLabel(vehicle)
+            vehicle_label = GetVehicleLabel(vehicle)
             vehicle_colour = GetVehicleColour(vehicle)
-            vehicle_plate  = GetPlate(vehicle)
-            heading_str    = GetHeading(GetEntityHeading(ped))
-            speed          = GetEntitySpeed(vehicle) * 2.236936 -- m/s to mph
+            vehicle_plate = GetPlate(vehicle)
+            heading_str = GetHeading(GetEntityHeading(ped))
+            speed = GetEntitySpeed(vehicle) * 2.236936 -- m/s to mph
         end
     else
         -- If not in a vehicle, see if one is nearby
-        vehicle = GetClosestVehicle(5.0)
+        vehicle = GetClosestVehicleToPlayer(5.0)
         if vehicle then
-            vehicle_label  = GetVehicleLabel(vehicle)
+            vehicle_label = GetVehicleLabel(vehicle)
             vehicle_colour = GetVehicleColour(vehicle)
-            vehicle_plate  = GetPlate(vehicle)
+            vehicle_plate = GetPlate(vehicle)
         end
     end
 
     return {
-        ped            = ped,
-        coords         = coords,
-        street_1       = street_1,
-        street_2       = street_2,
-        street         = street_1 .. ', ' .. street_2,
-        sex            = sex,
-        vehicle        = vehicle,
-        vehicle_label  = vehicle_label,
+        ped = ped,
+        coords = coords,
+        street_1 = street_1,
+        street_2 = street_2,
+        street = street_1 .. ', ' .. street_2,
+        sex = sex,
+        vehicle = vehicle,
+        vehicle_label = vehicle_label,
         vehicle_colour = vehicle_colour,
-        vehicle_plate  = vehicle_plate,
-        heading        = heading_str,
-        speed          = speed
+        vehicle_plate = vehicle_plate,
+        heading = heading_str,
+        speed = speed
     }
 end
+
+RegisterLegacyExport('cd_dispatch', 'GetPlayerInfo', GetPlayerInfo)
 
 function GetConfig()
     return Config

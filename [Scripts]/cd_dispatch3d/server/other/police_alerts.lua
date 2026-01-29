@@ -45,9 +45,9 @@ end)
 -- │                           SPEED TRAPS                            │
 -- └──────────────────────────────────────────────────────────────────┘
 
-RegisterServerEvent('cd_dispatch:pdalerts:Speedtrap', function(data, config_data, speed, all_plates)
+RegisterServerEvent('cd_dispatch:pdalerts:Speedtrap', function(data, config_data, speed, plate)
     local _source = source
-    if (config_data.fine_amount > 0 and not Config.PoliceAlerts.SpeedTrap.check_owner_for_fine) or (config_data.fine_amount > 0 and Config.PoliceAlerts.SpeedTrap.check_owner_for_fine and CheckVehicleOwner(_source, all_plates)) then
+    if (config_data.fine_amount > 0 and not Config.PoliceAlerts.SpeedTrap.check_owner_for_fine) or (config_data.fine_amount > 0 and Config.PoliceAlerts.SpeedTrap.check_owner_for_fine and DoesPlayerOwnVehicle(_source, plate)) then
         RemovePlayerMoney(_source, config_data.fine_amount, 'bank', 'speeding_fine')
         Notif(_source, 2, 'speedtrap_1', data.vehicle_colour, data.vehicle_label, data.vehicle_plate, speed, data.heading, data.street, config_data.fine_amount)
     else

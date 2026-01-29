@@ -398,8 +398,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Peyton\'s Customs',
-            description = 'Owner: Peyton',
+            title = '🔧 26 Santos Mechanic Shop',
+            description = 'Owner: Rizz',
         },
     },
     {
@@ -420,8 +420,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Rizz Work Shop',
-            description = 'Owner: Rizz',
+            title = '🔧 StancedEnuff Customs',
+            description = 'Owner: Coleslaw',
         },
     },
     {
@@ -475,8 +475,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Gator Customs',
-            description = 'Owner: Gator',
+            title = '🔧 Peyton Customs Paint and Body Shop',
+            description = 'Owner: Loopy',
         },
     },
     {
@@ -497,8 +497,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Gator Customs',
-            description = 'Owner: Gator',
+            title = '🔧 Peyton Customs Paint and Body Shop',
+            description = 'Owner: Loopy',
         },
     },
     {

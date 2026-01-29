@@ -4,7 +4,7 @@
 
 local function DebugPrints(source)
     Citizen.Trace('^6-----------------------^0\n')
-    Citizen.Trace('^1CODESIGN DEBUG^0 ('..GetCurrentResourceName()..' - v'..GetResourceMetadata(GetCurrentResourceName(), 'version', 0)..')\n')
+    Citizen.Trace(string.format('^1CODESIGN DEBUG^0 (%s - v%s - %s)\n', GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'version', 0), source and 'client' or 'server'))
 
     Citizen.Trace('^3CONFIG^0\n')
     Citizen.Trace(string.format('^6Config.AutoInsertSQL:^0 %s\n', tostring(Config.AutoInsertSQL)))
@@ -23,34 +23,38 @@ local function DebugPrints(source)
 end
 
 RegisterCommand('debugdispatch', function(source)
-    local isServerConsole = type(source) ~= 'number' or source == 0
-        local isAdmin = not isServerConsole and HasAdminPerms(source, {'owner', 'superadmin', 'god', 'admin', 'mod'}) or false
-        local isDebugEnabled = Config.Debug
+    local isConsole = source == 0
+    local isAdmin = HasAdminPerms(source, {'owner', 'superadmin', 'god', 'admin', 'moderator', 'mod'})
+    local debugEnabled = Config.Debug
 
-    if isServerConsole then
+    if isConsole then
         DebugPrints(nil)
-    elseif isDebugEnabled or isAdmin then
-        DebugPrints(source)
-    else
-        Citizen.Trace('You cannot use this command. You must have admin permissions, enable Cfg.BridgeDebug, or run it from the server console.\n')
+        return
     end
+
+    if isAdmin or debugEnabled then
+        DebugPrints(source)
+        return
+    end
+
+    Citizen.Trace('You cannot use this command. You must have admin permissions, enable Config.Debug, or run it from the server console.\n')
 end, false)
 
 RegisterCommand('debugdispatchtable', function(source)
-    local isServerConsole = not source or type(source) ~= 'number' or source == 0
-    local isAdmin = GetAdminPerms(source) ~= 'user'
-    local isDebugEnabled = Config.Debug
-    local getSource = type(source) == 'number' and source > 0 and source or -1
+    local isConsole = source == 0
+    local isAdmin = HasAdminPerms(source, { 'owner', 'superadmin', 'god', 'admin', 'moderator', 'mod' })
+    local debugEnabled = Config.Debug
+    local getSource = source > 0 and source or -1
 
-    if isServerConsole or isDebugEnabled or isAdmin then
+    if isConsole or debugEnabled or isAdmin then
         if GetResourceState('cd_devtools') == 'started' then
-            Citizen.Trace('^6Devtools debug table sent to all clients.^0\n')
             TriggerClientEvent('table', getSource, AllPlayers)
+            Citizen.Trace('^6Devtools debug table sent.^0\n')
         else
             Citizen.Trace('^6cd_devtools is not started.^0\n')
         end
     else
-        Citizen.Trace('Need admin perms or enable Config.Debug to use this command.\n')
+        Citizen.Trace('You cannot use this command. You must have admin permissions, enable Config.Debug, or run it from the server console.\n')
     end
 end, false)
 
@@ -82,7 +86,7 @@ function BridgeDependancyMissingPrint()
         ^7This resource requires the ^2cd_bridge^7 framework bridge to function correctly.
 
         ^7Please download ^2cd_bridge^7 from the official source:
-            ^3https://codesign.pro/cd_bridge
+            ^3https://portal.cfx.re/assets/granted-assets?search=cd_bridge
 
         ^6After installing:
         • Ensure the ^2cd_bridge^7 resource is started ^4before^7 this resource

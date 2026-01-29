@@ -277,7 +277,7 @@ if Config.EnableTestCommand then
         -- THIS IS A TEST COMMAND. Example usage only.
         local data = exports['cd_dispatch3d']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
-            job_table = {'police', 'ambulance'},
+            job_table = { GetJobName() },
             coords    = data.coords,
             title     = '10-15 - Store Robbery',
             message   = 'A ' .. data.sex .. ' robbing a store at ' .. data.street,

@@ -7,7 +7,7 @@ fx_version 'cerulean'
 game 'gta5'
 author 'discord.gg/codesign'
 description 'Police Dispatch 3D'
-version '1.1.2'
+version '1.2.0'
 lua54 'yes'
 
 dependency 'cd_bridge'
@@ -81,7 +81,7 @@ escrow_ignore {
     'client/other/job_call_commands.lua',
     'client/other/panic_button.lua',
     'client/other/ping.lua',
-    'client/other/police_alerts.lua',
+    'client/other/police_alerts/*.lua',
     'configs/*.lua',
     'integrations/**/*.lua',
     'server/main/auto_insert_sql.lua',

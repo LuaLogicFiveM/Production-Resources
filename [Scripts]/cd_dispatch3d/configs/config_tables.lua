@@ -301,23 +301,55 @@ CarColours = {
     },
 }
 
-WeaponHashToLabel = {
-    [`WEAPON_ASSAULTRIFLE`] = 'AK-47',
-    [`WEAPON_BULLPUPRIFLE`] = 'Bullpup Rifle',
-    [`WEAPON_COMBATPISTOL`] = 'Combat Pistol',
-    [`WEAPON_CARBINERIFLE`] = 'Carbine Rifle',
-    [`WEAPON_CARBINERIFLE_MK2`] = 'Carbine Rifle mk2',
-    [`WEAPON_HEAVYPISTOL`] = 'Heavy Pistol',
-    [`WEAPON_MICROSMG`] = 'Mini Uzi',
-    [`WEAPON_MUSKET`] = 'Musket Rifle',
-    [`WEAPON_PISTOL`] = 'Pistol',
-    [`WEAPON_PISTOL_MK2`] = 'Pistol MK2',
-    [`WEAPON_PISTOL50`] = '50cal Pistol',
-    [`WEAPON_PUMPSHOTGUN`] = 'Pump Shotgun',
-    [`WEAPON_REVOLVER`] = 'Revolver',
-    [`WEAPON_SNSPISTOL`] = 'SNS Pistol',
-    [`WEAPON_SMG`] = 'SMG',
-    [`WEAPON_SPECIALCARBINE`] = 'Special Carbine',
-    [`WEAPON_SAWNOFFSHOTGUN`] = 'Sawnoff Shotgun',
-    --[`ADD_MORE_HERE`] = 'CHANGE_ME',
+FirearmWeaponTypes = {
+    -- Pistols
+    [`WEAPON_PISTOL`]  = 'pistol',
+    [`WEAPON_PISTOL_MK2`] = 'pistol',
+    [`WEAPON_COMBATPISTOL`] = 'pistol',
+    [`WEAPON_HEAVYPISTOL`] = 'pistol',
+    [`WEAPON_PISTOL50`]  = 'pistol',
+    [`WEAPON_SNSPISTOL`] = 'pistol',
+    [`WEAPON_REVOLVER`] = 'pistol',
+
+    -- SMGs
+    [`WEAPON_SMG`] = 'smg',
+    [`WEAPON_MICROSMG`] = 'smg',
+
+    -- Rifles
+    [`WEAPON_ASSAULTRIFLE`] = 'rifle',
+    [`WEAPON_CARBINERIFLE`] = 'rifle',
+    [`WEAPON_CARBINERIFLE_MK2`] = 'rifle',
+    [`WEAPON_BULLPUPRIFLE`] = 'rifle',
+    [`WEAPON_SPECIALCARBINE`] = 'rifle',
+    [`WEAPON_MUSKET`] = 'rifle',
+
+    -- Shotguns
+    [`WEAPON_PUMPSHOTGUN`] = 'shotgun',
+    [`WEAPON_SAWNOFFSHOTGUN`] = 'shotgun',
+}
+
+
+MeleeWeaponTypes = {
+    --fists
+    [`WEAPON_UNARMED`] = 'fists',
+
+    -- blunt
+    [`WEAPON_BAT`] = 'blunt',
+    [`WEAPON_CROWBAR`] = 'blunt',
+    [`WEAPON_HAMMER`] = 'blunt',
+    [`WEAPON_WRENCH`] = 'blunt',
+    [`WEAPON_GOLFCLUB`] = 'blunt',
+    [`WEAPON_NIGHTSTICK`] = 'blunt',
+    [`WEAPON_POOLCUE`] = 'blunt',
+    [`WEAPON_FLASHLIGHT`] = 'blunt',
+
+    -- bladed
+    [`WEAPON_KNIFE`] = 'bladed',
+    [`WEAPON_DAGGER`] = 'bladed',
+    [`WEAPON_MACHETE`] = 'bladed',
+    [`WEAPON_SWITCHBLADE`] = 'bladed',
+    [`WEAPON_BOTTLE`] = 'bladed',
+    [`WEAPON_HATCHET`] = 'bladed',
+    [`WEAPON_BATTLEAXE`] = 'bladed',
+    [`WEAPON_STONE_HATCHET`] = 'bladed',
 }

@@ -220,44 +220,92 @@ Config.PoliceAlerts = {
     ENABLE = false, --Do you want to use the built in police alerts?
     police_jobs = {'sheriff', 'sahp'}, --The jobs who will be notified from these police alerts.
     whitelisted_jobs = {'sheriff', 'sahp', 'ems', }, --These jobs will NOT trigger these police alerts.
-    cooldown = 30, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
     add_bolos = false, --(requires cd_radar) Do you want to add a bolo for the vehicle that was used in the crime?
-    require_witness_peds = {
-        ENABLE = false, --Do you want police alerts only to be sent if a witness (npc ped) is in the area?
-        distance = 20, --The distance to check for witnesses.
-        time_to_kill = 10, --(in seconds) You have x amount of seconds to kill/injure the ped(s) calling the police before the call is complete.
+
+    WitnessPeds = {
+        ENABLE = true, --Do you want npc/peds to call the police on crimes?
+        radius = 50, -- The distance a witness ped must be from the player to call the police.
+        time_to_kill_caller = 10, -- (in seconds) You have x amount of seconds to kill/injure the ped(s) to stop them calling the police.
+        max_callers = 1, -- The maximum amount of witness peds that can call the police at once.
+        BlacklistedPedModels = { `s_m_y_valet_01`}, -- A list of ped models that will NOT call the police.
+        NoSnitchingZones = { -- Zones that DO NOT trigger witness peds to call the police.
+            [1] = {coords = vector3(30.01, -1847.60, 24.51), radius = 150}, --grove street 1.
+            [2] = {coords = vector3(-187.22, -1627.70, 33.61), radius = 100}, --grove street 2.
+            [3] = {coords = vector3(333.38, -2037.74, 21.07), radius = 80}, --vagos barrio.
+            --[4] = {coords = vector3(0, 0, 0), radius = 20},
+        },
     },
 
-    --[[GUNSHOTS CONFIG]]--
+    CarCrash = {
+        ENABLE = true, -- Do you major car crashes to alert police?
+        random_chance = 75, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+        minimum_crash_speed = 50, --(in mph) Only count crashes at or above this speed.
+    },
+
+    CarJacking = {
+        ENABLE = true, -- Do you want carjackings to alert police?
+        random_chance = 75, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+    },
+
+    Explosion = {
+        ENABLE = true, -- Do you want explosions to alert police?
+        random_chance = 75, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+        max_distance_from_player = 200.0, -- Maximum radius from player for an explosion to trigger an alert.
+        WhitelistedZones = { -- Zones that DO NOT trigger "explosion" alerts.
+            [1] = {coords = vector3(0, 0, 0), radius = 20},
+            --[2] = {coords = vector3(0, 0, 0), radius = 20},
+        },
+    },
+
+    GunPointCarJacking = {
+        ENABLE = true, -- Do you want gunpoint carjackings to alert police?
+        random_chance = 100, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 45, -- (in seconds) Prevents spam.
+        max_distance = 20, -- (in meters) Maximum distance from player to vehicle to trigger alert.
+    },
+
     GunShots = {
-        ENABLE = false, ---Do you want gunshots to alert police?
-        
-        WhitelistedZones = { --Shooting in whitelisted areas doesn't alert police.
-            [1] = {coords = vector3(13.98, -1098.05, 29.8), distance = 20}, --Legion gunrange.
-            [2] = {coords = vector3(821.09, -2163.46, 78.67), distance = 20}, --Cypress Flats gunrange.
+        ENABLE = true, -- Do you want gunshots to alert police?
+        random_chance = 75, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+
+        BurstShots = { -- Burst rule: require X shots in Y ms to al,ert the police.
+            min_shots_in_burst = 3, -- Minimum shots in burst to trigger alert.
+            burst_gap_ms = 700, -- Maximum time between shots to still count as same burst.
+            burst_settle_ms = 2000, -- Time to wait after burst before sending alert (allows for final shots to be included).
         },
-        WhitelistedWeapons = { --Shooting whitelisted weapons doesn't alert police.
-            [`WEAPON_FLARE`] = true,
-            [`WEAPON_FLAREGUN`] = true,
-            [`WEAPON_FIREEXTINGUISHER`] = true,
-            [`WEAPON_PETROLCAN`] = true,
-            [`WEAPON_STUNGUN`] = true,
+
+        WhitelistedZones = { -- Zones that DO NOT trigger "gunshot" alerts.
+            [1] = {coords = vector3(13.98, -1098.05, 29.8), radius = 20}, -- Legion gunrange.
+            [2] = {coords = vector3(821.09, -2163.46, 78.67), radius = 20}, -- Cypress Flats gunrange.
+            --[3] = {coords = vector3(0, 0, 0), radius = 10},
         },
+        WhitelistedWeapons = { `WEAPON_FLARE`, `WEAPON_FLAREGUN`, `WEAPON_FIREEXTINGUISHER`, `WEAPON_PETROLCAN`, `WEAPON_STUNGUN`, `WEAPON_MUSKET`, `WEAPON_SNOWBALL`, `WEAPON_ACIDPACKAGE`  }, -- A list of weapon hashes that will NOT trigger gunshot alerts.
+    },
+
+    MeleeFight = {
+        ENABLE = true, -- Do you want melee fights to alert police?
+        random_chance = 75, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+    },
+
+    RecklessDriving = {
+        ENABLE = true, -- Do you want reckless driving to alert police?
+        random_chance = 75, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+        min_speed = 30, --(in mph) Minimum speed the vehicle must be going to trigger an alert.
     },
 
     --[[SPEEDTRAP CONFIG]]--
     SpeedTrap = {
-        ENABLE = false, ----Do you want speeding vehicles to alert police?
+        ENABLE = true, --Do you want speeding vehicles to alert police?
+        cooldown = 30, --(in seconds) Prevents spam.
         check_owner_for_fine = true, --Only fine players if they own the vehicle? (if enabled, players in stolen cars will not be fined).
-
-        Blip = {
-            ENABLE = true, --Do you want speed traps to display on a players minimap?
-            sprite = 184, --Icon of the blip.
-            scale = 0.7, --Size of the blip.
-            colour = 0, --Colour of the blip.
-            display = 5, --Set to [4] to display on the pause menu map or [5] to only display on the mini-map.
-            name = Locale('speedtrap_blip_name') --Change this in the locales.lua, not here.
-        },
+        speed_unit = 'mph', --Choose between 'mph' or 'kmh' for speed limit checks and notifications.
+        enable_blip = true, --Do you want to show blips for the speed trap locations?
 
         Locations = {
             --coords: The location of the speed trap.
@@ -277,10 +325,24 @@ Config.PoliceAlerts = {
         }
     },
 
-    --[[CAR CRASH CONFIG]]--
-    CarCrash = {
-        ENABLE = false, ----Do you major car crashes to alert police?
-        minimum_crash_speed = 50, --(in mph) Only count crashes at or above this speed.
+    VehicleAlarm = {
+        ENABLE = true, -- Enable vehicle alarm alerts?
+        random_chance = 50, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+    },
+
+    VehicleAssault = {
+        ENABLE = true, -- Do you want vehicle assaults to alert police?
+        random_chance = 75, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+        min_speed_mph = 20, --(in mph) Minimum speed the vehicle must be going to trigger an alert.
+    },
+
+    WeaponDrawn = {
+        ENABLE = true, -- Do you want weapon drawn to alert police?
+        random_chance = 50, -- (in percentage) The random chance to call the police. 100 = always call, 0 = never call.
+        cooldown = 30, -- (in seconds) Prevents spam.
+        WhitelistedWeapons = { `WEAPON_UNARMED`, `WEAPON_FLASHLIGHT`, `WEAPON_FIREEXTINGUISHER`, `WEAPON_PETROLCAN`, `WEAPON_HAZARDCAN`, `WEAPON_STUNGUN`, `WEAPON_FLARE`, `WEAPON_FLAREGUN`, `WEAPON_NIGHTSTICK`, `WEAPON_POOLCUE`, `WEAPON_GOLFCLUB`  },
     }
 }
 

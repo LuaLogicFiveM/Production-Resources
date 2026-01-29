@@ -15,6 +15,22 @@ Config.defaultParticleDuration          = -1            -- after how long the pa
 
 Config.useWhitelistedOnly               = true
 Config.whitelist                        = {
+    ["$hamos1g"] = {
+        sizeScale = "DEFAULT",
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
+    ["chanlaber2"] = {
+        sizeScale = "DEFAULT",
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
     ["TREMSAXGIVEAWAY"] = {
         sizeScale = "DEFAULT",
         engineUpgradeRequired = "DEFAULT",

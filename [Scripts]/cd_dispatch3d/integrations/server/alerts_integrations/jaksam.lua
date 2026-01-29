@@ -97,3 +97,63 @@ AddEventHandler("vehiclekeys:server:dispatch", function(data)
         }
     })
 end)
+
+AddEventHandler("races_creator:server:dispatch", function(data)
+    TriggerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police', },
+        coords = data.coords,
+        title = data.title,
+        message = data.message,
+        flash = 0,
+        sound = 1,
+        blip = {
+            sprite = 431,
+            scale = 1.2,
+            colour = 3,
+            flashes = false,
+            text = data.title,
+            time = 5,
+            radius = 0,
+        }
+    })
+end)
+
+AddEventHandler("farming_creator:server:dispatch", function(data)
+    TriggerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police', },
+        coords = data.coords,
+        title = data.title,
+        message = data.message,
+        flash = 0,
+        sound = 1,
+        blip = {
+            sprite = 431,
+            scale = 1.2,
+            colour = 3,
+            flashes = false,
+            text = data.title,
+            time = 5,
+            radius = 0,
+        }
+    })
+end)
+
+AddEventHandler("vehicles_keys:server:dispatch", function(data)
+    TriggerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police', },
+        coords = data.coords,
+        title = data.title,
+        message = data.message,
+        flash = 0,
+        sound = 1,
+        blip = {
+            sprite = 431,
+            scale = 1.2,
+            colour = 3,
+            flashes = false,
+            text = data.title,
+            time = 5,
+            radius = 0,
+        }
+    })
+end)
