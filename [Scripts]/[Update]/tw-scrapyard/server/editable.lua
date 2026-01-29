@@ -908,8 +908,8 @@ AddEventHandler('playerDropped', function(reason)
                 -- Store player state for reconnection
                 StoreDisconnectedPlayerState(playerIdentifier, ownerIdentifier, playerData)
 
-                -- Update player's source to -1 (offline but in grace period)
-                playerData.source = -1
+                -- Update player's source to 0 (offline but in grace period, avoids -1 broadcast bug)
+                playerData.source = 0
 
                 -- Notify other players (if enabled in config)
                 if Config.Reconnection.notifications.notifyOnDisconnect then

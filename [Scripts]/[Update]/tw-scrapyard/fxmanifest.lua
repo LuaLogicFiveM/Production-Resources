@@ -5,7 +5,7 @@ lua54 "yes" -- needed for Reaper
 
 fx_version 'cerulean'
 game 'gta5'
-version '1.03'
+version '1.04'
 name 'tw-scrapyard'
 author 'tworst-script for scrapyard'
 contact 'discord.gg/tworst'

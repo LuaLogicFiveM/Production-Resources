@@ -808,7 +808,7 @@ Citizen.CreateThread(function()
             end
         end
 
-        --[[if now - lastAlphaCheck >= sleepAlpha then
+        if now - lastAlphaCheck >= sleepAlpha then
             lastAlphaCheck = now
             if openUI or camera then
                 sleepAlpha = 0
@@ -817,7 +817,7 @@ Citizen.CreateThread(function()
             else
                 sleepAlpha = 1000
             end
-        end]]
+        end
 
 
         if hasAnyItem then
