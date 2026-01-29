@@ -5,7 +5,7 @@ lua54 "yes" -- needed for Reaper
 
 fx_version 'cerulean'
 game 'gta5'
-version '1.07'
+version '1.08'
 name 'tw-plumber'
 author 'tworst-script for plumber job'
 contact 'discord.gg/tworst'

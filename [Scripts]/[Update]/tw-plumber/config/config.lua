@@ -18,6 +18,8 @@ Config.Command               = {
     openTutorial = "opentutorialplumber",
 }
 
+Config.MaxPlayersInLobby     = 4             -- max [4] Max players in lobby
+
 Config.jobCoolDownHours      = 0             -- Job Cooldown Hours if 0 no cooldowns
 Config.ChangeClothesSystem   = false         -- true / false
 Config.ClothingScript        = "illenium-appearance" -- fivem-appearance / illenium-appearance  / esx_skin / qb-clothing

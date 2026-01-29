@@ -779,6 +779,56 @@ function ResetPlayerHandObject()
     stopDisableThread()
 end
 
+-- Entity streaming nedeniyle geçersiz hale gelen objeleri NetworkID ile kurtarma
+-- Bu fonksiyon playerHandObject'in geçerli olup olmadığını kontrol eder
+-- Eğer entity geçersizse ama NetworkID varsa, entity'yi yeniden bulmaya çalışır
+function GetValidPlayerHandObject()
+    local handObject = playerHandObject.object
+    local handObjectModel = playerHandObject.objectModel
+    local handObjectNetId = playerHandObject.objectNetId
+
+    -- Eğer object nil ise, eldeki obje yok demektir
+    if not handObject then
+        return nil, nil
+    end
+
+    -- Entity hala geçerli mi kontrol et
+    if DoesEntityExist(handObject) then
+        return handObject, handObjectModel
+    end
+
+    -- Entity geçersiz, NetworkID ile kurtarmayı dene
+    if handObjectNetId and NetworkDoesEntityExistWithNetworkId(handObjectNetId) then
+        local recoveredEntity = NetworkGetEntityFromNetworkId(handObjectNetId)
+        if recoveredEntity and DoesEntityExist(recoveredEntity) then
+            -- Handle'ı güncelle
+            playerHandObject.object = recoveredEntity
+            if Config.Debug then
+                print("[tw-plumber] Entity recovered from NetworkID: " .. tostring(handObjectNetId))
+            end
+            return recoveredEntity, handObjectModel
+        end
+    end
+
+    -- Kurtarma başarısız, obje kaybolmuş olabilir
+    if Config.Debug then
+        print("[tw-plumber] Warning: PlayerHandObject entity lost and could not be recovered")
+    end
+    return nil, handObjectModel
+end
+
+-- playerHandObject'in belirli bir model ile eşleşip eşleşmediğini kontrol eder
+-- Entity streaming sorunlarını otomatik olarak handle eder
+function IsPlayerHoldingModel(targetModel)
+    local handObject, handObjectModel = GetValidPlayerHandObject()
+
+    if not handObject then
+        return false
+    end
+
+    return handObjectModel == targetModel
+end
+
 function LoadParticleLib(dict)
     if not HasNamedPtfxAssetLoaded(dict) then
         RequestNamedPtfxAsset(dict)
@@ -815,7 +865,7 @@ function CreateCamera()
     end
 end
 
---[[Citizen.CreateThread(function()
+Citizen.CreateThread(function()
     local wait = 1000
     while true do
         Citizen.Wait(wait)
@@ -825,7 +875,7 @@ end
             SetLocalPlayerInvisibleLocally(true)
         end
     end
-end)]]
+end)
 
 function ExitCamera()
     SetEntityAlpha(PlayerPedId(), 255, false)
