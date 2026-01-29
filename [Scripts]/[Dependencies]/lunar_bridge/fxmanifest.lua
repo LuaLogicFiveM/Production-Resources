@@ -9,7 +9,7 @@ game 'gta5'
 lua54 'yes'
 author 'Lunar Scripts'
 description 'Bridge module'
-version '1.3.7'
+version '1.3.8'
 -- What to run
 escrow_ignore {
     'dispatch/client.lua',

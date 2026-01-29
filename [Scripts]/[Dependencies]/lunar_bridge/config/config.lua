@@ -9,10 +9,10 @@ Config.Keybinds = {
 
 Config.Dispatch = {
     Enable = true, -- Enable dispatch
-    Type = 'cd_dispatch', --['auto'/'normal'/'cd_dispatch'/'cd_dispatch3d'/'qs-dispatch'/'ps-dispatch'/'rcore_dispatch'/'lb-tablet'/'wasabi-mdt'/'l2s-dispatch'/'redutzu-mdt'/'dusa_dispatch'] - 'auto' will automatically detect the active dispatch resource
+    Type = 'auto', --['auto'/'normal'/'cd_dispatch'/'cd_dispatch3d'/'qs-dispatch'/'ps-dispatch'/'rcore_dispatch'/'lb-tablet'/'wasabi-mdt'/'l2s-dispatch'/'redutzu-mdt'/'dusa_dispatch'] - 'auto' will automatically detect the active dispatch resource
 	Jobs = {
-		'sheriff',
-		'sahp'
+		'police',
+		'sheriff'
 	}
 }
 

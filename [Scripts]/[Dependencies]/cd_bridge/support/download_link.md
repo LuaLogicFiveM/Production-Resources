@@ -1,1 +1,0 @@
-https://portal.cfx.re/assets/granted-assets?search=cd_bridge
