@@ -7,7 +7,7 @@ fx_version 'adamant'
 game 'gta5'
 description "Advanced Radio"
 author "MenanAk47"
-version "1.4"
+version "1.3"
 lua54 'yes'
 shared_scripts {
     'locales/locale.lua',
