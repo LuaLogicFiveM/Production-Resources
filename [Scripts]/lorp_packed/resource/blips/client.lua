@@ -210,6 +210,17 @@
             description = 'Owner: Demon',
         },
     },
+    {
+        label = 'Owned Business', ---@location 636
+        coords = vec3(-432.4572, 270.2892, 89.8852),
+        sprite = 93,
+        scale = 0.8,
+        color = 0,
+        data = {
+            title = '🍹 Devos Kick Back Shack',
+            description = 'Owner: Devo',
+        },
+    },
      --------------------------- Weed Shops ---------------------------
      {
         label = 'Owned Weed Shop', ---@location 616
@@ -265,17 +276,6 @@
         data = {
             title = '🏍️ Motorcycle Club',
             description = 'Owner: The Lost MC ',
-        },
-    },
-    {
-        label = 'Owned Motorcycle Club', ---@location 636
-        coords = vec3(-432.4572, 270.2892, 89.8852),
-        sprite = 226,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🏍️ Motorcycle Club',
-            description = 'Owner: Deadly Angels MC',
         },
     },
     {
@@ -486,8 +486,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Sittinlow Speedshop',
-            description = 'Owner: Sittinlow',
+            title = '🔧 B&H Customs',
+            description = 'Owner: haydenzeee',
         },
     },
     {

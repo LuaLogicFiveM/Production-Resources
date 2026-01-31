@@ -141,8 +141,8 @@ Config.Menu = {
                 vector4(1187.2943, 2637.2227, 38.4019, 33.0674),--260
             }
         },
-        ['deadly'] = {
-            bossRank = 6,
+        ['devos'] = {
+            bossRank = 4,
             locations = {
                 vector4(-442.1889, 264.1572, 86.1950, 29.6220),--636
             }
@@ -212,8 +212,13 @@ Config.Menu = {
         ['sittin'] = {
             bossRank = 4,
             locations = {
-                vector4(2736.5876, 4915.3530, 33.6873, 121.6586),--099
                 vector4(2001.3472, 4598.9531, 45.0304, 120),--111
+            }
+        },
+        ['bhcustoms'] = {
+            bossRank = 4,
+            locations = {
+                vector4(2736.5876, 4915.3530, 33.6873, 121.6586),--099
             }
         },
         ['chopshop'] = {
