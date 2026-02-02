@@ -6,8 +6,8 @@ local detection_config = {
         checkTime = 60 * 5, -- Seconds
         whitelisted_groups = { ['owner'] = true, ['manager'] = true },
         max = {
-            ['bank'] = 15000000,
-            ['money'] = 15000000,
+            ['bank'] = 20000000,
+            ['money'] = 20000000,
             ['black_money'] = 5000000
         }
     },

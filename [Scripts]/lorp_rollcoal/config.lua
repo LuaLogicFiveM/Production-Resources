@@ -15,6 +15,14 @@ Config.defaultParticleDuration          = -1            -- after how long the pa
 
 Config.useWhitelistedOnly               = true
 Config.whitelist                        = {
+    ["$DIDDYPLATIV2"] = {
+        sizeScale = "DEFAULT",
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
     ["$hamos1g"] = {
         sizeScale = "DEFAULT",
         engineUpgradeRequired = "DEFAULT",

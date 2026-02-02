@@ -4,11 +4,8 @@
         0,
         0
     ],
-    "redwine": [
+    "whisky": [
         0,
-        0
-    ],
-    "mojito": [
         0
     ],
     "daiquiri": [
@@ -16,12 +13,14 @@
         0,
         0
     ],
-    "cocktail": [
-        0,
+    "mojito": [
+        0
+    ],
+    "tequilashots": [
         0,
         0
     ],
-    "whisky": [
+    "redwine": [
         0,
         0
     ],
@@ -31,7 +30,8 @@
     "tequila": [
         0
     ],
-    "tequilashots": [
+    "cocktail": [
+        0,
         0,
         0
     ],
