@@ -12,6 +12,8 @@ Config.OnlyAdminsCanPickUpEquipment = {
 
 Config.DebugPrints = false
 
+Config.UseDistanceSpawning = true -- if true script will despawn or spawn shop ped depend if you are near him
+
 Config.CuttingDrugGive = {
     cokeLeafs = 5, -- you will receive 5 coke leafs after cutting coke pot
     weedBuds = 6,  -- you will receive 6 weed buds after cutting weed pot
@@ -829,6 +831,7 @@ Config.Shops = {
         }
     },
 }
+
 Config.Translations = {
     Interact = 'Interact',
     Delete = 'Delete',
@@ -854,7 +857,6 @@ Config.Translations = {
     BrickPressError = 'This Brick Press does not exists anymore...',
     BrickPressError2 = 'Wrong weed name...',
     DrugCauldronError = 'This Drug Cauldron does not exists anymore...',
-    ChemistryStationError = 'This Chemistry Station does not exists anymore...',
     WeedError = 'This Pot Plant does not exists anymore...',
     WeedError2 = 'This Pot is already planted',
     ItemError = 'You do not have required item to do that!',

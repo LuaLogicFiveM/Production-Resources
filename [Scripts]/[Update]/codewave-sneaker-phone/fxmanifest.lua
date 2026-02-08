@@ -13,15 +13,13 @@ shared_scripts {
     'config.lua'
 }
 client_scripts {
-    'client/client.lua',
-    'notify.lua'
+    'client/client.lua'
 }
 ui_page "web/index.html"
 files {
     "web/index.html",
     'web/script.js',
     'web/style.css',
-    'web/sounds/pickaxe.ogg',
 	'web/sounds/*.mp3',
     'web/image/*.png'
 }
@@ -29,7 +27,6 @@ server_scripts {
     'server/server.lua'
 }
 escrow_ignore {
-    'config.lua',  -- 
-    'notify.lua'
+    'config.lua'
   }
 dependency '/assetpacks'

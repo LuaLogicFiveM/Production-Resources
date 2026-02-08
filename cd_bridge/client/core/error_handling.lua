@@ -2,7 +2,7 @@
 -- │                          ERROR HANDLING                          │
 -- └──────────────────────────────────────────────────────────────────┘ 
 
-local resource_name = '['..GetCurrentResourceName()..']'
+local resource_name = string.format('[%s - v%s - %s]', GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'version', 0), 'client')
 local end_line = '^8==================[END]===================^0'
 local total_length = #end_line-4
 local side = math.floor((total_length - #resource_name) / 2)
@@ -41,59 +41,41 @@ end)
 -- │                               DEBUG                              │
 -- └──────────────────────────────────────────────────────────────────┘ 
 
-local function DebugPrints(source)
-    Citizen.Trace('^6-----------------------^0\n')
-    Citizen.Trace(string.format('^1CODESIGN DEBUG^0 (%s - v%s - %s)\n', GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'version', 0), source and 'client' or 'server'))
-    local admin = GetAdminPerms(source)
-    Citizen.Trace(string.format('^6Admin Perms:^0 %s\n', type(admin) == 'string' and admin or json.encode(admin)))
-    Citizen.Trace(string.format('^6Has Admin Perms:^0 %s\n', HasAdminPerms(source, admin)))
-    Citizen.Trace('^6-----------------------^0\n')
-
-    if Cfg.Framework == 'esx' or Cfg.Framework == 'qbcore' or Cfg.Framework == 'qbox' or Cfg.Framework == 'other' then
-        Citizen.Trace('^3CHARACTER^0\n')
-        Citizen.Trace(string.format('^6Character Name:^0 %s\n', GetCharacterName(source)))
-        Citizen.Trace(string.format('^6Job Name:^0 %s\n', GetJobName(source)))
-        Citizen.Trace(string.format('^6Job Label:^0 %s\n', GetJobLabel(source)))
-        Citizen.Trace(string.format('^6Job Grade:^0 %s\n', GetJobGrade(source)))
-        Citizen.Trace(string.format('^6Job Grade Label:^0 %s\n', GetJobGradeLabel(source)))
-        Citizen.Trace(string.format('^6On Duty:^0 %s\n', GetJobDuty(source)))
-        Citizen.Trace(string.format('^6Gang Name:^0 %s\n', GetGangName(source)))
-        Citizen.Trace(string.format('^6Gang Label:^0 %s\n', GetGangLabel(source)))
-        Citizen.Trace(string.format('^6Gang Grade:^0 %s\n', GetGangGrade(source)))
-        Citizen.Trace('^6-----------------------^0\n')
-    end
-
-    Citizen.Trace('^3CONFIG^0\n')
-    Citizen.Trace(string.format('^6Framework:^0 %s\n', Cfg.Framework))
-    Citizen.Trace(string.format('^6Database:^0 %s\n', Cfg.Database))
-    Citizen.Trace(string.format('^6BridgeDebugSQL:^0 %s\n', tostring(Cfg.BridgeDebugSQL)))
-    Citizen.Trace(string.format('^6BridgeDebug:^0 %s\n', tostring(Cfg.BridgeDebug)))
-    Citizen.Trace(string.format('^6Language:^0 %s\n', Cfg.Language))
-    Citizen.Trace(string.format('^6Notification:^0 %s\n', Cfg.Notification))
-    Citizen.Trace(string.format('^6DrawTextUI:^0 %s\n', Cfg.DrawTextUI))
-    Citizen.Trace(string.format('^6Target:^0 %s\n', Cfg.Target))
-    Citizen.Trace(string.format('^6Inventory:^0 %s\n', Cfg.Inventory))
-    Citizen.Trace(string.format('^6TimeWeather:^0 %s\n', Cfg.TimeWeather))
-    Citizen.Trace(string.format('^6VehicleKeys:^0 %s\n', Cfg.VehicleKeys))
-    Citizen.Trace(string.format('^6VehicleFuel:^0 %s\n', Cfg.VehicleFuel))
-    Citizen.Trace(string.format('^6Phone:^0 %s\n', Cfg.Phone))
-    Citizen.Trace(string.format('^6Dispatch:^0 %s\n', Cfg.Dispatch))
-    Citizen.Trace(string.format('^6PersistentVehicles:^0 %s\n', Cfg.PersistentVehicles))
-    Citizen.Trace('^6-----------------------^0\n')
-end
-
 if GetCurrentResourceName() == 'cd_bridge' then
-    RegisterCommand('debugbridge_client', function(source)
-        local isAdmin = HasAdminPerms(source, {'owner', 'superadmin', 'god', 'admin', 'moderator', 'mod'})
-        local debugEnabled = Cfg.BridgeDebug
+    RegisterNetEvent('cd_bridge:debug:charInfo', function(serverCharInfo)
+        local clientCharInfo = {
+            charName = GetCharacterName(),
+            jobName = GetJobName(),
+            jobLabel =  GetJobLabel(),
+            jobGrade = GetJobGrade(),
+            jobGradeLabel = GetJobGradeLabel(),
+            onDuty = GetJobDuty(),
+            gangName = GetGangName(),
+            gangLabel = GetGangLabel(),
+            gangGrade = GetGangGrade()
+        }
 
-        if isAdmin or debugEnabled then
-            DebugPrints(source)
-            return
+        local mismatchFound = {}
+        for k, serverVal in pairs(serverCharInfo) do
+            local clientVal = clientCharInfo[k]
+            if serverVal ~= clientVal then
+                mismatchFound[#mismatchFound + 1] = {
+                    info   = k,
+                    server = serverVal,
+                    client = clientVal
+                }
+            end
         end
-
-        Citizen.Trace('You cannot use this command. You must have admin permissions or enable Cfg.BridgeDebug.\n')
-    end, false)
+        if #mismatchFound > 0 then
+            local message = ''
+            for _, m in pairs(mismatchFound) do
+                message = message .. string.format('^1%s: server=[%s] | client=[%s]\n', m.info, tostring(m.server), tostring(m.client))
+            end
+            message = message:sub(1, -2)
+            ERROR('7903', 'Character info mismatch found between server and client.\n\n'..message)
+            TriggerServerEvent('cd_bridge:debug:charInfo', message)
+        end
+    end)
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐

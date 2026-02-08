@@ -58,8 +58,9 @@ function GetInventoryImages()
     if next(InventoryImages) ~= nil then
         return InventoryImages
     end
-    local images = exports['cd_bridge']:ReadDirectory(
+    local images = exports['cd_bridge']:ReadNUIDirectory(
         GetResourcePath('tgiann-inventory')..'/inventory_images/images',
+        'tgiann-inventory/inventory_images/images/',
         {'png', 'jpg', 'jpeg', 'gif', 'webp'}
     )
     if images then

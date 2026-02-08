@@ -1,5 +1,20 @@
 Config = {}
 
+
+-- =========================
+-- Security / Anti-abuse
+-- =========================
+
+-- How close the player must be to the dropoff to complete it (server-checked)
+Config.CompleteDistance = 3.0
+
+-- Prevent event spam (server-side rate limits)
+Config.DeliveryStartCooldownSeconds = 5
+Config.DeliveryCompleteCooldownSeconds = 2
+
+-- Delivery expires after X seconds (prevents someone starting then completing hours later)
+Config.DeliveryLockSeconds = 600 -- 10 minutes
+
 -- Specify the framework being used ('ESX' or 'QBCore')
 Config.Framework = 'ESX' -- or 'QBCore'
 Config.UseOxTargetForNpc = true -- set to false to not use Target

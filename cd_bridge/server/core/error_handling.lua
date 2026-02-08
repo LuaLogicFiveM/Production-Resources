@@ -2,7 +2,7 @@
 -- │                          ERROR HANDLING                          │
 -- └──────────────────────────────────────────────────────────────────┘ 
 
-local resource_name = '['..GetCurrentResourceName()..']'
+local resource_name = string.format('[%s - v%s - %s]', GetCurrentResourceName(), GetResourceMetadata(GetCurrentResourceName(), 'version', 0), 'server')
 local end_line = '^8==================[END]===================^0'
 local total_length = #end_line-4
 local side = math.floor((total_length - #resource_name) / 2)
@@ -75,16 +75,28 @@ local function DebugPrints(source)
 
         if Cfg.Framework == 'esx' or Cfg.Framework == 'qbcore' or Cfg.Framework == 'qbox' or Cfg.Framework == 'other' then
             Citizen.Trace('^3CHARACTER^0\n')
-            Citizen.Trace(string.format('^6Character Name:^0 %s\n', GetCharacterName(source)))
-            Citizen.Trace(string.format('^6Job Name:^0 %s\n', GetJobName(source)))
-            Citizen.Trace(string.format('^6Job Label:^0 %s\n', GetJobLabel(source)))
-            Citizen.Trace(string.format('^6Job Grade:^0 %s\n', GetJobGrade(source)))
-            Citizen.Trace(string.format('^6Job Grade Label:^0 %s\n', GetJobGradeLabel(source)))
-            Citizen.Trace(string.format('^6On Duty:^0 %s\n', GetJobDuty(source)))
-            Citizen.Trace(string.format('^6Gang Name:^0 %s\n', GetGangName(source)))
-            Citizen.Trace(string.format('^6Gang Label:^0 %s\n', GetGangLabel(source)))
-            Citizen.Trace(string.format('^6Gang Grade:^0 %s\n', GetGangGrade(source)))
+            local charInfo = {
+                charName = GetCharacterName(source),
+                jobName = GetJobName(source),
+                jobLabel = GetJobLabel(source),
+                jobGrade = GetJobGrade(source),
+                jobGradeLabel = GetJobGradeLabel(source),
+                onDuty = GetJobDuty(source),
+                gangName = GetGangName(source),
+                gangLabel = GetGangLabel(source),
+                gangGrade = GetGangGrade(source)
+            }
+            Citizen.Trace(string.format('^6Character Name:^0 %s\n', charInfo.charName))
+            Citizen.Trace(string.format('^6Job Name:^0 %s\n', charInfo.jobName))
+            Citizen.Trace(string.format('^6Job Label:^0 %s\n', charInfo.jobLabel))
+            Citizen.Trace(string.format('^6Job Grade:^0 %s\n', charInfo.jobGrade))
+            Citizen.Trace(string.format('^6Job Grade Label:^0 %s\n',  charInfo.jobGradeLabel))
+            Citizen.Trace(string.format('^6On Duty:^0 %s\n', charInfo.onDuty))
+            Citizen.Trace(string.format('^6Gang Name:^0 %s\n', charInfo.gangName))
+            Citizen.Trace(string.format('^6Gang Label:^0 %s\n', charInfo.gangLabel))
+            Citizen.Trace(string.format('^6Gang Grade:^0 %s\n', charInfo.gangGrade))
             Citizen.Trace('^6-----------------------^0\n')
+            TriggerClientEvent('cd_bridge:debug:charInfo', source, charInfo)
         end
         Notification(source, 2, 'DEBUG INFO: OPEN F8 CONSOLE TO VIEW^0')
     end
@@ -94,6 +106,7 @@ local function DebugPrints(source)
     Citizen.Trace(string.format('^6Database:^0 %s\n', Cfg.Database))
     Citizen.Trace(string.format('^6BridgeDebugSQL:^0 %s\n', tostring(Cfg.BridgeDebugSQL)))
     Citizen.Trace(string.format('^6BridgeDebug:^0 %s\n', tostring(Cfg.BridgeDebug)))
+    Citizen.Trace(string.format('^6DisableDuty:^0 %s\n', tostring(Cfg.DisableDuty)))
     Citizen.Trace(string.format('^6Language:^0 %s\n', Cfg.Language))
     Citizen.Trace(string.format('^6Notification:^0 %s\n', Cfg.Notification))
     Citizen.Trace(string.format('^6DrawTextUI:^0 %s\n', Cfg.DrawTextUI))
@@ -126,6 +139,10 @@ if GetCurrentResourceName() == 'cd_bridge' then
 
         Citizen.Trace('You cannot use this command. You must have admin permissions, enable Cfg.BridgeDebug, or run it from the server console.\n')
     end, false)
+
+    RegisterServerEvent('cd_bridge:debug:charInfo', function(message)
+        ERROR('7903', 'Character info mismatch found between server and client.\n\n'..message)
+    end)
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐

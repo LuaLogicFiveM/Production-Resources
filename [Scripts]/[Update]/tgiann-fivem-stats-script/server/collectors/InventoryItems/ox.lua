@@ -8,10 +8,10 @@ local function startCollector()
     local playerInv = MySQL.query.await('SELECT inventory FROM ' .. tableName)
     if playerInv then
         for i = 1, #playerInv do
-            local playerInventory = playerInv[i]
-            if playerInventory.inventory then
-                playerInventory.inventory = json.decode(playerInventory.inventory)
-                for _, data in pairs(playerInventory.inventory) do
+            local inv = playerInv[i]
+            if inv.inventory then
+                inv.inventory = json.decode(inv.inventory)
+                for _, data in pairs(inv.inventory) do
                     AddItemToList(data.name, data.count)
                 end
             end
@@ -21,10 +21,10 @@ local function startCollector()
     local result = MySQL.query.await('SELECT data FROM ox_inventory')
     if result then
         for x = 1, #result do
-            local resultData = result[x]
-            if resultData.data then
-                resultData.data = json.decode(resultData.data)
-                for _, data in pairs(resultData.data) do
+            local inv = result[x]
+            if inv.data then
+                inv.data = json.decode(inv.data)
+                for _, data in pairs(inv.data) do
                     AddItemToList(data.name, data.count)
                 end
             end

@@ -34,7 +34,7 @@ Cfg.Inventory = 'auto_detect'
 -- auto_detect | cd_easytime | qb-weathersync | vSync | none | other
 Cfg.TimeWeather = 'auto_detect'
 
--- auto_detect | F_RealCarKeysSystem | ak47_qb_vehiclekeys | ak47_vehiclekeys | fivecode_carkeys | loaf_keysystem | mk_vehiclekeys | MrNewbVehicleKeys | qs-vehiclekeys | stasiek_vehiclekeys | t1ger_keys | tgiann-hotwire | ti_vehicleKeys | vehicles_keys | wasabi_carlock | xd_locksystem | qbx_vehiclekeys | qb-vehiclekeys | none  | other
+-- auto_detect | F_RealCarKeysSystem | ak47_qb_vehiclekeys | ak47_vehiclekeys | cd_garage | fivecode_carkeys | loaf_keysystem | mk_vehiclekeys | MrNewbVehicleKeys | qs-vehiclekeys | stasiek_vehiclekeys | t1ger_keys | tgiann-hotwire | ti_vehicleKeys | vehicles_keys | wasabi_carlock | xd_locksystem | qbx_vehiclekeys | qb-vehiclekeys | none  | other
 Cfg.VehicleKeys = 'auto_detect'
 
 -- auto_detect | BigDaddy-Fuel | cdn-fuel | esx-sna-fuel | FRFuel | lc_fuel | LegacyFuel | lj-fuel | lyre_fuel | mnr_fuel | myFuel | ND_Fuel | okokGasStation | ox_fuel | ps-fuel | qb-fuel | qb-sna-fuel | qs-fuelstations | rcore_fuel | Renewed-Fuel | ti_fuel | x-fuel | none | other

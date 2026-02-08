@@ -116,7 +116,7 @@ Config = {
         * vms_garagesv2
         ! You can add your own in custom/garages/
     ]]
-    Garage = "auto",
+    Garage = "op-garages",
     --[[
         Supported inventories:
         * ox_inventory
@@ -1114,6 +1114,7 @@ if Config.Garage == 'auto' then
         'nolag_garages',
         'cd_garage',
         'qb-garages',
+        'op-garages',
         'jg-advancedgarages',
         'qbx_garages',
         'loaf_garage',

@@ -138,6 +138,11 @@ Config.Menu = {
             bossRank = 5,
             locations = {
                 vector4(1045.8152, -2531.6611, 28.9622, 84.3458),--804
+            }
+        },
+        ['outlaw'] = {
+            bossRank = 4,
+            locations = {
                 vector4(1187.2943, 2637.2227, 38.4019, 33.0674),--260
             }
         },

@@ -291,3 +291,9 @@ function TeleportEntity(entity, coords, heading, opts)
 
     return true
 end
+
+-- Enables NUI focus from the ui side.
+RegisterNuiCallback('enable_nui_focus', function(data, cb)
+    EnableNuiFocus()
+    cb('ok')
+end)

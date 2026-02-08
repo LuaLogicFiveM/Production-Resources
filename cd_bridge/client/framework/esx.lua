@@ -114,6 +114,11 @@ function GetCharacterName()
     return CharacterName
 end
 
+-- Check if the player has loaded (after character selection).
+function HasPlayerLoaded()
+    return ESX.PlayerData ~= nil
+end
+
 -- ┌──────────────────────────────────────────────────────────────────┐
 -- │                               PERMS                              │
 -- └──────────────────────────────────────────────────────────────────┘
@@ -152,15 +157,20 @@ end
 
 -- Get the job grade label of the player
 function GetJobGradeLabel()
-    return JobData.name
+    return JobData.label
 end
 
 -- Get if the player is on duty
 function GetJobDuty()
+    if Cfg.DisableDuty then
+        return true
+    end
+
     local customDuty = GetCustomJobDuty()
     if customDuty ~= nil then
         return customDuty
     end
+
     return JobData.on_duty
 end
 

@@ -49,7 +49,7 @@ function bridge.removeMoney(src, amount)
     end
 end
 
-function bridge.checkIsAdmin(src)
+function bridge.checkIsAdmin(src) -- this function is only used by Config.OnlyAdminsCanPickUpEquipment
     if not Framework then
         return
     end

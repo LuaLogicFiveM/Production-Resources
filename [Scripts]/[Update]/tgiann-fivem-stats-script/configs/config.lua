@@ -1,10 +1,6 @@
 tgiCoreExports      = exports["tgiann-core"]
 config              = tgiCoreExports:getConfig()
 
--- Add the following code to your server.cfg file and change the key.
--- set tgiann_stats_secret_key "your-secret-key-here"
-config.SecretKey    = GetConvar("tgiann_stats_secret_key", "not-added") -- Must match dashboard
-
 -- Database Tables
 config.tables       = {
     playerPositions = "tgiann_stats_player_hourly_positions",

@@ -79,6 +79,8 @@ escrow_ignore {
 	'server/utility.lua',
 	'server/editable.lua',
 	'server/aSQLInsert.lua',
+	-- 'client/*.lua',
+	-- 'server/*.lua',
 }
 
 lua54 'yes'

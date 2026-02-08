@@ -7,7 +7,7 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 author 'damianpetrow https://github.com/damianpetrow'
-version '1.1.2'
+version '1.1.3'
 this_is_a_map 'yes'
 shared_scripts {
     'config/config.lua',
@@ -34,6 +34,7 @@ files {
 dependencies { 'oxmysql', '/assetpacks' }
 escrow_ignore {
     'config/config.lua',
+    'shared/shared.lua',
     'client/bridge/*.lua',
     'server/bridge/*.lua',
     '!requirements/*.lua',

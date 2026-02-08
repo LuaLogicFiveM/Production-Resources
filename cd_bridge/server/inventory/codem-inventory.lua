@@ -54,10 +54,13 @@ function GetInventoryImages()
     if next(InventoryImages) ~= nil then
         return InventoryImages
     end
-    local images = exports['cd_bridge']:ReadDirectory(
+    local images = exports['cd_bridge']:ReadNUIDirectory(
         GetResourcePath('codem-inventory')..'/html/itemimages',
+        'codem-inventory/html/itemimages/',
         {'png', 'jpg', 'jpeg', 'gif', 'webp'}
     )
-    InventoryImages = images
+    if images then
+        InventoryImages = images
+    end
     return InventoryImages
 end

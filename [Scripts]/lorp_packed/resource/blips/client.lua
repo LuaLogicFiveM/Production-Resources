@@ -431,8 +431,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 SAXTONS SHOP',
-            description = 'Owner: Saxton',
+            title = '🔧 Outlaw Culture',
+            description = 'Owner: LeanKing69',
         },
     },
     {

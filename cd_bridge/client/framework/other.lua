@@ -49,6 +49,11 @@ function GetCharacterName()
     return CharacterName
 end
 
+-- Check if the player has loaded (after character selection).
+function HasPlayerLoaded()
+    return true
+end
+
 -- ┌──────────────────────────────────────────────────────────────────┐
 -- │                               PERMS                              │
 -- └──────────────────────────────────────────────────────────────────┘
@@ -97,6 +102,10 @@ end
 --- Check if a player is on duty
 --- @return boolean         --True if the player is on duty, false otherwise.
 function GetJobDuty()
+    if Cfg.DisableDuty then
+        return true
+    end
+
     local customDuty = GetCustomJobDuty()
     if customDuty ~= nil then
         return customDuty

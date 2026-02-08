@@ -15,6 +15,14 @@ Config.defaultParticleDuration          = -1            -- after how long the pa
 
 Config.useWhitelistedOnly               = true
 Config.whitelist                        = {
+    ["tremshamocummin"] = {
+        sizeScale = 3,
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
     ["$DIDDYPLATIV2"] = {
         sizeScale = "DEFAULT",
         engineUpgradeRequired = "DEFAULT",

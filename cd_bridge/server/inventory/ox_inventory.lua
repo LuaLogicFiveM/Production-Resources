@@ -63,8 +63,9 @@ function GetInventoryImages()
     if next(InventoryImages) ~= nil then
         return InventoryImages
     end
-    local images = exports['cd_bridge']:ReadDirectory(
+    local images = exports['cd_bridge']:ReadNUIDirectory(
         GetResourcePath('ox_inventory')..'/web/images',
+        'ox_inventory/web/images/',
         {'png', 'jpg', 'jpeg', 'gif', 'webp'}
     )
     if images then

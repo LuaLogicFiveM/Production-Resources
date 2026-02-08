@@ -106,9 +106,10 @@ if Config.Carlift.Interaction.type ~= 'DrawText' then
 end
 
 RetrieveRealPlate = function(plate, vehicle) -- if you have a fake plate script you can implement it here to retrieve the real plate of the vehicle
+    plate = NormalizePlate(plate)
     if GetResourceState('brazzers-fakeplates') == 'started' and exports['brazzers-fakeplates'] then
         local hasFakePlate = lib.callback.await('wheelstancer:brazzersFakePlate', plate)
-        if hasFakePlate then return hasFakePlate else return plate end
+        if hasFakePlate then return NormalizePlate(hasFakePlate) else return plate end
     end
     return plate
 end
@@ -192,9 +193,9 @@ function Draw3DText(x, y, z, str, r, g, b, a, font, scaleSize, enableProportiona
     -- EXPERIMENTAL BOX
     BeginTextCommandGetWidth("STRING")
     AddTextComponentString(str)
-    local textWidth = GetTextScreenWidth(true) 
+    local textWidth = GetTextScreenWidth(true)
     DrawRect(
-        0.0, 0.0 + 0.0125,         --
+        0.0, 0.0 + 0.0125, --
         textWidth + pad * 2, 0.03,
         boxR or 27, boxG or 27, boxB or 27, boxA or 120
     )
@@ -209,6 +210,7 @@ function Draw3DText(x, y, z, str, r, g, b, a, font, scaleSize, enableProportiona
 end
 
 -- External Methods to open the stancer menu!
-AddEventHandler('tuff:openStanceMenu',function()
-    TryOpenStanceMenu(false--[[ Should Allow Opening Anywhere ?! ]],nil --[[ If not opening Anywhere, What is the stance location id, can see it in the Config.Stance_Location ]])
+AddEventHandler('tuff:openStanceMenu', function()
+    TryOpenStanceMenu(false --[[ Should Allow Opening Anywhere ?! ]],
+        nil --[[ If not opening Anywhere, What is the stance location id, can see it in the Config.Stance_Location ]])
 end)

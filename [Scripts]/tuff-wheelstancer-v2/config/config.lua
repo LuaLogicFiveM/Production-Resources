@@ -17,16 +17,21 @@ Config.debug       = false  -- Enables printing debug info to console
     ===============================
 ]]
 
-Config.Framework              = "standalone" -- "qb", "esx", "auto","standalone" If you dont want to use any provided framework functions, Checkout sv_editable.lua
+Config.Framework              =
+"standalone"                                -- "qb", "esx", "auto","standalone" If you dont want to use any provided framework functions, Checkout sv_editable.lua
 Config.AllowOnlyOwnedVehicles = false -- Only allow stancing for vehicles the player owns (logic handled in sv_editable.lua)
-Config.Notify                 = "ox_lib" -- Notification system to use (supports: codem, esx, qb, okok, wasabi, t-notify, r_notify, pNotify, mythic, ox_lib)
-Config.StanceRenderDistance   = 200.0 -- Max distance (in meters) at which stance changes are applied to vehicles
+Config.Notify                 =
+"ox_lib"                              -- Notification system to use (supports: codem, esx, qb, okok, wasabi, t-notify, r_notify, pNotify, mythic, ox_lib)
+Config.StanceRenderDistance   = 250.0 -- Max distance (in meters) at which stance changes are applied to vehicles
 
 --[[
     ===============================
     📍 Location & Blip Settings
     ===============================
 ]]
+
+-- Global Settings for all Stance Locations
+Config.DisableWheelSize = false -- If true, disables wheel size in the main stancer UI and ignores ALL_WHEELS_SIZE changes
 
 Config.GeneralBlip = {
     Sprite  = 545,                   -- Blip icon (https://docs.fivem.net/docs/game-references/blips/)
@@ -40,7 +45,6 @@ Config.PreviewExitKey = {
     controlId = 200,    -- https://docs.fivem.net/docs/game-references/controls/
     displayName = "ESC" -- The Button name shown in the UI of the stancer.
 }
-
 -- Locations where stancer is available
 Config.Stance_Locations = {
     ["1"] = {
@@ -752,7 +756,9 @@ Config.Webhooks        = {
 -- ### IF YOU KNOW WHAT YOU ARE DOING YOU CAN CHANGE THIS ###
 
 Config.PlayerSpawnEvents = {
-    'esx:playerLoaded'
+    'esx:playerLoaded',
+    'playerSpawned',
+    'QBCore:Client:OnPlayerLoaded'
 }
 
 if Config.Framework == "auto" then
@@ -798,3 +804,12 @@ Config.FrameworkSharedObjects = {
         return Config.FrameworkSharedObject
     end
 }
+
+
+
+NormalizePlate = function(plate)
+    if plate == nil then return "" end
+    plate = tostring(plate)
+    plate = plate:gsub("^%s*(.-)%s*$", "%1")
+    return plate
+end

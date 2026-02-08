@@ -1,18 +1,13 @@
-shared_script "@ReaperV4/imports/bypass.js"
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version "cerulean"
 game 'gta5'
-version '1.3.1'
+version '1.4.0'
 lua54 'yes'
 
 dependencies {
     "/server:10488",
     "ox_lib",
     "tgiann-core",
+    'yarn'
 }
 
 escrow_ignore {
@@ -36,6 +31,7 @@ server_scripts {
     "server/main.lua",
     "server/endpoints/*.lua",
     "server/collectors/**/*.lua",
-    "server/http-server.js",
+    "server/server.js"
 }
+
 dependency '/assetpacks'

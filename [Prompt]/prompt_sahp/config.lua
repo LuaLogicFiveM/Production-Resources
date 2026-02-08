@@ -11,7 +11,7 @@ Config = {}
 -- Available options: "onlychairs", "chairsandtables", or false (disabled)
 Config.DefaultEntitySets = {
     onlychairs = true,        -- Set to true to enable "Only Chairs" by default
-    chairsandtables = false    -- Set to true to enable "Chairs and Tables" by default
+    chairsandtables = true    -- Set to true to enable "Chairs and Tables" by default
 }
 
 -- Enable/disable the entity set manager menu (requires ox_lib)

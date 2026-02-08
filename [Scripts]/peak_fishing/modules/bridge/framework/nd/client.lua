@@ -1,18 +1,21 @@
 local bridge = {}
+local playerLoaded = false
 
 RegisterNetEvent('ND:characterUnloaded', function()
-    LocalPlayer.state.isLoggedIn = false
-    OnPlayerLoaded()
+    playerLoaded = false
+
+    OnPlayerUnload()
 end)
 
 RegisterNetEvent('ND:characterLoaded', function()
-    LocalPlayer.state.isLoggedIn = true
-    OnPlayerUnload()
+    playerLoaded = true
+
+    OnPlayerLoaded()
 end)
 
 ---@return boolean
 function bridge.hasPlayerLoaded()
-    return LocalPlayer.state.isLoggedIn
+    return playerLoaded
 end
 
 return bridge
