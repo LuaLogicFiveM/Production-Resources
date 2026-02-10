@@ -20,5 +20,13 @@ return {
                 vec3(2536.8227539062, 2587.0207519531, 38.820037841797),
             },
         },
+        pizza_pier = { -- Postal: 687
+            percent = 0.50, -- commission per charge if EnableCommission = true
+            distance = 1.5, -- target distance
+            radius = 1.0, -- sphere radius
+            locations = {
+                vec3(-1523.2833, -906.7167, 10.2018),
+            },
+        },
     }
 }

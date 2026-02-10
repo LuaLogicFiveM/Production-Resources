@@ -335,13 +335,14 @@ Config.Voice.WaitUntilNotTalking = true -- Wait until the player is not talking 
 
 --[[ PHONE OPTIONS ]] --
 Config.Sound = {}
-Config.Sound.Sync = true
-Config.Sound.Networked = false -- use networked sounds for synced sounds?
-Config.Sound.Volume = {}
+Config.Sound.System = "native" -- native: use native GTA audio, nui: play audio via nui NOTE: syncing only works when using native GTA audio
+Config.Sound.Sync = true -- syncing audio only works when using native audio
+Config.Sound.Volume = {} -- the volume options only applies to native audio
 Config.Sound.Volume.Multiplier = 1.0
 Config.Sound.Volume.Static = false -- here you can set a static volume for native sounds, instead of allowing users to change volume themselves
 Config.Sound.Volume.Min = 0.0
 Config.Sound.Volume.Max = 1.0
+Config.Sound.MaxDistance = 30.0 -- the maximum distance a sound can be heard from (only applies to native audio)
 
 Config.Sound.Ringtones = {
     ["default"] = {
@@ -985,9 +986,9 @@ Config.Camera.Freeze.MaxTime = 60 -- max time the camera can be frozen for (in s
 Config.UploadMethod = {}
 -- You can edit the upload methods in lb-phone/shared/upload.lua
 -- We recommend Fivemanage, https://fivemanage.com
+-- Use code LBPHONE10 for 10% off on Fivemanage
 -- A video tutorial for how to set up Fivemanage can be found here: https://www.youtube.com/watch?v=y3bCaHS6Moc
 -- If you want to host uploads yourself, you can use LBUpload: https://github.com/lbphone/lb-upload
--- We STRONGLY discourage using Discord as an upload method, as uploaded files may become inaccessible after a while.
 Config.UploadMethod.Video = "Fivemanage" -- "Fivemanage" or "LBUpload" or "Custom"
 Config.UploadMethod.Image = "Fivemanage" -- "Fivemanage" or "LBUpload" or "Custom
 Config.UploadMethod.Audio = "Fivemanage" -- "Fivemanage" or "LBUpload" or "Custom"

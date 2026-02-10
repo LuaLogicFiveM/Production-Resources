@@ -11,13 +11,7 @@ function JailPlayer(identifier, time, reason, officerSource)
     local minutes = math.floor(time / 60)
     local source = GetSourceFromIdentifier(identifier)
 
-    if not source then
-        return false
-    end
-
-    exports.tk_jail:jail(source, minutes, 'jail', math.random(1, 15), true, reason)
-
-    return true
+    return false
 end
 
 ---@param identifier string
@@ -25,13 +19,7 @@ end
 function UnjailPlayer(identifier)
     local source = GetSourceFromIdentifier(identifier)
 
-    if not source then
-        return false
-    end
-
-    exports.tk_jail:unjail(source, true)
-
-    return true
+    return false
 end
 
 ---@param identifier string
@@ -39,9 +27,5 @@ end
 function GetRemainingPrisonSentence(identifier)
     local source = GetSourceFromIdentifier(identifier)
 
-    if not source then
-        return 0
-    end
-
-    return exports.tk_jail:getSentence(source) or 0
+    return 0
 end

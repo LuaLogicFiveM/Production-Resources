@@ -780,7 +780,7 @@ Config.Police.Permissions = {
 
 Config.Police.Header = {
     Logo = "./assets/img/icons/police/logo.webp",
-    Title = "Los Santos Law Enforcement",
+    Title = "Police Department",
     Subtitle = "Mobile Police Terminal"
 }
 
