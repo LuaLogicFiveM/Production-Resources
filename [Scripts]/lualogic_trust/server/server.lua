@@ -1,16 +1,35 @@
+---@diagnostic disable: undefined-global, param-type-mismatch
 local config = require 'config'
 local logs = require 'logs'
 local vehicles, vehicles_owned = {}, {}
 
 local function InitCache()
+	vehicles = {}
 	vehicles_owned = {}
 	local start = os.time()
 
 	local response = MySQL.prepare.await('SELECT `identifier`, `data` FROM `lualogic_trust`')
 
-	if #response ~= 0 then
-		for _, profile in ipairs(response) do
-			local decoded_data = json.decode(profile.data)
+	if response then
+		if #response ~= 0 then
+			for _, profile in ipairs(response) do
+				local decoded_data = json.decode(profile.data)
+
+				for vehicle, owner in pairs(decoded_data) do
+					local hash = joaat(vehicle)
+
+					if owner and not vehicles_owned[hash] then
+						vehicles_owned[hash] = true
+					end
+
+					decoded_data[vehicle] = owner
+					decoded_data[_] = nil
+				end
+
+				vehicles[profile.identifier] = decoded_data
+			end
+		else
+			local decoded_data = json.decode(response.data)
 
 			for vehicle, owner in pairs(decoded_data) do
 				local hash = joaat(vehicle)
@@ -20,41 +39,15 @@ local function InitCache()
 				end
 
 				decoded_data[vehicle] = owner
-				decoded_data[_] = nil
 			end
 
-			--[[for _, data in ipairs(decoded_data) do -- data fix (save backup, stop server, uncomment, start script, comment out, restart script)
-				local hash = joaat(data.vehicle)
-
-				if data.owner and not vehicles_owned[hash] then
-					vehicles_owned[hash] = true
-				end
-
-				decoded_data[data.vehicle] = data.owner
-				decoded_data[_] = nil
-			end]]
-
-			vehicles[profile.identifier] = decoded_data
+			vehicles[response.identifier] = decoded_data
 		end
-	else
-		local decoded_data = json.decode(response.data)
-
-		for vehicle, owner in pairs(decoded_data) do
-			local hash = joaat(vehicle)
-
-			if owner and not vehicles_owned[hash] then
-				vehicles_owned[hash] = true
-			end
-
-			decoded_data[vehicle] = owner
-		end
-
-		vehicles[response.identifier] = decoded_data
 	end
 
 	local endTime = os.time()
 	local totalTime = endTime - start
-	DebugPrint('[InitCache] - Cache Initiated, Benchmark Ended '..totalTime.. ' seconds', 'info')
+	lib.print.info('[InitCache] - Cache Initiated, Benchmark Ended '..totalTime.. ' seconds')
 end
 
 local function SaveCache()
@@ -66,7 +59,7 @@ local function SaveCache()
 
 	local ending = os.time()
 	local total = ending - start
-	DebugPrint('[SaveCache] - Cache Saved, Benchmark Ended '..total.. ' seconds', 'info')
+	lib.print.info('[SaveCache] - Cache Saved, Benchmark Ended '..total.. ' seconds')
 end
 
 RegisterCommand('savecache', SaveCache, true)
@@ -75,13 +68,11 @@ local function IsVehicleOwnedHash(model)
 	return vehicles_owned[model] or false
 end
 
-local function HasVehicle(source, vehicle)
+local function HasVehicle(source, model)
 	local identifier = GetIdentifier(source)
 	local player_vehicles = vehicles[identifier] or {}
 
 	if GetTableSize(player_vehicles) == 0 then return false end
-
-	local model = GetEntityModel(vehicle)
 
     for spawncode, _ in pairs(player_vehicles) do
 		if joaat(spawncode) == model then
@@ -94,13 +85,28 @@ end
 
 local function CheckVehicleHash(source, vehicle)
 	local src = tonumber(source)
-	if not DoesEntityExist(vehicle) then return end
-	if not IsVehicleOwnedHash(GetEntityModel(vehicle)) then return end
+
+	if not DoesEntityExist(vehicle) then
+		return
+	end
+
+	local vehicleModel = GetEntityModel(vehicle)
+
+	if not IsVehicleOwnedHash(vehicleModel) then
+		return
+	end
+
 	SetTimeout(1500, function()
-		if not DoesEntityExist(vehicle) then return end
-		if HasVehicle(src, vehicle) then return end
-		Notify(src, 'You do not have access to drive this personal vehicle.', 'error')
+		if not DoesEntityExist(vehicle) then
+			return
+		end
+
+		if HasVehicle(src, vehicleModel) then
+			return
+		end
+
 		TaskLeaveVehicle(GetPlayerPed(src), vehicle, 0)
+		Notify(src, 'You do not have access to drive this personal vehicle.', 'error')
 	end)
 end
 
@@ -141,28 +147,24 @@ lib.callback.register('lualogic_trust:server:requestTrusted', function(source)
 	return GetTableSize(result) ~= 0 and result or false
 end)
 
-local slotConfig = config.modules.owner.set.limits
+local limitConfig = config.modules.owner.set.limits
+
 local function HasVehicleSlots(source, data)
-	if not slotConfig.enabled then return true end
+	if not limitConfig.enabled then return true end
 
 	local src = tonumber(source)
-	local limit = slotConfig.count
-	local roles = exports.lorp_discord_api:GetUserRoles(src)
+	local limit = config.modules.owner.set.limits.count
+	local playerRoles = GetDiscordRoles(src)
 
-	for limitCount, acePerm in pairs(slotConfig.exempt) do
-		if roles[acePerm] then
-			limit = limitCount
+	if playerRoles then
+		for limitCount, discordRole in pairs(limitConfig.whitelist) do
+			if playerRoles[discordRole] then
+				limit = limitCount
+			end
 		end
 	end
 
-	local slots = 0
-	for _, owner in pairs(data) do
-		if (owner == true) and not (owner == false) then
-			slots = slots+1
-		end
-	end
-
-	return limit > slots, limit
+	return limit > #data, limit
 end
 
 lib.callback.register('lualogic_trust:server:requestOwned', function(source)
@@ -179,26 +181,34 @@ lib.callback.register('lualogic_trust:server:requestOwned', function(source)
 
 	local hasSlots, limit = HasVehicleSlots(src, identifierProfile)
 
-	return GetTableSize(result) ~= 0 and result or false, limit
+	return #result ~= 0 and result or false, config.modules.owner.set.limits.enabled and limit or ''
 end)
 
 function RemoveOwner(source, target, vehicle, admin)
 	local src = tonumber(source)
 
 	if not GlobalState.owner_remove then
-		return Notify(src, 'The remove owner global state is disabled', 'error')
+		Notify(src, 'The remove owner global state is disabled', 'error')
+		return
 	end
 
 	local tgt = tonumber(target)
 	local identifier = GetIdentifier(tgt)
 	local veh = string.upper(vehicle)
 
+	if not identifier then
+		lib.print.error('identifier not found for player: ', tgt)
+		return
+	end
+
 	if tgt ~= src and not admin then
-		return Notify(src, 'You are unable to remove trust from another player', 'error')
+		Notify(src, 'You are unable to remove trust from another player', 'error')
+		return
 	end
 
 	if not admin and not IsVehicleOwned(tgt, veh) then
-		return Notify(src, 'The player does not have ownership of the vehicle', 'error')
+		Notify(src, 'The player does not have ownership of the vehicle', 'error')
+		return
 	end
 
 	local player_vehicles = vehicles[identifier] or {}
@@ -211,34 +221,44 @@ function RemoveOwner(source, target, vehicle, admin)
 	local targetName = GetPlayerName(tgt)
 
 	if admin and tgt ~= src then
-		Notify(src, 'You have removed ownership of '..veh..' from '..targetName, 'success')
+		Notify(src, ('You have removed ownership of %s from %s'):format(veh, targetName), 'success')
 	end
 
-	Notify(tgt, 'You have removed ownership of '..veh, 'success')
+	Notify(tgt, ('You have removed ownership of %s'):format(veh), 'success')
 	DiscordLog('Owner Removed', '**[Source Name]:** '..GetPlayerName(src)..'\n **[Source Discord]:** <@'..GetDiscordIdentifier(src)..'>\n **[Target Name]:** '..GetPlayerName(tgt)..'\n **[Target Discord]:** <@'..GetDiscordIdentifier(tgt)..'>\n **[Target Vehicle]:** '..veh, logs.owner_remove)
 end
 
-function RemoveTrust(source, target, vehicle, admin)
+function RemoveTrust(source, target, vehicle)
 	local src = tonumber(source)
 
 	if not GlobalState.trust_remove then
-		return Notify(src, 'The remove trust global state is disabled', 'error')
+		Notify(src, 'The remove trust global state is disabled', 'error')
+		return
 	end
 
 	local tgt = tonumber(target)
 	local veh = string.upper(vehicle)
-	local identifier = GetIdentifier(tgt)
 
 	if not IsPlayerActive(tgt) then
-		return Notify(src, 'The id you provided is not online', 'error')
+		Notify(src, 'The id you provided is not online', 'error')
+		return
 	end
 
 	if src ~= tgt and not IsVehicleOwned(src, veh) then
-		return Notify(src, 'You do not have ownership of this vehicle', 'error')
+		Notify(src, 'You do not have ownership of this vehicle', 'error')
+		return
 	end
 
 	if not IsVehicleTrusted(tgt, veh) then
-		return Notify(src, 'The target does not have trust to this vehicle', 'error')
+		Notify(src, 'The target does not have trust to this vehicle', 'error')
+		return
+	end
+
+	local identifier = GetIdentifier(tgt)
+
+	if not identifier then
+		lib.print.error('identifier not found for player: ', tgt)
+		return
 	end
 
 	local player_vehicles = vehicles[identifier] or {}
@@ -258,32 +278,43 @@ function GiveTrust(source, target, vehicle)
 	local src = tonumber(source)
 
 	if not GlobalState.trust_give then
-		return Notify(src, 'The give trust global state is disabled', 'error')
+		Notify(src, 'The give trust global state is disabled', 'error')
+		return
 	end
 
 	local tgt = tonumber(target)
 	local veh = string.upper(vehicle)
 
 	if src == tgt then
-		return Notify(src, 'You are unable to give yourself trust', 'error')
+		Notify(src, 'You are unable to give yourself trust', 'error')
+		return
 	end
 
 	if not IsPlayerActive(tgt) then
-		return Notify(src, 'The id you provided is not online', 'error')
+		Notify(src, 'The id you provided is not online', 'error')
+		return
 	end
 
 	if not IsVehicleValid(src, veh) then
-		return Notify(src, 'The spawn code you provided is invalid', 'error')
+		Notify(src, 'The spawn code you provided is invalid', 'error')
+		return
 	end
 
 	if not IsVehicleOwned(src, veh) then
-		return Notify(src, 'You do not have ownership of this vehicle', 'error')
+		Notify(src, 'You do not have ownership of this vehicle', 'error')
+		return
 	end
 
-	local identifier = GetIdentifier(tgt)
 	local target_vehicles = vehicles[identifier] or {}
 	local PlayerName = GetPlayerName(src)
 	local TargetName = GetPlayerName(tgt)
+
+	local identifier = GetIdentifier(tgt)
+
+	if not identifier then
+		lib.print.error('identifier not found for player: ', tgt)
+		return
+	end
 
 	if GetTableSize(target_vehicles) == 0 then
 		target_vehicles = {}
@@ -297,7 +328,8 @@ function GiveTrust(source, target, vehicle)
 	end
 
 	if IsVehicleTrusted(tgt, veh) then
-		return Notify(src, 'This player already has trust to this vehicle', 'error')
+		Notify(src, 'This player already has trust to this vehicle', 'error')
+		return
 	end
 
 	target_vehicles[veh] = false
@@ -312,27 +344,37 @@ function SetOwner(source, target, vehicle)
 	local src = tonumber(source)
 
 	if not GlobalState.owner_set then
-		return Notify(src, 'The set owner global state is disabled', 'error')
+		Notify(src, 'The set owner global state is disabled', 'error')
+		return
 	end
 
 	local tgt = tonumber(target)
 	local veh = string.upper(vehicle)
 
 	if not IsPlayerActive(tgt) then
-		return Notify(src, 'The player id you provided is not online', 'error')
+		Notify(src, 'The player id you provided is not online', 'error')
+		return
 	end
 
 	if not IsVehicleValid(tgt, veh) then
-		return Notify(src, 'The vehicle provided is not in the server', 'error')
+		Notify(src, 'The vehicle provided is not in the server', 'error')
+		return
 	end
 
 	local vehicleHash = joaat(veh)
 
 	if vehicles_owned[vehicleHash] then
-		return Notify(src, 'This vehicle is already owned', 'error')
+		Notify(src, 'This vehicle is already owned', 'error')
+		return
 	end
 
 	local identifier = GetIdentifier(tgt)
+
+	if not identifier then
+		lib.print.error('identifier not found for player: ', tgt)
+		return
+	end
+
 	local player_vehicles = vehicles[identifier] or {}
 
 	local playerName = src ~= 0 and GetPlayerName(src) or 'Console'
@@ -351,15 +393,18 @@ function SetOwner(source, target, vehicle)
 	end
 
 	if IsVehicleOwned(tgt, veh) then
-		return Notify(src, 'This player already has ownership to this vehicle', 'error')
+		Notify(src, 'This player already has ownership to this vehicle', 'error')
+		return
 	end
 
 	if IsVehicleTrusted(tgt, veh) then
-		return Notify(src, 'This player has trust to this vehicle', 'error')
+		Notify(src, 'This player has trust to this vehicle', 'error')
+		return
 	end
 
-	if not HasVehicleSlots(tgt, player_vehicles) then
-		return Notify(src, 'This player doesn\'t have any owned vehicle slots', 'error')
+	if config.modules.owner.set.limits.enabled and not HasVehicleSlots(tgt, player_vehicles) then
+		Notify(src, 'This player doesn\'t have any owned vehicle slots', 'error')
+		return
 	end
 
 	vehicles_owned[vehicleHash] = true
@@ -374,24 +419,32 @@ function SetTrust(source, target, vehicle)
 	local src = tonumber(source)
 
 	if not GlobalState.trust_set then
-		return Notify(src, 'The set trust global state is disabled', 'error')
+		Notify(src, 'The set trust global state is disabled', 'error')
+		return
 	end
 
 	local tgt = tonumber(target)
 	local veh = string.upper(vehicle)
 
 	if not IsPlayerActive(tgt) then
-		return Notify(src, 'The player id you provided is not online', 'error')
+		Notify(src, 'The player id you provided is not online', 'error')
+		return
 	end
 
 	if not IsVehicleValid(tgt, veh) then
-		return Notify(src, 'The vehicle provided is not in the server', 'error')
+		Notify(src, 'The vehicle provided is not in the server', 'error')
+		return
 	end
 
-	local identifier = GetIdentifier(tgt)
 	local player_vehicles = vehicles[identifier] or {}
 	local playerName = src ~= 0 and GetPlayerName(src) or 'Console'
 	local targetName = GetPlayerName(tgt)
+	local identifier = GetIdentifier(tgt)
+
+	if not identifier then
+		lib.print.error('identifier not found for player: ', tgt)
+		return
+	end
 
 	if GetTableSize(player_vehicles) == 0 then
 		player_vehicles[veh] = false
@@ -404,11 +457,13 @@ function SetTrust(source, target, vehicle)
 	end
 
 	if IsVehicleOwned(tgt, veh) then
-		return Notify(src, 'This player has ownership to this vehicle', 'error')
+		Notify(src, 'This player has ownership to this vehicle', 'error')
+		return
 	end
 
 	if IsVehicleTrusted(tgt, veh) then
-		return Notify(src, 'This player already has trust to this vehicle', 'error')
+		Notify(src, 'This player already has trust to this vehicle', 'error')
+		return
 	end
 
 	--table.insert(player_vehicles, {vehicle = veh, owner = false})
@@ -425,7 +480,8 @@ if config.modules.owner.clear.enabled then
 		local veh = string.upper(vehicle)
 
 		if src ~= 0 and not GlobalState.owner_clear then
-			return Notify(src, 'The clear owner global state is disabled', 'error')
+			Notify(src, 'The clear owner global state is disabled', 'error')
+			return
 		end
 
 		local model = joaat(veh)
@@ -433,7 +489,8 @@ if config.modules.owner.clear.enabled then
 		if vehicles_owned[model] then
 			vehicles_owned[model] = nil
 		else
-			return Notify(src, 'This vehicle is not owned', 'error')
+			Notify(src, 'This vehicle is not owned', 'error')
+			return
 		end
 
 		local result = {}
@@ -477,7 +534,8 @@ if config.modules.trust.clear.enabled then
 		end
 
 		if GetTableSize(result) == 0 then
-			return Notify(src, 'There is no trust on this vehicle', 'error')
+			Notify(src, 'There is no trust on this vehicle', 'error')
+			return
 		end
 
 		local data = json.encode(result, {indent=true})
@@ -524,7 +582,8 @@ if config.transfer.enabled then
 		local identifier = GetIdentifier(src)
 
 		if IsTransferred(identifier) == 'true' then
-			return Notify(src, 'You already transferred your data', 'error')
+			Notify(src, 'You already transferred your data', 'error')
+			return
 		end
 
 		local al = LoadResourceFile(GetCurrentResourceName(), 'convert/whitelist.json')
@@ -552,16 +611,19 @@ if config.transfer.enabled then
 		DiscordLog('Data Transfered', '**[Source Name]:** '..GetPlayerName(src)..'\n **[Source Discord]:** <@'..GetDiscordIdentifier(src)..'>\n **[Data]:** '..json.encode(result), logs.transfer_data)
 	end
 
-	RegisterCommand(config.transfer.command, function(source)
-		local src = source
-		local perm = config.transfer.permission
+	if config.transfer.command then
+		RegisterCommand(config.transfer.command, function(source)
+			local src = source
+			local perm = config.transfer.permission
 
-		if perm and not IsPlayerAceAllowed(src, perm) then
-			return Notify(src, 'You are unable to access this', 'error')
-		end
+			if perm and not IsPlayerAceAllowed(src, perm) then
+				Notify(src, 'You are unable to access this', 'error')
+				return
+			end
 
-		TransferData(src)
-	end, true)
+			TransferData(src)
+		end, true)
+	end
 end
 
 if config.modules.owner.trade.enabled then
@@ -572,23 +634,37 @@ if config.modules.owner.trade.enabled then
 		local targetVehicle = string.upper(targetvehicle)
 
 		if not IsPlayerActive(tgt) then
-			return Notify(src, 'The id you provided is invalid', 'error')
+			Notify(src, 'The id you provided is invalid', 'error')
+			return
 		end
 
 		if not IsPlayerActive(src) then
-			return Notify(tgt, 'The id you provided is invalid', 'error')
+			Notify(tgt, 'The id you provided is invalid', 'error')
+			return
 		end
 
 		if not IsVehicleValid(src, playerVehicle) then
-			return Notify(src, 'The vehicle you provided is not valid', 'error')
+			Notify(src, 'The vehicle you provided is not valid', 'error')
+			return
 		end
 
 		if not IsVehicleValid(tgt, targetVehicle) then
-			return Notify(tgt, 'The vehicle you provided is not valid', 'error')
+			Notify(tgt, 'The vehicle you provided is not valid', 'error')
+			return
 		end
 
 		local playerIdentifier = GetIdentifier(src)
 		local targetIdentifier = GetIdentifier(tgt)
+
+		if not playerIdentifier then
+			lib.print.error('identifier not found for player: ', src)
+			return
+		end
+
+		if not targetIdentifier then
+			lib.print.error('identifier not found for player: ', tgt)
+			return
+		end
 
 		local playerName = GetPlayerName(src)
 		local playerData = vehicles[playerIdentifier] or {}
@@ -598,15 +674,18 @@ if config.modules.owner.trade.enabled then
 
 		if type == 'owner' then
 			if not GlobalState.owner_trade then
-				return Notify(src, 'The trade owner global state is disabled', 'error')
+				Notify(src, 'The trade owner global state is disabled', 'error')
+				return
 			end
 
 			if not IsVehicleOwned(src, playerVehicle) then
-				return Notify(src, 'You do not have ownership of the vehicle '..playerVehicle, 'error')
+				Notify(src, 'You do not have ownership of the vehicle '..playerVehicle, 'error')
+				return
 			end
 
 			if not IsVehicleOwned(tgt, targetVehicle) then
-				return Notify(tgt, 'You do not have ownership of the vehicle '..targetVehicle, 'error')
+				Notify(tgt, 'You do not have ownership of the vehicle '..targetVehicle, 'error')
+				return
 			end
 
 			if playerData[targetVehicle] == false then
@@ -636,31 +715,38 @@ if config.modules.owner.trade.enabled then
 			DiscordLog('Ownership Traded', '**[Source Name]:** '..playerName..'\n **[Source Discord]:** <@'..GetDiscordIdentifier(src)..'>\n **[Source Vehicle]:** '..playerVehicle..'\n **[Target Name]:** '..targetName..'\n **[Target Discord]:** <@'..GetDiscordIdentifier(tgt)..'>\n **[Target Vehicle]:** '..targetVehicle, logs.owner_trade)
 		elseif type == 'trust' then
 			if not GlobalState.trust_trade then
-				return Notify(src, 'The trade trust global state is disabled', 'error')
+				Notify(src, 'The trade trust global state is disabled', 'error')
+				return
 			end
 
 			if IsVehicleOwned(src, playerVehicle) then
-				return Notify(src, 'You have ownership of the vehicle '..playerVehicle, 'error')
+				Notify(src, 'You have ownership of the vehicle '..playerVehicle, 'error')
+				return
 			end
 
 			if IsVehicleOwned(src, targetVehicle) then
-				return Notify(src, 'You have ownership of the vehicle '..targetVehicle, 'error')
+				Notify(src, 'You have ownership of the vehicle '..targetVehicle, 'error')
+				return
 			end
 
 			if IsVehicleOwned(tgt, targetVehicle) then
-				return Notify(tgt, 'You have ownership of the vehicle '..targetVehicle, 'error')
+				Notify(tgt, 'You have ownership of the vehicle '..targetVehicle, 'error')
+				return
 			end
 
 			if IsVehicleOwned(tgt, playerVehicle) then
-				return Notify(tgt, 'You have ownership of the vehicle '..playerVehicle, 'error')
+				Notify(tgt, 'You have ownership of the vehicle '..playerVehicle, 'error')
+				return
 			end
 
 			if not IsVehicleTrusted(src, playerVehicle) then
-				return Notify(src, 'You do not have trust to this vehicle '..playerVehicle, 'error')
+				Notify(src, 'You do not have trust to this vehicle '..playerVehicle, 'error')
+				return
 			end
 
 			if not IsVehicleTrusted(tgt, targetVehicle) then
-				return Notify(tgt, 'You do not have trust to this vehicle '..targetVehicle, 'error')
+				Notify(tgt, 'You do not have trust to this vehicle '..targetVehicle, 'error')
+				return
 			end
 
 			if playerData[playerVehicle] == false then
@@ -689,19 +775,22 @@ if config.modules.owner.trade.enabled then
 		local requestTargetDialog = lib.callback.await('lualogic_trust:client:requestTargetDialogSecond', tgt, sourceVehicle, type)
 
 		if requestTargetDialog == nil then
-			return Notify(tgt, 'You cancelled the trade', 'error')
+			Notify(tgt, 'You cancelled the trade', 'error')
+			return
 		end
 
 		local src = requestTargetDialog[1]
 
 		if not IsVehicleValid(tgt, sourceVehicle) then
-			return Notify(tgt, 'The vehicle you provided is invalid', 'error')
+			Notify(tgt, 'The vehicle you provided is invalid', 'error')
+			return
 		end
 
 		local targetVehicle = requestTargetDialog[2]
 
 		if not IsVehicleValid(src, targetVehicle) then
-			return Notify(src, 'The vehicle you provided is invalid', 'error')
+			Notify(src, 'The vehicle you provided is invalid', 'error')
+			return
 		end
 
 		if requestTargetDialog[3] then
@@ -718,28 +807,44 @@ if config.modules.owner.transfer.enabled then
         local src = tonumber(source)
 
         if not GlobalState.owner_transfer then
-            return Notify(src, 'The transfer owner global state is disabled', 'error')
+			Notify(src, 'The transfer owner global state is disabled', 'error')
+            return
         end
 
         local tgt = tonumber(target)
         local veh = string.upper(vehicle)
 
         if not IsPlayerActive(tgt) then
-            return Notify(src, 'The player id you provided is not online', 'error')
+			Notify(src, 'The player id you provided is not online', 'error')
+            return
         end
 
         if not IsVehicleValid(tgt, veh) then
-            return Notify(src, 'The vehicle provided is not in the server', 'error')
+			Notify(src, 'The vehicle provided is not in the server', 'error')
+            return
         end
 
         local targetIdentifier = GetIdentifier(tgt)
+
+		if not targetIdentifier then
+			lib.print.error('identifier not found for player: ', tgt)
+			return
+		end
+
         local target_vehicles = vehicles[targetIdentifier] or {}
 
 		local sourceIdentifier = GetIdentifier(src)
+
+		if not sourceIdentifier then
+			lib.print.error('identifier not found for player: ', src)
+			return
+		end
+
 		local player_vehicles = vehicles[sourceIdentifier] or {}
 
-		if not HasVehicleSlots(tgt, target_vehicles) then
-            return Notify(src, 'This player doesn\'t have any owned vehicle slots', 'error')
+		if config.modules.owner.set.limits.enabled and not HasVehicleSlots(tgt, target_vehicles) then
+			Notify(src, 'This player doesn\'t have any owned vehicle slots', 'error')
+            return
         end
 
         local sourceName = src ~= 0 and GetPlayerName(src) or 'Console'
@@ -760,11 +865,13 @@ if config.modules.owner.transfer.enabled then
 			end
 
 			if IsVehicleOwned(tgt, veh) then
-				return Notify(src, 'This player already has ownership to this vehicle', 'error')
+				Notify(src, 'This player already has ownership to this vehicle', 'error')
+				return
 			end
 
 			if IsVehicleTrusted(tgt, veh) then
-				return Notify(src, 'This player has trust to this vehicle', 'error')
+				Notify(src, 'This player has trust to this vehicle', 'error')
+				return
 			end
 
 			player_vehicles[veh] = nil
@@ -780,7 +887,8 @@ end
 
 local function SearchVehicleModel(source, vehicle)
 	if source ~= 0 and not GlobalState.search_vehicle then
-		return Notify(source, 'The name search global state is disabled', 'error')
+		Notify(source, 'The name search global state is disabled', 'error')
+		return
 	end
 
 	local result = {}
@@ -803,40 +911,47 @@ local function SearchVehicleModel(source, vehicle)
 	return result
 end
 
-if config.modules.system.search.vehicle.enabled then
-	RegisterCommand(config.modules.system.search.vehicle.command, function(source, args)
-		local src = tonumber(source)
-		local perm = config.modules.system.search.vehicle.permission
+local searchConfig = config.modules.system.search
 
-		if perm and not IsPlayerAceAllowed(src, perm) then
-			return Notify(src, 'You are unable to access this', 'error')
-		end
+if searchConfig.vehicle.enabled then
+	if searchConfig.vehicle.command then
+		RegisterCommand(searchConfig.vehicle.command, function(source, args)
+			local src = tonumber(source)
+			local perm = searchConfig.vehicle.permission
 
-		if not args[1] then
-			return Notify(src, 'You must provide a vehicle name', 'error')
-		end
+			if perm and not IsPlayerAceAllowed(src, perm) then
+				Notify(src, 'You are unable to access this', 'error')
+				return
+			end
 
-		local vehicle = string.upper(args[1])
-		local search = SearchVehicleModel(src, vehicle)
+			if not args[1] then
+				Notify(src, 'You must provide a vehicle name', 'error')
+				return
+			end
 
-		TriggerClientEvent('lualogic_trust:client:returnSearch', src, 'vehicle', search)
-	end, false)
-end
+			local vehicle = string.upper(args[1])
+			local search = SearchVehicleModel(src, vehicle)
 
-RegisterCommand(config.modules.system.search.vehicle.command .. '_console', function(source, args)
-	local src = tonumber(source)
+			TriggerClientEvent('lualogic_trust:client:returnSearch', src, 'vehicle', search)
+		end, false)
 
-	if src == 0 then
-		if not args[1] then
-			return Notify(src, 'You must provide a vehicle name', 'error')
-		end
+		RegisterCommand(searchConfig.vehicle.command .. '_console', function(source, args)
+			local src = tonumber(source)
 
-		local vehicle = string.upper(args[1])
-		local search = SearchVehicleModel(src, vehicle)
+			if src == 0 then
+				if not args[1] then
+					Notify(src, 'You must provide a vehicle name', 'error')
+					return
+				end
 
-		print('[SEARCH RESULT] - '..json.encode(search, {indent=true, sort_keys=true}))
+				local vehicle = string.upper(args[1])
+				local search = SearchVehicleModel(src, vehicle)
+
+				print('[SEARCH RESULT] - '..json.encode(search, {indent=true, sort_keys=true}))
+			end
+		end, true)
 	end
-end, true)
+end
 
 local function SearchPlayerIdentifier(source, identifier)
 	if source ~= 0 and not GlobalState.search_identifier then
@@ -847,12 +962,17 @@ local function SearchPlayerIdentifier(source, identifier)
 
 	if string.len(playerIdentifier) < 4 then
 		if not IsPlayerActive(playerIdentifier) then
-			return false, DebugPrint('[SearchPlayerIdentifier] - source was not connected: '..playerIdentifier, 'error')
+			lib.print.error('[SearchPlayerIdentifier] - source was not connected: '..playerIdentifier)
+			return false
 		end
+
 		local xPlayerIdentifier = GetIdentifier(playerIdentifier)
+
 		if not xPlayerIdentifier then
-			return false, DebugPrint('[SearchPlayerIdentifier] - xPlayer unable to be found for source: '..playerIdentifier, 'error')
+			lib.print.error('[SearchPlayerIdentifier] - xPlayer unable to be found for source: '..playerIdentifier)
+			return false
 		end
+
 		playerIdentifier = xPlayerIdentifier
 	end
 
@@ -874,38 +994,43 @@ local function SearchPlayerIdentifier(source, identifier)
 	return result
 end
 
-if config.modules.system.search.identifier.enabled then
-	RegisterCommand(config.modules.system.search.identifier.command, function(source, args)
-		local src = tonumber(source)
-		local perm = config.modules.system.search.identifier.permission
+if searchConfig.identifier.enabled then
+	if searchConfig.identifier.command then
+		RegisterCommand(searchConfig.identifier.command, function(source, args)
+			local src = tonumber(source)
 
-		if perm and not IsPlayerAceAllowed(src, perm) then
-			return Notify(src, 'You are unable to access this', 'error')
-		end
+			if perm and not IsPlayerAceAllowed(src, perm) then
+				Notify(src, 'You are unable to access this', 'error')
+				return
+			end
 
-		if not args[1] then
-			return Notify(src, 'You must provide a player identifier', 'error')
-		end
+			if not args[1] then
+				Notify(src, 'You must provide a player identifier', 'error')
+				return
+			end
 
-		local identifier = args[1]
-		local search = SearchPlayerIdentifier(src, identifier)
+			local identifier = args[1]
+			local search = SearchPlayerIdentifier(src, identifier)
 
-		TriggerClientEvent('lualogic_trust:client:returnSearch', src, 'identifier', search)
-	end, true)
-end
+			TriggerClientEvent('lualogic_trust:client:returnSearch', src, 'identifier', search)
+		end, true)
 
-RegisterCommand(config.modules.system.search.identifier.command..'_console', function(source, args)
-	local src = tonumber(source)
-	if src == 0 then
-		if not args[1] then
-			return Notify(src, 'You must provide a player identifier', 'error')
-		end
+		RegisterCommand(searchConfig.identifier.command..'_console', function(source, args)
+			local src = tonumber(source)
 
-		local identifier = args[1]
-		local search = SearchPlayerIdentifier(src, identifier)
-		print('[SEARCH RESULT] - '..json.encode(search, {indent=true, sort_keys=true}))
+			if src == 0 then
+				if not args[1] then
+					Notify(src, 'You must provide a player identifier', 'error')
+					return
+				end
+
+				local identifier = args[1]
+				local search = SearchPlayerIdentifier(src, identifier)
+				print('[SEARCH RESULT] - '..json.encode(search, {indent=true, sort_keys=true}))
+			end
+		end, true)
 	end
-end, true)
+end
 
 local function SearchPlayerName(source, name)
 	if source ~= 0 and not GlobalState.search_name then
@@ -914,7 +1039,9 @@ local function SearchPlayerName(source, name)
 
 	local profile = MySQL.rawExecute.await('SELECT * FROM `lualogic_trust` WHERE `name` = ?', { name })[1]
 
-	if not profile then return false end
+	if not profile then
+		return false
+	end
 
 	local decodedResult = json.decode(profile.data)
 
@@ -925,39 +1052,44 @@ local function SearchPlayerName(source, name)
 	return decodedResult
 end
 
-if config.modules.system.search.name.enabled then
-	RegisterCommand(config.modules.system.search.name.command, function(source, args)
-		local src = tonumber(source)
-		local perm = config.modules.system.search.name.permission
+if searchConfig.name.enabled then
+	if searchConfig.name.command then
+		RegisterCommand(searchConfig.name.command, function(source, args)
+			local src = tonumber(source)
+			local perm = searchConfig.name.permission
 
-		if perm and not IsPlayerAceAllowed(src, perm) then
-			return Notify(src, 'You are unable to access this', 'error')
-		end
+			if perm and not IsPlayerAceAllowed(src, perm) then
+				Notify(src, 'You are unable to access this', 'error')
+				return
+			end
 
-		if not args[1] then
-			return Notify(src, 'You must provide a player name', 'error')
-		end
+			if not args[1] then
+				Notify(src, 'You must provide a player name', 'error')
+				return
+			end
 
-		local name = args[1]
-		local result = SearchPlayerName(src, name)
+			local name = args[1]
+			local result = SearchPlayerName(src, name)
 
-		TriggerClientEvent('lualogic_trust:client:returnSearch', src, 'name', result)
-	end, true)
-end
+			TriggerClientEvent('lualogic_trust:client:returnSearch', src, 'name', result)
+		end, true)
 
-RegisterCommand(config.modules.system.search.name.command .. '_console', function(source, args)
-	local src = tonumber(source)
-	if src == 0 then
-		if not args[1] then
-			return Notify(src, 'You must provide a player name', 'error')
-		end
+		RegisterCommand(searchConfig.name.command .. '_console', function(source, args)
+			local src = tonumber(source)
+			if src == 0 then
+				if not args[1] then
+					Notify(src, 'You must provide a player name', 'error')
+					return
+				end
 
-		local name = args[1]
-		local result = SearchPlayerName(src, name)
+				local name = args[1]
+				local result = SearchPlayerName(src, name)
 
-		print('[SEARCH RESULT] - '..json.encode(result, {indent=true, sort_keys=true}))
+				print('[SEARCH RESULT] - '..json.encode(result, {indent=true, sort_keys=true}))
+			end
+		end, true)
 	end
-end, true)
+end
 
 function PlayerClear(identifier)
 	local player = identifier
@@ -969,34 +1101,37 @@ function PlayerClear(identifier)
 			end
 		end
 
+		lib.print.info('[INFO] - Player profile cleared from identifier (' .. player .. ') by Console, data removed: ' .. json.encode(playerProfile))
 		MySQL.update('DELETE FROM lualogic_trust WHERE identifier = ?', { player }, false)
-		print('[INFO] - Player profile cleared from identifier (' .. player .. ') by Console, data removed: ' .. json.encode(playerProfile))
 		vehicles[player] = nil
 	else
-		print('[INFO] - Player profile not found from identifier '..player)
+		lib.print.info('[INFO] - Player profile not found from identifier '..player)
 	end
 end
 
-lib.cron.new(config.cache.interval, SaveCache)
-
 RegisterServerEvent('lualogic_trust:server:enteredVehicle', function(vehicle)
 	local src = source
-	if not vehicle or type(vehicle) ~= "number" then return end
-	local netid = NetworkGetEntityFromNetworkId(vehicle)
-	CheckVehicleHash(src, netid)
+
+	if not vehicle or type(vehicle) ~= "number" then
+		return
+	end
+
+	local vehicleNet = NetworkGetEntityFromNetworkId(vehicle)
+
+	CheckVehicleHash(src, vehicleNet)
 end)
 
 AddEventHandler('onResourceStop', function(resourceName)
 	if (GetCurrentResourceName() ~= resourceName) then return end
 	SaveCache()
-	DebugPrint('[onResourceStop] - Cache Saved', 'info')
+	lib.print.info('[onResourceStop] - Cache Saved')
 end)
 
 AddEventHandler('onResourceStart', function(resourceName)
 	if (GetCurrentResourceName() ~= resourceName) then return end
 
 	GlobalState.cache_cooldown = false
-	GlobalState.admin_menu =config.modules.system.admin.enabled
+	GlobalState.admin_menu = config.modules.system.admin.enabled
 	GlobalState.transfer_vehicles = config.transfer.enabled
 
 	GlobalState.owner_set = config.modules.owner.set.enabled
@@ -1011,9 +1146,9 @@ AddEventHandler('onResourceStart', function(resourceName)
 	GlobalState.trust_clear = config.modules.trust.clear.enabled
 	GlobalState.trust_trade = config.modules.trust.trade.enabled
 
-	GlobalState.search_name = config.modules.system.search.name.enabled
-	GlobalState.search_vehicle = config.modules.system.search.vehicle.enabled
-	GlobalState.search_identifier = config.modules.system.search.identifier.enabled
+	GlobalState.search_name = searchConfig.name.enabled
+	GlobalState.search_vehicle = searchConfig.vehicle.enabled
+	GlobalState.search_identifier = searchConfig.identifier.enabled
 
 	InitCache()
 end)
@@ -1021,11 +1156,14 @@ end)
 if config.cache.txadmin then
 	AddEventHandler('txAdmin:events:scheduledRestart', function(eventData)
 		if eventData.secondsRemaining == 30 then
-			print('30 seconds from restart')
 			SaveCache()
-			DebugPrint('[txAdmin:events:scheduledRestart] - Cache Saved', 'info')
+			lib.print.info('[txAdmin:events:scheduledRestart] - Cache Saved')
 		end
 	end)
+end
+
+if config.cache.interval then
+	lib.cron.new(config.cache.interval, SaveCache)
 end
 
 exports('IsVehicleOwnedHash', IsVehicleOwnedHash)
@@ -1033,6 +1171,8 @@ exports('IsVehicleOwnedHash', IsVehicleOwnedHash)
 lib.callback.register('lualogic_trust:server:IsVehicleOwnedHash', function(source, model)
 	return IsVehicleOwnedHash(model)
 end)
+
+-- lualogic_trust owned vehicles -> garage owned vehicles
 
 local function GeneratePlate()
     local format = 'XXX ###'

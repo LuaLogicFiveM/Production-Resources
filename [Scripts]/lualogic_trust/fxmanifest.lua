@@ -6,7 +6,7 @@ lua54 "yes" -- needed for Reaper
 fx_version 'bodacious'
 game 'gta5'
 lua54 'yes'
-version '1.5.0'
+version '2.0.0'
 
 files {
     'convert/whitelist.json',
@@ -15,28 +15,29 @@ files {
 
 client_scripts {
     'editable/bridge/**/client.lua',
-    'editable/core/client/*.lua',
+    'editable/client/*.lua',
     'client/*.lua',
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
     'editable/bridge/**/server.lua',
-    'editable/core/server/*.lua',
+    'editable/server/*.lua',
     'server/*.lua',
     'logs.lua',
 }
 
 shared_scripts {
     '@ox_lib/init.lua',
-    'editable/core/shared/*.lua',
+    'editable/shared/*.lua',
     'config.lua',
 }
 
 escrow_ignore {
-    'editable/**/**/*.lua',
+    'editable/**/*.lua',
     'server/*.lua',
     'config.lua',
     'logs.lua'
 }
+
 dependency '/assetpacks'

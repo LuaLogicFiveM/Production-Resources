@@ -1,241 +1,457 @@
 local config = require 'config'
 
-if config.modules.menu.enabled then
-    lib.callback.register('lualogic_trust:client:requestTargetDialogSecond', function(sourceVehicle, type)
-        if type == 'owner' then
-            local input = lib.inputDialog('Trade Ownership', {
-                {type = 'number', label = 'Player ID', description = 'The player you want to transfer with', icon = 'hashtag'},
-                {type = 'input', label = 'Vehicle Spawn Code', description = 'Spawn code of the vehicle you want to transfer', required = true, min = 1, max = 30},
-                {type = 'checkbox', label = 'Do you want to transfer ownership for '..sourceVehicle..'?'},
-            })
+lib.callback.register('lualogic_trust:client:requestTargetDialogSecond', function(sourceVehicle, type)
+    if type == 'owner' then
+        local input = lib.inputDialog('Trade Ownership', {
+            {type = 'number', label = 'Player ID', description = 'The player you want to transfer with', icon = 'hashtag'},
+            {type = 'input', label = 'Vehicle Spawn Code', description = 'Spawn code of the vehicle you want to transfer', required = true, min = 1, max = 30},
+            {type = 'checkbox', label = 'Do you want to transfer ownership for '..sourceVehicle..'?'},
+        })
 
-            if not input then
-                return OwnedVehiclesMenu()
-            end
-
-            return input
-        elseif type == 'trust' then
-            local input = lib.inputDialog('Trade Trust', {
-                {type = 'number', label = 'Player ID', description = 'The player you want to trade with', icon = 'hashtag'},
-                {type = 'input', label = 'Vehicle Spawn Code', description = 'Spawn code of the vehicle you want to transfer', required = true, min = 1, max = 30},
-                {type = 'checkbox', label = 'Do you want to transfer trust for '..sourceVehicle..'?'},
-            })
-
-            if not input then
-                return TrustedVehiclesMenu()
-            end
-
-            return input
+        if not input then
+            return OwnedVehiclesMenu()
         end
-    end)
 
-    local function OwnedVehicleOptions(vehicle)
-        local menu = {
-            id = 'owned_vehicles_options',
-            title = 'Vehicle Options',
-            menu = 'owned_vehicles',
-            options = {}
+        return input
+    elseif type == 'trust' then
+        local input = lib.inputDialog('Trade Trust', {
+            {type = 'number', label = 'Player ID', description = 'The player you want to trade with', icon = 'hashtag'},
+            {type = 'input', label = 'Vehicle Spawn Code', description = 'Spawn code of the vehicle you want to transfer', required = true, min = 1, max = 30},
+            {type = 'checkbox', label = 'Do you want to transfer trust for '..sourceVehicle..'?'},
+        })
+
+        if not input then
+            return TrustedVehiclesMenu()
+        end
+
+        return input
+    end
+end)
+
+local function OwnedVehicleOptions(vehicle)
+    local menu = {
+        id = 'owned_vehicles_options',
+        title = 'Vehicle Options',
+        menu = 'owned_vehicles',
+        options = {}
+    }
+
+    if config.modules.owner.spawn.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'Spawn',
+            icon = 'wand-magic-sparkles',
+            iconColor = 'FF5EFF00',
+            disabled = not IsModelInCdimage(vehicle),
+            --disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
+            onSelect = function()
+                SpawnVehicle(vehicle, GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), true)
+            end
         }
-
-        if config.modules.owner.spawn.enabled then
-            menu.options[#menu.options+1] = {
-                title = 'Spawn',
-                icon = 'wand-magic-sparkles',
-                iconColor = 'FF5EFF00',
-                disabled = not IsModelInCdimage(vehicle),
-                onSelect = function()
-                    SpawnVehicle(vehicle, GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), true)
-                end
-            }
-        end
-
-        if config.modules.owner.trade.enabled then
-            menu.options[#menu.options + 1] = {
-                title = 'Trade',
-                icon = 'right-left',
-                iconColor = '#00ffae',
-                disabled = not GlobalState.owner_trade,
-                onSelect = function()
-                    local input = lib.inputDialog('Ownership Trade', {
-                        {type = 'number', label = 'Player ID', description = 'The ID of the player you want to trade ownership with', icon = 'hashtag'}
-                    })
-
-                    if not input then
-                        return OwnedVehiclesMenu()
-                    end
-
-                    if input[1] == cache.serverId then
-                        return OwnedVehiclesMenu(), Notify('You are unable to trade with yourself', 'error')
-                    end
-
-                    TriggerServerEvent('lualogic_trust:server:requestDialog', input[1], vehicle, 'owner')
-                end
-            }
-        end
-
-        if config.modules.owner.transfer.enabled then
-            menu.options[#menu.options+1] = {
-                title = 'Transfer',
-                icon = 'hand-holding-hand',
-                iconColor = '#7c00ad',
-                disabled = not GlobalState.owner_transfer,
-                onSelect = function()
-                    local input = lib.inputDialog('Transfer Ownership', {
-                        {type = 'number', label = 'Player ID', description = 'The game id of the player you want to transfer ownership to', icon = 'hashtag'},
-                    })
-
-                    if not input then
-                        return lib.showContext('owned_vehicles_options')
-                    end
-
-                    if input[1] == cache.serverId then
-                        return OwnedVehiclesMenu(), Notify('You are unable to transfer to yourself', 'error')
-                    end
-
-                    ExecuteCommand(config.modules.owner.transfer.command..' '..input[1]..' '..vehicle)
-                end
-            }
-        end
-
-        if config.modules.trust.give.enabled then
-            menu.options[#menu.options+1] = {
-                title = 'Give',
-                icon = 'hand-holding-dollar',
-                iconColor = '#ffe100',
-                disabled = not GlobalState.trust_give,
-                onSelect = function()
-                    local input = lib.inputDialog('Give Trust', {
-                        {type = 'number', label = 'Player ID', description = 'The game id of the player you want to give trust to', icon = 'hashtag'},
-                    })
-
-                    if not input then
-                        return lib.showContext('owned_vehicles_options')
-                    end
-
-                    ExecuteCommand(config.modules.trust.give.command..' '..input[1]..' '..vehicle)
-                end
-            }
-        end
-
-        if config.modules.owner.remove.enabled then
-            menu.options[#menu.options+1] = {
-                title = 'Remove',
-                icon = 'ban',
-                iconColor = 'red',
-                disabled = not GlobalState.owner_remove,
-                args = {
-                    vehicle = vehicle,
-                },
-                onSelect = function(data)
-                    local alert = lib.alertDialog({
-                        header = 'Trust System',
-                        content = 'Are you sure you want to remove '..data.vehicle..' from your owned personals?',
-                        centered = true,
-                        cancel = true
-                    })
-
-                    if alert == 'confirm' then
-                        ExecuteCommand(config.modules.owner.remove.command..' '..data.vehicle)
-                    end
-
-                    OwnedVehiclesMenu()
-                end
-            }
-        end
-
-        lib.registerContext(menu)
-        lib.showContext(menu.id)
     end
 
-    function OwnedVehiclesMenu() -- don't config out
-        local data, limit = lib.callback.await('lualogic_trust:server:requestOwned', false)
-        local menu = {
-            id = 'owned_vehicles',
-            title = 'Owned Vehicles ('..#data..'/'..limit..')',
-            menu = 'trust_system_menu',
-            options = {},
-        }
+    if config.modules.owner.trade.enabled then
+        menu.options[#menu.options + 1] = {
+            title = 'Trade',
+            icon = 'right-left',
+            iconColor = '#00ffae',
+            disabled = not GlobalState.owner_trade,
+            --disabled = not GlobalState.owner_trade or not zonePermission('owner_trade'),
+            onSelect = function()
+                local input = lib.inputDialog('Ownership Trade', {
+                    {type = 'number', label = 'Player ID', description = 'The ID of the player you want to trade ownership with', icon = 'hashtag'}
+                })
 
-        if not data then
-            menu.options[#menu.options + 1] = {
-                title = 'No Owned Vehicles',
-                icon = 'xmark',
-                iconColor = 'red',
-                readOnly = true,
-            }
-            lib.registerContext(menu)
-            lib.showContext('owned_vehicles')
-            return
-        end
-
-        for _, vehicle in ipairs(data) do
-            menu.options[#menu.options + 1] = {
-                title = vehicle,
-                arrow = true,
-                icon = 'car',
-                iconColor = 'green',
-                onSelect = function()
-                    OwnedVehicleOptions(vehicle)
+                if not input then
+                    return OwnedVehiclesMenu()
                 end
-            }
-        end
 
+                if input[1] == cache.serverId then
+                    return OwnedVehiclesMenu(), Notify('You are unable to trade with yourself', 'error')
+                end
+
+                TriggerServerEvent('lualogic_trust:server:requestDialog', input[1], vehicle, 'owner')
+            end
+        }
+    end
+
+    if config.modules.owner.transfer.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'Transfer',
+            icon = 'hand-holding-hand',
+            iconColor = '#7c00ad',
+            disabled = not GlobalState.owner_transfer,
+            --disabled = not GlobalState.owner_transfer or not zonePermission('owner_transfer'),
+            onSelect = function()
+                local input = lib.inputDialog('Transfer Ownership', {
+                    {type = 'number', label = 'Player ID', description = 'The game id of the player you want to transfer ownership to', icon = 'hashtag'},
+                })
+
+                if not input then
+                    return lib.showContext('owned_vehicles_options')
+                end
+
+                if input[1] == cache.serverId then
+                    return OwnedVehiclesMenu(), Notify('You are unable to transfer to yourself', 'error')
+                end
+
+                ExecuteCommand(config.modules.owner.transfer.command..' '..input[1]..' '..vehicle)
+            end
+        }
+    end
+
+    if config.modules.trust.give.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'Give',
+            icon = 'hand-holding-dollar',
+            iconColor = '#ffe100',
+            disabled = not GlobalState.trust_give,
+            --disabled = not GlobalState.trust_give or not zonePermission('trust_give'),
+            onSelect = function()
+                local input = lib.inputDialog('Give Trust', {
+                    {type = 'number', label = 'Player ID', description = 'The game id of the player you want to give trust to', icon = 'hashtag'},
+                })
+
+                if not input then
+                    return lib.showContext('owned_vehicles_options')
+                end
+
+                ExecuteCommand(config.modules.trust.give.command..' '..input[1]..' '..vehicle)
+            end
+        }
+    end
+
+    if config.modules.owner.remove.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'Remove',
+            icon = 'ban',
+            iconColor = 'red',
+            disabled = not GlobalState.owner_remove,
+            --disabled = not GlobalState.owner_remove or not zonePermission('owner_remove'),
+            args = {
+                vehicle = vehicle,
+            },
+            onSelect = function(data)
+                local alert = lib.alertDialog({
+                    header = 'Trust System',
+                    content = 'Are you sure you want to remove '..data.vehicle..' from your owned personals?',
+                    centered = true,
+                    cancel = true
+                })
+
+                if alert == 'confirm' then
+                    ExecuteCommand(config.modules.owner.remove.command..' '..data.vehicle)
+                end
+
+                OwnedVehiclesMenu()
+            end
+        }
+    end
+
+    lib.registerContext(menu)
+    lib.showContext(menu.id)
+end
+
+function OwnedVehiclesMenu() -- don't config out
+    local data, limit = lib.callback.await('lualogic_trust:server:requestOwned', false)
+    local limitTitle = limit and '('..(data and #data or 0)..'/'..(limit or 0)..')' or ' '
+
+    local menu = {
+        id = 'owned_vehicles',
+        title = 'Owned Vehicles '..limitTitle,
+        menu = 'trust_system_menu',
+        options = {},
+    }
+
+    if not data then
+        menu.options[#menu.options + 1] = {
+            title = 'No Owned Vehicles',
+            icon = 'xmark',
+            iconColor = 'red',
+            readOnly = true,
+        }
         lib.registerContext(menu)
         lib.showContext('owned_vehicles')
+        return
     end
 
-    CreateThread(function()
-        local menu = {
-            id = 'trust_system_menu',
-            title = 'Vehicle System',
-            options = {}
+    for _, vehicle in ipairs(data) do
+        menu.options[#menu.options + 1] = {
+            title = vehicle,
+            arrow = true,
+            icon = 'car',
+            iconColor = 'green',
+            onSelect = function()
+                OwnedVehicleOptions(vehicle)
+            end
         }
+    end
 
-        if config.modules.owner.enabled then
-            menu.options[#menu.options+1] = {
-                title = 'Owned Vehicles',
-                icon = 'warehouse',
-                iconColor = 'green',
-                arrow = true,
-                onSelect = function()
-                    OwnedVehiclesMenu()
-                end
-            }
-        end
-
-        if config.modules.trust.enabled then
-            menu.options[#menu.options+1] = {
-                title = 'Trusted Vehicles',
-                icon = 'key',
-                iconColor = 'gold',
-                arrow = true,
-                onSelect = function()
-                    TrustedVehiclesMenu()
-                end
-            }
-        end
-
-        if config.modules.system.enabled then
-            menu.options[#menu.options+1] = {
-                title = 'System Options',
-                icon = 'gear',
-                iconColor = 'lightblue',
-                menu = 'vehicle_options',
-                arrow = true
-            }
-        end
-
-        lib.registerContext(menu)
-    end)
-
-    local function OpenVehiclesMenu()
-        lib.showContext('trust_system_menu')
-    end exports('OpenVehiclesMenu', OpenVehiclesMenu)
-
-    RegisterCommand(config.modules.menu.command, function()
-        OpenVehiclesMenu()
-    end, false)
+    lib.registerContext(menu)
+    lib.showContext('owned_vehicles')
 end
+
+local tempVehicle
+local preview_vehicles = {
+    ['Owned'] = {},
+    ['Trusted'] = {}
+}
+
+local function PlacePreviewVehicle(type, input)
+    if tempVehicle then
+        return false, nil
+    end
+
+    local vehicle = input[4]
+
+    local coords <const> = GetEntityCoords(cache.ped)
+    tempVehicle = CreateVehicle(lib.requestModel(vehicle), coords.x, coords.y, coords.z + 1.5, false, true, false)
+
+    SetEntityHeading(tempVehicle, 0)
+    SetEntityAlpha(tempVehicle, 150, false)
+    SetEntityCollision(tempVehicle, false, false)
+    FreezeEntityPosition(tempVehicle, true)
+
+    lib.showTextUI('Preview Controls  \n\n  [ENTER] - Confirm  \n\n  [ESC] - Cancel')
+
+    CreateThread(function()
+        local confirmed = false
+
+        while true do
+            if IsControlPressed(0, 202) then
+                break
+            end
+
+            if IsControlPressed(0, 201) then
+                confirmed = true
+                break
+            end
+
+            local hit <const>, _, endCoords <const>, _, _ = lib.raycast.fromCamera(339, 4, 10)
+            if hit and endCoords ~= vector3(0, 0, 0) then
+                SetEntityCoords(tempVehicle, endCoords.x, endCoords.y, endCoords.z)
+
+                local camCoords <const> = GetGameplayCamCoord()
+                local heading <const> = math.deg(math.atan2(camCoords.y - endCoords.y, camCoords.x - endCoords.x))
+                SetEntityHeading(tempVehicle, heading + 90.0)
+            end
+
+            Wait(0)
+        end
+
+        local x <const>, y <const>, z <const> = table.unpack(GetEntityCoords(tempVehicle))
+        local finalCoords <const> = vector4(x, y, z, GetEntityHeading(tempVehicle))
+
+        DeleteEntity(tempVehicle)
+        tempVehicle = nil
+
+        lib.hideTextUI()
+
+        if confirmed then
+            local vehicleHandle = CreateVehicle(vehicle, finalCoords.x, finalCoords.y, finalCoords.z, finalCoords.w, true, true)
+
+            SetEntityAsMissionEntity(vehicleHandle, true, true)
+
+            if config.modules.preview.alpha then
+                SetEntityAlpha(vehicleHandle, config.modules.preview.alpha, false)
+            end
+
+            if config.modules.preview.freeze then
+                FreezeEntityPosition(vehicleHandle, true)
+            end
+
+            if config.modules.preview.godmode then
+                SetEntityInvincible(vehicleHandle, true)
+                SetEntityCanBeDamaged(vehicleHandle, false)
+            end
+
+            if config.modules.preview.lock then
+                SetVehicleDoorsLocked(vehicleHandle, 10)
+            end
+
+            preview_vehicles[type][input[4]] = {label = input[1], payment = input[2], price = input[3], vehicle = input[4], handle = vehicleHandle}
+            PreviewVehiclesMenu()
+        end
+    end)
+end
+
+local function PreviewVehicleOptions(type, total, totalLimit)
+    local data
+
+    if type == 'Owned' then
+        data = lib.callback.await('lualogic_trust:server:requestOwned', false)
+    else
+        data = lib.callback.await('lualogic_trust:server:requestTrusted', false)
+    end
+
+    local menu = {
+        id = 'preview_vehicles_options',
+        title = ('%s Preview %i/%i'):format(type, total, config.modules.preview.limit),
+        menu = 'trust_system_menu',
+        options = {},
+    }
+
+    menu.options[#menu.options + 1] = {
+        title = 'Add Vehicle',
+        icon = 'plus',
+        disabled = totalLimit == config.modules.preview.limit and not LocalPlayer.state.trustZone or not zonePermission('preview'),
+        onSelect = function()
+            local inputOptions = {}
+
+            for _, spawncode in ipairs(data) do
+                inputOptions[#inputOptions+1] = {label = spawncode, value = spawncode}
+            end
+
+            local input = lib.inputDialog('Add Preview Vehicle', {
+                {type = 'input', label = 'Label', required = true},
+                {type = 'input', label = 'Payment', required = true},
+                {type = 'number', label = 'Price', required = true},
+                {type = 'select', label = 'Vehicle', required = true, options = inputOptions}
+            })
+
+            if not input then
+                return PreviewVehiclesMenu()
+            end
+
+            if preview_vehicles[type] and preview_vehicles[type][input[4]] then
+                return PreviewVehiclesMenu()
+            end
+
+            PlacePreviewVehicle(type, input)
+        end
+    }
+
+    menu.options[#menu.options + 1] = {
+        title = 'Remove Vehicle',
+        icon = 'minus',
+        disabled = preview_vehicles[type] and GetTableSize(preview_vehicles[type]) == 0 or false,
+        onSelect = function()
+            local inputOptions = {}
+
+            for spawncode, _ in pairs(preview_vehicles[type]) do
+                inputOptions[#inputOptions+1] = {label = spawncode, value = spawncode}
+            end
+
+            local input = lib.inputDialog('Add Preview Vehicle', {
+                {type = 'select', label = 'Vehicle', required = true, options = inputOptions}
+            })
+
+            if not input then
+                return PreviewVehiclesMenu()
+            end
+
+            if not preview_vehicles[type][input[1]] then
+                return PreviewVehiclesMenu()
+            end
+
+            local currentVehicleData = preview_vehicles[type][input[1]]
+
+            preview_vehicles[type][input[1]] = nil
+            DeleteEntity(currentVehicleData.handle)
+            PreviewVehiclesMenu()
+        end
+    }
+
+    lib.registerContext(menu)
+    lib.showContext(menu.id)
+end
+
+function PreviewVehiclesMenu()
+    local ownedTotal = preview_vehicles['Owned'] and GetTableSize(preview_vehicles['Owned']) or 0
+    local trustedTotal = preview_vehicles['Trusted'] and GetTableSize(preview_vehicles['Trusted']) or 0
+    local menu = {
+        id = 'preview_vehicles',
+        title = ('Preview Vehicles %i/%i'):format((ownedTotal + trustedTotal), config.modules.preview.limit),
+        menu = 'trust_system_menu',
+        options = {},
+    }
+
+    menu.options[#menu.options + 1] = {
+        title = ('Owned (%i)'):format(ownedTotal),
+        icon = 'warehouse',
+        iconColor = 'green',
+        arrow = true,
+        onSelect = function()
+            PreviewVehicleOptions('Owned', ownedTotal, (ownedTotal + trustedTotal))
+        end
+    }
+
+    menu.options[#menu.options + 1] = {
+        title = ('Trusted (%i)'):format(trustedTotal),
+        icon = 'key',
+        iconColor = 'gold',
+        arrow = true,
+        onSelect = function()
+            PreviewVehicleOptions('Trusted', trustedTotal, (ownedTotal + trustedTotal))
+        end
+    }
+
+    lib.registerContext(menu)
+    lib.showContext(menu.id)
+end
+
+CreateThread(function()
+    local menu = {
+        id = 'trust_system_menu',
+        title = 'Vehicle System',
+        options = {}
+    }
+
+    --[[if config.modules.preview.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'Setup Preview',
+            icon = 'camera-rotate',
+            iconColor = 'orange',
+            arrow = true,
+            onSelect = function()
+                PreviewVehiclesMenu()
+            end
+        }
+    end]]
+
+    if config.modules.owner.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'Owned Vehicles',
+            icon = 'warehouse',
+            iconColor = 'green',
+            arrow = true,
+            onSelect = function()
+                OwnedVehiclesMenu()
+            end
+        }
+    end
+
+    if config.modules.trust.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'Trusted Vehicles',
+            icon = 'key',
+            iconColor = 'gold',
+            arrow = true,
+            onSelect = function()
+                TrustedVehiclesMenu()
+            end
+        }
+    end
+
+    if config.modules.system.enabled then
+        menu.options[#menu.options+1] = {
+            title = 'System Options',
+            icon = 'gear',
+            iconColor = 'lightblue',
+            menu = 'vehicle_options',
+            arrow = true
+        }
+    end
+
+    lib.registerContext(menu)
+end)
+
+local function OpenVehiclesMenu()
+    lib.showContext('trust_system_menu')
+end exports('OpenVehiclesMenu', OpenVehiclesMenu)
+
+RegisterCommand(config.modules.menu.command, function()
+    OpenVehiclesMenu()
+end, false)
 
 --#! Admin Menu
 
@@ -572,6 +788,7 @@ if config.modules.system.admin.enabled then
                 icon = icon,
                 iconColor = color,
                 disabled = not GlobalState.owner_set,
+                --disabled = not GlobalState.owner_set or not zonePermission('owner_set'),
                 onSelect = function()
                     SetOwnership()
                 end
@@ -601,6 +818,7 @@ if config.modules.system.admin.enabled then
                 icon = icon,
                 iconColor = color,
                 disabled = not GlobalState.owner_clear,
+                --disabled = not GlobalState.owner_clear or not zonePermission('owner_clear'),
                 onSelect = function()
                     ClearOwnership()
                 end
@@ -632,6 +850,7 @@ if config.modules.system.admin.enabled then
                 icon = icon,
                 iconColor = color,
                 disabled = not GlobalState.owner_remove,
+                --disabled = not GlobalState.owner_remove or not zonePermission('owner_remove'),
                 onSelect = function()
                     RemoveOwnership()
                 end
@@ -672,6 +891,7 @@ if config.modules.system.admin.enabled then
                 icon = icon,
                 iconColor = color,
                 disabled = not GlobalState.trust_set,
+                --disabled = not GlobalState.trust_set or not zonePermission('trust_set'),
                 onSelect = function()
                     SetTrust()
                 end
@@ -701,6 +921,7 @@ if config.modules.system.admin.enabled then
                 icon = icon,
                 iconColor = color,
                 disabled = not GlobalState.trust_clear,
+                --disabled = not GlobalState.trust_clear or not zonePermission('trust_clear'),
                 onSelect = function()
                     ClearTrust()
                 end
@@ -732,6 +953,7 @@ if config.modules.system.admin.enabled then
                 icon = icon,
                 iconColor = color,
                 disabled = not GlobalState.trust_remove,
+                --disabled = not GlobalState.trust_remove or not zonePermission('trust_remove'),
                 onSelect = function()
                     RemoveTrust()
                 end
@@ -831,6 +1053,7 @@ if config.modules.trust.give.enabled then
                 icon = 'wand-magic-sparkles',
                 iconColor = 'FF5EFF00',
                 disabled = not IsModelInCdimage(vehicle),
+                --disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
                 onSelect = function()
                     SpawnVehicle(vehicle, GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), true)
                 end
@@ -843,6 +1066,7 @@ if config.modules.trust.give.enabled then
                 icon = 'right-left',
                 iconColor = '#00ffae',
                 disabled = not GlobalState.trust_trade,
+                --disabled = not GlobalState.trust_trade or not zonePermission('trust_trade'),
                 onSelect = function()
                     local input = lib.inputDialog('Trust Trade', {
                         {type = 'number', label = 'Player ID', description = 'The ID of the player you want to trade trust with', icon = 'hashtag'}
@@ -867,6 +1091,7 @@ if config.modules.trust.give.enabled then
                 icon = 'ban',
                 iconColor = 'red',
                 disabled = not GlobalState.trust_remove,
+                --disabled = not GlobalState.trust_remove or not zonePermission('trust_remove'),
                 onSelect = function()
                     local alert = lib.alertDialog({
                         header = 'Trust System',

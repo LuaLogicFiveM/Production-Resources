@@ -1,5 +1,19 @@
 if GetResourceState('es_extended') ~= 'started' then return end
 
+local ESX = exports.es_extended:getSharedObject()
+
+function GetJob()
+    local playerData = ESX.GetPlayerData()
+    return playerData and playerData.job and {name = playerData.job.name, grade = playerData.job.grade} or false
+end
+
+RegisterNetEvent("esx:setJob") 
+AddEventHandler('esx:setJob', function(job, lastJob)
+    if LocalPlayer.state.trustZone then
+        zonePermissionReset(job)
+    end
+end)
+
 --[[RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded',function(xPlayer, isNew, skin)
     lib.registerContext({

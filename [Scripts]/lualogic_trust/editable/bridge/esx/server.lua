@@ -17,7 +17,7 @@ function GetJob(src)
     local xPlayer = ESX.GetPlayerFromId(src)
 
     if not xPlayer then
-        return DebugPrint('[GetJob] - xPlayer was unable to be found for id '..src, 'error')
+        return DebugPrint('[GetIdentifier] - xPlayer was unable to be found for id '..src, 'error')
     end
 
     return xPlayer.getJob()
