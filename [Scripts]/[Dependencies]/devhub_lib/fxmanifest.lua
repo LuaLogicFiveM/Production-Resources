@@ -1,13 +1,7 @@
-shared_script "@ReaperV4/imports/bypass.js"
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'cerulean'
 games {'gta5'}
 lua54 'yes'
-version '2.2.3'
+version '3.0.1'
 
 client_scripts {
     -- '@vrp/lib/utils.lua',

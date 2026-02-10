@@ -99,6 +99,14 @@ local exampleDialog = {
 
     --     }
     -- },
+    -- paymentMethod = {
+    --     default = "cash", -- @string (optional) default selected method: "cash" or "card", default "cash"
+    --     buttonText = "Confirm", -- @string (optional) button text, default "Confirm"
+    --     cashLabel = "Cash", -- @string (optional) label for cash option, default "Cash"
+    --     cardLabel = "Card", -- @string (optional) label for card option, default "Card"
+    --     cashIcon = "fas fa-money-bill-wave", -- @string (optional) fontawesome icon for cash, default "fas fa-money-bill-wave"
+    --     cardIcon = "fas fa-credit-card", -- @string (optional) fontawesome icon for card, default "fas fa-credit-card"
+    -- },
 
 }
 
@@ -106,6 +114,10 @@ Core.NpcDialog = function(entity, dialogData)
 
     if DoesEntityExist(entity) then
         local playerPed = PlayerPedId()
+        
+        -- Store original alpha and make player semi-transparent
+        SetEntityAlpha(playerPed, 0, false)
+        
         local playerCoords = GetEntityCoords(playerPed)
         local entityCoords = GetEntityCoords(entity)
         local entityHeading = GetEntityHeading(entity)
@@ -153,10 +165,9 @@ Core.NpcDialog = function(entity, dialogData)
             local typingSpeedMs = 30 -- milliseconds per character (matches Vue component)
             talkSettings.textLength = string.len(dialogData.text)
             local speechDuration = (talkSettings.textLength * typingSpeedMs) -- duration in milliseconds
-            print("NPC will move mouth for " .. speechDuration .. " ms")
             
             -- Create a thread to manage mouth movement
-            CreateThread(function()
+            Citizen.CreateThread(function()
                 talkSettings.startTime = GetGameTimer()
                 talkSettings.endTime = talkSettings.startTime + speechDuration
                 
@@ -173,7 +184,6 @@ Core.NpcDialog = function(entity, dialogData)
                     Wait(100)
                 end
                 
-                print("Stopping NPC mouth movement after " .. (GetGameTimer() - talkSettings.startTime) .. " ms")
                 PlayFacialAnim(entity, "mood_normal_1", "facials@gen_male@variations@normal")
             end)
         end
@@ -212,7 +222,6 @@ Core.NpcDialog = function(entity, dialogData)
         -- Store the promise resolver for callbacks to use
         activeDialogPromise = resolve
         
-        print("Opening NPC dialog")
         SetNuiFocus(true, true)
         SendNUIMessage({
             type = "openNpcDialog",
@@ -222,6 +231,10 @@ Core.NpcDialog = function(entity, dialogData)
 end
 
 Core.CloseNpcDialog = function()
+    -- Restore player alpha
+    local playerPed = PlayerPedId()
+    ResetEntityAlpha(playerPed)
+    
     -- Restore camera
     if activeCam then
         RenderScriptCams(false, true, 500, true, false)
@@ -281,112 +294,4 @@ end)
 RegisterNUICallback('npcDialogClose', function(data, cb)
     cb('ok')
     Core.CloseNpcDialog()
-end)
-
-RegisterCommand('testdialog', function()
-    local coords = vec4(1727.8600, 3322.8416, 40.2235, 193.7808)
-    
-    -- spawn ped
-    local pedModel = `a_m_m_farmer_01`
-    RequestModel(pedModel)
-    while not HasModelLoaded(pedModel) do
-        Wait(0)
-    end
-    
-    local ped = CreatePed(4, pedModel, coords.x, coords.y, coords.z, coords.w, false, true)
-    SetEntityAsMissionEntity(ped, true, true)
-    SetBlockingOfNonTemporaryEvents(ped, true)
-    FreezeEntityPosition(ped, true)
-    SetEntityInvincible(ped, true)
-
-    local npc = {
-        name = "Bob Grass",
-        role = "Citizen",
-        icon = 'fas fa-user',
-        camera = { -- @table (optional) camera settings for npc dialog
-            distance = 0.85, -- @number (optional) camera distance from npc, default 0.85
-            height = 0.65, -- @number (optional) camera height offset, default 0.65
-        },
-        animation = { -- @table (optional) animation to play on npc when dialog opens
-            dict = "gestures@m@standing@casual", -- @string (required) animation dictionary
-            name = "gesture_shrug_hard", -- @string (required) animation name
-            blendIn = 8.0, -- @number (optional) blend in speed, default 8.0
-            blendOut = -8.0, -- @number (optional) blend out speed, default -8.0
-            duration = -1, -- @number (optional) animation duration in ms, -1 for full length, default -1
-            flag = 2, -- @number (optional) animation flags (0 = normal, 1 = repeat, 2 = stop on last frame, etc.), default 1
-            playbackRate = 0, -- @number (optional) playback rate, default 0
-        },
-    }
-    
-    local result = Core.NpcDialog(ped, {
-        npc = npc,
-        soundFile = 'https://upload.devhub.gg/dh_upload/soundSample.mp3',
-        text = "We are happy to present the new devhub script license manager. Take your server to new heights with our unique features, making what was previously impossible a reality. Features include a license generator, fake license creation, license stealing detection, and a license scanner, among many others.",
-        grid = {
-            {
-                uid = "talk_bob", -- @string (required) unique identifier for the option
-                icon = 'fas fa-comment', -- @string (required) fontawesome icon class
-                title = "Talk to Bob",  -- @string (required) option title, can be html
-                badge = { -- @table (optional) badge config
-                    text = "Aggressive action", -- @string (optional) can be html
-                    color = "#ff0000", -- @string (optional) badge background color
-                },
-                span = 2, -- @number (optional) makes the option span 2 columns
-            },
-            {
-                uid = "buy_items",
-                icon = 'fas fa-shopping-cart',
-                title = "Buy items",
-            },
-            {
-                uid = "give_money",
-                icon = 'fas fa-dollar-sign',
-                title = "Give him money",
-            },
-            {
-                uid = "goodbye",
-                icon = 'fas fa-times',
-                title = "Goodbye",
-            }
-        },
-    })
-    print("Dialog result - Status: " .. tostring(result.status), json.encode(result.data))
-
-    if result.status then
-        if result.data == 'goodbye' then
-            Core.CloseNpcDialog()
-        elseif result.data == 'give_money' then
-            local result = Core.NpcDialog(entity, {
-                npc = npc,
-                text = "Dialog text here", -- @string (required) dialog text
-                input = {
-                    type = "number", -- @string (required) type of input: "number" or "text"
-                    default = 3, -- @number or @string (required) default value
-                    text = "I can give you %s dollars.", -- @string (required) text with %s placeholder for input value
-                    buttonText = "Give", -- @string (required) button text
-                    inputWidth = "3vw", -- @string (optional) width of the input field
-                    min = 1, -- @number (optional) [type number] min number value
-                    max = 1000, -- @number (optional) [type number] max number value
-                    maxLength = 7, -- @number (optional) [type text] only for type text
-                    hint = { -- @table (optional) hints for input values
-                        number = { -- [type number]
-                            [5] = "A small amount", -- from 0 to first option
-                            [50] = "A moderate amount", -- from first option to second
-                            [500] = "A large amount",
-                            [1000] = "An extremely large amount",
-                        },
-                        text = { -- [type text]
-                            ['orange'] = "Orange is not what im looking for",
-                            ['banana'] = "Banana is what i need",
-                        },
-                    }
-                },
-            })
-            print("Dialog result - Status: " .. tostring(result.status), json.encode(result.data))
-        end
-    end
-    
-    -- Clean up ped after dialog
-    DeleteEntity(ped)
-    SetModelAsNoLongerNeeded(pedModel)
 end)

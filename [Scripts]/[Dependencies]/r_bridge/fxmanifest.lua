@@ -1,8 +1,3 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 ---@diagnostic disable: undefined-global
 
 fx_version 'cerulean'
@@ -12,7 +7,7 @@ lua54 'yes'
 name 'r_bridge'
 description 'Compatibility layer for r_scripts resources'
 author 'rumaier'
-version '2.0.5'
+version '2.0.6'
 
 shared_scripts {
   '@ox_lib/init.lua',

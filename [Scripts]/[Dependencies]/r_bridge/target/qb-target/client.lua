@@ -50,19 +50,23 @@ Core.Target.removeModel = function(models)
     QBTarget:RemoveTargetModel(models)
 end
 
+local lastId = nil
 Core.Target.addBoxZone = function(coords, size, heading, options, debug)
     options = convertOxOptions(options)
-    local id = tostring(GetGameTimer())
-    exports['qb-target']:AddBoxZone(id, coords, size.x, size.y, {
-        name = id,
+    local id = lastId and lastId + 1 or GetGameTimer()
+    if id == lastId then id = id + 1 end
+    local prefix = 'r_bridge:target:'
+    QBTarget:AddBoxZone(prefix .. id, coords, size.x, size.y, {
+        name = prefix .. id,
         debugPoly = debug,
         heading = heading,
-        minZ = coords.z - (size.x * 0.5),
-        maxZ = coords.z + (size.x * 0.5),
+        minZ = coords.z - (size.z * 0.5),
+        maxZ = coords.z + (size.z * 0.5),
     }, {
         options = options,
         distance = options.distance or 1.5,
     })
+    lastId = id
     return id
 end
 

@@ -1,9 +1,0 @@
-['gps'] = {
-    label = 'GPS',
-    weight = 1000,
-    stack = false,
-    description = 'Track you and your crew on the map',
-    client = {
-        export = 'lorp_gps.useGPS'
-    }
-},

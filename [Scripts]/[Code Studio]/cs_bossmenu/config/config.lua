@@ -45,7 +45,6 @@ Config.No_Job = {           -- Default Job (Job to be given after FIRE)
 }
 
 Config.Menu = {
-    
     ['bossmenu'] = {
 
         ----------------------------- Business -----------------------------
@@ -308,6 +307,12 @@ Config.Menu = {
             bossRank = 4,
             locations = {
                vector4(810.2009, -2336.5996, 18.6847, 351.7378),--806
+            }
+        },
+        ['pizza_pier'] = {
+            bossRank = 3,
+            locations = {
+               vector4(-1513.3668, -905.6477, 10.1822, 68.6515), -- Postal: 687
             }
         },
     },

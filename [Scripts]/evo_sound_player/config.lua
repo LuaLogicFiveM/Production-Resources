@@ -92,5 +92,6 @@ Config.boombox.itemData = {
 Config.zones = {}
 Config.zones.command = 'music'
 Config.zones.list = { -- requiredJob and requiredGrade are optional, remvoe them if you want anyone to use the zone music
-    {id = 'sandy_penthouse_1', coords = vector3(-801.76, 182.34, 72.61), baseVolume = 1, distance = 50}
+    {id = 'sandy_penthouse_1', coords = vector3(-801.76, 182.34, 72.61), baseVolume = 1, distance = 30},
+    {id = 'pizza_pier', coords = vector3(-1521.8574, -909.4372, 10.1822), baseVolume = 1, distance = 25} -- Postal: 687
 }
