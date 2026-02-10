@@ -1,13 +1,13 @@
 Config = {
 
-    FunctionalElevator = false, --[[ 
+    FunctionalElevator = true, --[[ 
         If you dont want the elevator to be functional, set this to false 
         (why in this world anyone would want to disable this?) 
 
         If this is set to false, an entityset will be spawned in every floor.
     ]]
 
-    EnablePlayerAnimations = false, --[[ 
+    EnablePlayerAnimations = true, --[[ 
         If you dont want the player to animate when calling the elevator or close/open the doors, set this to false 
     ]]
 
