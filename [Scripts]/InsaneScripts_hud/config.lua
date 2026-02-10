@@ -14,7 +14,7 @@ cfg.bigMapDebugger = false -- Set to true if the Big Map gets stuck on screen (f
 -- [ MENU & INTERACTION ]
 cfg.openCommand = 'hud' -- Command to open the HUD settings menu (e.g., /Hud).
 cfg.keyMapping = true -- If set to true, allows players to bind the menu key in GTA settings.
-cfg.keyMappingDesc = 'Open HUD Menu.' -- Description shown in GTA V Key Bindings section.
+cfg.keyMappingDesc = '[HUD] - Open HUD Menu' -- Description shown in GTA V Key Bindings section.
 cfg.key = 'f11' -- Default key to open the menu.
 cfg.onlyOwnersCanUseOpenCommand = false -- If true, only players listed in 'ownerLicense' can use the command.
 cfg.onlyOwnersCanUseEditMode = false -- If true, only owners can use Edit Mode to move UI elements.

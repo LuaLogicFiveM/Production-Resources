@@ -6,23 +6,29 @@ lua54 "yes" -- needed for Reaper
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-version '1.2.5'
+version '1.2.7'
+
 shared_scripts {
     '@ox_lib/init.lua',
     'config.lua'
 }
+
 ox_libs {
     'math',
     'table',
 }
+
 client_scripts {
     'client.lua',
     'client/functions.lua'
+
 }
 server_scripts {
     'server.lua'
 }
+
 ui_page 'dist/index.html'
+
 files {
     'dist/*',
     'dist/index.html',
@@ -36,10 +42,14 @@ files {
     'dist/libs/*.css',
     'dist/fonts/*.*',
     'dist/libs/webfonts/*.*'
+
 }
+
 dependency 'ox_lib'
+
 escrow_ignore {
     'config.lua',
     'client/functions.lua'
 }
+
 dependency '/assetpacks'

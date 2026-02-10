@@ -1,5 +1,4 @@
 local PlayerData = nil
-local standalone = {}
 
 function loadFramework()
     while GetResourceState('es_extended') ~= 'started' do
@@ -49,14 +48,6 @@ function loadFramework()
         PlayerData.job = job
     end)
 end
-
-RegisterNetEvent('InsaneScripts_hud:updateHud', function(updateData)
-    if (type(updateData) == 'table') then 
-        for k, j in pairs(updateData) do 
-            standalone[k] = j
-        end
-    end
-end)
 
 local ox_inventory = exports.ox_inventory
 local lorp_packed = exports.lorp_packed
@@ -113,14 +104,17 @@ function updateHud()
                     end
                 end
 
-                --local gangData = gangs and gangs:GetPlayerGang() or false
-
                 dataTable['postal'] = lorp_packed and lorp_packed:getNearestPostal() or 'N/A'
                 dataTable['wallet'] = ox_inventory:Search('count', 'money')
                 dataTable['walletDirty'] = ox_inventory:Search('count', 'black_money')
                 dataTable['bank'] = bank
                 dataTable['userJob'] = ('%s - %s (%i)'):format(PlayerData.job.label, PlayerData.job.grade_label, PlayerData.job.grade)
-                --dataTable['userFaction'] = gangData and ('%s - %s'):format(gangData.gang or 'Gang', gangData.rank or 'None') or 'Gang - None'
+
+                if PlayerData.group ~= 'user' then
+                    dataTable['userGroup'] = PlayerData.group
+                else
+                    dataTable['userGroup'] = nil
+                end
 
                 local isDead = IsEntityDead(ped) or PlayerData.dead
                 dataTable['inlaststand'] = isDead
@@ -196,13 +190,15 @@ RegisterNetEvent('seatbelt:client:ToggleSeatbelt', function()
     seatbelt = seatbelt:HasSeatbelt()
 end)
 
+DisplayRadar(false)
+
 RegisterNetEvent('esx:playerLoaded', function(xPlayer)
     ped = PlayerPedId()
     pedId = PlayerId()
-    while (ped == 0 or not ped) do
+    while (ped == 0 or not ped) do 
         Wait(10)
     end
-    PlayerData = xPlayer
+    PlayerData = xPlayer 
     lib.callback('IS_hud:loadHud', false, function(lData)
         displayRadarFunctionRevert()
         loadHud(lData)
@@ -212,5 +208,27 @@ end)
 function getVehicleFuel(vehicleId)
     if (not DoesEntityExist(vehicleId)) then return 0 end
 
-    return GetVehicleFuelLevel(vehicleId)
+    return exports["lc_fuel"]:GetFuel(vehicleId)
+end
+
+local stockedDataLocation = {direction = nil, streetNames = nil}
+
+function startLocation()
+    if (debugM) then print('startLocation called') end
+    CreateThread(function()
+        while true do
+            Wait(1000)
+            local direction = getCardinalDirection(playerHeading)
+            local streetNames = getStreetNames()
+            if ((stockedDataLocation.direction ~= direction) or (stockedDataLocation.streetNames[1] ~= streetNames[1]) or (stockedDataLocation.streetNames[2] ~= streetNames[2])) then 
+                stockedDataLocation.direction = direction
+                stockedDataLocation.streetNames = streetNames
+                SendNUIMessage({
+                    updateLocation = true,
+                    sNames = streetNames, 
+                    nDirection = direction
+                })
+            end
+        end
+    end)
 end
