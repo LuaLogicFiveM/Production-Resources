@@ -1,0 +1,750 @@
+CreateThread(function()
+    if Config.Framework == 'vrp' or Config.Framework == 'vrp2' then
+        local Proxy = module("vrp", "lib/Proxy")
+        vRP = Proxy.getInterface("vRP")
+    end
+end)
+
+
+_G.serverCallbacks = _G.serverCallbacks or {}
+
+local StandalonePlayers = {}
+
+if Config.Framework == "standalone" then
+    AddEventHandler('playerJoining', function(oldID)
+        local src = source
+
+        CreateThread(function()
+            Wait(500)
+
+            local identifier = GetPlayerIdentifierByType(src, 'license')
+            local playerName = GetPlayerName(src)
+
+            if identifier and playerName then
+                StandalonePlayers[src] = {
+                    source = src,
+                    identifier = identifier,
+                    name = playerName,
+                    money = {
+                        cash = 5000,
+                        bank = 10000
+                    }
+                }
+            end
+        end)
+    end)
+
+    AddEventHandler('playerDropped', function(reason)
+        local src = source
+        StandalonePlayers[src] = nil
+
+        if Config.Debug then
+            print(string.format("^1[Standalone]^7 Player dropped: %s (reason: %s)", GetPlayerName(src) or "Unknown",
+                reason))
+        end
+    end)
+end
+
+local function WaitForCore(timeout)
+    timeout = timeout or 100 -- Default 5 seconds (100 * 50ms)
+    local attempts = 0
+
+    while not Core and attempts < timeout do
+        Wait(50)
+        attempts = attempts + 1
+    end
+
+    if not Core then
+        if Config.Debug then
+            print(string.format("[^1ERROR^7][tw-scrapyard] Core not loaded after %d seconds", (timeout * 50) / 1000))
+            print(string.format("  - Config.Framework: ^5%s^7", Config.Framework or "nil"))
+        end
+        return false
+    end
+
+    return true
+end
+
+
+RegisterServerCallback = function(eventName, callback)
+    CreateThread(function()
+        if Config.Framework ~= 'vrp' and Config.Framework ~= 'vrp2' then
+            if not WaitForCore(100) then
+                if Config.Debug then
+                    print(string.format("[^1ERROR^7][tw-scrapyard] Failed to register server callback: ^5%s^7", eventName))
+                end
+                return
+            end
+        end
+
+
+        _G.serverCallbacks[eventName] = callback
+    end)
+end
+
+
+
+RegisterNetEvent(_event('triggerServerCallback'), function(eventName, requestId, invoker, ...)
+    if not _G.serverCallbacks[eventName] then
+        if Config.Debug then
+            print(string.format("[^1ERROR^7][tw-scrapyard] Server Callback not registered!"))
+            print(string.format("  - Callback name: ^5%s^7", eventName))
+            print(string.format("  - Invoker resource: ^5%s^7", invoker))
+            print(string.format("  - Possible causes:"))
+            print(string.format("    1. Framework (Core) not loaded yet"))
+            print(string.format("    2. Callback registration failed"))
+            print(string.format("    3. Wrong Config.Framework setting: ^5%s^7", Config.Framework or "nil"))
+        end
+        return
+    end
+
+    local src = source
+    _G.serverCallbacks[eventName](src, function(...)
+        TriggerClientEvent(_event('serverCallback'), src, requestId, invoker, ...)
+    end, ...)
+end)
+
+
+function ExecuteSql(query, parameters)
+    local promise = promise.new()
+
+    if Config.SQL == "oxmysql" then
+        if parameters then
+            exports.oxmysql:execute(query, parameters, function(result)
+                promise:resolve(result)
+            end)
+        else
+            exports.oxmysql:execute(query, {}, function(result)
+                promise:resolve(result)
+            end)
+        end
+    elseif Config.SQL == "ghmattimysql" then
+        if parameters then
+            exports.ghmattimysql:execute(query, parameters, function(result)
+                promise:resolve(result)
+            end)
+        else
+            exports.ghmattimysql:execute(query, {}, function(result)
+                promise:resolve(result)
+            end)
+        end
+    elseif Config.SQL == "mysql-async" then
+        if parameters then
+            MySQL.Async.fetchAll(query, parameters, function(result)
+                promise:resolve(result)
+            end)
+        else
+            MySQL.Async.fetchAll(query, {}, function(result)
+                promise:resolve(result)
+            end)
+        end
+    end
+
+    return Citizen.Await(promise)
+end
+
+function WaitCore()
+    while Core == nil do
+        Wait(0)
+    end
+end
+
+function GetPlayer(source)
+    local Player = false
+
+    -- Standalone framework bypass (always return a valid player object)
+    if Config.Framework == 'standalone' then
+        -- Check if player exists in table
+        if StandalonePlayers[source] then
+            return StandalonePlayers[source]
+        end
+
+        -- Create on-the-fly if not exists (for late joins or timing issues)
+        local identifier = GetPlayerIdentifierByType(source, 'license')
+        local playerName = GetPlayerName(source)
+
+        if identifier and playerName then
+            StandalonePlayers[source] = {
+                source = source,
+                identifier = identifier,
+                name = playerName,
+                money = {
+                    cash = 5000,
+                    bank = 10000
+                }
+            }
+
+            if Config.Debug then
+                print(string.format("^3[Standalone]^7 Created player on-demand: %s (%s)", playerName, identifier))
+            end
+
+            return StandalonePlayers[source]
+        end
+
+        -- If still can't get player, return nil
+        return nil
+    end
+
+    while Core == nil do
+        Citizen.Wait(0)
+    end
+    if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+        Player = Core.GetPlayerFromId(source)
+    elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
+        Player = Core.Functions.GetPlayer(source)
+    elseif Config.Framework == 'vrp' then
+        Player = vRP.getUserId(source)
+    elseif Config.Framework == 'vrp2' then
+        while vRP == nil do
+            Wait(100)
+        end
+
+        local retries = 0
+        while not Player and retries < 50 do
+            Player = vRP.Passport(source)
+            if not Player then
+                Wait(100)
+                retries = retries + 1
+            end
+        end
+    end
+    return Player
+end
+
+function GetIdentifier(source)
+    -- Standalone framework (get identifier directly from native)
+    if Config.Framework == 'standalone' then
+        local identifier = GetPlayerIdentifierByType(source, 'license')
+        if not identifier then
+            -- Fallback to player table
+            local player = StandalonePlayers[source]
+            return player and player.identifier or nil
+        end
+        return identifier
+    end
+
+    local Player = GetPlayer(source)
+    if Player then
+        if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+            return Player.getIdentifier()
+        elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
+            return Player.PlayerData.citizenid
+        elseif Config.Framework == 'vrp' then
+            return vRP.getUserId(source)
+        elseif Config.Framework == 'vrp2' then
+            return tostring(Player)
+        end
+    end
+end
+
+function ChecklistItem(item)
+    for _, v in pairs(Config.InventoryAccess.allowedItems) do
+        if item == v then
+            return true
+        end
+    end
+    return false
+end
+
+function GetPlayerInventory(source)
+    local data = {}
+
+    -- Standalone framework (no inventory script - return empty)
+    if Config.Framework == 'standalone' then
+        -- No inventory system in standalone mode
+        -- Return empty table to prevent UI errors
+        return {}
+    end
+
+    local Player = GetPlayer(source)
+    if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+        for _, v in pairs(Player.getInventory()) do
+            if v then
+                v.count = v.count or v.amount
+                if v and tonumber(v.count) > 0 and ChecklistItem(v.name) then
+                    local formattedData = v
+                    formattedData.name = string.lower(v.name)
+                    formattedData.label = v.label
+                    formattedData.amount = v.count
+                    formattedData.image = v.image or (string.lower(v.name) .. '.png')
+                    local metadata = v.metadata or v.info
+                    if not metadata or next(metadata) == nil then
+                        metadata = false
+                    end
+                    formattedData.metadata = metadata
+                    table.insert(data, formattedData)
+                end
+            end
+        end
+    elseif Config.Framework == "qb" or Config.Framework == "oldqb" then
+        for _, v in pairs(Player.PlayerData.items) do
+            if v then
+                local amount = v.count or v.amount
+                if tonumber(amount) > 0 and ChecklistItem(v.name) then
+                    local formattedData = v
+                    formattedData.name = string.lower(v.name)
+                    formattedData.label = v.label
+                    formattedData.amount = amount
+                    formattedData.image = v.image or (string.lower(v.name) .. '.png')
+                    local metadata = v.metadata or v.info
+                    if not metadata or next(metadata) == nil then
+                        metadata = false
+                    end
+                    formattedData.metadata = metadata
+                    table.insert(data, formattedData)
+                end
+            end
+        end
+    elseif Config.Framework == "vrp" then
+        for _, v in pairs(vRP.Inventory(Player)) do
+            if v then
+                local amount = v.count or v.amount
+                if tonumber(amount) > 0 and ChecklistItem(v.name) then
+                    local formattedData = v
+                    formattedData.name = string.lower(v.name)
+                    formattedData.label = v.label
+                    formattedData.amount = amount
+                    formattedData.image = v.image or (string.lower(v.name) .. '.png')
+                    local metadata = v.metadata or v.info
+                    if not metadata or next(metadata) == nil then
+                        metadata = false
+                    end
+                    formattedData.metadata = metadata
+                    table.insert(data, formattedData)
+                end
+            end
+        end
+    end
+    return data
+end
+
+function GetName(source)
+    -- Standalone framework (get name directly from native)
+    if Config.Framework == 'standalone' then
+        local playerName = GetPlayerName(source)
+        if playerName then
+            return playerName
+        end
+        -- Fallback to player table
+        local player = StandalonePlayers[source]
+        return player and player.name or "Unknown"
+    end
+
+    if Config.Framework == "oldesx" or Config.Framework == "esx" then
+        local xPlayer = Core.GetPlayerFromId(tonumber(source))
+        if xPlayer then
+            return xPlayer.getName()
+        else
+            return "0"
+        end
+    elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
+        local Player = GetPlayer(tonumber(source))
+        if Player then
+            return Player.PlayerData.charinfo.firstname .. ' ' .. Player.PlayerData.charinfo.lastname
+        else
+            return "0"
+        end
+    elseif Config.Framework == 'vrp' then
+        local user_id = vRP.getUserId(source)
+        local identity = vRP.getUserIdentity(user_id)
+        if identity then
+            return identity.firstname .. " " .. identity.name
+        end
+    elseif Config.Framework == 'vrp2' then
+        while vRP == nil do
+            Wait(100)
+        end
+        local Player = GetPlayer(source)
+        if Player then
+            local name = vRP.FullName(Player)
+            if name then
+                return name
+            end
+        end
+        return "Firstname Lastname"
+    end
+end
+
+function AddMoney(source, type, value)
+    -- Standalone framework
+    if Config.Framework == 'standalone' then
+        local player = StandalonePlayers[source]
+        if player and player.money[type] then
+            player.money[type] = player.money[type] + tonumber(value)
+        end
+        return
+    end
+
+    local Player = GetPlayer(source)
+    if Player then
+        if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+            if type == 'bank' then
+                Player.addAccountMoney('bank', tonumber(value))
+            end
+            if type == 'cash' then
+                Player.addMoney(value)
+            end
+        elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
+            if type == 'bank' then
+                Player.Functions.AddMoney('bank', value)
+            end
+            if type == 'cash' then
+                Player.Functions.AddMoney('cash', value)
+            end
+        elseif Config.Framework == 'vrp' then
+            if type == 'bank' then
+                local user_id = vRP.getUserId(source)
+                vRP.giveBankMoney(user_id, value)
+            end
+            if type == 'cash' then
+                local user_id = vRP.getUserId(source)
+                vRP.giveMoney(user_id, value)
+            end
+        elseif Config.Framework == 'vrp2' then
+            while vRP == nil do
+                Wait(100)
+            end
+            if type == 'bank' then
+                vRP.GenerateItem(Player, "dollar", value, true)
+            end
+            if type == 'cash' then
+                vRP.GenerateItem(Player, "dollar", value, true)
+            end
+        end
+    end
+end
+
+function RemoveMoney(source, type, value)
+    -- Standalone framework
+    if Config.Framework == 'standalone' then
+        local player = StandalonePlayers[source]
+        if player and player.money[type] then
+            player.money[type] = math.max(0, player.money[type] - tonumber(value))
+        end
+        return
+    end
+
+    local Player = GetPlayer(source)
+    if Player then
+        if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+            if type == 'bank' then
+                Player.removeAccountMoney('bank', value)
+            end
+            if type == 'cash' then
+                Player.removeMoney(value)
+            end
+        elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
+            if type == 'bank' then
+                Player.Functions.RemoveMoney('bank', value)
+            end
+            if type == 'cash' then
+                Player.Functions.RemoveMoney('cash', value)
+            end
+        elseif Config.Framework == 'vrp' then
+            if type == 'bank' then
+                vRP.tryWithdraw(source, value)
+            end
+            if type == 'cash' then
+                vRP.tryPayment(source, value)
+            end
+        elseif Config.Framework == 'vrp2' then
+            while vRP == nil do
+                Wait(100)
+            end
+            if type == 'bank' then
+                vRP.TakeItem(Player, "dollar", value)
+            end
+            if type == 'cash' then
+                vRP.TakeItem(Player, "dollar", value)
+            end
+        end
+    end
+end
+
+function AddXP(source, xp)
+    if not xp or xp <= 0 then return end
+
+    local identifier = GetIdentifier(source)
+    local data = playerJobData[identifier]
+    if not data then return end
+
+    local profiledata = data.profiledata
+    profiledata.xp = profiledata.xp + tonumber(xp)
+
+    if profiledata.level > #Config.RequiredXP then
+        TriggerClientEvent(_event('client:sendNotification'), source, Config.NotificationText['maxlevel'].text,
+            Config.NotificationText['maxlevel'].type)
+        return
+    end
+
+    if profiledata.xp >= Config.RequiredXP[profiledata.level] then
+        profiledata.level = profiledata.level + 1
+        profiledata.xp = 0
+    end
+
+    profiledata.lasttime = os.date('%Y-%m-%d %H:%M:%S')
+end
+
+function addItem(src, item, amount, slot, info)
+    local amount = tonumber(amount) or 1
+
+    -- Standalone framework (no inventory script - bypass item operations)
+    if Config.Framework == 'standalone' then
+        -- No inventory system in standalone mode
+        -- Items are handled through mission completion rewards (money only)
+        return true
+    end
+
+    local Player = GetPlayer(src)
+    if Player then
+        if Config.Framework == 'vrp' then
+            local user_id = vRP.getUserId(src)
+            vRP.giveInventoryItem(user_id, item, amount)
+        end
+        if Config.Framework == 'vrp2' then
+            while vRP == nil do
+                Wait(100)
+            end
+            vRP.GenerateItem(Player, item, amount, true)
+        end
+        if Config.Inventory == "qb_inventory" then
+            Player.Functions.AddItem(item, amount, slot, info)
+        elseif Config.Inventory == "esx_inventory" then
+            Player.addInventoryItem(item, amount)
+        elseif Config.Inventory == "ox_inventory" then
+            exports.ox_inventory:AddItem(src, item, amount)
+        elseif Config.Inventory == "codem-inventory" then
+            exports["codem-inventory"]:AddItem(src, item, amount, slot, info)
+        elseif Config.Inventory == "qs_inventory" then
+            exports['qs-inventory']:AddItem(src, item, amount)
+        elseif Config.Inventory == "tgiann-inventory" then
+            exports["tgiann-inventory"]:AddItem(src, item, amount, slot, info, false)
+        end
+    end
+end
+
+function GetPlayerMoney(source, value)
+    -- Standalone framework
+    if Config.Framework == 'standalone' then
+        local player = StandalonePlayers[source]
+        if player and player.money[value] then
+            return player.money[value]
+        end
+        return 0
+    end
+
+    local Player = GetPlayer(source)
+    if Player then
+        if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+            if value == 'bank' then
+                return Player.getAccount('bank').money
+            end
+            if value == 'cash' then
+                return Player.getMoney()
+            end
+        elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
+            if value == 'bank' then
+                return Player.PlayerData.money['bank']
+            end
+            if value == 'cash' then
+                return Player.PlayerData.money['cash']
+            end
+        elseif Config.Framework == 'vrp' then
+            if value == 'bank' then
+                return vRP.getBankMoney(source)
+            end
+            if value == 'cash' then
+                return vRP.getMoney(source)
+            end
+        elseif Config.Framework == 'vrp2' then
+            while vRP == nil do
+                Wait(100)
+            end
+            if value == 'bank' then
+                local amount = vRP.InventoryItemAmount(Player, "dollar")
+                return amount and amount[1] or 0
+            end
+            if value == 'cash' then
+                local amount = vRP.InventoryItemAmount(Player, "dollar")
+                return amount and amount[1] or 0
+            end
+        end
+    end
+end
+
+function calculateDistance(coord1, coord2)
+    local dx = coord1.x - coord2.x
+    local dy = coord1.y - coord2.y
+    local dz = coord1.z - coord2.z
+    return math.sqrt(dx * dx + dy * dy + dz * dz)
+end
+
+function HasItem(source, item)
+    -- Standalone framework (no inventory script - always return true to bypass checks)
+    if Config.Framework == 'standalone' then
+        -- No inventory system in standalone mode
+        -- Return true to allow gameplay without item checks
+        return true
+    end
+
+    local Player = GetPlayer(source)
+    if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+        if Config.Inventory == 'codem-inventory' then
+            local item = exports["codem-inventory"]:CheckItemValid(source, item.name, tonumber(item.amount))
+            return item
+        elseif Config.Inventory == 'qs_inventory' then
+            local itemCount = exports['qs-inventory']:GetItemTotalAmount(source, item.name)
+            if itemCount == 0 or itemCount == nil then
+                return false
+            end
+            return true
+        elseif Config.Inventory == 'ox_inventory' then
+            local item = exports.ox_inventory:GetItemCount(source, item.name)
+            if item then
+                return true
+            else
+                return false
+            end
+        elseif Config.Inventory == 'tgiann-inventory' then
+            local src = source
+            local has1 = exports["tgiann-inventory"]:HasItem(src, item.name, tonumber(item.amount or 1))
+            if has1 then
+                return true
+            else
+                return false
+            end
+        else
+            local playerItem = Player.getInventoryItem(item.name)
+            if not playerItem then
+                return false
+            end
+            local amount = playerItem.count or playerItem.amount
+            if tonumber(amount) >= tonumber(item.amount) then
+                return true
+            end
+        end
+    elseif Config.Framework == 'qb' or Config.Framework == 'oldqb' then
+        if Config.Inventory == 'codem-inventory' then
+            local item = exports["codem-inventory"]:CheckItemValid(source, item.name, tonumber(item.amount))
+            return item
+        elseif Config.Inventory == 'qs_inventory' then
+            local itemCount = exports['qs-inventory']:GetItemTotalAmount(source, item.name)
+            if itemCount == 0 or itemCount == nil then
+                return false
+            end
+            return true
+        elseif Config.Inventory == 'ox_inventory' then
+            local item = exports.ox_inventory:GetItemCount(source, item.name)
+            if item and item >= 1 then
+                return true
+            else
+                return false
+            end
+        elseif Config.Inventory == 'tgiann-inventory' then
+            local src = source
+            local has1 = exports["tgiann-inventory"]:HasItem(src, item.name, tonumber(item.amount or 1))
+            if has1 then
+                return true
+            else
+                return false
+            end
+        else
+            return Core.Functions.HasItem(source, item.name, tonumber(item.amount))
+        end
+    elseif Config.Framework == 'vrp' then
+        local user_id = vRP.getUserId(source)
+        local item = vRP.getInventoryItemAmount(user_id, item.name)
+        if item and item >= tonumber(item.amount) then
+            return true
+        end
+    elseif Config.Framework == 'vrp2' then
+        while vRP == nil do
+            Wait(100)
+        end
+        local Player = GetPlayer(source)
+        if Player then
+            local itemData = vRP.InventoryItemAmount(Player, item.name)
+            local itemAmount = itemData and itemData[1] or 0
+            if itemAmount >= tonumber(item.amount) then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+function removeItem(src, item, amount)
+    amount = tonumber(amount) or 1
+
+    -- Standalone framework (no inventory script - bypass item removal)
+    if Config.Framework == 'standalone' then
+        -- No inventory system in standalone mode
+        -- Return true to allow gameplay without item removal
+        return true
+    end
+
+    local Player = GetPlayer(src)
+    if Player then
+        if Config.Framework == 'vrp' then
+            local user_id = vRP.getUserId(src)
+            vRP.tryGetInventoryItem(user_id, item, amount)
+        end
+        if Config.Framework == 'vrp2' then
+            while vRP == nil do
+                Wait(100)
+            end
+            vRP.TakeItem(Player, item, amount)
+        end
+        if Config.Inventory == "qb_inventory" then
+            Player.Functions.RemoveItem(item, amount)
+        elseif Config.Inventory == "esx_inventory" then
+            Player.removeInventoryItem(item, amount)
+        elseif Config.Inventory == "ox_inventory" then
+            exports.ox_inventory:RemoveItem(src, item, amount)
+        elseif Config.Inventory == "codem-inventory" then
+            exports["codem-inventory"]:RemoveItem(src, item, amount)
+        elseif Config.Inventory == "qs_inventory" then
+            exports['qs-inventory']:RemoveItem(src, item, amount)
+        elseif Config.Inventory == "tgiann-inventory" then
+            local itemData = exports["tgiann-inventory"]:GetItemByName(src, item)
+            if itemData.amount > 0 then
+                local success = exports["tgiann-inventory"]:RemoveItem(src, item, 1, itemData.key)
+            end
+        end
+        return true
+    end
+end
+
+--- Yields the current thread until a non-nil value is returned by the function.
+---@generic T
+---@param cb fun(): T?
+---@param errMessage string?
+---@param timeout? number | false Error out after `~x` ms. Defaults to 1000, unless set to `false`.
+---@return T
+---@async
+function waitFor(cb, errMessage, timeout)
+    local value = cb()
+    if value ~= nil then return value end
+
+    if timeout or timeout == nil then
+        if type(timeout) ~= 'number' then timeout = 1000 end
+    end
+
+    local startTime = timeout and os.time()
+    local elapsed = 0
+
+    while value == nil do
+        Citizen.Wait(100)
+
+        if timeout then
+            elapsed = os.time() - startTime
+            if elapsed * 1000 > timeout then
+                return error(('%s (waited %.1fms)'):format(errMessage or 'failed to resolve callback', elapsed * 1000), 2)
+            end
+        end
+
+        value = cb()
+    end
+
+    return value
+end

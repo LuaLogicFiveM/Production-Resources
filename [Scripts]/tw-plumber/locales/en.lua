@@ -1,0 +1,177 @@
+Locales = Locales or {}
+Locales['en'] = {
+    ['jobName'] = 'Plumber',
+    ['homePage'] = 'Home Page',
+    ['settings'] = 'Settings',
+    ['LVL'] = 'LEVEL',
+    ['Level'] = 'Level',
+    ['Exp'] = 'Experience',
+    ['Choose'] = "Choose",
+    ['Region'] = "Region",
+    ['LevelRequired'] = "Level Required",
+    ["NoLevelRequired"] = "No Level Required",
+    ['1-4Players'] = "1-4 Players",
+    ['XP'] = "XP",
+    ['PlayerList'] = "Player List",
+    ['AddInvite'] = "Invite",
+    ['jobDetails'] = "Job Details",
+    ['jobStep'] = "Job Step",
+    ['JOBNOTSELECTED'] = "JOB NOT SELECTED",
+    ['jobReset'] = "Reset Job",
+    ['jobStart'] = "Start Job",
+
+    -- Settings
+    ['GeneralTaskList'] = "General Task List",
+    ['HistoryList'] = "History List",
+    ['Task'] = "Task",
+    ['MenuJobSounds'] = "Menu/Job Sounds",
+    ['UIMove'] = "UI Movement",
+    ['MoveIt'] = "Move It",
+    ['Save'] = "Save",
+    ['Reset'] = "Reset",
+    ['InviteRequest'] = "INVITE REQUEST",
+    ['InviteText'] = "You have been invited to the Plumber job.",
+    ['Reject'] = "Reject",
+    ['Accept'] = "Accept",
+    ['jobMission'] = "Plumber Mission",
+    ['BonusMission'] = "Bonus Mission",
+
+    ['MissionCompleted'] = "MISSION COMPLETED",
+    ['Score'] = "Score",
+    ['BonusScore'] = "Bonus Score",
+    ['YourTeam'] = "Your Team",
+    ['NoInformation'] = "No Information",
+    ['YourEarning'] = "Your Earnings",
+    ['Bonus'] = "Bonus",
+    ['SkipInformation'] = "Skip Information",
+
+    ['Info'] = "Info",
+    ['Error'] = "Error",
+    ['Success'] = "Success",
+
+    -- Configuration
+    ['deliveryVehicle'] = "Delivery Vehicle",
+    ['pedDrawText'] = "Press ~g~[E]~s~ to open the ~g~Plumber~s~ menu",
+    ['regionJobTask'] = "Go to the specified region with the given vehicle and then complete the assigned tasks.",
+    ['missionOneBlips'] = "Pipe placement",
+    ['missionTwoBlips'] = "Pipe repair",
+    ['missionThreeBlips'] = "Toilet repair",
+    ['missionFourBlips'] = "Valve repair",
+    ['missionFiveBlips'] = "Switch control",
+    ['wateringcan'] = "Water the flowers",
+    ['takebranch'] = "Collect branches",
+    ['jobtask'] = "Job Task",
+
+    -- Daily tasks
+    ['dailyjobone'] = "Do 50 plumber tasks",
+    ['dailyjobtwo'] = "Complete 10 missions",
+    ['dailyjobthree'] = "Earn 10000 money",
+    ['dailyjobfour'] = "Do 20 missions with your friends",
+
+    -- Notifications
+    ['vehicleexist'] = "You cannot start the mission because there is a vehicle in the spawn area",
+    ['wrongjob'] = "You cannot do this job.",
+    ['jobcooldown'] = "You cannot start a new job right now.",
+    ['delivervehicle'] = "Deliver the vehicle to the marked location and finish the job.",
+    ['playerfaraway'] = "The person you invited is too far away",
+    ['lobbyfull'] = "The lobby is full.",
+    ['jobnotstarted'] = "You haven't started the job yet.",
+    ['jobalreadystarted'] = "You have already started the job.",
+    ['maxlevel'] = "You have reached the maximum level.",
+    ['playeralreadyinlobby'] = "You are already in the lobby.",
+    ['missionnotselected'] = "You haven't selected a mission.",
+    ['playerleftlobby'] = "The mission was terminated because a player in the lobby left the game.",
+    ['deliverVehile'] = "Deliver the vehicle",
+    ['resetJob'] = "You have reset the job.",
+    ['notowner'] = "You are not the owner of the vehicle.",
+    ['usedtbxid'] = "This tbxid has been used before",
+    ['successfullyExp'] = "You have successfully purchased Experience Points",
+    ['notfoundtbxid'] = "We cannot find this tbx id",
+    ['getontruck'] = "Get on the truck to start the plumber job and go to the marked location",
+    ['notenoughmoney'] = "You don't have enough money",
+    ['finishBoxDelivery'] = "Delivery point completed!",
+    ['joblevelnotenough'] = "Not everyone in the group has sufficient qualifications to do this job.",
+    ['alreadyarea'] = "This area is already in use, please select another area",
+    ['isownernotleave'] = "The group owner cannot leave the group, only the group owner can reset the job.",
+    ['invehicle'] = "You are in a vehicle",
+    ['bonusjobtask'] = "You have received a bonus task",
+    ['invitePlayer'] = "Invite",
+    ['valveBeingUsed'] = "This valve is currently being used by another plumber!",
+
+    -- Client
+    ['interactionDoor'] = "Interaction Door",
+    ['backPut'] = "Put back",
+    ['deliveryVehicle'] = "Delivery Vehicle",
+    ['shortbend'] = "Take short bend",
+    ['longbend'] = "Take long bend",
+    ['tpipe'] = "Take T Pipe",
+    ['valve'] = "Take Valve",
+    ['shortpipe'] = "Take Short Pipe",
+    ['longpipe'] = "Take Long Pipe",
+    ['openJobMenu'] = "Open Job Menu",
+
+    -- Client Text Indicators
+    ['missionBlip'] = "Mission",
+
+    ['cantentervehicle'] = "You cannot enter a vehicle while holding an object",
+    ['settingssaved'] = "Settings saved",
+
+    
+    --- Insert Pipe
+    ['insertPipe'] = "Insert Pipe",
+    ['insertValve'] = "Insert Valve",
+    ['pipeAlreadyProcessing'] = "This pipe is currently being placed by another player",
+    ['notCorrectPipe'] = "Not the correct pipe",
+    ['required'] = "Required",
+    ['valveReparing'] = "This valve is currently being repaired by another player",
+
+    --Notification
+    ['successOpenValve'] = "Valve opened",
+    ['allPipesPlaced'] = "All pipes have been placed",
+    ['valvePlaced'] = "Valve has been successfully placed, you can now open it",
+
+    --Repair Pipe
+    ['removePipe'] = "Remove Pipe",
+    ['alreadyHaveItem'] = "You already have an object in your hand",
+    ['successRepairPipe'] = "Pipe repaired",
+    ['closeValve'] = "Close valve",
+    ['openValve'] = "Open valve",
+    ['allPipesRepaired'] = "All pipes have been repaired",
+    ['valveClosed'] = "Valve successfully closed, you can now repair the pipes",
+    ['valvePressureFailed'] = "Water level is not in the target range!",
+
+    --Switch Mission
+    ['repairSwitch'] = "Repair Switch Control",
+    ['failedSwitch'] = "Switch Control Repair Failed",
+    ['successSwitch'] = "Switch Control Repaired",
+
+    --Toilet Choked
+    ['successToilet'] = "Toilet cleaned",
+    ['failedToilet'] = "Toilet is clogged",
+    ['cleanToilet'] = "Clean toilet",
+
+    --Valve
+    ['successValve'] = "Valve repaired",
+    ['failedValve'] = "Valve repair failed",
+    -- progressbar
+    ['insertPipeProgress'] = "Placing Pipe",
+    ['insertValveProgress'] = "Placing Valve",
+    ['removePipeProgress'] = "Removing Pipe",
+    ['receivingMaterials'] = "Receiving Materials",
+    ['putBackMaterials'] = "Putting Back Materials",
+    -- Tutorial
+    ['tutorialTitle1'] = "Plumber Job Start",
+    ['tutorialDescription1'] = "Start the job, then get in the vehicle and go to the area marked on the map and complete the specified tasks",
+    ['tutorialTitle2'] = "Pipe Placement",
+    ['tutorialDescription2'] = "Go to the area and take the required pipes from the vehicle, placing them one by one, then attach the valve and open it",
+    ['tutorialTitle3'] = "Valve Repair",
+    ['tutorialDescription3'] = "Go to the area for valve repair and interact to repair, then turn the valve to the right to adjust the pressure to the level shown in green",
+    ['tutorialTitle4'] = "Pipe Repair",
+    ['tutorialDescription4'] = "Go to the area for pipe repair and to repair the pipe, first close the valve, then remove the broken pipe and put it in the car, then take a pipe from the car and reattach it, and then open the valve",
+    ['tutorialTitle5'] = "Toilet Repair",
+    ['tutorialDescription5'] = "Go to the area for Toilet Repair, then interact and move the plunger up and down to fix the clog",
+    ['tutorialTitle6'] = "Switch Repair (Bonus)",
+    ['tutorialDescription6'] = "To do the bonus task, go to the area and interact, then activate the switches that are not lit",
+    ['howtomake'] = "How to do it",
+    ['howtomakeDescription'] = "You can learn how to do the Plumber job from below and earn your money"
+}

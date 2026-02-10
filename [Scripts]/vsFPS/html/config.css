@@ -1,0 +1,194 @@
+:root {
+    /* ============================================
+       COLOR THEME
+       ============================================ */
+    
+    /* Primary Colors */
+    --primary-color: #ff4d4d;                    /* Hauptfarbe / Main color (Red) */
+    --primary-color-rgb: 255, 77, 77;            /* RGB-Werte für rgba() / RGB values for rgba() */
+    --primary-glow: rgba(255, 77, 77, 0.7);      /* Glüheffekt / Glow effect */
+    
+    /* Background Colors */
+    --bg-menu: rgba(15, 15, 20, 0.92);          /* Menü-Hintergrund / Menu background */
+    --bg-option: rgba(255, 255, 255, 0.03);     /* Option-Hintergrund / Option background */
+    --bg-option-active: rgba(255, 77, 77, 0.18); /* Aktive Option-Hintergrund / Active option background */
+    --bg-switch: #2a2a2a;                        /* Switch-Hintergrund / Switch background */
+    --bg-switch-on: var(--primary-color);        /* Switch-Hintergrund (aktiv) / Switch background (active) */
+    
+    /* Text Colors */
+    --text-primary: white;                       /* Haupttext / Main text */
+    --text-secondary: #aaa;                      /* Sekundärtext / Secondary text */
+    --text-title: var(--primary-color);          /* Titel-Text / Title text */
+    
+    /* Switch Colors */
+    --switch-knob: #bbbbbb;                     /* Switch-Knopf (aus) / Switch knob (off) */
+    --switch-knob-on: #ffffff;                  /* Switch-Knopf (an) / Switch knob (on) */
+    
+    /* Shadow */
+    --shadow-menu: 0 8px 25px rgba(0, 0, 0, 0.6); /* Menü-Schatten / Menu shadow */
+    --shadow-title: 0 0 10px var(--primary-glow); /* Titel-Schatten / Title shadow */
+    
+    /* ============================================
+       LAYOUT & SIZING
+       ============================================ */
+    
+    /* Menu */
+    --menu-width: 260px;                         /* Menü-Breite / Menu width */
+    --menu-padding: 12px;                        /* Menü-Innenabstand / Menu padding */
+    --menu-border-radius: 10px;                 /* Menü-Radius / Menu border radius */
+    
+    /* Title */
+    --title-font-size: 28px;                     /* Titel-Schriftgröße / Title font size */
+    --title-font-weight: 500;                    /* Titel-Schriftstärke / Title font weight */
+    --title-letter-spacing: 2px;                 /* Titel-Buchstabenabstand / Title letter spacing */
+    --title-margin-top: 6px;                     /* Titel-Abstand oben / Title top margin */
+    --title-margin-bottom: 15px;                 /* Titel-Abstand unten / Title bottom margin */
+    
+    /* Options */
+    --option-margin: 5px;                         /* Option-Außenabstand / Option margin */
+    --option-padding: 10px;                      /* Option-Innenabstand / Option padding */
+    --option-border-radius: 6px;                 /* Option-Radius / Option border radius */
+    --option-border-left-active: 3px solid var(--primary-color); /* Aktive Option Border / Active option border */
+    
+    /* Option Text */
+    --option-title-size: 13px;                   /* Option-Titel Größe / Option title size */
+    --option-title-weight: 600;                  /* Option-Titel Stärke / Option title weight */
+    --option-desc-size: 11px;                    /* Option-Beschreibung Größe / Option description size */
+    
+    /* Switch */
+    --switch-width: 34px;                        /* Switch-Breite / Switch width */
+    --switch-height: 18px;                       /* Switch-Höhe / Switch height */
+    --switch-border-radius: 18px;                /* Switch-Radius / Switch border radius */
+    --switch-knob-size: 14px;                    /* Switch-Knopf Größe / Switch knob size */
+    --switch-knob-offset: 2px;                   /* Switch-Knopf Offset (aus) / Switch knob offset (off) */
+    --switch-knob-offset-on: 18px;               /* Switch-Knopf Offset (an) / Switch knob offset (on) */
+    
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+    
+    --transition-speed: 0.2s;                    /* Übergangsgeschwindigkeit / Transition speed */
+    --transition-speed-switch: 0.25s;            /* Switch-Übergangsgeschwindigkeit / Switch transition speed */
+    --animation-duration: 0.3s;                  /* Animationsdauer / Animation duration */
+    --animation-easing: ease;                    /* Animations-Easing / Animation easing */
+    
+    /* ============================================
+       FONTS
+       ============================================ */
+    
+    --font-family: "Segoe UI", sans-serif;       /* Standard-Schriftart / Default font family */
+    --font-family-title: 'Orbitron', sans-serif; /* Titel-Schriftart / Title font family */
+}
+
+/* ============================================
+   BODY
+   ============================================ */
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    background: transparent;
+}
+
+/* ============================================
+   MENU
+   ============================================ */
+
+.menu {
+    position: absolute;
+    width: var(--menu-width);
+    padding: var(--menu-padding);
+    border-radius: var(--menu-border-radius);
+    background: var(--bg-menu);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-menu);
+    opacity: 0;
+    display: none;
+    animation: fadeIn var(--animation-duration) var(--animation-easing) forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   MENU TITLE
+   ============================================ */
+
+.menu h1 {
+    margin: var(--title-margin-top) 0 var(--title-margin-bottom);
+    font-family: var(--font-family-title);
+    font-size: var(--title-font-size);
+    font-weight: var(--title-font-weight);
+    text-align: center;
+    letter-spacing: var(--title-letter-spacing);
+    color: var(--text-title);
+    text-shadow: var(--shadow-title);
+}
+
+/* ============================================
+   OPTIONS
+   ============================================ */
+
+.option {
+    margin: var(--option-margin) 0;
+    padding: var(--option-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--option-border-radius);
+    background: var(--bg-option);
+    transition: all var(--transition-speed) ease-in-out;
+    cursor: pointer;
+}
+
+.option.active {
+    background: var(--bg-option-active);
+    border-left: var(--option-border-left-active);
+}
+
+.option-title {
+    font-size: var(--option-title-size);
+    font-weight: var(--option-title-weight);
+}
+
+.option-desc {
+    font-size: var(--option-desc-size);
+    color: var(--text-secondary);
+}
+
+/* ============================================
+   SWITCH
+   ============================================ */
+
+.switch {
+    width: var(--switch-width);
+    height: var(--switch-height);
+    border-radius: var(--switch-border-radius);
+    background: var(--bg-switch);
+    position: relative;
+    transition: background var(--transition-speed-switch);
+}
+
+.switch::after {
+    content: "";
+    position: absolute;
+    top: var(--switch-knob-offset);
+    left: var(--switch-knob-offset);
+    width: var(--switch-knob-size);
+    height: var(--switch-knob-size);
+    border-radius: 50%;
+    background: var(--switch-knob);
+    transition: all var(--transition-speed-switch) var(--animation-easing);
+}
+
+.switch.on {
+    background: var(--bg-switch-on);
+}
+
+.switch.on::after {
+    left: var(--switch-knob-offset-on);
+    background: var(--switch-knob-on);
+}
