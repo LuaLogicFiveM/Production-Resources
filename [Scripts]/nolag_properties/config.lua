@@ -12,6 +12,7 @@ Config = {
             ["edit_property"] = 1,           -- Can edit property settings
             ["edit_building"] = 2,           -- Can edit building settings
             ["change_interior"] = 1,         -- Can change property interior
+            ["give_furniture"] = 0,          -- Can spawn furniture as item
         },
     },
 
@@ -19,6 +20,7 @@ Config = {
     ToggleBlipsCommand = "propertyblips", -- The command to toggle property blips
     AdminPanelCommand = "propertymanage",        -- The command to open the admin panel
     GiveStarterApartmentCommand = "givestarterapartments", -- The command to give starter apartments to all players (run only once)
+    GiveFurnitureCommand = "givefurniture",                -- The command to give furniture to a player
 
     PoliceRaid = {
         Enabled = true,
@@ -91,7 +93,7 @@ Config = {
         * ox_core
         * standalone (you need to do the integration yourself)
     ]]
-    Framework = "esx",
+    Framework = "auto",
     --[[
         Suppoted Interact Options:
         * lib.zones
@@ -101,7 +103,7 @@ Config = {
         * sleepless_interactv2 - https://github.com/Sleepless-Development/sleepless_interact
         * bl_sprites - https://github.com/Byte-Labs-Studio/bl_sprites
     ]]
-    InteractOption = "lib.zones",
+    InteractOption = "auto",
     --[[
         Supported garages:
         * nolag_garages
@@ -116,7 +118,7 @@ Config = {
         * vms_garagesv2
         ! You can add your own in custom/garages/
     ]]
-    Garage = "op-garages",
+    Garage = "auto",
     --[[
         Supported inventories:
         * ox_inventory
@@ -129,7 +131,7 @@ Config = {
         * tgiann-inventory
         ! You can add your own in custom/inventory/
     ]]
-    Inventory = "ox_inventory",
+    Inventory = "auto",
     --[[
         Supported clothing scripts:
         * illenium-appearance
@@ -144,7 +146,7 @@ Config = {
         * codem-appearance
         ! You can add your own in custom/clothes/
     ]]
-    Clothes = "illenium-appearance",
+    Clothes = "auto",
     --[[
         Supported weather scripts:
         * Renewed-Weathersync
@@ -156,7 +158,7 @@ Config = {
         * vSync
         ! You can add your own in custom/weather/
     ]]
-    Weather = "cd_easytime",
+    Weather = "auto",
     --[[
         Supported banking scripts:
         * tgg-banking
@@ -176,7 +178,7 @@ Config = {
         * discord
         ! You can add your own in custom/logs/
     ]]
-    Logs = "discord",
+    Logs = "ox_lib",
 
     -- Set the color theme in the config
     -- setr nolag:primaryColor violet
@@ -229,11 +231,7 @@ Config = {
         ---@return boolean? success
         Minigame = function(item, difficulty, pins)
             lib.playAnim(cache.ped, 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@', 'machinic_loop_mechandplayer', 3.0, 1.0, -1, 49)
-            local success = exports.bl_ui:PrintLock(1, {
-                grid = 4,
-                duration = 5000,
-                target = 4
-            })
+            local success = lib.skillCheck({ 'easy', 'easy', { areaSize = 60, speedMultiplier = 2 }, 'hard' }, { 'q', 'w', 'e', 'r' })
             ClearPedTasks(cache.ped)
             return success
         end,
@@ -242,40 +240,96 @@ Config = {
     LockDoorsByDefault = true,                  -- Save the door lock state to the database
     ExitEnterWhileLocked = true,                 -- Allow entering and exiting while locked (if you have a key)
     OpenForPreview = true,                       -- Allow the property to be enter for preview (if the property is for sale or for rent)
-    SpawnInProperty = true,                      -- Spawn the player in the property if they disconnected while inside one otherwise it will spawn them at the outside door (default: true)
-    PropertyPrice = { 1, 1000000 },              -- The price of the property, first number is the minimum, second is the maximum.
-    SecurityCamFilter = "CAMERA_secuirity_FUZZ", -- The filter for the security cameras (default: "CAMERA_secuirity_FUZZ") https://wiki.rage.mp/index.php?title=Timecycle_Modifiers
-    SecurityCamFilterStrength = 0.4,             -- The strength of the filter (default: 0.4)
-    InactivityDays = 30,                         -- The amount of days before a property is considered inactive and set for sale (If you want to disable you can just set it to false)
+    SpawnInProperty = false,                      -- Spawn the player in the property if they disconnected while inside one otherwise it will spawn them at the outside door (default: true)
+    PropertyPrice = { 50000, 50000000 },              -- The price of the property, first number is the minimum, second is the maximum.
+    SecurityCamFilter = "secret_camera",         -- The filter for the security cameras (default: "CAMERA_secuirity_FUZZ") https://wiki.rage.mp/index.php?title=Timecycle_Modifiers
+    SecurityCamFilterStrength = 1,               -- The strength of the filter (default: 0.4)
+    SecurityCamNightVision = true,               -- Enable/disable night vision toggle for security cameras (default: true)
+    SecurityCamNightVisionFilter = "MP_heli_cam", -- The filter for the night vision mode (default: "MP_heli_cam")
+    SecurityCamNightVisionStrength = 1,          -- The strength of the night vision filter (default: 1)
+    InactivityDays = 60,                         -- The amount of days before a property is considered inactive and set for sale (If you want to disable you can just set it to false)
     InactivityDaysForRent = 30,                  -- The amount of days before a property is considered inactive and auto renew is disabled (If you want to disable you can just set it to false)
     MaxPropertiesPerPlayer = 1,              -- The maximum amount of properties a player can owned
     PropertyLimitOverrides = {                   -- Overrides the property limit for a player based on the character identifier/citizenid
         -- Example:
         -- ["character_identifier"] = 5, -- This player can own up to 5 properties
     },
-    MaxRentsPerPlayer = 1,                       -- The maximum amount of rents a player can have
-    PropertyRentLimitOverrides = {                -- Overrides the property rent limit for a player based on the character identifier/citizenid
+    MaxRentsPerPlayer = false,     -- The maximum amount of rents a player can have
+    PropertyRentLimitOverrides = { -- Overrides the property rent limit for a player based on the character identifier/citizenid
         -- Example:
         -- ["character_identifier"] = 5, -- This player can own up to 5 properties
     },
     -- This is the radius of the yard zone that will be used for spawning the outside furniture
     -- If set to lower value the outside furniture will be spawned when the player is near the property
     -- If set to higher value the outside furniture will be spawned when the player is far from the property
-    YardZoneRadius = 20, -- The radius of the yard zone (default: 10)
+    YardZoneRadius = 30,         -- The radius of the yard zone (default: 10)
     MaxFurnitureInside = false,  -- Global limit for inside furniture count per property (false to disable)
     MaxFurnitureOutside = false, -- Global limit for outside furniture count per property (false to disable)
+    DefaultFurnitureWeight = 1000, -- The default weight for the furniture
     -- Ability to add myself as a keyholder (default: false) If set to true the player will be able to add himself as a keyholder when he is owner of the property
     AllowSelfAsKeyholder = false,
 
+    --[[ Utility Bills ]]
+    UtilityBills = {
+        Enabled = true,
+        BillingPeriod = 7, -- Billing period in days
+        GratisPeriod = 3,  -- The number of days before the utility is cut off
+        Prices = {
+            -- Base prices per billing period (consumption costs are added on top if UtilityConsumption is enabled)
+            Electricity = 1000, -- Base price per billing period for electricity
+            Water = 500,        -- Base price per billing period for water
+            Internet = 750      -- Price per billing period for internet (no consumption tracking)
+        }
+    },
+
+    --[[ Utility Consumption ]]
+    -- Track electricity usage based on time spent inside with lights on
+    -- Track water usage when using showers and sinks
+    UtilityConsumption = {
+        Enabled = true,
+        Electricity = {
+            Enabled = true,
+            -- Cost per minute with lights on inside the property
+            CostPerMinute = 0.5,
+            -- Interval in seconds to track electricity consumption
+            TrackingInterval = 60,
+        },
+        Water = {
+            Enabled = true,
+            -- Cost per shower use
+            ShowerCost = 2.0,
+            -- Cost per sink use (handwash/facewash)
+            SinkCost = 0.5,
+            -- Duration of shower animation in ms
+            ShowerDuration = 10000,
+            -- Duration of sink animation in ms
+            SinkDuration = 5000,
+        },
+        -- Function called after washing (shower or sink)
+        -- Useful for clearing evidence, gunpowder residue, etc.
+        ---@param washType 'shower' | 'sink_handwash' | 'sink_facewash'
+        ---@param property table The property object
+        OnWashComplete = function(washType, property)
+            -- Example: Clear gunpowder residue after washing
+            -- if washType == 'shower' then
+            --     TriggerEvent('evidence:clearGunpowder')
+            --     TriggerEvent('evidence:clearBlood')
+            -- elseif washType == 'sink_handwash' or washType == 'sink_facewash' then
+            --     TriggerEvent('evidence:clearGunpowder')
+            -- end
+            lib.print.debug('Wash complete: ' .. washType .. ' in property #' .. property.id)
+        end,
+    },
+
     --[[ Selling ]]
     SellPercentage = 70, -- The percentage of the property price the owner will get back when selling it to the government (default: 70 %)
-    DefaultBuyerType = "society",
+    DefaultBuyerType = "user",
 
     -- [[Starter Apartment]]
     -- This is the starter apartment that will be used for the player when they first join the server
     -- You can change the building id to the one you want to use as a starter apartment
     StarterApartment = {
-        Enabled = true,             -- Enable the starter apartment
+        Enabled = false,             -- Enable the starter apartment
         DisableForceSale = true,    -- Disable the starter apartment from being force sold
         DisableSell = true,         -- Disable the starter apartment from being set for sale
         DisableRent = true,         -- Disable the starter apartment from being set for rent
@@ -319,7 +373,7 @@ Config = {
         to "user" this needs to be set to the identifier of the user that will recive the
         money and the property
     ]]
-    RequireDefaultSellToBuy = false,
+    RequireDefaultSellToBuy = true,
     --[[
         If set to true the DefaultSellIdentifier needs to have enough money to buy the property
         otherwise the property will not be sold (default: false)
@@ -708,9 +762,230 @@ Config = {
         --         lib.print.debug("Open Real Estate Menu for property #" .. property.id)
         --     end
         -- },
+        ["UseShower"] = {
+            type = "inside",
+            maxPerProperty = 10,
+            label = locale("use_shower") or "Use Shower",
+            icon = "fas fa-shower",
+            radius = 1.5,
+            onSelect = function(property, data)
+                if not Config.UtilityConsumption.Enabled or not Config.UtilityConsumption.Water.Enabled then
+                    Framework.Notify({
+                        description = locale("water_system_disabled") or "Water system is disabled",
+                        type = "error"
+                    })
+                    return
+                end
+
+                -- Check if water is cut off
+                if property.utilities and property.utilities.water and property.utilities.water.cutOff then
+                    Framework.Notify({
+                        description = locale("property_no_water") or "No water supply - bill unpaid",
+                        type = "error"
+                    })
+                    return
+                end
+
+                local success = lib.callback.await('nolag_properties:server:property:useWater', false, property.id, 'shower')
+                if not success then
+                    Framework.Notify({
+                        description = locale("water_use_failed") or "Failed to use water",
+                        type = "error"
+                    })
+                    return
+                end
+
+                -- Play shower animation
+                local player = cache.ped
+                local duration = Config.UtilityConsumption.Water.ShowerDuration or 10000
+
+                -- Face the correct direction if offset has heading
+                if data and data.coords and data.coords.w then
+                    SetEntityHeading(player, data.coords.w)
+                end
+
+                if lib.progressCircle({
+                        duration = duration,
+                        label = locale("showering") or "Showering...",
+                        useWhileDead = false,
+                        canCancel = true,
+                        disable = {
+                            car = true,
+                            move = true,
+                            combat = true,
+                        },
+                        anim = {
+                            dict = 'mp_safehouseshower@male@',
+                            clip = 'male_shower_idle_a',
+                            blendIn = 8.0,
+                            blendOut = 8.0,
+                            flag = 1,
+                            lockX = true,
+                            lockY = true,
+                            lockZ = false,
+                        }
+                    }) then
+                    -- Call the wash complete callback
+                    if Config.UtilityConsumption.OnWashComplete then
+                        Config.UtilityConsumption.OnWashComplete('shower', property)
+                    end
+                    Framework.Notify({
+                        description = locale("shower_complete") or "You feel refreshed!",
+                        type = "success"
+                    })
+                end
+            end
+        },
+        ["UseSink"] = {
+            type = "inside",
+            maxPerProperty = 10,
+            label = locale("use_sink") or "Use Sink",
+            icon = "fas fa-faucet",
+            radius = 1.5,
+            onSelect = function(property, data)
+                if not Config.UtilityConsumption.Enabled or not Config.UtilityConsumption.Water.Enabled then
+                    Framework.Notify({
+                        description = locale("water_system_disabled") or "Water system is disabled",
+                        type = "error"
+                    })
+                    return
+                end
+
+                -- Check if water is cut off
+                if property.utilities and property.utilities.water and property.utilities.water.cutOff then
+                    Framework.Notify({
+                        description = locale("property_no_water") or "No water supply - bill unpaid",
+                        type = "error"
+                    })
+                    return
+                end
+
+                -- Show context menu for wash type selection
+                lib.registerContext({
+                    id = 'sink_wash_menu',
+                    title = locale("sink_menu_title") or "Sink",
+                    options = {
+                        {
+                            title = locale("wash_hands") or "Wash Hands",
+                            icon = "fas fa-hands-wash",
+                            onSelect = function()
+                                local success = lib.callback.await('nolag_properties:server:property:useWater', false, property.id, 'sink')
+                                if not success then
+                                    Framework.Notify({
+                                        description = locale("water_use_failed") or "Failed to use water",
+                                        type = "error"
+                                    })
+                                    return
+                                end
+
+                                local player = cache.ped
+                                local duration = Config.UtilityConsumption.Water.SinkDuration or 5000
+
+                                if data and data.coords and data.coords.w then
+                                    SetEntityHeading(player, data.coords.w)
+                                end
+
+                                if lib.progressCircle({
+                                        duration = duration,
+                                        label = locale("washing_hands") or "Washing hands...",
+                                        useWhileDead = false,
+                                        canCancel = true,
+                                        disable = {
+                                            car = true,
+                                            move = true,
+                                            combat = true,
+                                        },
+                                        anim = {
+                                            dict = 'missheist_agency3aig_23',
+                                            clip = 'urinal_sink_loop',
+                                            blendIn = 8.0,
+                                            blendOut = 8.0,
+                                            flag = 1,
+                                            lockX = true,
+                                            lockY = true,
+                                            lockZ = false,
+                                        }
+                                    }) then
+                                    if Config.UtilityConsumption.OnWashComplete then
+                                        Config.UtilityConsumption.OnWashComplete('sink_handwash', property)
+                                    end
+                                    Framework.Notify({
+                                        description = locale("hands_clean") or "Your hands are clean!",
+                                        type = "success"
+                                    })
+                                end
+                            end
+                        },
+                        {
+                            title = locale("wash_face") or "Wash Face",
+                            icon = "fas fa-head-side-mask",
+                            onSelect = function()
+                                local success = lib.callback.await('nolag_properties:server:property:useWater', false, property.id, 'sink')
+                                if not success then
+                                    Framework.Notify({
+                                        description = locale("water_use_failed") or "Failed to use water",
+                                        type = "error"
+                                    })
+                                    return
+                                end
+
+                                local player = cache.ped
+                                local duration = Config.UtilityConsumption.Water.SinkDuration or 5000
+
+                                if data and data.coords and data.coords.w then
+                                    SetEntityHeading(player, data.coords.w)
+                                end
+
+                                if lib.progressCircle({
+                                        duration = duration,
+                                        label = locale("washing_face") or "Washing face...",
+                                        useWhileDead = false,
+                                        canCancel = true,
+                                        disable = {
+                                            car = true,
+                                            move = true,
+                                            combat = true,
+                                        },
+                                        anim = {
+                                            dict = 'missmic2_washing_face',
+                                            clip = 'michael_washing_face',
+                                            blendIn = 8.0,
+                                            blendOut = -8.0,
+                                            flag = 0,
+                                            lockX = false,
+                                            lockY = false,
+                                            lockZ = false,
+                                        }
+                                    }) then
+                                    if Config.UtilityConsumption.OnWashComplete then
+                                        Config.UtilityConsumption.OnWashComplete('sink_facewash', property)
+                                    end
+                                    Framework.Notify({
+                                        description = locale("face_clean") or "Your face is clean!",
+                                        type = "success"
+                                    })
+                                end
+                            end
+                        },
+                    }
+                })
+                lib.showContext('sink_wash_menu')
+            end
+        },
     },
 
     InteractableProps = {
+        ["reh_prop_reh_switch_01a"] = {
+            label = "Light Switch",
+            icon = "fas fa-lightbulb",
+            radius = 1.5,
+            maxPerProperty = 10,
+            breakable = true,
+            onSelect = function(property)
+                lib.print.debug("Toggle lights for property #" .. property.id)
+                property:toggleLights(nil, true)
+            end
+        },
         -- ["v_res_tre_plugsocket"] = {
         --     label = "Plug Socket",
         --     icon = "fas fa-plug",
@@ -832,6 +1107,90 @@ Config = {
         Cooldown = 5000
     },
 
+    --[[ Physical Keys ]]
+    -- Physical keys use ox_inventory items to represent property keys
+    -- Each key has a unique bitting code that identifies the lock it opens
+    PhysicalKeys = {
+        Enabled = false, -- Enable physical key system (requires ox_inventory)
+        ItemName = 'housing_key', -- The item name for physical keys in ox_inventory
+        -- Bitting code configuration
+        BittingCodeLength = 5, -- Length of the random bitting code portion (e.g., 63323)
+        -- Key types that can be issued
+        KeyTypes = {
+            MainEntrance = true, -- Keys for main property entrance (Shell/IPL)
+            InteractablePoints = true, -- Keys for individual interactable points
+            Doors = true, -- Keys for individual MLO doors
+            MasterKey = true, -- Master key that unlocks everything
+        },
+        -- Allow re-keying (changing lock cylinders)
+        AllowRekey = true,
+        -- Cost to change the lock cylinder of a lock (0 for free)
+        RekeyPrice = 500,
+        -- Key wax system (allows players to make impressions of keys)
+        KeyWax = {
+            Enabled = true, -- Enable key wax functionality
+            BlankItemName = 'key_wax', -- Blank key wax item name
+            UsedItemName = 'key_wax_used', -- Used key wax (with bitting code imprint) item name
+        },
+
+        -- Ped configuration for key distribution
+        -- You can add multiple locksmiths with different settings
+        LockSmiths = {
+            {
+                Enabled = true, -- Enable this locksmith ped
+                CreateInvalidKeys = true, -- Allow creating invalid keys
+                CreateKeyByBittingCode = true, -- Allow creating a key by bitting code
+                KeyByBittingCodePrice = 1000, -- Price for a key by bitting code
+                KeyPrice = 1000, -- Price for a key
+                Model = 'IG_Benny_02', -- Ped model to use for key distribution
+                Coords = vector4(169.9714, -1799.5154, 29.3159, 318.0738), -- Location for this ped
+            },
+            -- Example of additional locksmith (uncomment and modify to add more):
+            {
+                Enabled = true,
+                CreateInvalidKeys = false, -- This locksmith doesn't create invalid keys
+                CreateKeyByBittingCode = true,
+                KeyByBittingCodePrice = 1500, -- Higher price
+                KeyPrice = 800, -- Lower key price
+                Model = 's_m_m_autoshop_02', -- Different ped model
+                Coords = vector4(-401.3177, -450.8532, 37.3349, 194.9187), -- Different location
+            },
+        },
+    },
+
+    Marketplace = {
+        Enabled = true, -- Enables or disables the marketplace system
+        AllowTransactionFromMenu = false, -- Allow transactions directly from the property management menu
+
+        PriceFilter = {
+            Max = 30000000, -- Maximum price for the filter slider ($30M)
+            Step = 500000,   -- Step increment for the slider ($500K)
+        },
+
+        Blip = {
+            Enabled = true,
+            Sprite = 476,
+            Scale = 0.8,
+            Color = 43,
+            Display = 4,
+            ShortRange = true,
+            Category = 1,
+            Label = "Property Marketplace",
+        },
+        BlipCoords = vector3(-1082.4330, -247.6247, 37.7633), -- Location of the blip on the map
+
+        TargetCoords = vector4(-1083.1598, -245.97, 37.6632, 208.5247), -- Target interaction coordinates (for targeting systems like ox_target)
+        TargetRadius = 3.0, -- Target zone radius
+
+        Ped = {
+            Enabled = true,
+            Model = 'ig_drfriedlander',
+            Coords = vector4(-1083.1598, -245.97, 37.6632, 208.5247),
+            InteractDistance = 2.5,
+            Animation = { 'switch@michael@sitting', 'idle' }
+        },
+    },
+
     DoorLock = {
         DrawTextUI = true,
         Notify = true,
@@ -856,6 +1215,7 @@ Config = {
     },
 
     CreationMenu = {
+        PhotoFreecam = false, -- Enable freecam while taking creation photos
         ipl = {
             label = 'IPL',
             enabled = true,
@@ -899,18 +1259,6 @@ Config = {
             exports['InsaneScripts_hud']:hideHud()
         end
         --exports["17mov_Hud"]:ToggleDisplay(toggle)
-    end,
-
-    --- Lockpick function
-    ---@param item string | number
-    ---@param difficulty number
-    ---@param pins number
-    ---@return boolean
-    LockPick = function(item, difficulty, pins)
-        lib.playAnim(cache.ped, 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@', 'machinic_loop_mechandplayer', 3.0, 1.0, -1, 49)
-        local success = lib.skillCheck({ 'easy', 'easy', { areaSize = 60, speedMultiplier = 2 }, 'hard' }, { 'q', 'w', 'e', 'r' })
-        ClearPedTasks(cache.ped)
-        return success
     end,
 
     RaidProperty = function()
@@ -1114,7 +1462,6 @@ if Config.Garage == 'auto' then
         'nolag_garages',
         'cd_garage',
         'qb-garages',
-        'op-garages',
         'jg-advancedgarages',
         'qbx_garages',
         'loaf_garage',

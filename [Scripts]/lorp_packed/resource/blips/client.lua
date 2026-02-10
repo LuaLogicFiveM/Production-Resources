@@ -497,8 +497,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Peyton Customs Paint and Body Shop',
-            description = 'Owner: Loopy',
+            title = '🔧 SRT',
+            description = 'Owner: FatBot and Coleslaw',
         },
     },
     {

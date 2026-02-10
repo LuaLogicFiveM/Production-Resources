@@ -105,6 +105,7 @@ function RunAutoDetect()
             'ox_lib',
             'okokTextUI',
             'ps-ui',
+            'tgiann-core',
             'vms_notifyv2',
             'ZSX_UIV2',
             'qb-core'
@@ -182,6 +183,7 @@ function RunAutoDetect()
             'lb-phone',
             'npwd',
             'okokPhone',
+            '17mov_Phone',
             'qb-phone',
             'qbx_npwd'
         }, 'none')
@@ -207,6 +209,19 @@ function RunAutoDetect()
         Cfg.PersistentVehicles = detect({
             'cd_garage',
             'AdvancedParking'
+        }, 'none')
+    end
+
+    if Cfg.Gang == 'auto_detect' then
+        Cfg.Gang = detect({
+            'av_gangs',
+            'rcore_gangs'
+        }, 'none')
+    end
+
+    if Cfg.Duty == 'auto_detect' then
+        Cfg.Duty = detect({
+            'origen_police'
         }, 'none')
     end
 

@@ -36,7 +36,7 @@ CreateThread(function()
         ERROR('configuration_error_found', 'Cfg.lua Syntax Error')
     end
 
-    if LocalesTable[Cfg.Language] == nil then
+    if BridgeLocalesTable[Cfg.Language] == nil then
         ERROR('configuration_error_found', 'Cfg.Language/locales.lua Typo : ['..Cfg.Language..']')
     end
 
@@ -118,6 +118,8 @@ local function DebugPrints(source)
     Citizen.Trace(string.format('^6Phone:^0 %s\n', Cfg.Phone))
     Citizen.Trace(string.format('^6Dispatch:^0 %s\n', Cfg.Dispatch))
     Citizen.Trace(string.format('^6PersistentVehicles:^0 %s\n', Cfg.PersistentVehicles))
+    Citizen.Trace(string.format('^6Gang:^0 %s\n', Cfg.Gang))
+    Citizen.Trace(string.format('^6Duty:^0 %s\n', Cfg.Duty))
     Citizen.Trace('^6-----------------------^0\n')
 end
 
@@ -199,42 +201,5 @@ function CheckAllItemsExist(needed)
             string = string..item..'\n'
         end
         ERROR('configuration_error_found', 'Item(s) Not Found in Inventory Database/Table:\n\n'..string)
-    end
-end
-
--- ┌──────────────────────────────────────────────────────────────────┐
--- │                        NOTIFICATION WRAPPER                      │
--- └──────────────────────────────────────────────────────────────────┘ 
-
-function Notif(source, action, locale_key, ...)
-    if not TypeCheck(source, 'number', '3000', 'source missing from Notif functiion, 1st arg. Locale Key: '..(locale_key or 'nil')) then
-        return
-    end
-
-    if not TypeCheck(action, 'number', '3001', 'action missing from Notif functiion, 1st arg. Locale Key: '..(locale_key or 'nil')) then
-        return
-    end
-
-    if action < 1 or action > 3 then
-        return ERROR('3002', 'action not valid in Notif function, 1st arg: '..action..'. Locale Key: '..(locale_key or 'nil'))
-    end
-
-    if not TypeCheck(locale_key, 'string', '3002', 'locale_key missing from Notif functiion, 2nd arg. Locale Key: '..(locale_key or 'nil')) then
-        return
-    end
-
-    local template = (Locales and Locales[Config.Language][locale_key]) or (LocalesTable and LocalesTable[Config.Language][locale_key])
-    if not template then
-        return ERROR('3003', 'locale not found in locales.lua: '..(locale_key or 'nil'))
-    end
-
-    local ok, message = pcall(string.format, template, ...)
-    if not ok then
-        return ERROR('3004', 'Format failed for key: ' .. (locale_key or 'nil'))
-    end
-
-    local ok, err = pcall(Notification, source, action, message)
-    if not ok then
-        return ERROR('3005', 'Notification failed: ' .. tostring(err))
     end
 end

@@ -54,12 +54,18 @@ Framework = {
         end
         ---------
         xPlayer.getAccount = function(type)
+            if type == 'money' then
+                type = 'cash'
+            end
             return {
                 money = qbPlayer.Functions.GetMoney(type) or 0
             }
         end
         ---------
         xPlayer.removeAccountMoney = function(type, money, reason)
+            if type == 'money' then
+                type = 'cash'
+            end
             return qbPlayer.Functions.RemoveMoney(type, money, reason)
         end
         ---------
@@ -124,12 +130,18 @@ Framework = {
                 end,
                 ---------
                 getAccount = function(type)
+                    if type == 'money' then
+                        type = 'cash'
+                    end
                     return {
                         money = qbPlayer.Functions.GetMoney(type) or 0
                     }
                 end,
                 ---------
                 removeAccountMoney = function(type, money, reason)
+                    if type == 'money' then
+                        type = 'cash'
+                    end
                     return qbPlayer.Functions.RemoveMoney(type, money, reason)
                 end,
                 ---------

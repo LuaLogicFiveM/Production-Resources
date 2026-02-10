@@ -77,36 +77,3 @@ if GetCurrentResourceName() == 'cd_bridge' then
         end
     end)
 end
-
--- ┌──────────────────────────────────────────────────────────────────┐
--- │                        NOTIFICATION WRAPPER                      │
--- └──────────────────────────────────────────────────────────────────┘ 
-
-function Notif(action, locale_key, ...)
-    if not TypeCheck(action, 'number', '3001', 'action missing from Notif functiion, 1st arg. Locale Key: '..(locale_key  or 'nil')) then
-        return
-    end
-
-    if action < 1 or action > 3 then
-        return ERROR('3002', 'action not valid in Notif function, 1st arg: '..(action or 'nil')..'. Locale Key: '..(locale_key or 'nil'))
-    end
-
-    if not TypeCheck(locale_key, 'string', '3002', 'locale_key missing from Notif functiion, 2nd arg. Locale Key: '..(locale_key or 'nil')) then
-        return
-    end
-
-    local template = (Locales and Locales[Config.Language][locale_key]) or (LocalesTable and LocalesTable[Config.Language][locale_key])
-    if not template then
-        return ERROR('3003', 'locale not found in locales.lua: '..(locale_key or 'nil'))
-    end
-
-    local ok, message = pcall(string.format, template, ...)
-    if not ok then
-        return ERROR('3004', 'Format failed for key: ' .. (locale_key or 'nil'))
-    end
-
-    local ok, err = pcall(Notification, action, message)
-    if not ok then
-        return ERROR('3005', 'Notification failed: ' .. tostring(err))
-    end
-end

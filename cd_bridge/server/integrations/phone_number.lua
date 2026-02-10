@@ -23,7 +23,7 @@ function GetPhoneNumber(source)
         return exports['lb-phone']:GetEquippedPhoneNumber(source)
 
     elseif Cfg.Phone == 'npwd' then
-        local phoneData = exports.npwd.getPlayerData({ identifier = identifier })
+        local phoneData = exports.npwd:getPlayerData({ identifier = identifier })
         if phoneData and phoneData.phoneNumber then
             return phoneData.phoneNumber
         end
@@ -35,10 +35,13 @@ function GetPhoneNumber(source)
         return Player.PlayerData.charinfo.phone
 
     elseif Cfg.Phone == 'qbx_npwd' then
-        local phoneData = exports.npwd.getPlayerData({ identifier = identifier })
+        local phoneData = exports.npwd:getPlayerData({ identifier = identifier })
         if phoneData and phoneData.phoneNumber then
             return phoneData.phoneNumber
         end
+
+    elseif Cfg.Phone == '17mov_Phone' then
+        return exports['17mov_Phone']:GetNumberFromPlayer(source)
 
     elseif Cfg.Phone == 'other' then
         -- Implement custom logic for other phone systems here.
@@ -115,6 +118,9 @@ function DoesPhoneNumberAlreadyExist(source, phoneNumber)
             return true
         end
 
+    elseif Cfg.Phone == '17mov_Phone' then
+        -- Not yet implemented.
+
     elseif Cfg.Phone == 'other' then
         -- Implement custom logic for other phone systems here.
         -- Return true if the phone number exists, false otherwise.
@@ -174,6 +180,9 @@ function SetPhoneNumber(source, newNumber)
             Player.PlayerData.charinfo.phone = newNumber
             Player.Functions.SavePlayerData()
         end
+
+    elseif Cfg.Phone == '17mov_Phone' then
+        -- Feature not supported by phone.
 
     elseif Cfg.Phone == 'other' then
         -- Implement custom logic for other phone systems here.

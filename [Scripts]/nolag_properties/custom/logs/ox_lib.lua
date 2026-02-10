@@ -55,6 +55,12 @@ Logs = {
     RaidProperty = function(playerId, propertyId, propertyLabel)
         lib.logger(playerId, "RaidProperty", locale("logs_raided_property", playerId, propertyId, propertyLabel))
     end,
+    RekeyLock = function(playerId, propertyId, lockType, lockId)
+        lib.logger(playerId, "RekeyLock", locale("logs_rekey_lock", playerId, propertyId, lockType, tostring(lockId)))
+    end,
+    IssuePhysicalKey = function(playerId, propertyId, lockType, lockId, targetId)
+        lib.logger(playerId, "IssuePhysicalKey", locale("logs_issued_physical_key", playerId, propertyId, lockType, tostring(lockId), targetId))
+    end,
 }
 
 -- Set the metatable for the functions list

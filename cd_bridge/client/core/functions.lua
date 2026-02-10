@@ -107,18 +107,21 @@ function GetClosestPlayer(maxDistance, returnData)
 end
 
 -- Returns all players within a certain distance.
-function GetClosestPlayers(maxDistance, returnData)
+function GetClosestPlayers(maxDistance, returnData, includeSelf)
+    if not returnData then
+        ERROR('3942', '[GetClosestPlayers] returnData parameter is required')
+        return
+    end
+
     local players = {}
     local myPed = PlayerPedId()
     local myCoords = GetEntityCoords(myPed)
     local maxDistSq = maxDistance * maxDistance
 
-    returnData = returnData or 'ped'
-
     for _, playerId in pairs(GetActivePlayers()) do
-        if playerId ~= PlayerId() then
-            local ped = GetPlayerPed(playerId)
+        if includeSelf or playerId ~= PlayerId() then
 
+            local ped = GetPlayerPed(playerId)
             if ped ~= 0 then
                 local coords = GetEntityCoords(ped)
                 local distSq = #(myCoords - coords)^2
@@ -297,3 +300,53 @@ RegisterNuiCallback('enable_nui_focus', function(data, cb)
     EnableNuiFocus()
     cb('ok')
 end)
+
+function TBL(t)
+    if GetResourceState('cd_devtools') == 'started' then
+        TriggerEvent('table', t)
+    else
+        print(json.encode(t, { indent = true }))
+    end
+end
+
+-- Notification wrapper.
+function Notif(action, locale_key, ...)
+    if not TypeCheck(action, 'number', '3001', 'action missing from Notif functiion, 1st arg. Locale Key: '..(locale_key  or 'nil')) then
+        return
+    end
+
+    if action < 1 or action > 3 then
+        return ERROR('3002', 'action not valid in Notif function, 1st arg: '..(action or 'nil')..'. Locale Key: '..(locale_key or 'nil'))
+    end
+
+    if not TypeCheck(locale_key, 'string', '3002', 'locale_key missing from Notif functiion, 2nd arg. Locale Key: '..(locale_key or 'nil')) then
+        return
+    end
+
+    local lang = Config.Language or 'EN'
+
+    local function get(tbl)
+        if not tbl then return nil end
+        return (tbl[lang] and tbl[lang][locale_key]) or (tbl.EN and tbl.EN[locale_key])
+    end
+
+    local template = get(LocalesTable) or get(Locales) or get(BridgeLocalesTable)
+    if not template then
+        return ERROR('3003', 'locale not found in locales.lua: '..(locale_key or 'nil'))
+    end
+
+    local message = template
+
+    if select('#', ...) > 0 then
+        local ok, formatted = pcall(string.format, template, ...)
+        if not ok then
+            return ERROR('3004', 'Format failed for key: ' .. (locale_key or 'nil'))
+        end
+        message = formatted
+    end
+
+    local ok, err = pcall(Notification, action, message)
+    if not ok then
+        return ERROR('3005', 'Notification failed: ' .. tostring(err))
+    end
+end

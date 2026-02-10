@@ -256,7 +256,7 @@ function GetVehiclePlate(vehicle)
 end
 
 -- Gets players in vehicle, returning server id's.
-function GetPlayersInVehicle(vehicle)
+function GetPlayersInVehicle(vehicle, includeSelf)
     local temp_table = {}
     if not vehicle or vehicle == 0 or not DoesEntityExist(vehicle) then
         return nil
@@ -264,16 +264,18 @@ function GetPlayersInVehicle(vehicle)
 
     local vehicle_coords = GetEntityCoords(vehicle)
 
-    for _, player in ipairs(GetActivePlayers()) do
-        local targetped = GetPlayerPed(player)
+    for _, playerId in ipairs(GetActivePlayers()) do
+        local targetped = GetPlayerPed(playerId)
         if targetped and targetped ~= 0 then
-            local pcoords = GetEntityCoords(targetped)
-            local dist = #(vehicle_coords - pcoords)
+            if includeSelf or playerId ~= PlayerId() then
+                local pcoords = GetEntityCoords(targetped)
+                local dist = #(vehicle_coords - pcoords)
 
-            if dist < 10.0 then
-                local ped_vehicle = GetVehiclePedIsIn(targetped, false)
-                if ped_vehicle == vehicle then
-                    temp_table[#temp_table + 1] = GetPlayerServerId(player)
+                if dist < 10.0 then
+                    local ped_vehicle = GetVehiclePedIsIn(targetped, false)
+                    if ped_vehicle == vehicle then
+                        temp_table[#temp_table + 1] = GetPlayerServerId(playerId)
+                    end
                 end
             end
         end
@@ -287,7 +289,7 @@ end
 
 -- Kicks players out of vehicle.
 function KickPlayersOutOfVehicle(vehicle)
-    local playersInVehicle = GetPlayersInVehicle(vehicle)
+    local playersInVehicle = GetPlayersInVehicle(vehicle, true)
     if playersInVehicle then
         exports.cd_bridge:Callback('cd_bridge:KickOutPlayersInVehicle', playersInVehicle)
     end

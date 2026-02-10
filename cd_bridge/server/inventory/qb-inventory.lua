@@ -13,13 +13,13 @@ function HasItem(source, item_name, amount)
 end
 
 -- Add item to a player's inventory
-function AddItem(source, item_name, amount, metadata)
-    exports['qb-inventory']:AddItem(source, item_name, amount, metadata)
+function AddItem(source, item_name, amount)
+    exports['qb-inventory']:AddItem(source, item_name, amount)
 end
 
 -- Remove item from a player's inventory
 function RemoveItem(source, item_name, amount)
-    exports['qb-inventory']:RemoveItem(source, item_name, amount, false)
+    exports['qb-inventory']:RemoveItem(source, item_name, amount)
 end
 
 -- Get the count of a specific item in a player's inventory
@@ -39,9 +39,7 @@ end
 
 -- Add weapon to a player's inventory
 function AddWeapon(source, weapon_name, ammo)
-    local metadata = {}
-    metadata.serie = GenerateUniqueId(16)
-    AddItem(source, weapon_name, 1, metadata)
+    AddItem(source, weapon_name, 1)
 end
 
 -- Check if a player can carry a specific item and amount

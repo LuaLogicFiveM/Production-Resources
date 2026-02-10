@@ -10,6 +10,7 @@ local PropertyMenuKeybind = lib.addKeybind({
 RegisterCommand(Config.CreatePropertyCommand, function(source, args, raw)
     OpenCreationMenu()
 end, false)
+TriggerEvent('chat:addSuggestion', "/" .. Config.CreatePropertyCommand, 'Open the creation menu')
 
 RegisterCommand(Config.ToggleBlipsCommand, function()
     lib.registerMenu({
@@ -52,6 +53,7 @@ RegisterCommand(Config.ToggleBlipsCommand, function()
 
     lib.showMenu('toggle_blips')
 end, false)
+TriggerEvent('chat:addSuggestion', "/" .. Config.ToggleBlipsCommand, 'Toggle the blips')
 
 AddEventHandler('nolag_properties:client:spawnAtProperty', function(propertyId)
     local property = GetPropertyById(tonumber(propertyId))
@@ -91,6 +93,7 @@ end
 local function wrapIntoProperty(propertyId)
     local property = GetPropertyById(tonumber(propertyId))
     if not property then return false end
+    if property.type == "mlo" then return false end
     property:spawnInside()
 
     local wrapped = lib.waitFor(function()

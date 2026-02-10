@@ -6,7 +6,10 @@ lua54 "yes" -- needed for Reaper
 fx_version "cerulean"
 game "gta5"
 lua54 'yes'
-version '1.0.19'
+
+author 'EvoLabs <evolutionlabsdev@gmail.com>'
+description 'evo_sound_player'
+version '1.0.20'
 
 shared_scripts {
     'shared/framework.lua',

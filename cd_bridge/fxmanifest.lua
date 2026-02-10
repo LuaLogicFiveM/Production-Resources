@@ -1,14 +1,8 @@
-shared_script "@ReaperV4/imports/bypass.js"
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'cerulean'
 game 'gta5'
 author 'discord.gg/codesign'
 description 'Codesign bridge'
-version '1.0.20'
+version '1.0.22'
 lua54 'yes'
 
 shared_scripts {

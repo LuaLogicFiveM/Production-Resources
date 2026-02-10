@@ -63,3 +63,69 @@ function GiveVehicleKeys(plate, vehicle) -- Triggered when giving keys to a vehi
 
     end
 end
+
+--- @param plate string         The vehicle plate.
+--- @param vehicle number       The vehicle entity.
+function RemoveVehicleKeys(plate, vehicle) -- Triggered when removing keys from a vehicle (vehicle may be nil)
+    local keysResource = Cfg.VehicleKeys
+    if keysResource == 'cd_garage' then
+        TriggerEvent('cd_garage:RemoveKeys', plate)
+
+    elseif keysResource == 'ak47_qb_vehiclekeys' then
+        exports['ak47_qb_vehiclekeys']:RemoveKey(plate, false)
+
+    elseif keysResource == 'ak47_vehiclekeys' then
+        exports['ak47_vehiclekeys']:RemoveKey(plate, false)
+
+    elseif keysResource == 'F_RealCarKeysSystem' then
+        TriggerServerEvent('F_RealCarKeysSystem:removeVehicleKeys', plate)
+
+    elseif keysResource == 'fivecode_carkeys' then
+        exports.fivecode_carkeys:StoreVehicleKey(vehicle, true)
+
+    elseif keysResource == 'mk_vehiclekeys' then
+        exports['mk_vehiclekeys']:RemoveKey(vehicle)
+
+    elseif keysResource == 'MrNewbVehicleKeys' then
+        exports['MrNewbVehicleKeys']:RemoveKeysByPlate(plate)
+
+    elseif keysResource == 'qs-vehiclekeys' then
+        exports['qs-vehiclekeys']:RemoveKeys(plate, GetDisplayNameFromVehicleModel(GetEntityModel(vehicle)), true)
+
+    elseif keysResource == 'stasiek_vehiclekeys' then
+        if vehicle then
+            DecorSetInt(vehicle, 'owner', 0)
+        end
+
+    elseif keysResource == 't1ger_keys' then
+        -- Resource does not support this feature.
+
+    elseif keysResource == 'tgiann-hotwire' then
+        -- Resource does not support this feature.
+
+    elseif keysResource == 'ti_vehicleKeys' then
+        exports['ti_vehicleKeys']:addTemporaryVehicle(plate)
+
+    elseif keysResource == 'vehicles_keys' then
+        TriggerServerEvent('vehicles_keys:selfRemoveKeys', plate)
+
+    elseif keysResource == 'wasabi_carlock' then
+        exports['wasabi_carlock']:GiveKey(plate)
+
+    elseif keysResource == 'xd_locksystem' then
+        --exports['xd_locksystem']:takePlayerKeys(plate) -- v1
+        exports['xd_locksystem']:SetVehicleKey(plate, true) -- v2
+
+    elseif keysResource == 'qbx_vehiclekeys' then
+        TriggerEvent('qb-vehiclekeys:client:RemoveKeys', plate) -- Not been tested.
+
+    elseif keysResource == 'qb-vehiclekeys' then
+        TriggerEvent('qb-vehiclekeys:client:RemoveKeys', plate)
+
+    elseif keysResource == 'other' then
+        --- Implement other vehicle keys give method here.
+
+    elseif keysResource == 'none' then
+
+    end
+end

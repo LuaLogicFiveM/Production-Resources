@@ -332,6 +332,43 @@ Logs = {
         discord.addField(embed, "🏷️ Label", "`" .. propertyLabel .. "`", true)
         discord.sendEmbed(embed, "raid")
     end,
+
+    RekeyLock = function(playerId, propertyId, lockType, lockId)
+        local embed = {
+            {
+                ["title"] = "🔐 Lock Re-keyed",
+                ["color"] = 16776960,
+                ["footer"] = {
+                    ["text"] = "NoLag Properties • " .. os.date("%Y-%m-%d %H:%M:%S")
+                },
+                ["fields"] = {}
+            }
+        }
+        discord.addField(embed, "👤 Player", "`" .. playerId .. "`", true)
+        discord.addField(embed, "🏷️ Property ID", "`" .. propertyId .. "`", true)
+        discord.addField(embed, "🔒 Lock Type", "`" .. lockType .. "`", true)
+        discord.addField(embed, "🔢 Lock ID", "`" .. lockId .. "`", true)
+        discord.sendEmbed(embed, "keyholder")
+    end,
+
+    IssuePhysicalKey = function(playerId, propertyId, lockType, lockId, targetId)
+        local embed = {
+            {
+                ["title"] = "🔑 Physical Key Issued",
+                ["color"] = 65280,
+                ["footer"] = {
+                    ["text"] = "NoLag Properties • " .. os.date("%Y-%m-%d %H:%M:%S")
+                },
+                ["fields"] = {}
+            }
+        }
+        discord.addField(embed, "👤 Issued By", "`" .. playerId .. "`", true)
+        discord.addField(embed, "🏷️ Property ID", "`" .. propertyId .. "`", true)
+        discord.addField(embed, "🔒 Lock Type", "`" .. lockType .. "`", true)
+        discord.addField(embed, "🔢 Lock ID", "`" .. lockId .. "`", true)
+        discord.addField(embed, "👥 Recipient", "`" .. targetId .. "`", true)
+        discord.sendEmbed(embed, "keyholder")
+    end,
 }
 
 -- Set the metatable for the functions list

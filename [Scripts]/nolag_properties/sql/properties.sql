@@ -103,6 +103,9 @@ CREATE TABLE IF NOT EXISTS `properties` (
     `priceid` INT(11) NULL DEFAULT NULL,
     `rentpriceid` INT(11) NULL DEFAULT NULL,
     `last_entered` DATETIME NULL DEFAULT NULL,
+    `electricity_last_payment` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The last time the electricity bill was paid',
+    `water_last_payment` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The last time the water bill was paid',
+    `internet_last_payment` DATETIME NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The last time the internet bill was paid',
     `forsale` INT(11) NULL DEFAULT '0' COMMENT 'Whether the property is for sale',
     `forrent` INT(11) NULL DEFAULT '0' COMMENT 'Whether the property is for rent',
     `formortgage` INT(11) NULL DEFAULT '0' COMMENT 'Whether the property is for mortgage',
@@ -191,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `properties_furniture` (
     `label` VARCHAR(255) NOT NULL,
     `stored` VARCHAR(1) DEFAULT NULL,
     `require_keys` VARCHAR(1) DEFAULT NULL,
+    `metadata` LONGTEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
     CONSTRAINT `properties_furniture_ibfk_1` FOREIGN KEY (`propertyId`) REFERENCES `properties` (`id`) ON UPDATE RESTRICT ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

@@ -1,8 +1,8 @@
 Config.Coordinate = {
     [1] = {
-        [1] = vector4(-554.06, -2809.85, 5.0, 130.86), -- kutunun spawn olacak konum
-        [2] = vector4(-846.32, -413.11, 36.71, 82.2), -- tırın teslim edileceği konum 
-        [3] = vector4(-864.74, -426.54, 36.64, 273.8), -- kutunun teslim edileceği konum
+        [1] = vector4(-554.06, -2809.85, 5.0, 130.86), -- the location where the box will spawn
+        [2] = vector4(-846.32, -413.11, 36.71, 82.2), -- the location where the lorry will be delivered 
+        [3] = vector4(-864.74, -426.54, 36.64, 273.8), -- the location where the box will be delivered
         [4] = {
             bench = {
                 vector4(-865.05, -445.08, 36.77, 303.41),
@@ -56,7 +56,7 @@ Config.Coordinate = {
             bench = { "prop_bench_01a" },
             other = { "p_clb_officechair_s", "prop_tv_cabinet_03",  "v_corp_offchair" },
         },
-        [6] = vector4(-832.81, -430.8, 36.71, 348.54), -- 2. tırın teslim edileceği konum
+        [6] = vector4(-832.81, -430.8, 36.71, 348.54), -- 2. the location where the lorry will be delivered
     },
     [2] = {
         [1] = vector4(-546.86, -2801.71, 5.0, 130.86), -- kutunun spawn olacak konum

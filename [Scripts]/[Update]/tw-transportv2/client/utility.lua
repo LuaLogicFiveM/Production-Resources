@@ -690,7 +690,7 @@ function CreateCamera()
     end
 end
 
---[[Citizen.CreateThread(function()
+Citizen.CreateThread(function()
     local wait = 1000
     while true do
         Citizen.Wait(wait)
@@ -700,7 +700,7 @@ end
             SetLocalPlayerInvisibleLocally(true)
         end
     end
-end)]]
+end)
 
 function ExitCamera()
     SetEntityAlpha(PlayerPedId(), 255, false)

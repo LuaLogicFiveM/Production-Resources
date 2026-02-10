@@ -38,6 +38,13 @@ function DrawTextUI(action, text)
             exports['ps-ui']:HideText()
         end
 
+    elseif method == 'tgiann-core' then
+        if action == 'show' then
+            exports['tgiann-core']:DrawTextOpen('cd_bridge', '', text)
+        elseif action == 'hide' then
+            exports['tgiann-core']:DrawTextClose('cd_bridge')
+        end
+
     elseif method == 'vms_notifyv2' then
         if action == 'show' then
             exports['vms_notifyv2']:ShowTextUI(text)

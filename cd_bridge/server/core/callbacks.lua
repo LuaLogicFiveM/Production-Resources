@@ -18,7 +18,7 @@ RegisterNetEvent('cd_bridge:Callback', function(id, action, ...)
 
     local ok_exec, result = pcall(handler, src, ...)
     if not ok_exec then
-        respond(false, nil, ('handler_error - %s'):format(result))
+        respond(false, nil, ('error_in_handler - %s'):format(result))
     else
         respond(true, result, nil)
     end

@@ -20,6 +20,7 @@ PlayerData = {
     insideMlos = {},        -- don't change this
     insideProperty = false, -- don't change this
     currentProperty = nil,  -- don't change this
+    currentCameraProperty = nil, -- don't change this
     identifier = oxPlayer.stateId,
     job = {
         name = playerGroup,

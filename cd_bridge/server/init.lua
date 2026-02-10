@@ -25,6 +25,7 @@ Include('server/core/vehicle_functions.lua')
 
 --shared
 Include('shared/functions.lua')
+Include('shared/locales.lua')
 
 --server/integrations
 Include('server/integrations/callsign.lua')

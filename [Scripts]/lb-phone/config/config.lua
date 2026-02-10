@@ -289,11 +289,11 @@ Config.Companies.Management = {
 Config.CustomApps = {} -- https://docs.lbscripts.com/phone/custom-apps/
 
 Config.Valet = {}
-Config.Valet.Enabled = false -- allow players to get their vehicles from the phone
+Config.Valet.Enabled = true -- allow players to get their vehicles from the phone
 Config.Valet.VehicleTypes = { "car", "vehicle" }
-Config.Valet.Price = 1000 -- price to get your vehicle
+Config.Valet.Price = 2500 -- price to get your vehicle
 Config.Valet.Model = `S_M_Y_XMech_01`
-Config.Valet.Drive = true -- should a ped bring the car, or should it just spawn in front of the player?
+Config.Valet.Drive = false -- should a ped bring the car, or should it just spawn in front of the player?
 Config.Valet.DisableDamages = false -- disable vehicle damages (engine & body health) on esx
 Config.Valet.FixTakeOut = false -- repair the vehicle after taking it out?
 

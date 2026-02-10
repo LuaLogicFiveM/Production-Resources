@@ -24,6 +24,7 @@ Include('client/core/vehicle_functions.lua')
 
 --shared
 Include('shared/functions.lua')
+Include('shared/locales.lua')
 
 --client/integrations
 Include('client/integrations/drawtextui.lua')

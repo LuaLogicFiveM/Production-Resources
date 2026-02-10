@@ -56,6 +56,9 @@ local function checkPropertiesTable()
         'priceid',
         'rentpriceid',
         'last_entered',
+        'electricity_last_payment',
+        'water_last_payment',
+        'internet_last_payment',
         'forsale',
         'forrent',
         'formortgage'
@@ -89,6 +92,9 @@ function LoadPropertiesFromDatabase()
             p.buildingid,
             p.metadata,
             p.keyholders,
+            p.electricity_last_payment,
+            p.water_last_payment,
+            p.internet_last_payment,
             p.forsale,
             p.forrent,
             o.type AS owner_type,
@@ -140,6 +146,11 @@ function LoadPropertiesFromDatabase()
                 type = property.type,
                 doorLocked = Config.LockDoorsByDefault and true or type(metaData.doorLocked) ~= "boolean" and true or metaData.doorLocked,
                 buildingId = property.buildingid,
+                utilities = {
+                    electricity = { lastPayment = property.electricity_last_payment and math.floor(property.electricity_last_payment / 1000) or 0 },
+                    water = { lastPayment = property.water_last_payment and math.floor(property.water_last_payment / 1000) or 0 },
+                    internet = { lastPayment = property.internet_last_payment and math.floor(property.internet_last_payment / 1000) or 0 }
+                },
                 forSale = property.forsale == 1,
                 forRent = property.forrent == 1,
                 metadata = metaData, -- Additional information
@@ -314,6 +325,16 @@ function EnsureAutoRenewColumn()
         else
             lib.print.error("Failed to add 'auto_renew' column to 'properties_renters' table.")
         end
+    end
+end
+
+function EnsureFurnitureMetadataColumn()
+    if columnExists('properties_furniture', 'metadata') then return end
+    local result = MySQL.query.await("ALTER TABLE properties_furniture ADD COLUMN metadata LONGTEXT NULL DEFAULT NULL")
+    if result then
+        lib.print.info("Added 'metadata' column to 'properties_furniture' table.")
+    else
+        lib.print.error("Failed to add 'metadata' column to 'properties_furniture' table.")
     end
 end
 
@@ -530,6 +551,29 @@ function GetUniqueName(name)
         end
     end
     return name .. " " .. maxNumber + 1
+end
+
+---@param playerId number
+---@param furnitureName string
+---@return boolean, string?
+function GiveFurnitureToPlayer(playerId, furnitureName)
+    local player = Framework.GetPlayerFromId(playerId)
+    if not player then return false, 'Player not found' end
+    local furnitureData = GetFurnitureDataFromObject(furnitureName)
+    if not furnitureData then return false, 'Furniture not found' end
+    local metadata = {
+        label = furnitureData.label,
+        furnitureName = furnitureName,
+        imageurl = 'nui://nolag_properties/web/build/images/props/' .. furnitureName .. '.webp',
+        description = 'A piece of furniture from the property',
+        weight = furnitureData.weight or Config.DefaultFurnitureWeight,
+    }
+    local success = exports.ox_inventory:AddItem(player.source, 'furniture', 1, metadata)
+    if success then
+        return true, nil
+    else
+        return false, 'Failed to give furniture to player'
+    end
 end
 
 RegisterNetEvent('txsv:req:spectate:start', function(targetId)

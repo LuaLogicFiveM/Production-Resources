@@ -1,15 +1,12 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'cerulean'
 use_experimental_fxv2_oal 'yes'
 game 'gta5'
 lua54 'yes'
+
 description 'Properties system for FiveM.'
 author 'NoLag Development'
-version '2.3.95'
+version '2.4.1'
+
 shared_scripts {
   '@ox_lib/init.lua',
   'config.lua',
@@ -22,11 +19,14 @@ shared_scripts {
   'custom/inventory/*.lua',
   'custom/clothes/*.lua',
   'custom/shells/*.lua',
+  'custom/furniture/*.lua',
 }
+
 ox_libs {
   'locale',
   'table',
 }
+
 client_scripts {
   'client/property/*.lua',
   'client/building/*.lua',
@@ -36,9 +36,9 @@ client_scripts {
   'client/frameworks/*.lua',
   'client/creation/*.lua',
   'client/furniture/*.lua',
-  'custom/furniture/*.lua',
   'client/*.lua',
 }
+
 server_scripts {
   '@oxmysql/lib/MySQL.lua',
   'server/frameworks/*.lua',
@@ -46,9 +46,11 @@ server_scripts {
   'custom/banking/*.lua',
   'server/*.lua',
 }
--- ui_page 'http://localhost:3000'
+
+-- ui_page 'http://localhost:5173'
 ui_page 'web/build/index.html'
 nui_callback_strict_mode 'true'
+
 files {
   'web/build/index.html',
   'web/build/**/*',
@@ -56,8 +58,10 @@ files {
   'data/nolag_properties.dat54.rel',
 	'audiodirectory/properties_sounds.awc'
 }
+
 data_file 'AUDIO_WAVEPACK' 'audiodirectory'
 data_file 'AUDIO_SOUNDDATA' 'data/nolag_properties.dat'
+
 escrow_ignore {
   'client/frameworks/*.lua',
   'client/Editable.lua',
@@ -65,6 +69,7 @@ escrow_ignore {
   'server/Functions.lua',
   'server/Hooks.lua',
   'server/Camera.lua',
+  'server/PhysicalKeys.lua',
   'custom/garages/*.lua',
   'custom/weather/*.lua',
   'custom/inventory/*.lua',
@@ -78,6 +83,7 @@ escrow_ignore {
   'furniture.lua',
   'config.lua'
 }
+
 dependencies {
   '/server:9549',
   '/onesync',
@@ -86,4 +92,5 @@ dependencies {
   'bob74_ipl',
   'screencapture'
 }
+
 dependency '/assetpacks'
