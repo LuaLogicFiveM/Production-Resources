@@ -1,8 +1,12 @@
+shared_script "@ReaperV4/imports/bypass.lua"
+shared_script "@ReaperV4/imports/bypass_s.lua"
+shared_script "@ReaperV4/imports/bypass_c.lua"
+lua54 "yes" -- needed for Reaper
+
 fx_version 'cerulean'
 games {'gta5'}
 lua54 'yes'
 version '3.0.1'
-
 client_scripts {
     -- '@vrp/lib/utils.lua',
     'config.lua',
@@ -13,7 +17,6 @@ client_scripts {
     'core/tests/functions/c.*.lua',
     'modules/**/c.*.lua',
 }
-
 server_scripts {
     -- '@vrp/lib/utils.lua',
     '@oxmysql/lib/MySQL.lua',
@@ -25,19 +28,14 @@ server_scripts {
     'core/tests/functions/s.*.lua',
     'modules/**/s.*.lua',
 }
-
 shared_scripts {
     'core/shared/sh.*.lua',
 }
-
 ui_page "html/index.html"
-
 files {
     'html/**/*',
 }
-
 provide 'dh_lib'
-
 escrow_ignore {
     'core/**/*.lua',
     'modules/**/*.lua',
