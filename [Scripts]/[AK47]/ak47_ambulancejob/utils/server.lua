@@ -224,7 +224,7 @@ end)
 ESX.RegisterCommand('revive', 'tmod', function(xPlayer, args, showError)
 	args.playerId.triggerEvent('ak47_ambulancejob:revive')
 	args.playerId.triggerEvent('ak47_ambulancejob:skellyfix')
-	exports.lorp_packed:SendLog('__**Revive Command Logs**__', "### Source Information \n**"..GetPlayerName(xPlayer.source).. " ("..xPlayer.source..") ("..playerDiscordId(source)..")**\n### Target Information \n**"..GetPlayerName(args.playerId).."("..args.playerId..") ("..playerDiscordId(source)..")**", 'https://discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa')
+	exports.lorp_packed:SendLog('__**Revive Command Logs**__', "### Source Information \n**"..GetPlayerName(xPlayer.source).. " ("..xPlayer.source..") ("..playerDiscordId(xPlayer.source)..")**\n### Target Information \n**"..GetPlayerName(args.playerId.source).."("..args.playerId.source..") ("..playerDiscordId(args.playerId.source)..")**", 'https://discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa')
 end, true, {help = _U('revivecmd'), validate = true, arguments = {
 	{name = 'playerId', help = _U('playerid'), type = 'player'}
 }})
