@@ -1,6 +1,5 @@
 local maps = {
-	"prompt_sandy_bank",
-	"prompt_sandy_market",
+	"prompt_sandy_apts",
 	"prompt_sandy_gasstation_carwash",
 	"prompt_sandy_cityhall",
 	"prompt_sandy_beaches"
@@ -8,23 +7,22 @@ local maps = {
 
 local events = {}
 
-CreateThread(function()
-  local exists = false
-  TriggerEvent("lyn-mapdata:exists", function(exists)
-    if exists then
-      exists = true
-    end
-  end)
-
-  if exists == true then
-    print("^6[Prompt]^1 Map data already exists. There must be only one mapdata installed!^0")
-  end
+-- Sandy mapdata exists event
+RegisterNetEvent("prompt:mapdata_exists", function(cb)
+  cb(true)
 end)
 
+-- Sandy mapdata list event
+RegisterNetEvent("prompt:mapdata_sendList", function(returnevent)
+  TriggerEvent(returnevent, maps)
+end)
+
+-- Legacy mapdata exists event
 RegisterNetEvent("lyn-mapdata:exists", function(cb)
   cb(true)
 end)
 
+-- Legacy support for individual map checks
 for i = 1, #maps do
   local eventName = maps[i] .. ":mapDataExists"
   if Debug == true then

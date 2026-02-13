@@ -1,6 +1,6 @@
 Config = {
     -- Configuración general
-    SpawnDistance = 20.0, -- Distancia para spawnear los props
+    SpawnDistance = 50.0, -- Distancia para spawnear los props
 
     Props = {
         lift = {
