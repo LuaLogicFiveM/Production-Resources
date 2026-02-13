@@ -19,10 +19,14 @@ Framework.SetSkin = function(skinData, isMale, model)
     local plyModel 
     if (Framework.AppereanceResource == 'illenium-appearance' or Framework.AppereanceResource == 'fivem-appearance' or Framework.AppereanceResource == 'rcore_clothing' or Framework.AppereanceResource == 'tgiann-clothing') and skinData ~= nil and skinData.model ~= nil then
         plyModel = type(skinData.model) == 'string' and joaat(skinData.model) or skinData.model
+        debugPrint('[^2FRAMEWORK.SETSKIN^7] Model found in skinData object.')
     else
+        debugPrint('[^2FRAMEWORK.SETSKIN^7] Model not found in skinData object. Gathering from other data [/]')
         if not model or model == '' then
             plyModel = isMale and GetHashKey("mp_m_freemode_01") or GetHashKey("mp_f_freemode_01")
+            debugPrint('[^2FRAMEWORK.SETSKIN^7] Accessing model through gender. Selected ^2'..(isMale and 'male' or 'female')..'^7 model.')
         else
+            debugPrint('[^2FRAMEWORK.SETSKIN^7] Accessing model through model param. Selected ^2'..(model)..'^7 model as ^3'..(type(model))..'^7')
             plyModel = type(model) ~= 'number' and tonumber(model) or model
         end
     end
@@ -40,7 +44,7 @@ Framework.SetSkin = function(skinData, isMale, model)
     SetEntityVisible(PlayerPedId(), true)
     SetEntityAlpha(PlayerPedId(), 255)
     
-    debugPrint('[ADDITIONAL OUTPUTS] Appearance selected: '..Framework.AppereanceResource)
+    debugPrint('[ADDITIONAL OUTPUTS] Appearance selected: '..(tostring(Framework.AppereanceResource)))
     if skinData == nil then return debugPrint('Could not find a skin for user. Setting default values') end
     
     local tattooData = false
@@ -59,6 +63,17 @@ Framework.SetSkin = function(skinData, isMale, model)
     elseif Framework.AppereanceResource == 'qb-clothing' then
         TriggerEvent('qb-clothing:client:loadPlayerClothing', skinData, ped)
     elseif Framework.AppereanceResource == 'crm-appearance' then
+        local crmAppearanceCallCorrect, resultCall = pcall(function()
+            return exports['crm-appearance']['crm_set_player_appearance']
+        end)
+        if not crmAppearanceCallCorrect then
+            while not crmAppearanceCallCorrect do
+                crmAppearanceCallCorrect, resultCall = pcall(function()
+                    return exports['crm-appearance']['crm_set_player_appearance']
+                end)
+                Wait(100)
+            end
+        end
         exports['crm-appearance']:crm_set_player_appearance(skinData)
     elseif Framework.AppereanceResource == 'bl_appearance' then
         exports.bl_appearance:SetPlayerPedAppearance(skinData)
@@ -105,7 +120,7 @@ Framework.OpenSkinMenu = function(gender)
         end, {ped = true, headBlend = true, faceFeatures = true, headOverlays = true, components = true, componentConfig = { masks = true, upperBody = true, lowerBody = true, bags = true, shoes = true, scarfAndChains = true, bodyArmor = true, shirts = true, decals = true, jackets = true }, props = true, propConfig = { hats = true, glasses = true, ear = true, watches = true, bracelets = true }, tattoos = true, enableExit = true})
     elseif Framework.AppereanceResource == 'illenium-appearance' then
         SetPedHeadBlendData(PlayerPedId(), 0, 0, 0, 0, 0, 0, 0, 0, 0, false)
-        TriggerEvent("illenium-appearance:client:startPlayerCustomization", function (skin)
+        exports['illenium-appearance']:startPlayerCustomization(function (skin)
             if skin then
                 TriggerServerEvent('ZSX_Multicharacter:Save:Appereance', skin)
             else

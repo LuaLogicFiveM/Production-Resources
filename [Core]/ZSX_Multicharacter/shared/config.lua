@@ -133,6 +133,7 @@ Config.DateFormat = 2                     --[[ [DEF. 1] [INT] Available formats:
                                             Config.DateFormat = 3 -- YYYY/DD/MM
                                             Config.DateFormat = 4 -- YYYY/MM/DD                           
                                           ]]
+Config.ApplyCoordinatesUpdate = true       -- [DEF. false] [BOOL] Apply update for coordinates (position column in table users) on new character creation [ESX only]
 
 Config.IdentityDuplicateCheck = false -- [DEF. false] [BOOL] Duplicate Name Check - Example: If user enters 'John Doe' and another one exist's, user cant create character
 

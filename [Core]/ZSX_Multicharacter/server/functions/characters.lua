@@ -717,7 +717,7 @@ Characters.RemoveUserOtherData = function(convertedIdentifier)
     debugPrint('[CHARACTERS.RemoveUserOtherData] Attempting to remove table data for identifier [^2'..convertedIdentifier..'^7] [/]')
     local count = 0
     for k,v in ipairs(Config.DB_TablesToRemove) do
-        local query = ('DELETE FROM `%s` WHERE `%s` = "%s"'):format(v.table, v.identifierColumn, convertedIdentifier)
+        local query = ('DELETE FROM `%s` WHERE `%s` = "%s"'):format(v.dbTable, v.identifierColumn, convertedIdentifier)
         MySQL.query.await(query)
         count = count + 1
     end
@@ -938,6 +938,22 @@ Framework.RegisterServerCallback('ZSX_Multicharacter:Create:Player', function(so
         }
         Addon.StarterItems(source)
 
+        if Config.ApplyCoordinatesUpdate then
+            local convertedIdentifierPosUpdate = Config.Prefix..""..(data.charIndex or playerCharacters + 1)..":"..(Characters.GetIdentifier(source))
+            Citizen.CreateThread(function()
+                Wait(2000)
+                local affected = MySQL.update.await("UPDATE `users` SET `position` = ? WHERE `identifier` = ?", {
+                    {
+                        x = Config.SpawnCoords.coords.x,
+                        y = Config.SpawnCoords.coords.y,
+                        z = Config.SpawnCoords.coords.z,
+                        heading = Config.SpawnCoords.heading
+                    }, convertedIdentifierPosUpdate
+                })
+                debugPrint(affected > 0 and "[^2NEW_CHAR^7] Additionally updated default coords to spawn coords for identifier [^1"..convertedIdentifierPosUpdate.."^7]" or "[^2NEW_CHAR^7] Could not update initial coords for identifier [^1"..convertedIdentifierPosUpdate.."^7]")
+            end)
+        end
+        
         cb({id = data.charIndex or playerCharacters + 1})
     elseif FrameworkSelected == 'QBCore' then
         local identifier = Characters.GetIdentifier(source)

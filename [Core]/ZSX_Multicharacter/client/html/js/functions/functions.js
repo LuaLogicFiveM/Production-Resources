@@ -734,7 +734,7 @@ const music = {
             this.fade(0, 1000)
         } else if (state == 'START') {
             $.post(`https://${GetParentResourceName()}/UIReady`, JSON.stringify({}))
-            if (this.player.seekTo == null || this.player.seekTo == undefined) return
+            if (!this.player || this.player.seekTo == null || this.player.seekTo == undefined) return
             this.player.seekTo(storage.dropTick)
             await this.checkForBuffer(()=> {
                 return this.state == 'PLAYING'
@@ -947,8 +947,10 @@ const cinematics = {
 
 const initial = {
     active: false,
+    wasInitialActive: false,
     init: function(state, text) {
         if (this.active == state) return
+        this.wasInitialActive = true
         state && $('.initial-discord-user-name').html(text)
         state ? $('.initial-screen').css({display: 'flex'}).hide().fadeIn(3000) : $('.initial-screen').fadeOut(3000)
         this.active = state
@@ -1066,6 +1068,27 @@ const creator = {
         $(target).addClass('active')
         this.updateGender($(target).data('type') == 'male')
     },
+
+    checkForm: function() {
+        let errorExist = false
+        let errorMessage = ''
+        const errorMessages = {
+            ['firstname']: "You need to set firstname of your character!",
+            ['lastname']: "You need to set lastname of your character!",
+            ['date']: "You need to set the date of birth!",
+            ['height']: "You need to set correct height of your character!",
+            ['nationality']: "You need to set nationality of your character!",
+        }
+        for (const[formName, state] of Object.entries(this.formErrors)) {
+            if (!state) {
+                errorMessage = errorMessages[formName]
+                errorExist = true
+                break
+            }
+        }
+
+        return [errorExist, errorMessage]
+    },
     clearForm: function() {
         $('.identity-input-text').val('')
         $('.icon-is-succesfull .success').attr('style', '')
@@ -1098,18 +1121,19 @@ const creator = {
     addNotification(text) {
         if (this.notificationAnimeObj) this.notificationAnimeObjIn.stop()
         if (this.notificationAnimeObjOut) this.notificationAnimeObjOut.stop()
-        $('.identity-notification').html(text)
+        $('.identity-notification-text').html(text)
         this.notificationAnimeObjIn = anime({
             targets: '.identity-notification',
-            top: '3vw',
+            bottom: '0vw',
             easing: 'cubicBezier(0.075, 0.82, 0.165, 1)',
             opacity: 1,
             complete: ()=> {
                 this.notificationAnimeObjIn = false
                 this.notificationAnimeObjOut = anime({
                     targets: '.identity-notification',
-                    top: '-2vw',
+                    bottom: '-3vw',
                     opacity: 0,
+                    delay: 5000,
                     easing: 'cubicBezier(0.075, 0.82, 0.165, 1)',
                     complete: ()=> {this.notificationAnimeObjOut = false}
                 })
@@ -1148,25 +1172,24 @@ const creator = {
             let year = Number(stringArray[10] + '' + stringArray[11] + '' + stringArray[12] + '' + stringArray[13])
             if (base.dateFormat === 1) {            // DD/MM/YYYY
                 day   = Number(stringArray[0] + stringArray[1]);
-                month = Number(stringArray[3] + stringArray[4]);
-                year  = Number(stringArray[6] + stringArray[7] + stringArray[8] + stringArray[9]);
+                month = Number(stringArray[5] + stringArray[6]);
+                year  = Number(stringArray[10] + stringArray[11] + stringArray[12] + stringArray[13]);
               }
               else if (base.dateFormat === 2) {       // MM/DD/YYYY
                 month = Number(stringArray[0] + stringArray[1]);
-                day   = Number(stringArray[3] + stringArray[4]);
-                year  = Number(stringArray[6] + stringArray[7] + stringArray[8] + stringArray[9]);
+                day   = Number(stringArray[5] + stringArray[6]);
+                year  = Number(stringArray[10] + stringArray[11] + stringArray[12] + stringArray[13]);
               }
               else if (base.dateFormat === 3) {       // YYYY/DD/MM
                 year  = Number(stringArray[0] + stringArray[1] + stringArray[2] + stringArray[3]);
-                day   = Number(stringArray[5] + stringArray[6]);
-                month = Number(stringArray[8] + stringArray[9]);
+                day   = Number(stringArray[7] + stringArray[8]);
+                month = Number(stringArray[12] + stringArray[13]);
               }
               else if (base.dateFormat === 4) {       // YYYY/MM/DD
                 year  = Number(stringArray[0] + stringArray[1] + stringArray[2] + stringArray[3]);
-                month = Number(stringArray[5] + stringArray[6]);
-                day   = Number(stringArray[8] + stringArray[9]);
+                month = Number(stringArray[7] + stringArray[8]);
+                day   = Number(stringArray[12] + stringArray[13]);
               }
-            
             error = stringArray.length < 14 || (month < 1 || month > 12) || (day < 1 || day > 31) || (year > this.currentYear || year < this.currentYear - 100)
         } else if (type == 'height') {
             let value = $(`.identity-input-number[data-type="height"]`).val()
@@ -1254,7 +1277,7 @@ const creator = {
             })
         }, 100) // 500ms delay
     },
-
+    validationTimeout: false,
     // Update the validation UI method
     updateValidationUI: function(type, error) {
         if (type != 'date') {
@@ -1277,6 +1300,17 @@ const creator = {
 
         this.formErrors[type] = !error
         this.updateCreateButtonState()
+
+        if (this.validationTimeout) {
+            clearTimeout(this.validationTimeout)
+            this.validationTimeout = false
+        }
+
+        this.validationTimeout = setTimeout(()=> {
+            let [errorExist, errorMessage] = this.checkForm()
+            if (!errorExist) return
+            this.addNotification(errorMessage)
+        }, 4000)
     },
 
     // New method to properly handle button state

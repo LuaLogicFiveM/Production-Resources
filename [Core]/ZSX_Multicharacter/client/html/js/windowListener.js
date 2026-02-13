@@ -61,8 +61,6 @@ window.addEventListener('keydown', e=> {
     }
 
     if (e.code == 'Escape') {
-        console.log(screens.current);
-        
         if (screens.current != false) {
             if (settings.getCurrentScreen() == 'game') return settings.handleNavbar('music')
             $.post(`https://${GetParentResourceName()}/screenShown`, JSON.stringify({screen: screens.current, alignment: screens.transitions[screens.current]['final'].alignment, init: false}))

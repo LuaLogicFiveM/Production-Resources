@@ -28,14 +28,34 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: -2vw;
+    bottom: -2vw;
     opacity: 0;
-    background-color: rgba(255, 255, 255, 0.03);
-    box-sizing: border-box;
-    padding: .25vw .5vw;
     font-size: .75vw;
-    font-weight: 400;
-    border-radius: .1vw;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: .25vw;
+}
+
+.notification .icon {
+    font-size: .75vw;
+    background-color: white;
+    height: 1.2vw;
+    width: 1.2vw;
+    color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notification .text {
+    font-size: .75vw;
+    font-weight: 500;
+    color: white;
+    border-left: .2vw solid white;
+    padding-left: .25vw;
+    padding-top: calc((1vw - .75vw) / 2);
+    padding-bottom: calc((1vw - .75vw) / 2);
 }
 
 .identity-container .bars-box .bar {

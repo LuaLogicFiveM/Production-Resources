@@ -4,12 +4,14 @@ Buckets.LoggedOffPlayer = function(src)
     SetPlayerRoutingBucket(src, src)
     SetRoutingBucketPopulationEnabled(src, Config.Buckets.PopulationEnabled)
     SetPlayerInvincible(src, true)
+    TriggerClientEvent('ZSX_Multicharacter:Client:BucketChanged', src, 'NOT_IN_BUCKET')
 end
 
 Buckets.LoggedInPlayer = function(src)
     debugPrint('Player ['..src..'] ('..GetPlayerName(src)..') is no longer in Multicharacter bucket.')
     SetPlayerRoutingBucket(src, 0)
     SetPlayerInvincible(src, false)
+    TriggerClientEvent('ZSX_Multicharacter:Client:BucketChanged', src, 'NOT_IN_BUCKET')
 end
 
 RegisterNetEvent('ZSX_Multicharacter:Event:SetPlayerState')

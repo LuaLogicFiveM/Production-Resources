@@ -92,6 +92,17 @@ AddEventHandler('ZSX_Multicharacter:Listener:ChangedLocation', function(location
     --Returns location coords for user selected location
 end)
 
+RegisterNetEvent('ZSX_Multicharacter:Client:BucketChanged', function(state)
+    if state == 'IN_BUCKET' then
+
+    elseif state == 'NOT_IN_BUCKET' then
+        Citizen.CreateThread(function()
+            Wait(2000)
+            DisableDispatch()
+        end)
+    end
+end)
+
 RegisterNetEvent('ZSX_Multicharacter:CreateQBInstance')
 AddEventHandler('ZSX_Multicharacter:CreateQBInstance', function(data)
     local Player = QBCore.Functions.GetPlayerData()
