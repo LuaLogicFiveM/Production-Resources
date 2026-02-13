@@ -5,7 +5,10 @@ lua54 "yes" -- needed for Reaper
 
 fx_version 'bodacious'
 game 'gta5'
+
 lua54 'yes'
+use_experimental_fxv2_oal 'yes'
+
 version '2.0.0'
 
 files {

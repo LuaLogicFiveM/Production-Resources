@@ -69,13 +69,14 @@ local function IsVehicleOwnedHash(model)
 end
 
 local function HasVehicle(source, model)
+	local vehicle = model
 	local identifier = GetIdentifier(source)
 	local player_vehicles = vehicles[identifier] or {}
 
 	if GetTableSize(player_vehicles) == 0 then return false end
 
     for spawncode, _ in pairs(player_vehicles) do
-		if joaat(spawncode) == model then
+		if joaat(spawncode) == vehicle then
 			return true
 		end
     end
@@ -85,19 +86,20 @@ end
 
 local function CheckVehicleHash(source, vehicle)
 	local src = tonumber(source)
+	local vehicleEntity = vehicle
 
-	if not DoesEntityExist(vehicle) then
+	if not DoesEntityExist(vehicleEntity) then
 		return
 	end
 
-	local vehicleModel = GetEntityModel(vehicle)
+	local vehicleModel = GetEntityModel(vehicleEntity)
 
 	if not IsVehicleOwnedHash(vehicleModel) then
 		return
 	end
 
 	SetTimeout(1500, function()
-		if not DoesEntityExist(vehicle) then
+		if not DoesEntityExist(vehicleModel) then
 			return
 		end
 
@@ -105,7 +107,7 @@ local function CheckVehicleHash(source, vehicle)
 			return
 		end
 
-		TaskLeaveVehicle(GetPlayerPed(src), vehicle, 0)
+		TaskLeaveVehicle(GetPlayerPed(src), vehicleNetId, 0)
 		Notify(src, 'You do not have access to drive this personal vehicle.', 'error')
 	end)
 end
@@ -581,8 +583,12 @@ if config.transfer.enabled then
 		local src = tonumber(source)
 		local identifier = GetIdentifier(src)
 
+		if not identifier then
+			return
+		end
+
 		if IsTransferred(identifier) == 'true' then
-			Notify(src, 'You already transferred your data', 'error')
+			Notify(src, 'Your data was already transferred', 'error')
 			return
 		end
 
@@ -1111,14 +1117,15 @@ end
 
 RegisterServerEvent('lualogic_trust:server:enteredVehicle', function(vehicle)
 	local src = source
+	local vehicleModel = vehicle
 
-	if not vehicle or type(vehicle) ~= "number" then
+	if not vehicleModel or type(vehicleModel) ~= "number" then
 		return
 	end
 
-	local vehicleNet = NetworkGetEntityFromNetworkId(vehicle)
+	local vehicleNetId = NetworkGetEntityFromNetworkId(vehicleModel)
 
-	CheckVehicleHash(src, vehicleNet)
+	CheckVehicleHash(src, vehicleNetId)
 end)
 
 AddEventHandler('onResourceStop', function(resourceName)
@@ -1256,3 +1263,49 @@ RegisterCommand('transfer_vehicles_owned', function(source, args)
 		return Notify(source, 'Invalid command usage (/transfer_vehicles_owned [id])', 'error')
 	end
 end, false)
+
+-- MARK: Cache Updating
+
+local function UpdateCacheRuntime(identifier, data)
+	if not identifier or not data then
+		lib.print.error('There was an issue reading the inputted data: ', identifier, data)
+		return
+	end
+
+	if data == 'NULL' then
+		vehicles[identifier] = {}
+		lib.print.info('Successfully updated the cache in runtime with no data for identifier: ', identifer)
+		return
+	end
+
+	local dataDecoded = json.decode(data)
+
+	if dataDecoded then
+		vehicles[identifier] = dataDecoded
+	else
+		lib.print.error('There was an issue decoding the inputted data: ', json.encode(data))
+		return
+	end
+
+	lib.print.info('Successfully updated the cache in runtime with new data for identifier: ', identifer)
+end
+
+RegisterCommand('updatecacheruntime', function(source, args)
+	local player = source == 0 and tonumber(source) or false
+	local target = args[1] and args[1] or false
+	local data = args[2] and args[2] or false
+
+	if not player or not target or not data then
+		lib.print.error('There was an issue reading the inputted arguments to the command: ', player, target, data)
+		return
+	end
+
+	local targetIdentifier = type(target) == "string" and target or GetIdentifier(target)
+
+	if not targetIdentifier then
+		lib.print.error('Unable to fetch target identifier: ', targetIdentifier)
+		return
+	end
+
+	UpdateCacheRuntime(targetIdentifier, data)
+end, true)
