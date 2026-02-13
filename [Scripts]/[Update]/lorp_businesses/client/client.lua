@@ -1,10 +1,10 @@
-RegisterNetEvent('lorp_shops:setProductPrice', function(shop, slot)
+RegisterNetEvent('lorp_businesses:setProductPrice', function(shop, slot)
     local input = lib.inputDialog(Strings.sell_price, {Strings.amount_input})
     local price = not input and 0 or tonumber(input[1]) --[[@as number]]
     price = price < 0 and 0 or price
 
     TriggerEvent('ox_inventory:closeInventory')
-    TriggerServerEvent('lorp_shops:setData', shop, slot, math.floor(price))
+    TriggerServerEvent('lorp_businesses:setData', shop, slot, math.floor(price))
     lib.notify({
         title = Strings.success,
         description = (Strings.item_stocked_desc):format(price),

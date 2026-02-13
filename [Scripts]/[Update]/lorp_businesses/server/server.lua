@@ -1,6 +1,3 @@
------------------For support, scripts, and more----------------
---------------- https://discord.gg/wasabiscripts  -------------
----------------------------------------------------------------
 local swapHook, buyHook
 
 if not IsESX() and not IsQBCore() then

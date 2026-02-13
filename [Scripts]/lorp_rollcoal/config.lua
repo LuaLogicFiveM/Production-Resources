@@ -15,8 +15,24 @@ Config.defaultParticleDuration          = -1            -- after how long the pa
 
 Config.useWhitelistedOnly               = true
 Config.whitelist                        = {
+    ["dons250"] = {
+        sizeScale = 5 ,
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
     ["tremshamocummin"] = {
         sizeScale = 3,
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
+    ["$sdjoker4g"] = {
+        sizeScale = "DEFAULT",
         engineUpgradeRequired = "DEFAULT",
         intervalType  = "DEFAULT",
         particleType = "DEFAULT",

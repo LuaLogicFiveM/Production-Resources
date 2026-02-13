@@ -475,8 +475,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Peyton Customs Paint and Body Shop',
-            description = 'Owner: Loopy',
+            title = '🔧 Wilsons Auto',
+            description = 'Owner: PDX.Jayy',
         },
     },
     {
@@ -530,8 +530,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Chop Chop Customs',
-            description = 'Owner: Stumpbuster',
+            title = '🔧 Outlaw Culture',
+            description = 'Owner: LeanKing69',
         },
     },
     {
@@ -729,8 +729,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🏠 SOA Playhouse',
-            description = 'Owner: SOA',
+            title = '🏠 StancedEnuff House',
+            description = 'Owner: Coleslaw',
         },
     },
     {

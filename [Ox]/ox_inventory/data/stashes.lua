@@ -165,7 +165,7 @@ return {-- make a new line here and paste after copying ->
 		label = 'Gun Store 778 Safe 2',
 		owner = true,
 		slots = 100,
-		weight = 200000
+		weight = 1200000
 	},
 
 	{ --807
@@ -685,13 +685,13 @@ return {-- make a new line here and paste after copying ->
 		weight = 10000000
 	},
 
-	{--johnny new house 506
+	{--506
 		coords = vec3(166.2338, 662.5651, 208.9282),
 		name = 'house_506',
 		label = '506 House Storage',
 		owner = true,
 		slots = 100,
-		weight = 1000000
+		weight = 100000
 	},
 
 	{--johnny new house 486
