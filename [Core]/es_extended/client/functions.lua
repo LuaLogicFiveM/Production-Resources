@@ -483,6 +483,20 @@ function ESX.Game.Teleport(entity, coords, cb)
     end
 end
 
+---@param object integer | string The object to spawn
+---@param coords table | vector3 The coords to spawn the object at
+---@param cb? function The callback function
+---@param networked? boolean Whether the object should be networked
+---@return integer | nil
+function ESX.Game.SpawnObject(object, coords, cb, networked)
+    local model = type(object) == "number" and object or joaat(object)
+
+    ESX.Streaming.RequestModel(model)
+
+	local obj = CreateObject(model, coords.x, coords.y, coords.z, networked == nil or networked, false, true)
+	return cb and cb(obj) or obj
+end
+
 ---@param vehicle integer The vehicle to delete
 ---@return nil
 function ESX.Game.DeleteVehicle(vehicle)
