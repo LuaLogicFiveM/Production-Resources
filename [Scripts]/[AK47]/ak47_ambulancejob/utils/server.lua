@@ -1,17 +1,17 @@
---[[for i, v in pairs(Config.JobNames) do
+for i, v in pairs(Config.JobNames) do
 	TriggerEvent('esx_society:registerSociety', i, i, 'society_'..i, 'society_'..i, 'society_'..i, {type = 'public'})
-end]]
+end
 
 ESX.RegisterServerCallback('ak47_ambulancejob:emscount', function(source, cb)
-    --local xPlayers = ESX.GetPlayers()
-    local ems = ESX.GetExtendedPlayers('job', 'ems')
-    --[[for i, v in pairs(xPlayers) do
+    local xPlayers = ESX.GetPlayers()
+    local ems = 0
+    for i, v in pairs(xPlayers) do
         local xPlayer = ESX.GetPlayerFromId(v)
         if xPlayer and xPlayer.job and xPlayer.job.name and Config.JobNames[xPlayer.job.name] then
             ems += 1
         end
-    end]]
-    cb(#ems)
+    end
+    cb(ems)
 end)
 
 RegisterNetEvent('ak47_ambulancejob:CombatLogPunishment', function()
@@ -152,12 +152,12 @@ end)
 ESX.RegisterServerCallback('ak47_ambulancejob:hasmoney', function(source, cb, total)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	local money = xPlayer.getAccount('bank').money
-	if GetResourceState('m-Insurance') == 'started' and exports['m-Insurance']:haveHealthInsurance(xPlayer.identifier) then
+	if GetResourceState('Insurance') == 'started' and exports['m-Insurance']:HasHealthInsurance(xPlayer.identifier) then
 		local discount = 500 --change this
 		local pay = total - discount
 		if money >= pay then
 			xPlayer.removeAccountMoney("bank", pay > 0 and pay or 0)
-			--addSocietyMoney(pay)
+			addSocietyMoney(pay)
 			cb(true)
 		else
 			cb(false)
@@ -165,7 +165,7 @@ ESX.RegisterServerCallback('ak47_ambulancejob:hasmoney', function(source, cb, to
 	else
 		if money >= total then
 			xPlayer.removeAccountMoney('bank', total)
-			--addSocietyMoney(total)
+			addSocietyMoney(total)
 			cb(true)
 		else
 			cb(false)
@@ -176,7 +176,7 @@ end)
 RegisterNetEvent('ak47_ambulancejob:gonegativebalance', function(total)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeAccountMoney('bank', total)
-	--addSocietyMoney(total)
+	addSocietyMoney(total)
 end)
 
 lib.callback.register('ak47_ambulancejob:hasdocmoney', function(source, total)
@@ -186,14 +186,21 @@ lib.callback.register('ak47_ambulancejob:hasdocmoney', function(source, total)
 end)
 
 lib.callback.register('ak47_ambulancejob:getdoccount', function()
-    local ems = ESX.GetExtendedPlayers('job', 'ems')
-	return #ems
+	local xPlayers = ESX.GetPlayers()
+    local ems = 0
+    for i, v in pairs(xPlayers) do
+        local xPlayer = ESX.GetPlayerFromId(v)
+        if xPlayer and xPlayer.job and xPlayer.job.name and Config.JobNames[xPlayer.job.name] then
+            ems += 1
+        end
+    end
+    return ems
 end)
 
 RegisterNetEvent('ak47_ambulancejob:removedocmoney', function(total)
 	local xPlayer = ESX.GetPlayerFromId(source)
 	xPlayer.removeAccountMoney('bank', total)
-	--addSocietyMoney(total)
+	addSocietyMoney(total)
 end)
 
 GetItemLabel = function(item)
@@ -201,57 +208,50 @@ GetItemLabel = function(item)
 end
 
 function addSocietyMoney(money)
-   --[[TriggerEvent('esx_addonaccount:getSharedAccount', 'society_ambulance', function(account)
+   TriggerEvent('esx_addonaccount:getSharedAccount', 'society_ambulance', function(account)
       account.addMoney(money)
-   end)]]
-end
-
-local function playerDiscordId(source)
-    local did = GetPlayerIdentifierByType(source, 'discord')
-	return did and string.gsub(did, 'discord:', '') or 'N/A'
+   end)
 end
 
 AddEventHandler('txAdmin:events:healedPlayer', function(eventData)
 	TriggerClientEvent('ak47_ambulancejob:revive', eventData.id)
 	TriggerClientEvent('ak47_ambulancejob:skellyfix', eventData.id)
-	exports.lorp_packed:SendLog('__**Tx Revive Logs**__', "### Source Information \n**"..GetPlayerName(source).. " ("..source..")**\n### Target Information \n**"..GetPlayerName(eventData.id).."("..eventData.id..")**", 'https://discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa')
 end)
 
 ESX.RegisterServerCallback('ak47_ambulancejob:getwebhook', function(source, cb)
 	cb(ScreenshotWebhook)
 end)
 
-ESX.RegisterCommand('revive', 'tmod', function(xPlayer, args, showError)
+ESX.RegisterCommand('revive', 'admin', function(xPlayer, args, showError)
 	args.playerId.triggerEvent('ak47_ambulancejob:revive')
 	args.playerId.triggerEvent('ak47_ambulancejob:skellyfix')
-	exports.lorp_packed:SendLog('__**Revive Command Logs**__', "### Source Information \n**"..GetPlayerName(xPlayer.source).. " ("..xPlayer.source..") ("..playerDiscordId(xPlayer.source)..")**\n### Target Information \n**"..GetPlayerName(args.playerId.source).."("..args.playerId.source..") ("..playerDiscordId(args.playerId.source)..")**", 'https://discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa')
 end, true, {help = _U('revivecmd'), validate = true, arguments = {
 	{name = 'playerId', help = _U('playerid'), type = 'player'}
 }})
 
-ESX.RegisterCommand('skellyfix', 'tmod', function(xPlayer, args, showError)
+ESX.RegisterCommand('skellyfix', 'admin', function(xPlayer, args, showError)
 	args.playerId.triggerEvent('ak47_ambulancejob:skellyfix')
 end, true, {help = _U('skellyfix'), validate = true, arguments = {
 	{name = 'playerId', help = _U('playerid'), type = 'player'}
 }})
 
-ESX.RegisterCommand('heal', 'owner', function(xPlayer, args, showError)
+ESX.RegisterCommand('heal', 'admin', function(xPlayer, args, showError)
 	args.playerId.triggerEvent('ak47_ambulancejob:heal')
 	args.playerId.triggerEvent('ak47_ambulancejob:skellyfix')
 end, true, {help = _U('healcmd'), validate = true, arguments = {
 	{name = 'playerId', help = _U('playerid'), type = 'player'}
 }})
 
-ESX.RegisterCommand('healall', 'owner', function(xPlayer, args, showError)
+ESX.RegisterCommand('healall', 'admin', function(xPlayer, args, showError)
 	TriggerClientEvent('ak47_ambulancejob:heal', -1)
 	TriggerClientEvent('ak47_ambulancejob:skellyfix', -1)
 end, true, {help = _U('healall'), validate = true, arguments = {}})
 
-ESX.RegisterCommand('reviveall', 'owner', function(xPlayer, args, showError)
+ESX.RegisterCommand('reviveall', 'admin', function(xPlayer, args, showError)
 	TriggerClientEvent('ak47_ambulancejob:revive', -1)
 	TriggerClientEvent('ak47_ambulancejob:skellyfix', -1)
 end, true, {help = _U('reviveall'), validate = true, arguments = {}})
 
-ESX.RegisterCommand('skellyfixall', 'owner', function(xPlayer, args, showError)
+ESX.RegisterCommand('skellyfixall', 'admin', function(xPlayer, args, showError)
 	TriggerClientEvent('ak47_ambulancejob:skellyfix', -1)
 end, true, {help = _U('skellyfixall'), validate = true, arguments = {}})

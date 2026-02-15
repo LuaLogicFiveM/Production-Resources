@@ -1,20 +1,20 @@
 Config.Skelly = true --Enable/Disable Skelly System
-Config.SaveInterval = 60 * 30 --seconds
+Config.SaveInterval = 60 * 10 --seconds
 
 Config.DamageMultiplier      = 1.0
 Config.FixAllDamageOnCheckIn = true
 Config.FixAllDamageOnRevive  = true
 
-Config.DamageNotify = false
-Config.DamageNotifyInterval = 60 --seconds
+Config.DamageNotify = true
+Config.DamageNotifyInterval = 60 * 5 --seconds
 
 --[[
 	Items like neckbrace will remove 80% damage by default and you have to take a Paracetamol to reduce left 20%
 	Paracetamol timeCycle means it will remove damage within that cycle of time
 ]]
 
-Config.DrivingDifficultyOnArmInjury = false -- Hand brake, steering wheel
-Config.DrivingDifficultyOnLegInjury = false -- Leg brake, acceleration
+Config.DrivingDifficultyOnArmInjury = true -- Hand brake, steering wheel
+Config.DrivingDifficultyOnLegInjury = true -- Leg brake, acceleration
 
 Config.MaxRecoilShakeOnArmDamage = 0.1 --to disable make it 0.0 or disable from Config.DamageEffects
 

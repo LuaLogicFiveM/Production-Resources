@@ -1,39 +1,45 @@
-Config.DisableCheckinWhenOnlineEms = 3
+Config.DisableCheckinWhenOnlineEms = 5
 Config.CheckInWithLowBalance = true
 Config.CheckIn = {
-    {-- Route 68
-        PedPosition = vector4(1102.0262, 2724.5833, 38.7120, 180.3925),
+    -- Pillbox Hill Hospital
+    {
+        PedPosition = vector4(338.5610, -586.0715, 28.7915, 254.0096), --last value is heading
         PedModel = 's_m_m_doctor_01',
         Time = 5, --seconds
-        Price = 100,
+        Price = 2000,
         Beds = {
-            {pos = vector4(1102.6163, 2740.9480, 38.3795, 185.0)},
-            {pos = vector4(1105.6556, 2740.9399, 38.3837, 185.0)},
-            {pos = vector4(1108.6659, 2740.8508, 38.3844, 185.0)},
+            {pos = vector4(357.7221, -563.0568, 29.7179, 165.7981)},
+            {pos = vector4(354.2785, -561.8972, 29.7179, 163.9834)},
+            {pos = vector4(351.9594, -568.8105, 29.7179, 340.8743)},
+            {pos = vector4(355.3020, -570.2560, 29.7179, 346.3218)},
+            {pos = vector4(361.1632, -564.2852, 29.7179, 159.5496)},
         },
     },
-    {-- Paleto
-        PedPosition = vector4(-256.2788, 6331.0859, 32.4272, 315.5809),
+    -- Sandy Shores Hospital
+    {
+        PedPosition = vector4(1758.9186, 3628.6611, 34.5832, 217.6769), --last value is heading
         PedModel = 's_m_m_doctor_01',
         Time = 5, --seconds
-        Price = 100,
+        Price = 2000,
         Beds = {
-            {pos = vector4(-254.4635, 6313.7021, 32.3421, 319.0266)},
-            {pos = vector4(-252.6673, 6311.9556, 32.3421, 316.0183)},
-            {pos = vector4(-256.2320, 6315.3677, 32.3421, 321.8250)},
+            {pos = vector4(1768.5503, 3655.5417, 35.7798, 33.7169)},
+            {pos = vector4(1766.5176, 3654.5857, 35.7798, 34.9527)},
+            {pos = vector4(1770.5734, 3656.6748, 35.7798, 33.6300)},
+            {pos = vector4(1765.4132, 3660.6189, 35.7798, 212.4213)},
+            {pos = vector4(1763.2910, 3659.6169, 35.7798, 212.0897)},
         },
     },
-    --[[{-- City
-        PedPosition = vector4(352.3416, -1411.4897, 32.4291, 41.6979),
+    -- Paleto Bay Hospital
+    {
+        PedPosition = vector4(-256.5107, 6331.3242, 32.4273, 316.1263), --last value is heading
         PedModel = 's_m_m_doctor_01',
         Time = 5, --seconds
-        Price = 100,
+        Price = 2000,
         Beds = {
-            {pos = vector4(315.6059, -1437.5424, 30.7418, 318.1016)},
-            {pos = vector4(317.9064, -1439.6458, 30.7418, 320.8582)},
-            {pos = vector4(320.2752, -1441.6656, 30.7418, 321.3431)},
-            {pos = vector4(319.8185, -1436.5708, 30.7418, 144.7491)},
-            {pos = vector4(317.1945, -1434.5798, 30.7418, 142.7395)},
+            {pos = vector4(-246.8799, 6318.2388, 33.3421, 148.0650)},
+            {pos = vector4(-245.1813, 6316.3877, 33.3421, 136.2112)},
+            {pos = vector4(-256.1312, 6315.3833, 33.3421, 318.8012)},
+            {pos = vector4(-252.6604, 6311.8911, 33.3421, 318.6067)},
         },
-    },]]
+    },
 }

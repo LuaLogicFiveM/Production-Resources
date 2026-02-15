@@ -5,7 +5,7 @@ Config.SharedObjectName = 'esx:getSharedObject'			--Change if your Shared Object
 Config.CrutchCommand = nil --set nil to remove the command
 
 Config.DisableJump = true
-Config.DisableRunning = true
+Config.DisableRunning = false
 Config.DisableShooting = true
 Config.DisableFighting = true
 Config.ForceFixMovementStyle = true
@@ -15,7 +15,8 @@ Config.NeverDetach = false
 Config.Whitelistedjobs = {
 	ems = true,
 	sahp = true,
-	sheriff = true
+	sheriff = true,
+	safd = true
 }
 
 Config.MinimumTime = 5 --in minute

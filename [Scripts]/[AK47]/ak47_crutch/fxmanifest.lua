@@ -5,7 +5,6 @@ lua54 "yes" -- needed for Reaper
 
 fx_version 'cerulean'
 game 'gta5'
-author "MenanAk47 (MenanAk47#3129)"
 version "1.4"
 shared_script '@es_extended/imports.lua'
 client_scripts {
@@ -16,7 +15,7 @@ client_scripts {
     'locales/en.lua',
 }
 server_scripts {
-	'@mysql-async/lib/MySQL.lua',
+	'@oxmysql/lib/MySQL.lua',
 	'config.lua',
 	'server/utils.lua',
 	'server/main.lua',
@@ -30,7 +29,5 @@ escrow_ignore {
     'client/utils.lua',
 }
 lua54 'yes'
-dependencies {
-    'es_extended',
-}
+
 dependency '/assetpacks'

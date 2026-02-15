@@ -5,8 +5,6 @@ lua54 "yes" -- needed for Reaper
 
 fx_version 'adamant'
 game 'gta5'
-description 'Ak47 Ambulance Job'
-author 'MenanAk47'
 version '7.2'
 
 shared_script '@es_extended/imports.lua'
@@ -39,7 +37,7 @@ client_scripts {
 }
 
 server_scripts {
-    "@mysql-async/lib/MySQL.lua",
+    "@oxmysql/lib/MySQL.lua",
     "config.lua",
     "modules/**/config.lua",
 
@@ -62,6 +60,5 @@ escrow_ignore {
 }
 
 lua54 'yes'
-
 
 dependency '/assetpacks'

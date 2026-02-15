@@ -1,8 +1,9 @@
 Config.Saline = {
-	addHealth = 1, --in every 2 seconds
-	addFood = 5, --in every 2 seconds
-	addWater = 5, --in every 2 seconds
-	removeStress = 5, --in every 2 seconds
+	addHealth = 5, 		 --in every 1 second
+	addFood = 5, 		 --in every 1 second
+	addWater = 5, 		 --in every 1 second
+	removeStress = 5, 	 --in every 1 second
+	reduceAddiction = 5, --in every 1 second (for ak47_qb_drugmanagerv2)
 	pauseDamageEffect = {
 		head  = false,
 		chest = false,

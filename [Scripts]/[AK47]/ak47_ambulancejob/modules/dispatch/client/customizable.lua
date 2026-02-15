@@ -4,6 +4,10 @@
             Config.CustomDispatch = 'cd_dispatch'
             return
         end
+        if GetResourceState('cd_dispatch3d') == 'started' or GetResourceState('cd_dispatch3d') == 'starting' then
+            Config.CustomDispatch = 'cd_dispatch3d'
+            return
+        end
         if GetResourceState('qs-dispatch') == 'started' or GetResourceState('qs-dispatch') == 'starting' then
             Config.CustomDispatch = 'qs-dispatch'
             return
@@ -16,23 +20,41 @@
 end)]]
 
 function CustomDispatch()
-    local data = exports['cd_dispatch']:GetPlayerInfo()
-    TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'ambulance', 'ems'},
-        coords = data.coords,
-        title = '10-15 - Injured Person',
-        message = 'A '..data.sex..' needs medical assistance at '..data.street, 
-        flash = 0,
-        unique_id = data.unique_id,
-        sound = 1,
-        blip = {
-            sprite = 431, 
-            scale = 1.2, 
-            colour = 3,
-            flashes = false, 
-            text = '911 - Injured Person',
-            time = 5,
-            radius = 0,
-        }
-    })
+    --[[if Config.CustomDispatch == 'cd_dispatch' or Config.CustomDispatch == 'cd_dispatch3d' then
+        local data = exports[Config.CustomDispatch]:GetPlayerInfo()
+        TriggerServerEvent('cd_dispatch:AddNotification', {
+            job_table = {'ambulance'}, 
+            coords = data.coords,
+            title = '10-15 - Injured Person',
+            message = 'A '..data.sex..' needs medical assistance at '..data.street, 
+            flash = 0,
+            unique_id = data.unique_id,
+            sound = 1,
+            blip = {
+                sprite = 431, 
+                scale = 1.2, 
+                colour = 3,
+                flashes = false, 
+                text = '911 - Injured Person',
+                time = 5,
+                radius = 0,
+            }
+        })
+    elseif Config.CustomDispatch == 'qs-dispatch' then
+        if PlayerData and (PlayerData.job.name == 'police' or PlayerData.job.name == 'sheriff') then
+            exports['qs-dispatch']:OfficerDown()
+        else
+            exports['qs-dispatch']:InjuriedPerson()
+        end
+    elseif Config.CustomDispatch == 'ps-dispatch' then
+        if PlayerData and (PlayerData.job.name == 'police' or PlayerData.job.name == 'sheriff') then
+            exports['ps-dispatch']:OfficerDown()
+        elseif PlayerData and PlayerData.job.name == 'ambulance' then
+            exports['ps-dispatch']:EmsDown()
+        else
+            exports['ps-dispatch']:InjuriedPerson()
+        end
+    else
+        --your custom export here
+    end]]
 end
