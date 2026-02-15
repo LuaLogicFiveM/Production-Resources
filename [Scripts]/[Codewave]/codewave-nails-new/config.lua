@@ -20,7 +20,7 @@ Config.StopSellingCommand = 'stopsellingnails'
 Config.StartSellingCommand = 'sellnails'
 
 
-Config.OnlyFemales = false  -- Enable or disable the restriction to only allow male peds
+Config.OnlyFemales = true  -- Enable or disable the restriction to only allow male peds
 Config.FemalePedModels = {
     `mp_f_freemode_01`,
 }

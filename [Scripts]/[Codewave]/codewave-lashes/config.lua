@@ -10,7 +10,7 @@ Config.Framework = 'ESX' -- 'ESX' or 'QBCore' (case sensitive)
 Config.InteractionType = 'ox_target' -- ox_target | 3dtext
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
 Config.TimeToCraft = 8000
-Config.DebugMode = true  -- Set to true to enable debug messages
+Config.DebugMode = false  -- Set to true to enable debug messages
 
 -- ONLY FOR NPC SALES.
 Config.MinItemsToSell = 1 
@@ -20,7 +20,7 @@ Config.StopSellingCommand = 'stopsellinglashes'
 Config.StartSellingCommand = 'selllashes'
 
 
-Config.OnlyFemales = false  -- Enable or disable the restriction to only allow female peds
+Config.OnlyFemales = true  -- Enable or disable the restriction to only allow female peds
 Config.MalePedModels = {
     `mp_f_freemode_01`,
 }
