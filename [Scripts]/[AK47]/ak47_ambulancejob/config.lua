@@ -14,9 +14,9 @@ Config.JobNames = {
 Config.UseDiscordLog = false -- if log is not working in your country, you can disable here
 
 Config.MaxHealth = 200
-Config.BleedOutTime = 60 * 4 --seconds
-Config.BrainDeadTime = 60 * 10 --seconds
-Config.ForceRespawnWait = 1 * 3 --seconds
+Config.BleedOutTime = 60 * 2 --seconds
+Config.BrainDeadTime = 60 * 20 --seconds
+Config.ForceRespawnWait = 60 * 2 --seconds
 Config.AutoRespawnAfterBrainDead = true
 
 Config.CrawlEnabled = false --crawl when down
@@ -27,7 +27,7 @@ Config.SetCrutchAfterCheckin = true -- require ak47_crutch
 Config.CrutchTimer = 5 -- 5 minutes
 
 Config.Blips = {
-    {label = 'Pillbox Hill Hospital', pos = vector3(1758.9010, 3628.6184, 34.5832), sprite = 61, size = 1.0, color = 2},
+    {label = 'Pillbox Hill Hospital', pos = vector3(358.5998, -594.3026, 28.6423), sprite = 61, size = 1.0, color = 2},
     {label = 'Sandy Shores Hospital', pos = vector3(1758.9010, 3628.6184, 34.5832), sprite = 61, size = 1.0, color = 2},
     {label = 'Paleto Bay Hospital', pos = vector3(-256.5107, 6331.3242, 32.4273), sprite = 61, size = 1.0, color = 2},
 }
