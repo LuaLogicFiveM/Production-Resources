@@ -11,7 +11,7 @@ Config.JobNames = {
     ['safd'] = true,
 }
 
-Config.UseDiscordLog = true -- if log is not working in your country, you can disable here
+Config.UseDiscordLog = false -- if log is not working in your country, you can disable here
 
 Config.MaxHealth = 200
 Config.BleedOutTime = 60 * 4 --seconds

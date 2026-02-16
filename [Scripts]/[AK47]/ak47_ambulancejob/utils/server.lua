@@ -208,9 +208,9 @@ GetItemLabel = function(item)
 end
 
 function addSocietyMoney(money)
-   TriggerEvent('esx_addonaccount:getSharedAccount', 'society_ambulance', function(account)
-      account.addMoney(money)
-   end)
+	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_safd', function(account)
+		account.addMoney(money)
+	end)
 end
 
 AddEventHandler('txAdmin:events:healedPlayer', function(eventData)
