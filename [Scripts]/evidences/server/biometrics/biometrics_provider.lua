@@ -1,13 +1,19 @@
-local biometricData = {}
+local database <const> = require "server.database"
+
+local biometricsProvider = {}
 
 local framework <const> = require "common.frameworks.framework"
 local cache = {}
 
-MySQL.query.await([[CREATE TABLE IF NOT EXISTS biometric_data (
-    identifier VARCHAR(500) PRIMARY KEY NOT NULL,
-    fingerprint VARCHAR(16) UNIQUE NOT NULL,
-    dna VARCHAR(16) UNIQUE NOT NULL
-)]])
+MySQL.update.await(
+    [[
+        CREATE TABLE IF NOT EXISTS biometric_data (
+            identifier VARCHAR(500) PRIMARY KEY NOT NULL,
+            fingerprint VARCHAR(16) UNIQUE NOT NULL,
+            dna VARCHAR(16) UNIQUE NOT NULL
+        )
+    ]]
+)
 
 -- Creates a 16-char fingerprint string
 local function createFingerprint(identifier)
@@ -36,7 +42,7 @@ end
 ---@param dna string The DNA of the player
 ---@return boolean Returns true in case the insertion has been successfull, otherwise false
 local function insertBiometricData(identifier, fingerprint, dna)
-    return pcall(MySQL.insert.await, "INSERT INTO biometric_data (identifier, fingerprint, dna) VALUES (?, ?, ?)", { identifier, fingerprint, dna })
+    return database.insert("INSERT INTO biometric_data (identifier, fingerprint, dna) VALUES (?, ?, ?)", identifier, fingerprint, dna).success
 end
 
 
@@ -48,10 +54,11 @@ local function getBiometricData(identifier)
             return cache[identifier]
         end
 
-        local row <const> = MySQL.prepare.await("SELECT fingerprint, dna FROM biometric_data WHERE identifier = ?", { tostring(identifier) })
-        if row then
-            cache[identifier] = row
-            return row
+        local result <const> = database.selectFirstRow("SELECT fingerprint, dna FROM biometric_data WHERE identifier = ?", tostring(identifier))
+
+        if result.success and result.response then
+            cache[identifier] = result.response
+            return result.response
         end
 
         for i = 1, 5 do
@@ -76,7 +83,7 @@ end
 ---@param playerId number The serverId of the player
 ---@param type? string The biometric data type to return
 ---@return string|{ fingerprint: string, dna: string }
-function biometricData.getBiometricData(playerId, type)
+function biometricsProvider.getBiometricData(playerId, type)
     local identifier <const> = framework.getIdentifier(playerId)
     if identifier then
         local data <const> = getBiometricData(identifier)
@@ -86,26 +93,14 @@ function biometricData.getBiometricData(playerId, type)
     end
 end
 
----@param playerId number The serverId of the player
-function biometricData.getFingerprint(playerId)
-    local identifier <const> = framework.getIdentifier(playerId)
-    if identifier then
-        local data <const> = getBiometricData(identifier)
-        if data then
-            return data.fingerprint
-        end
-    end
+function biometricsProvider.getFingerprint(playerId)
+    return biometricsProvider.getBiometricData(playerId, "fingerprint")
 end
 
----@param playerId number The serverId of the player
-function biometricData.getDNA(playerId)
-    local identifier <const> = framework.getIdentifier(playerId)
-    if identifier then
-        local data <const> = getBiometricData(identifier)
-        if data then
-            return data.dna
-        end
-    end
-end
+exports("getFingerprint", biometricsProvider.getFingerprint)
 
-return biometricData
+exports("getDNA", function(playerId)
+    return biometricsProvider.getBiometricData(playerId, "dna")
+end)
+
+return biometricsProvider
