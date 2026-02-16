@@ -131,7 +131,9 @@ local function IsVehicleTrusted(source, vehicle)
 end
 
 local function IsVehicleValid(source, vehicle)
-	return lib.callback.await('lualogic_trust:client:loaded', source, vehicle)
+	local validVehicle = lib.callback.await('lualogic_trust:client:loaded', source, vehicle)
+	print('vehicle valid: ', source, vehicle, validVehicle)
+	return validVehicle
 end
 
 lib.callback.register('lualogic_trust:server:requestTrusted', function(source)
