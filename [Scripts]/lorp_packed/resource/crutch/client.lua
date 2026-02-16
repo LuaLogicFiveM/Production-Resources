@@ -7,7 +7,7 @@ local cl_config = {
     disableWeapons = true,
     crutchModel = `prop_mads_crutch01`,
     clipSet = "move_lester_CaneUp",
-    jobs = {['ems'] = 0},
+    jobs = {['safd'] = 0},
     pickupAnim = {
         dict = "pickup_object",
         name = "pickup_low"

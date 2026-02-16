@@ -388,8 +388,8 @@ Config.Services.Companies = { -- the companies that are shown in the app
         }
     },
     {
-        job = "ems",
-        name = "EMS",
+        job = "safd",
+        name = "San Andreas Fire Department",
         icon = "https://cdn-icons-png.flaticon.com/128/1032/1032989.png",
         canMessage = true,
         location = {
@@ -1011,7 +1011,7 @@ Config.Ambulance.AdminPermissions = {
 }
 
 Config.Ambulance.Permissions = {
-    ["ems"] = {
+    ["safd"] = {
         home = {
             view = 0
         },

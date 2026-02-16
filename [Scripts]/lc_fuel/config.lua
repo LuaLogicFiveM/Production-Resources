@@ -40,7 +40,7 @@ Config.Accounts = {
 Config.JobDiscounts = {
     ["sheriff"] = 50, 			-- The job name (NOT THE LABEL), and the discount amount in % this job will receive
     ["sahp"] = 50,
-    ["ems"] = 50,
+    ["safd"] = 50,
 }
 
 -- Config for not owned gas stations

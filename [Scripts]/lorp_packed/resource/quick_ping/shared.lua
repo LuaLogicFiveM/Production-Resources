@@ -24,7 +24,7 @@ return {
             blipColor = 4
         },
 
-        ['ems'] = {
+        ['safd'] = {
             duration = 15000,
             color = { r = 255, g = 0, b = 0, a = 150 },
             blipColor = 49

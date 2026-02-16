@@ -9,12 +9,11 @@ SDC.AllowedJobs = { --All Jobs Allowed To Use Area Shutdown
 
     ["sheriff"] = {BlipColor = 3, MaxAreaSize = 200, Label = "Restricted Zone | Sheriff"},
     ["sahp"] = {BlipColor = 3, MaxAreaSize = 200, Label = "Restricted Zone | State Police"},
-    ["ems"] = {BlipColor = 6, MaxAreaSize = 150, Label = "Restricted Zone | EMS"},
-    ["fire"] = {BlipColor = 1, MaxAreaSize = 200, Label = "Restricted Zone | Fire Department"},
+    ["safd"] = {BlipColor = 1, MaxAreaSize = 200, Label = "Restricted Zone | Fire Department"},
 }
 
 SDC.MenuCommand = {
-    CommandName = "zonecreate", --Command name to open menu when keybind is DISABLED
+    CommandName = "zones", --Command name to open menu when keybind is DISABLED
     Keybind = { --To enable keybind below set enabled to true and put the key you want the menu to open to (If enabled the command will not be the same as above)
         Enabled = false, --If you want the keybind to be enabled
         Key = "O" --Key For Menu To Open

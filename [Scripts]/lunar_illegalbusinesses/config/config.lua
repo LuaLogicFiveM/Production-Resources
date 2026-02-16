@@ -23,7 +23,7 @@ Config.ped = {
         ['sheriff'] = true,
         ['sahp'] = true,
         ['safd'] = true,
-        ['ems'] = true,
+        ['safd'] = true,
     }
 }
 

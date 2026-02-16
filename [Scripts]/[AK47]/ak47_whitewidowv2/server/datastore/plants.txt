@@ -7,10 +7,10 @@
             "z": 13.21909999847412
         },
         "id": 1,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -20,10 +20,10 @@
             "z": 13.23950004577636
         },
         "id": 2,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -33,10 +33,10 @@
             "z": 13.2200002670288
         },
         "id": 3,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -46,10 +46,10 @@
             "z": 13.27540016174316
         },
         "id": 4,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -59,10 +59,10 @@
             "z": 13.27540016174316
         },
         "id": 5,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -72,10 +72,10 @@
             "z": 13.27070045471191
         },
         "id": 6,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -85,10 +85,10 @@
             "z": 13.25259971618652
         },
         "id": 7,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -98,10 +98,10 @@
             "z": 13.25259971618652
         },
         "id": 8,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     },
     {
         "time": 0,
@@ -111,9 +111,9 @@
             "z": 13.27070045471191
         },
         "id": 9,
-        "growing": 0,
-        "stage": 0,
         "fertilizer": 0,
-        "spray": 0
+        "spray": 0,
+        "stage": 0,
+        "growing": 0
     }
 ]

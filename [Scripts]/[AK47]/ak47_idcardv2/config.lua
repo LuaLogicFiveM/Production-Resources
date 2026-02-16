@@ -40,7 +40,7 @@ Config.GiveIdCommandAccessByJob = {
         minimumrank = 7,
         items = {'id_card', 'weapons_license', 'hunting_license', 'boating_license', 'fishing_license', 'sheriff_badge'}
     },
-    ['ems'] = {
+    ['safd'] = {
         minimumrank = 1,
         items = {'id_card', 'medical_license', 'ems_badge'}
     }

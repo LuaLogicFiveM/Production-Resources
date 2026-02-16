@@ -33,16 +33,16 @@ Config.DefaultUISettings = {
 -- Channels restricted to specific jobs.
 -- Players without the specified job will not be able to connect.
 Config.JobOnlyChannels = {
-    ['1'] = { 'sheriff', 'sahp', 'ems', 'fire' }, -- Only players with the 'police' or 'lspd' job can access channel '1'
-    ['2'] = { 'sheriff', 'sahp', 'ems', 'fire' },
-    ['3'] = { 'sheriff', 'sahp', 'ems', 'fire' },
-    ['4'] = { 'sheriff', 'sahp', 'ems', 'fire' },
-    ['5'] = { 'sheriff', 'sahp', 'ems', 'fire' },
-    ['6'] = { 'sheriff', 'sahp', 'ems', 'fire' },
-    ['7'] = { 'sheriff', 'sahp', 'ems', 'fire' },
-    ['8'] = { 'sheriff', 'sahp', 'ems', 'fire', 'dot' },
-    ['9'] = { 'sheriff', 'sahp', 'ems', 'fire', 'dot' },
-    ['10'] = { 'sheriff', 'sahp', 'ems', 'fire', 'dot' },
+    ['1'] = { 'sheriff', 'sahp', 'safd', 'fire' }, -- Only players with the 'police' or 'lspd' job can access channel '1'
+    ['2'] = { 'sheriff', 'sahp', 'safd', 'fire' },
+    ['3'] = { 'sheriff', 'sahp', 'safd', 'fire' },
+    ['4'] = { 'sheriff', 'sahp', 'safd', 'fire' },
+    ['5'] = { 'sheriff', 'sahp', 'safd', 'fire' },
+    ['6'] = { 'sheriff', 'sahp', 'safd', 'fire' },
+    ['7'] = { 'sheriff', 'sahp', 'safd', 'fire' },
+    ['8'] = { 'sheriff', 'sahp', 'safd', 'fire', 'dot' },
+    ['9'] = { 'sheriff', 'sahp', 'safd', 'fire', 'dot' },
+    ['10'] = { 'sheriff', 'sahp', 'safd', 'fire', 'dot' },
 }
 
 Config.AllowCallSignChangeJobs = {

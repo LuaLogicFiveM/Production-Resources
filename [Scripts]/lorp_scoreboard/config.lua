@@ -64,8 +64,8 @@ return {
             includeOffDuty = false,
         },
         {
-            label = 'EMS',
-            groups = {'ems'},
+            label = 'SAFD',
+            groups = {'safd'},
             icon = 'ic:round-emergency',
             includeOffDuty = false,
         },
