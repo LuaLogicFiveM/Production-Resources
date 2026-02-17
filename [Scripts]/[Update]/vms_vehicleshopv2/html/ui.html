@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://pagination.js.org/dist/2.6.0/pagination.min.js" rel="stylesheet" crossorigin="anonymous">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/main.css" rel="stylesheet">
+
+    <link href="css/resell.css" rel="stylesheet">
+    <link href="css/showroom.css" rel="stylesheet">
+    <link href="css/testdrive.css" rel="stylesheet">
+
+    <link href="css/management.css" rel="stylesheet">
+    <link href="css/management_order.css" rel="stylesheet">
+    <link href="css/management_orders.css" rel="stylesheet">
+
+    <link href="nui://vms_cityhall/html/css/shared.css" rel="stylesheet">
+
+    <!-- JAVASCRIPT -->
+     
+    <!-- <script type="text/javascript" src="../config/translation.json"></script> -->
+    <script src="../config/config.js" type="text/javascript"></script>
+</head>
+
+<body id="body">
+    <div class="testDrive">
+        <div>
+            <div id="remaining-time">25 <span>s</span></div>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="showroom">
+        <div class="header-left">
+            <div class="informations">
+                <img src="">
+                <div>
+                    <span class="brand-name"></span>
+                    <span class="model-name"></span>
+                </div>
+            </div>
+            <div class="data">
+                <div class="price"></div>
+                <div class="val seats">
+                    <img src="/html/icons/seats.png">
+                    <span class="text"></span>
+                    <span class="value"></span>
+                </div>
+                <div class="val max-speed">
+                    <img src="/html/icons/maxspeed.png">
+                    <span class="text"></span>
+                    <span class="value"></span>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="colors">
+                <div class="color-selector" data-type="primary">
+                    <p><i class="fa-solid fa-caret-right"></i> <span></span></p>
+                    <div>
+                        <div class="colors-grid">
+                            <span class="color" data-id="0" onclick="pickColor('primary', 0)" style="background: #0d1116;"></span>
+                            <span class="color" data-id="5" onclick="pickColor('primary', 5)" style="background: #c2c4c6;"></span>
+                            <span class="color" data-id="111" onclick="pickColor('primary', 111)" style="background: #fffff6;"></span>
+                            <span class="color" data-id="27" onclick="pickColor('primary', 27)" style="background: #c00e1a;"></span>
+                            <span class="color" data-id="38" onclick="pickColor('primary', 38)" style="background: #f78616;"></span>
+                            <span class="color" data-id="88" onclick="pickColor('primary', 88)" style="background: #ffcf20;"></span>
+                            <span class="color" data-id="53" onclick="pickColor('primary', 53)" style="background: #155c2d;"></span>
+                            <span class="color" data-id="92" onclick="pickColor('primary', 92)" style="background: #98d223;"></span>
+                            <span class="color" data-id="70" onclick="pickColor('primary', 70)" style="background: #0b9cf1;"></span>
+                            <span class="color" data-id="79" onclick="pickColor('primary', 79)" style="background: #2446a8;"></span>
+                            <span class="color" data-id="145" onclick="pickColor('primary', 145)" style="background: #621276;"></span>
+                            <span class="color" data-id="135" onclick="pickColor('primary', 135)" style="background: #f21f99;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="color-selector" data-type="secondary">
+                    <p><i class="fa-solid fa-caret-right"></i> <span></span></p>
+                    <div>
+                        <div class="colors-grid">
+                            <span class="color" data-id="0" onclick="pickColor('secondary', 0)" style="background: #0d1116;"></span>
+                            <span class="color" data-id="5" onclick="pickColor('secondary', 5)" style="background: #c2c4c6;"></span>
+                            <span class="color" data-id="111" onclick="pickColor('secondary', 111)" style="background: #fffff6;"></span>
+                            <span class="color" data-id="27" onclick="pickColor('secondary', 27)" style="background: #c00e1a;"></span>
+                            <span class="color" data-id="38" onclick="pickColor('secondary', 38)" style="background: #f78616;"></span>
+                            <span class="color" data-id="88" onclick="pickColor('secondary', 88)" style="background: #ffcf20;"></span>
+                            <span class="color" data-id="53" onclick="pickColor('secondary', 53)" style="background: #155c2d;"></span>
+                            <span class="color" data-id="92" onclick="pickColor('secondary', 92)" style="background: #98d223;"></span>
+                            <span class="color" data-id="70" onclick="pickColor('secondary', 70)" style="background: #0b9cf1;"></span>
+                            <span class="color" data-id="79" onclick="pickColor('secondary', 79)" style="background: #2446a8;"></span>
+                            <span class="color" data-id="145" onclick="pickColor('secondary', 145)" style="background: #621276;"></span>
+                            <span class="color" data-id="135" onclick="pickColor('secondary', 135)" style="background: #f21f99;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="color-selector" data-type="pearlescent">
+                    <p><i class="fa-solid fa-caret-right"></i> <span></span></p>
+                    <div>
+                        <div class="colors-grid">
+                            <span class="color" data-id="0" onclick="pickColor('pearlescent', 0)" style="background: #0d1116;"></span>
+                            <span class="color" data-id="5" onclick="pickColor('pearlescent', 5)" style="background: #c2c4c6;"></span>
+                            <span class="color" data-id="111" onclick="pickColor('pearlescent', 111)" style="background: #fffff6;"></span>
+                            <span class="color" data-id="27" onclick="pickColor('pearlescent', 27)" style="background: #c00e1a;"></span>
+                            <span class="color" data-id="38" onclick="pickColor('pearlescent', 38)" style="background: #f78616;"></span>
+                            <span class="color" data-id="88" onclick="pickColor('pearlescent', 88)" style="background: #ffcf20;"></span>
+                            <span class="color" data-id="53" onclick="pickColor('pearlescent', 53)" style="background: #155c2d;"></span>
+                            <span class="color" data-id="92" onclick="pickColor('pearlescent', 92)" style="background: #98d223;"></span>
+                            <span class="color" data-id="70" onclick="pickColor('pearlescent', 70)" style="background: #0b9cf1;"></span>
+                            <span class="color" data-id="79" onclick="pickColor('pearlescent', 79)" style="background: #2446a8;"></span>
+                            <span class="color" data-id="145" onclick="pickColor('pearlescent', 145)" style="background: #621276;"></span>
+                            <span class="color" data-id="135" onclick="pickColor('pearlescent', 135)" style="background: #f21f99;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="purchase-btn">
+                <span></span>
+            </div>
+            <div class="test-drive-btn">
+                <span></span>
+            </div>
+        </div>
+        <div class="help-infos">
+            <div>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 512.41">
+                        <g fill-rule="nonzero">
+                            <path class="fill-outline" d="M17.79 242.76h121.9v-33.87c-9.96-3.66-17.16-13.27-17.16-24.48v-37.72c0-11.21 7.18-20.83 17.16-24.49V72.94h-8.79c-31.1 0-59.38 12.73-79.88 33.23-20.5 20.5-33.23 48.78-33.23 79.88v56.71zm139.7-120.55c9.99 3.67 17.16 13.31 17.16 24.48v37.72c0 11.16-7.2 20.8-17.16 24.47v33.88h121.14l.75.04v-56.75c0-31.1-12.73-59.38-33.23-79.88-20.5-20.5-48.78-33.23-79.87-33.23h-8.79v49.27zM271.8 57.13l36.07-36.08c4.74-4.73 12.42-4.73 17.15 0 4.74 4.74 4.73 12.42 0 17.16l-35.7 35.69a107.783 107.783 0 0 0-17.52-16.77zm-52.84-21.19L233.04 6.3c3.2-5.86 10.55-8.02 16.4-4.82 5.87 3.2 8.03 10.54 4.83 16.41l-12.18 23.28-23.13-5.23zm93.85 89.43a106.14 106.14 0 0 0-6.4-22.97l25.7-13.86c5.86-3.21 13.21-1.04 16.41 4.82 3.2 5.86 1.04 13.21-4.82 16.4l-30.89 15.61zm-33.43 135.15-.75.04H17.79v120.95c0 31.1 12.73 59.38 33.23 79.88 20.5 20.5 48.78 33.23 79.88 33.23h35.38c31.09 0 59.37-12.73 79.87-33.23 20.5-20.5 33.23-48.78 33.23-79.88V260.52zm-113.1 251.89H130.9c-36 0-68.74-14.72-92.46-38.44S0 417.51 0 381.51V186.05c0-36.01 14.72-68.74 38.44-92.46S94.9 55.15 130.9 55.15h35.38c36.01 0 68.74 14.73 92.45 38.44 23.72 23.72 38.45 56.45 38.45 92.46v195.46c0 36-14.73 68.74-38.45 92.46-23.71 23.71-56.44 38.44-92.45 38.44z"></path>
+                            <path class="fill-primary" d="M157.49 72.94v49.27c9.99 3.67 17.16 13.31 17.16 24.48v37.72c0 11.16-7.2 20.8-17.16 24.47v33.88h121.14l.75.04v-56.75c0-31.1-12.73-59.38-33.23-79.88-20.5-20.5-48.78-33.23-79.87-33.23h-8.79z"></path>
+                        </g>
+                    </svg>
+                </div>
+                <div class="text">Freecam</div>
+            </div>
+        </div>
+        <div class="vehicles-filters">
+            <span></span>
+            <div class="line"></div>
+            <div class="filters-list">
+                <div>
+                    <label id="vehicle-category"></label>
+                    <select id="vehicle-category"></select>
+                </div>
+                <div>
+                    <label id="vehicle-brand-label"></label>
+                    <input id="vehicle-brand-input" type="text">
+                </div>
+                <div>
+                    <label id="vehicle-model-label"></label>
+                    <input id="vehicle-model-input" type="text">
+                </div>
+                <div id="min-price">
+                    <label id="min-price-label"></label>
+                    <input id="min-price-input" type="number">
+                </div>
+                <div id="max-price">
+                    <label id="max-price-label"></label>
+                    <input id="max-price-input" type="number">
+                </div>
+                <button id="apply-filter-showroom"></button>
+            </div>
+        </div>
+        <div class="vehicles-list">
+
+        </div>
+    </div>
+
+    <div class="management-menu">
+        <div class="header">
+            <p class="store-name"></p>
+            <div class="close">
+                <i class="fas fa-close"></i>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="side-bar">
+                <div data-href="main" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-home"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+                <div data-href="stock" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-warehouse"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+                <div data-href="vehicles-on-display" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+                <div data-href="orders" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+                <div data-href="order" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+                <div data-href="employees" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+                <div data-href="history-sales" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-file-invoice"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+                <!-- <div data-href="history-tests" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-square-parking"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div> -->
+                <div data-href="boss-management" class="button">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-users-cog"></i>
+                    </div>
+                    <div class="name">
+                        <p class="title"></p>
+                        <p class="description"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div data-type="main">
+                    <div>
+                        <div class="side-boxes">
+                            <div class="box" data-type="announcements">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="announcements-messages" id="announcements-chat">
+
+                                </div>
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <div class="box" data-type="total-sales">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <i class="fa-solid fa-cash-register"></i>
+                            </div>
+                            <div class="box" data-type="total-earned">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <i class="fa-solid fa-dollar"></i>
+                            </div>
+                            <div class="box" data-type="best-sellers">
+                                <div class="header"></div>
+                                <div class="products-list">
+
+                                </div>
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-type="stock">
+                    <div></div>
+                </div>
+                <div data-type="vehicles-on-display">
+                    <div></div>
+                </div>
+                <div data-type="orders">
+                    <div>
+                        <div class="orders-list">
+                            <table id="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th class="table-first" onclick="sortTable(0)" style="padding-block: 0.3em;"><span id="vehicles"></span> <span id="icon0" class="sort-icon"></span></th>
+                                        <th class="table-last center"><span id="option"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div data-type="order">
+                    <div>
+                        <div class="vehicles-filters">
+                            <span></span>
+                            <div class="line"></div>
+                            <div class="filters-list">
+                                <div>
+                                    <label id="vehicle-brand-label"></label>
+                                    <input id="vehicle-brand-input" type="text">
+                                </div>
+                                <div>
+                                    <label id="vehicle-model-label"></label>
+                                    <input id="vehicle-model-input" type="text">
+                                </div>
+                                <div>
+                                    <label id="min-price-label"></label>
+                                    <input id="min-price-input" type="number">
+                                </div>
+                                <div>
+                                    <label id="max-price-label"></label>
+                                    <input id="max-price-input" type="number">
+                                </div>
+                                <button id="apply-filter-order"></button>
+                            </div>
+                        </div>
+                        <div class="vehicles-list">
+                            <div>
+
+                            </div>
+                        </div>
+
+                        <div class="box box-right">
+                            <div class="header"></div>
+                            <div class="title"></div>
+                            <div class="data">
+                                <div class="list">
+
+                                </div>
+                                <div class="totalprice">
+
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <div class="btn" id="btn" data-option="make-order">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                    </div>
+                </div>
+                <div data-type="employees">
+                    <div>
+                        <div class="employees-list">
+                            <table id="employees-table">
+                                <thead>
+                                    <tr>
+                                        <th class="table-first" onclick="sortTable(0)" style="padding-block: 0.3em;">
+                                            <span id="employee"></span> <span id="icon0" class="sort-icon"></span></th>
+                                        <th onclick="sortTable(1)"><span id="orders"></span> <span id="icon1"
+                                                class="sort-icon"></span></th>
+                                        <th onclick="sortTable(3)"><span id="grade"></span> <span id="icon3"
+                                                class="sort-icon"></span></th>
+                                        <th class="table-last center"><span id="option"></span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="box box-right">
+                            <div class="header"></div>
+                            <div class="title"></div>
+                            <div class="data">
+
+                            </div>
+                            <div class="buttons">
+                                <div class="btn" id="btn" data-option="get_closest_players">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+                <div data-type="history-sales">
+                    <div>
+                        <div class="history-list">
+                            <table id="history-table">
+                                <thead>
+                                    <tr>
+                                        <th class="table-first" onclick="sortTable(0)" style="padding-block: 0.3em;">
+                                            <span id="date"></span> <span id="icon0" class="sort-icon"></span>
+                                        </th>
+                                        <th onclick="sortTable(1)">
+                                            <span id="seller"></span> <span id="icon1" class="sort-icon"></span>
+                                        </th>
+                                        <th onclick="sortTable(2)">
+                                            <span id="buyer"></span> <span id="icon2" class="sort-icon"></span>
+                                        </th>
+                                        <th onclick="sortTable(3)">
+                                            <span id="vehicle"></span> <span id="icon3" class="sort-icon"></span>
+                                        </th>
+                                        <th class="table-last" onclick="sortTable(4)">
+                                            <span id="price"></span> <span id="icon4" class="sort-icon"></span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div data-type="boss-management">
+                    <div>
+                        <div class="header-buttons">
+                            <div class="box box-left" data-type="balance">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="buttons">
+                                    <input data-input="withdraw" type="number" oninput="onInputBalance('withdraw')">
+                                    <input data-input="deposit" type="number" oninput="onInputBalance('deposit')">
+                                    <div class="btn" id="btn" data-option="withdraw">
+                                        <p></p>
+                                    </div>
+                                    <div class="btn" id="btn" data-option="deposit">
+                                        <p></p>
+                                    </div>
+                                    <div class="close-balance" onclick="balanceButton()">
+                                        <i class="fas fa-close"></i>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-dollar"></i>
+                            </div>
+                            <div class="box box-right" data-type="employees-count">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="buttons">
+                                    <div class="btn" id="btn" data-option="employees">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="box box-right-center" data-type="send-announcement">
+                            <div class="header"></div>
+                            <div class="title"></div>
+                            <textarea data-type="announcement" maxlength="500"></textarea>
+                            <div class="buttons">
+                                <div class="btn" id="btn" data-option="send-announce">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-bullhorn"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="resell">
+        <div>
+            <div class="card">
+                <div class="close">
+                    <i class="fas fa-close"></i>
+                </div>
+                <div id="date">
+                    <div></div>
+                    <p></p>
+                </div>
+                <div class="center" id="title"></div>
+                <hr>
+                <div>
+                    <div class="paragraph"><b>§ 1</b></div>
+                    <div class="paragraph_text_1"></div>
+                    <div class="paragraph"><b>§ 2</b></div>
+                    <div class="paragraph_text_2"></div>
+                    <div class="paragraph"><b>§ 3</b></div>
+                    <div class="paragraph_text_3"></div>
+                </div>
+                <div class="signatures">
+                    <div class="seller">
+                        <div id="give_invoice"></div>
+                        <div class="signature" id="signature_seller"></div>
+                        <div id="make_signature_seller"></div>
+                        <div class="dots">.........................</div>
+                        <div class="signature-text"></div>
+                    </div>
+                    <div class="buyer">
+                        <div class="signature" id="signature_buyer"></div>
+                        <div id="make_signature_buyer"></div>
+                        <div class="dots">.........................</div>
+                        <div class="signature-text"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card_second"></div>
+        </div>
+    </div>
+
+    <div class="contract">
+        <div>
+            <div class="card">
+                <div class="close">
+                    <i class="fas fa-close"></i>
+                </div>
+                <div class="center" id="title"></div>
+                <hr>
+                <div>
+                    <div class="order_details"></div>
+                    <div class="details_date"></div>
+                    <div class="details_vehicles"></div>
+                    <div class="details_price"></div>
+                    <div class="details_paid_status"></div>
+                    <br>
+                    <div class="additional_details"></div>
+                    <div class="additional_details_text"></div>
+                    <br>
+                    <div class="paragraph"><b>§ 1</b></div>
+                    <div class="paragraph_text"></div>
+                </div>
+                <div class="signatures">
+                    <div class="seller">
+                        <div class="signature" id="signature_seller"></div>
+                        <div class="dots">.........................</div>
+                        <div class="signature-text"></div>
+                    </div>
+                    <div class="buyer">
+                        <div class="signature" id="signature_buyer_contract"></div>
+                        <div id="make_signature_contract"></div>
+                        <div class="dots">.........................</div>
+                        <div class="signature-text"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card card_second"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    
+    <script src="js/loads.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <script src="nui://vms_cityhall/html/js/shared.js" type="text/javascript"></script>
+</body>
+
+</html>

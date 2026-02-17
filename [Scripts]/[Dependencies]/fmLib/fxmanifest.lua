@@ -16,12 +16,15 @@ games { 'gta5' }
 author 'meesvrh'
 repository 'fmLib'
 description 'A library for FiveM developers that wraps multiple frameworks, resources and modules.'
-version '1.15.3'
+version '2.0.2'
+lua54 'yes'
 
 shared_script {
   'settings.lua',
   'init.lua',
   'modules/**/shared.lua',
+  'adapters/base.lua',
+  'adapters/detector.lua',
   'autodetect.lua',
 }
 
@@ -29,14 +32,18 @@ client_scripts {
   'modules/cl_overrides.lua',
   'modules/**/client.lua',
   'modules/web/client/*.lua',
-  'wrappers/client/*.lua',
+  'adapters/client/**/*.lua',
+  'adapters/client/*.lua',
+  'api.lua',
 }
 
 server_scripts {
   '@oxmysql/lib/MySQL.lua',
   'versioncontrol.lua',
   'modules/**/server.lua',
-  'wrappers/server/*.lua',
+  'adapters/server/**/*.lua',
+  'adapters/server/*.lua',
+  'api.lua',
 }
 
 ui_page 'web/build/index.html'
@@ -46,5 +53,3 @@ files {
   'web/build/**/*',
   'web/assets/**/*',
 }
-
-lua54 'yes'

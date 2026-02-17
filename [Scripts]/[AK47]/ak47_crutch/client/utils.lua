@@ -6,9 +6,7 @@ Citizen.CreateThread(function()
         Citizen.Wait(0)
     end
     PlayerData = ESX.GetPlayerData()
-
     Citizen.Wait(1000)
-    print('callback')
     ESX.TriggerServerCallback('ak47_crutch:getstate', function(time)
         if time > 0 then
             forceCrunchStart(time)

@@ -278,7 +278,7 @@ return {
 	},
 
 	SAHP = {
-		name = 'Highway Patrol Armory',
+		name = 'State Patrol Armory',
 		groups = {['sahp'] = 0},
 		inventory = {
 			{ name = 'armour', price = 0 },
@@ -329,6 +329,32 @@ return {
 			{ name = 'ammo-50', price = 1000, grade = 11 },
 		}, locations = {
 			vec3(838.6940, -1282.7787, 21.2467)
+		}
+	},
+
+	mechanics = {
+		name = 'Mechanic Store',
+		groups = {['stanceandreas'] = 0},
+		inventory = {
+			-- drift tire system
+			{ name = 'kq_carjack', price = 0 },
+			{ name = 'kq_drifttire', price = 0 },
+			{ name = 'kq_regulartire', price = 0 },
+
+			-- spacer system
+			{ name = 'ls_spacer_red', price = 0 },
+			{ name = 'ls_spacer_black', price = 0 },
+			{ name = 'ls_spacer_silver', price = 0 },
+			{ name = 'ls_spacer_hardened', price = 0 },
+			{ name = 'ls_spacer_gold', price = 0 },
+			{ name = 'ls_jackstand', price = 0 },
+
+			-- plate flipper system
+			{ name = 'pd_screwdriver', price = 0 },
+			{ name = 'pd_licence_plate_flipper', price = 0 },
+		}, locations = {
+			vec3(1146.8923, -788.5696, 57.6025),
+			vec3(732.9742, -781.1617, 26.3664)
 		}
 	},
 }

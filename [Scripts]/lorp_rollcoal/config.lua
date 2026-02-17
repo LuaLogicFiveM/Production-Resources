@@ -31,6 +31,14 @@ Config.whitelist                        = {
         sizeReduction = "DEFAULT",
         particleDuration = "DEFAULT"
     },
+    ["$tremjwad2shit"] = {
+        sizeScale = "DEFAULT",
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
     ["$sdjoker4g"] = {
         sizeScale = "DEFAULT",
         engineUpgradeRequired = "DEFAULT",

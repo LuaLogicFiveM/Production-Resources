@@ -1,5 +1,91 @@
 return {
 
+	['carfax_report'] = {
+		label = 'CarFax Report',
+		weight = 0,
+		consume = 0,
+		stack = false
+	},
+
+	["kq_carjack"] = {
+		label = "Jack Stand (Drifting)",
+		description = 'Used to install drift tires',
+		weight = 1000,
+		stack = true,
+		close = true,
+	},
+
+	["kq_drifttire"] = {
+		label = "Drift Tire",
+		weight = 250,
+		stack = true,
+		close = true,
+	},
+
+	["kq_regulartire"] = {
+		label = "Stock Tire",
+		weight = 250,
+		stack = true,
+		close = true,
+	},
+
+	["ls_jackstand"] = {
+		label = "Jack Stand (Spacers)",
+		description = 'Used to install spacers',
+		weight = 1000,
+		stack = true,
+		close = true,
+	},
+
+	["ls_spacer_black"] = {
+		label = "Spacer (15mm)",
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	["ls_spacer_gold"] = {
+		label = "Spacer (30mm)",
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	["ls_spacer_hardened"] = {
+		label = "Spacer (20mm)",
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	["ls_spacer_red"] = {
+		label = "Spacer (10mm)",
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	["ls_spacer_silver"] = {
+		label = "Spacer (25mm)",
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
+	["pd_licence_plate_flipper"] = {
+		label = "Plate Flipper Install Kit",
+		weight = 2500,
+		stack = true,
+		close = true,
+	},
+
+	["pd_screwdriver"] = {
+		label = "Plate Flipper Screwdriver",
+		weight = 500,
+		stack = true,
+		close = true,
+	},
+
 	['gps'] = {
 		label = 'GPS',
 		weight = 1000,
