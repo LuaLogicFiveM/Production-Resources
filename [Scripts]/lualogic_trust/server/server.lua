@@ -99,7 +99,7 @@ local function CheckVehicleHash(source, vehicle)
 	end
 
 	SetTimeout(1500, function()
-		if not DoesEntityExist(vehicleModel) then
+		if not DoesEntityExist(vehicleEntity) then
 			return
 		end
 
@@ -1121,11 +1121,15 @@ RegisterServerEvent('lualogic_trust:server:enteredVehicle', function(vehicle)
 	local src = source
 	local vehicleModel = vehicle
 
-	if not vehicleModel or type(vehicleModel) ~= "number" then
+	print('enteredVehicle', vehicle, vehicleModel)
+
+	--[[if not vehicleModel or type(vehicleModel) ~= "number" then
 		return
-	end
+	end]]
 
 	local vehicleNetId = NetworkGetEntityFromNetworkId(vehicleModel)
+	
+	print('getEntityFromNet', vehicleNetId)
 
 	CheckVehicleHash(src, vehicleNetId)
 end)
