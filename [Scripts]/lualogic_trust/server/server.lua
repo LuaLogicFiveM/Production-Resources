@@ -107,7 +107,7 @@ local function CheckVehicleHash(source, vehicle)
 			return
 		end
 
-		TaskLeaveVehicle(GetPlayerPed(src), vehicleNetId, 0)
+		TaskLeaveVehicle(GetPlayerPed(src), vehicleEntity, 0)
 		Notify(src, 'You do not have access to drive this personal vehicle.', 'error')
 	end)
 end
@@ -1034,6 +1034,7 @@ if searchConfig.identifier.enabled then
 
 				local identifier = args[1]
 				local search = SearchPlayerIdentifier(src, identifier)
+
 				print('[SEARCH RESULT] - '..json.encode(search, {indent=true, sort_keys=true}))
 			end
 		end, true)
@@ -1121,15 +1122,11 @@ RegisterServerEvent('lualogic_trust:server:enteredVehicle', function(vehicle)
 	local src = source
 	local vehicleModel = vehicle
 
-	print('enteredVehicle', vehicle, vehicleModel)
-
-	--[[if not vehicleModel or type(vehicleModel) ~= "number" then
+	if not vehicleModel or type(vehicleModel) ~= "number" then
 		return
-	end]]
+	end
 
 	local vehicleNetId = NetworkGetEntityFromNetworkId(vehicleModel)
-	
-	print('getEntityFromNet', vehicleNetId)
 
 	CheckVehicleHash(src, vehicleNetId)
 end)
