@@ -8,9 +8,8 @@ Config.Debug = false -- Enable only when troubleshooting; disables most debug pr
 Config.VersionCheck = true -- Keep true to get important update and bug fix notifications
 
 Config.Seatbelt = {
-    enabled = true, -- Enable RegisterKeyMapping (players can rebind in Settings > Key Bindings)
+    type = "keymapping", -- "keymapping" (players can rebind in Settings > Key Bindings) or "control" (direct control ID check)
     key = "B", -- Default key (e.g., "B", "F1", "G") - only used if enabled = true
-    controlEnabled = true, -- Enable/disable direct control ID check (set to false to completely disable controlId checking)
     controlId = 29, -- Control ID for B (used if enabled = false and controlEnabled = true), Reference: https://docs.fivem.net/docs/game-references/controls/
     disableAnimation = false, -- If true, disables the seatbelt animation
     disableProp = false -- If true, disables the seatbelt prop (visual object)
@@ -81,6 +80,7 @@ Config.DisableSeatbeltsForVehicles = {
 -- Required sound files: seatbeltbuckle.ogg, seatbeltunbuckle.ogg, seatbeltalarm.ogg
 -- Download interact-sound: https://github.com/plunkettscott/interact-sound
 Config.Sounds = {
+    playForAllInVehicle = false, -- true = everyone in vehicle hears; false = individual: only you hear your fasten/unfasten, only unfastened players hear the alarm
     fasten = {
         enabled = true, -- Enable/disable fasten sound
         volume = 0.5, -- Volume for fasten sound (0.0 to 1.0)

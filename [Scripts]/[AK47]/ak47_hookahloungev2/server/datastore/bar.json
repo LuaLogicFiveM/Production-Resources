@@ -3,6 +3,19 @@
         0,
         0
     ],
+    "tequilashots": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "champagne": [
+        0,
+        0,
+        0,
+        0,
+        0
+    ],
     "cocktail": [
         0,
         0,
@@ -11,10 +24,7 @@
         0,
         0
     ],
-    "daiquiri": [
-        0,
-        0,
-        0,
+    "redwine": [
         0,
         0,
         0
@@ -36,19 +46,9 @@
         0,
         0
     ],
-    "champagne": [
+    "daiquiri": [
         0,
         0,
-        0,
-        0,
-        0
-    ],
-    "redwine": [
-        0,
-        0,
-        0
-    ],
-    "tequilashots": [
         0,
         0,
         0,
