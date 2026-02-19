@@ -105,7 +105,10 @@ Locales['tr'] = {
 
     -- Draw Text
     ['fixTrafo'] = "Panoyu aç",
-    ['parkVehicle'] = "Aracı güvenli bir yere park et, direğe çok yakın",
+    ['parkVehicleTooClose'] = "~r~Çok yakın!~s~ Direkten ~y~%dm~s~ geri çekil",
+    ['parkVehicleTooFar'] = "~y~Çok uzak!~s~ Direğe ~g~%dm~s~ daha yaklaş",
+    ['parkVehicleOk'] = "~g~Araç doğru park edildi!~s~ Asansör kurmak için direğe git",
+    ['liftAlreadyExists'] = "~r~Yakında başka asansör/merdiven var~s~ Önce onu kaldır",
     ['errorbuildlift'] = "Direğin çevresinde bir engel var, kaldır",
     ['buildlift'] = "Asansör kur",
     ['phonePole'] = "Telefon Direğini tamir et",
@@ -125,18 +128,25 @@ Locales['tr'] = {
     ['liftdown'] = "Asansör Aşağı",
 
     -- Eğitim
-    ['tutorialTitle1'] = "Elektirik Göreve Başlama",
-    ['tutorialDescription1'] = "Görevi başlat, araca bin ve haritada işaretli bölgeye git ve görevleri tamamla",
-    ['tutorialTitle2'] = "Boru Yerleştirme",
-    ['tutorialDescription2'] = "Bölgeye git, araçtan boruları al ve tek tek yerleştir, ardından vanayı bağla ve aç",
-    ['tutorialTitle3'] = "Vana Tamiri",
-    ['tutorialDescription3'] = "Vana tamiri için bölgeye git, etkileşime geçerek tamir et, ardından vanayı sağa çevirerek basıncı yeşil seviyeye ayarla",
-    ['tutorialTitle4'] = "Boru Tamiri",
-    ['tutorialDescription4'] = "Boru tamiri için önce vanayı kapat, kırık boruyu söküp araca koy, yeni boruyu al ve tak, ardından vanayı tekrar aç",
-    ['tutorialTitle5'] = "Tuvalet Tamiri",
-    ['tutorialDescription5'] = "Tuvalet tamiri için bölgeye git, etkileşime geç ve pompayı yukarı-aşağı hareket ettirerek tıkanıklığı gider",
-    ['tutorialTitle6'] = "Anahtar Tamiri (Bonus)",
-    ['tutorialDescription6'] = "Bonus görev için bölgeye git ve etkileşime geç, ardından yanmayan anahtarları etkinleştir",
+    ['tutorialTitle1'] = "Trafo Onarım Görevi",
+    ['tutorialDescription1'] =
+    "Bozuk trafonun yanına git ve E tuşuna basarak mini oyunu başlat. Sana verilen cihazı kullanarak anahtar değerlerini kontrol et, düşük değerli anahtarı tespit et, vida noktalarına tıklayarak sök ve yerine yeni anahtarı tak.",
+
+    ['tutorialTitle2'] = "Asansör Kurulumu",
+    ['tutorialDescription2'] =
+    "Direğin yanına git ve E tuşuna basarak onarım asansörünü kur. Ardından asansöre bin ve hareket tuşlarını kullanarak yukarı-aşağı hareket et.",
+
+    ['tutorialTitle3'] = "Sokak Lambası Görevi",
+    ['tutorialDescription3'] =
+    "E tuşuna basarak onarım mini oyununu aç ve fareyi yumuşak şekilde aşağı doğru sürükleyerek sokak lambasını onar.",
+
+    ['tutorialTitle4'] = "Merdiven Kurulumu",
+    ['tutorialDescription4'] = "Belirlenen alana yaklaş ve E tuşuna basarak onarım merdivenini kur.",
+
+    ['tutorialTitle5'] = "Trafik Lambası Görevi",
+    ['tutorialDescription5'] =
+    "Önce trafonun onarımını tamamla, ardından bozuk trafik lambalarına git, E tuşuna basarak mini oyunu aç ve aynı renkteki kabloları birbirine bağla.",
+
     ['howtomake'] = "Nasıl Yapılır",
     ['howtomakeDescription'] = "Aşağıdan Elektirik görevini nasıl yapacağını öğrenebilir ve paranı kazanabilirsin"
 }

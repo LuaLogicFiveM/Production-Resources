@@ -13,6 +13,11 @@ Config.InteractionHandler    =
 'drawtext'                               --  drawtext, qb-target - ox-target
 Config.ExampleProfilePicture = "https://i.ibb.co/YLLNHJP/lorp-logo-main.png"
 
+Config.Keys                  = {
+    inviteAccept  = 246, -- Y key
+    inviteDecline = 306, -- CTRL key
+}
+
 Config.Command               = {
     jobReset = "electricianreset",
     jobLeave = "electricianleave",
@@ -26,6 +31,8 @@ Config.TebexSystem           = false          -- true / false -- There is curren
 Config.Debug                 = false         -- true / false
 Config.jobLevelCheck         = false         -- true / false  -- Everyone in the lobby is checked for level.
 Config.closeInvisable        = false         -- prevents the player from being invisible during UI
+
+Config.MaxPlayersInLobby     = 4             -- max [4] Max players in lobby
 
 Config.DefaultUIPositions    = {
     teamList = { top = '77.22vh', left = '85.94vw' },
@@ -99,10 +106,11 @@ Config.Job                = {
         },
     },
     ['missioncompletedItems'] = {
-        giveItemPlayer = true, -- true / false
+        giveItemPlayer = false, -- true / false
+        dropMode = "weightedPool", -- "perItem" = each item rolls independently | "weightedPool" = 1 item from weighted pool
         itemList = {
-            { item = "ls_iron_ingot", count = math.random(1, 5) },
-            { item = "scrap_metal", count = 20 },
+            { item = "sandwich", count = math.random(1, 4), chance = 50 },
+            { item = "sandwich", count = 1,                 chance = 30 },
         },
     },
     ['drawtext'] = {
@@ -118,11 +126,18 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(2500, 7500),
+                money = math.random(5000, 7500),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 5000,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "black_money", count = 2500, chance = 50 },
+                },
             },
             regionJobVehicle = {
                 vehicle = "utillitruck4",
@@ -196,6 +211,13 @@ Config.Job                = {
                 bonusExtraMoney = 5000,
                 bonusExtraXP = 200,
             },
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "black_money", count = 2500, chance = 50 },
+                },
+            },
             regionJobVehicle = {
                 vehicle = "utillitruck4",
                 vehicle2 = 'utillitruck4',
@@ -267,6 +289,13 @@ Config.Job                = {
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 5000,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "black_money", count = 2500, chance = 50 },
+                },
             },
             regionJobVehicle = {
                 vehicle = "utillitruck4",
@@ -340,6 +369,13 @@ Config.Job                = {
                 bonusExtraMoney = 5000,
                 bonusExtraXP = 200,
             },
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "black_money", count = 2500, chance = 50 },
+                },
+            },
             regionJobVehicle = {
                 vehicle = "utillitruck4",
                 vehicle2 = 'utillitruck4',
@@ -411,6 +447,13 @@ Config.Job                = {
                 bonusExtraMoney = 5000,
                 bonusExtraXP = 200,
             },
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "black_money", count = 2500, chance = 50 },
+                },
+            },
             regionJobVehicle = {
                 vehicle = "utillitruck4",
                 vehicle2 = 'utillitruck4',
@@ -481,6 +524,13 @@ Config.Job                = {
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 5000,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "black_money", count = 2500, chance = 50 },
+                },
             },
             regionJobVehicle = {
                 vehicle = "utillitruck4",
@@ -756,6 +806,20 @@ Config.sendNotification   = function(messageData)
     NuiMessage('NOTIFICATION', { message = message, type = messageType })
 end
 
+-- This function is called for each player in the lobby before starting the job
+-- Return true to allow the player to start, false to prevent
+-- @param source: Player's server ID
+-- @param owneridentifier: Player's identifier (license/steam/etc)
+Config.startJobFunction   = function(source, owneridentifier)
+    -- Example: Check if player has specific job
+    -- local Player = GetPlayer(source)
+    -- if Player and Player.job and Player.job.name == "mechanic" then
+    --     return true
+    -- end
+    -- return false
+
+    return true -- Default: Allow everyone
+end
 Config.endJobFunction     = function(source, owneridentifier, scoreAmount)
 end
 

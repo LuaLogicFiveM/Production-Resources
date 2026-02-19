@@ -61,6 +61,14 @@ AddEventHandler("vRP:Active", function()
     TriggerServerEvent(_event('server:loadData'))
 end)
 
+-- Standalone framework player loaded event
+if Config.Framework == 'standalone' then
+    CreateThread(function()
+        Wait(1000)
+        TriggerServerEvent(_event('server:loadData'))
+    end)
+end
+
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
     Player = table.wipe(Player)
 end)
@@ -74,7 +82,13 @@ end)
 
 
 CreateThread(function()
-    Core, Config.Framework = GetCore()
+    -- Standalone framework bypass
+    if Config.Framework == 'standalone' then
+        Core = true
+    else
+        Core, Config.Framework = GetCore()
+    end
+
     spawnPed()
     createBlips()
     SetPlayerJob()
@@ -100,7 +114,12 @@ function SetPlayerJob()
     end
     WaitPlayer()
 
-    if Config.Framework == 'esx' or Config.Framework == 'oldesx' then
+    -- Standalone framework (no job system)
+    if Config.Framework == 'standalone' then
+        jobData.jobname = "electrician"
+        jobData.job_grade_name = "Electrician"
+        jobData.job_grade = 0
+    elseif Config.Framework == 'esx' or Config.Framework == 'oldesx' then
         local PlayerData = Core.GetPlayerData()
         jobData.jobname = PlayerData.job.name
         jobData.job_grade_name = PlayerData.job.label
@@ -118,7 +137,10 @@ function SetPlayerJob()
 end
 
 function WaitPlayer()
-    if Config.Framework == "esx" or Config.Framework == 'oldesx' then
+    -- Standalone framework (no player data waiting needed)
+    if Config.Framework == 'standalone' then
+        return
+    elseif Config.Framework == "esx" or Config.Framework == 'oldesx' then
         while Core == nil do Wait(0) end
         while Core.GetPlayerData() == nil do Wait(0) end
         while Core.GetPlayerData().job == nil do Wait(0) end
@@ -152,7 +174,6 @@ function createBlips()
             tonumber(Config.Job['coords'].intreactionCoords.y),
             tonumber(Config.Job['coords'].intreactionCoords.z))
         SetBlipSprite(blips, Config.Job['blip'].blipType)
-        SetBlipCategory(blips, 2) -- 2: Places category
         SetBlipDisplay(blips, 4)
         SetBlipScale(blips, Config.Job['blip'].blipScale)
         SetBlipColour(blips, Config.Job['blip'].blipColor)
@@ -169,9 +190,27 @@ function canOpen()
         return false
     end
     if Config.Job['job'] then
-        if Config.Job['job'] ~= 'all' and Config.Job['job'] ~= jobData.jobname then
-            Config.sendNotification(Config.NotificationText['wrongjob'].text, Config.NotificationText['wrongjob'].type)
-            return false
+        if Config.Job['job'] == 'all' then
+            return true
+        end
+
+        if type(Config.Job['job']) == 'table' then
+            local hasJob = false
+            for _, allowedJob in ipairs(Config.Job['job']) do
+                if allowedJob == jobData.jobname then
+                    hasJob = true
+                    break
+                end
+            end
+            if not hasJob then
+                Config.sendNotification(Config.NotificationText['wrongjob'].text, Config.NotificationText['wrongjob'].type)
+                return false
+            end
+        elseif type(Config.Job['job']) == 'string' then
+            if Config.Job['job'] ~= jobData.jobname then
+                Config.sendNotification(Config.NotificationText['wrongjob'].text, Config.NotificationText['wrongjob'].type)
+                return false
+            end
         end
     end
     return true
@@ -371,7 +410,7 @@ CreateThread(function()
                     label = option.label,
                     onSelect = function(data)
                         -- ox-target'da entity'ye erişim için güvenli yöntem
-                        local targetEntity = NetworkGetEntityFromNetworkId(netId) -- Network ID'den entity al
+                        local targetEntity = SafeNetworkGetEntityFromNetworkId(netId) -- Network ID'den entity al
                         if type(data) == "table" then
                             targetEntity = data.entity or data.ent or targetEntity
                         end
@@ -500,8 +539,8 @@ CreateThread(function()
         -- Network Entity Functions for qb-target
         addNetworkEntityTarget = function(netId, options)
             if not NetworkDoesNetworkIdExist(netId) then return nil end
-            local entity = NetworkGetEntityFromNetworkId(netId)
-            if not DoesEntityExist(entity) then return nil end
+            local entity = SafeNetworkGetEntityFromNetworkId(netId)
+            if not SafeDoesEntityExist(entity) then return nil end
 
             -- qb-target options format düzenlemesi
             local formattedOptions = {}
@@ -523,8 +562,8 @@ CreateThread(function()
         end
         removeNetworkEntityTarget = function(netId, interactionId)
             if not NetworkDoesNetworkIdExist(netId) then return end
-            local entity = NetworkGetEntityFromNetworkId(netId)
-            if DoesEntityExist(entity) then
+            local entity = SafeNetworkGetEntityFromNetworkId(netId)
+            if SafeDoesEntityExist(entity) then
                 exports['qb-target']:RemoveTargetEntity(entity)
             end
         end
@@ -896,51 +935,9 @@ function CreateFinishCamera()
 end
 
 function TriggerCallback(name, data)
-    local incomingData = false
-    local status = 'UNKOWN'
-    local counter = 0
-    while Core == nil do
-        Wait(0)
-    end
-    if Config.Framework == 'esx' then
-        Core.TriggerServerCallback(name, function(payload)
-            status = 'SUCCESS'
-            incomingData = payload
-        end, data)
-    else
-        Core.Functions.TriggerCallback(name, function(payload)
-            status = 'SUCCESS'
-            incomingData = payload
-        end, data)
-    end
-    CreateThread(function()
-        while incomingData == 'UNKOWN' do
-            Wait(1000)
-            if counter == 4 then
-                status = 'FAILED'
-                incomingData = false
-                break
-            end
-            counter = counter + 1
-        end
-    end)
-
-    while status == 'UNKOWN' do
-        Wait(0)
-    end
-    return incomingData
+    -- Always use TriggerServerCallback for all frameworks (simplified wrapper)
+    return TriggerServerCallback(name, data)
 end
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        if playerHandObject and (playerHandObject.pipe or playerHandObject.valve) then
-            DisableControlAction(0, 140, true)
-            DisableControlAction(0, 141, true)
-            DisableControlAction(0, 142, true)
-        end
-    end
-end)
 
 local deliveryThread = nil
 
@@ -1023,8 +1020,8 @@ function ToggleVehicleDeliveryInteraction(state)
                     local allVehiclesInZone = true
 
                     for _, vehData in ipairs(vehicles) do
-                        local veh = NetworkGetEntityFromNetworkId(vehData.netID)
-                        if veh and DoesEntityExist(veh) then
+                        local veh = SafeNetworkGetEntityFromNetworkId(vehData.netID)
+                        if veh and SafeDoesEntityExist(veh) then
                             local vehCoords = GetEntityCoords(veh)
                             if #(vehCoords - jobDeliverCoordsInteraction) > 10.0 then
                                 allVehiclesInZone = false
@@ -1143,4 +1140,58 @@ function RemoveSmokeEffect(effect)
         effect = nil
         effectId = false
     end
+end
+
+-- Safe entity existence check
+function SafeDoesEntityExist(entity)
+    if not entity or entity == 0 then return false end
+    local success, exists = pcall(function()
+        return DoesEntityExist(entity)
+    end)
+    return success and exists
+end
+
+-- Safe vehicle from netId (prevents "no object by ID" warning)
+function SafeNetToVeh(netId)
+    if not netId or netId == 0 then return nil end
+    if not NetworkDoesNetworkIdExist(netId) then return nil end
+
+    local success, veh = pcall(function()
+        return NetToVeh(netId)
+    end)
+
+    if not success or not veh or veh == 0 then return nil end
+    if not SafeDoesEntityExist(veh) then return nil end
+
+    return veh
+end
+
+-- Safe object from netId (prevents "no object by ID" warning)
+function SafeNetToObj(netId)
+    if not netId or netId == 0 then return nil end
+    if not NetworkDoesNetworkIdExist(netId) then return nil end
+
+    local success, obj = pcall(function()
+        return NetToObj(netId)
+    end)
+
+    if not success or not obj or obj == 0 then return nil end
+    if not SafeDoesEntityExist(obj) then return nil end
+
+    return obj
+end
+
+-- Safe network entity from network ID
+function SafeNetworkGetEntityFromNetworkId(netId)
+    if not netId or netId == 0 then return nil end
+    if not NetworkDoesNetworkIdExist(netId) then return nil end
+
+    local success, entity = pcall(function()
+        return NetworkGetEntityFromNetworkId(netId)
+    end)
+
+    if not success or not entity or entity == 0 then return nil end
+    if not SafeDoesEntityExist(entity) then return nil end
+
+    return entity
 end

@@ -1,11 +1,11 @@
 bot_Token = ""
-bot_logo = "https://i.ibb.co/YLLNHJP/lorp-logo-main.png"
-bot_name = "Jobs"
+bot_logo = "https://r2.fivemanage.com/biv23I9cFWICSObhZsr4C/LogoNEW.png"
+bot_name = "Tworst Store"
 
 
 discord_webhook = {
     ['jobfinish'] =
-    "https://discord.com/api/webhooks/1193124191340351488/ifh1J_EzZ7ZIHB_31nBAXTjXnEgK3NMZIVdAjxR4pK9PfGvuw4ZzYNP_V0ldZ9Gb3ptB",
+    "https://ptb.discord.com/api/webhooks/1353276960373211186/yGe6wZzxcTemg7MdufCo6nc3WPEEdLotxvQHfltZksDzGHgUJavi7ZCm_KtIr6aruR8A",
 }
 
 local Caches = {

@@ -1,15 +1,11 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'cerulean'
 game 'gta5'
-version '2.02'
+version '2.04'
+name 'tw-electrician-remake'
 
 shared_scripts {
 	'locales/*.lua',
-    'config/*.lua',
+	'config/*.lua',
 }
 
 -- shared_script '@vrp/lib/utils.lua'
@@ -41,7 +37,6 @@ escrow_ignore {
 	'server/utility.lua',
 	'server/editable.lua',
 	'server/aSQLInsert.lua',
-
 }
 
 lua54 'yes'

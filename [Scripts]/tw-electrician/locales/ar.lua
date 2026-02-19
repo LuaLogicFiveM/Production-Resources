@@ -105,7 +105,10 @@ Locales['ar'] = {
 
     --Draw Text
     ['fixTrafo'] = "افتح اللوحة",
-    ['parkVehicle'] = "اركن السيارة في مكان آمن، قريب جداً من العمود",
+    ['parkVehicleTooClose'] = "~r~قريب جداً!~s~ ارجع ~y~%dm~s~ من العمود",
+    ['parkVehicleTooFar'] = "~y~بعيد جداً!~s~ اقترب ~g~%dm~s~ من العمود",
+    ['parkVehicleOk'] = "~g~تم ركن المركبة بشكل صحيح!~s~ اذهب إلى العمود لبناء المصعد",
+    ['liftAlreadyExists'] = "~r~يوجد مصعد/سلم آخر بالقرب~s~ قم بإزالته أولاً",
     ['errorbuildlift'] = "هناك عائق حول العمود، قم بإزالته",
     ['buildlift'] = "بناء مصعد",
     ['phonePole'] = "إصلاح عمود الهاتف",

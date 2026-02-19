@@ -11,6 +11,16 @@ function GetCore()
     local object = nil
     local Framework = Config.Framework
 
+    -- Standalone framework bypass
+    if Config.Framework == "standalone" then
+        object = {
+            name = "standalone",
+            version = "1.0.0"
+        }
+        print("^2[tw-electrician]^7 Standalone mode enabled - No framework required")
+        return object, Framework
+    end
+
     if Config.Framework == "oldesx" then
         local counter = 0
         while not object do
@@ -90,10 +100,11 @@ function GetCore()
         end
     end
 
-    if Config.Framework == "vrp" then
+    if Config.Framework == "vrp" or Config.Framework == "vrp2" then
         local counter = 0
         local Proxy = nil
         -- local tunnel = module("vrp", "lib/Tunnel")
+
 
 
         local ok = pcall(function()
@@ -118,7 +129,6 @@ function GetCore()
                 "tw-electrician: vRP interface alınamadı. fxmanifest'te @vrp/lib dosyalarının eklendiğinden ve vRP'nin çalıştığından emin olun.")
         end
     end
-
     return object, Framework
 end
 

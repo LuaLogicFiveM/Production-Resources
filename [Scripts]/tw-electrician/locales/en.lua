@@ -105,7 +105,10 @@ Locales['en'] = {
 
     --Draw Text
     ['fixTrafo'] = "Open the Panel",
-    ['parkVehicle'] = "Park the car in a safe place, too close to the pole",
+    ['parkVehicleTooClose'] = "~r~Too close!~s~ Back up ~y~%dm~s~ from the pole",
+    ['parkVehicleTooFar'] = "~y~Too far!~s~ Move ~g~%dm~s~ closer to the pole",
+    ['parkVehicleOk'] = "~g~Vehicle parked correctly!~s~ Go to the pole to build lift",
+    ['liftAlreadyExists'] = "~r~Another lift/ladder exists nearby~s~ Remove it first",
     ['errorbuildlift'] = "There is an obstacle around the pole, remove it",
     ['buildlift'] = "Build a Lift",
     ['phonePole'] = "Fix the Telephone Pole",
@@ -126,19 +129,21 @@ Locales['en'] = {
     ['liftdown'] = "Lifting Down",
 
     -- Tutorial
-    ['tutorialTitle1'] = "Electrician Job Start",
-    ['tutorialDescription1'] = "Start the job, then get in the vehicle and go to the area marked on the map and complete the specified tasks",
-    ['tutorialTitle2'] = "Pipe Placement",
-    ['tutorialDescription2'] = "Go to the area and take the required pipes from the vehicle, placing them one by one, then attach the valve and open it",
-    ['tutorialTitle3'] = "Valve Repair",
-    ['tutorialDescription3'] = "Go to the area for valve repair and interact to repair, then turn the valve to the right to adjust the pressure to the level shown in green",
-    ['tutorialTitle4'] = "Pipe Repair",
-    ['tutorialDescription4'] = "Go to the area for pipe repair and to repair the pipe, first close the valve, then remove the broken pipe and put it in the car, then take a pipe from the car and reattach it, and then open the valve",
-    ['tutorialTitle5'] = "Toilet Repair",
-    ['tutorialDescription5'] = "Go to the area for Toilet Repair, then interact and move the plunger up and down to fix the clog",
-    ['tutorialTitle6'] = "Switch Repair (Bonus)",
-    ['tutorialDescription6'] = "To do the bonus task, go to the area and interact, then activate the switches that are not lit",
+    ['tutorialTitle1'] = "Transformer Repair Task",
+    ['tutorialDescription1'] =
+    "Go to the broken transformer and press E to start the minigame, use the device given to you to check the switch values, identify the low-value switch, remove it by clicking on the screw points, and then install the new switch in its place.",
+    ['tutorialTitle2'] = "How to Install the Elevator",
+    ['tutorialDescription2'] =
+    "Go next to the pole and press E to install the repair elevator, then enter the elevator and use the movement keys to move up and down.",
+    ['tutorialTitle3'] = "Street Lights Task",
+    ['tutorialDescription3'] =
+    "Press E to open the repair minigame and repair the street light by smoothly dragging the mouse downward.",
+    ['tutorialTitle4'] = "How to Install the Ladder",
+    ['tutorialDescription4'] = "Approach the designated area and press E to install the repair ladder.",
+    ['tutorialTitle5'] = "Traffic Lights Task",
+    ['tutorialDescription5'] =
+    "First repair the transformer, then go to the broken traffic lights, press E to open the minigame, and connect the wires that match the same colors.",
     ['howtomake'] = "How to do it",
     ['howtomakeDescription'] = "You can learn how to do the Electrician job from below and earn your money"
-        
+
 }

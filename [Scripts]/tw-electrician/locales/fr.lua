@@ -77,41 +77,52 @@ Locales['fr'] = {
     ['settingssaved'] = "Paramètres sauvegardés",
     ['missionnotpermit'] = "Cette tâche est déjà en cours",
 
-        --Draw Text
-        ['fixTrafo'] = "Open the Panel",
-        ['parkVehicle'] = "Park the car in a safe place, too close to the pole",
-        ['errorbuildlift'] = "There is an obstacle around the pole, remove it",
-        ['buildlift'] = "Build a Lift",
-        ['phonePole'] = "Fix the Telephone Pole",
-        ['buildladder'] = "Build a Ladder",
-        ['fixStreetLamp'] = "Fix the Street Lamp",
-        ['removelift'] = "Remove a Lift",
-        ['removeladder'] = "Remove a Ladder",
-        ['fixTrafficLamp'] = "Fix the Traffic Light",
-        ['fixHouseBoard'] = "Open the Panel",
-        ['regionFixedTrafoText'] = "Fix the Electricity",
-    
-    
-        ['PANO'] = "PANO",
-        ['ELECTVOLT'] = "Electric Volt",
-        ['ladderremove'] = "Ladder Remove",
-        ['liftremove'] = "Lift Remove",
-        ['liftup'] = "Lifting Up",
-        ['liftdown'] = "Lifting Down",
-    
-        -- Tutorial
-        ['tutorialTitle1'] = "Electrician Job Start",
-        ['tutorialDescription1'] = "Start the job, then get in the vehicle and go to the area marked on the map and complete the specified tasks",
-        ['tutorialTitle2'] = "Pipe Placement",
-        ['tutorialDescription2'] = "Go to the area and take the required pipes from the vehicle, placing them one by one, then attach the valve and open it",
-        ['tutorialTitle3'] = "Valve Repair",
-        ['tutorialDescription3'] = "Go to the area for valve repair and interact to repair, then turn the valve to the right to adjust the pressure to the level shown in green",
-        ['tutorialTitle4'] = "Pipe Repair",
-        ['tutorialDescription4'] = "Go to the area for pipe repair and to repair the pipe, first close the valve, then remove the broken pipe and put it in the car, then take a pipe from the car and reattach it, and then open the valve",
-        ['tutorialTitle5'] = "Toilet Repair",
-        ['tutorialDescription5'] = "Go to the area for Toilet Repair, then interact and move the plunger up and down to fix the clog",
-        ['tutorialTitle6'] = "Switch Repair (Bonus)",
-        ['tutorialDescription6'] = "To do the bonus task, go to the area and interact, then activate the switches that are not lit",
-        ['howtomake'] = "How to do it",
-        ['howtomakeDescription'] = "You can learn how to do the Electrician job from below and earn your money"
+    --Draw Text
+    ['fixTrafo'] = "Open the Panel",
+    ['parkVehicleTooClose'] = "~r~Trop proche !~s~ Reculez de ~y~%dm~s~ du poteau",
+    ['parkVehicleTooFar'] = "~y~Trop loin !~s~ Avancez de ~g~%dm~s~ vers le poteau",
+    ['parkVehicleOk'] = "~g~Véhicule bien garé !~s~ Allez au poteau pour construire l'élévateur",
+    ['liftAlreadyExists'] = "~r~Un autre élévateur/échelle existe à proximité~s~ Retirez-le d'abord",
+    ['errorbuildlift'] = "There is an obstacle around the pole, remove it",
+    ['buildlift'] = "Build a Lift",
+    ['phonePole'] = "Fix the Telephone Pole",
+    ['buildladder'] = "Build a Ladder",
+    ['fixStreetLamp'] = "Fix the Street Lamp",
+    ['removelift'] = "Remove a Lift",
+    ['removeladder'] = "Remove a Ladder",
+    ['fixTrafficLamp'] = "Fix the Traffic Light",
+    ['fixHouseBoard'] = "Open the Panel",
+    ['regionFixedTrafoText'] = "Fix the Electricity",
+
+
+    ['PANO'] = "PANO",
+    ['ELECTVOLT'] = "Electric Volt",
+    ['ladderremove'] = "Ladder Remove",
+    ['liftremove'] = "Lift Remove",
+    ['liftup'] = "Lifting Up",
+    ['liftdown'] = "Lifting Down",
+
+    -- Tutorial
+    ['tutorialTitle1'] = "Réparation du transformateur",
+    ['tutorialDescription1'] =
+    "Rendez-vous au transformateur endommagé et appuyez sur E pour démarrer le mini-jeu. Utilisez l’appareil fourni pour vérifier les valeurs des interrupteurs, identifiez celui avec la valeur la plus basse, retirez-le en cliquant sur les vis, puis installez le nouvel interrupteur.",
+
+    ['tutorialTitle2'] = "Installation de l’élévateur",
+    ['tutorialDescription2'] =
+    "Approchez-vous du poteau et appuyez sur E pour installer l’élévateur de réparation. Entrez ensuite dans l’élévateur et utilisez les touches de déplacement pour monter et descendre.",
+
+    ['tutorialTitle3'] = "Réparation des lampadaires",
+    ['tutorialDescription3'] =
+    "Appuyez sur E pour ouvrir le mini-jeu de réparation et réparez le lampadaire en faisant glisser la souris doucement vers le bas.",
+
+    ['tutorialTitle4'] = "Installation de l’échelle",
+    ['tutorialDescription4'] =
+    "Approchez-vous de la zone indiquée et appuyez sur E pour installer l’échelle de réparation.",
+
+    ['tutorialTitle5'] = "Réparation des feux de circulation",
+    ['tutorialDescription5'] =
+    "Réparez d’abord le transformateur, puis allez aux feux de circulation défectueux, appuyez sur E pour ouvrir le mini-jeu et connectez les câbles de la même couleur.",
+
+    ['howtomake'] = "How to do it",
+    ['howtomakeDescription'] = "You can learn how to do the Electrician job from below and earn your money"
 }

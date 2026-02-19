@@ -20,7 +20,7 @@ Locales['de'] = {
     ['jobReset'] = "Job zurücksetzen",
     ['jobStart'] = "Job starten",
     ['openJobMenu'] = "Jobmenü öffnen",
-    
+
     -- Settings
     ['GeneralTaskList'] = "Allgemeine Aufgabenliste",
     ['HistoryList'] = "Verlauf",
@@ -106,7 +106,10 @@ Locales['de'] = {
 
     --Draw Text
     ['fixTrafo'] = "Öffne das Panel",
-    ['parkVehicle'] = "Fahrzeug sicher parken, zu nah an der Säule",
+    ['parkVehicleTooClose'] = "~r~Zu nah!~s~ Fahre ~y~%dm~s~ vom Mast zurück",
+    ['parkVehicleTooFar'] = "~y~Zu weit!~s~ Fahre ~g~%dm~s~ näher an den Mast",
+    ['parkVehicleOk'] = "~g~Fahrzeug korrekt geparkt!~s~ Gehe zum Mast, um den Aufzug zu bauen",
+    ['liftAlreadyExists'] = "~r~Ein anderer Aufzug/Leiter ist in der Nähe~s~ Entferne ihn zuerst",
     ['errorbuildlift'] = "Hindernis erkannt, bitte entfernen",
     ['buildlift'] = "Hebebühne bauen",
     ['phonePole'] = "Telefonmast reparieren",
@@ -126,18 +129,25 @@ Locales['de'] = {
     ['liftdown'] = "Runterfahren",
 
     -- Tutorial
-    ['tutorialTitle1'] = "Start als Elektriker",
-    ['tutorialDescription1'] = "Job starten, Fahrzeug betreten und zur markierten Zone fahren. Erfülle dort die Aufgaben.",
-    ['tutorialTitle2'] = "Rohrplatzierung",
-    ['tutorialDescription2'] = "Fahre zur Zone, hole die Rohre aus dem Fahrzeug und platziere sie. Danach Ventil montieren und öffnen.",
-    ['tutorialTitle3'] = "Ventilreparatur",
-    ['tutorialDescription3'] = "Zur Zone fahren, reparieren und das Ventil nach rechts drehen, um den Druck einzustellen",
-    ['tutorialTitle4'] = "Rohrreparatur",
-    ['tutorialDescription4'] = "Ventil schließen, defektes Rohr entfernen, neues Rohr holen und anbringen. Danach Ventil öffnen.",
-    ['tutorialTitle5'] = "Toilettenreparatur",
-    ['tutorialDescription5'] = "Zur Zone fahren und die Saugglocke auf und ab bewegen, um die Verstopfung zu lösen",
-    ['tutorialTitle6'] = "Schalterreparatur (Bonus)",
-    ['tutorialDescription6'] = "Gehe zur Zone, interagiere und aktiviere die nicht leuchtenden Schalter",
+    ['tutorialTitle1'] = "Transformator-Reparatur",
+    ['tutorialDescription1'] =
+    "Gehe zum defekten Transformator und drücke E, um das Minispiel zu starten. Nutze das erhaltene Gerät, um die Schalterwerte zu prüfen, identifiziere den Schalter mit dem niedrigen Wert, entferne ihn durch Klicken auf die Schraubpunkte und installiere anschließend den neuen Schalter.",
+
+    ['tutorialTitle2'] = "Aufzug installieren",
+    ['tutorialDescription2'] =
+    "Gehe zum Mast und drücke E, um den Reparaturaufzug zu installieren. Steige anschließend ein und benutze die Bewegungstasten, um dich nach oben und unten zu bewegen.",
+
+    ['tutorialTitle3'] = "Straßenlaternen-Aufgabe",
+    ['tutorialDescription3'] =
+    "Drücke E, um das Reparatur-Minispiel zu öffnen, und repariere die Straßenlaterne, indem du die Maus sanft nach unten ziehst.",
+
+    ['tutorialTitle4'] = "Leiter installieren",
+    ['tutorialDescription4'] = "Gehe zum markierten Bereich und drücke E, um die Reparaturleiter zu installieren.",
+
+    ['tutorialTitle5'] = "Ampel-Reparatur",
+    ['tutorialDescription5'] =
+    "Repariere zuerst den Transformator, gehe dann zu den defekten Ampeln, drücke E, um das Minispiel zu öffnen, und verbinde die Kabel mit den gleichen Farben.",
+
     ['howtomake'] = "So geht's",
     ['howtomakeDescription'] = "Lerne unten, wie man den Elektriker-Job macht und verdiene Geld"
 }

@@ -339,62 +339,84 @@ function liftdrawtextphonePole()
                         if room.regionJobVehiclePlate and type(room.regionJobVehiclePlate) == "table" then
                             for _, vehicleData in ipairs(room.regionJobVehiclePlate) do
                                 if vehicleData.mainVehicle then
-                                    local veh = NetworkGetEntityFromNetworkId(vehicleData.netID)
-                                    if DoesEntityExist(veh) then
+                                    local veh = SafeNetworkGetEntityFromNetworkId(vehicleData.netID)
+                                    if SafeDoesEntityExist(veh) then
                                         local vehCoords = GetEntityCoords(veh)
                                         local distVehPole = #(vector2(vehCoords.x, vehCoords.y) - vector2(pole.coords.x, pole.coords.y))
 
-                                        if distVehPole < 9.0 then
+                                        if distVehPole < 12.0 then
                                             sleep = 0
 
                                             local distPlayerPole = #(vector2(playerCoords.x, playerCoords.y) - vector2(pole.coords.x, pole.coords.y))
 
-                                            if distVehPole <= 5.0 then
-                                                DrawText3D(playerCoords.x, playerCoords.y, playerCoords.z,
-                                                    Locales[Config.Locale]['parkVehicle'])
-                                            elseif distVehPole > 5.0 and distVehPole < 9.0 and distPlayerPole < 2.0 then
-                                                local areaIsClear = true
-                                                local vehiclesNearby = GetVehiclesInArea(pole.coords, 4.0)
+                                            local drawMarkerZ = electricianData.cachedZCoords[index]
+                                            if not drawMarkerZ then
+                                                drawMarkerZ = FindZForCoords(pole.coords.x, pole.coords.y)
+                                                electricianData.cachedZCoords[index] = drawMarkerZ - 0.05
+                                            end
+                                            local textZ = drawMarkerZ + 2.0
 
-                                                for _, nearVehicle in ipairs(vehiclesNearby) do
-                                                    if DoesEntityExist(nearVehicle) and nearVehicle ~= veh then
-                                                        areaIsClear = false
-                                                        break
-                                                    end
+                                            if distVehPole <= 5.0 then
+                                                local backDistance = math.ceil(5.0 - distVehPole) + 1
+                                                DrawText3D(pole.coords.x, pole.coords.y, textZ,
+                                                    Locales[Config.Locale]['parkVehicleTooClose']:format(backDistance))
+                                            elseif distVehPole >= 9.0 then
+                                                local approachDistance = math.ceil(distVehPole - 8.0)
+                                                DrawText3D(pole.coords.x, pole.coords.y, textZ,
+                                                    Locales[Config.Locale]['parkVehicleTooFar']:format(approachDistance))
+                                            elseif distVehPole > 5.0 and distVehPole < 9.0 then
+                                                if distPlayerPole >= 2.0 then
+                                                    DrawText3D(pole.coords.x, pole.coords.y, textZ,
+                                                        Locales[Config.Locale]['parkVehicleOk'])
                                                 end
 
-                                                local canBuild = true
-                                                if next(electricianData.Lifts) then
-                                                    for _, lift in pairs(electricianData.Lifts) do
-                                                        local playerCoords = GetEntityCoords(playerPed)
-                                                        local liftDist = #(vector2(lift.coords.x, lift.coords.y) - vector2(playerCoords.x, playerCoords.y))
-                                                        if liftDist < 20.0 then
-                                                            canBuild = false
+                                                if distPlayerPole < 2.0 then
+                                                    local areaIsClear = true
+                                                    local vehiclesNearby = GetVehiclesInArea(pole.coords, 4.0)
+
+                                                    for _, nearVehicle in ipairs(vehiclesNearby) do
+                                                        if DoesEntityExist(nearVehicle) and nearVehicle ~= veh then
+                                                            areaIsClear = false
                                                             break
                                                         end
                                                     end
-                                                end
 
-                                                if canBuild and areaIsClear and not isInteracting then
-                                                    local playerCoords = GetEntityCoords(playerPed)
-                                                    ShowUniversalInteraction(Config.InteractionKeys['E'],
-                                                        vector3(playerCoords.x, playerCoords.y, playerCoords.z),
-                                                        "[E] - " .. (Locales[Config.Locale]['buildlift']),
-                                                        5.0,
-                                                        {
+                                                    local canBuild = true
+                                                    if next(electricianData.Lifts) then
+                                                        for _, lift in pairs(electricianData.Lifts) do
+                                                            local playerCoords = GetEntityCoords(playerPed)
+                                                            local liftDist = #(vector2(lift.coords.x, lift.coords.y) - vector2(playerCoords.x, playerCoords.y))
+                                                            if liftDist < 20.0 then
+                                                                canBuild = false
+                                                                break
+                                                            end
+                                                        end
+                                                    end
+
+                                                    if canBuild and areaIsClear and not isInteracting then
+                                                        local playerCoords = GetEntityCoords(playerPed)
+                                                        ShowUniversalInteraction(Config.InteractionKeys['E'],
+                                                            vector3(playerCoords.x, playerCoords.y, playerCoords.z),
+                                                            "[E] - " .. (Locales[Config.Locale]['buildlift']),
+                                                            5.0,
                                                             {
-                                                                onSelect = function()
-                                                                    handlePhonePole(pole, room)
-                                                                end
-                                                            }
-                                                        })
-                                                elseif not areaIsClear then
-                                                    ShowUniversalInteraction(Config.InteractionKeys['E'],
-                                                        vector3(playerCoords.x, playerCoords.y, playerCoords.z),
-                                                        Locales[Config.Locale]['errorbuildlift'],
-                                                        nil,
-                                                        5.0,
-                                                        {})
+                                                                {
+                                                                    onSelect = function()
+                                                                        handlePhonePole(pole, room)
+                                                                    end
+                                                                }
+                                                            })
+                                                    elseif not canBuild then
+                                                        DrawText3D(pole.coords.x, pole.coords.y, textZ,
+                                                            Locales[Config.Locale]['liftAlreadyExists'])
+                                                    elseif not areaIsClear then
+                                                        ShowUniversalInteraction(Config.InteractionKeys['E'],
+                                                            vector3(playerCoords.x, playerCoords.y, playerCoords.z),
+                                                            Locales[Config.Locale]['errorbuildlift'],
+                                                            nil,
+                                                            5.0,
+                                                            {})
+                                                    end
                                                 end
                                             end
                                         end
@@ -555,8 +577,8 @@ function liftdrawtextStreetLamp()
                     if CoopDataClient.roomSetting.regionJobVehiclePlate and type(CoopDataClient.roomSetting.regionJobVehiclePlate) == "table" then
                         for _, vehicleData in ipairs(CoopDataClient.roomSetting.regionJobVehiclePlate) do
                             if vehicleData.mainVehicle then
-                                local vehicle = NetworkGetEntityFromNetworkId(vehicleData.netID)
-                                if DoesEntityExist(vehicle) and not CoopDataClient.roomSetting.ladderCraft then
+                                local vehicle = SafeNetworkGetEntityFromNetworkId(vehicleData.netID)
+                                if SafeDoesEntityExist(vehicle) and not CoopDataClient.roomSetting.ladderCraft then
                                     local vehicleCoords = GetEntityCoords(vehicle)
                                     local trafodistance = #(vector2(vehicleCoords.x, vehicleCoords.y) - vector2(value.coords.x, value.coords.y))
                                     local playerInVehicle = IsPedInAnyVehicle(PlayerPedId(), false)
@@ -566,39 +588,30 @@ function liftdrawtextStreetLamp()
                                         local playerCoords = GetEntityCoords(PlayerPedId())
                                         local distanceToTrunk = #(vector2(playerCoords.x, playerCoords.y) - vector2(value.coords.x, value.coords.y))
 
+                                        local drawMarkerZ = electricianData.cachedZCoordsStreet[key]
+                                        if not drawMarkerZ then
+                                            drawMarkerZ = FindZForCoords(value.coords.x, value.coords.y)
+                                            electricianData.cachedZCoordsStreet[key] = drawMarkerZ + 0.1
+                                        end
+                                        local textZ = drawMarkerZ + 2.0
+
+                                        local canBuildLadder = true
                                         if next(electricianData.Ladders) ~= nil then
                                             for k, v in pairs(electricianData.Ladders) do
                                                 local dist = #(v2(v.props.ladder) - v2(playerCoords))
-
-                                                if not (dist < 20.0) then
-                                                    if distanceToTrunk < 8.0 then
-                                                        if not electricianData.laddercraft and not isInteracting then
-                                                            ShowUniversalInteraction(Config.InteractionKeys['E'],
-                                                                vector3(playerCoords.x, playerCoords.y,
-                                                                    playerCoords.z),
-                                                                "[E] - " ..
-                                                                (Locales[Config.Locale]['buildladder']),
-                                                                5.0,
-                                                                {
-                                                                    {
-                                                                        onSelect = function()
-                                                                            if distanceToTrunk < 5.0 then
-                                                                                handlebuildLadder(electricianData, value)
-                                                                            end
-                                                                        end
-                                                                    }
-                                                                })
-                                                        end
-                                                    end
+                                                if dist < 20.0 then
+                                                    canBuildLadder = false
+                                                    break
                                                 end
                                             end
-                                        else
-                                            if distanceToTrunk < 8.0 then
+                                        end
+
+                                        if distanceToTrunk < 8.0 then
+                                            if canBuildLadder then
                                                 if not electricianData.laddercraft and not isInteracting then
                                                     ShowUniversalInteraction(Config.InteractionKeys['E'],
                                                         vector3(playerCoords.x, playerCoords.y, playerCoords.z),
-                                                        "[E] - " ..
-                                                        (Locales[Config.Locale]['buildladder']),
+                                                        "[E] - " .. (Locales[Config.Locale]['buildladder']),
                                                         5.0,
                                                         {
                                                             {
@@ -610,6 +623,9 @@ function liftdrawtextStreetLamp()
                                                             }
                                                         })
                                                 end
+                                            else
+                                                DrawText3D(value.coords.x, value.coords.y, textZ,
+                                                    Locales[Config.Locale]['liftAlreadyExists'])
                                             end
                                         end
                                     end

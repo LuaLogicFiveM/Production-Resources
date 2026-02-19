@@ -7,12 +7,9 @@ fx_version 'cerulean'
 game 'gta5'
 version '1.08'
 name 'tw-plumber'
-author 'tworst-script for plumber job'
-contact 'discord.gg/tworst'
-website 'tworst.com'
 
 shared_scripts {
-	-- '@ox_lib/init.lua',
+	'@ox_lib/init.lua',
 	'locales/*.lua',
 	'config/*.lua',
 }
