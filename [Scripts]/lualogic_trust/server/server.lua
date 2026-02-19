@@ -912,11 +912,10 @@ local function SearchVehicleModel(source, vehicle)
 
 	for id, search in pairs(vehicles) do
 		local identifier = id
-		for i = 1, #search do
-			local profile = search[i]
-			if profile.vehicle == vehicle then
+		for searchedVehicle, owned in pairs(search) do
+			if searchedVehicle == vehicle then
 				local data = MySQL.rawExecute.await('SELECT `name` FROM `lualogic_trust` WHERE `identifier` = ?', { identifier })[1]
-				result[identifier][data.name] = profile.owner
+				result[identifier] = {owner = owned, name = data.name or 'Name Not Logged'}
 			end
 		end
 	end
