@@ -10,6 +10,7 @@ return {
 
             blip = {
                 enabled = false,
+                label = 'Zancudo River',
 
                 radius = {
                     color = 38,
@@ -43,6 +44,7 @@ return {
 
             blip = {
                 enabled = false,
+                label = 'Vinewood Hills Lake',
 
                 radius = {
                     color = 38,
@@ -76,6 +78,7 @@ return {
 
             blip = {
                 enabled = false,
+                label = 'Alamo Sea',
 
                 radius = {
                     color = 38,
@@ -109,6 +112,7 @@ return {
 
             blip = {
                 enabled = false,
+                label = 'Del Perro Pier',
 
                 radius = {
                     color = 38,
@@ -142,6 +146,7 @@ return {
 
             blip = {
                 enabled = false,
+                label = 'Chumash Pier',
 
                 radius = {
                     color = 38,
