@@ -21,7 +21,7 @@ end
 
 function changeLiveries()
 	local liveries = {}
-	local liveryCount = GetVehicleLiveryCount(cache.vehicle)		
+	local liveryCount = GetVehicleLiveryCount(cache.vehicle)
 
 	for i = 1, liveryCount do
 		local vehicleLivery = GetVehicleLivery(cache.vehicle)
@@ -116,7 +116,7 @@ local function changePlate()
     })
 
     config.removeVehicleKeys(cache.vehicle, GetVehicleNumberPlateText(cache.vehicle))
-       
+
     if input then
         SetVehicleNumberPlateText(cache.vehicle, input[1])
         config.giveVehicleKeys(cache.vehicle, input[1])
@@ -127,7 +127,6 @@ local function changePlate()
 end
 
 local function repairVehicle()
-
     if progress({
         duration = config.repairTime * 1000,
         position = 'bottom',
@@ -135,8 +134,8 @@ local function repairVehicle()
         useWhileDead = false,
         canCancel = true,
         disable = { move = true, car = true, mouse = false, combat = true, },
-    }) then    
-        SetVehicleFixed(cache.vehicle)
+    }) then 
+        exports['lorp_vehicle_handler']:FixVehicle(cache.vehicle)
         stevo_lib.Notify(locale("notify.vehicleRepaired"), 'success', 3000)
         lib.showContext('stevo_jobgarages_mechanic')
     else
@@ -378,6 +377,7 @@ lib.registerContext({
 		onSelect = function()
             local _, wheelColor = GetVehicleExtraColours(cache.vehicle)
             SetVehicleExtraColours(cache.vehicle, 0, wheelColor)
+            lib.showContext('stevo_jobgarages_paint')
         end,
 	  },
 	}

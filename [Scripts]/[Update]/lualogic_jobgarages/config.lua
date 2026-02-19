@@ -10,7 +10,7 @@ return {
             groupRequired = 'sheriff',
             distance = 5,
             plate = 'LEO '..math.random(000, 999),
-            plateCallsign = true,
+            plateCallsign = true, -- not implemented yet
 
             marker = {
                 type = 36,
@@ -59,7 +59,7 @@ return {
                     label = 'Sheriff\'s Office Garage',
                     size = vec3(15, 15, 5),
                     rotation = 0,
-                    debug = true,
+                    debug = false,
                     menuCoords = vec3(2809.2329, 4831.6733, 47.1904),
                     spawnCoords = vec4(2813.6406, 4826.3599, 47.1816, 190.1705)
                 }
