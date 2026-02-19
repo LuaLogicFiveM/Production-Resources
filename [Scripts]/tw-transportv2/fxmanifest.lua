@@ -1,15 +1,7 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'cerulean'
 game 'gta5'
-version '1.03'
+version '1.05'
 name 'tw-transport'
-author 'tworst-script for transport job'
-contact 'discord.gg/tworst'
-website 'tworst.com'
 
 shared_scripts {
 	'locales/*.lua',
@@ -53,4 +45,5 @@ escrow_ignore {
 }
 
 lua54 'yes'
+
 dependency '/assetpacks'

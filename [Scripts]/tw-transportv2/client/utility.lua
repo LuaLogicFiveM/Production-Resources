@@ -202,7 +202,6 @@ function createBlips()
             tonumber(Config.Job['coords'].intreactionCoords.y),
             tonumber(Config.Job['coords'].intreactionCoords.z))
         SetBlipSprite(blips, Config.Job['blip'].blipType)
-        SetBlipCategory(blips, 2) -- 2: Places category
         SetBlipDisplay(blips, 4)
         SetBlipScale(blips, Config.Job['blip'].blipScale)
         SetBlipColour(blips, Config.Job['blip'].blipColor)
@@ -416,6 +415,8 @@ Citizen.CreateThread(function()
                 ClearPedSecondaryTask(playerPed)
                 Config.sendNotification(Config.NotificationText['cantentervehicle'])
             end
+        else
+            sleep = 2000
         end
     end
 end)
@@ -636,11 +637,13 @@ end
 
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(200)
         if isPlacingObject then
             if not IsEntityPlayingAnim(PlayerPedId(), "anim@heists@box_carry@", "idle", 3) then
                 carryObject()
             end
+            Citizen.Wait(200)
+        else
+            Citizen.Wait(1000)
         end
     end
 end)
@@ -698,6 +701,8 @@ Citizen.CreateThread(function()
             wait = 0
             SetEntityAlpha(PlayerPedId(), 0, false)
             SetLocalPlayerInvisibleLocally(true)
+        else
+            wait = 1000
         end
     end
 end)
@@ -1200,6 +1205,14 @@ function ToggleVehicleDeliveryInteractionTransport(state)
                     isPlayerInRegisteredVehicle = true
                 end
 
+                if not NetworkDoesNetworkIdExist(vehData.netID) then
+                    allVehiclesInDeliveryZone = false
+                    if Config.Debug then
+                        print("^1[DEBUG] Araç netID bulunamadı! Plaka: " ..
+                            vehData.plate .. " NetID: " .. vehData.netID .. "^0")
+                    end
+                    break
+                end
                 local veh = NetworkGetEntityFromNetworkId(vehData.netID)
 
                 -- Eğer araç nil ise veya yoksa, teslimat yapılamaz
@@ -1840,6 +1853,11 @@ end
 -- Otomatik bildirim sistemi
 Citizen.CreateThread(function()
     while true do
+        if not (CoopDataClient and CoopDataClient.roomSetting) then
+            Citizen.Wait(5000)
+            goto continue
+        end
+
         Citizen.Wait(Config.PoliceAlert.settings.alertIntervalMinutes * 60 * 1000) -- dakika to milisaniye
 
         if isIllegalMission() and isValidForPoliceAlert() then
@@ -1850,6 +1868,8 @@ Citizen.CreateThread(function()
                 sendIllegalTransportAlert()
             end
         end
+
+        ::continue::
     end
 end)
 
@@ -2124,7 +2144,8 @@ function createImpoundInteraction(vehicleData, foundItem)
 end
 
 Citizen.CreateThread(function()
-    while true do
+    Citizen.Wait(5000)
+    while jobData.jobname do
         Citizen.Wait(2000)
 
         if isPlayerPolice() then

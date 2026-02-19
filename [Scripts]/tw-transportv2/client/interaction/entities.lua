@@ -112,15 +112,20 @@ end
 
 CreateThread(function()
     while true do
-        local playerCoords = GetEntityCoords(PlayerPedId())
+        if CoopDataClient and CoopDataClient.roomSetting then
+            local playerCoords = GetEntityCoords(PlayerPedId())
 
-        clearTables()
+            clearTables()
 
-        buildEntities('CVehicle', playerCoords)
-        buildEntities('CPed', playerCoords)
-        buildEntities('CObject', playerCoords)
+            buildEntities('CVehicle', playerCoords)
+            buildEntities('CPed', playerCoords)
+            buildEntities('CObject', playerCoords)
 
-        Wait(2500)
+            Wait(2500)
+        else
+            clearTables()
+            Wait(5000)
+        end
     end
 end)
 

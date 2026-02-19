@@ -83,7 +83,9 @@ local function CreateInteractions()
 
         if isPrimary and currentInteraction ~= interaction.id then
             currentInteraction = interaction.id
-            currentAlpha = 255
+            if currentAlpha >= 0 then
+                currentAlpha = 255
+            end
             currentSelection = 1
         end
 
@@ -163,7 +165,7 @@ function clearCache()
 end
 
 local function isOnActiveJob()
-    if (CoopDataClient and CoopDataClient.roomSetting) or (Config.InteractionHandler == "scriptbase") then
+    if CoopDataClient and CoopDataClient.roomSetting then
         return true
     else
         return false

@@ -12,6 +12,11 @@ Config.MoneyType2            = "bank"       -- Money Type bank / cash
 Config.InteractionHandler    = 'ox-target' --  qb-target, drawtext,ox-target,scriptbase
 Config.ExampleProfilePicture = "https://i.ibb.co/YLLNHJP/lorp-logo-main.png"
 
+Config.Keys                  = {
+    inviteAccept  = 246, -- Y key
+    inviteDecline = 306, -- CTRL key
+}
+
 Config.Command               = {
     jobReset = "jobresettransport",
     jobLeave = "jobleavetransport",
@@ -99,11 +104,20 @@ Config.Job                   = {
         },
 
     },
+    -- Global missioncompletedItems (Fallback)
+    -- Each region has its own missioncompletedItems inside regionData.
+    -- If a region does NOT have missioncompletedItems defined, this global config is used as fallback.
     ['missioncompletedItems'] = {
-        giveItemPlayer = false, -- true / false
+        giveItemPlayer = false, -- true = give items on job complete, false = disabled
+        -- dropMode: "perItem" = each item rolls independently (multiple items can drop)
+        --           "weightedPool" = all item chances form a weight pool, 1 item is picked
+        dropMode = "perItem",
         itemList = {
-            { item = "sandwich", count = math.random(1, 4) },
-            { item = "sandwich", count = 1 },
+            -- chance: 1-99 = % probability, 100 = guaranteed
+            -- perItem mode: each item rolls its own chance, player can get multiple
+            -- weightedPool mode: chances become weights, 1 item picked from pool (100 = always given separately)
+            { item = "money", count = 5000, chance = 50 },
+            { item = "black_money",  count = 5000, chance = 25 },
         },
     },
     ['drawtext'] = {
@@ -124,6 +138,22 @@ Config.Job                   = {
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 5000,
                 bonusExtraXP = 250,
+            },
+            -- Region-specific item rewards on job completion
+            -- If this block is removed, the global missioncompletedItems (above regionData) will be used as fallback
+            -- giveItemPlayer: true = active, false = disabled for this region
+            -- dropMode: "perItem" = each item rolls independently (player can get multiple items)
+            --           "weightedPool" = all chances form a weight pool, only 1 item is picked from pool
+            -- chance: 1-99 = percentage probability, 100 = guaranteed drop
+            --   perItem: each item rolls its own chance separately
+            --   weightedPool: chances become weights in a pool, 1 item drawn (chance >= 100 items are given separately, always)
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "money", count = 5000, chance = 50 },
+                    { item = "black_money",  count = 5000, chance = 25 },
+                },
             },
             regionJobVehicle = {
                 truckVehicle = "tolpounder",
@@ -184,11 +214,20 @@ Config.Job                   = {
                 regionMinimumLevel = 2
             },
             regionAwards = {
-                money = math.random(15000, 20000),
+                money = math.random(10000, 15000),
                 xp = 3000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
             },
             regionJobVehicle = {
                 truckVehicle = "tolpounder",
@@ -255,6 +294,15 @@ Config.Job                   = {
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
             },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
+            },
             regionJobVehicle = {
                 truckVehicle = "tolpounder",
                 forkliftVehicle = "forklift",
@@ -320,6 +368,15 @@ Config.Job                   = {
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
             },
             regionJobVehicle = {
                 truckVehicle = "tolpounder",
@@ -407,6 +464,11 @@ Config.Job                   = {
             money = 3000
         },
     },
+}
+
+Config.Keys                  = {
+    inviteAccept  = 246, -- Y key
+    inviteDecline = 306, -- CTRL key
 }
 
 Config.TutorialList          = {
