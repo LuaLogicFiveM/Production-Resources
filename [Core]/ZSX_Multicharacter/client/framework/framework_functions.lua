@@ -120,7 +120,7 @@ Framework.OpenSkinMenu = function(gender)
         end, {ped = true, headBlend = true, faceFeatures = true, headOverlays = true, components = true, componentConfig = { masks = true, upperBody = true, lowerBody = true, bags = true, shoes = true, scarfAndChains = true, bodyArmor = true, shirts = true, decals = true, jackets = true }, props = true, propConfig = { hats = true, glasses = true, ear = true, watches = true, bracelets = true }, tattoos = true, enableExit = true})
     elseif Framework.AppereanceResource == 'illenium-appearance' then
         SetPedHeadBlendData(PlayerPedId(), 0, 0, 0, 0, 0, 0, 0, 0, 0, false)
-        exports['illenium-appearance']:startPlayerCustomization(function (skin)
+        TriggerEvent('illenium-appearance:client:startPlayerCustomization', function(skin)
             if skin then
                 TriggerServerEvent('ZSX_Multicharacter:Save:Appereance', skin)
             else
