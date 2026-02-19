@@ -148,7 +148,7 @@
         "price": 500
     },
     "blueberry_jam_cookie": {
-        "stock": 39,
+        "stock": 40,
         "price": 12500
     },
     "pink_sandy_joint": {

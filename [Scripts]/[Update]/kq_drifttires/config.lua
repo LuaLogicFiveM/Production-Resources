@@ -228,6 +228,7 @@ Config.wheelBalancers = {
     -- Locations where the wheel balancers will be created
     spawnLocations = {
         { x = 748.3369,  y = -774.2254,  z = 26.3665, h = 5.0 }, -- Rusty's Garage
+        { x = 741.0521,  y = 1281.7485,  z = 360.294, h = 2.2144 }, -- Stance Andreas
     },
 }
 
@@ -254,7 +255,7 @@ Config.tirePressure = {
 Config.tireShops = {
     enabled = true,
     -- Whether or not to show the shop blips on the map
-    showBlip = true,
+    showBlip = false,
 
     -- Whether or not anyone can buy the items or just players who are allowed to swap the tires (jobs) (based off Config.jobWhitelist)
     anyoneCanBuy = false,
@@ -291,7 +292,8 @@ Config.tireShops = {
     -- Locations at which the shops will be created
     locations = {
         { x = 72.0948, y = -1582.5962, z = 29.5, h = 191.0 }, -- Auto Parts Store
-        { x = 730.5756, y = -793.1351, z = 29.0, h = 311.0 }, -- Stance Andreas
+        { x = 730.5756, y = -793.1351, z = 29.58, h = 311.0 }, -- Rusty's Garage
+        { x = 753.1606, y = 1289.3107, z = 360.2946, h = 78.7669 }, -- Stance Andreas
     }
 }
 

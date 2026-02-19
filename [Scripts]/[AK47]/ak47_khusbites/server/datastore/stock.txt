@@ -316,7 +316,7 @@
         "price": 500
     },
     "blazebites": {
-        "stock": 42,
+        "stock": 45,
         "price": 500
     },
     "ice_cream_cake_pack_joint": {

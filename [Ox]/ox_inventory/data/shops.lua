@@ -39,8 +39,6 @@ return {
 			{ name = 'advancedrepairkit', price = 1000 },
 			{ name = 'cleaningkit', price = 100 },
 			{ name = 'parachute', price = 1000 },
-            { name = 'WEAPON_FLASHLIGHT', price = 500 },
-            { name = 'WEAPON_KNIFE', price = 500 },
 		}, locations = {
 			vec3(42.7479, -1490.0276, 29.7974), -- Addon Forum
 			vec3(2004.0485, 3783.9221, 32.2032), -- Addon Sandy
@@ -336,10 +334,10 @@ return {
 		name = 'Mechanic Store',
 		groups = {['stanceandreas'] = 0},
 		inventory = {
-			-- drift tire system
-			{ name = 'kq_carjack', price = 0 },
-			{ name = 'kq_drifttire', price = 0 },
-			{ name = 'kq_regulartire', price = 0 },
+			-- drift tire system (has own store system)
+			--{ name = 'kq_carjack', price = 0 },
+			--{ name = 'kq_drifttire', price = 0 },
+			--{ name = 'kq_regulartire', price = 0 },
 
 			-- spacer system
 			{ name = 'ls_spacer_red', price = 0 },
@@ -353,8 +351,9 @@ return {
 			{ name = 'pd_screwdriver', price = 0 },
 			{ name = 'pd_licence_plate_flipper', price = 0 },
 		}, locations = {
-			vec3(1146.8923, -788.5696, 57.6025),
-			vec3(732.9742, -781.1617, 26.3664)
+			vec3(1146.8923, -788.5696, 57.6025), -- Public Parts Store
+			vec3(732.9742, -781.1617, 26.3664), -- Rusty's Garage (Codeine/Random)
+			vec3(753.6370, 1285.2328, 360.2946), -- Stance Andreas - 526 - (Codeine/Random)
 		}
 	},
 }

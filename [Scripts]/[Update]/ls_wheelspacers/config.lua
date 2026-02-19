@@ -170,7 +170,7 @@ Config.shop = {
             z = 56.6025,
             price = 1000,
             isJack = true
-        }
+        },
 
     }
 }

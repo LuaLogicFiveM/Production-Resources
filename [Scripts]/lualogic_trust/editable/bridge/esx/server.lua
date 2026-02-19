@@ -23,6 +23,16 @@ function GetJob(src)
     return xPlayer.getJob()
 end
 
+function GetJob(src)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    if not xPlayer then
+        return DebugPrint('[GetIdentifier] - xPlayer was unable to be found for id '..src, 'error')
+    end
+
+    return xPlayer.getGroup()
+end
+
 if config.cache.names then
     RegisterNetEvent('esx:playerLoaded', function(player, xPlayer)
         local data = MySQL.query.await('SELECT `name` FROM `lualogic_trust` WHERE `identifier` = ? LIMIT 1', { xPlayer.identifier })

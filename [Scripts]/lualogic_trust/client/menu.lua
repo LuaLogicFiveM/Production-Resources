@@ -204,9 +204,9 @@ local function PlacePreviewVehicle(type, input)
     local vehicle = input[4]
 
     local coords <const> = GetEntityCoords(cache.ped)
-    tempVehicle = CreateVehicle(lib.requestModel(vehicle), coords.x, coords.y, coords.z + 1.5, false, true, false)
+    tempVehicle = CreateVehicle(lib.requestModel(vehicle), coords.x, coords.y, coords.z + 1.5, 0.0, true, false)
 
-    SetEntityHeading(tempVehicle, 0)
+    SetEntityHeading(tempVehicle, 0.0)
     SetEntityAlpha(tempVehicle, 150, false)
     SetEntityCollision(tempVehicle, false, false)
     FreezeEntityPosition(tempVehicle, true)
@@ -228,10 +228,10 @@ local function PlacePreviewVehicle(type, input)
 
             local hit <const>, _, endCoords <const>, _, _ = lib.raycast.fromCamera(339, 4, 10)
             if hit and endCoords ~= vector3(0, 0, 0) then
-                SetEntityCoords(tempVehicle, endCoords.x, endCoords.y, endCoords.z)
+                SetEntityCoords(tempVehicle, endCoords.x, endCoords.y, endCoords.z, false, false, false, false)
 
                 local camCoords <const> = GetGameplayCamCoord()
-                local heading <const> = math.deg(math.atan2(camCoords.y - endCoords.y, camCoords.x - endCoords.x))
+                local heading <const> = math.deg(math.atan(camCoords.y - endCoords.y, camCoords.x - endCoords.x))
                 SetEntityHeading(tempVehicle, heading + 90.0)
             end
 

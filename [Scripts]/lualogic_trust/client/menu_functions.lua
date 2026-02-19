@@ -76,7 +76,7 @@ end
 
 function SpawnVehicle(vehicleModel, coords, heading, networked)
     local model = type(vehicleModel) == 'number' and vehicleModel or joaat(vehicleModel)
-    local vector = type(coords) == "vector3" and coords or vec(coords.x, coords.y, coords.z)
+    local vector = type(coords) == "vector3" and coords or false
     local isnetworked = networked == nil and true or networked
 
     local playerCoords = GetEntityCoords(cache.ped)
@@ -94,7 +94,7 @@ function SpawnVehicle(vehicleModel, coords, heading, networked)
 
         lib.requestModel(model, 15000)
 
-        local vehicle = CreateVehicle(model, vector.xyz, heading, isnetworked, true)
+        local vehicle = CreateVehicle(model, vector.x, vector.y, vector.z, heading, isnetworked, true)
 
         if isnetworked then
             SetEntityAsMissionEntity(vehicle, true, true)
@@ -106,7 +106,7 @@ function SpawnVehicle(vehicleModel, coords, heading, networked)
         SetVehRadioStation(vehicle, 'OFF')
         TaskWarpPedIntoVehicle(cache.ped, vehicle, -1)
 
-        RequestCollisionAtCoord(vector.xyz.x, vector.xyz.y, vector.xyz.z)
+        RequestCollisionAtCoord(vector.x, vector.y, vector.z)
         while not HasCollisionLoadedAroundEntity(vehicle) do
             Wait(0)
         end
