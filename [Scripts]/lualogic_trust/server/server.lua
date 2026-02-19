@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global, param-type-mismatch
 local config = require 'config'
 local logs = require 'logs'
 local vehicles, vehicles_owned = {}, {}
@@ -85,7 +84,7 @@ local function HasVehicle(source, model)
 end
 
 local function CheckVehicleHash(source, vehicle)
-	local src = tonumber(source)
+	local player = tonumber(source)
 	local vehicleEntity = vehicle
 
 	if not DoesEntityExist(vehicleEntity) then
@@ -103,12 +102,21 @@ local function CheckVehicleHash(source, vehicle)
 			return
 		end
 
-		if HasVehicle(src, vehicleModel) then
+		if HasVehicle(player, vehicleModel) then
 			return
 		end
 
-		TaskLeaveVehicle(GetPlayerPed(src), vehicleEntity, 0)
-		Notify(src, 'You do not have access to drive this personal vehicle.', 'error')
+		Wait(1500)
+
+		---@diagnostic disable-next-line: param-type-mismatch
+		local playerPed = GetPlayerPed(player)
+
+		if not DoesEntityExist(vehicleEntity) or not DoesEntityExist(playerPed) then
+			return
+		end
+
+		TaskLeaveVehicle(playerPed, vehicleEntity, 0)
+		Notify(player, 'You do not have access to drive this personal vehicle.', 'error')
 	end)
 end
 
@@ -132,7 +140,6 @@ end
 
 local function IsVehicleValid(source, vehicle)
 	local validVehicle = lib.callback.await('lualogic_trust:client:loaded', source, vehicle)
-	print('vehicle valid: ', source, vehicle, validVehicle)
 	return validVehicle
 end
 
@@ -381,7 +388,6 @@ function SetOwner(source, target, vehicle)
 	end
 
 	local player_vehicles = vehicles[identifier] or {}
-
 	local playerName = src ~= 0 and GetPlayerName(src) or 'Console'
 	local targetName = GetPlayerName(tgt)
 
@@ -441,15 +447,17 @@ function SetTrust(source, target, vehicle)
 		return
 	end
 
-	local player_vehicles = vehicles[identifier] or {}
-	local playerName = src ~= 0 and GetPlayerName(src) or 'Console'
-	local targetName = GetPlayerName(tgt)
 	local identifier = GetIdentifier(tgt)
 
 	if not identifier then
-		lib.print.error('identifier not found for player: ', tgt)
+		lib.print.error('[GiveTrust] - [GetIdentifier] - Internal error 1: ', identifier)
+		Notify(src, '[GiveTrust] - Internal error 1, please contact support if you encounter this error.', 'error')
 		return
 	end
+
+	local player_vehicles = vehicles[identifier] or {}
+	local playerName = src ~= 0 and GetPlayerName(src) or 'Console'
+	local targetName = GetPlayerName(tgt)
 
 	if GetTableSize(player_vehicles) == 0 then
 		player_vehicles[veh] = false
@@ -1007,7 +1015,8 @@ if searchConfig.identifier.enabled then
 	if searchConfig.identifier.command then
 		RegisterCommand(searchConfig.identifier.command, function(source, args)
 			local src = tonumber(source)
-
+			local perm = searchConfig.identifier.permission
+	
 			if perm and not IsPlayerAceAllowed(src, perm) then
 				Notify(src, 'You are unable to access this', 'error')
 				return
@@ -1278,7 +1287,7 @@ local function UpdateCacheRuntime(identifier, data)
 
 	if data == 'NULL' then
 		vehicles[identifier] = {}
-		lib.print.info('Successfully updated the cache in runtime with no data for identifier: ', identifer)
+		lib.print.info('Successfully updated the cache in runtime with no data for identifier: ', identifier)
 		return
 	end
 
@@ -1291,7 +1300,7 @@ local function UpdateCacheRuntime(identifier, data)
 		return
 	end
 
-	lib.print.info('Successfully updated the cache in runtime with new data for identifier: ', identifer)
+	lib.print.info('Successfully updated the cache in runtime with new data for identifier: ', identifier, json.encode(vehicles[identifier], {indent=true}))
 end
 
 RegisterCommand('updatecacheruntime', function(source, args)
@@ -1304,9 +1313,9 @@ RegisterCommand('updatecacheruntime', function(source, args)
 		return
 	end
 
-	local targetIdentifier = type(target) == "string" and target or GetIdentifier(target)
+	local targetIdentifier = string.sub(target, 1, 4) == 'char' and target or GetIdentifier(target)
 
-	lib.print.info(target, type(target), targetIdentifier)
+	lib.print.info(target, type(target), targetIdentifier, string.sub(target, 1, 4))
 
 	if not targetIdentifier then
 		lib.print.error('Unable to fetch target identifier: ', targetIdentifier)
