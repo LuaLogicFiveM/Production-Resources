@@ -355,6 +355,7 @@ Locales['en'] = {
     ['furnace_turn_valve'] = "[E] Turn Valve",
     ['furnace_close_lid'] = "[E] Close Furnace Lid",
     ['furnace_open_lid_or_close_valve'] = "[E] Open Furnace Lid / [R] Turn Valve (Close)",
+    ['furnace_close_valve'] = "Close Valve",
     ['furnace_close_door_first'] = "First close the oven door!",
     ['furnace_crate_empty_status'] = "This crate is empty!",
     ['furnace_furnace_full_status'] = "Furnace is full!",
@@ -606,5 +607,15 @@ Locales['en'] = {
 
     -- Job Reset
     ['jobResetInProgress'] = "Job reset in progress, please wait...",
+
+    -- NPC Vehicle Rental
+    ['npcRentalDrawText'] = "Press ~g~[E]~s~ to rent a ~g~Vehicle~s~",
+    ['npcRentalTarget'] = "Rent Vehicle",
+    ['npcRentalTitle'] = "Vehicle Rental",
+    ['npcRentalDeposit'] = "Deposit: $%s (refundable)",
+    ['npcRentalDescription'] = "Price: $%s | Deposit: $%s (refundable)",
+    ['npcRentalNeedJob'] = "You need an active scrapyard job to rent a vehicle",
+    ['npcRentalAlreadyRented'] = "You already have a rented vehicle",
+    ['npcRentalNotEnoughMoney'] = "Not enough money. Need $%s",
 
 }

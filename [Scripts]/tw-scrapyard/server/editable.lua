@@ -776,6 +776,9 @@ AddEventHandler('playerDropped', function(reason)
                         -- Find and delete vehicle by netID
                         for plate, rental in pairs(rentalByPlate) do
                             if rental.netID == netId then
+                                if Config.Debug then
+                                    print(("[Editable:playerDropped] Clearing rental plate: '%s' (netId: %s) due to owner disconnect"):format(plate, tostring(netId)))
+                                end
                                 local vehicleKey = rental.vehicleKey
                                 local info = spawnedByKey[vehicleKey]
 

@@ -1,15 +1,7 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version 'cerulean'
 game 'gta5'
-version '1.04'
+version '1.05'
 name 'tw-scrapyard'
-author 'tworst-script for scrapyard'
-contact 'discord.gg/tworst'
-website 'tworst.com'
 
 shared_scripts {
 	'locales/*.lua',
@@ -78,10 +70,9 @@ escrow_ignore {
 	'client/utils.lua',
 	'server/utility.lua',
 	'server/editable.lua',
-	'server/aSQLInsert.lua',
-	-- 'client/*.lua',
-	-- 'server/*.lua',
+	'server/aSQLInsert.lua'
 }
 
 lua54 'yes'
+
 dependency '/assetpacks'

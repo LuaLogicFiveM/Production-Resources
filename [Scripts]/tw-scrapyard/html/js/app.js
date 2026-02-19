@@ -293,10 +293,10 @@ const app = Vue.createApp({
         document.addEventListener("click", this.handleClickOutside);
 
         this.progressUpdateInterval = setInterval(() => {
-            if (!this.state.mainShow) return;
+            if (!this.state.mainShow && !this.state.illegalSellShow && !this.state.sellShow) return;
 
-            const hasActiveCrafts = this.illegalCraftHistory.some(craft => craft.status === 'in_progress') ||
-                this.legalCraftHistory.some(craft => craft.status === 'in_progress');
+            const hasActiveCrafts = this.illegalCraftHistory.some(craft => craft.status === 'pending') ||
+                this.legalCraftHistory.some(craft => craft.status === 'pending');
 
             if (hasActiveCrafts) {
                 this.loadCraftHistory();
@@ -938,13 +938,19 @@ const app = Vue.createApp({
         },
         getCraftProgress(historyItem) {
             if (historyItem.status === 'completed') return 100;
-            const elapsed = Date.now() - historyItem.start_time;
+            // Use elapsed_time from server if available (OnlineOnly mode), otherwise calculate from start_time
+            const elapsed = (historyItem.elapsed_time !== undefined && historyItem.elapsed_time !== null)
+                ? historyItem.elapsed_time
+                : (Date.now() - historyItem.start_time);
             const progress = (elapsed / historyItem.duration) * 100;
             return Math.min(progress, 100);
         },
         getRemainingTime(historyItem) {
             if (historyItem.status === 'completed') return this.state.locales['status_completed'] || 'Completed';
-            const elapsed = Date.now() - historyItem.start_time;
+            // Use elapsed_time from server if available (OnlineOnly mode), otherwise calculate from start_time
+            const elapsed = (historyItem.elapsed_time !== undefined && historyItem.elapsed_time !== null)
+                ? historyItem.elapsed_time
+                : (Date.now() - historyItem.start_time);
             const remaining = historyItem.duration - elapsed;
 
             // If time is up, show completed
@@ -1685,6 +1691,7 @@ const app = Vue.createApp({
 
                     if (event.data.payload) {
                         this.sellPrices = this.extractPricesFromItems(this.illegalSellableItems);
+                        this.loadCraftHistory();
                     } else {
                         this.sellPrices = this.extractPricesFromItems(this.legalSellableItems);
                     }
@@ -1695,6 +1702,7 @@ const app = Vue.createApp({
                     // Switch to legal sell prices
                     if (event.data.payload) {
                         this.sellPrices = this.extractPricesFromItems(this.legalSellableItems);
+                        this.loadCraftHistory();
                     }
                     break;
                 case "TEXTUI_SHOW":
@@ -1712,13 +1720,14 @@ const app = Vue.createApp({
         },
         openNPCRentalMenu(eventData) {
             const data = eventData.data || eventData;
+            const depositFormat = data.depositFormat || this.state.locales['npcRentalDeposit'] || 'Deposit: $%s (refundable)';
             this.npcRentalData = {
-                title: data.title || 'Vehicle Rental',
+                title: data.title || this.state.locales['npcRentalTitle'] || 'Vehicle Rental',
                 options: (data.options || []).map(opt => ({
                     key: opt.tier,
                     label: opt.label,
                     price: opt.price ? `$${opt.price}` : '',
-                    deposit: opt.deposit ? `Deposit: $${opt.deposit} (refundable)` : '',
+                    deposit: opt.deposit ? depositFormat.replace('%s', opt.deposit) : '',
                     description: opt.description
                 }))
             };

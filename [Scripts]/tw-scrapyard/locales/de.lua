@@ -343,7 +343,8 @@ Locales['fr'] = {
     ['furnace_turn_valve'] = "[E] Tourner la vanne",
     ['furnace_close_lid'] = "[E] Fermer le couvercle du four",
     ['furnace_open_lid_or_close_valve'] = "[E] Ouvrir le couvercle / [R] Tourner la vanne (fermer)",
-    ['furnace_close_door_first'] = "Fermez d’abord la porte du four !",
+    ['furnace_close_valve'] = "Ventil schließen",
+    ['furnace_close_door_first'] = "Fermez d'abord la porte du four !",
     ['furnace_crate_empty_status'] = "Cette caisse est vide !",
     ['furnace_furnace_full_status'] = "Four plein !",
     ['furnace_pour_crate'] = "[G] Verser la caisse dans le four (%d objets)",
@@ -605,4 +606,15 @@ Locales['fr'] = {
     ['craftFailed'] = "Échoué",
     ['craftProcessing'] = "En cours...",
     ['craftClickCollect'] = "Cliquez pour récupérer",
+
+    -- NPC Vehicle Rental
+    ['npcRentalDrawText'] = "Drücke ~g~[E]~s~ um ein ~g~Fahrzeug~s~ zu mieten",
+    ['npcRentalTarget'] = "Fahrzeug mieten",
+    ['npcRentalTitle'] = "Fahrzeugvermietung",
+    ['npcRentalDeposit'] = "Kaution: $%s (erstattbar)",
+    ['npcRentalDescription'] = "Preis: $%s | Kaution: $%s (erstattbar)",
+    ['npcRentalNeedJob'] = "Du brauchst einen aktiven Schrottplatz-Job um ein Fahrzeug zu mieten",
+    ['npcRentalAlreadyRented'] = "Du hast bereits ein gemietetes Fahrzeug",
+    ['npcRentalNotEnoughMoney'] = "Nicht genug Geld. $%s benötigt",
+
 }

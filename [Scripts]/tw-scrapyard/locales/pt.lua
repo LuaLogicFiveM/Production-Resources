@@ -343,7 +343,8 @@ Locales['pt'] = {
     ['furnace_turn_valve'] = "[E] Tourner la vanne",
     ['furnace_close_lid'] = "[E] Fermer le couvercle du four",
     ['furnace_open_lid_or_close_valve'] = "[E] Ouvrir le couvercle / [R] Tourner la vanne (fermer)",
-    ['furnace_close_door_first'] = "Fermez d’abord la porte du four !",
+    ['furnace_close_valve'] = "Fechar válvula",
+    ['furnace_close_door_first'] = "Fermez d'abord la porte du four !",
     ['furnace_crate_empty_status'] = "Cette caisse est vide !",
     ['furnace_furnace_full_status'] = "Four plein !",
     ['furnace_pour_crate'] = "[G] Verser la caisse dans le four (%d objets)",
@@ -605,4 +606,15 @@ Locales['pt'] = {
     ['craftFailed'] = "Falhou",
     ['craftProcessing'] = "Processando...",
     ['craftClickCollect'] = "Clique para coletar",
+
+    -- NPC Vehicle Rental
+    ['npcRentalDrawText'] = "Pressione ~g~[E]~s~ para alugar um ~g~Veículo~s~",
+    ['npcRentalTarget'] = "Alugar Veículo",
+    ['npcRentalTitle'] = "Aluguel de Veículo",
+    ['npcRentalDeposit'] = "Depósito: $%s (reembolsável)",
+    ['npcRentalDescription'] = "Preço: $%s | Depósito: $%s (reembolsável)",
+    ['npcRentalNeedJob'] = "Você precisa de um trabalho ativo no ferro-velho para alugar um veículo",
+    ['npcRentalAlreadyRented'] = "Você já tem um veículo alugado",
+    ['npcRentalNotEnoughMoney'] = "Dinheiro insuficiente. Necessário $%s",
+
 }

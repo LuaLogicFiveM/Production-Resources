@@ -343,7 +343,8 @@ Locales['fr'] = {
     ['furnace_turn_valve'] = "[E] Tourner la vanne",
     ['furnace_close_lid'] = "[E] Fermer le couvercle du four",
     ['furnace_open_lid_or_close_valve'] = "[E] Ouvrir le couvercle / [R] Tourner la vanne (fermer)",
-    ['furnace_close_door_first'] = "Fermez d’abord la porte du four !",
+    ['furnace_close_valve'] = "Fermer la vanne",
+    ['furnace_close_door_first'] = "Fermez d'abord la porte du four !",
     ['furnace_crate_empty_status'] = "Cette caisse est vide !",
     ['furnace_furnace_full_status'] = "Four plein !",
     ['furnace_pour_crate'] = "[G] Verser la caisse dans le four (%d objets)",
@@ -605,4 +606,15 @@ Locales['fr'] = {
     ['craftFailed'] = "Échoué",
     ['craftProcessing'] = "En cours...",
     ['craftClickCollect'] = "Cliquez pour récupérer",
+
+    -- NPC Vehicle Rental
+    ['npcRentalDrawText'] = "Appuyez sur ~g~[E]~s~ pour louer un ~g~Véhicule~s~",
+    ['npcRentalTarget'] = "Louer un véhicule",
+    ['npcRentalTitle'] = "Location de véhicule",
+    ['npcRentalDeposit'] = "Caution: $%s (remboursable)",
+    ['npcRentalDescription'] = "Prix: $%s | Caution: $%s (remboursable)",
+    ['npcRentalNeedJob'] = "Vous devez avoir un travail actif pour louer un véhicule",
+    ['npcRentalAlreadyRented'] = "Vous avez déjà un véhicule loué",
+    ['npcRentalNotEnoughMoney'] = "Pas assez d'argent. Il faut $%s",
+
 }

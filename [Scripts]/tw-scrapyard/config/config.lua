@@ -23,6 +23,11 @@ Config.MoneyType2            = "bank"     -- Money Type bank / cash
 Config.InteractionHandler    = 'ox-target' -- drawtext / ox-target
 Config.ExampleProfilePicture = "https://i.ibb.co/YLLNHJP/lorp-logo-main.png"
 
+Config.Keys                  = {
+    inviteAccept  = 246, -- Y key
+    inviteDecline = 306, -- N key
+}
+
 Config.Command               = {
     jobReset = "scrapyardreset",
     jobLeave = "scrapyardleave",
@@ -114,10 +119,10 @@ Config.Job                = {
 
     },
     ['missioncompletedItems'] = {
-        giveItemPlayer = false, -- true / false
+        giveItemPlayer = true, -- true / false
+        dropMode = "perItem", -- "perItem" = each item rolls independently | "weightedPool" = 1 item from weighted pool
         itemList = {
-            { item = "sandwich", count = math.random(1, 4) },
-            { item = "sandwich", count = 1 },
+            { item = "black_money", count = math.random(2500, 5000), chance = 50 },
         },
     },
     ['drawtext'] = {
@@ -138,6 +143,13 @@ Config.Job                = {
                 onlineJobExtraAwards = 1,
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = true,
+                dropMode = "perItem",
+                itemList = {
+                    { item = "black_money", count = math.random(2500, 5000), chance = 50 },
+                },
             },
             regionJobTask = {
                 {
@@ -191,7 +203,7 @@ Config.Job                = {
     },
 
     ['craftWeaponEnabled'] = true, -- true = enabled, false = disabled (Illegal weapon crafting)
-    ['craftLegalEnabled'] = false, -- true = enabled, false = disabled (Legal item crafting)
+    ['craftLegalEnabled'] = true, -- true = enabled, false = disabled (Legal item crafting)
     ['sellNPCs'] = {
         -- Legal Sell NPC (Normal scrap items: iron, gold_dust)
         ['legal'] = {
@@ -201,7 +213,7 @@ Config.Job                = {
             pedModel = 'a_m_m_business_01',             -- Business man model
             drawText = Locales[Config.Locale]['sell_scrap_items'],
             blip = {
-                enabled = false,
+                enabled = true,
                 sprite = 473, -- Dollar icon
                 color = 2,    -- Green
                 scale = 0.7,
@@ -216,7 +228,7 @@ Config.Job                = {
             pedModel = 's_m_y_dealer_01',              -- Drug dealer model
             drawText = Locales[Config.Locale]['black_market_dealer'],
             blip = {
-                enabled = false,
+                enabled = true,
                 sprite = 486, -- Gun icon
                 color = 1,    -- Red
                 scale = 0.7,
@@ -227,17 +239,17 @@ Config.Job                = {
 
     -- Illegal Area Door Lock System
     ['illegalDoor'] = {
-        enabled = false,                            -- Enable/disable door lock system (true/false)
+        enabled = true,                            -- Enable/disable door lock system (true/false)
         doorHash = 1300820402,                      -- Door model hash
         coords = vector3(1163.42, -1251.99, 34.57), -- Door coordinates
         locked = true,                              -- Initial state (true = locked, false = unlocked)
         distance = 2.0,                             -- Interaction distance
         interactionKey = 47,                        -- Key to interact with door (47 = G, 38 = E)
         authorizedJobs = {},                        -- Jobs that can toggle the door (empty = everyone can use)
-        checkCarryingItem = true,                   -- Block interaction if player is carrying items
+        checkCarryingItem = false,                   -- Block interaction if player is carrying items
         openRotation = 2.0,                         -- Door rotation when system is disabled (open state)
-        checkRequiredItem = false,                  -- Enable/disable required item check (default: false)
-        requiredItem = 'iron',                      -- Item required to toggle door (only checked if checkRequiredItem = true)
+        checkRequiredItem = true,                  -- Enable/disable required item check (default: false)
+        requiredItem = 'lockpick_door',                      -- Item required to toggle door (only checked if checkRequiredItem = true)
         requiredAmount = 1,                         -- Amount of item required (default: 1)
     },
 

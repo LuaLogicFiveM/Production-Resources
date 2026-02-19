@@ -258,7 +258,7 @@ Config.ScrapItemList         = {
 Config.PressMachines         = {
     [1] = {
         id = 1,
-        name = "Press Makinesi #1",
+        name = "Press Machine #1",
         controlPanel = vec3(1225.372, -1279.440, 35.960), -- Control panel location
         controlRadius = 1.5,
         pistonModel = "tw_press_piston",
@@ -289,7 +289,7 @@ Config.PressMachines         = {
     },
     [2] = {
         id = 2,
-        name = "Press Makinesi #2",
+        name = "Press Machine #2",
         controlPanel = vec3(1215.489, -1270.240, 35.968),
         controlRadius = 1.5,
         pistonModel = "tw_press_piston",
@@ -341,7 +341,7 @@ Config.PressMachines         = {
     },
     [3] = {
         id = 3,
-        name = "Press Makinesi #3",
+        name = "Press Machine #3",
         controlPanel = vec3(1194.054, -1272.659, 35.759),
         controlRadius = 1.5,
         pistonModel = "tw_press_piston",

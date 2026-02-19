@@ -355,6 +355,7 @@ Locales['tr'] = {
     ['furnace_turn_valve'] = "[E] Vanayı Çevir",
     ['furnace_close_lid'] = "[E] Fırın Kapağını Kapat",
     ['furnace_open_lid_or_close_valve'] = "[E] Fırın Kapağını Aç / [R] Vanayı Çevir (Kapat)",
+    ['furnace_close_valve'] = "Vanayı Kapat",
     ['furnace_close_door_first'] = "Önce fırın kapağını kapat!",
     ['furnace_crate_empty_status'] = "Bu sandık boş!",
     ['furnace_furnace_full_status'] = "Fırın dolu!",
@@ -607,5 +608,15 @@ Locales['tr'] = {
 
     -- Job Reset
     ['jobResetInProgress'] = "Görev sıfırlama işlemi devam ediyor, lütfen bekleyin...",
+
+    -- NPC Vehicle Rental
+    ['npcRentalDrawText'] = "~g~Araç~s~ kiralamak için ~g~[E]~s~ tuşuna bas",
+    ['npcRentalTarget'] = "Araç Kirala",
+    ['npcRentalTitle'] = "Araç Kiralama",
+    ['npcRentalDeposit'] = "Depozito: $%s (iade edilir)",
+    ['npcRentalDescription'] = "Fiyat: $%s | Depozito: $%s (iade edilir)",
+    ['npcRentalNeedJob'] = "Araç kiralamak için aktif bir hurdalık göreviniz olmalı",
+    ['npcRentalAlreadyRented'] = "Zaten kiralık bir aracınız var",
+    ['npcRentalNotEnoughMoney'] = "Yeterli paranız yok. $%s gerekli",
 
 }

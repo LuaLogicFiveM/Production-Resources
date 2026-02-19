@@ -356,6 +356,7 @@ Locales['ar'] = {
     ['furnace_turn_valve'] = "[E] تدوير الصمام",
     ['furnace_close_lid'] = "[E] إغلاق غطاء الفرن",
     ['furnace_open_lid_or_close_valve'] = "[E] فتح غطاء الفرن / [R] تدوير الصمام (إغلاق)",
+    ['furnace_close_valve'] = "إغلاق الصمام",
     ['furnace_close_door_first'] = "أغلق باب الفرن أولاً!",
     ['furnace_crate_empty_status'] = "هذا الصندوق فارغ!",
     ['furnace_furnace_full_status'] = "الفرن ممتلئ!",
@@ -606,4 +607,15 @@ Locales['ar'] = {
 
     -- Job Reset
     ['jobResetInProgress'] = "إعادة تعيين المهمة قيد التنفيذ، الرجاء الانتظار...",
+
+    -- NPC Vehicle Rental
+    ['npcRentalDrawText'] = "اضغط ~g~[E]~s~ لاستئجار ~g~مركبة~s~",
+    ['npcRentalTarget'] = "استئجار مركبة",
+    ['npcRentalTitle'] = "تأجير المركبات",
+    ['npcRentalDeposit'] = "تأمين: $%s (قابل للاسترداد)",
+    ['npcRentalDescription'] = "السعر: $%s | التأمين: $%s (قابل للاسترداد)",
+    ['npcRentalNeedJob'] = "تحتاج إلى وظيفة نشطة في ساحة الخردة لاستئجار مركبة",
+    ['npcRentalAlreadyRented'] = "لديك بالفعل مركبة مستأجرة",
+    ['npcRentalNotEnoughMoney'] = "لا يوجد ما يكفي من المال. تحتاج $%s",
+
 }

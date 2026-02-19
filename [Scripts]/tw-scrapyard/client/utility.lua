@@ -250,7 +250,6 @@ function createBlips()
             tonumber(Config.Job['coords'].intreactionCoords.y),
             tonumber(Config.Job['coords'].intreactionCoords.z))
         SetBlipSprite(blips, Config.Job['blip'].blipType)
-        SetBlipCategory(blips, 2) -- 2: Places category
         SetBlipDisplay(blips, 4)
         SetBlipScale(blips, Config.Job['blip'].blipScale)
         SetBlipColour(blips, Config.Job['blip'].blipColor)

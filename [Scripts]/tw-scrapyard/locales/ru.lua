@@ -343,7 +343,8 @@ Locales['ru'] = {
     ['furnace_turn_valve'] = "[E] Tourner la vanne",
     ['furnace_close_lid'] = "[E] Fermer le couvercle du four",
     ['furnace_open_lid_or_close_valve'] = "[E] Ouvrir le couvercle / [R] Tourner la vanne (fermer)",
-    ['furnace_close_door_first'] = "Fermez d’abord la porte du four !",
+    ['furnace_close_valve'] = "Закрыть клапан",
+    ['furnace_close_door_first'] = "Fermez d'abord la porte du four !",
     ['furnace_crate_empty_status'] = "Cette caisse est vide !",
     ['furnace_furnace_full_status'] = "Four plein !",
     ['furnace_pour_crate'] = "[G] Verser la caisse dans le four (%d objets)",
@@ -605,4 +606,15 @@ Locales['ru'] = {
     ['craftFailed'] = "Неудачно",
     ['craftProcessing'] = "Обработка...",
     ['craftClickCollect'] = "Нажмите, чтобы забрать",
+
+    -- NPC Vehicle Rental
+    ['npcRentalDrawText'] = "Нажмите ~g~[E]~s~ чтобы арендовать ~g~Транспорт~s~",
+    ['npcRentalTarget'] = "Арендовать транспорт",
+    ['npcRentalTitle'] = "Аренда транспорта",
+    ['npcRentalDeposit'] = "Залог: $%s (возвращаемый)",
+    ['npcRentalDescription'] = "Цена: $%s | Залог: $%s (возвращаемый)",
+    ['npcRentalNeedJob'] = "Для аренды транспорта нужна активная работа на свалке",
+    ['npcRentalAlreadyRented'] = "У вас уже есть арендованный транспорт",
+    ['npcRentalNotEnoughMoney'] = "Недостаточно денег. Нужно $%s",
+
 }
