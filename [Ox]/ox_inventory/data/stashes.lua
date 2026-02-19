@@ -429,7 +429,7 @@ return {-- make a new line here and paste after copying ->
 	},
 
 	{ --853
-		coords = vec3(-37.9297, -1477.2649, 31.8750),
+		coords = vec3(-51.5656, -1448.8092, 29.6518),
 		name = 'fdb2',
 		label = 'Gang Safe',
 		owner = true,
@@ -438,7 +438,7 @@ return {-- make a new line here and paste after copying ->
 	},
 
 	{ --853
-		coords = vec3(-24.8576, -1487.9233, 30.4868),
+		coords = vec3(-18.7686, -1473.0811, 29.7442),
 		name = 'spllc',
 		label = 'Storage',
 		owner = true,

@@ -193,7 +193,7 @@ Config.driftBoost = {
 Config.jobWhitelist = {
     enabled = true,
     jobs = {
-        'sheriff',
+        'stanceandreas',
     }
 }
 
@@ -291,6 +291,7 @@ Config.tireShops = {
     -- Locations at which the shops will be created
     locations = {
         { x = 72.0948, y = -1582.5962, z = 29.5, h = 191.0 }, -- Auto Parts Store
+        { x = 730.5756, y = -793.1351, z = 29.0, h = 311.0 }, -- Stance Andreas
     }
 }
 

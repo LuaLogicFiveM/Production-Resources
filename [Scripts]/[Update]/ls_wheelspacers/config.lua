@@ -6,7 +6,7 @@ Config.framework = 'esx' -- esx or qbcore
 
 Config.useNewESXExport = true
 
-Config.debug = true
+Config.debug = false
 
 -- Name of jack stand item
 Config.jackStand = 'ls_jackstand'
@@ -26,7 +26,7 @@ Config.target = {
 Config.job = {
     jobOnly = true,
     names = {
-        'sheriff'
+        'stanceandreas'
     }
 }
 

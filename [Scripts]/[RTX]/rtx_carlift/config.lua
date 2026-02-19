@@ -204,21 +204,6 @@ Config.Lifts = {
 		},
 	},
 
-	{--853
-		coords = vector3(-20.528999328613, -1478.3630371094, 29.450000762939),
-		rotation = vector3(0.0, 0.0, 68.467712402344),
-		currentheight = 0.0,
-		objecthandler = {frame = nil, lift = nil},
-		manipulating = false,
-		manipulatingplayerid = nil,
-		lifttype = 2,
-		buttonuppress = false,
-		buttondownpress = false,
-		onlyjoballowed = false,
-		jobs = {
-		},
-	},
-
 	{--592
 		coords = vector3(686.83001708984, 125.74700164795, 79.805999755859),
 		rotation = vector3(0.0, 0.0, 160.32684326172),
