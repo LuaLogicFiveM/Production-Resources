@@ -299,6 +299,14 @@ function GiveTrust(source, target, vehicle)
 		return
 	end
 
+	local identifier = GetIdentifier(tgt)
+
+	if not identifier then
+		lib.print.error('[GiveTrust] - [GetIdentifier] - Internal error 1: ', identifier)
+		Notify(src, '[GiveTrust] - Internal error 1, please contact support if you encounter this error.', 'error')
+		return
+	end
+
 	if not IsVehicleValid(src, veh) then
 		Notify(src, 'The spawn code you provided is invalid', 'error')
 		return
@@ -312,13 +320,6 @@ function GiveTrust(source, target, vehicle)
 	local target_vehicles = vehicles[identifier] or {}
 	local PlayerName = GetPlayerName(src)
 	local TargetName = GetPlayerName(tgt)
-
-	local identifier = GetIdentifier(tgt)
-
-	if not identifier then
-		lib.print.error('identifier not found for player: ', tgt)
-		return
-	end
 
 	if GetTableSize(target_vehicles) == 0 then
 		target_vehicles = {}
@@ -1304,6 +1305,8 @@ RegisterCommand('updatecacheruntime', function(source, args)
 	end
 
 	local targetIdentifier = type(target) == "string" and target or GetIdentifier(target)
+
+	lib.print.info(target, type(target), targetIdentifier)
 
 	if not targetIdentifier then
 		lib.print.error('Unable to fetch target identifier: ', targetIdentifier)
