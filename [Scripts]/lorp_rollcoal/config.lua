@@ -15,7 +15,7 @@ Config.defaultParticleDuration          = -1            -- after how long the pa
 
 Config.useWhitelistedOnly               = true
 Config.whitelist                        = {
-    ["dons250"] = {
+    ["drewdons250"] = {
         sizeScale = 5 ,
         engineUpgradeRequired = "DEFAULT",
         intervalType  = "DEFAULT",

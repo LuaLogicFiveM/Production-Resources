@@ -375,7 +375,7 @@
         color = 0,
         data = {
             title = '☠️ Gang Block',
-            description = 'Owner: Forum Drive Kings',
+            description = 'Young Slime Mafia',
         },
     },
      ----------------------------- Cartels -----------------------------

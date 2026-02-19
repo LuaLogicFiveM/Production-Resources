@@ -168,6 +168,12 @@ Config.Menu = {
                 vector4(-71.5939, 369.0418, 112.4225, 71.7914),--504
             }
         },
+        ['youngslime'] = {
+            bossRank = 5,
+            locations = {
+                vector4(-8.7714, -1480.2526, 29.7442, 156.3349),--853
+            }
+        },
         ['section6'] = {
             bossRank = 5,
             locations = {
