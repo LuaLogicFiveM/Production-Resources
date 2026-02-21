@@ -82,7 +82,9 @@ local function CreateInteractions()
 
         if isPrimary and currentInteraction ~= interaction.id then
             currentInteraction = interaction.id
-            currentAlpha = 255
+            if currentAlpha >= 0 then
+                currentAlpha = 255
+            end
             currentSelection = 1
         end
 

@@ -88,3 +88,7 @@ data_file "AUDIO_SYNTHDATA" "audioconfig/kc45diels70_amp.dat"
 data_file "AUDIO_GAMEDATA" "audioconfig/kc45diels70_game.dat"
 data_file "AUDIO_SOUNDDATA" "audioconfig/kc45diels70_sounds.dat"
 data_file "AUDIO_WAVEPACK" "sfx/dlc_kc45diels70"
+
+data_file 'AUDIO_GAMEDATA' 'audioconfig/bm3g80valvetronic_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/bm3g80valvetronic_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_bm3g80valvetronic'

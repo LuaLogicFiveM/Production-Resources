@@ -99,11 +99,19 @@ Config.Job                   = {
         },
 
     },
+    -- Global missioncompletedItems (Fallback)
+    -- Each region has its own missioncompletedItems inside regionData.
+    -- If a region does NOT have missioncompletedItems defined, this global config is used as fallback.
     ['missioncompletedItems'] = {
-        giveItemPlayer = false, -- true / false
+        giveItemPlayer = false, -- true = give items on job complete, false = disabled
+        -- dropMode: "perItem" = each item rolls independently (multiple items can drop)
+        --           "weightedPool" = all item chances form a weight pool, 1 item is picked
+        dropMode = "perItem",
         itemList = {
-            { item = "sandwich", count = math.random(1, 4) },
-            { item = "sandwich", count = 1 },
+            -- chance: 1-99 = % probability, 100 = guaranteed
+            -- perItem mode: each item rolls its own chance, player can get multiple
+            -- weightedPool mode: chances become weights, 1 item picked from pool (100 = always given separately)
+            { item = "black_money", count = 5000, chance = 50 },
         },
     },
     ['drawtext'] = {
@@ -121,9 +129,31 @@ Config.Job                   = {
             regionAwards = {
                 money = 5000,
                 xp = 1000,
+                -- onlineJobExtraAwards: Controls team money calculation
+                -- POSITIVE VALUE (e.g.: 2): Team BONUS - more money
+                --   → 2 people: 5000 * 2 * 2 = 20000 (10000 per person)
+                --   → 3 people: 5000 * 2 * 3 = 30000 (10000 per person)
+                -- NEGATIVE VALUE (e.g. -2): Team PENALTY - less money
+                --   → 2 people: 5000 / 2 = 2500 (1250 per person)
+                --   → 3 people: 5000 / 2 = 2500 (833 per person)
+                -- ZERO (0): Divide the money equally
+                --   → 2 people: 5000 / 2 = 2500 (1250 per person)
+                --   → 3 people: 5000 / 3 = 1667 (556 per person)
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = true, -- true = give items on job complete, false = disabled
+                -- dropMode: "perItem" = each item rolls independently (multiple items can drop)
+                --           "weightedPool" = all item chances form a weight pool, 1 item is picked
+                dropMode = "perItem",
+                itemList = {
+                    -- chance: 1-99 = % probability, 100 = guaranteed
+                    -- perItem mode: each item rolls its own chance, player can get multiple
+                    -- weightedPool mode: chances become weights, 1 item picked from pool (100 = always given separately)
+                    { item = "black_money", count = 5000, chance = 50 },
+                },
             },
             regionJobVehicle = {
                 vehicle = "tolboru",
@@ -195,6 +225,15 @@ Config.Job                   = {
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
             },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
+            },
             regionJobVehicle = {
                 vehicle = "tolboru",
             },
@@ -264,6 +303,15 @@ Config.Job                   = {
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
             },
             regionJobVehicle = {
                 vehicle = "tolboru",
@@ -335,6 +383,15 @@ Config.Job                   = {
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
             },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
+            },
             regionJobVehicle = {
                 vehicle = "tolboru",
             },
@@ -405,6 +462,15 @@ Config.Job                   = {
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
             },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
+            },
             regionJobVehicle = {
                 vehicle = "tolboru",
             },
@@ -474,6 +540,15 @@ Config.Job                   = {
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
                 bonusExtraXP = 200,
+            },
+            missioncompletedItems = {
+                giveItemPlayer = false,
+                dropMode = "weightedPool",
+                itemList = {
+                    { item = "sandwich", count = 1, chance = 50 },
+                    { item = "water",    count = 1, chance = 30 },
+                    { item = "bandage",  count = 1, chance = 100 },
+                },
             },
             regionJobVehicle = {
                 vehicle = "tolboru",
@@ -710,6 +785,9 @@ Config.RefreshSkin           = function()
                 TriggerEvent("esx_skin:getLastSkin", function(lastSkin)
                     TriggerEvent('skinchanger:loadSkin', lastSkin)
                 end)
+            end
+            if Config.ClothingScript == 'rcore_clothing' then
+                TriggerServerEvent('rcore_clothing:reloadSkin')
             end
             if Config.ClothingScript == 'qb-clothing' then
                 TriggerEvent("qb-clothing:reloadSkin")
@@ -1006,6 +1084,11 @@ Config.RequiredXP            = {
     [69] = 44500,
     [70] = 45500,
 
+}
+
+Config.Keys                  = {
+    inviteAccept  = 246, -- Y key
+    inviteDecline = 306, -- CTRL key
 }
 
 Config.Disable               = {

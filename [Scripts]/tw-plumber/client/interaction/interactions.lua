@@ -730,13 +730,19 @@ function api.getNearbyInteractions()
 
             -- Check if the interaction is a networked entity
             if interaction.netId then
-                local entity = entities.isNetIdNearby(interaction.netId)
-
-                if not entity then
-                    goto skip
+                local entity = interaction.entity
+                if entity and entity ~= 0 and DoesEntityExist(entity) then
+                    interaction.entity = entity
+                else
+                    if not NetworkDoesNetworkIdExist(interaction.netId) then
+                        goto skip
+                    end
+                    entity = NetworkGetEntityFromNetworkId(interaction.netId)
+                    if not entity or entity == 0 or not DoesEntityExist(entity) then
+                        goto skip
+                    end
+                    interaction.entity = entity
                 end
-
-                interaction.entity = entity
             elseif interaction.entity and not entities.isEntityNearby(interaction.entity) then
                 goto skip
             end
@@ -758,7 +764,10 @@ function api.getNearbyInteractions()
 
     if amount > 1 then
         table.sort(options, function(a, b)
-            return a.curDist < b.curDist
+            local diff = a.curDist - b.curDist
+            if diff < -0.3 then return true end
+            if diff > 0.3 then return false end
+            return (a.id or '') < (b.id or '')
         end)
     end
 

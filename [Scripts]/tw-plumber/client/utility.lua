@@ -111,17 +111,6 @@ CreateThread(function()
     SetPlayerJob()
 end)
 
-AddEventHandler('onResourceStop', function(resource)
-    if (GetCurrentServerEndpoint() == nil) then
-        return
-    end
-    if (resource == GetCurrentResourceName()) then
-        TriggerServerEvent(_event('server:loadData'))
-        ClearPedTasks(PlayerPedId())
-    end
-end)
-
-
 function SetPlayerJob()
     while Core == nil do
         Wait(0)
@@ -263,7 +252,18 @@ function canOpen()
     return true
 end
 
+local jobNpc = nil
+
+function deletePed()
+    if jobNpc and DoesEntityExist(jobNpc) then
+        DeleteEntity(jobNpc)
+        jobNpc = nil
+    end
+end
+
 function spawnPed()
+    deletePed()
+
     if Config.Job.coords.ped then
         WaitForModel(Config.Job.coords.pedHash)
         local createNpc = CreatePed("PED_TYPE_PROSTITUTE", Config.Job.coords.pedHash, Config.Job.coords.pedCoords.x,
@@ -272,8 +272,50 @@ function spawnPed()
         FreezeEntityPosition(createNpc, true)
         SetEntityInvincible(createNpc, true)
         SetBlockingOfNonTemporaryEvents(createNpc, true)
+        jobNpc = createNpc
     end
 end
+
+activeOpenTriggerZone = nil
+local drawtextThreadActive = false
+local npcTargetActive = false
+
+local function cleanupTarget()
+    if Config.InteractionHandler == "qb-target" then
+        if npcTargetActive and jobNpc and DoesEntityExist(jobNpc) then
+            exports['qb-target']:RemoveTargetEntity(jobNpc)
+            npcTargetActive = false
+        end
+        if activeOpenTriggerZone then
+            exports['qb-target']:RemoveZone(activeOpenTriggerZone)
+            activeOpenTriggerZone = nil
+        end
+    elseif Config.InteractionHandler == "ox-target" then
+        if npcTargetActive and jobNpc and DoesEntityExist(jobNpc) then
+            exports.ox_target:removeLocalEntity(jobNpc, base.resource .. "_npc")
+            npcTargetActive = false
+        end
+        if activeOpenTriggerZone then
+            exports.ox_target:removeZone(activeOpenTriggerZone)
+            activeOpenTriggerZone = nil
+        end
+    elseif Config.InteractionHandler == "drawtext" then
+        Config.drawTextActive = false
+        drawtextThreadActive = false
+    end
+end
+
+AddEventHandler('onResourceStop', function(resource)
+    if (GetCurrentServerEndpoint() == nil) then
+        return
+    end
+    if (resource == GetCurrentResourceName()) then
+        cleanupTarget()
+        deletePed()
+        TriggerServerEvent(_event('server:loadData'))
+        ClearPedTasks(PlayerPedId())
+    end
+end)
 
 function DrawText3D(x, y, z, text)
     local onScreen, _x, _y = World3dToScreen2d(x, y, z)
@@ -336,23 +378,30 @@ end
 
 Citizen.CreateThread(function()
     Config.OpenTrigger = function(bool)
-        if not bool then
-            if Config.InteractionHandler == "qb-target" then
-                exports['qb-target']:RemoveZone(base.resource .. "_1" .. 1)
-            elseif Config.InteractionHandler == "ox-target" then
-                exports['ox_target']:removeZone(base.resource .. "_1")
-            elseif Config.InteractionHandler == "drawtext" then
-                Config.drawTextActive = false
-            end
-        else
-            if Config.InteractionHandler == "qb-target" then
-                exports['qb-target']:AddBoxZone(base.resource .. "_1" .. 1,
-                    vector3(Config.Job.coords.intreactionCoords.x,
-                        Config.Job.coords.intreactionCoords.y,
-                        Config.Job.coords.intreactionCoords.z), 1.5,
-                    1.5,
+        cleanupTarget()
+
+        if not bool then return end
+
+        if Config.InteractionHandler == "qb-target" then
+            if jobNpc and DoesEntityExist(jobNpc) then
+                exports['qb-target']:AddTargetEntity(jobNpc, {
+                    options = {
+                        {
+                            type = "client",
+                            event = _event('openMenu'),
+                            icon = 'fas fa-credit-card',
+                            label = Locales[Config.Locale]['openJobMenu'],
+                        },
+                    },
+                    distance = 2.5
+                })
+                npcTargetActive = true
+            else
+                activeOpenTriggerZone = base.resource .. "_1"
+                exports['qb-target']:AddBoxZone(activeOpenTriggerZone,
+                    Config.Job.coords.intreactionCoords, 1.5, 1.5,
                     {
-                        name = base.resource .. "_1" .. 1,
+                        name = activeOpenTriggerZone,
                         debugPoly = false,
                         heading = -20,
                         minZ = Config.Job.coords.intreactionCoords.z - 2,
@@ -366,24 +415,45 @@ Citizen.CreateThread(function()
                                 label = Locales[Config.Locale]['openJobMenu'],
                             },
                         },
-                        distance = 2
+                        distance = 2.5
                     })
-            elseif Config.InteractionHandler == "ox-target" then
-                local data = {
-                    name = base.resource .. "_1",
-                    radius = 2.0,
-                    icon = 'fas fa-credit-card',
-                    label = Locales[Config.Locale]['openJobMenu'],
-                    event = _event('openMenu'),
-                    handler = false
-                }
-                addBoxToTarget(
-                    vector3(Config.Job.coords.intreactionCoords.x, Config.Job.coords.intreactionCoords.y,
-                        Config.Job.coords.intreactionCoords.z), data)
-            elseif Config.InteractionHandler == "drawtext" or Config.InteractionHandler == "scriptbase" then
-                Config.drawTextActive = true
+            end
+        elseif Config.InteractionHandler == "ox-target" then
+            if jobNpc and DoesEntityExist(jobNpc) then
+                exports.ox_target:addLocalEntity(jobNpc, {
+                    {
+                        name = base.resource .. "_npc",
+                        icon = 'fas fa-credit-card',
+                        label = Locales[Config.Locale]['openJobMenu'],
+                        event = _event('openMenu'),
+                        distance = 2.5
+                    }
+                })
+                npcTargetActive = true
+            else
+                activeOpenTriggerZone = exports.ox_target:addBoxZone({
+                    coords = Config.Job.coords.intreactionCoords,
+                    size = vec3(1.5, 1.5, 2.0),
+                    rotation = -20,
+                    debug = false,
+                    options = {
+                        {
+                            name = base.resource .. "_npc",
+                            icon = 'fas fa-credit-card',
+                            label = Locales[Config.Locale]['openJobMenu'],
+                            event = _event('openMenu'),
+                            distance = 2.5
+                        }
+                    }
+                })
+            end
+        elseif Config.InteractionHandler == "drawtext" then
+            Wait(100)
+            Config.drawTextActive = true
+            if not drawtextThreadActive then
+                drawtextThreadActive = true
                 Citizen.CreateThread(function()
-                    while Config.drawTextActive do
+                    while Config.drawTextActive and drawtextThreadActive do
                         local wait = 1500
                         local playerPed = PlayerPedId()
                         local coords = GetEntityCoords(playerPed)
@@ -402,6 +472,7 @@ Citizen.CreateThread(function()
                         end
                         Citizen.Wait(wait)
                     end
+                    drawtextThreadActive = false
                 end)
             end
         end
@@ -428,6 +499,8 @@ Citizen.CreateThread(function()
                 ClearPedSecondaryTask(playerPed)
                 Config.sendNotification(Locales[Config.Locale]['cantentervehicle'], 'error')
             end
+        else
+            sleep = 2000
         end
     end
 end)
@@ -873,6 +946,8 @@ Citizen.CreateThread(function()
             wait = 0
             SetEntityAlpha(PlayerPedId(), 0, false)
             SetLocalPlayerInvisibleLocally(true)
+        else
+            wait = 1000
         end
     end
 end)
