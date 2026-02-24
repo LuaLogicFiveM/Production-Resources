@@ -23,7 +23,7 @@ Config.AutoStock = {         -- auto stock for shop items
 Config.BossActions = vector3(-516.15, 50.31, 44.60)    --Boss action menu location. esx_society required
 
 Config.Shop = {
-    blip = {enable = true, pos = vector3(-519.97, 39.7, 44.59), name = 'KhusBites', sprite = 469, color = 32, size = 1.0, radius = 0.0, radius_color = 32},                                                           -- job name
+    blip = {enable = false, pos = vector3(-519.97, 39.7, 44.59), name = 'KhusBites', sprite = 469, color = 32, size = 1.0, radius = 0.0, radius_color = 32},                                                           -- job name
     management = vector3(-537.09, 41.31, 44.58),
     sell_coords = {                                    -- The coordinates where customes will buy things on this store (coordinates composed of x, y, z)
         {
