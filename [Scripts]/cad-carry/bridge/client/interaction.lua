@@ -86,6 +86,21 @@ if Config.Target == 'ox_target' or ((Config.Target == 'autodetect') and (GetReso
             end
         }
     })
+    if Config.EnableCarryPed then
+        exports.ox_target:addGlobalPed({
+            {
+                label = 'Carry Ped',
+                icon = 'fa-solid fa-hand-holding',
+                distance = Config.CarryDistance,
+                canInteract = function(entity)
+                    return not IsPedAPlayer(entity) and not LocalPlayer.state.carrying and not LocalPlayer.state.carried and not LocalPlayer.state.intrunk
+                end,
+                onSelect = function(data)
+                    exports['cad-carry']:CarryPedEntity(data.entity)
+                end
+            }
+        })
+    end
 elseif Config.Target == 'qb-target' or ((Config.Target == 'autodetect') and (GetResourceState('qb-target') == 'started')) then
     Config.Target = 'qb-target'
     exports['qb-target']:AddGlobalPlayer({
@@ -173,6 +188,23 @@ elseif Config.Target == 'qb-target' or ((Config.Target == 'autodetect') and (Get
         },
         distance = Config.VehicleDistance,
     })
+    if Config.EnableCarryPed then
+        exports['qb-target']:AddGlobalPed({
+            options = {
+                {
+                    label = 'Carry Ped',
+                    icon = 'fa-solid fa-hand-holding',
+                    canInteract = function(entity)
+                        return not IsPedAPlayer(entity) and not LocalPlayer.state.carrying and not LocalPlayer.state.carried and not LocalPlayer.state.intrunk
+                    end,
+                    action = function(entity)
+                        exports['cad-carry']:CarryPedEntity(entity)
+                    end
+                }
+            },
+            distance = Config.CarryDistance,
+        })
+    end
 else
     Config.Target = 'none'
 end

@@ -6,10 +6,7 @@ lua54 "yes" -- needed for Reaper
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-
-author "Cadburry (ByteCode Studios)"
-description "Carry Person, put in trunk, put in any vehicle seat"
-version "2.8"
+version "2.9"
 
 shared_scripts {
     '@ox_lib/init.lua', -- Uncomment if using ox_lib

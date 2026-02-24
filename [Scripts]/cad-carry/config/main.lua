@@ -4,18 +4,18 @@ Config = {}
 Config.Target = 'ox_target' -- 'autodetect', 'ox_target', 'qb-target', 'none'
 
 -- do you want to use text ui? (Check fxmanifest.lua)
-Config.Notify = 'none' -- 'ox_lib', 'qb', 'esx', 'none'
+Config.Notify = 'ox_lib' -- 'ox_lib', 'qb', 'esx', 'none'
 
--- do you want to use text ui?
+-- do you want to use text ui? (Check fxmanifest.lua)
 Config.TextUI = 'ox_lib' -- 'ox_lib', 'none'
 
--- do you want to enable text interactions?
-Config.EnableTextInteractions = true -- [true = enable it, false = disable it]
+-- do you want to enable text interactions? [You may have to increase the Config.VehicleDistance if you dont see text]
+Config.EnableTextInteractions = false -- [true = enable it, false = disable it]
 
 -- do you want the carried able to uncarry themself?
 Config.CanCarriedPersonCancel = true -- [true = carried person can uncarry themself, false = carried person cannot uncarry themself]
 
--- do you want to require acceptance from the player being carried?
+-- do you want to require acceptance from the player being carried? (only applies to alive players)
 Config.RequireAcceptance = true -- [true = require acceptance, false = immediate carry]
 
 -- how long should the player have to accept the carry request?
@@ -24,8 +24,11 @@ Config.AcceptanceTimeout = 10000 -- 10 seconds to respond
 -- do you want to use generic name for the player being carried?
 Config.AcceptanceGenericName = false -- [true = use generic name, false = use player name]
 
+-- if target player is dead or has hands up, skip acceptance and carry immediately?
+Config.RequireDeadOrHandsUp = true -- [true = dead/hands-up players can be carried immediately, false = disabled]
+
 -- allow carrying dead players and also putting in trunk
-Config.DisallowDead = false -- [true: will not allow, false: will allow]
+Config.EnableDeadCarry = true -- [true: will allow, false: will not allow]
 
 -- do you want to carry peds? [Check bridge/carryped.lua]
 Config.EnableCarryPed = false
@@ -34,7 +37,7 @@ Config.EnableCarryPed = false
 Config.EnablePutInSeat = true -- [true = enable it, false = disable it]
 
 -- allow putting player in driver seat
-Config.AllowPutInDriverSeat = false -- [true: will allow, false: will not allow]
+Config.AllowPutInDriverSeat = true -- [true: will allow, false: will not allow]
 
 -- at what distance should you check to carry person
 Config.CarryDistance = 2.0

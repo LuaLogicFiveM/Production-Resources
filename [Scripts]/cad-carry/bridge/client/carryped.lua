@@ -33,31 +33,54 @@ local function loadAnim(animDict)
     end
 end
 
-RegisterCommand('carryped', function()
+local function doCarryPed(ped)
+    if not ped then return end
     loadAnim('nm')
     loadAnim('missfinale_c2mcs_1')
-    local closestPed = getClosestPed()
-    if not closestPed then return end
-    if IsEntityAttachedToEntity(closestPed, GetPlayerPed(PlayerId())) then
-        DetachEntity(closestPed, true, true)
-        ClearPedTasks(closestPed)
-        ClearPedTasks(GetPlayerPed(PlayerId()))
+    local player = GetPlayerPed(PlayerId())
+    if IsEntityAttachedToEntity(ped, player) then
+        DetachEntity(ped, true, true)
+        ClearPedTasks(ped)
+        ClearPedTasks(player)
     else
-        TaskPlayAnim(closestPed, 'nm', 'firemans_carry', 8.0, -1, -1, 1, 1, false, false, false)
-        AttachEntityToEntity(closestPed, GetPlayerPed(PlayerId()), GetPedBoneIndex(GetPlayerPed(PlayerId()), 40269),
+        TaskPlayAnim(ped, 'nm', 'firemans_carry', 8.0, -1, -1, 1, 1, false, false, false)
+        AttachEntityToEntity(ped, player, GetPedBoneIndex(player, 40269),
             -0.1, 0.0, 0.1, 25.0, -290.0, -150.0, true, true, false, true, 0, true)
-        TaskPlayAnim(GetPlayerPed(PlayerId()), 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 1.0, -1, -1, 50, 0, false,
+        TaskPlayAnim(player, 'missfinale_c2mcs_1', 'fin_c2_mcs_1_camman', 1.0, -1, -1, 50, 0, false,
             false, false)
     end
+end
+
+local function doCancelCarryPed(ped)
+    if not ped then return end
+    local player = GetPlayerPed(PlayerId())
+    if IsEntityAttachedToEntity(ped, player) then
+        DetachEntity(ped, true, true)
+        ClearPedTasks(ped)
+        ClearPedTasks(player)
+    end
+end
+
+local function carryPed()
+    doCarryPed(getClosestPed())
+end
+exports('CarryPed', carryPed)
+
+local function carryPedEntity(entity)
+    doCarryPed(entity)
+end
+exports('CarryPedEntity', carryPedEntity)
+
+local function cancelCarryPed()
+    doCancelCarryPed(getClosestPed())
+end
+exports('CancelCarryPed', cancelCarryPed)
+
+RegisterCommand('carryped', function()
+    carryPed()
 end, false)
 
 RegisterKeyMapping('cancelcarryped', 'Cancel Carry Ped', 'KEYBOARD', 'X')
 RegisterCommand('cancelcarryped', function()
-    local pedCercano = getClosestPed()
-    if not pedCercano then return end
-    if IsEntityAttachedToEntity(pedCercano, GetPlayerPed(PlayerId())) then
-        DetachEntity(pedCercano, true, true)
-        ClearPedTasks(pedCercano)
-        ClearPedTasks(GetPlayerPed(PlayerId()))
-    end
+    cancelCarryPed()
 end, false)

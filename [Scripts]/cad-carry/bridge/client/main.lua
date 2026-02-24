@@ -2,14 +2,49 @@
 ---@return boolean
 function IsDead()
     local player = PlayerPedId()
-    return Config.DisallowDead and (LocalPlayer.state.dead or LocalPlayer.state.isDead or LocalPlayer.state['qbx_medical:deathState'] or IsEntityDead(player))
+    local playerState = LocalPlayer.state
+    return IsEntityDead(player) or playerState.dead or playerState.isDead
+end
+
+--- Target Dead Checks
+---@param target number Target player ped
+---@return boolean
+function IsTargetDead(target)
+    local targetPlayer = NetworkGetPlayerIndexFromPed(target)
+    local targetServerId = GetPlayerServerId(targetPlayer)
+    local targetState = Player(targetServerId).state
+    return IsEntityDead(target) or targetState.dead or targetState.isDead
+end
+
+--- Check if target ped can be carried (dead or hands up)
+---@param targetPed number Target player ped
+---@return boolean
+function IsTargetCarriable(targetPed)
+    if not Config.RequireDeadOrHandsUp then return true end
+
+    local isDead = IsTargetDead(targetPed)
+    local animations = {
+        { dict = "missminuteman_1ig_2", anim = "handsup_base" },
+        { dict = "mp_arresting", anim = "idle" },
+        { dict = "random@mugging3", anim = "handsup_standing_base" },
+        { dict = "anim@move_m@prisoner_cuffed", anim = "idle" }
+    }
+    local isHandsUp = false
+    for _, anim in ipairs(animations) do
+        if IsEntityPlayingAnim(targetPed, anim.dict, anim.anim, 3) then
+            isHandsUp = true
+            break
+        end
+    end
+
+    return isDead or isHandsUp
 end
 
 --- Carry Checks (if true then person being carried will be back on their feet / carry will be cancelled)
 ---@return boolean
 function ChecksCarry()
     local player = PlayerPedId()
-    return IsDead() or LocalPlayer.state.intrunk
+    return (Config.EnableDeadCarry and IsDead()) or LocalPlayer.state.intrunk
 end
 
 --- InTrunk Checks (if true then the person will be thrown out of trunk)
@@ -19,7 +54,8 @@ end
 function ChecksInTrunk(player, vehicle)
     local c1 = GetEntityCoords(player)
     local c2 = GetEntityCoords(vehicle)
-    return #(c1 - c2) > 8 or GetVehicleEngineHealth(vehicle) < 100.0 or IsDead()
+    return #(c1 - c2) > 8 or GetVehicleEngineHealth(vehicle) < 100.0
+        -- or (Config.EnableDeadCarry and IsDead())
 end
 
 --- Check If trunk is full

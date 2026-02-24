@@ -34,3 +34,17 @@ function GetPlayerNameFromServerId(serverId)
         return GetPlayerName(serverId)
     end
 end
+
+--- Update player dead state
+RegisterNetEvent('QBCore:Player:SetPlayerData', function(playerData)
+    if not playerData or not playerData.metadata then return end
+
+    local playerState = Player(playerData.source).state
+    if playerData.metadata.isdead or playerData.metadata.inlaststand then
+        playerState.dead = true
+        playerState.isDead = true
+    else
+        playerState.dead = false
+        playerState.isDead = false
+    end
+end)
