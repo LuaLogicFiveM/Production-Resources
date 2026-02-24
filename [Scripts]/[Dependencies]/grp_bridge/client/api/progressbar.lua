@@ -75,21 +75,24 @@ local function convertQBtoOx(options)
     if not options then return options end
     local prop1 = options.prop or {}
     local prop2 = options.propTwo or {}
-    local props = {
-        {
+    local props = {}
+    if prop1.model then
+        props[#props + 1] = {
             model = prop1.model,
             bone = prop1.bone,
             pos = prop1.coords,
             rot = prop1.rotation,
-        },
-        {
+        }
+    end
+    if prop2.model then
+        props[#props + 1] = {
             model = prop2.model,
             bone = prop2.bone,
             pos = prop2.coords,
             rot = prop2.rotation,
         }
-    }
-    return {
+    end
+    local result = {
         duration = options.duration,
         label = options.label,
         position = 'bottom',
@@ -106,8 +109,11 @@ local function convertQBtoOx(options)
             clip = options.animation and options.animation.anim,
             flag = options.animation and options.animation.flags or 49,
         },
-        prop = props,
     }
+    if #props > 0 then
+        result.prop = props
+    end
+    return result
 end
 
 ---Convert ox_lib progress bar options to QB format

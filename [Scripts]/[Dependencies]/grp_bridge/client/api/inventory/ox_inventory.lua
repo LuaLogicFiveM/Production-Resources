@@ -2,8 +2,7 @@
 if GetResourceState('ox_inventory') == 'missing' then return end
 
 local OXInventoryClientAPI = {}
-
-local oxInventoryExport
+local oxInventoryExport = exports.ox_inventory
 
 
 local function validateItemParameter(item, operation)

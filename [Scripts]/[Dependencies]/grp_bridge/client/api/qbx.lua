@@ -57,11 +57,9 @@ function GRP.GetJobInfo()
 end
 
 function GRP.HasItem(item_name)
-    local item = exports.ox_inventory:GetItem(item_name)
-    if item then
-        return (item.count or 0) > 0, (item.count or 0)
-    end
-    return false, 0
+    if GetResourceState('ox_inventory') ~= 'started' then return false, 0 end
+    local count = exports.ox_inventory:GetItemCount(item_name) or 0
+    return count > 0, count
 end
 
 function GRP.GetInventory()

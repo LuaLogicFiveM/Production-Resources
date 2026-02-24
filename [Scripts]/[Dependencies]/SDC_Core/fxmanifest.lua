@@ -8,7 +8,7 @@ games { 'gta5' }
 
 author 'HoboDevCo'
 description 'SDC | Core Resource'
-version '1.1.0'
+version '1.1.2'
 
 shared_script {
     "@ox_lib/init.lua",
@@ -21,11 +21,13 @@ client_scripts {
 
 server_scripts {
     "@oxmysql/lib/MySQL.lua",
-    "src/server/server.lua",   
+    "config/server_config.lua",  
+    "src/server/server.lua",  
 }
 
 escrow_ignore {
     "config/config.lua",
+    "config/server_config.lua",  
     "src/client/client.lua",
     "src/server/server.lua"
 }

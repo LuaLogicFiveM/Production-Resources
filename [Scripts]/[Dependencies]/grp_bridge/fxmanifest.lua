@@ -9,17 +9,21 @@ lua54 'yes'
 version '1.3.2'
 author 'APOLLO'
 description 'Bridge for GRP Development'
+
 shared_scripts {
     'configs/config.lua',
     'shared/shared.lua',
     'shared/init.lua'
 }
+
 client_scripts {
     'client/main.lua'
 }
+
 server_scripts {
     'server/main.lua'
 }
+
 files {
     'client/api/*.lua',
     'client/api/inventory/*.lua',
@@ -29,6 +33,7 @@ files {
     'server/api/banking/*.lua',
     'server/api/inventory/*.lua'
 }
+
 escrow_ignore {
     '**/*'
 }

@@ -81,7 +81,8 @@ local fuelSystems = {
     "cdn-fuel",
     "esx-sna-fuel",
     "bigdaddy-fuel",
-    "okokgasstation"
+    "okokgasstation",
+    "rcore_fuel"
 }
 
 if fuelDebug then

@@ -1,3 +1,28 @@
+## Using GRP Bridge in Your Resource
+
+To use GRP bridge functions (GRP.ShowNotification, GRP.GetPlayer, GRP.AddItem, etc.) in any resource:
+
+1. Add `grp_bridge` to your dependencies in `fxmanifest.lua`:
+```lua
+dependencies {
+    'grp_bridge',
+    -- your other deps
+}
+```
+
+2. Add `@grp_bridge/shared/init.lua` to your `shared_scripts` (must load before scripts that use GRP):
+```lua
+shared_scripts {
+    '@grp_bridge/shared/init.lua',
+    -- your other shared scripts
+}
+```
+
+3. Use the GRP table directly (no exports): `GRP.ShowNotification('Hello')`, `GRP.GetPlayer(id)`, etc.
+
+
+---
+
 ## Available Exports
 
 ### Client Exports

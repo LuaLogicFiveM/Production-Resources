@@ -8,7 +8,16 @@ function GRP.GetPlayer(id)
 end
 
 function GRP.GetAllPlayers()
-    return ESX.GetPlayers()
+    local raw = ESX.GetPlayers()
+    local result = {}
+    for i = 1, #raw do
+        local id = raw[i]
+        local num = (type(id) == "number") and id or tonumber(id)
+        if num then
+            result[#result + 1] = num
+        end
+    end
+    return result
 end
 
 function GRP.GetPlayerJob(id)

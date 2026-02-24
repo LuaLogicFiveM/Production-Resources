@@ -344,7 +344,18 @@ function GRP.HasItem(item_name)
     if config.Debug then
         DebugPrint("HasItem function called with Item: " .. item_name, "debug")
     end
-    return API.HasItem(item_name)
+    if INVENTORY and INVENTORY.HasItem then
+        local hasItem = INVENTORY.HasItem(item_name, 1)
+        if hasItem then
+            local count = (INVENTORY.GetItemCount and INVENTORY.GetItemCount(item_name)) or 1
+            return true, count
+        end
+        return false, 0
+    end
+    if API and API.HasItem then
+        return API.HasItem(item_name)
+    end
+    return false, 0
 end
 
 ---@return table
