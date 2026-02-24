@@ -146,7 +146,7 @@ Config.Menu = {
                 vector4(-2028.7356, -505.9716, 12.2131, 45.8117),--685
             }
         },
-        ['devos'] = {
+        ['deadly'] = {
             bossRank = 4,
             locations = {
                 vector4(-442.1889, 264.1572, 86.1950, 29.6220),--636
@@ -192,12 +192,6 @@ Config.Menu = {
                 vector4(-19.3949, -1491.2119, 30.4869, 354.2206),--853
             }
         },
-        ['blackstone'] = {
-            bossRank = 5,
-            locations = {
-                vector4(-1517.7252, 1939.7896, 61.7355, 103.4730),--411
-            }
-        },
         ['santos'] = {
             bossRank = 3,
             locations = {
@@ -208,12 +202,6 @@ Config.Menu = {
         
         ----------------------------- Shops -----------------------------
 
-        ['night'] = {
-            bossRank = 4,
-            locations = {
-                vector4(-68.5766, -442.7573, 37.2673, 56.7724),--618
-            }
-        },
         ['stance'] = {
             bossRank = 4,
             locations = {
@@ -237,12 +225,6 @@ Config.Menu = {
             bossRank = 4,
             locations = {
                 vector4(698.1581, 162.1712, 89.7781, 58.4352),--592
-            }
-        },
-        ['wperf'] = {
-            bossRank = 7,
-            locations = {
-                vector4(960.6086, -1570.2334, 30.7377, 183.8687),--796 
             }
         },
         ['wilsons'] = {
@@ -300,18 +282,6 @@ Config.Menu = {
             bossRank = 4,
             locations = {
                 vector4(1309.7688, 2629.3838, 39.2945, 213.1328),--262
-            }
-        },
-        ['landrys'] = {
-            bossRank = 4,
-            locations = {
-                vector4(-1641.6398, -782.0059, 10.1747, 257.8826),--686
-            }
-        },
-        ['southtc'] = {
-            bossRank = 4,
-            locations = {
-               vector4(810.2009, -2336.5996, 18.6847, 351.7378),--806
             }
         },
         ['pizza_pier'] = {
