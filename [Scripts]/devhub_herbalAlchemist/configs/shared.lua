@@ -19,8 +19,8 @@ Shared.JobRequired = false -- To enable the job, change it to the job name  (e.g
 
 Shared.Economy = {
     xp = 100,
-    money = math.random(10000, 15000),
-    mulitplerPerLevel = 0.01,
+    money = math.random(2500, 7500),
+    mulitplerPerLevel = 0.03,
 } 
 Shared.HerbsTypePerTask = 0 -- if 0 then it will be half of the all herbs count, any other number will be the type amount of herbs per task
 Shared.Herbs = {
