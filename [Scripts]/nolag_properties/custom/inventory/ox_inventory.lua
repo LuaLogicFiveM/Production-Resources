@@ -43,7 +43,7 @@ end
 
 Config.Functions["OpenInventory"] = {
     type = "inside",    -- inside or outside
-    maxPerProperty = 2, -- The maximum amount of inventory menu's per property
+    maxPerProperty = 1, -- The maximum amount of inventory menu's per property
     radius = 1.0,       -- The radius of the interaction
     label = "Inventory",
     icon = "fas fa-box-open",

@@ -244,7 +244,7 @@ CreateThread(function()
 
         ["DC Townhouse 1"] = {
             label = "DC Townhouse 1",
-            hash = `dc_townhouse`,
+            hash = `dc_townhouseone`,
             doorOffset = { x = 3.735229, y = -5.845581, z = -1.967209, h = 0.0, width = 2.0 },
             stash = {
                 maxweight = 500000,

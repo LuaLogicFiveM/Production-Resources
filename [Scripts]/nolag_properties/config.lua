@@ -80,6 +80,8 @@ Config = {
         DCCustomz = false,         -- [PAID] https://store.dccustomz.com/category/2714613
     },
 
+    FixShellOffsets = true, -- Enable the shell offsets fix
+
     -- Enable the offset finder used to find the offset of the shells
     -- This is useful if you want to add custom shells
     -- It will register new commands that everyone can use so it's recommended to disable this in production
@@ -237,24 +239,19 @@ Config = {
         end,
     },
 
-    LockDoorsByDefault = true,                  -- Save the door lock state to the database
+    LockDoorsByDefault = false,                  -- Save the door lock state to the database
     ExitEnterWhileLocked = true,                 -- Allow entering and exiting while locked (if you have a key)
     OpenForPreview = true,                       -- Allow the property to be enter for preview (if the property is for sale or for rent)
     SpawnInProperty = false,                      -- Spawn the player in the property if they disconnected while inside one otherwise it will spawn them at the outside door (default: true)
-    PropertyPrice = { 50000, 50000000 },              -- The price of the property, first number is the minimum, second is the maximum.
-    SecurityCamFilter = "secret_camera",         -- The filter for the security cameras (default: "CAMERA_secuirity_FUZZ") https://wiki.rage.mp/index.php?title=Timecycle_Modifiers
-    SecurityCamFilterStrength = 1,               -- The strength of the filter (default: 0.4)
-    SecurityCamNightVision = true,               -- Enable/disable night vision toggle for security cameras (default: true)
-    SecurityCamNightVisionFilter = "MP_heli_cam", -- The filter for the night vision mode (default: "MP_heli_cam")
-    SecurityCamNightVisionStrength = 1,          -- The strength of the night vision filter (default: 1)
+    PropertyPrice = { 100000, 20000000 },              -- The price of the property, first number is the minimum, second is the maximum.
     InactivityDays = 60,                         -- The amount of days before a property is considered inactive and set for sale (If you want to disable you can just set it to false)
     InactivityDaysForRent = 30,                  -- The amount of days before a property is considered inactive and auto renew is disabled (If you want to disable you can just set it to false)
-    MaxPropertiesPerPlayer = 1,              -- The maximum amount of properties a player can owned
+    MaxPropertiesPerPlayer = 3,              -- The maximum amount of properties a player can owned
     PropertyLimitOverrides = {                   -- Overrides the property limit for a player based on the character identifier/citizenid
         -- Example:
         -- ["character_identifier"] = 5, -- This player can own up to 5 properties
     },
-    MaxRentsPerPlayer = false,     -- The maximum amount of rents a player can have
+    MaxRentsPerPlayer = 3,     -- The maximum amount of rents a player can have
     PropertyRentLimitOverrides = { -- Overrides the property rent limit for a player based on the character identifier/citizenid
         -- Example:
         -- ["character_identifier"] = 5, -- This player can own up to 5 properties
@@ -264,10 +261,20 @@ Config = {
     -- If set to higher value the outside furniture will be spawned when the player is far from the property
     YardZoneRadius = 30,         -- The radius of the yard zone (default: 10)
     MaxFurnitureInside = false,  -- Global limit for inside furniture count per property (false to disable)
-    MaxFurnitureOutside = false, -- Global limit for outside furniture count per property (false to disable)
+    MaxFurnitureOutside = 100, -- Global limit for outside furniture count per property (false to disable)
     DefaultFurnitureWeight = 1000, -- The default weight for the furniture
     -- Ability to add myself as a keyholder (default: false) If set to true the player will be able to add himself as a keyholder when he is owner of the property
     AllowSelfAsKeyholder = false,
+
+    --[[ Security Cam ]]
+    SecurityCamFilter = "secret_camera",         -- The filter for the security cameras (default: "CAMERA_secuirity_FUZZ") https://wiki.rage.mp/index.php?title=Timecycle_Modifiers
+    SecurityCamFilterStrength = 1,               -- The strength of the filter (default: 0.4)
+    SecurityCamNightVision = true,               -- Enable/disable night vision toggle for security cameras (default: true)
+    SecurityCamNightVisionFilter = "MP_heli_cam", -- The filter for the night vision mode (default: "MP_heli_cam")
+    SecurityCamNightVisionStrength = 1,          -- The strength of the night vision filter (default: 1)
+    MaxSecurityCameras = false,                  -- Global limit for security cameras count per property (false to disable)
+    MaxSecurityCamerasInside = false,            -- Limit for inside security cameras count per property (false to disable)
+    MaxSecurityCamerasOutside = false,            -- Limit for outside security cameras count per property (false to disable)
 
     --[[ Utility Bills ]]
     UtilityBills = {

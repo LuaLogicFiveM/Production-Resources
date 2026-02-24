@@ -200,6 +200,7 @@
     "notify_interactable_point_max_reached": "You have reached the maximum number of %s interactable points for %s!",
     "notify_interactable_point_invalid_type": "Invalid interactable point type!",
     "notify_furniture_max_reached": "You have reached the maximum number of furniture for the %s of this property (limit: %s)!",
+    "notify_camera_max_reached": "You have reached the maximum number of security cameras for this property (limit: %s)!",
     "notify_furniture_outside_disabled": "You cannot place outside furniture outside the property!",
     "notify_furniture_inside_disabled": "You cannot place inside furniture inside the property!",
     "notify_no_yard_zone_for_outside_point": "You cannot add outside interactable points without a yard zone!",
@@ -239,6 +240,10 @@
     "interior_changed_successfully": "Property interior changed successfully",
     "interior_change_failed": "Failed to change property interior",
     "player_kicked_interior_change": "You have been removed from the property due to an interior change.",
+
+    "marketplace": "Property Marketplace",
+
+    "light_switch": "Light Switch",
 
     "ui_manage_property": "Manage property",
     "ui_apartment": "Apartment",

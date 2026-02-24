@@ -9,7 +9,7 @@ game 'gta5'
 lua54 'yes'
 description 'Properties system for FiveM.'
 author 'NoLag Development'
-version '2.4.1'
+version '2.4.4'
 shared_scripts {
   '@ox_lib/init.lua',
   'config.lua',

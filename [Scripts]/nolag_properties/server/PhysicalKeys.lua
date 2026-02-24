@@ -473,9 +473,9 @@ function PhysicalKeys.GetAvailableLocks(propertyId)
 
     -- Additional locks
     if property.propertyData.additionalLocks then
-        print('Additional locks: ' .. json.encode(property.propertyData.additionalLocks, { indent = true }))
+        -- print('Additional locks: ' .. json.encode(property.propertyData.additionalLocks, { indent = true }))
         for _, lock in pairs(property.propertyData.additionalLocks) do
-            print('Lock: ' .. json.encode(lock, { indent = true }))
+            -- print('Lock: ' .. json.encode(lock, { indent = true }))
             locks[#locks + 1] = {
                 type = 'F',
                 id = tonumber(lock.id:match('^furni_(%d+)$')),
