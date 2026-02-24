@@ -5,6 +5,8 @@ lua54 "yes" -- needed for Reaper
 
 fx_version 'cerulean'
 game 'gta5'
+author 'Peak Scripts | KostaZ'
+description 'Fishing script with a custom minigame, upgradable rods, bait and tackle systems, fishing nets, tournaments & more.'
 version '1.2.2'
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'

@@ -11,7 +11,7 @@ end
 ---@param player table
 ---@return string
 function bridge.getPlayerIdentifier(player)
-    return player.identifier
+    return player and player.identifier
 end
 
 ---@param identifier string
