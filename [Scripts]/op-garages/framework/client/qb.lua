@@ -21,6 +21,11 @@ function getGangName()
         if not orgData then return nil end
 
         return tostring(orgData.id)
+    elseif GetResourceState('rcore_gangs') == 'started' then
+        local gang = exports.rcore_gangs:GetPlayerGang()
+        if not gang then return nil end
+
+        return gang.name
     else
         if (PlayerData ~= nil and PlayerData.gang ~= nil and PlayerData.gang.name ~= nil) then
             return PlayerData.gang.name
@@ -46,6 +51,10 @@ function getGangGrade(cb)
                 end
             end
         end)
+    elseif GetResourceState('rcore_gangs') == 'started' then
+        local gang = exports.rcore_gangs:GetPlayerGang()
+        if not gang then return cb(nil) end
+        cb(0)
     else
         if (PlayerData ~= nil and PlayerData.gang ~= nil and PlayerData.gang.grade ~= nil) then
             cb(type(PlayerData.gang.grade) == "table" and PlayerData.gang.grade.level or PlayerData.gang.grade)

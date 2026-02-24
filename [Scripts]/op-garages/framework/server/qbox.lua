@@ -113,6 +113,15 @@ Fr.GetPlayerGang = function(xPlayer)
             grade = grade,
         }
         return gang
+    elseif GetResourceState('rcore_gangs') == 'started' then
+        local xSource = Fr.GetSourceFromPlayerObject(xPlayer)
+        local gang = exports.rcore_gangs:GetPlayerGang(xSource)
+        if not gang then return {} end
+
+        return {
+            name = gang.name,
+            grade = 0
+        }
     else
         local gang = {
             name = xPlayer.PlayerData.gang.name,

@@ -1,21 +1,22 @@
-shared_script "@ReaperV4/imports/bypass.lua"
-shared_script "@ReaperV4/imports/bypass_s.lua"
-shared_script "@ReaperV4/imports/bypass_c.lua"
-lua54 "yes" -- needed for Reaper
-
 fx_version "cerulean"
+
 description "Best Garage System for fivem servers."
 author "OTHERPLANET"
 version '2.5.7'
+
 lua54 'yes'
+
 game 'gta5'
+
 ui_page 'web/build/index.html'
+
 shared_scripts {
 	'@ox_lib/init.lua',
 	'framework/shared.lua',
 	'config/MainConfig.lua',
 	'locales/*.lua',
 }
+
 client_scripts {
 	'@PolyZone/client.lua',
 	'@PolyZone/BoxZone.lua',
@@ -29,6 +30,7 @@ client_scripts {
 	'framework/client/qbox.lua',
 	'client/**',
 }
+
 server_scripts {
 	'@oxmysql/lib/MySQL.lua',
 	'config/ServerConfig.lua',
@@ -37,11 +39,13 @@ server_scripts {
 	'framework/server/qbox.lua',
 	'server/**',
 }
+
 files {
 	'web/build/index.html',
 	'web/build/**/*',
 	'dui/dui.html'
 }
+
 escrow_ignore {
 	'client/editable/**',
 	'client/library/**',

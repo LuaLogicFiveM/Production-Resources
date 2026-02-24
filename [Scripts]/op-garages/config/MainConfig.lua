@@ -36,9 +36,9 @@ Config.Misc = {
         impound = "fa-solid fa-money-bill-wave",
         showroom = "fa-solid fa-building"
     },
-    TowingPrice = 500, -- Price of towing left or destroyed vehicle.
+    TowingPrice = 1000, -- Price of towing left or destroyed vehicle.
     TowingTime = 5, -- Towing destroyed/left vehicle Time.
-    TransferPrice = 500, -- Transfer Vehicle from garage to garage price.
+    TransferPrice = 250, -- Transfer Vehicle from garage to garage price.
     Peds = {
         -- You can also disable only selected ped. E.X (sea = false)
         Toggle = true, -- Disable/Enable peds.
@@ -68,6 +68,7 @@ Config.Misc = {
     ReverseGradeCheck = true, -- examples: True = vehicle with minimum grade 3 will be available for grades higher than 3. False = vehicle with minimum grade 3 will be available for grades lower than 3. 
     DisableVehiclesTransferButKeepUniqueGarages = false, -- If this is true, it will keep vehicles in garages where they were stored but do not allow to transfer between garages.
     GiveKeysToSubownerWhenTakenOut = true, -- If true - script will give keys to subowner when vehicle is taken out from garage / remove keys from subowner when vehicle is stored.
+    GiveKeysInsideShowroom = false, -- Give keys to all vhicles inside showroom.
 }
 
 ----------------------------------------------------------------------------
@@ -118,6 +119,8 @@ Config.IV = {
     jobsList = {
         ['sheriff'] = 0, -- Job name & grade.
         ['sahp'] = 0, -- Job name & grade.
+        ['gov'] = 0, -- Job name & grade.
+        ['lsimpound'] = 0, -- Job name & grade.
     },
     commandName = "impoundmenu", -- Command Name
     allowPriceBeforeImpoundDate = true, -- Allows setting the vehicle release price *before* the impound date. (The player who impounded the vehicle can also set it to 0 to disable the fee.)
