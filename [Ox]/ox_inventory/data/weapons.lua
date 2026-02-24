@@ -1,6 +1,127 @@
 return {
 	Weapons = {
 
+		['WEAPON_SWP238S'] = { label = '.38 Special', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP23DGLOCK'] = { label = '3D Printed Glock Switch Glowing', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },             -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2AR15NS'] = { label = 'AR-15 No Stock', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2ARP3IN'] = { label = 'ARP 3-Inch Shellcatcher', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2ARPBULLDOG'] = { label = 'ARP Bulldog', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2B57'] = { label = 'FN 57 Black Switch', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2BAGGLOCK'] = { label = 'Glock with Plastic Bag Shellcatcher', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2BBAK'] = { label = 'AK-47 with Baby Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2BBBAT'] = { label = 'Wooden Bat with Baby Blue Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2BBGUN'] = { label = 'Plastic BB Gun', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-bbs' },                              -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2BBM4'] = { label = 'M4A1 with Baby Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                   -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2BBMP9'] = { label = 'MP9 with Baby Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2BELT'] = { label = 'Leather Belt', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2BG26'] = { label = 'Glock 26 Blue', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2BLACKOUTAK'] = { label = 'Blackout AK-47', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2BLACKAK'] = { label = 'AK-47 with Black Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2BLACKBAT'] = { label = 'Wooden Bat with Black Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2BLACKM4'] = { label = 'M4A1 with Black Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                     -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2BLACKMP9'] = { label = 'MP9 with Black Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2BLUEAK'] = { label = 'AK-47 with Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2BLUEBAT'] = { label = 'Wooden Bat with Blue Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2BLUEM4'] = { label = 'M4A1 with Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                       -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2BLUEMP9'] = { label = 'MP9 with Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2BOXCUTTER'] = { label = 'Box Cutter', weight = 100, stack = false, durability = 0.01 },                                                      -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2BROWNAK'] = { label = 'AK-47 with Brown Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2BROWNBAT'] = { label = 'Wooden Bat with Brown Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2BROWNM4'] = { label = 'M4A1 with Brown Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                     -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2BROWNMP9'] = { label = 'MP9 with Brown Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2BTANARP'] = { label = 'ARP Black Tan', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DE'] = { label = 'Desert Eagle', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-50' },
+		['WEAPON_SWP2DRACOBB'] = { label = 'Draco with Baby Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOBLACK'] = { label = 'Draco with Black Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOBLUE'] = { label = 'Draco with Blue Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOBROWN'] = { label = 'Draco with Brown Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOGOLD'] = { label = 'Draco with Gold Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOGRAY'] = { label = 'Draco with Gray Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOGREEN'] = { label = 'Draco with Green Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOLAV'] = { label = 'Draco with Lavender Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOMINT'] = { label = 'Draco with Mint Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACONF'] = { label = 'Draco', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOORANGE'] = { label = 'Draco with Orange Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOPINK'] = { label = 'Draco with Pink Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOPURP'] = { label = 'Draco with Purple Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACORED'] = { label = 'Draco with Red Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOWHITE'] = { label = 'Draco with White Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2DRACOYELLOW'] = { label = 'Draco with Yellow Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2G17MOSMH'] = { label = 'Glock 17 MOS w/ Mag Holder', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2G18C'] = { label = 'Glock 18C', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2G19CS'] = { label = 'Glock 19 Custom Switch', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2G19T'] = { label = 'Glock 19 Tan Binary', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2G21GC'] = { label = 'Glock 21 Ghost Custom', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2G22S'] = { label = 'Glock 22 Switch', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2G23B'] = { label = 'Glock 23 Binary', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2G41CS'] = { label = 'Glock 41 Custom Switch', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2GOLDAK'] = { label = 'AK-47 with Gold Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2GOLDBAT'] = { label = 'Wooden Bat with Gold Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2GOLDM4'] = { label = 'M4A1 with Gold Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                       -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2GOLDMP9'] = { label = 'MP9 with Gold Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2GR300BO'] = { label = 'G-Rod 300 Blackout', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2GRAYAK'] = { label = 'AK-47 with Gray Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2GRAYBAT'] = { label = 'Wooden Bat with Gray Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2GRAYM4'] = { label = 'M4A1 with Gray Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                       -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2GRAYMP9'] = { label = 'MP9 with Gray Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2GREENAK'] = { label = 'AK-47 with Green Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2GREENBAT'] = { label = 'Wooden Bat with Green Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2GREENM4'] = { label = 'M4A1 with Green Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                     -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2GREENMP9'] = { label = 'MP9 with Green Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2HATCHET'] = { label = 'Hiking Hatchet', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2KNIFE'] = { label = 'Kitchen Knife', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2LAVAK'] = { label = 'AK-47 with Lavender Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2LAVBAT'] = { label = 'Wooden Bat with Lavender Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2LAVM4'] = { label = 'M4A1 with Lavender Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                    -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2LAVMP9'] = { label = 'MP9 with Lavender Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2MCKGLOCK'] = { label = 'Glock w/ MCK Kit', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2MINTAK'] = { label = 'AK-47 with Mint Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2MINTBAT'] = { label = 'Wooden Bat with Mint Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2MINTM4'] = { label = 'M4A1 with Mint Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                       -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2MINTMP9'] = { label = 'MP9 with Mint Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2MP5'] = { label = 'HK MP5', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2MPX'] = { label = 'MPX CQC Suppressed', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2NFAK'] = { label = 'AK-47', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2NFBAT'] = { label = 'Wooden Bat', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2NFM4'] = { label = 'M4A1', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                                        -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2NFMP9'] = { label = 'MP9', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2ORANGEAK'] = { label = 'AK-47 with Orange Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2ORANGEBAT'] = { label = 'Wooden Bat with Orange Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2ORANGEM4'] = { label = 'M4A1 with Orange Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                   -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2ORANGEMP9'] = { label = 'MP9 with Orange Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2P22'] = { label = 'Walther P22', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2P90'] = { label = 'FN P90', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2PG43XS'] = { label = 'Glock 43X (Pink Switch)', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2PINKAK'] = { label = 'AK-47 with Pink Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2PINKBAT'] = { label = 'Wooden Bat with Pink Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2PINKM4'] = { label = 'M4A1 with Pink Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                       -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2PINKMP9'] = { label = 'MP9 with Pink Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2PURPAK'] = { label = 'AK-47 with Purple Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2PURPBAT'] = { label = 'Wooden Bat with Purple Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2PURPM4'] = { label = 'M4A1 with Purple Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                     -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2PURPMP9'] = { label = 'MP9 with Purple Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2REDAK'] = { label = 'AK-47 with Red Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2REDBAT'] = { label = 'Wooden Bat with Red Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2REDM4'] = { label = 'M4A1 with Red Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                         -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2REDMP9'] = { label = 'MP9 with Red Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2RPIPE'] = { label = 'Rusty Bloody Pipe', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2RUGER'] = { label = 'Ruger 5.7', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2SAWNOFF'] = { label = 'Snub Nose Shotty', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-shotgun' },
+		['WEAPON_SWP2TEC9'] = { label = 'Tec-9', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2TG17S'] = { label = 'Glock 17 Tan Switch', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2TSCAR'] = { label = 'HK SCAR-H Tan', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2UGLOCK'] = { label = 'Unauthorized Glock', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2UZI'] = { label = 'Uzi 9mm', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2VECTOR'] = { label = 'Kriss Vector', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },                                  -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2WHITEAK'] = { label = 'AK-47 with White Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2WHITEBAT'] = { label = 'Wooden Bat with White Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2WHITEM4'] = { label = 'M4A1 with White Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                     -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2WHITEMP9'] = { label = 'MP9 with White Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+		['WEAPON_SWP2YELLOWAK'] = { label = 'AK-47 with Yellow Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },
+		['WEAPON_SWP2YELLOWBAT'] = { label = 'Wooden Bat with Yellow Flag', weight = 100, stack = false, durability = 0.01 },
+		['WEAPON_SWP2YELLOWM4'] = { label = 'M4A1 with Yellow Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-556' },                   -- **BANK$ON PREMIUM PACK ITEM**
+		['WEAPON_SWP2YELLOWMP9'] = { label = 'MP9 with Yellow Flag', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
+
 		['WEAPON_3DGLOCK'] = { label = '3D Printed Glock', weight = 5000, durability = 0.08, ammoname = 'ammo-9' }, --
 		['WEAPON_300BO'] = { label = '300 Blackout', weight = 10000, durability = 0.08, ammoname = 'ammo-556' },
 		['WEAPON_357SNUB'] = { label = 'S&W .357 Snubnose', weight = 5000, durability = 0.08, ammoname = 'ammo-357' },
@@ -1050,6 +1171,7 @@ return {
 			type = 'magazine',
 			client = {
 				component = {
+					-- Gangs
 					`COMPONENT_AK47DRUM_CLIP_01`,
 					`COMPONENT_ARPISTOLSUB_CLIP_01`, -- 50
 					`COMPONENT_ARPISTOL_BOXMAG`, -- 100
@@ -1060,98 +1182,8 @@ return {
 					`COMPONENT_G17STAINLESS_CLIP_01`, -- 30
 					`COMPONENT_G17EXT_CLIP_01`, -- 30
 					`COMPONENT_FNX45_CLIP_01`,
-				},
-				usetime = 2500
-			}
-		},
 
-		['at_gang_flashlight'] = {
-			label = 'Gang Flashlight',
-			weight = 1000,
-			type = 'flashlight',
-			client = {
-				component = {
-					`COMPONENT_AT_TACTICALCARBINERIFLE_FLSH`, -- AR-15
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_gang_scope'] = {
-			label = 'Gang Scope',
-			weight = 1000,
-			type = 'sight',
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_ARPISTOLSUB`,
-					`COMPONENT_AT_SCOPE_ARPISTOL`,
-					`COMPONENT_GHOSTARP_SCOPE_01`,
-					`COMPONENT_AT_TACTICALCARBINERIFLE_SCOPE_MEDIUM`, -- AR-15
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_gang_grip'] = {
-			label = 'Gang Grip',
-			weight = 1000,
-			type = 'grip',
-			client = {
-				component = {
-					`COMPONENT_AT_TACTICALCARBINERIFLE_AFGRIP`, -- AR-15
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_gang_suppressor'] = {
-			label = 'Gang Suppressor',
-			weight = 1000,
-			type = 'suppressor',
-			client = {
-				component = {
-					`COMPONENT_GHOSTGLOCK_SUPP_01`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_leo_grip'] = {
-			label = 'LEO Grip',
-			weight = 1000,
-			type = 'grip',
-			client = {
-				component = {
-					`COMPONENT_AT_AR_AFGRIP`, --hk417
-					`COMPONENT_AT_LBRS_AFGRIP`,
-					`COMPONENT_m870_HANDGUARD_03`,
-					`COMPONENT_MK18_GRIP_03`,
-					`COMPONENT_AT_fbiarb_AFGRIP`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_leo_suppressor'] = {
-			label = 'LEO Suppressor',
-			weight = 1000,
-			type = 'barrel',
-			client = {
-				component = {
-					`COMPONENT_AT_KS1_SUPP`,
-					`COMPONENT_AT_LBRS_SUPP`,
-					`COMPONENT_MK18_suppressor_01`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_leo_mag'] = {
-			label = 'LEO Mag',
-			weight = 1000,
-			type = 'magazine',
-			client = {
-				component = {
+					-- LEO
 					`COMPONENT_GLOCK19GEN4_CLIP_02`, -- 21
 					`COMPONENT_GLOCK20_CLIP_02`, -- 19
 					`COMPONENT_CARBINERIFLE_CLIP_01`, --hk417
@@ -1164,106 +1196,8 @@ return {
 					`COMPONENT_SIG_SAUCER_MAG1`,
 					`COMPONENT_MK18_CLIP_07`,
 					`COMPONENT_fbiarb_CLIP_01`, -- 30
-				},
-				usetime = 2500
-			}
-		},
 
-		['at_leo_scope'] = {
-			label = 'LEO Scope',
-			weight = 1000,
-			type = 'sight',
-			client = {
-				component = {
-					`COMPONENT_AT_SCOPE_MEDIUM`, --hk417
-					`COMPONENT_AT_SCOPE_LBRS`,
-					`COMPONENT_m870_SCOPE_04`,
-					`COMPONENT_LWRC_SCOPE`,
-					`COMPONENT_MK18_SCOPE_02`,
-					`COMPONENT_AT_SCOPE_fbiarb`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_leo_flashlight'] = {
-			label = 'LEO Flashlight',
-			weight = 1000,
-			type = 'flashlight',
-			client = {
-				component = {
-					`COMPONENT_FM1_BENELLIM4_FLSH_01`,
-					`COMPONENT_AT_AR_FLSH`, --hk417
-					`COMPONENT_AT_LBRS_FLSH`,
-					`COMPONENT_LWRC_FLSH`,
-					`COMPONENT_SIG_SAUCER_FLSH`,
-					`COMPONENT_MK18_FLASH_07`,
-					`COMPONENT_AT_fbiarb_FLSH`,
-					`COMPONENT_M9_FLSH_01`,
-					`COMPONENT_AT_PI_FLSH_FN57`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_handgun_flashlight'] = {
-			label = 'Handgun Flashlight',
-			type = 'flashlight',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_FN509HUNT_FLSH`,
-					`COMPONENT_GHOSTG30_FLSH`,
-					`COMPONENT_GP80C_FLSH`,
-					`COMPONENT_T247_FLSH`,
-					`COMPONENT_TANGLOCK_FLSH`,
-					`COMPONENT_UGLOCK_FLSH`,
-					`COMPONENT_AUTOMATICPISTOL_MAGHOLDER`,
-					`COMPONENT_GLOCK19GEN4_FLSH_01`,
-					`COMPONENT_GLOCK20_FLSH_01`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_handgun_sight'] = {
-			label = 'Handgun Sight',
-			type = 'sight',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_FN509HUNT_SCOPE`,
-					`COMPONENT_G22B_SCOPE`,
-					`COMPONENT_G22_SCOPE`,
-					`COMPONENT_G22_SCOPE`,
-					`COMPONENT_G43X_SCOPE`,
-					`COMPONENT_GHOSTG30_SCOPE`,
-					`COMPONENT_MARP_SCOPE`,
-					`COMPONENT_SWMP9_SCOPE`,
-					`COMPONENT_T247_SCOPE`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_handgun_suppressor'] = {
-			label = 'Handgun Suppressor',
-			type = 'suppressor',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_AUTOMATICPISTOL_SUPP_01`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_handgun_mag'] = {
-			label = 'Handgun Mag',
-			type = 'magazine',
-			weight = 1000,
-			client = {
-				component = {
+					-- Handgun
 					`COMPONENT_FN509HUNT_CLIP_02`,
 					`COMPONENT_FN57B_CLIP_02`,
 					`COMPONENT_G19BEAM_CLIP_02`,
@@ -1292,136 +1226,8 @@ return {
 					`COMPONENT_SIG_CLIP_02`, -- 22
 					`COMPONENT_RUGER57_CLIP_01`, -- 20
 					`COMPONENT_TANFNX45_CLIP_01`, -- 25
-				},
-				usetime = 2500
-			}
-		},
 
-		['at_scope_arpistol'] = {
-			label = 'AR Pistol Scope',
-			type = 'sight',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_SWPBLACKARP_SCOPE`,
-					`COMPONENT_SWPBLUEARP_SCOPE`,
-					`COMPONENT_GRAYARP_SCOPE`,
-					`COMPONENT_GREENARP_SCOPE`,
-					`COMPONENT_KTECPLR_SCOPE`,
-					`COMPONENT_MP5C_SCOPE`,
-					`COMPONENT_ORANGEARP_SCOPE`,
-					`COMPONENT_PINKARP_SCOPE`,
-					`COMPONENT_PURPLEARP_SCOPE`,
-					`COMPONENT_SWPREDARP_SCOPE`,
-					`COMPONENT_SCORPIONX9_SCOPE`,
-					`COMPONENT_WHITEARP_SCOPE`,
-					`COMPONENT_YELLOWARP_SCOPE`,
-					`COMPONENT_AT_SCOPE_MP9A`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_arpistol_suppressor'] = {
-			label = 'AR Pistol Suppressor',
-			type = 'suppressor',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_SWPBLACKARP_SUPP`,
-					`COMPONENT_SWPBLUEARP_SUPP`,
-					`COMPONENT_FN57B_SUPP`,
-					`COMPONENT_GRAYARP_SUPP`,
-					`COMPONENT_GREENARP_SUPP`,
-					`COMPONENT_MDRACO_SUPP`,
-					`COMPONENT_ORANGEARP_SUPP`,
-					`COMPONENT_PINKARP_SUPP`,
-					`COMPONENT_PURPLEARP_SUPP`,
-					`COMPONENT_SWPREDARP_SUPP`,
-					`COMPONENT_SCORPIONX9_SUPP`,
-					`COMPONENT_WHITEARP_SUPP`,
-					`COMPONENT_YELLOWARP_SUPP`,
-					`COMPONENT_AT_MP9A_SUPP_02`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_arpistol_flashlight'] = {
-			label = 'AR Pistol Flashlight',
-			type = 'flashlight',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_AT_MP9A_FLSH`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_arpistol_muzzle'] = {
-			label = 'AR Pistol Muzzle',
-			type = 'barrel',
-			weight = 1000,
-			client = {
-				component = {
-
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_arpistol_mag'] = {
-			label = 'AR Pistol Mag',
-			type = 'barrel',
-			weight = 1000,
-			client = {
-				component = {
-					`COMPONENT_MP5C_CLIP_02`,
-					`COMPONENT_SCORPIONX9_CLIP_02`,
-					`COMPONENT_MP5SD_CLIP_02`,
-					`COMPONENT_DRACO_CLIP_01`,
-					`COMPONENT_MICRODRACO_CLIP_01`,
-					`COMPONENT_MPX_CLIP_01`, -- 50
-					`COMPONENT_PLR_CLIP_01`, -- 30
-					`COMPONENT_UDP9_CLIP_01`, -- 30
-					`COMPONENT_MP9a_CLIP_02`, -- 50
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_rifle_grip'] = {
-			label = 'Rifle Grip',
-			weight = 1000,
-			type = 'grip',
-			client = {
-				component = {
-					`COMPONENT_SCARSC_GRIP_01`,
-					`COMPONENT_SR47_AFGRIP`,
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_rifle_laser'] = {
-			label = 'Rifle Laser',
-			weight = 150,
-			type = 'laser',
-			client = {
-				component = {
-
-				},
-				usetime = 2500
-			}
-		},
-
-		['at_rifle_mag'] = {
-			label = 'Rifle Mag',
-			weight = 150,
-			type = 'magazine',
-			client = {
-				component = {
+					-- Rifles
 					`COMPONENT_300BO_CLIP_02`,
 					`COMPONENT_AKCATCHER_CLIP_02`,
 					`COMPONENT_AR15S_CLIP_02`,
@@ -1443,64 +1249,565 @@ return {
 					`COMPONENT_SR47_MAG`, -- 50
 					`COMPONENT_HK416C_CLIP_01`, -- 50
 				},
-				usetime = 2500
+				usetime = 5000
 			}
 		},
 
-		['at_rifle_flashlight'] = {
-			label = 'Rifle Flashlight',
-			weight = 150,
+		['at_flashlight'] = {
+			label = 'Flashlight',
+			weight = 1000,
 			type = 'flashlight',
 			client = {
 				component = {
+					-- Gang
+					`COMPONENT_AT_TACTICALCARBINERIFLE_FLSH`, -- AR-15
+					
+					-- LEO
+					`COMPONENT_FM1_BENELLIM4_FLSH_01`,
+					`COMPONENT_AT_AR_FLSH`, --hk417
+					`COMPONENT_AT_LBRS_FLSH`,
+					`COMPONENT_LWRC_FLSH`,
+					`COMPONENT_SIG_SAUCER_FLSH`,
+					`COMPONENT_MK18_FLASH_07`,
+					`COMPONENT_AT_fbiarb_FLSH`,
+					`COMPONENT_M9_FLSH_01`,
+					`COMPONENT_AT_PI_FLSH_FN57`,
+
+					-- Handgun
+					`COMPONENT_FN509HUNT_FLSH`,
+					`COMPONENT_GHOSTG30_FLSH`,
+					`COMPONENT_GP80C_FLSH`,
+					`COMPONENT_T247_FLSH`,
+					`COMPONENT_TANGLOCK_FLSH`,
+					`COMPONENT_UGLOCK_FLSH`,
+					`COMPONENT_AUTOMATICPISTOL_MAGHOLDER`,
+					`COMPONENT_GLOCK19GEN4_FLSH_01`,
+					`COMPONENT_GLOCK20_FLSH_01`,
+
+					-- Rifle
 					`COMPONENT_AR15S_FLSH`,
 					`COMPONENT_M6IC_FLSH_02`,
 					`COMPONENT_SCARSC_FLSH_01`,
 					`COMPONENT_SR47_FLSH`,
 					`COMPONENT_AT_HK416B_FLSH`,
+
+					-- AR Pistol
+					`COMPONENT_AT_MP9A_FLSH`,
+
+					-- New Gun Pack
+					`COMPONENT_SWP2BG26_FLSH`,
+					`COMPONENT_SWP2G18C_FLSH`,
+					`COMPONENT_SWP2G19CS_FLSH`,
+					`COMPONENT_SWP2G19T_FLSH`,
+					`COMPONENT_SWP2G21GC_FLSH`,
+					`COMPONENT_SWP2G22S_FLSH`,
+					`COMPONENT_SWP2G23B_FLSH`,
+					`COMPONENT_SWP2G41CS_FLSH`,
+					`COMPONENT_SWP2GR300BO_FLSH`,
+					`COMPONENT_SWP2P22_FLSH`,
+					`COMPONENT_SWP2RUGER_FLSH`,
+					`COMPONENT_SWP2TG17S_FLSH`,
+					`COMPONENT_SWP2TSCAR_FLSH`,
+					`COMPONENT_SWP2B57_AFGRIP`,   -- This is a laser
+					`COMPONENT_SWP2MP5_AFGRIP`,   -- This is a laser
+					`COMPONENT_SWP2VECTOR_AFGRIP`,  -- This is a laser
 				},
-				usetime = 2500
+				usetime = 5000
 			}
 		},
 
-		['at_scope_rifle'] = {
-			label = 'Rifle Scope',
-			type = 'sight',
+		['at_laser'] = {
+			label = 'Laser',
 			weight = 1000,
+			type = 'flashlight',
 			client = {
 				component = {
+					-- New Gun Pack
+					`COMPONENT_SWP2B57_AFGRIP`,   -- This is a laser
+					`COMPONENT_SWP2MP5_AFGRIP`,   -- This is a laser
+					`COMPONENT_SWP2VECTOR_AFGRIP`,  -- This is a laser
+				},
+				usetime = 5000
+			}
+		},
+
+		['at_optic'] = {
+			label = 'Optic',
+			weight = 1000,
+			type = 'sight',
+			client = {
+				component = {
+					-- Gangs
+					`COMPONENT_AT_SCOPE_ARPISTOLSUB`,
+					`COMPONENT_AT_SCOPE_ARPISTOL`,
+					`COMPONENT_GHOSTARP_SCOPE_01`,
+					`COMPONENT_AT_TACTICALCARBINERIFLE_SCOPE_MEDIUM`, -- AR-15
+
+					-- LEO
+					`COMPONENT_AT_SCOPE_MEDIUM`, --hk417
+					`COMPONENT_AT_SCOPE_LBRS`,
+					`COMPONENT_m870_SCOPE_04`,
+					`COMPONENT_LWRC_SCOPE`,
+					`COMPONENT_MK18_SCOPE_02`,
+					`COMPONENT_AT_SCOPE_fbiarb`,
+
+					-- Handgun
+					`COMPONENT_FN509HUNT_SCOPE`,
+					`COMPONENT_G22B_SCOPE`,
+					`COMPONENT_G22_SCOPE`,
+					`COMPONENT_G22_SCOPE`,
+					`COMPONENT_G43X_SCOPE`,
+					`COMPONENT_GHOSTG30_SCOPE`,
+					`COMPONENT_MARP_SCOPE`,
+					`COMPONENT_SWMP9_SCOPE`,
+					`COMPONENT_T247_SCOPE`,
+
+					-- AR Pistol
+					`COMPONENT_SWPBLACKARP_SCOPE`,
+					`COMPONENT_SWPBLUEARP_SCOPE`,
+					`COMPONENT_GRAYARP_SCOPE`,
+					`COMPONENT_GREENARP_SCOPE`,
+					`COMPONENT_KTECPLR_SCOPE`,
+					`COMPONENT_MP5C_SCOPE`,
+					`COMPONENT_ORANGEARP_SCOPE`,
+					`COMPONENT_PINKARP_SCOPE`,
+					`COMPONENT_PURPLEARP_SCOPE`,
+					`COMPONENT_SWPREDARP_SCOPE`,
+					`COMPONENT_SCORPIONX9_SCOPE`,
+					`COMPONENT_WHITEARP_SCOPE`,
+					`COMPONENT_YELLOWARP_SCOPE`,
+					`COMPONENT_AT_SCOPE_MP9A`,
+
+					-- Rifle
 					`COMPONENT_300BO_SCOPE`,
 					`COMPONENT_AKCATCHER_SCOPE`,
 					`COMPONENT_AR15S_SCOPE`,
-
 					`COMPONENT_M6IC_SCOPE_05`,
 					`COMPONENT_SCARSC_SCOPE_02`,
 					`COMPONENT_SR47_SCOPE`,
 					`COMPONENT_AT_SCOPE_HK416B`,
+
+					-- New Gun Pack
+					`COMPONENT_SWP2BG26_SCOPE`,
+					`COMPONENT_SWP2G17MOSMH_SCOPE`,
+					`COMPONENT_SWP2G19CS_SCOPE`,
+					`COMPONENT_SWP2G19T_SCOPE`,
+					`COMPONENT_SWP2G22S_SCOPE`,
+					`COMPONENT_SWP2G23B_SCOPE`,
+					`COMPONENT_SWP2G41CS_SCOPE`,
+					`COMPONENT_SWP2P22_SCOPE`,
+					`COMPONENT_SWP2PG43XS_SCOPE`,
+					`COMPONENT_SWP2TG17S_SCOPE`,
+					`COMPONENT_SWP2AR15NS_SCOPE`,
+					`COMPONENT_SWP2ARP3IN_SCOPE`,
+					`COMPONENT_SWP2ARPBULLDOG_SCOPE`,
+					`COMPONENT_SWP2BBMP9_SCOPE`,
+					`COMPONENT_SWP2BLACKMP9_SCOPE`,
+					`COMPONENT_SWP2BLACKOUTAK_SCOPE`,
+					`COMPONENT_SWP2BLUEMP9_SCOPE`,
+					`COMPONENT_SWP2BROWNMP9_SCOPE`,
+					`COMPONENT_SWP2BTANARP_SCOPE`,
+					`COMPONENT_SWP2GOLDMP9_SCOPE`,
+					`COMPONENT_SWP2GR300BO_SCOPE`,
+					`COMPONENT_SWP2GRAYMP9_SCOPE`,
+					`COMPONENT_SWP2GREENMP9_SCOPE`,
+					`COMPONENT_SWP2LAVMP9_SCOPE`,
+					`COMPONENT_SWP2MCKGLOCK_SCOPE`,
+					`COMPONENT_SWP2MINTMP9_SCOPE`,
+					`COMPONENT_SWP2MP5_SCOPE`,
+					`COMPONENT_SWP2MPX_SCOPE`,
+					`COMPONENT_SWP2NFMP9_SCOPE`,
+					`COMPONENT_SWP2ORANGEMP9_SCOPE`,
+					`COMPONENT_SWP2P90_SCOPE`,
+					`COMPONENT_SWP2PINKMP9_SCOPE`,
+					`COMPONENT_SWP2PURPMP9_SCOPE`,
+					`COMPONENT_SWP2REDMP9_SCOPE`,
+					`COMPONENT_SWP2TEC9_SCOPE`,
+					`COMPONENT_SWP2TSCAR_SCOPE`,
+					`COMPONENT_SWP2UZI_SCOPE`,
+					`COMPONENT_SWP2WHITEMP9_SCOPE`,
+					`COMPONENT_SWP2YELLOWMP9_SCOPE`,
 				},
-				usetime = 2500
+				usetime = 5000
 			}
 		},
 
-		['at_rifle_suppressor'] = {
-			label = 'Rifle Suppressor',
-			type = 'suppressor',
+		['at_grip'] = {
+			label = 'Grip',
 			weight = 1000,
+			type = 'grip',
 			client = {
 				component = {
+					-- Gangs
+					`COMPONENT_AT_TACTICALCARBINERIFLE_AFGRIP`, -- AR-15
+
+					-- LEO
+					`COMPONENT_AT_AR_AFGRIP`, --hk417
+					`COMPONENT_AT_LBRS_AFGRIP`,
+					`COMPONENT_m870_HANDGUARD_03`,
+					`COMPONENT_MK18_GRIP_03`,
+					`COMPONENT_AT_fbiarb_AFGRIP`,
+
+					-- Rifles
+					`COMPONENT_SCARSC_GRIP_01`,
+					`COMPONENT_SR47_AFGRIP`,
+
+					-- New Gun Pack
+					`COMPONENT_SWP2AR15NS_AFGRIP`,
+					`COMPONENT_SWP2ARPBULLDOG_AFGRIP`,
+					`COMPONENT_SWP2BLACKOUTAK_AFGRIP`,
+					`COMPONENT_SWP2BTANARP_AFGRIP`,
+					`COMPONENT_SWP2TSCAR_AFGRIP`,
+					`COMPONENT_SWP2UZI_AFGRIP`,
+				},
+				usetime = 5000
+			}
+		},
+
+		['at_suppressor'] = {
+			label = 'Suppressor',
+			weight = 1000,
+			type = 'suppressor',
+			client = {
+				component = {
+					-- Gangs
+					`COMPONENT_GHOSTGLOCK_SUPP_01`,
+
+					-- LEO
+					`COMPONENT_AT_KS1_SUPP`,
+					`COMPONENT_AT_LBRS_SUPP`,
+					`COMPONENT_MK18_suppressor_01`,
+
+					-- Handguns
+					`COMPONENT_AUTOMATICPISTOL_SUPP_01`,
+
+					-- AR Pistol
+					`COMPONENT_SWPBLACKARP_SUPP`,
+					`COMPONENT_SWPBLUEARP_SUPP`,
+					`COMPONENT_FN57B_SUPP`,
+					`COMPONENT_GRAYARP_SUPP`,
+					`COMPONENT_GREENARP_SUPP`,
+					`COMPONENT_MDRACO_SUPP`,
+					`COMPONENT_ORANGEARP_SUPP`,
+					`COMPONENT_PINKARP_SUPP`,
+					`COMPONENT_PURPLEARP_SUPP`,
+					`COMPONENT_SWPREDARP_SUPP`,
+					`COMPONENT_SCORPIONX9_SUPP`,
+					`COMPONENT_WHITEARP_SUPP`,
+					`COMPONENT_YELLOWARP_SUPP`,
+					`COMPONENT_AT_MP9A_SUPP_02`,
+
+					-- Rifles
 					`COMPONENT_AR15S_SUPP`,
 					`COMPONENT_M6IC_SUPP_03`,
 					`COMPONENT_SCARSC_SUPP_01`,
 					`COMPONENT_SR47_SUPP`,
 					`COMPONENT_AT_HK416B_SUPP`,
+
+					-- New Gun Pack
+					`COMPONENT_SWP2AR15NS_SUPP`,
+					`COMPONENT_SWP2B57_SUPP`,
+					`COMPONENT_SWP2BBM4_SUPP`,
+					`COMPONENT_SWP2BBMP9_SUPP`,
+					`COMPONENT_SWP2BLACKAK_SUPP`,
+					`COMPONENT_SWP2BLACKM4_SUPP`,
+					`COMPONENT_SWP2BLACKMP9_SUPP`,
+					`COMPONENT_SWP2BLACKOUTAK_SUPP`,
+					`COMPONENT_SWP2BLUEAK_SUPP`,
+					`COMPONENT_SWP2BLUEM4_SUPP`,
+					`COMPONENT_SWP2BLUEMP9_SUPP`,
+					`COMPONENT_SWP2BROWNAK_SUPP`,
+					`COMPONENT_SWP2BROWNM4_SUPP`,
+					`COMPONENT_SWP2BROWNMP9_SUPP`,
+					`COMPONENT_SWP2BBAK_SUPP`,
+					`COMPONENT_SWP2DRACOBB_SUPP`,
+					`COMPONENT_SWP2DRACOBLACK_SUPP`,
+					`COMPONENT_SWP2DRACOBLUE_SUPP`,
+					`COMPONENT_SWP2DRACOBROWN_SUPP`,
+					`COMPONENT_SWP2DRACOGOLD_SUPP`,
+					`COMPONENT_SWP2DRACOGRAY_SUPP`,
+					`COMPONENT_SWP2DRACOGREEN_SUPP`,
+					`COMPONENT_SWP2DRACOLAV_SUPP`,
+					`COMPONENT_SWP2DRACOMINT_SUPP`,
+					`COMPONENT_SWP2DRACONF_SUPP`,
+					`COMPONENT_SWP2DRACOORANGE_SUPP`,
+					`COMPONENT_SWP2DRACOPINK_SUPP`,
+					`COMPONENT_SWP2DRACOPURP_SUPP`,
+					`COMPONENT_SWP2DRACORED_SUPP`,
+					`COMPONENT_SWP2DRACOWHITE_SUPP`,
+					`COMPONENT_SWP2DRACOYELLOW_SUPP`,
+					`COMPONENT_SWP2G17MOSMH_SUPP`,
+					`COMPONENT_SWP2G19T_SUPP`,
+					`COMPONENT_SWP2G21GC_SUPP`,
+					`COMPONENT_SWP2G23B_SUPP`,
+					`COMPONENT_SWP2GOLDAK_SUPP`,
+					`COMPONENT_SWP2GOLDM4_SUPP`,
+					`COMPONENT_SWP2GOLDMP9_SUPP`,
+					`COMPONENT_SWP2GRAYAK_SUPP`,
+					`COMPONENT_SWP2GRAYM4_SUPP`,
+					`COMPONENT_SWP2GRAYMP9_SUPP`,
+					`COMPONENT_SWP2GREENAK_SUPP`,
+					`COMPONENT_SWP2GREENM4_SUPP`,
+					`COMPONENT_SWP2GREENMP9_SUPP`,
+					`COMPONENT_SWP2LAVAK_SUPP`,
+					`COMPONENT_SWP2LAVM4_SUPP`,
+					`COMPONENT_SWP2LAVMP9_SUPP`,
+					`COMPONENT_SWP2MINTAK_SUPP`,
+					`COMPONENT_SWP2MINTM4_SUPP`,
+					`COMPONENT_SWP2MINTMP9_SUPP`,
+					`COMPONENT_SWP2MP5_SUPP`,
+					`COMPONENT_SWP2MPX_SUPP`,
+					`COMPONENT_SWP2NFAK_SUPP`,
+					`COMPONENT_SWP2NFM4_SUPP`,
+					`COMPONENT_SWP2NFMP9_SUPP`,
+					`COMPONENT_SWP2ORANGEAK_SUPP`,
+					`COMPONENT_SWP2ORANGEM4_SUPP`,
+					`COMPONENT_SWP2ORANGEMP9_SUPP`,
+					`COMPONENT_SWP2P22_SUPP`,
+					`COMPONENT_SWP2P90_SUPP`,
+					`COMPONENT_SWP2PINKAK_SUPP`,
+					`COMPONENT_SWP2PINKM4_SUPP`,
+					`COMPONENT_SWP2PINKMP9_SUPP`,
+					`COMPONENT_SWP2PURPLEAK_SUPP`,
+					`COMPONENT_SWP2PURPM4_SUPP`,
+					`COMPONENT_SWP2PURPMP9_SUPP`,
+					`COMPONENT_SWP2REDAK_SUPP`,
+					`COMPONENT_SWP2REDM4_SUPP`,
+					`COMPONENT_SWP2REDMP9_SUPP`,
+					`COMPONENT_SWP2RUGER_SUPP`,
+					`COMPONENT_SWP2TEC9_SUPP`,
+					`COMPONENT_SWP2TSCAR_SUPP`,
+					`COMPONENT_SWP2UZI_SUPP`,
+					`COMPONENT_SWP2VECTOR_SUPP`,
+					`COMPONENT_SWP2WHITEAK_SUPP`,
+					`COMPONENT_SWP2WHITEM4_SUPP`,
+					`COMPONENT_SWP2WHITEMP9_SUPP`,
+					`COMPONENT_SWP2YELLOWAK_SUPP`,
+					`COMPONENT_SWP2YELLOWM4_SUPP`,
+					`COMPONENT_SWP2YELLOWMP9_SUPP`,
 				},
-				usetime = 2500
+				usetime = 5000
 			}
 		},
 
+		['at_magazine'] = {
+			label = 'Extended Magazine',
+			type = 'magazine',
+			weight = 1000,
+			client = {
+				component = {
+					-- Gangs
+					`COMPONENT_MP5C_CLIP_02`,
+					`COMPONENT_SCORPIONX9_CLIP_02`,
+					`COMPONENT_MP5SD_CLIP_02`,
+					`COMPONENT_DRACO_CLIP_01`,
+					`COMPONENT_MICRODRACO_CLIP_01`,
+					`COMPONENT_MPX_CLIP_01`, -- 50
+					`COMPONENT_PLR_CLIP_01`, -- 30
+					`COMPONENT_UDP9_CLIP_01`, -- 30
+					`COMPONENT_MP9a_CLIP_02`, -- 50
+
+					-- New Gun Pack
+					`COMPONENT_SWP2B57_CLIP_02`,
+					`COMPONENT_SWP2MCKGLOCK_CLIP_02`,
+					`COMPONENT_SWP2P22_CLIP_02`,
+					`COMPONENT_SWP2BBGUN_CLIP_02`,
+					`COMPONENT_SWP2BBMP9_CLIP_02`,
+					`COMPONENT_SWP2BLACKMP9_CLIP_02`,
+					`COMPONENT_SWP2BLUEMP9_CLIP_02`,
+					`COMPONENT_SWP2BROWNMP9_CLIP_02`,
+					`COMPONENT_SWP2GOLDMP9_CLIP_02`,
+					`COMPONENT_SWP2GRAYMP9_CLIP_02`,
+					`COMPONENT_SWP2GREENMP9_CLIP_02`,
+					`COMPONENT_SWP2LAVMP9_CLIP_02`,
+					`COMPONENT_SWP2MINTMP9_CLIP_02`,
+					`COMPONENT_SWP2NFMP9_CLIP_02`,
+					`COMPONENT_SWP2ORANGEMP9_CLIP_02`,
+					`COMPONENT_SWP2PINKMP9_CLIP_02`,
+					`COMPONENT_SWP2PURPMP9_CLIP_02`,
+					`COMPONENT_SWP2REDMP9_CLIP_02`,
+					`COMPONENT_SWP2WHITEMP9_CLIP_02`,
+					`COMPONENT_SWP2YELLOWMP9_CLIP_02`,
+					`COMPONENT_SWP2MP5_CLIP_02`,
+					`COMPONENT_SWP2MPX_CLIP_02`,
+					`COMPONENT_SWP2P90_CLIP_02`,
+					`COMPONENT_SWP2TEC9_CLIP_02`,
+					`COMPONENT_SWP2UZI_CLIP_02`,
+					`COMPONENT_SWP2AR15NS_CLIP_02`,
+					`COMPONENT_SWP2ARP3IN_CLIP_02`,
+					`COMPONENT_SWP2ARPBULLDOG_CLIP_02`,
+					`COMPONENT_SWP2BBM4_CLIP_02`,
+					`COMPONENT_SWP2BLACKAK_CLIP_02`,
+					`COMPONENT_SWP2BLACKM4_CLIP_02`,
+					`COMPONENT_SWP2BLACKOUTAK_CLIP_02`,
+					`COMPONENT_SWP2BLUEAK_CLIP_02`,
+					`COMPONENT_SWP2BLUEM4_CLIP_02`,
+					`COMPONENT_SWP2BROWNAK_CLIP_02`,
+					`COMPONENT_SWP2BROWNM4_CLIP_02`,
+					`COMPONENT_SWP2BTANARP_CLIP_02`,
+					`COMPONENT_SWP2BBAK_CLIP_02`,
+					`COMPONENT_SWP2DRACOBB_CLIP_02`,
+					`COMPONENT_SWP2DRACOBLACK_CLIP_02`,
+					`COMPONENT_SWP2DRACOBLUE_CLIP_02`,
+					`COMPONENT_SWP2DRACOBROWN_CLIP_02`,
+					`COMPONENT_SWP2DRACOGOLD_CLIP_02`,
+					`COMPONENT_SWP2DRACOGRAY_CLIP_02`,
+					`COMPONENT_SWP2DRACOGREEN_CLIP_02`,
+					`COMPONENT_SWP2DRACOLAV_CLIP_02`,
+					`COMPONENT_SWP2DRACOMINT_CLIP_02`,
+					`COMPONENT_SWP2DRACONF_CLIP_02`,
+					`COMPONENT_SWP2DRACOORANGE_CLIP_02`,
+					`COMPONENT_SWP2DRACOPINK_CLIP_02`,
+					`COMPONENT_SWP2DRACOPURP_CLIP_02`,
+					`COMPONENT_SWP2DRACORED_CLIP_02`,
+					`COMPONENT_SWP2DRACOWHITE_CLIP_02`,
+					`COMPONENT_SWP2DRACOYELLOW_CLIP_02`,
+					`COMPONENT_SWP2GOLDAK_CLIP_02`,
+					`COMPONENT_SWP2GOLDM4_CLIP_02`,
+					`COMPONENT_SWP2GR300BO_CLIP_02`,
+					`COMPONENT_SWP2GRAYAK_CLIP_02`,
+					`COMPONENT_SWP2GRAYM4_CLIP_02`,
+					`COMPONENT_SWP2GREENAK_CLIP_02`,
+					`COMPONENT_SWP2GREENM4_CLIP_02`,
+					`COMPONENT_SWP2LAVAK_CLIP_02`,
+					`COMPONENT_SWP2LAVM4_CLIP_02`,
+					`COMPONENT_SWP2MCKGLOCK_CLIP_02`,
+					`COMPONENT_SWP2MINTAK_CLIP_02`,
+					`COMPONENT_SWP2MINTM4_CLIP_02`,
+					`COMPONENT_SWP2NFAK_CLIP_02`,
+					`COMPONENT_SWP2NFM4_CLIP_02`,
+					`COMPONENT_SWP2ORANGEAK_CLIP_02`,
+					`COMPONENT_SWP2ORANGEM4_CLIP_02`,
+					`COMPONENT_SWP2PINKAK_CLIP_02`,
+					`COMPONENT_SWP2PINKM4_CLIP_02`,
+					`COMPONENT_SWP2PURPLEAK_CLIP_02`,
+					`COMPONENT_SWP2PURPM4_CLIP_02`,
+					`COMPONENT_SWP2REDAK_CLIP_02`,
+					`COMPONENT_SWP2REDM4_CLIP_02`,
+					`COMPONENT_SWP2TSCAR_CLIP_02`,
+					`COMPONENT_SWP2WHITEAK_CLIP_02`,
+					`COMPONENT_SWP2WHITEM4_CLIP_02`,
+					`COMPONENT_SWP2YELLOWAK_CLIP_02`,
+					`COMPONENT_SWP2YELLOWM4_CLIP_02`,
+				},
+				usetime = 5000
+			}
+		},
+
+		-- New Gun Pack
+		['swp2sdrum'] = {
+			label = 'Round Box Drum',
+			type = 'magazine',
+			weight = 1000,
+			client = {
+				component = {
+					`COMPONENT_SWP23DGLOCK_CLIP_04`,
+					`COMPONENT_SWP2BG26_CLIP_04`,
+					`COMPONENT_SWP2G17MOSMH_CLIP_04`,
+					`COMPONENT_SWP2G18C_CLIP_04`,
+					`COMPONENT_SWP2G19CS_CLIP_04`,
+					`COMPONENT_SWP2G19T_CLIP_04`,
+					`COMPONENT_SWP2G21GC_CLIP_04`,
+					`COMPONENT_SWP2G22S_CLIP_04`,
+					`COMPONENT_SWP2G23B_CLIP_04`,
+					`COMPONENT_SWP2G41CS_CLIP_04`,
+					`COMPONENT_SWP2PG43XS_CLIP_04`,
+					`COMPONENT_SWP2RUGER_CLIP_04`,
+					`COMPONENT_SWP2TG17S_CLIP_04`,
+					`COMPONENT_SWP2UGLOCK_CLIP_04`,
+					`COMPONENT_SWP2VECTOR_CLIP_04`,
+
+				},
+				usetime = 5000
+			}
+		},
+
+		['swp2pistoldrum'] = {
+			label = 'Clear Drum',
+			type = 'magazine',
+			weight = 1000,
+			client = {
+				component = {
+					`COMPONENT_SWP23DGLOCK_CLIP_05`,
+					`COMPONENT_SWP2BG26_CLIP_05`,
+					`COMPONENT_SWP2G17MOSMH_CLIP_05`,
+					`COMPONENT_SWP2G18C_CLIP_05`,
+					`COMPONENT_SWP2G19CS_CLIP_05`,
+					`COMPONENT_SWP2G19T_CLIP_05`,
+					`COMPONENT_SWP2G21GC_CLIP_05`,
+					`COMPONENT_SWP2G22S_CLIP_05`,
+					`COMPONENT_SWP2G23B_CLIP_05`,
+					`COMPONENT_SWP2G41CS_CLIP_05`,
+					`COMPONENT_SWP2PG43XS_CLIP_05`,
+					`COMPONENT_SWP2RUGER_CLIP_05`,
+					`COMPONENT_SWP2TG17S_CLIP_05`,
+					`COMPONENT_SWP2UGLOCK_CLIP_05`,
+					`COMPONENT_SWP2VECTOR_CLIP_05`,
+				},
+				usetime = 5000
+			}
+		},
+
+		['swp2clear30mag'] = {
+			label = 'Clear Extended Mag',
+			type = 'magazine',
+			weight = 1000,
+			client = {
+				component = {
+					`COMPONENT_SWP23DGLOCK_CLIP_02`,
+					`COMPONENT_SWP2BBGUN_CLIP_02`,
+					`COMPONENT_SWP2BG26_CLIP_02`,
+					`COMPONENT_SWP2G17MOSMH_CLIP_02`,
+					`COMPONENT_SWP2G18C_CLIP_02`,
+					`COMPONENT_SWP2G19CS_CLIP_02`,
+					`COMPONENT_SWP2G19T_CLIP_02`,
+					`COMPONENT_SWP2G21GC_CLIP_02`,
+					`COMPONENT_SWP2G22S_CLIP_02`,
+					`COMPONENT_SWP2G23B_CLIP_02`,
+					`COMPONENT_SWP2G41CS_CLIP_02`,
+					`COMPONENT_SWP2PG43XS_CLIP_02`,
+					`COMPONENT_SWP2RUGER_CLIP_02`,
+					`COMPONENT_SWP2UGLOCK_CLIP_02`,
+					`COMPONENT_SWP2VECTOR_CLIP_02`,
+
+				},
+				usetime = 5000
+			}
+		},
+
+		['swp2krissmag'] = {
+			label = 'Kriss Magazine',
+			type = 'magazine',
+			weight = 1000,
+			client = {
+				component = {
+					`COMPONENT_SWP23DGLOCK_CLIP_03`,
+					`COMPONENT_SWP2BG26_CLIP_03`,
+					`COMPONENT_SWP2G17MOSMH_CLIP_03`,
+					`COMPONENT_SWP2G18C_CLIP_03`,
+					`COMPONENT_SWP2G19CS_CLIP_03`,
+					`COMPONENT_SWP2G19T_CLIP_03`,
+					`COMPONENT_SWP2G21GC_CLIP_03`,
+					`COMPONENT_SWP2G22S_CLIP_03`,
+					`COMPONENT_SWP2G23B_CLIP_03`,
+					`COMPONENT_SWP2G41CS_CLIP_03`,
+					`COMPONENT_SWP2PG43XS_CLIP_03`,
+					`COMPONENT_SWP2RUGER_CLIP_03`,
+					`COMPONENT_SWP2TG17S_CLIP_03`,
+					`COMPONENT_SWP2UGLOCK_CLIP_03`,
+					`COMPONENT_SWP2VECTOR_CLIP_03`,
+				},
+				usetime = 5000
+			}
+		}, 
 	},
 
 	Ammo = {
+
+		['ammo-bbs'] = {
+			label = 'BB Pellets Glowing',
+			weight = 0.1,
+		},
 
 		['ammo-beanbag'] = {
 			label = 'Beanbag',
