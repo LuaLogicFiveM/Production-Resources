@@ -587,34 +587,6 @@ Config.Lifts = {
 		jobs = {
 		},
 	},
-	{ --095
-		coords = vector3(2926.6169433594, 4630.830078125, 47.81600189209),
-		rotation = vector3(0.0, 0.0, -39.965129852295),
-		currentheight = 0.0,
-		objecthandler = {frame = nil, lift = nil},
-		manipulating = false,
-		manipulatingplayerid = nil,
-		lifttype = 2,
-		buttonuppress = false,
-		buttondownpress = false,
-		onlyjoballowed = false,
-		jobs = {
-		},
-	},
-	{ --095
-		coords = vector3(2919.7639160156, 4634.21484375, 47.824001312256),
-		rotation = vector3(0.0, 0.0, 98.287704467773),
-		currentheight = 0.0,
-		objecthandler = {frame = nil, lift = nil},
-		manipulating = false,
-		manipulatingplayerid = nil,
-		lifttype = 2,
-		buttonuppress = false,
-		buttondownpress = false,
-		onlyjoballowed = false,
-		jobs = {
-		},
-	},
 }
 
 function Notify(text)
