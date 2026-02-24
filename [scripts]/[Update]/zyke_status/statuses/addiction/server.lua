@@ -1,0 +1,140 @@
+-- Addiction has two values, the satisfaction level `value` and your addiction level `addiction`
+
+-- Addiction `addiction`:
+--- A dynamic & static level, moves up and down when adding or removing from the status
+--- It will gradually keep moving down, unless it hit the addiciton threshold, at that point it is static and has to be moved manually
+--- This allows minor hits, but continuous use will start an addiction
+
+-- Satisfaction `value`
+--- A dynamic level, is set at 100 unless you hit the addiction threshold
+--- Once you are addicted, thid value will always keep going down, affecting you if your levels are too low
+--- To have a high satisfaction value, keep smoking and you can reset it back to 100
+--- Depending on the specific addiction settings, this will have different impacts
+
+local primary = "addiction"
+local primarySettings = Config.Status[primary]
+
+-- Custom for this type of status
+-- Has to remove the satisfaction every tick if you are addicted
+---@param plyId PlayerId
+---@param statusNames StatusNames
+---@param amount number
+local function removeSatisfaction(plyId, statusNames, amount)
+    local primary, secondary = statusNames[1], statusNames[2]
+
+    local data = GetPlayerBaseStatusTable(plyId, primary)
+    if (not data) then return end
+
+    if (data.values[secondary].value == 0.0) then return end
+
+    data.values[secondary].value = Z.numbers.round(data.values[secondary].value - amount, Config.Settings.decimalAccuracy)
+    if (data.values[secondary].value < 0.0) then
+        data.values[secondary].value = 0.0
+    end
+
+    SyncPlayerStatus(plyId, primary)
+end
+
+-- TODO: Some addSatisfaction
+-- Also, reset satisfaction or something when addiction is draining
+
+RegisterStatusType(primary, true, {value = 100.0, addiction = 0.0},
+{
+    -- The addiction onTick looks a little different from the default format
+    onTick = function(players)
+        for i = 1, #players do
+            local plyId = players[i][1]
+            local statuses = players[i][2]
+
+            for j = 1, #statuses do
+                local name, multiplier = statuses[j][1], statuses[j][2]
+                local secSettings = primarySettings[name] or primarySettings.base
+
+                local plyValues = GetPlayerBaseStatusTable(plyId, primary)
+                if (not plyValues) then goto endOfSubStatus end
+
+                local threshold = secSettings.addiction.threshold
+
+                if (plyValues.values[name].addiction < threshold) then
+                    local val = (secSettings?.addiction?.drain or 0) * multiplier
+
+                    if (val > 0.0) then
+                        RemoveFromStatus(plyId, {primary, name}, val, true)
+                    end
+                else
+                    local val = (secSettings?.value?.drain or 0) * multiplier
+
+                    if (val > 0.0) then
+                        removeSatisfaction(plyId, {primary, name}, val)
+                    end
+                end
+
+                ::endOfSubStatus::
+            end
+        end
+    end,
+    onAdd = function(plyId, statusNames, amount)
+        local secondary = statusNames[2] or primary
+
+        local data = GetPlayerBaseStatusTable(plyId, primary)
+        if (not data) then return end
+
+        -- Add onto the addiction value (smaller value, static change for now, TODO: update it exponentially or something)
+
+        local addToAddiction = data.values[secondary].addiction + amount
+        data.values[secondary].addiction = Z.numbers.round(addToAddiction, Config.Settings.decimalAccuracy)
+        if (data.values[secondary].addiction > 100.0) then
+            data.values[secondary].addiction = 100.0
+        end
+
+        -- Add onto the satisfaction value
+        data.values[secondary].value = Z.numbers.round(data.values[secondary].value + amount, Config.Settings.decimalAccuracy)
+        if (data.values[secondary].value > 100.0) then
+            data.values[secondary].value = 100.0
+        end
+
+        return true
+    end,
+    onRemove = function(plyId, statusNames, amount)
+        local secondary = statusNames[2] or primary
+
+        local data = GetPlayerBaseStatusTable(plyId, primary)
+        if (not data) then return end
+
+        -- Remove from the addiction value
+        data.values[secondary].addiction = Z.numbers.round(data.values[secondary].addiction - amount, Config.Settings.decimalAccuracy)
+        if (data.values[secondary].addiction <= 0.0) then
+            data.values[secondary].addiction = 0.0
+
+            -- if we have no addiciton, and our satisfaction is at 100, remove the status
+            if (data.values[secondary].value >= 100.0) then
+                data.values[secondary] = nil
+            end
+        end
+
+        -- Don't touch the satisfaction value for now
+
+        return true
+    end,
+    onReset = function(plyId, statusNames)
+        local secondary = statusNames[2] or primary
+
+        local data = GetPlayerBaseStatusTable(plyId, primary)
+        if (not data) then return end
+
+        data.values[secondary] = nil
+
+        return true
+    end,
+    -- For soft resetting, we don't reset the addiction value, since that should be persistent
+    onSoftReset = function(plyId, statusNames)
+        local secondary = statusNames[2] or primary
+
+        local data = GetPlayerBaseStatusTable(plyId, primary)
+        if (not data) then return end
+
+        data.values[secondary].value = 100.0
+
+        return true
+    end
+})
