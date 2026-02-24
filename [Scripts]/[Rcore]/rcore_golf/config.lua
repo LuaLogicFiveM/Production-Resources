@@ -540,7 +540,7 @@ LocationsConfig = {
         requiredResource = "k4mb1-topgolf",
 
         LobbyCoords = vec3(2520.862305, -312.065369, 92.012226),
-        AddMapBlip = true,
+        AddMapBlip = false,
 
         MainBounds = {
             {vec3(2523.529785, -409.906952, 92.992279), 95.0},
