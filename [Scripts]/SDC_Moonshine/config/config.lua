@@ -16,6 +16,16 @@ SDC.DispatchResource = "none" --If you are using a dispatch script, options belo
 
 ]]
 
+SDC.WebhooksEnabled = { --All Webhook Settings
+    WebhookColor = 0, --Color of the webhook embed
+    FruitPicked = true, --If you want there to be a webhook sent for picking fruit
+    StillPlaced = true, --If you want there to be a wehbook sent for stills being placed
+    StillRemoved = true, -- If you want there to be a wehhook sent for stills being removed
+    BottlesCollected = true, -- If you want there to be a wehhook sent for bottles being collected
+    PartStolen = true, -- If you want there to be a wehhook sent for parts being stolen
+    SaleComplete = true -- If you want there to be a wehhook sent for a sale being completed
+}
+
 SDC.PoliceJobs = { --All Police Jobs
     ["sheriff"] = true,
     ["sahp"] = true

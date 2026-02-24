@@ -3,11 +3,12 @@ shared_script "@ReaperV4/imports/bypass_s.lua"
 shared_script "@ReaperV4/imports/bypass_c.lua"
 lua54 "yes" -- needed for Reaper
 
-
 fx_version 'cerulean'
 games { 'gta5' }
 
-version '1.1.2'
+author 'HoboDevCo'
+description 'SDC | Advanced Moonshine Script'
+version '1.1.3'
 
 shared_script {
     "@ox_lib/init.lua",
