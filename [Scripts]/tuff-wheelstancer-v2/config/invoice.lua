@@ -5,7 +5,7 @@
 ]]
 --Supported Scripts:  loaf_billing, okokBilling, codem, qs-billing, esx
 
-Config.Invoice_Script = ""
+Config.Invoice_Script = "custom"
 
 
 function Config.SendInvoice(price, target, source, society_name)
@@ -40,5 +40,20 @@ function Config.SendInvoice(price, target, source, society_name)
         exports['RxBilling']:SendInvoice(source, target, price, 'Stance Billing', true)
     elseif Config.Invoice_Script == "custom" then
         -- put your export here !!!
+        local playerName = GetPlayerName(source)
+        local invoiceData = {
+            sender = society_name,
+            sender_label = society_name,
+            recipient = playerName.. '_' ..source,
+            recipient_label = playerName,
+            amount = price,
+            payments_num = 1,
+            payments_period = 7, -- (in days)
+            summary = "Vehicle Stance Bill"
+        }
+
+        exports["vivum-billing"]:SendInvoice(target, invoiceData, function(res)
+            print(res.status) -- OK or FAILED
+        end)
     end
 end

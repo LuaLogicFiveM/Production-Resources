@@ -6,7 +6,7 @@ lua54 "yes" -- needed for Reaper
 fx_version "cerulean"
 games { "gta5" }
 description 'Tuff WheelStancer v3 | Tuff Scripts'
-version 'v2.1.7 '
+version 'v2.2.0'
 ui_page "html/index.html"
 files {
   "html/**",

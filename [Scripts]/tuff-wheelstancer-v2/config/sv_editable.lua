@@ -37,10 +37,10 @@ Config.DoItemCheck = function(player, items)
     for item, _ in pairs(items) do if Config.HasItem(player, item, 1) then return true end end
     return false
 end
-Config.RemoveItemCheck = function(player, items)
-    for item, _ in pairs(items) do
-        if Config.HasItem(player, item) then
-            Config.RemoveItem(player, item, 1)
+Config.RemoveItemCheck = function(player,items)
+    for item,_ in pairs(items) do
+        if Config.HasItem(player,item) then
+            Config.RemoveItem(player,item,1)
             break
         end
     end
@@ -93,7 +93,7 @@ function Config.GetPlayerMoney(source, type)
     return money
 end
 
-function Config.RemovePlayerMoney(source, type, amount, societyName)
+function Config.RemovePlayerMoney(source, type, amount,societyName)
     if not source or not amount then return false end
     if QBCore or Config.Framework == 'qb' then
         if not QBCore then
