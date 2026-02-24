@@ -302,22 +302,6 @@ Config.dynos = {-- make a new line here and paste after copying ->
         
         jobs = nil,
     },
-    ['mlo796'] = {
-        coords = vector3(906.0691, -1579.9805, 30.6763),
-        heading = 0.8307,
-        
-        model = 'default_blue',
-        
-        displays = {
-            {
-                displayCoords = vector3(902.6268, -1582.8213, 31.4814),
-                displayHeading = 182.4222,
-                displayType = 'wall_tv',
-            },
-        },
-        
-        jobs = nil,
-    },
     ['mlo539'] = {
         coords = vector3(1397.9718, 1041.8899, 114.3322),
         heading = 273.8561,
