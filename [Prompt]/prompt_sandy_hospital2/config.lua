@@ -214,15 +214,15 @@ MRIConfig = {
     -- ============================================================
     canOperate = function(source)
         -- ── ESX ──────────────────────────────────────
-        -- local xPlayer = ESX.GetPlayerFromId(source)
-        -- return xPlayer and xPlayer.getJob().name == 'ambulance'
+        local xPlayer = ESX.GetPlayerFromId(source)
+        return xPlayer and xPlayer.getJob().name == 'safd'
 
         -- ── QBCore / QBox ────────────────────────────
         -- local Player = QBCore.Functions.GetPlayer(source)
         -- return Player and Player.PlayerData.job.name == 'ambulance'
 
         -- ── No restriction (default) ─────────────────
-        return true
+        --return true
     end,
 
     -- ============================================================
@@ -248,9 +248,16 @@ BedConfig = {
     -- ============================================================
     beds = {
         {
-            model       = 'i45pt_s_hsp_prop_operationbed_01',
-            lieOffset   = vector3(0.0, 0.0, 1.85),
-            lieRotation = vector3(0.0, 0.0, -90.0),
+            model        = 'i45pt_s_hsp_prop_operationbed_01',
+            lieOffset    = vector3(0.0, 0.0, 1.85),
+            lieRotation  = vector3(0.0, 0.0, -90.0),
+            -- Model origin is underground — ox_target raycast can't hit it.
+            -- Use fixed sphere zones at each bed surface instead of addModel.
+            -- Add one vector3 per surgery bed instance in the map.
+            interactCoords = {
+                vector3(1779.751, 3640.697, 35.0),
+                vector3(1769.717, 3634.843, 35.505),
+            },
         },
         {
             model       = 'i45pt_s_hsp_bed_01',
@@ -373,7 +380,7 @@ CouchConfig = {
     -- INTERACTION
     -- ox_target sphere zone radius around each seat
     -- ============================================================
-    interactRadius = 0.6,
+    interactRadius = 1.2,
 
     -- ============================================================
     -- MESSAGES

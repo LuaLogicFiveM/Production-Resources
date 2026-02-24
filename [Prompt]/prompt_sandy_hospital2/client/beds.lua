@@ -3,7 +3,6 @@
 -- Lets players lie down on hospital beds.
 -- Pure client-side – no server needed, beds are not exclusive.
 -- ============================================================
-
 local hasOxTarget = GetResourceState('ox_target') == 'started'
 local hasOxLib    = GetResourceState('ox_lib')    == 'started'
 
@@ -34,24 +33,44 @@ end
 --- Find the closest bed entity near the player (any of the configured models).
 --- Uses a tight radius (1.5m) and line-of-sight check to avoid
 --- detecting beds behind walls.
+--- For beds with interactCoords (e.g. surgery bed with underground origin),
+--- checks player distance to the fixed surface coords instead.
 --- @return number|nil entity, table|nil bedCfg
 local function findNearestBed()
     local ped    = cache.ped or PlayerPedId()
     local coords = GetEntityCoords(ped)
     local closest, closestDist, closestCfg = nil, 1.5, nil
 
-    for _, hash in ipairs(bedModelHashes) do
-        local obj = GetClosestObjectOfType(coords.x, coords.y, coords.z, closestDist, hash, false, false, false)
-        if obj and obj ~= 0 and DoesEntityExist(obj) then
-            local objCoords = GetEntityCoords(obj)
-            local dist = #(coords - objCoords)
-            if dist < closestDist then
-                -- Line-of-sight check: make sure there's no wall between player and bed
-                local hasLOS = HasEntityClearLosToEntity(ped, obj, 17) -- flag 17 = default collision check
-                if hasLOS then
-                    closest     = obj
-                    closestDist = dist
-                    closestCfg  = bedByHash[hash]
+    for _, bedCfg in ipairs(BedConfig.beds) do
+        local hash = joaat(bedCfg.model)
+
+        if bedCfg.interactCoords then
+            -- Beds with underground origin: check distance to fixed surface coords
+            for _, ic in ipairs(bedCfg.interactCoords) do
+                local dist = #(coords - ic)
+                if dist < closestDist then
+                    -- Find the actual entity to pass along
+                    local obj = GetClosestObjectOfType(ic.x, ic.y, ic.z, 10.0, hash, false, false, false)
+                    if obj and obj ~= 0 and DoesEntityExist(obj) then
+                        closest     = obj
+                        closestDist = dist
+                        closestCfg  = bedCfg
+                    end
+                end
+            end
+        else
+            -- Normal beds: use entity origin directly
+            local obj = GetClosestObjectOfType(coords.x, coords.y, coords.z, closestDist, hash, false, false, false)
+            if obj and obj ~= 0 and DoesEntityExist(obj) then
+                local objCoords = GetEntityCoords(obj)
+                local dist = #(coords - objCoords)
+                if dist < closestDist then
+                    local hasLOS = HasEntityClearLosToEntity(ped, obj, 17)
+                    if hasLOS then
+                        closest     = obj
+                        closestDist = dist
+                        closestCfg  = bedCfg
+                    end
                 end
             end
         end
@@ -66,10 +85,12 @@ local function getBedCfgForEntity(entity)
     return bedByHash[GetEntityModel(entity)]
 end
 
---- Attach player to bed prop (same pattern as the MRI system).
---- Uses AttachEntityToEntity with fixedRot = true so the rotation
---- stays locked even while the animation plays. This keeps camera,
---- collision, and server-side sync working correctly.
+--- Place player on bed using world coordinates (no attachment).
+--- Hospital beds are static ytyp props — AttachEntityToEntity doesn't
+--- sync to other clients for non-networked entities. Instead we:
+---   1. Teleport ped to exact world position
+---   2. Play the animation (camera adjusts to lying pose)
+---   3. Wait for anim to settle, THEN freeze (avoids camera height bug)
 local function attachToBed(bed, bedCfg)
     if isOnBed then return false end
 
@@ -82,23 +103,28 @@ local function attachToBed(bed, bedCfg)
     -- Load animation
     lib.requestAnimDict(anim.dict)
 
-    -- Move ped close to bed first so the attachment doesn't jerk the camera
-    local bedCoords = GetEntityCoords(bed)
-    SetEntityCoords(ped, bedCoords.x, bedCoords.y, bedCoords.z + 0.5, false, false, false, false)
-    Wait(100)
+    -- Calculate world position: bed origin + offset rotated by bed heading
+    local bedCoords  = GetEntityCoords(bed)
+    local bedHeading = GetEntityHeading(bed)
+    local rad        = math.rad(-bedHeading) -- negate for GTA coord system
 
-    -- Attach ped to the bed prop — fixedRot = true (last param) keeps
-    -- rotation locked even during TaskPlayAnim
-    AttachEntityToEntity(
-        ped, bed, 0,
-        offset.x, offset.y, offset.z,
-        rotation.x, rotation.y, rotation.z,
-        false, false, false, true, 0, true
-    )
+    local worldX = bedCoords.x + offset.x * math.cos(rad) - offset.y * math.sin(rad)
+    local worldY = bedCoords.y + offset.x * math.sin(rad) + offset.y * math.cos(rad)
+    local worldZ = bedCoords.z + offset.z
 
-    -- Play anim on top (flag 1 = loop)
+    -- Teleport ped to the bed position
+    SetEntityCoordsNoOffset(ped, worldX, worldY, worldZ, false, false, false)
+    SetEntityHeading(ped, bedHeading + rotation.z)
+
+    -- Play animation FIRST so the camera adjusts to lying pose
     TaskPlayAnim(ped, anim.dict, anim.name,
         8.0, -8.0, -1, 1, 0, false, false, false)
+
+    -- Wait for animation to start and camera to settle at lying height
+    Wait(500)
+
+    -- NOW freeze — camera is already at correct height, ped won't slide
+    FreezeEntityPosition(ped, true)
 
     isOnBed    = true
     currentBed = bed
@@ -112,8 +138,8 @@ local function detachFromBed()
 
     local ped = cache.ped or PlayerPedId()
 
-    -- Detach ped from bed prop
-    DetachEntity(ped, true, false)
+    -- Unfreeze and stop animation
+    FreezeEntityPosition(ped, false)
     ClearPedTasks(ped)
     RemoveAnimDict(BedConfig.lieAnim.dict)
 
@@ -184,30 +210,77 @@ local function setupBedInteractions()
     if shouldUseOxTarget() then
         -- Register ox_target for each bed model
         for _, bed in ipairs(BedConfig.beds) do
-            exports.ox_target:addModel(joaat(bed.model), {
-                {
-                    name     = 'bed_lie_' .. bed.model,
-                    icon     = 'fas fa-bed',
-                    label    = BedConfig.messages.lieDown,
-                    canInteract = function()
-                        return not isOnBed
-                    end,
-                    onSelect = function(data)
-                        useBed(data.entity)
-                    end,
-                },
-                {
-                    name     = 'bed_getup_' .. bed.model,
-                    icon     = 'fas fa-person-walking',
-                    label    = BedConfig.messages.getUp,
-                    canInteract = function(entity)
-                        return isOnBed and currentBed == entity
-                    end,
-                    onSelect = function()
-                        detachFromBed()
-                    end,
-                },
-            })
+            if bed.interactCoords then
+                -- Beds whose model origin is underground (e.g. surgery bed):
+                -- addModel raycast can never hit them. Use fixed sphere zones
+                -- at the actual bed surface coordinates instead.
+                local bedModel = bed.model
+                local hash     = joaat(bedModel)
+
+                for idx, zoneCoords in ipairs(bed.interactCoords) do
+
+                    exports.ox_target:addSphereZone({
+                        coords = zoneCoords,
+                        radius = 1.5,
+                        options = {
+                            {
+                                name     = 'bed_lie_' .. bedModel .. '_' .. idx,
+                                icon     = 'fas fa-bed',
+                                label    = BedConfig.messages.lieDown,
+                                canInteract = function()
+                                    return not isOnBed
+                                end,
+                                onSelect = function()
+                                    local c = zoneCoords
+                                    local entity = GetClosestObjectOfType(c.x, c.y, c.z, 5.0, hash, false, false, false)
+                                    if entity and entity ~= 0 then
+                                        useBed(entity)
+                                    else
+                                        useBed()
+                                    end
+                                end,
+                            },
+                            {
+                                name     = 'bed_getup_' .. bedModel .. '_' .. idx,
+                                icon     = 'fas fa-person-walking',
+                                label    = BedConfig.messages.getUp,
+                                canInteract = function()
+                                    return isOnBed
+                                end,
+                                onSelect = function()
+                                    detachFromBed()
+                                end,
+                            },
+                        },
+                    })
+                end
+            else
+                -- Normal beds: addModel works fine
+                exports.ox_target:addModel(joaat(bed.model), {
+                    {
+                        name     = 'bed_lie_' .. bed.model,
+                        icon     = 'fas fa-bed',
+                        label    = BedConfig.messages.lieDown,
+                        canInteract = function()
+                            return not isOnBed
+                        end,
+                        onSelect = function(data)
+                            useBed(data.entity)
+                        end,
+                    },
+                    {
+                        name     = 'bed_getup_' .. bed.model,
+                        icon     = 'fas fa-person-walking',
+                        label    = BedConfig.messages.getUp,
+                        canInteract = function(entity)
+                            return isOnBed and currentBed == entity
+                        end,
+                        onSelect = function()
+                            detachFromBed()
+                        end,
+                    },
+                })
+            end
         end
     else
         -- Fallback: proximity thread + [E] key for nearest bed
@@ -330,53 +403,114 @@ local function sitOnSeat(seatIdx)
     lib.hideTextUI()
 end
 
---- Set up ox_target sphere zones for each configured seat.
+--- Find nearest configured couch seat for ox_lib fallback mode.
+--- @return number|nil seatIdx
+local function findNearestSeatIdx()
+    if not CouchConfig or not CouchConfig.seats then return nil end
+
+    local ped    = cache.ped or PlayerPedId()
+    local coords = GetEntityCoords(ped)
+    local maxDist = CouchConfig.interactRadius or 0.6
+    local closestIdx, closestDist = nil, maxDist
+
+    for i, seat in ipairs(CouchConfig.seats) do
+        -- Skip placeholders
+        if not (seat.coords.x == 0.0 and seat.coords.y == 0.0 and seat.coords.z == 0.0) then
+            local dist = #(coords - seat.coords)
+            if dist < closestDist then
+                closestIdx = i
+                closestDist = dist
+            end
+        end
+    end
+
+    return closestIdx
+end
+
+--- Set up couch interactions:
+--- - ox_target: one sphere zone per seat
+--- - ox_lib fallback: proximity + [E]
 local function setupCouchInteractions()
     if not CouchConfig or not CouchConfig.seats then return end
 
-    for i, seat in ipairs(CouchConfig.seats) do
-        -- Skip placeholder seats (coords at origin)
-        if seat.coords.x == 0.0 and seat.coords.y == 0.0 and seat.coords.z == 0.0 then
-            goto continue
+    if hasOxTarget then
+        for i, seat in ipairs(CouchConfig.seats) do
+            -- Skip placeholder seats (coords at origin)
+            if seat.coords.x == 0.0 and seat.coords.y == 0.0 and seat.coords.z == 0.0 then
+                goto continue
+            end
+
+            local seatIdx = i
+            exports.ox_target:addSphereZone({
+                coords = seat.coords,
+                radius = CouchConfig.interactRadius or 0.6,
+                options = {
+                    {
+                        name     = 'couch_sit_' .. seatIdx,
+                        icon     = 'fas fa-couch',
+                        label    = seat.label or CouchConfig.messages.sit,
+                        canInteract = function()
+                            return not isOnBed and not isOnSeat
+                        end,
+                        onSelect = function()
+                            sitOnSeat(seatIdx)
+                        end,
+                    },
+                    {
+                        name     = 'couch_getup_' .. seatIdx,
+                        icon     = 'fas fa-person-walking',
+                        label    = CouchConfig.messages.getUp,
+                        canInteract = function()
+                            return isOnSeat and currentSeatId == seatIdx
+                        end,
+                        onSelect = function()
+                            getUpFromSeat()
+                        end,
+                    },
+                },
+            })
+
+            ::continue::
         end
-
-        local seatIdx = i
-        exports.ox_target:addSphereZone({
-            coords = seat.coords,
-            radius = CouchConfig.interactRadius or 0.6,
-            options = {
-                {
-                    name     = 'couch_sit_' .. seatIdx,
-                    icon     = 'fas fa-couch',
-                    label    = seat.label or CouchConfig.messages.sit,
-                    canInteract = function()
-                        return not isOnBed and not isOnSeat
-                    end,
-                    onSelect = function()
-                        sitOnSeat(seatIdx)
-                    end,
-                },
-                {
-                    name     = 'couch_getup_' .. seatIdx,
-                    icon     = 'fas fa-person-walking',
-                    label    = CouchConfig.messages.getUp,
-                    canInteract = function()
-                        return isOnSeat and currentSeatId == seatIdx
-                    end,
-                    onSelect = function()
-                        getUpFromSeat()
-                    end,
-                },
-            },
-        })
-
-        ::continue::
+        return
     end
+
+    -- ox_lib-only fallback (no ox_target): [E] to sit near seat coords.
+    CreateThread(function()
+        local uiShown = false
+
+        while true do
+            local sleep = 500
+
+            if not isOnBed and not isOnSeat then
+                local seatIdx = findNearestSeatIdx()
+                if seatIdx then
+                    sleep = 0
+                    if not uiShown then
+                        lib.showTextUI('[E] ' .. (CouchConfig.messages.sit or 'Sit Down'))
+                        uiShown = true
+                    end
+
+                    if IsControlJustPressed(0, 38) then -- E
+                        lib.hideTextUI()
+                        uiShown = false
+                        sitOnSeat(seatIdx)
+                    end
+                elseif uiShown then
+                    lib.hideTextUI()
+                    uiShown = false
+                end
+            elseif uiShown then
+                lib.hideTextUI()
+                uiShown = false
+            end
+
+            Wait(sleep)
+        end
+    end)
 end
 
-if hasOxTarget then
-    setupCouchInteractions()
-end
+setupCouchInteractions()
 
 -- ────────────────────────────────────────────────────────────
 -- Cleanup on resource stop

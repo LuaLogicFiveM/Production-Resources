@@ -6,7 +6,7 @@ lua54 "yes" -- needed for Reaper
 fx_version 'cerulean'
 game 'gta5'
 author 'Prompt Mods Studio | Igro45'
-version "1.0.2"
+version "1.0.3"
 this_is_a_map 'yes'
 files {
   'data/i45pth_gtxd.meta'
