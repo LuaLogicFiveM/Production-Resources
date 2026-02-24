@@ -82,7 +82,7 @@ Config.cancelKey = {
 
 Config.flipperInstall = {
     requiresInstall = true,
-    requiresJob = true,
+    requiresJob = false,
     itemEnabled = true,
     command = "flipper",
     jobName = "mechanic_example",

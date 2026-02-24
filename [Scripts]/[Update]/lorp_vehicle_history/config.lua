@@ -23,16 +23,16 @@ Config.PhysicalReport = {
     searchRadius = 12.0,
     ped = {
         model = 's_m_m_highsec_01',
-        coords = vec3(441.2, -981.9, 30.7),
-        heading = 92.0,
+        coords = vec3(241.0123, -1378.9858, 32.7418),
+        heading = 144.7703,
         scenario = 'WORLD_HUMAN_CLIPBOARD'
     },
     zone = {
         type = 'box',
-        coords = vec3(441.2, -981.9, 30.7),
+        coords = vec3(241.4962, -1394.3303, 30.1211),
         size = vec3(6.0, 6.0, 4.0),
         rotation = 0.0,
-        debug = false
+        debug = true
     },
     target = {
         label = 'target_carfax_request',
