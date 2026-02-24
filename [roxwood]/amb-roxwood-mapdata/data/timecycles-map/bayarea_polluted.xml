@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<timecycle_modifier_data version="1.000000">
+    <modifier name="bayarea_polluted" numMods="22" userFlags="0">
+        <light_dir_col_r>0.444 0.668</light_dir_col_r>
+        <light_dir_col_b>1.273 0.587</light_dir_col_b>
+        <light_ray_mult>8.000 0.480</light_ray_mult>
+        <postfx_shift_col_b>2.000 0.200</postfx_shift_col_b>
+        <postfx_desaturation>0.850 0.000</postfx_desaturation>
+        <postfx_grad_top_col_r>2.300 0.600</postfx_grad_top_col_r>
+        <postfx_grad_top_col_g>2.600 0.800</postfx_grad_top_col_g>
+        <postfx_grad_top_col_b>1.950 1.350</postfx_grad_top_col_b>
+        <dof_far>400.000 0.000</dof_far>
+        <dof_blur_far>0.500 0.000</dof_blur_far>
+        <fog_start>186.150 150.000</fog_start>
+        <fog_col_r>0.062 0.248</fog_col_r>
+        <fog_col_g>1.869 0.116</fog_col_g>
+        <fog_col_b>2.574 0.195</fog_col_b>
+        <fog_col_a>0.740 0.340</fog_col_a>
+        <fog_east_col_r>1.497 0.018</fog_east_col_r>
+        <fog_east_col_g>1.591 0.275</fog_east_col_g>
+        <fog_east_col_b>4.969 0.139</fog_east_col_b>
+        <fog_east_col_a>1.000 0.100</fog_east_col_a>
+        <fog_density>5.150 1000.000</fog_density>
+        <fog_falloff>0.425 4.850</fog_falloff>
+        <fog_hdr>-0.800 -0.500</fog_hdr>
+    </modifier>
+</timecycle_modifier_data>
