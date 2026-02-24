@@ -47,7 +47,7 @@ Config.KeepItemsOnRevive = {           -- Items that will NOT be removed during 
 -- ===========================================
 -- KEYBINDS & COMMANDS
 -- ===========================================
-Config.RegisterKeybind = false          -- Enable keybind registration for opening EMS menu
+Config.RegisterKeybind = true          -- Enable keybind registration for opening EMS menu
 Config.Keybind = 'G'                   -- Key to open EMS menu when dead
 
 -- Quick Action Settings (Instant EMS call with single keypress)
