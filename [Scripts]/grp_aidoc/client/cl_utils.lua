@@ -152,6 +152,7 @@ function RevivePlayer()
     end
 
     TriggerServerEvent('ak47_crutch:set', playerId, 10)
+    --exports.lorp_packed:ForceCrutch(10)
 
     if Config.SetHealthAmount then
         Citizen.Wait(1000)
