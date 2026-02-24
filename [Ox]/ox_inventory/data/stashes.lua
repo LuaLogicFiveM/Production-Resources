@@ -448,23 +448,6 @@ return {-- make a new line here and paste after copying ->
 
 	----------------------------- Shops -----------------------------
 
-	{ --686
-		coords = vec3(-1655.3802, -771.6028, 10.1747),
-		name = 'redline', -- redline 752
-		label = 'Redline Auto Parts',
-		owner = false,
-		slots = 100,
-		weight = 200000
-	},
-
-	{ --686
-		coords = vec3(-1673.2039, -783.4711, 10.1747),
-		name = 'royaltycartelcustoms',
-		label = 'Shop Safe',
-		owner = true,
-		slots = 100,
-		weight = 500000
-	},
 
 	{ --260
 		coords = vec3(1188.7135, 2641.8433, 38.4018),
@@ -473,15 +456,6 @@ return {-- make a new line here and paste after copying ->
 		owner = true,
 		slots = 100,
 		weight = 100000
-	},
-
-	{ --806
-		coords = vec3(798.7789, -2346.0449, 18.6800),
-		name = '806garage',
-		label = 'Shop Storage',
-		owner = true,
-		slots = 100,
-		weight = 500000
 	},
 
 	{--045
@@ -509,15 +483,6 @@ return {-- make a new line here and paste after copying ->
 		owner = true,
 		slots = 100,
 		weight = 2500000
-	},
-
-	{ --796
-		coords = vec3(961.2894, -1567.4177, 30.7377),
-		name = 'pitstop',
-		label = 'Auto Extreme Storage',
-		owner = true,
-		slots = 100,
-		weight = 100000
 	},
 
 	{ --685
@@ -573,15 +538,6 @@ return {-- make a new line here and paste after copying ->
 		owner = true,
 		slots = 100,
 		weight = 200000
-	},
-
-	{ --095
-		coords = vec3(2925.5530, 4641.2124, 48.8314),
-		name = 'rsshopstorage',
-		label = 'Mechanic Storage',
-		owner = true,
-		slots = 100,
-		weight = 100000
 	},
 
 	{ --542
@@ -874,24 +830,6 @@ return {-- make a new line here and paste after copying ->
 		owner = true,
 		slots = 100,
 		weight = 500000
-	},
-
-	{--464
-		coords = vec3(-1123.2134, 362.4523, 71.3070),
-		name = '464mansion1',
-		label = 'Storage',
-		owner = true,
-		slots = 100,
-		weight = 200000
-	},
-
-	{--464
-		coords = vec3(-1141.2588, 375.5267, 74.9340),
-		name = '464mansion',
-		label = 'Storage',
-		owner = true,
-		slots = 100,
-		weight = 200000
 	},
 
 	{--747
