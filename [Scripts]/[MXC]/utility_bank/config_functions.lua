@@ -31,7 +31,7 @@ Config.Functions = {
 
     GiveTrollyMoney = function(source, amount)
         -- https://utility-library.github.io/documentation/server/esx_integration/xplayer/AddMoney/
-        AddItem(source, "black_money", amount)
+        AddMoney(source, "cash", amount)
     end,
 
     HaveItem = function(source, item)
@@ -77,24 +77,53 @@ Config.Functions = {
 
     -- Return true if the player can start the robbery
     CanStartRobbery = function(source, bankId)
-        local sheriff = ESX.GetExtendedPlayers('job', 'sheriff')
-        local sahp = ESX.GetExtendedPlayers('job', 'sahp')
-        local count = #sheriff + #sahp
+        if ESX then
+            local xPlayers = ESX.GetExtendedPlayers('job', 'police')
+            local count = #xPlayers
 
-        if count < Config.MinCops then
-            local xPlayer = ESX.GetPlayerFromId(source)
-            xPlayer.showNotification(Config.Translations["robbery_cant_start_notify"])
-            return false
+            if count < Config.MinCops then
+                local xPlayer = ESX.GetPlayerFromId(source)
+                xPlayer.showNotification(Config.Translations["robbery_cant_start_notify"])
+
+                return false
+            end
+        elseif QBCore then
+            local players = QBCore.Functions.GetQBPlayers()
+            local count = 0
+
+            for _, v in pairs(players) do
+                if v and v.PlayerData.job.type == "leo" and v.PlayerData.job.onduty then
+                    count = count + 1
+                end
+            end
+
+            if count < Config.MinCops then
+                TriggerClientEvent('QBCore:Notify', source, Config.Translations["robbery_cant_start_notify"], "primary")
+
+                return false
+            end
         end
 
         return true
     end,
 
     StartAlarm = function(bankId)
-        if IsDuplicityVersion() then
-            TriggerEvent('cd_dispatch:PreSet:JewelryRobbery')
-        else
-            TriggerServerEvent('cd_dispatch:PreSet:JewelryRobbery')
+        if ESX then
+            local xPlayers = ESX.GetExtendedPlayers('job', 'police')
+    
+            for _, xPlayer in pairs(xPlayers) do
+                xPlayer.showNotification(Config.Translations["robbery_started_notify"])
+                TriggerClientAction("SetBlipToBank", xPlayer.source, bankId)
+            end
+        elseif QBCore then
+            local players = QBCore.Functions.GetQBPlayers()
+
+            for _, v in pairs(players) do
+                if v and v.PlayerData.job.type == "leo" and v.PlayerData.job.onduty then
+                    TriggerClientAction('QBCore:Notify', v.PlayerData.source, Config.Translations["robbery_started_notify"], "primary")
+                    TriggerClientAction("SetBlipToBank", v.PlayerData.source, bankId)
+                end
+            end
         end
     end,
 
@@ -131,7 +160,7 @@ Config.Functions = {
 
     OnBankReset = function(bankId)
         -- You can use GetBank(bankId) to get the bank data
-        local bank = GetBank(bankId)
+        --local bank = GetBank(bankId)
 
         -- print(json.encode(bank)) -- REMEMBER to set Config.Debug to true!
         -- AnyPlayerInsideBank(bank) -- returns true if any player is inside the bank
