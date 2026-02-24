@@ -1,5 +1,16 @@
  local blips = {
     {
+        label = 'Amusement Park', ---@location 686
+        coords = vec3(-1713.2289, -814.0156, 9.3896),
+        sprite = 269,
+        scale = 1.0,
+        color = 1,
+        data = {
+            title = '🎢 Amusement Park',
+            description = 'A series of fun machines to ride like a real world amusement park.',
+        },
+    },
+    --[[{
         label = 'Wipeout Activity', ---@location 907
         coords = vec3(-640.2825, -2372.7456, 18.7404),
         sprite = 269,
@@ -9,7 +20,7 @@
             title = '🔴 Wipeout Challenge',
             description = 'The Wipeout Challenge pushes your agility, balance, and precision to the limit.',
         },
-    },
+    },]]
     {
         label = 'Court House', ---@location 753
         coords = vec3(245.6858, -1082.9589, 32.6961),
@@ -195,30 +206,7 @@
        color = 0,
        data = {
                title = '🔫 Heavens Gun CO.',
-               description = 'Owner: Saxton & Oprhan',
-        },
-    },
-    ----------------------------- Business -----------------------------
-    {
-        label = 'Owned Business', ---@location 473
-        coords = vec3(-561.7242, 288.0463, 82.1765),
-        sprite = 93,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🍹 Tequi-La-La Bar & Boxing Club',
-            description = 'Owner: Demon',
-        },
-    },
-    {
-        label = 'Owned Business', ---@location 636
-        coords = vec3(-432.4572, 270.2892, 89.8852),
-        sprite = 93,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🍹 Devos Kick Back Shack',
-            description = 'Owner: Devo',
+               description = 'Owner: Diesel',
         },
     },
      --------------------------- Weed Shops ---------------------------
@@ -244,7 +232,29 @@
             description = 'Owner: Shellz',
         },
     },
+    {
+        label = 'Owned Weed Shop', ---@location 635
+        coords = vec3(-519.97, 39.7, 44.59),
+        sprite = 469,
+        scale = 0.8,
+        color = 25,
+        data = {
+            title = '🌳 KhusBites',
+            description = 'Owner: Diesel',
+        },
+    },
     ----------------------------- Motorcycle Clubs -----------------------------
+    {
+        label = 'Owned Motorcycle Club', ---@location 636
+        coords = vec3(-432.4572, 270.2892, 89.8852),
+        sprite = 226,
+        scale = 0.8,
+        color = 0,
+        data = {
+            title = '☠️ Motorcycle Club',
+            description = 'Owner: Deadly Angels MC',
+        },
+    },
     {
         label = 'Owned Motorcycle Club', ---@location 920
         coords = vec3(87.2163, -2578.0623, 6.1818),
@@ -268,17 +278,6 @@
         },
     },
     {
-        label = 'Owned Motorcycle Club', ---@location 693
-        coords = vec3(-1138.2935, -1609.0520, 4.4093),
-        sprite = 226,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🏍️ Motorcycle Club',
-            description = 'Owner: The Lost MC ',
-        },
-    },
-    {
         label = 'Owned Motorcycle Club', ---@location 804
         coords = vec3(992.5826, -2521.1619, 28.2979),
         sprite = 226,
@@ -293,6 +292,17 @@
     {
         label = 'Owned Gang', ---@location 774
         coords = vec3(1427.9452, -1492.9572, 65.3305),
+        sprite = 437,
+        scale = 0.8,
+        color = 0,
+        data = {
+            title = '☠️ Gang Block',
+            description = 'Owner: 26 Santos',
+        },
+    },
+    {
+        label = 'Owned Gang', ---@location 573
+        coords = vec3(1227.5009, -395.7818, 68.8660),
         sprite = 437,
         scale = 0.8,
         color = 0,
@@ -321,28 +331,6 @@
         data = {
             title = '☠️ Gang Block',
             description = 'Owner: OSM',
-        },
-    },
-    {
-        label = 'Owned Gang', ---@location 573
-        coords = vec3(1227.5009, -395.7818, 68.8660),
-        sprite = 437,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '☠️ Gang Block',
-            description = 'Owner: 26 Santos',
-        },
-    },
-    {
-        label = 'Owned Gang', ---@location 827
-        coords = vec3(446.5818, -1498.7186, 28.5923),
-        sprite = 437,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '☠️ Gang Block',
-            description = 'Owner: 4 Block',
         },
     },
     {
@@ -378,18 +366,7 @@
             description = 'Young Slime Mafia',
         },
     },
-     ----------------------------- Cartels -----------------------------
-    {
-        label = 'Owned Cartel', ---@location 411
-        coords = vec3(-1524.9371, 1907.5328, 61.7354),
-        sprite = 437,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '☠️ Cartel Block',
-            description = 'Owner: Blackstone Mercs',
-        },
-    },
+
     ----------------------------- Shops -----------------------------
     {
         label = 'Owned Shop', ---@location 905
@@ -400,17 +377,6 @@
         data = {
             title = '🔧 26 Santos Mechanic Shop',
             description = 'Owner: Rizz',
-        },
-    },
-    {
-        label = 'Owned Shop', ---@location 686
-        coords = vec3(-1657.9423, -783.9526, 10.1746),
-        sprite = 446,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🔧 Landry\'s Performance & Paint',
-            description = 'Owner: Beaudeaville',
         },
     },
     {
@@ -436,17 +402,6 @@
         },
     },
     {
-        label = 'Owned Shop', ---@location 806
-        coords = vec3(810.2009, -2336.5996, 18.6847),
-        sprite = 446,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🔧 South Side TC',
-            description = 'Owner: Landen',
-        },
-    },
-    {
         label = 'Owned Shop', ---@location 045
         coords = vec3(-259.5573, 6152.9419, 31.5006),
         sprite = 446,
@@ -455,17 +410,6 @@
         data = {
             title = '🔧 Hayes Auto Body Shop',
             description = 'Owner: V3NOM',
-        },
-    },
-    {
-        label = 'Owned Shop', ---@location 618
-        coords = vec3(-96.9014, -423.4302, 37.2673),
-        sprite = 446,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🔧 Nightriders Speed Shop',
-            description = 'Owner: LukusSkywalker5',
         },
     },
     {
@@ -499,17 +443,6 @@
         data = {
             title = '🔧 SRT',
             description = 'Owner: FatBot and Coleslaw',
-        },
-    },
-    {
-        label = 'Owned Shop', ---@location 796
-        coords = vec3(950.8018, -1559.4296, 30.7377),
-        sprite = 446,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🔧 WP Performance LLC',
-            description = 'Owner: Westo & Park',
         },
     },
     {
@@ -568,17 +501,6 @@
         },
     },
     {
-        label = 'Owned Shop', ---@location 095
-        coords = vec3(2932.3203, 4644.4927, 48.6114),
-        sprite = 446,
-        scale = 0.8,
-        color = 0,
-        data = {
-            title = '🔧 KLK Customs',
-            description = 'Owner: KD & Tricks',
-        },
-    },
-    {
         label = 'Owned Shop', ---@location 111
         coords = vec3(2012.0748, 4593.1724, 45.0097),
         sprite = 446,
@@ -620,6 +542,17 @@
         data = {
             title = '🔧 Smooves Auto',
             description = 'Owner: KSmoove',
+        },
+    },
+    {
+        label = 'Owned Shop', ---@location 542
+        coords = vec3(1460.7365, 1689.2673, 110.9086),
+        sprite = 446,
+        scale = 0.8,
+        color = 0,
+        data = {
+            title = '🏠 Smooves Customs',
+            description = 'Owner: Ksmoove',
         },
     },
     ----------------------------- Houses/Mansions -----------------------------
@@ -740,8 +673,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🏠 $HAMO_x\'s Krib',
-            description = 'Owner: $HAMO_x',
+            title = '🏠 V3NOM\'s Krib',
+            description = 'Owner: V3NOM',
         },
     },
     {
