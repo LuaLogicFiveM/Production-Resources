@@ -1,0 +1,33 @@
+.intimidation-bar {
+    display: none;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    width: fit-content;
+    height: 4em;
+    border-radius: 0.4em;
+    background: #000000e0;
+    padding-inline: 0.8em;
+    padding-block: 0.6em;
+}
+
+.intimidation-bar > .text {
+    color: white;
+    font-weight: 600;
+}
+
+.intimidation-bar > .bar {
+    width: 14em;
+    height: 0.95em;
+    border-radius: 0.3em;
+    background: #c3c5c338;
+}
+
+.intimidation-bar > .bar > div {
+    background: #ff0000bf;
+    height: 100%;
+    width: 0%;
+    max-width: 100%;
+    border-radius: 0.3em;
+    transition: width 0.2s ease-out;
+}

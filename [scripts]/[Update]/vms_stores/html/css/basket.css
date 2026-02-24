@@ -1,0 +1,170 @@
+/* BASKET */
+
+.basket-menu {
+    display: none;
+    
+    overflow: hidden;
+    position: absolute;
+    right: 1.5em;
+    top: 11em;
+    width: 20em;
+    height: 39em;
+    background: var(--menu-background);
+    border-radius: 12px;
+    opacity: 0.95;
+}
+
+.basket-menu::before {
+    content: "";
+    position: absolute;
+    width: 50rem;
+    height: 50rem;
+    border-radius: 50%;
+    opacity: .3;
+    z-index: 1;
+}
+
+.basket-menu::before {
+    bottom: 0rem;
+    right: 0;
+    transform: translate(40%, 60%);
+    background: radial-gradient(circle, var(--primary-color) 0%, rgba(255, 255, 255, 0) 70%);;
+}
+
+.basket-menu .header-name {
+    position: relative;
+    display: flex;
+    color: white;
+    padding-inline: 1em;
+    align-items: center;
+    width: 100%;
+    top: 0.5em;
+    height: fit-content;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.basket-menu .header-name>i {
+    margin-right: 0.3em;
+}
+
+.basket-menu .options {
+    position: relative;
+    padding-inline: 1.5em;
+    z-index: 20;
+    align-items: center;
+    width: 100%;
+    top: 1.4em;
+    height: 81%;
+    overflow: auto;
+    -webkit-mask-image: -webkit-gradient(linear, left 80%, left 100%, from(rgb(0 0 0)), to(rgb(0 0 0 / 15%)));
+    padding-bottom: 3em;
+}
+
+.basket-menu .options>div {
+    display: flex;
+    font-size: 1em;
+    font-weight: 400;
+    justify-content: space-between;
+    margin-bottom: 0.3em;
+}
+
+.basket-menu .options .product {
+    display: flex;
+}
+
+.basket-menu .options .product .count {
+    margin-bottom: 0rem;
+    color: white;
+    margin-right: 0.5em;
+}
+
+.basket-menu .options .product .label {
+    margin-bottom: 0rem;
+    color: white;
+    font-weight: 100;
+}
+
+.basket-menu .options .remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-size: 0.8em;
+    padding: 0.5em;
+    border: 1px solid red;
+    border-radius: 0.25em;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.basket-menu .options .remove:hover {
+    opacity: 0.8;
+}
+
+.basket-menu .options .remove > i {
+    line-height: 0 !important;
+}
+
+.basket-menu .footer {
+    bottom: 1.5em;
+    position: absolute;
+    width: -webkit-fill-available;
+    justify-content: space-between;
+    margin-inline: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.basket-menu .footer .total-price {
+    color: white;
+}
+
+.basket-menu .help {
+    font-size: 0.7em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0.5em;
+    color: white;
+    opacity: 0.55;
+}
+
+.basket-menu .help > .key {
+    margin-inline: 0.5em;
+    padding: 0.1em 0.6em;
+    border-radius: 0.3em;
+    background: rgba(183, 183, 183, 0.86);
+    color: black;
+    font-weight: 600;
+}
+
+.basket-menu.isBasketVisible {
+    animation: slide-in-basket .75s;
+    right: 1.5em;
+}
+
+.basket-menu.isBasketInvisible {
+    animation: slide-out-basket .75s;
+    right: -25em;
+}
+
+@keyframes slide-in-basket {
+    0% {
+        right: -25em;
+    }
+    100% {
+        right: 1.5em;
+    }
+}
+
+@keyframes slide-out-basket {
+    0% {
+        right: 1.5em;
+    }
+    100% {
+        right: -25em;
+    }
+}

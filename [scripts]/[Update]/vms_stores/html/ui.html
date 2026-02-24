@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="https://pagination.js.org/dist/2.6.0/pagination.min.js" rel="stylesheet" crossorigin="anonymous">
+        
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/fake-receipt" rel="stylesheet">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="css/main.css" rel="stylesheet">
+        <link href="css/receipt.css" rel="stylesheet">
+        <link href="css/buy-business.css" rel="stylesheet">
+        <link href="css/select.css" rel="stylesheet">
+        <link href="css/basket.css" rel="stylesheet">
+        <link href="css/management.css" rel="stylesheet">
+        <link href="css/resell.css" rel="stylesheet">
+        <link href="css/intimidation-bar.css" rel="stylesheet">
+
+        <link href="nui://vms_cityhall/html/css/shared.css" rel="stylesheet">
+
+        <!-- JAVASCRIPT -->
+        <script type="text/javascript" src="translation.json"></script>
+        <script src="../config/translation.js" type="text/javascript"></script>
+        <script src="../config/config.js" type="text/javascript"></script>
+    </head>
+    <body id="body">
+        <div class="intimidation-bar">
+            <div class="text"></div>
+            <div class="bar">
+                <div></div>
+            </div>
+        </div>
+        
+        <div class="management-menu">
+            <div class="header">
+                <p class="store-name"></p>
+                <div class="close">
+                    <i class="fas fa-close"></i>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="side-bar">
+                    <div data-href="main" class="button">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-home"></i>
+                        </div>
+                        <div class="name">
+                            <p class="title"></p>
+                            <p class="description"></p>
+                        </div>
+                    </div>
+                    <div data-href="stock" class="button">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <div class="name">
+                            <p class="title"></p>
+                            <p class="description"></p>
+                        </div>
+                    </div>
+                    <div data-href="order" class="button">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-truck-loading"></i>
+                        </div>
+                        <div class="name">
+                            <p class="title"></p>
+                            <p class="description"></p>
+                        </div>
+                    </div>
+                    <div data-href="employees" class="button">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="name">
+                            <p class="title"></p>
+                            <p class="description"></p>
+                        </div>
+                    </div>
+                    <div data-href="upgrade" class="button">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-arrow-up-short-wide"></i>
+                        </div>
+                        <div class="name">
+                            <p class="title"></p>
+                            <p class="description"></p>
+                        </div>
+                    </div>
+                    <div data-href="boss-management" class="button">
+                        <div class="icon-box">
+                            <i class="fa-solid fa-users-cog"></i>
+                        </div>
+                        <div class="name">
+                            <p class="title"></p>
+                            <p class="description"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main">
+                    <div data-type="main">
+                        <div>
+                            <div class="side-boxes">
+                                <div class="box" data-type="store-status">
+                                    <div class="header"></div>
+                                    <div class="title"></div>
+                                    <i class="fa-solid fa-thumbs-up"></i>
+                                </div>
+                                
+                                <div class="box" data-type="announcements">
+                                    <div class="header"></div>
+                                    <div class="title"></div>
+                                    <div class="announcements-messages" id="announcements-chat">
+                                        <!-- <div>
+                                            <div class="user">
+                                                <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                                                <div class="name">Tony Blunt</div>
+                                            </div>
+                                            <div class="message">...</div>
+                                        </div> -->
+                                    </div>
+                                    <i class="fa-solid fa-bullhorn"></i>
+                                </div>
+                                
+                                <div class="box" data-type="total-sales">
+                                    <div class="header"></div>
+                                    <div class="title"></div>
+                                    <i class="fa-solid fa-cash-register"></i>
+                                </div>
+                                
+                                <div class="box" data-type="total-earned">
+                                    <div class="header"></div>
+                                    <div class="title"></div>
+                                    <i class="fa-solid fa-dollar"></i>
+                                </div>
+
+                                <div class="box" data-type="best-sellers">
+                                    <div class="header"></div>
+                                    <div class="products-list">
+                                        <!-- <div>
+                                            <span class="label">Bread</span>
+                                            <span class="count">253x</span>
+                                        </div> -->
+                                    </div>
+                                    <i class="fa-solid fa-receipt"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-type="stock">
+                        <div></div>
+                    </div>
+                    <div data-type="order">
+                        <div>
+                            <div class="orders-list">
+                                <table id="orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-first" onclick="sortTable(0)" style="padding-block: 0.3em;"><span id="wholesale"></span> <span id="icon0" class="sort-icon"></span></th>
+                                            <th onclick="sortTable(1)"><span id="product"></span> <span id="icon1" class="sort-icon"></span></th>
+                                            <th onclick="sortTable(2)"><span id="orderprice"></span> <span id="icon2" class="sort-icon"></span></th>
+                                            <th class="table-last center"><span id="option"></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr>
+                                            <td class="table-first">Tony Blunt</td>
+                                            <td>58</td>
+                                            <td>12</td>
+                                            <td>Boss</td>
+                                            <td><div data-option="change-grade">Change</div></td>
+                                            <td><div data-option="change-grade">Bonus</div></td>
+                                            <td class="table-last"><div data-option="fire">Fire</div></td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="box box-right">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <form>
+                                    <label for="select-wholesale"></label>
+                                    <select id="select-wholesale" name="select-wholesale" onchange="checkWholesale()">
+                                        
+                                    </select>
+                                    <br>
+
+                                    <label for="select-product"></label>
+                                    <select id="select-product" name="select-product" onchange="checkCount()" disabled>
+                                        <option value=""></option>
+                                    </select>
+                                    <div id="count-2" class="count-bar"></div>
+
+                                    <label for="select-product2"></label>
+                                    <select id="select-product2" name="select-product2" onchange="checkCount2()" disabled>
+                                        <option value=""></option>
+                                    </select>
+                                    <div id="count-3" class="count-bar2"></div>
+
+                                    <label for="select-product3"></label>
+                                    <select id="select-product3" name="select-product3" onchange="checkCount3()" disabled>
+                                        <option value=""></option>
+                                    </select>
+                                    <div id="count-4" class="count-bar3"></div>
+
+                                </form>
+                                <div class="buttons">
+                                    <div class="btn" data-option="make-order">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-truck-loading"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-type="employees">
+                        <div>
+                            <div class="employees-list">
+                                <table id="employees-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-first" onclick="sortTable(0)" style="padding-block: 0.3em;"><span id="employee"></span> <span id="icon0" class="sort-icon"></span></th>
+                                            <th onclick="sortTable(1)"><span id="orders"></span> <span id="icon1" class="sort-icon"></span></th>
+                                            <th onclick="sortTable(3)"><span id="grade"></span> <span id="icon3" class="sort-icon"></span></th>
+                                            <th class="table-last center"><span id="option"></span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <tr>
+                                            <td class="table-first">Tony Blunt</td>
+                                            <td>58</td>
+                                            <td>12</td>
+                                            <td>Boss</td>
+                                            <td><div data-option="change-grade">Change</div></td>
+                                            <td><div data-option="change-grade">Bonus</div></td>
+                                            <td class="table-last"><div data-option="fire">Fire</div></td>
+                                        </tr> -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="box box-right">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="data">
+                                    
+                                </div>
+                                <div class="buttons">
+                                    <div class="btn" data-option="get_closest_players">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-type="boss-management">
+                        <div>
+                            <div class="header-buttons">
+                                <div class="box box-left" data-type="balance">
+                                    <div class="header"></div>
+                                    <div class="title"></div>
+                                    <div class="buttons">
+                                        <input data-input="withdraw" type="number" oninput="onInputBalance('withdraw')">
+                                        <input data-input="deposit" type="number" oninput="onInputBalance('deposit')">
+                                        <div class="btn" data-option="withdraw">
+                                            <p></p>
+                                        </div>
+                                        <div class="btn" data-option="deposit">
+                                            <p></p>
+                                        </div>
+                                        <div class="close-balance" onclick="balanceButton()">
+                                            <i class="fas fa-close"></i>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-dollar"></i>
+                                </div>
+                                <div class="box box-center" data-type="employees-count">
+                                    <div class="header"></div>
+                                    <div class="title"></div>
+                                    <div class="buttons">
+                                        <div class="btn" data-option="employees">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="box box-right" data-type="upgrade-menu">
+                                    <div class="header"></div>
+                                    <div class="title"></div>
+                                    <div class="buttons">
+                                        <div class="btn" data-option="upgrade">
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <i class="fa-solid fa-arrow-up-short-wide"></i>
+                                </div>
+                            </div>
+                            <div class="box box-left-center" data-type="money-escort">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <input type="number" data-type="moneycount">
+                                <div class="buttons">
+                                    <div class="btn" data-option="money-escort">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div class="box box-right-center" data-type="send-announcement">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <textarea data-type="announcement" maxlength="500"></textarea>
+                                <div class="buttons">
+                                    <div class="btn" data-option="send-announce">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+
+                            <div class="box box-bottom-left" data-type="sell">
+                                <div class="header">translation.management.menu_sell_header</div>
+                                <div class="title">translation.management.menu_sell_title</div>
+                                <div class="buttons">
+                                    <div class="btn red" data-option="sell">
+                                        <p>translation.management.menu_sell_btn</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-person-walking-luggage"></i>
+                            </div>
+                            <div class="box box-bottom-center" data-type="resell">
+                                <div class="header">translation.management.menu_resell_header</div>
+                                <div class="title">translation.management.menu_resell_title</div>
+                                <div class="buttons">
+                                    <div class="btn red" data-option="resell">
+                                        <p>translation.management.menu_resell_btn</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-type="upgrade">
+                        <div>
+                            <div class="box box-big" data-type="level">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="description">
+                                    
+                                </div>
+                                <div class="buttons">
+                                    <div class="btn" data-option="levelup">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-turn-up"></i>
+                            </div>
+                            <div class="box box-big box-left-bottom" data-type="levelinfo">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="description">
+                                    <div></div>
+                                </div>
+                                <i class="fa-solid fa-square-poll-vertical"></i>
+                            </div>
+                            <div class="box box-right" data-type="alarm">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="buttons">
+                                    <div class="btn" data-option="alarm">
+                                        <p></p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-car-on"></i>
+                            </div>
+                            <div class="box box-right box-right-bottom" data-type="insurance">
+                                <div class="header"></div>
+                                <div class="title"></div>
+                                <div class="info"></div>
+                                <div class="buttons insurances-list">
+                                    <!-- <div class="btn" data-option="insurance" data-days="7">
+                                        <p>BUY ON 7 DAYS FOR 30.000$</p>
+                                    </div>
+                                    <div class="btn" data-option="insurance" data-days="30">
+                                        <p>BUY ON 30 DAYS FOR 150.000$</p>
+                                    </div>
+                                    <div class="btn" data-option="insurance" data-days="90">
+                                        <p>BUY ON 90 DAYS FOR 400.000$</p>
+                                    </div> -->
+                                </div>
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="buy-business">
+            <div class="center">
+                <div class="menu">
+                    <div class="header-name">
+                        <span></span>
+                    </div>
+                    <hr>
+                    <div class="info-business">
+                        <div class="brand"></div>
+                        <div class="address"></div>
+                        <div class="price"></div>
+                        <div class="informations">
+                            
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="purchase-business" data-type="purchase">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="select-products">
+            <div class="center">
+                <div class="menu">
+                    <div class="header-name">
+                        <span></span>
+                    </div>
+                    <div class="products-list">
+                        <!-- <div class="product">
+                            <div class="info">
+                                <div class="label">Energy Drink</div>
+                                <div class="price">5$</div>
+                            </div>
+                            <div class="icon">
+                                <img src="products-icons/energy_drink.png">
+                            </div>
+                            <div class="actions">
+                                <input type="number" value="1">
+                                <div class="add-to-cart">ADD TO CART</div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="hide-help">
+                        <span id="press"></span> <span class="key"></span> <span id="to_hide"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="resell">
+            <div>
+                <div class="card">
+                    <div class="close">
+                        <i class="fas fa-close"></i>
+                    </div>
+                    <div class="center" id="title"></div>
+                    <hr>
+                    <br>
+                    <div id="date"></div>
+                    <br>
+                    <div id="seller"></div>
+                    <br>
+                    <div id="buyer"></div>
+                    <br>
+                    <br>
+                    <div>
+                        <div class="paragraph"><b>§ 1</b></div>
+                        <ol>
+                            <li id="first"></li>
+                            <li id="second"></li>
+                            <li id="third"></li>
+                        </ol>
+                    </div>
+                    <div class="signatures">
+                        <div class="seller">
+                            <div id="give_invoice"></div>
+                            <div class="signature" id="signature_seller"></div>
+                            <div id="make_signature_seller"></div>
+                            <div class="dots">.........................</div>
+                            <div class="signature-text"></div>
+                        </div>
+                        <div class="buyer">
+                            <div class="signature" id="signature_buyer"></div>
+                            <div id="make_signature_buyer"></div>
+                            <div class="dots">.........................</div>
+                            <div class="signature-text"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card_second"></div>
+            </div>
+        </div>
+
+        <div class="receipt">
+            <div class="receipt-texts">
+                <div class="header-label"></div>
+                <br>
+                <div class="legend">
+                    <div class="item"></div>
+                    <div class="amount"></div>
+                </div>
+                <div>----------------------------------</div>
+                <div class="list">
+    
+                </div>
+                <div>----------------------------------</div>
+                <div class="total">
+                    <div></div>
+                    <div><span></span></div>
+                </div>
+                <div>----------------------------------</div>
+                <div class="buttons">
+                    <div class="pay_cash"></div>
+                    <div class="pay_bank"></div>
+                    <div class="cancel"></div>
+                </div>
+            </div>
+            <img src="receipt.png" class="receipt-img" draggable="false">
+        </div>
+
+        <div class="basket-menu">
+            <div class="header-name"><i class="fa-solid fa-basket-shopping"></i> <span></span></div>
+            <div class="options">
+                <!-- <div>
+                    <div class="product">
+                        <p class="count">1x</p>
+                        <p class="label">Orange</p>
+                    </div>
+                    <div class="remove">
+                        <i class="fas fa-close"></i>
+                    </div>
+                </div> -->
+            </div>
+            <div class="footer">
+                <div class="total-price"><span></span></div>
+            </div>
+            <div class="help">
+                <span id="press"></span> <span class="key"></span> <span id="manage"></span>
+            </div>
+        </div>
+
+        <!-- <script src="nui://game/ui/jquery.js" type="text/javascript"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="script.js" type="text/javascript"></script>
+        <script src="nui://vms_cityhall/html/js/shared.js" type="text/javascript"></script>
+    </body>
+</html>

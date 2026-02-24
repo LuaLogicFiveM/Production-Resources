@@ -1,0 +1,117 @@
+.buy-business {
+    display: none;
+    
+    overflow: hidden;
+    opacity: 0.95;
+}
+
+.buy-business .center {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buy-business .menu {
+	position: relative;
+    
+    width: 30em;
+    height: 40em;
+    background: var(--menu-background);
+    border-radius: 12px;
+}
+
+.buy-business .header-name {
+    position: relative;
+    display: flex;
+    color: white;
+    padding-inline: 1em;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    top: 0.5em;
+    height: fit-content;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.buy-business .info-business {
+    padding-inline: 2em;
+    margin-top: 1em;
+    height: 29em;
+    color: white;
+    overflow: auto;
+    -webkit-mask-image: -webkit-gradient(linear, left 70%, left 100%, from(rgb(0 0 0)), to(rgb(0 0 0 / 0%)));
+    padding-bottom: 4em;
+}
+
+.buy-business .info-business .price {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.buy-business .info-business .price > span {
+    color: white;
+    font-weight: 600;
+}
+
+.buy-business .info-business .brand {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.buy-business .info-business .brand > span {
+    color: white;
+    font-weight: 600;
+}
+
+.buy-business .info-business .address {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.buy-business .info-business .address > span {
+    color: white;
+    font-weight: 600;
+}
+
+.buy-business .info-business .informations {
+    margin-top: 1em;
+}
+
+.buy-business .info-business > div > div {
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.buy-business .info-business > div > div > div {
+    font-weight: 200;
+    font-size: 0.8em;
+    margin-left: 1.2em;
+}
+
+.buy-business .purchase-business {
+    position: relative;
+    display: flex;
+    color: white;
+    padding-inline: 1em;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin-inline: auto;
+    top: 0.4em;
+    height: 1.75em;
+    font-size: 1.5em;
+    font-weight: 600;
+    background: var(--primary-color);
+    border-radius: 0.4em;
+    cursor: pointer;;
+    transition: 0.25s;
+}
+
+.buy-business .purchase-business:hover {
+    background: var(--primary-color-hover);
+}
+
+.buy-business .purchase-business:active {
+    background: var(--primary-color-active);
+}
