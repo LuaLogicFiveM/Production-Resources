@@ -1,3 +1,0 @@
--- This project does not use config.lua.
--- Configuration is located at: ui/dist/config.js
--- Please update configurations there.
