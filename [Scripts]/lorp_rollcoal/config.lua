@@ -15,8 +15,16 @@ Config.defaultParticleDuration          = -1            -- after how long the pa
 
 Config.useWhitelistedOnly               = true
 Config.whitelist                        = {
-    ["dons250"] = {
-        sizeScale = 5 ,
+    ["FOFpreV41"] = {
+        sizeScale = "DEFAULT",
+        engineUpgradeRequired = "DEFAULT",
+        intervalType  = "DEFAULT",
+        particleType = "DEFAULT",
+        sizeReduction = "DEFAULT",
+        particleDuration = "DEFAULT"
+    },
+    ["TREMDEVO6BLOW"] = {
+        sizeScale = 5,
         engineUpgradeRequired = "DEFAULT",
         intervalType  = "DEFAULT",
         particleType = "DEFAULT",
