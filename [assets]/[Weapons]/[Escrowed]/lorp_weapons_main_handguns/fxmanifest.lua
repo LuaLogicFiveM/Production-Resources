@@ -1,3 +1,8 @@
+shared_script "@ReaperV4/imports/bypass.lua"
+shared_script "@ReaperV4/imports/bypass_s.lua"
+shared_script "@ReaperV4/imports/bypass_c.lua"
+lua54 "yes" -- needed for Reaper
+
 lua54 "yes"
 
 fx_version 'cerulean'
@@ -19,5 +24,4 @@ data_file 'PED_PERSONALITY_FILE' '**/pedpersonality.meta'
 data_file 'WEAPONINFO_FILE' '**/weapons.meta'
 
 client_script 'cl_weaponNames.lua'
-
 dependency '/assetpacks'

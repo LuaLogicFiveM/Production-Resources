@@ -118,7 +118,7 @@ window.appConfig = {
     visuals: { // Visuals customizations
         vignette: false,
         tint: true,
-        blackAndWhite: true,
+        blackAndWhite: false,
         brightness: 0.8,
         panelsBlur: 10 // The background blur of the panels. more value = more blur. to disable blur completely set this to 0
     },

@@ -163,7 +163,7 @@ Config.Sounds = {
     enabled = true,
     newReport = "notification.ogg",
     newMessage = "message.ogg",
-    volume = 0.3
+    volume = 0.5
 }
 
 -- Custom Notification Function

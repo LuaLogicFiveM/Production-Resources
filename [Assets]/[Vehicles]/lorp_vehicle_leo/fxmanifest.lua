@@ -1,12 +1,8 @@
--- Resource Metadata
 fx_version 'cerulean'
-game 'gta5' 
+game 'gta5'
 
 files {
-    'data/**/*.meta',
-    'data/**/*.xml',
-    'data/**/*.dat',
-    'data/**/*.ytyp'
+    'data/**/*.meta'
 }
 
 
