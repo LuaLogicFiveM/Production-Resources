@@ -92,30 +92,14 @@ Config.ATM = {
 
 -- Bank Locations
 Config.BankLocations = {
-    {
-        coords = vector4(149.4113, -1042.0449, 29.3680, 342.9182) -- Legion Square
-    },
-    {
-        coords = vector4(-1211.8585, -331.9854, 37.7809, 28.5983) -- Rockford Hills
-    },
-    {
-        coords = vector4(-2961.0720, 483.1107, 15.6970, 88.1986) -- Great Ocean Highway
-    },
-    {
-        coords = vector4(-112.2223, 6471.1128, 31.6267, 132.7517) -- Paleto Bay
-    },
-    {
-        coords = vector4(313.8176, -280.5338, 54.1647, 339.1609) -- Pillbox Hill
-    },
-    {
-        coords = vector4(-351.3247, -51.3466, 49.0365, 339.3305) -- Burton
-    },
-    {
-        coords = vector4(1174.9718, 2708.2034, 38.0879, 178.2974) -- Sandy Shores
-    },
-    {
-        coords = vector4(247.0348, 225.1851, 106.2875, 158.7528) -- Vinewood
-    }
+    vector4(149.4113, -1042.0449, 29.3680, 342.9182), -- Legion Square
+    vector4(-1211.8585, -331.9854, 37.7809, 28.5983), -- Rockford Hills
+    vector4(-2961.0720, 483.1107, 15.6970, 88.1986), -- Great Ocean Highway
+    vector4(-112.2223, 6471.1128, 31.6267, 132.7517),-- Paleto Bay
+    vector4(313.8176, -280.5338, 54.1647, 339.1609), -- Pillbox Hill
+    vector4(-351.3247, -51.3466, 49.0365, 339.3305), -- Burton
+    vector4(1174.9718, 2708.2034, 38.0879, 178.2974), -- Sandy Shores
+    vector4(247.0348, 225.1851, 106.2875, 158.7528) -- Vinewood
 }
 
 -- Language Configuration

@@ -114,10 +114,10 @@ function CreateBankerPeds()
         Wait(1)
     end
     
-    for i, bank in pairs(Config.BankLocations) do
-        local ped = CreatePed(4, pedModel, bank.coords.x, bank.coords.y, bank.coords.z - 1.0, bank.coords.w, false, true)
+    for i, coords in ipairs(Config.BankLocations) do
+        local ped = CreatePed(4, pedModel, coords.x, coords.y, coords.z - 1.0, coords.w, false, true)
         
-        SetEntityHeading(ped, bank.coords.w)
+        SetEntityHeading(ped, coords.w)
         
         if Config.BankerPed.freeze then
             FreezeEntityPosition(ped, true)
@@ -227,8 +227,8 @@ end
 function CreateBankBlips()
     if not Config.Blips.enabled then return end
     
-    for _, bank in pairs(Config.BankLocations) do
-        local blip = AddBlipForCoord(bank.coords.x, bank.coords.y, bank.coords.z)
+    for _, coords in ipairs(Config.BankLocations) do
+        local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
         SetBlipSprite(blip, Config.Blips.sprite)
         SetBlipDisplay(blip, Config.Blips.display)
         SetBlipScale(blip, Config.Blips.scale)
@@ -249,7 +249,7 @@ function ScanForNearbyATMs()
     local playerCoords = GetEntityCoords(PlayerPedId())
     nearbyATMs = {}
     
-    for _, model in pairs(Config.ATM.models) do
+    for _, model in ipairs(Config.ATM.models) do
         local atmObject = GetClosestObjectOfType(playerCoords.x, playerCoords.y, playerCoords.z, 10.0, model, false, false, false)
         
         if atmObject ~= 0 then
@@ -257,11 +257,11 @@ function ScanForNearbyATMs()
             local distance = #(playerCoords - atmCoords)
             
             if distance <= 10.0 then
-                table.insert(nearbyATMs, {
+                nearbyATMs[#nearbyATMs+1] = {
                     object = atmObject,
                     coords = atmCoords,
                     distance = distance
-                })
+                }
             end
         end
     end
@@ -516,15 +516,15 @@ Citizen.CreateThread(function()
     local lastATMScan = 0
     
     while true do
-        local sleep = 1000
+        local sleep = 1500
         local playerPed = PlayerPedId()
         local playerCoords = GetEntityCoords(playerPed)
         local canInteract = false
         
 
         if Config.Banking.enableBankerPed then
-            for _, bank in pairs(Config.BankLocations) do
-                local distance = #(playerCoords - vector3(bank.coords.x, bank.coords.y, bank.coords.z))
+            for _, coords in ipairs(Config.BankLocations) do
+                local distance = #(playerCoords - vector3(coords.x, coords.y, coords.z))
                 
                 if distance < Config.Interaction.distance then
                     sleep = 0
@@ -547,7 +547,7 @@ Citizen.CreateThread(function()
                 lastATMScan = currentTime
             end
             
-            for _, atm in pairs(nearbyATMs) do
+            for _, atm in ipairs(nearbyATMs) do
                 if atm.distance <= Config.ATM.interactionDistance then
                     sleep = 0
                     canInteract = true

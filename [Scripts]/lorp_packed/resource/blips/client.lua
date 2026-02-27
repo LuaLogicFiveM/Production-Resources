@@ -463,8 +463,8 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 Outlaw Culture',
-            description = 'Owner: LeanKing69',
+            title = '🔧 Camel Towing',
+            description = 'Owner: Slip 2.0',
         },
     },
     {
@@ -673,7 +673,7 @@
         scale = 0.8,
         color = 0,
         data = {
-            title = '🏠 V3NOM\'s Krib',
+            title = '🏠 V3NOM\'s Hideaway',
             description = 'Owner: V3NOM',
         },
     },
