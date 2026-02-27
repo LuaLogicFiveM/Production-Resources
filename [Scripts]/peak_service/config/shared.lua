@@ -8,7 +8,7 @@ return {
     tasks = {
         {
             label = 'Clean the floor',
-            duration = 1000,
+            duration = 5000,
             animation = {
                 dict = 'anim@amb@drug_field_workers@rake@male_a@base',
                 clip = 'base',
@@ -25,6 +25,6 @@ return {
 
     penalties = {
         enabled = true,
-        tasks = 2
+        tasks = 5
     }
 }
