@@ -25,7 +25,6 @@ function Notify(message, type)
 end
 
 lib.callback.register('lualogic_trust:client:loaded', function(vehicle)
-    print(IsModelInCdimage(vehicle), IsModelValid(vehicle))
     return IsModelInCdimage(vehicle)
 end)
 

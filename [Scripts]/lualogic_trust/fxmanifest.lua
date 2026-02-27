@@ -42,5 +42,3 @@ escrow_ignore {
     'config.lua',
     'logs.lua'
 }
-
-dependency '/assetpacks'
