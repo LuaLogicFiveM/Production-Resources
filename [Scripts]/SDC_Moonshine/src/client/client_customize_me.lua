@@ -285,3 +285,14 @@ function CanMakeMash(mashtype)
 
     return true
 end
+
+--Dont Change Unless You Know What You Are Doing!
+function ShowTextUI(label, pos, con)
+    lib.showTextUI(label, {
+		position = pos,
+		icon = con
+	})
+end
+function HideAllTextUI()
+    lib.hideTextUI()
+end

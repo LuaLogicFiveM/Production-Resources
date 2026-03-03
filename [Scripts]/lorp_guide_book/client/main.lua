@@ -60,9 +60,9 @@ RegisterNUICallback('closeBook', function(data, cb)
 end)
 
 CreateThread(function()
-    while true do
+    while isBookOpen do
         Wait(1)
-        if isBookOpen and (IsControlJustPressed(0, 322) or IsControlJustPressed(0, 177)) then
+        if IsControlJustPressed(0, 322) or IsControlJustPressed(0, 177) then
             isBookOpen = false
             SetNuiFocus(false, false)
             SendNUIMessage({ action = 'forceClose' })

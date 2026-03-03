@@ -181,6 +181,7 @@ SDC.Lang = {
     StillPartsBroke = "Some Parts Broke When Picking Up Still! Amount Of Parts Broken",
     PlayerInfo = "Player Info",
     NewPlayerInfo = "New Player Info",
+    Name = "Name",
     ServerID = "Server ID",
     Identifier = "Identifier",
     PlantInfo = "Plant Info",
@@ -201,5 +202,6 @@ SDC.Lang = {
     SaleComplete = "Sale",
     SaleInfo = "Sale Info",
     AmountSold = "Amount Sold",
-    MoneyMade = "Money Made"
+    MoneyMade = "Money Made",
+    InventoryFull = "Inventory Full!"
 }

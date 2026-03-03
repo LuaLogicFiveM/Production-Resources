@@ -30,6 +30,10 @@ function GetOwnerTag(src)
     return exports["SDC_Core"]:GetOwnerTag(src)
 end
 
+function CanCarryItem(src, item, amt)
+    return exports["SDC_Core"]:CanCarryItem(src, item, amt)
+end
+
 
 --Custom Functions (Requested By code.nz)
 function CanPlaceBarrel(src, totalBarrelsCurrently)
