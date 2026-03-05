@@ -714,7 +714,7 @@ function getOnlinePoliceCount()
             end
 
             -- Polis işlerini kontrol et (genişletilebilir)
-            local policeJobs = { 'police', 'sheriff', 'state', 'lspd', 'bcso', 'sahp', 'park', 'pd', 'policia' }
+            local policeJobs = { 'bcso', 'sasp', 'gov' }
 
             for _, policeJob in ipairs(policeJobs) do
                 if jobName == policeJob then

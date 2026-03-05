@@ -122,7 +122,7 @@ Config.Job                = {
         giveItemPlayer = true, -- true / false
         dropMode = "perItem", -- "perItem" = each item rolls independently | "weightedPool" = 1 item from weighted pool
         itemList = {
-            { item = "black_money", count = math.random(2500, 5000), chance = 50 },
+            { item = "black_money", count = math.random(250, 500), chance = 25 },
         },
     },
     ['drawtext'] = {
@@ -138,7 +138,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = 5000,
+                money = math.random(500, 750),
                 xp = 1000,
                 onlineJobExtraAwards = 1,
                 bonusExtraMoney = 500,
@@ -148,7 +148,7 @@ Config.Job                = {
                 giveItemPlayer = true,
                 dropMode = "perItem",
                 itemList = {
-                    { item = "black_money", count = math.random(2500, 5000), chance = 50 },
+                    { item = "black_money", count = math.random(250, 500), chance = 50 },
                 },
             },
             regionJobTask = {

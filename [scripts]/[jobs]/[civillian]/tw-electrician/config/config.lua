@@ -126,10 +126,10 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(5000, 7500),
+                money = math.random(500, 750),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
-                bonusExtraMoney = 5000,
+                bonusExtraMoney = 1000,
                 bonusExtraXP = 200,
             },
             missioncompletedItems = {
@@ -205,10 +205,10 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(2500, 7500),
+                money = math.random(500, 750),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
-                bonusExtraMoney = 5000,
+                bonusExtraMoney = 1000,
                 bonusExtraXP = 200,
             },
             missioncompletedItems = {
@@ -284,10 +284,10 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(2500, 7500),
+                money = math.random(500, 750),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
-                bonusExtraMoney = 5000,
+                bonusExtraMoney = 1000,
                 bonusExtraXP = 200,
             },
             missioncompletedItems = {
@@ -363,10 +363,10 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(2500, 7500),
+                money = math.random(750, 1000),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
-                bonusExtraMoney = 5000,
+                bonusExtraMoney = 1000,
                 bonusExtraXP = 200,
             },
             missioncompletedItems = {
@@ -441,10 +441,10 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(2500, 7500),
+                money = math.random(750, 1000),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
-                bonusExtraMoney = 5000,
+                bonusExtraMoney = 1000,
                 bonusExtraXP = 200,
             },
             missioncompletedItems = {
@@ -519,10 +519,10 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(2500, 7500),
+                money = math.random(750, 1000),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
-                bonusExtraMoney = 5000,
+                bonusExtraMoney = 1000,
                 bonusExtraXP = 200,
             },
             missioncompletedItems = {

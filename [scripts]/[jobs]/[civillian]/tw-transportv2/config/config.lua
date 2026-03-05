@@ -116,8 +116,8 @@ Config.Job                   = {
             -- chance: 1-99 = % probability, 100 = guaranteed
             -- perItem mode: each item rolls its own chance, player can get multiple
             -- weightedPool mode: chances become weights, 1 item picked from pool (100 = always given separately)
-            { item = "money", count = 5000, chance = 50 },
-            { item = "black_money",  count = 5000, chance = 25 },
+            { item = "money", count = 500, chance = 50 },
+            { item = "black_money",  count = 500, chance = 25 },
         },
     },
     ['drawtext'] = {
@@ -133,10 +133,10 @@ Config.Job                   = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(10000, 15000),
+                money = math.random(500, 750),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
-                bonusExtraMoney = 5000,
+                bonusExtraMoney = 500,
                 bonusExtraXP = 250,
             },
             -- Region-specific item rewards on job completion
@@ -214,7 +214,7 @@ Config.Job                   = {
                 regionMinimumLevel = 2
             },
             regionAwards = {
-                money = math.random(10000, 15000),
+                money = math.random(750, 1000),
                 xp = 3000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -288,7 +288,7 @@ Config.Job                   = {
                 regionMinimumLevel = 4
             },
             regionAwards = {
-                money = math.random(20000, 25000),
+                money = math.random(1250, 1500),
                 xp = 5000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -363,7 +363,7 @@ Config.Job                   = {
                 regionMinimumLevel = 6
             },
             regionAwards = {
-                money = 25000,
+                money = math.random(1500, 1750),
                 xp = 10000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -1270,7 +1270,7 @@ Config.PoliceAlert           = {
         },
 
         -- Police Jobs (expandable)
-        policeJobs = { 'police', 'sheriff', 'state', 'lspd', 'bcso', 'sahp', 'park', 'pd', 'policia' },
+        policeJobs = { 'bcso', 'sasp', 'gov' },
 
         -- Search Results Messages are now in Locales
         searchResults = {

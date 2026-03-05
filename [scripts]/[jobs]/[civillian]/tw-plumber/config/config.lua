@@ -111,7 +111,7 @@ Config.Job                   = {
             -- chance: 1-99 = % probability, 100 = guaranteed
             -- perItem mode: each item rolls its own chance, player can get multiple
             -- weightedPool mode: chances become weights, 1 item picked from pool (100 = always given separately)
-            { item = "black_money", count = 5000, chance = 50 },
+            { item = "black_money", count = 1000, chance = 25 },
         },
     },
     ['drawtext'] = {
@@ -127,7 +127,7 @@ Config.Job                   = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = 5000,
+                money = math.random(500, 750),
                 xp = 1000,
                 -- onlineJobExtraAwards: Controls team money calculation
                 -- POSITIVE VALUE (e.g.: 2): Team BONUS - more money
@@ -152,7 +152,7 @@ Config.Job                   = {
                     -- chance: 1-99 = % probability, 100 = guaranteed
                     -- perItem mode: each item rolls its own chance, player can get multiple
                     -- weightedPool mode: chances become weights, 1 item picked from pool (100 = always given separately)
-                    { item = "black_money", count = 5000, chance = 50 },
+                    { item = "black_money", count = 1000, chance = 25 },
                 },
             },
             regionJobVehicle = {
@@ -219,7 +219,7 @@ Config.Job                   = {
                 regionMinimumLevel = 2
             },
             regionAwards = {
-                money = 7500,
+                money = math.random(500, 750),
                 xp = 1500,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -298,7 +298,7 @@ Config.Job                   = {
                 regionMinimumLevel = 4
             },
             regionAwards = {
-                money = 10000,
+                money = math.random(650, 800),
                 xp = 2000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -377,7 +377,7 @@ Config.Job                   = {
                 regionMinimumLevel = 6
             },
             regionAwards = {
-                money = 12500,
+                money = math.random(750, 1000),
                 xp = 2500,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -456,7 +456,7 @@ Config.Job                   = {
                 regionMinimumLevel = 8
             },
             regionAwards = {
-                money = 12500,
+                money = math.random(850, 1250),
                 xp = 2500,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -535,7 +535,7 @@ Config.Job                   = {
                 regionMinimumLevel = 10
             },
             regionAwards = {
-                money = 12500,
+                money = math.random(1000, 1350),
                 xp = 2500,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,

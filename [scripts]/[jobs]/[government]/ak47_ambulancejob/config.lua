@@ -183,18 +183,18 @@ Config.RespawnOptions = {
 }
 
 Config.PlayForTask = {
-    revive      = 1000,
-    cpr         = 1000,
-    cpradvanced = 500,
-    bandage     = 200,
-    neckbrace   = 200,
-    bodybandage = 200,
-    armbrace    = 200,
-    legbrace    = 200,
-    morphine30  = 200,
-    saline      = 100,
-    firstaid    = 100,
-    medikit     = 100,
+    revive      = 250,
+    cpr         = 250,
+    cpradvanced = 250,
+    bandage     = 50,
+    neckbrace   = 50,
+    bodybandage = 50,
+    armbrace    = 50,
+    legbrace    = 50,
+    morphine30  = 50,
+    saline      = 50,
+    firstaid    = 50,
+    medikit     = 50,
 }
 
 Config.IgnoreAnims = { --death & down animation will be skiped if player using animations below

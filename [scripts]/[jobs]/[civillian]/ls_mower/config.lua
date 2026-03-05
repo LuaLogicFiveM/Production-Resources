@@ -183,11 +183,10 @@ Config.experience = {
 
 -- Payment configuration
 Config.payments = {
-    reward = math.random(50, 100), -- Payment per grass patch
-    --reward = math.random(15, 45), -- Alternatively use randomized payment
-    bonus = 30,
+    reward = math.random(15, 25), -- Payment per grass patch
+    bonus = 50,
     depositForVehicles = 100, -- Deposit required for using vehicles
-    perLevel = 50              -- Bonus per player level
+    perLevel = 1000              -- Bonus per player level
 }
 
 Config.vehiclesSpawning = {
