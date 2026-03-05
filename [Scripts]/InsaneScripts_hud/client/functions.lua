@@ -108,13 +108,8 @@ function updateHud()
                 dataTable['wallet'] = ox_inventory:Search('count', 'money')
                 dataTable['walletDirty'] = ox_inventory:Search('count', 'black_money')
                 dataTable['bank'] = bank
-                dataTable['userJob'] = ('%s - %s (%i)'):format(PlayerData.job.label, PlayerData.job.grade_label, PlayerData.job.grade)
-
-                if PlayerData.group ~= 'user' then
-                    dataTable['userGroup'] = PlayerData.group
-                else
-                    dataTable['userGroup'] = nil
-                end
+                dataTable['userJob'] = ('%s'):format(PlayerData.job.label)
+                dataTable['userJobGrade'] = ('%s (%i)'):format(PlayerData.job.grade_label, PlayerData.job.grade)
 
                 local isDead = IsEntityDead(ped) or PlayerData.dead
                 dataTable['inlaststand'] = isDead

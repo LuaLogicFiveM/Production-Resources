@@ -68,15 +68,15 @@ window.cfg.playerStatsElements = {
         },
     },
     vertical : {
-        userGroup : {
-            state : true,
-            label : 'Group',
-            icon : '<i class="fa-solid fa-user-shield"></i>'
-        },
         userJob : {
             state : true,
             label : 'Job',
             icon : '<i class="fa-solid fa-briefcase"></i>'
+        },
+        userJobGrade : {
+            state : true,
+            label : 'Job Rank',
+            icon : '<i class="fa-solid fa-user-shield"></i>'
         },
         wallet : {
             state : true,
