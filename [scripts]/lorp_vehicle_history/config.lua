@@ -6,7 +6,7 @@ Config.Target = 'auto'
 Config.Debug = false
 Config.RateLimitMs = 1500
 
-Config.UseMileage = false
+Config.UseMileage = true
 Config.UseJgMileage = true
 Config.JgMileageResource = 'jg-vehiclemileage'
 Config.PlateMaxLength = 12
@@ -53,8 +53,9 @@ Config.Commands = {
     incident = {
         name = 'incident',
         job = {
-            sheriff = 0,
-            sahp = 0,
+            bcso = 0,
+            sasp = 0,
+            impound_ls = 0,
             dot = 0
         },
         description = 'command_incident_description'
@@ -146,14 +147,18 @@ Config.RegistrationStatuses = {{
 
 Config.ReportVisibility = {
     showIdentifiers = {
-        sheriff = true,
-        sahp = true,
-        dmv = true
+        bcso = 0,
+        sasp = 0,
+        impound_ls = 0,
+        dot = 0,
+        dmv = 0
     },
     showPrivateIncidents = {
-        sheriff = true,
-        sahp = true,
-        dmv = true
+        bcso = 0,
+        sasp = 0,
+        impound_ls = 0,
+        dot = 0,
+        dmv = 0
     }
 }
 
