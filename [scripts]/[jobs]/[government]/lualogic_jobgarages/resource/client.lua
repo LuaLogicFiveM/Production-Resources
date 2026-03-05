@@ -247,18 +247,11 @@ end
 local function nearby(self)
     if self.playerGroup ~= self.groupRequired then return end
 
-    DrawMarker(self.garageMarker.type, self.menuCoords.x, self.menuCoords.y, self.menuCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, self.garageMarker.size, self.garageMarker.size, self.garageMarker.size, self.garageMarker.r, self.garageMarker.g, self.garageMarker.b, self.garageMarker.alpha, false, true, 2, false, nil, nil, false)
- 
     if not textUIShowing and not menuOpen then 
         lib.showTextUI(locale("textui.opengarage"))
         textUIShowing = true
     end
 
-    if textUIShowing then 
-        lib.hideTextUI()
-        textUIShowing = false
-    end
-    
     if IsControlJustReleased(0, 38) then
         spawnCoords = self.spawnCoords
         if cache.vehicle then 
@@ -438,6 +431,10 @@ lib.registerContext({
 })
 
 RegisterNetEvent('stevo_lib:playerLoaded', function()
+    initGarages()
+end)
+
+RegisterNetEvent('esx:setJob', function()
     initGarages()
 end)
 
