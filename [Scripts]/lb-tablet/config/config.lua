@@ -246,13 +246,13 @@ Config.Locations = { -- Locations that'll appear in the maps app
     {
         position = vector2(2821.1423, 4761.0698),
         name = "Sheriff\'s Office",
-        description = "Los Santos County Sheriff\'s Office",
+        description = "Blaine County Sheriff\'s Office",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
     },
     {
         position = vector2(833.9344, -1292.6493),
-        name = "SAHP",
-        description = "San Andreas Highway Patrol Office",
+        name = "State Patrol Office",
+        description = "San Andreas State Patrol Office",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
     },
     {
@@ -260,6 +260,12 @@ Config.Locations = { -- Locations that'll appear in the maps app
         name = "Sandy Shores",
         description = "Sandy Shores Medical Hospital",
         icon = "https://cdn-icons-png.flaticon.com/128/1032/1032989.png",
+    },
+    {
+        position = vector2(-303.2749, -1170.21095),
+        name = "Los Santos",
+        description = "Los Santos Impound Lot",
+        icon = "https://i.ibb.co/QjFLND59/tow-truck.png",
     },
 }
 
@@ -362,7 +368,7 @@ Config.Services.Management = {
 
 Config.Services.Companies = { -- the companies that are shown in the app
     {
-        job = "sheriff",
+        job = "bcso",
         name = "Sheriff\'s Office",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
         canMessage = true, -- if true, players can message the company
@@ -375,8 +381,8 @@ Config.Services.Companies = { -- the companies that are shown in the app
         }
     },
     {
-        job = "sahp",
-        name = "San Andreas Highway Patrol Office",
+        job = "sasp",
+        name = "San Andreas State Patrol Office",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
         canMessage = true, -- if true, players can message the company
         location = {
@@ -413,6 +419,19 @@ Config.Services.Companies = { -- the companies that are shown in the app
             }
         }
     },
+    {
+        job = "impound_ls",
+        name = "Los Santos Impound",
+        icon = "https://i.ibb.co/QjFLND59/tow-truck.png",
+        canMessage = true, -- if true, players can message the company
+        location = {
+            name = "Los Santos",
+            coords = {
+                x = -303.2749,
+                y = -1170.2109
+            }
+        },
+    }
 }
 
 --[[ POLICE APP OPTIONS ]] --
@@ -564,7 +583,7 @@ Config.Police.AdminPermissions = {
 }
 
 Config.Police.Permissions = {
-    ["sheriff"] = {
+    ["bcso"] = {
         home = {
             view = 0,
         },
@@ -670,7 +689,7 @@ Config.Police.Permissions = {
             view = 0,
         }
     },
-    ["sahp"] = {
+    ["sasp"] = {
         home = {
             view = 0,
         },
