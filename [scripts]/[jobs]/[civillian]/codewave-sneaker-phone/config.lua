@@ -51,20 +51,20 @@ Config.DeliveryLocations = {
 
 -- Define required items for delivery and their prices (ENSURE TO CHANGE PRICES TO YOUR SERVER!)
 Config.RequiredItems = {
-    { name = 'sky_gliders_plus', price = 300 }, -- Reward for delivering item
-    { name = 'breeze_bangs', price = 325 }, 
-    { name = 'tiger_mediums', price = 310 }, 
-    { name = 'galaxy_x', price = 245 }, 
-    { name = 'sky_walkers', price = 185 }, 
-    { name = 'sky_flyers', price = 255 }, 
-    { name = 'sky_gliders', price = 255 }, 
-    { name = 'fastrunner_2000', price = 255 }, 
-    { name = 'speedster_300', price = 255 }, 
-    { name = 'runner_prime', price = 255 }, 
-    { name = 'breeze_95s', price = 520 }, 
-    { name = 'breeze_100s', price = 255 }, 
-    { name = 'breeze_90s', price = 255 }, 
-    { name = 'sky_walkers_red', price = 255 }, 
-    { name = 'shadow_yellows', price = 255 }, 
-    { name = 'sky_pilots', price = 350 }  
+    { name = 'sky_gliders_plus', price = 28 }, -- Reward for delivering item
+    { name = 'breeze_bangs', price = 25 }, 
+    { name = 'tiger_mediums', price = 32 }, 
+    { name = 'galaxy_x', price = 27 }, 
+    { name = 'sky_walkers', price = 29 }, 
+    { name = 'sky_flyers', price = 35 }, 
+    { name = 'sky_gliders', price = 37 }, 
+    { name = 'fastrunner_2000', price = 31 }, 
+    { name = 'speedster_300', price = 32 }, 
+    { name = 'runner_prime', price = 45 }, 
+    { name = 'breeze_95s', price = 42 }, 
+    { name = 'breeze_100s', price = 40 }, 
+    { name = 'breeze_90s', price = 35 }, 
+    { name = 'sky_walkers_red', price = 28 }, 
+    { name = 'shadow_yellows', price = 30 }, 
+    { name = 'sky_pilots', price = 25 }  
 }

@@ -14,7 +14,7 @@ Config.InteractionType = 'ox_target' -- ox_target | 3dtext | qb-target
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
 Config.UseQbTargetForNpc = false  -- Set to true to use qb-target for NPC interaction
 
-Config.TimeToCraft = 8000
+Config.TimeToCraft = 15000
 Config.DebugMode = false  -- Set to true to enable debug messages
 
 -- "custom", "esx", "qbcore", "pNotify", "mythic_notify", "okokNotify", "default", "ox_lib"
@@ -57,11 +57,11 @@ Config.NPC = {
 
 -- Add anything you want here (For example if you want a new required item you can add it here for them to purchase!)
 Config.Items = {
-    { name = "Assortment Of leather materials", id = "leather_materials", img = "image/leather_materials.png", price = 100 }, -- You don't really need too touch anything apart from PRICE
-    { name = "Shoe foam", id = "shoe_foam", img = "image/shoe_foam.png", price = 200 },
-    { name = "Cloth Materials", id = "clothe_materials", img = "image/cloth_materials.png", price = 300 },
-    { name = "Work Station", id = "work_station", img = "image/work_station.png", price = 1000 },
-    { name = "Work Phone", id = "shoe_phone", img = "image/shoe_phone.png", price = 1500 }
+    { name = "Assortment Of leather materials", id = "leather_materials", img = "image/leather_materials.png", price = math.random(100, 150) }, -- You don't really need too touch anything apart from PRICE
+    { name = "Shoe foam", id = "shoe_foam", img = "image/shoe_foam.png", price = math.random(50, 75) },
+    { name = "Cloth Materials", id = "clothe_materials", img = "image/cloth_materials.png", price = math.random(50, 100) },
+    { name = "Work Station", id = "work_station", img = "image/work_station.png", price = math.random(250, 500) },
+    { name = "Work Phone", id = "shoe_phone", img = "image/shoe_phone.png", price = math.random(750, 1000) }
 }
 
 
@@ -128,40 +128,40 @@ Config.ShoeTableItem = 'work_station' --- The table item
 Config.PropItemName = 'prop_table_03' -- You can change this if you want (to basically any prop, make it make sense though!)
 
 Config.RequiredItems = {
-    { item = 'sky_gliders_plus', priceMin = 700, priceMax = 1000 },
-    { item = 'breeze_bangs', priceMin = 700, priceMax = 1000 },
-    { item = 'tiger_mediums', priceMin = 700, priceMax = 1000 },
-    { item = 'galaxy_x', priceMin = 700, priceMax = 1000 },
-    { item = 'sky_walkers', priceMin = 700, priceMax = 1000 },
-    { item = 'sky_pilots', priceMin = 700, priceMax = 1000 },
-    { item = 'sky_flyers', priceMin = 700, priceMax = 1000 },
-    { item = 'sky_gliders', priceMin = 700, priceMax = 1000 },
-    { item = 'fastrunner_2000', priceMin = 700, priceMax = 1000 },
-    { item = 'speedster_300', priceMin = 700, priceMax = 1000 },
-    { item = 'runner_prime', priceMin = 700, priceMax = 1000 },
-    { item = 'breeze_95s', priceMin = 700, priceMax = 1000 },
-    { item = 'breeze_100s', priceMin = 700, priceMax = 1000 },
-    { item = 'breeze_90s', priceMin = 700, priceMax = 1000 },
-    { item = 'sky_walkers_red', priceMin = 700, priceMax = 1000 },
-    { item = 'shadow_yellows', priceMin = 700, priceMax = 1000 },
+    { item = 'sky_gliders_plus', priceMin = 18, priceMax = 28 },
+    { item = 'breeze_bangs', priceMin = 15, priceMax = 25 },
+    { item = 'tiger_mediums', priceMin = 29, priceMax = 42 },
+    { item = 'galaxy_x', priceMin = 25, priceMax = 32 },
+    { item = 'sky_walkers', priceMin = 12, priceMax = 46 },
+    { item = 'sky_pilots', priceMin = 16, priceMax = 18 },
+    { item = 'sky_flyers', priceMin = 15, priceMax = 28 },
+    { item = 'sky_gliders', priceMin = 17, priceMax = 35 },
+    { item = 'fastrunner_2000', priceMin = 17, priceMax = 25 },
+    { item = 'speedster_300', priceMin = 12, priceMax = 15 },
+    { item = 'runner_prime', priceMin = 20, priceMax = 30 },
+    { item = 'breeze_95s', priceMin = 18, priceMax = 25 },
+    { item = 'breeze_100s', priceMin = 14, priceMax = 20 },
+    { item = 'breeze_90s', priceMin = 10, priceMax = 19 },
+    { item = 'sky_walkers_red', priceMin = 12, priceMax = 20 },
+    { item = 'shadow_yellows', priceMin = 15, priceMax = 25 },
 
     --- We reccommend increasing the verified shoes.
-    { item = 'breeze_90s_verified',       priceMin = 1100, priceMax = 1400 },
-    { item = 'breeze_95s_verified',       priceMin = 1100, priceMax = 1400 },
-    { item = 'breeze_100s_verified',      priceMin = 1100, priceMax = 1400 },
-    { item = 'breeze_bangs_verified',     priceMin = 1100, priceMax = 1400 },
-    { item = 'fastrunner_2000_verified',  priceMin = 1100, priceMax = 1400 },
-    { item = 'galaxy_x_verified',         priceMin = 1100, priceMax = 1400 },
-    { item = 'runner_prime_verified',     priceMin = 1100, priceMax = 1400 },
-    { item = 'shadow_yellows_verified',   priceMin = 1100, priceMax = 1400 },
-    { item = 'sky_flyers_verified',       priceMin = 1100, priceMax = 1400 },
-    { item = 'sky_gliders_plus_verified', priceMin = 1100, priceMax = 1400 },
-    { item = 'sky_gliders_verified',      priceMin = 1100, priceMax = 1400 },
-    { item = 'sky_pilots_verified',       priceMin = 1100, priceMax = 1400 },
-    { item = 'sky_walkers_red_verified',  priceMin = 1100, priceMax = 1400 },
-    { item = 'sky_walkers_verified',      priceMin = 1100, priceMax = 1400 },
-    { item = 'speedster_300_verified',    priceMin = 1100, priceMax = 1400 },
-    { item = 'tiger_mediums_verified',    priceMin = 1100, priceMax = 1400 }
+    { item = 'breeze_90s_verified',       priceMin = 29, priceMax = 35 },
+    { item = 'breeze_95s_verified',       priceMin = 25, priceMax = 30 },
+    { item = 'breeze_100s_verified',      priceMin = 15, priceMax = 20 },
+    { item = 'breeze_bangs_verified',     priceMin = 19, priceMax = 25 },
+    { item = 'fastrunner_2000_verified',  priceMin = 15, priceMax = 35 },
+    { item = 'galaxy_x_verified',         priceMin = 15, priceMax = 40 },
+    { item = 'runner_prime_verified',     priceMin = 24, priceMax = 30 },
+    { item = 'shadow_yellows_verified',   priceMin = 28, priceMax = 32 },
+    { item = 'sky_flyers_verified',       priceMin = 22, priceMax = 28 },
+    { item = 'sky_gliders_plus_verified', priceMin = 25, priceMax = 35 },
+    { item = 'sky_gliders_verified',      priceMin = 24, priceMax = 35 },
+    { item = 'sky_pilots_verified',       priceMin = 21, priceMax = 27 },
+    { item = 'sky_walkers_red_verified',  priceMin = 22, priceMax = 30 },
+    { item = 'sky_walkers_verified',      priceMin = 20, priceMax = 28 },
+    { item = 'speedster_300_verified',    priceMin = 25, priceMax = 30 },
+    { item = 'tiger_mediums_verified',    priceMin = 35, priceMax = 45 }
 }
 
 

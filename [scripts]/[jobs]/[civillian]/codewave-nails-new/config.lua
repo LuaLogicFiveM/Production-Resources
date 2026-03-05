@@ -9,7 +9,7 @@ Config = {}
 Config.Framework = 'ESX' -- 'ESX' or 'QBCore' (case sensitive)
 Config.InteractionType = 'ox_target' -- ox_target | 3dtext
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
-Config.TimeToCraft = 8000
+Config.TimeToCraft = 15000
 Config.DebugMode = false  -- Set to true to enable debug messages
 
 -- ONLY FOR NPC SALES.
@@ -37,11 +37,11 @@ Config.NPC = {
 }
 
 Config.Items = {
-    { name = "Acrylic Liquid", id = "acrylic-liquid", img = "image/acrylic-liquid.png", price = 100 }, -- You don't really need too touch anything apart from PRICE
-    { name = "Acrylic Powder", id = "acrylic-powder", img = "image/acrylic-powder.png", price = 200 },
-    { name = "Acrylic Nails", id = "acrylic-nails", img = "image/acrylic-nails.png", price = 300 },
-    { name = "Nail Work Phone", id = "nailphone", img = "image/nailphone.png", price = 1000 },
-    { name = "Nail Table", id = "nailtable", img = "image/acrylic-table.png", price = 1200 }
+    { name = "Acrylic Liquid", id = "acrylic-liquid", img = "image/acrylic-liquid.png", price = math.random(25, 50) }, -- You don't really need too touch anything apart from PRICE
+    { name = "Acrylic Powder", id = "acrylic-powder", img = "image/acrylic-powder.png", price = math.random(25, 50) },
+    { name = "Acrylic Nails", id = "acrylic-nails", img = "image/acrylic-nails.png", price = math.random(50, 75) },
+    { name = "Nail Work Phone", id = "nailphone", img = "image/nailphone.png", price = math.random(750, 1000) },
+    { name = "Nail Table", id = "nailtable", img = "image/acrylic-table.png", price = math.random(100, 125) }
 }
 
 
@@ -64,12 +64,12 @@ Config.nailTableItem = 'nailtable' --- The table item
 Config.PropItemName = 'prop_ven_market_table1' -- You can change this if you want (to basically any prop, make it make sense though!)
 
 Config.RequiredItems = {
-    { item = 'cfn-nails', priceMin = 800, priceMax = 1200 },
-    { item = 'sti-nails', priceMin = 800, priceMax = 1200 },
-    { item = 'alm-nails', priceMin = 800, priceMax = 1200 },
-    { item = 'lip-nails', priceMin = 800, priceMax = 1200 },
-    { item = 'bal-nails', priceMin = 800, priceMax = 1200 },
-    { item = 'squ-nails', priceMin = 800, priceMax = 1200 },
-    { item = 'fla-nails', priceMin = 800, priceMax = 1200 }
+    { item = 'cfn-nails', priceMin = 18, priceMax = 25 },
+    { item = 'sti-nails', priceMin = 15, priceMax = 20 },
+    { item = 'alm-nails', priceMin = 12, priceMax = 18 },
+    { item = 'lip-nails', priceMin = 10, priceMax = 15 },
+    { item = 'bal-nails', priceMin = 5, priceMax = 30 },
+    { item = 'squ-nails', priceMin = 25, priceMax = 35 },
+    { item = 'fla-nails', priceMin = 20, priceMax = 30 }
 }
 

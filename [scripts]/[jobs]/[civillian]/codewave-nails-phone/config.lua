@@ -36,11 +36,11 @@ Config.DeliveryLocations = {
 
 -- Define required items for delivery and their prices (ENSURE TO CHANGE PRICES TO YOUR SERVER!)
 Config.RequiredItems = {
-    { name = 'cfn-nails', price = 300 }, -- Reward for delivering item
-    { name = 'sti-nails', price = 325 }, 
-    { name = 'alm-nails', price = 310 }, 
-    { name = 'lip-nails', price = 245 }, 
-    { name = 'bal-nails', price = 185 }, 
-    { name = 'squ-nails', price = 255 }, 
-    { name = 'fla-nails', price = 255 }
+    { name = 'cfn-nails', price = 30 }, -- Reward for delivering item
+    { name = 'sti-nails', price = 25 }, 
+    { name = 'alm-nails', price = 25 }, 
+    { name = 'lip-nails', price = 20 }, 
+    { name = 'bal-nails', price = 35 }, 
+    { name = 'squ-nails', price = 40 }, 
+    { name = 'fla-nails', price = 35 }
 }

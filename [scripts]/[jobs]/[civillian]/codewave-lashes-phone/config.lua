@@ -36,10 +36,10 @@ Config.DeliveryLocations = {
 
 -- Define required items for delivery and their prices (ENSURE TO CHANGE PRICES TO YOUR SERVER!)
 Config.RequiredItems = {
-    { name = 'ellipse_lashes', price = 300 }, -- Reward for delivering item
-    { name = 'faux_mink_lashes', price = 325 }, 
-    { name = 'mink_lashes', price = 310 }, 
-    { name = 'silk_lashes', price = 245 }, 
-    { name = 'synthetic_lashes', price = 185 }, 
-    { name = 'volume_lashes', price = 255 }
+    { name = 'ellipse_lashes', price = 30 }, -- Reward for delivering item
+    { name = 'faux_mink_lashes', price = 25 }, 
+    { name = 'mink_lashes', price = 30 }, 
+    { name = 'silk_lashes', price = 20 }, 
+    { name = 'synthetic_lashes', price = 25 }, 
+    { name = 'volume_lashes', price = 35 }
 }

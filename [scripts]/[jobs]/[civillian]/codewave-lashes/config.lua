@@ -9,7 +9,7 @@ Config = {}
 Config.Framework = 'ESX' -- 'ESX' or 'QBCore' (case sensitive)
 Config.InteractionType = 'ox_target' -- ox_target | 3dtext
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
-Config.TimeToCraft = 8000
+Config.TimeToCraft = 15000
 Config.DebugMode = false  -- Set to true to enable debug messages
 
 -- ONLY FOR NPC SALES.
@@ -38,11 +38,11 @@ Config.NPC = {
 
 -- Add anything you want here (For example if you want a new required item you can add it here for them to purchase!)
 Config.Items = {
-    { name = "Empty Lash Box", id = "empty_lash_box", img = "image/empty_lash_box.png", price = 100 }, -- You don't really need too touch anything apart from PRICE
-    { name = "Eyelash Strips", id = "strips", img = "image/strips.png", price = 200 },
-    { name = "Eyelash Glue", id = "eyelash_glue", img = "image/eyelash_glue.png", price = 300 },
-    { name = "Lashes Client Phone", id = "lashes_phone", img = "image/lashes_phone.png", price = 1500 },
-    { name = "Lashes Work Table", id = "lashes_table", img = "image/lashes_table.png", price = 1000 },
+    { name = "Empty Lash Box", id = "empty_lash_box", img = "image/empty_lash_box.png", price = math.random(25, 50) }, -- You don't really need too touch anything apart from PRICE
+    { name = "Eyelash Strips", id = "strips", img = "image/strips.png", price = math.random(25, 50) },
+    { name = "Eyelash Glue", id = "eyelash_glue", img = "image/eyelash_glue.png", price = math.random(15, 25) },
+    { name = "Lashes Client Phone", id = "lashes_phone", img = "image/lashes_phone.png", price = math.random(750, 1000) },
+    { name = "Lashes Work Table", id = "lashes_table", img = "image/lashes_table.png", price = math.random(100, 150) },
 
 }
 
@@ -67,11 +67,11 @@ Config.lasheTableItem = 'lashes_table' --- The table item
 Config.PropItemName = 'prop_ven_market_table1' -- You can change this if you want (to basically any prop, make it make sense though!)
 
 Config.RequiredItems = {
-    { item = 'ellipse_lashes', priceMin = 800, priceMax = 1200 },
-    { item = 'faux_mink_lashes', priceMin = 800, priceMax = 1200 },
-    { item = 'mink_lashes', priceMin = 800, priceMax = 1200 },
-    { item = 'silk_lashes', priceMin = 800, priceMax = 1200 },
-    { item = 'synthetic_lashes', priceMin = 800, priceMax = 1200 },
-    { item = 'volume_lashes', priceMin = 800, priceMax = 1200 }
+    { item = 'ellipse_lashes', priceMin = 18, priceMax = 25 },
+    { item = 'faux_mink_lashes', priceMin = 15, priceMax = 20 },
+    { item = 'mink_lashes', priceMin = 20, priceMax = 25 },
+    { item = 'silk_lashes', priceMin = 10, priceMax = 15 },
+    { item = 'synthetic_lashes', priceMin = 15, priceMax = 20 },
+    { item = 'volume_lashes', priceMin = 25, priceMax = 30 }
 }
 
