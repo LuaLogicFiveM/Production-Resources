@@ -1,4 +1,15 @@
- local blips = {
+local blips = {
+    {
+        label = 'Los Santos Impound',
+        coords = vec3(-319.0945, -1173.9307, 23.0),
+        sprite = 68,
+        scale = 1.0,
+        color = 5,
+        data = {
+            title = '🛠️ Los Santos Impound Lot',
+            description = 'A government location to retreive vehicles from being impounded by law enforcement.',
+        },
+    },
     {
         label = 'Amusement Park', ---@location 686
         coords = vec3(-1713.2289, -814.0156, 9.3896),
