@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/components.css" />
+        <link rel="stylesheet" href="css/notifications.css" />
+        <link rel="stylesheet" href="css/modals.css" />
+        <link rel="stylesheet" href="css/particle-manager.css" />
+        <link rel="stylesheet" href="css/incident-configurator.css" />
+
+        <title>z_fire | Zea Development</title>
+    </head>
+
+    <body>
+        <div id="container" class="resize-drag">
+            <div id="header">
+                <div class="header-title">z_fire | Zea Development</div>
+                <button class="header-close" onclick="UIComponents.toggleUIVisibility(false)">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div id="content">
+                <form id="creation-form-f" style="display: none">
+                    <div class="panel-title">Fire Creation</div>
+
+                    <div class="form-group">
+                        <label for="dropdown-behaviour-fire">Behaviour Type</label>
+                        <p class="description">Select the type of behaviour you would like to use.</p>
+                        <select id="dropdown-behaviour-fire" name="dropdown-behaviour" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="grass">Grass Fire</option>
+                            <option value="vehicle">Vehicle Fire</option>
+                            <option value="interior">Interior Fire</option>
+                            <option value="prop">Prop Fire</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dropdown-effect-fire">Effect Type</label>
+                        <p class="description">Select the type of effect you would like to use.</p>
+                        <select id="dropdown-effect-fire" name="dropdown-effect" required>
+                            <option value="" disabled selected>Select an option</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="burnout-time-input">Burnout Time</label>
+                        <p class="description">Time in seconds until the fire burns out.</p>
+                        <input
+                            type="number"
+                            id="burnout-time-input"
+                            name="burnout-time"
+                            min="0"
+                            step="1"
+                            placeholder="Enter time in seconds"
+                            required
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-container"
+                            >Is Spreadable
+                            <input
+                                type="checkbox"
+                                id="can-spread"
+                                name="can-spread"
+                                onclick="UIComponents.toggleSpreadRadius()"
+                            />
+                            <span class="checkmark"></span>
+                            <span class="tooltip">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip-text">Could this fire spread to its surrounding environment?</span>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="spread-radius" style="display: none">
+                        <label for="dropdown-spread">Spread Radius</label>
+                        <p class="description">Select the percentage to which this fire can spread.</p>
+                        <select id="dropdown-spread" name="dropdown-spread">
+                            <option value="" disabled selected>Select an option</option>
+                        </select>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Create Fire</button>
+                    </div>
+                </form>
+
+                <form id="creation-form-s" style="display: none">
+                    <div class="panel-title">Smoke Creation</div>
+
+                    <div class="form-group">
+                        <label for="dropdown-effect-smoke">Effect Type</label>
+                        <p class="description">Select the type of effect you would like to use.</p>
+                        <select id="dropdown-effect-smoke" name="dropdown-effect" required>
+                            <option value="" disabled selected>Select an option</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-container"
+                            >Is Disperseable
+                            <input type="checkbox" id="can-disperse" name="can-disperse" />
+                            <span class="checkmark"></span>
+                            <span class="tooltip">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip-text"
+                                    >Is it possible to use ventilation, such as a fan, to disperse or eliminate this
+                                    smoke?</span
+                                >
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Create Smoke</button>
+                    </div>
+                </form>
+
+                <form id="duty-form" style="display: none">
+                    <div class="panel-title">Set Duty Status</div>
+
+                    <div class="form-group">
+                        <label class="radio-container"
+                            >On Duty
+                            <input
+                                type="radio"
+                                id="onDuty"
+                                name="dutyStatus"
+                                value="On Duty"
+                                onclick="UIComponents.toggleDepartmentSelection()"
+                            />
+                            <span class="radiomark"></span>
+                        </label>
+
+                        <label class="radio-container"
+                            >Off Duty
+                            <input
+                                type="radio"
+                                id="offDuty"
+                                name="dutyStatus"
+                                value="Off Duty"
+                                onclick="UIComponents.toggleDepartmentSelection()"
+                            />
+                            <span class="radiomark"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group" id="department-selection" style="display: none">
+                        <label for="dropdown-department">Department</label>
+                        <p class="description">Select the department which you would like to use.</p>
+                        <select id="dropdown-department" name="dropdown">
+                            <option value="" disabled selected>Select a Department</option>
+                        </select>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Confirm Status</button>
+                    </div>
+                </form>
+
+                <div id="spooner-mode" style="display: none">
+                    <div class="panel-title">Spooner Mode</div>
+
+                    <div class="section">
+                        <h2>Data</h2>
+                        <div class="content">
+                            <p id="pos">Particle Position:</p>
+                            <p id="scale">Particle Scale:</p>
+                            <p id="type">Behaviour Type:</p>
+                            <p id="material">Material Name:</p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2>Controls</h2>
+                        <div class="content">
+                            <p><i class="fas fa-mouse"></i> <b>Left Click:</b> Place</p>
+                            <p><i class="fas fa-mouse"></i> <b>Right Click:</b> Cancel</p>
+                            <p><i class="fas fa-keyboard"></i> <b>Enter:</b> Focus UI</p>
+                            <p><i class="fas fa-mouse"></i> <b>Scroll Wheel:</b> Adjust Scale</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer">
+                <span class="footer-text">z_fire vWhatever • Created by Zea Development © 2025</span>
+            </div>
+        </div>
+
+        <div class="notification" id="notification">
+            <h2 id="incident-title">
+                <span class="timer" id="timer"></span>
+            </h2>
+            <p id="incident-details"></p>
+            <p id="incident-address"></p>
+        </div>
+
+        <div id="particle-manager-container" class="resize-drag">
+            <div id="header">
+                <div class="header-left">
+                    <div class="header-title">z_fire | Particle Manager</div>
+                    <div class="header-tabs">
+                        <button id="fire-tab" class="tab-btn active" data-tab="fire">
+                            <i class="fas fa-fire"></i> Fire
+                        </button>
+                        <button id="smoke-tab" class="tab-btn" data-tab="smoke">
+                            <i class="fas fa-smog"></i> Smoke
+                        </button>
+                    </div>
+                </div>
+
+                <div class="header-controls">
+                    <div class="refresh-settings clickable" id="open-refresh-settings">
+                        <div class="refresh-progress-container">
+                            <div class="refresh-progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <button id="toggle-view-btn" class="header-btn" title="Toggle Fullscreen">
+                        <i class="fas fa-expand-alt"></i>
+                    </button>
+                    <button id="refresh-btn" class="header-btn" title="Refresh Data Now">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button class="header-btn header-close" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="content">
+                <div class="panel-title" id="manager-title">Active Fires</div>
+
+                <div class="stats-summary">
+                    <div class="stat-item">
+                        <i class="fas fa-fire"></i>
+                        <div class="stat-details">
+                            <span class="stat-value" id="total-fires">0</span>
+                            <span class="stat-label">Total Fires</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-fire-alt"></i>
+                        <div class="stat-details">
+                            <span class="stat-value" id="origin-fires">0</span>
+                            <span class="stat-label">Origin Fires</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-wind"></i>
+                        <div class="stat-details">
+                            <span class="stat-value" id="spread-fires">0</span>
+                            <span class="stat-label">Spread Fires</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-options">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Search fires..." />
+                    </div>
+                    <div class="filter-dropdown">
+                        <select id="filter-type">
+                            <option value="all">All Types</option>
+                            <option value="grass">Grass</option>
+                            <option value="vehicle">Vehicle</option>
+                            <option value="interior">Interior</option>
+                            <option value="prop">Prop</option>
+                        </select>
+                    </div>
+                    <div class="filter-dropdown">
+                        <select id="filter-origin">
+                            <option value="all">All Fires</option>
+                            <option value="origin">Origin Only</option>
+                            <option value="spread">Spread Only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="fires-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th id="third-header">Origin</th>
+                                <th>Source User</th>
+                                <th>Burnout</th>
+                                <th>Position</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fires-table-body">
+                            <tr class="no-data">
+                                <td colspan="7">No active fire sources.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="fire-tree-container">
+                <div class="tree-title">
+                    Fire Hierarchy
+                    <button class="tree-toggle" id="toggle-tree"><i class="fas fa-chevron-up"></i> Hide Tree</button>
+                </div>
+                <div class="fire-tree" id="fire-tree">
+                    <div class="tree-empty">No origin fires found.</div>
+                </div>
+            </div>
+
+            <div id="footer">
+                <span class="footer-text">z_fire vWhatever • Created by Zea Development © 2025</span>
+            </div>
+        </div>
+
+        <div id="confirm-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">Confirm Action</span>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-message">Are you sure you want to perform this action?</p>
+                    <div class="modal-checkbox">
+                        <label class="checkbox-container"
+                            >Do not show again
+                            <input type="checkbox" id="do-not-show-again" />
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-cancel" class="btn">Cancel</button>
+                    <button id="modal-confirm" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="refresh-rate-modal" class="modal">
+            <div class="refresh-rate-modal-content">
+                <div class="refresh-rate-modal-header">
+                    <span class="refresh-rate-modal-title">Refresh Settings</span>
+                    <span class="close-modal" id="close-refresh-rate-modal">&times;</span>
+                </div>
+                <div class="refresh-rate-modal-body">
+                    <div class="auto-refresh-toggle">
+                        <label class="checkbox-container">
+                            Auto-refresh
+                            <input type="checkbox" id="modal-auto-refresh" checked />
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <p>Refresh interval in seconds:</p>
+                    <input type="number" id="refresh-rate-modal-input" min="1" value="5" />
+                </div>
+                <div class="refresh-rate-modal-footer">
+                    <button id="cancel-refresh-rate" class="btn">Cancel</button>
+                    <button id="apply-refresh-rate-modal" class="btn btn-primary">Apply</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="inspect-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title">Details</span>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body" id="inspect-modal-body"></div>
+                <div class="modal-footer">
+                    <button id="inspect-modal-close" class="btn">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="incident-configurator" class="resize-drag">
+            <div id="header">
+                <div class="header-title">z_fire | Incident Configurator</div>
+                <div class="header-controls">
+                    <button id="refresh-config-btn" class="header-btn" title="Refresh Config">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button id="ic-toggle-fullscreen" class="header-btn" title="Toggle Fullscreen">
+                        <i class="fas fa-expand-alt"></i>
+                    </button>
+                    <button id="ic-minimize-btn" class="header-btn" title="Minimize">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button class="header-btn header-close" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="ic-main-content">
+                <div id="ic-content-wrapper">
+                    <div class="ic-nav-container">
+                        <div class="ic-navigation">
+                            <div class="ic-nav-title">Main</div>
+                            <div class="ic-nav-item active" data-page="dashboard">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </div>
+                            <div class="ic-nav-item" data-page="incidents">
+                                <i class="fas fa-fire-alt"></i> Incidents
+                            </div>
+                            <div class="ic-nav-item" data-page="departments">
+                                <i class="fas fa-building"></i> Departments
+                            </div>
+                            <div class="ic-nav-item" data-page="districts">
+                                <i class="fas fa-map-marked-alt"></i> Districts
+                            </div>
+
+                            <div class="ic-nav-divider"></div>
+
+                            <div class="ic-nav-title">Tools</div>
+                            <div class="ic-nav-item" data-page="help"><i class="fas fa-question-circle"></i> Help</div>
+                        </div>
+                    </div>
+
+                    <div id="ic-content"></div>
+                </div>
+            </div>
+
+            <div id="footer">
+                <span class="footer-text">z_fire ###### • Created by Zea Development © 2025</span>
+            </div>
+        </div>
+
+        <div id="incident-minimized-tab" class="minimized-tab" style="display: none">
+            <i class="fas fa-fire-alt"></i>
+            <span>Incident Config</span>
+        </div>
+
+        <!-- JS Files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.10.17/interact.min.js"></script>
+        <script type="text/javascript" src="build/utils.js"></script>
+        <script type="text/javascript" src="build/DragAndResize.js"></script>
+        <script type="text/javascript" src="build/NotificationSystem.js"></script>
+        <script type="text/javascript" src="build/UIComponents.js"></script>
+        <script type="text/javascript" src="build/FireManager.js"></script>
+        <script type="text/javascript" src="build/SmokeManager.js"></script>
+        <script type="text/javascript" src="build/TreeView.js"></script>
+        <script type="text/javascript" src="build/NUIHandler.js"></script>
+        <script type="text/javascript" src="build/app.js"></script>
+        <script type="text/javascript" src="build/IncidentConfigurator.js"></script>
+    </body>
+</html>

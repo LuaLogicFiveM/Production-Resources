@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+                integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="">
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="styles/map.css">
+    </head>
+    <body>
+        <div class="keybinds">
+            <h2>Keybinds</h2>
+            <ul id="keybindList"></ul>
+        </div>
+
+		<div class="hydrantUi">
+            <img src="assets/tablet.png" alt="Tablet Background" class="background-image"> 
+
+			<section id="map-full">
+                <div id="map-full">
+            </section>
+		</div>
+
+        <div class="pumpUI">
+            <img src="assets/tablet.png" alt="Tablet Background" class="background-image"> 
+
+            <div class="container">
+                <div class="left-menu">
+                    <div id="icon-box">
+                      <div id="icon">
+                        <span class="lines"></span>
+                      </div>
+                    </div>
+                    <div class="menu-items">
+                    <p class="menu-item" data-target="pump-info">PUMP INFO</p>
+                    <p class="menu-item" id="valve" data-target="valves">VALVES</p>
+                    <p class="menu-item" data-target="map">MAP</p>
+                    <p class="menu-item" data-target="vehicle">VEHICLE</p>
+                </div>
+                
+                <p class="title">WATER</p>
+                <div class="vertical-bar">
+                    <div class="vertical-level water-level">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                    </div>
+					<div class="arrow">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+                </div>
+        
+                <p class="title">FOAM</p>
+                <div class="vertical-bar">
+                    <div class="vertical-level foam-level">
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+                        <div class="bar"></div>
+					</div>
+					 <div class="arrow">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+                </div>
+				<div id="time"></div>
+            </div>
+			  
+            <div class="content-box">
+                <section id="pump-info">
+				<div id="inside-notification-container">
+					 <div class="inside-notification">
+						<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+						<div class="notification-content">
+							<span class="notification-title">WARNING</span>
+							<span class="inside-notification-message">Valves are still open</span>
+						</div>
+					</div>
+				</div>
+						<button class="top-right-button">PUMP ENGAGE</button>
+                  
+                        <img src="assets/zea-logo.png" alt="zea logo" class="bottom-right-logo">
+						
+						<div class="progress-container" id="main-info">
+						   <div class="ok-button">OKAY TO PUMP</div>
+						<div class="circle-with-progress" id="intake">
+								<div class="circle-content">
+									<span class="top-text">INTAKE</span>
+									<span class="value">0</span>
+									<span class="unit">BAR</span>
+								</div>
+							</div>
+						<div class="circle-with-progress" id="discharge">
+								<div class="circle-content">
+									<span class="top-text">DISCHARGE</span>
+									<span class="value">0</span>
+									<span class="unit">BAR</span>
+								</div>
+							</div>
+						<div class="circle-with-progress" id="enginespeed">
+								<div class="circle-content">
+									<span class="top-text">ENGINE SPEED</span>
+									<span class="value">0</span>
+									<span class="unit">RPM</span>
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="progress-container">
+							<div class="circle-with-progress" id="temp">
+								<div class="circle-content">
+									<span class="top-text">ENG TEMP</span>
+									<span class="value">96</span>
+									<span class="unit">°C</span>
+								</div>
+								<svg class="progress-ring" viewBox="0 0 140 140" preserveAspectRatio="xMidYMid meet">
+									<circle class="progress-ring__circle" stroke-width="10" fill="transparent" r="60" cx="70" cy="70" />
+								</svg>
+							</div>
+
+							<div class="circle-without-progress" id="gear">
+								<div class="circle-content">
+									<span class="top-text">TRANS GEAR</span>
+									<span class="value">4</span>
+								</div>
+								<svg class="progress-ring" viewBox="0 0 140 140" preserveAspectRatio="xMidYMid meet">
+									<circle class="progress-ring__circle" stroke-width="10" fill="transparent" r="60" cx="70" cy="70" style="stroke-dashoffset: 0px;"></circle>
+								</svg>
+							</div>
+							
+							<div class="circle-without-progress" id="run-time">
+								<div class="circle-content">
+									<span class="top-text">RUN TIME</span>
+									<span class="value">217.5</span>
+								</div>
+								<svg class="progress-ring" viewBox="0 0 140 140" preserveAspectRatio="xMidYMid meet">
+									<circle class="progress-ring__circle" stroke-width="10" fill="transparent" r="60" cx="70" cy="70" style="stroke-dashoffset: 0px;"></circle>
+								</svg>
+							</div>
+						</div>
+                </section>
+                    <section id="vehicle">
+					
+						  <div class="tank-container">
+							<div id="water" class="tank blue">
+								<div class="level"></div>
+								<div class="stripes">
+									<div class="stripe"></div>
+									<div class="stripe"></div>
+									<div class="stripe"></div>
+								</div>
+							</div>
+							<div id="foam" class="tank yellow">
+								<div class="level"></div>
+								<div class="stripes">
+									<div class="stripe"></div>
+									<div class="stripe"></div>
+									<div class="stripe"></div>
+								</div>
+							</div>
+						</div>
+						<img id="pump-image" class="pump" src="assets/icons/pump_empty.png" alt="Pump Image">
+						<div id="vehicle-container">
+							<div id="vehicle-icons-container">
+								<div class="vehicle-icon-container" id="icon1">
+									<img src="assets/icons/icon1.png" alt="Icon 1" class="vehicle-icon">
+								</div>
+								<div class="vehicle-icon-container" id="icon2">
+									<img src="assets/icons/icon2.png" alt="Icon 2" class="vehicle-icon">
+								</div>
+								<div class="vehicle-icon-container icon-emergency-on" id="icon3">
+									<img src="assets/icons/icon3.png" alt="Icon 3" class="vehicle-icon">
+								</div>
+								<div class="vehicle-icon-container"  id="icon4">
+									<img src="assets/icons/icon4.png" alt="Icon 4" class="vehicle-icon">
+								</div>
+								<div class="vehicle-icon-container icon-unlock"  id="icon5">
+									<img src="assets/icons/icon5.png" alt="Icon 5" class="vehicle-icon">
+								</div>
+							</div>
+							<div class="gyroled emergency"></div>
+							<div class="blink emergency"></div>
+							<div class="gyroled-rear emergency"></div>
+							<div class="blink-rear-left emergency"></div>
+							<div class="blink-rear-right emergency"></div>
+							<div class="advisorLight advisor"></div>
+							<div class="flashlight  flashlight-left"></div>
+							<div class="flashlight  flashlight-right"></div>
+							<div class="flashlight  flashlight-center"></div>
+							<div id="doors-container">
+								<div class="door-container">
+									<div class="door door-left">
+										<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+											<defs>
+												<linearGradient id="doorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+													<stop offset="0%" style="stop-color:#ff0000;stop-opacity:1" />
+													<stop offset="30%" style="stop-color:#ff0000;stop-opacity:0.7" />
+													<stop offset="60%" style="stop-color:#ff0000;stop-opacity:0.4" />
+													<stop offset="100%" style="stop-color:#ff0000;stop-opacity:0.2" />
+												</linearGradient>
+											</defs>
+											<path class="doorPath" d="M 0 0 L 200 40 A 200 200 0 0 1 0 200 L 0 0 Z" fill="url(#doorGradient)" />
+										</svg>
+									</div>
+									<div class="door door-left">
+										<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+											<path class="doorPath" d="M 0 0 L 200 40 A 200 200 0 0 1 0 200 L 0 0 Z" fill="url(#doorGradient)" />
+										</svg>
+									</div>
+
+									<div class="rect-container">
+										<div class="rect collapse"></div>
+										<div class="rect collapse"></div>
+										<div class="rect collapse"></div>
+									</div>
+								</div>
+
+								<div class="door-container">
+									<div class="door door-right">
+										<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+											<path class="doorPath" d="M 0 0 L 200 40 A 200 200 0 0 1 0 200 L 0 0 Z" fill="url(#doorGradient)" />
+										</svg>
+									</div>
+									<div class="door door-right">
+										<svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+											<path class="doorPath" d="M 0 0 L 200 50 A 200 200 0 0 1 0 200 L 0 0 Z" fill="url(#doorGradient)" />
+										</svg>
+									</div>
+
+									<div class="rect-container">
+										<div class="rect collapse"></div>
+										<div class="rect collapse"></div>
+										<div class="rect collapse"></div>
+									</div>
+								</div>
+							</div>
+
+							<img src="assets/icons/trucks.png" alt="Trucks" id="trucks-image" class="trucks-image">
+						</div>
+					</section>
+                
+				<section id="valves">
+                    <div class="valves-container"></div>
+				</section>
+            </div>
+			<section id="map">
+                <div id="map">
+            </section>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="javascript/script.js"></script>
+        <script src="javascript/hydrants.js"></script>
+        <script src="javascript/map.js"></script>
+    </body>
+</html>

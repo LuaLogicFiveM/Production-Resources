@@ -1,0 +1,132 @@
+/* General Layout */
+body {
+    align-items: center;
+    background-color: transparent;
+    color: #fff;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+}
+
+/* Interaction Container */
+.interaction-container {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+}
+
+/* Interaction List */
+.interaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Interaction Items */
+.interaction-item {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    padding: 8px 12px;
+}
+
+.interaction-item.selected {
+    background: rgba(0, 168, 255, 0.7);
+    transition: background-color 0.5s ease;
+}
+
+/* Icon */
+.icon {
+    color: #fff;
+
+    font-size: 14px;
+}
+
+/* Text */
+.text {
+    color: #fff;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+}
+
+/* Interaction Key */
+.interaction-key {
+    position: relative;
+
+    height: 50px;
+    width: 50px;
+}
+
+/* Progress Circle */
+.progress-circle {
+    position: relative;
+    height: 50px;
+    width: 50px;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+/* Key (inside circle) */
+.key {
+    position: absolute;
+
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+
+    color: #fff;
+    left: 50%;
+    top: 50%;
+
+    z-index: 1;
+    transform: translate(-50%, -50%);
+}
+
+/* Circle Styling */
+.circle {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    height: 50px;
+    width: 50px;
+
+    transform: rotate(-90deg);
+}
+
+/* Circle Background */
+.background-circle {
+    fill: none;
+
+    stroke: #fff;
+    stroke-width: 4;
+}
+
+/* Circle Foreground */
+.foreground-circle {
+    fill: none;
+
+    stroke: rgba(0, 168, 255, 0.7);
+    stroke-dasharray: 126;
+    stroke-dashoffset: 126;
+    stroke-width: 4;
+
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

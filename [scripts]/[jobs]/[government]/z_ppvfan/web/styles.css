@@ -1,0 +1,241 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    user-select: none;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #eaeaea;
+}
+
+/* Keybinds Container */
+.keybinds {
+    display: none;
+    position: fixed;
+    top: 35;
+    right: 20px;
+    background: rgba(50, 50, 50, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    width: 280px;
+    margin: 20px auto;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease; 
+}
+
+.keybinds.show {
+    display: block;
+    transform: translateY(0);
+}
+
+.keybinds h2 {
+    font-size: 24px;
+    text-align: center;
+    color: #f5f5f5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+}
+
+.keybinds ul {
+    list-style: none;
+    padding: 0;
+}
+
+.keybinds li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border: 1px solid #666;
+    margin: 6px 0;
+    border-radius: 8px;
+    background-color: rgba(60, 60, 60, 0.9);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.keybinds li:last-child {
+    margin-bottom: 0;
+}
+
+.keybind-action {
+    font-weight: bold;
+    color: #f5f5f5;
+    font-size: 14px;
+    flex: 1;
+    padding-right: 10px;
+}
+
+.keybind-keys {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    color: #f5f5f5;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    background-color: rgba(50, 50, 50, 0.8);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Slide in and out animation */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Show and Hide Notification */
+.notification.show {
+    animation: slideIn 0.5s forwards;
+}
+
+.notification.hidden {
+    animation: slideOut 0.5s forwards;
+    pointer-events: none;
+}
+
+.progress-circle-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.progress-circle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-icon {
+    position: absolute;
+    font-size: 24px;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.circle .background-circle {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.3);
+    stroke-width: 6;
+}
+
+.circle .foreground-circle {
+    fill: none;
+    stroke: white;
+    stroke-width: 4;
+    stroke-dasharray: 126.928;
+    stroke-dashoffset: 126.928;
+    transition: stroke-dashoffset 5s linear;
+}
+
+.notification.success .foreground-circle {
+    stroke: #4caf50; /* Success green */
+}
+
+.notification.error .foreground-circle {
+    stroke: #f44336; /* Error red */
+}
+
+.notification.info .foreground-circle {
+    stroke: #2196f3; /* Info blue */
+}
+
+.notification.success .progress-circle {
+    background-color: rgba(76, 175, 80, 0.5);
+}
+
+.notification.error .progress-circle {
+    background-color: rgba(244, 67, 54, 0.5);
+}
+
+.notification.info .progress-circle {
+    background-color: rgba(33, 150, 243, 0.5);
+}
+
+.notification-message {
+    color: white;
+    font-size: 14px;
+}
+
+.notification-message strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.watermark {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3); 
+    pointer-events: none;
+}
+
+.notification-timestamp {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.3);
+    pointer-events: none;
+}
