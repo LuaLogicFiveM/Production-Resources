@@ -276,7 +276,6 @@ local function useClosestDoor()
 	if gameTimer - lastTriggered > 500 then
 		lastTriggered = gameTimer
 		TriggerServerEvent('ox_doorlock:setState', ClosestDoor.id, ClosestDoor.state == 1 and 0 or 1)
-		lib.playAnim(cache.ped, 'anim@heists@keycard@', 'exit', 5.0, 1.0, 500, 48, 0, 0, 0, 0)
 	end
 end
 
