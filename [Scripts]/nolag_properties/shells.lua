@@ -1,3 +1,0 @@
-ShellsCreators = {}
-ShellsData = {}
-ShellsDataIds = {}

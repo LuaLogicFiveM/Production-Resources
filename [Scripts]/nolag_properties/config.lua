@@ -26,8 +26,9 @@ Config = {
         Enabled = true,
         Jobs = {
             -- ["job name"] = minimum grade to breach door,
-            ["sheriff"] = 10,
-            ["sahp"] = 7
+            ["bcso"] = 7,
+            ["sasp"] = 7,
+            ["gov"] = 0
         },
     },
 
@@ -41,43 +42,6 @@ Config = {
         DisableSellProperty = true,       -- Disable selling properties during lockdown
         DisableFurniture = true,          -- Disable furniture during lockdown
         DisableIplManagement = true,      -- Disable ipl management during lockdown
-    },
-
-    --[[ Framework ]]
-
-    -- Supported Shells by default
-    -- If you want to add more shells you can take a look at the custom/shells folder
-    Shells = {
-        K4mb1StarterShells = false, -- [FREE] https://k4mb1maps.com/product/5015840
-        EnviShells = true,        -- [FREE] https://envi-scripts.tebex.io/package/6407814
-
-        -- [[ K4MB1 ]]
-        PremiumHousingPack = false, -- https://k4mb1maps.com/product/7166889
-        ExclusiveHousingPack = false, -- https://k4mb1maps.com/product/7166895
-        MainHousingPack = false, -- https://k4mb1maps.com/product/4673316
-        FurnishedHousingPack = false, -- https://k4mb1maps.com/product/7166890
-        IllegalOperationsPack = false, -- https://k4mb1maps.com/product/7166896
-        GaragesPack = false, -- https://k4mb1maps.com/product/7166893
-        MiscPack = false, -- https://k4mb1maps.com/product/7166894
-        -- [[ K4MB1 ]]
-
-        -- [[ OLD K4MB1 KEPT FOR COMPATIBILITY ]]
-        AllShellsBundle = false,   -- [PAID]
-        AllShellsBundle2 = false,  -- [PAID]
-        -- [[ OLD K4MB1 KEPT FOR COMPATIBILITY ]]
-
-        JamaringV1 = false,        -- [PAID] https://jamaring-maps.tebex.io/package/6095279
-        JamaringV2 = false,        -- [PAID] https://jamaring-maps.tebex.io/package/6274927
-        JamaringV3 = false,        -- [PAID] https://jamaring-maps.tebex.io/package/6377855
-        JamaringV4 = false,        -- [PAID] https://jamaring-maps.tebex.io/package/6559637
-        JamaringV5 = false,        -- [PAID] https://jamaring-maps.tebex.io/package/6715104
-
-        MaxCreations = true,      -- [PAID] https://maxcreationsstore.tebex.io/package/6177840
-
-        FuryV1 = false,            -- [PAID] https://fury.tebex.io/package/6215866
-        FuryV2 = false,            -- [PAID] https://fury.tebex.io/package/6629276
-
-        DCCustomz = false,         -- [PAID] https://store.dccustomz.com/category/2714613
     },
 
     FixShellOffsets = true, -- Enable the shell offsets fix
@@ -461,7 +425,25 @@ Config = {
         Interact = 'E',       -- The keybind to interact with the property
         PropertyMenu = "F5",  -- The keybind to open the property menu
         DeleteShell = "BACK", -- The keybind to open the property menu
-        CopyOffset = "ENTER", -- The keybind to open the property menu
+    },
+
+    Trash = {
+        Enabled = true, -- Should the trash be enabled?
+        TrashCreatedOnCron = true, -- Should the trash be created on the cron job? (automatically add trash to properties)
+        TrashCreatedOnCronCount = 1, -- The amount of trash to create on the cron job 
+        Objects = {
+            `proc_litter_01`,
+            `proc_litter_02`,
+            `prop_rub_litter_01`,
+            `prop_rub_litter_02`,
+            `prop_rub_litter_03`,
+            `prop_rub_litter_04`,
+            `prop_rub_litter_05`,
+            `prop_rub_litter_06`,
+            `prop_rub_litter_07`,
+            `prop_rub_flotsam_01`,
+            `prop_rub_flotsam_03`,
+        }
     },
 
     InteractDistance = 1.5, -- The distance to interact with the property (ox_target - default: 1.5)
@@ -774,7 +756,7 @@ Config = {
             maxPerProperty = 10,
             label = locale("use_shower") or "Use Shower",
             icon = "fas fa-shower",
-            radius = 1.5,
+            radius = 0.5,
             onSelect = function(property, data)
                 if not Config.UtilityConsumption.Enabled or not Config.UtilityConsumption.Water.Enabled then
                     Framework.Notify({
@@ -807,7 +789,7 @@ Config = {
                 local duration = Config.UtilityConsumption.Water.ShowerDuration or 10000
 
                 -- Face the correct direction if offset has heading
-                if data and data.coords and data.coords.w then
+                if data and data.coords and data.coords.w and data.coords.w ~= 0 then
                     SetEntityHeading(player, data.coords.w)
                 end
 
@@ -848,7 +830,7 @@ Config = {
             maxPerProperty = 10,
             label = locale("use_sink") or "Use Sink",
             icon = "fas fa-faucet",
-            radius = 1.5,
+            radius = 0.5,
             onSelect = function(property, data)
                 if not Config.UtilityConsumption.Enabled or not Config.UtilityConsumption.Water.Enabled then
                     Framework.Notify({
@@ -888,7 +870,7 @@ Config = {
                                 local player = cache.ped
                                 local duration = Config.UtilityConsumption.Water.SinkDuration or 5000
 
-                                if data and data.coords and data.coords.w then
+                                if data and data.coords and data.coords.w and data.coords.w ~= 0 then
                                     SetEntityHeading(player, data.coords.w)
                                 end
 
@@ -939,7 +921,7 @@ Config = {
                                 local player = cache.ped
                                 local duration = Config.UtilityConsumption.Water.SinkDuration or 5000
 
-                                if data and data.coords and data.coords.w then
+                                if data and data.coords and data.coords.w and data.coords.w ~= 0 then
                                     SetEntityHeading(player, data.coords.w)
                                 end
 
@@ -979,11 +961,21 @@ Config = {
                 lib.showContext('sink_wash_menu')
             end
         },
+        ["LightSwitch"] = {
+            type = "inside",
+            maxPerProperty = 10,
+            label = locale("light_switch") or "Light Switch",
+            icon = "fas fa-lightbulb",
+            radius = 0.5,
+            onSelect = function(property)
+                property:toggleLights(nil, true)
+            end
+        },
     },
 
     InteractableProps = {
         ["reh_prop_reh_switch_01a"] = {
-            label = "Light Switch",
+            label = locale("light_switch") or "Light Switch",
             icon = "fas fa-lightbulb",
             radius = 1.5,
             maxPerProperty = 10,
@@ -1167,11 +1159,11 @@ Config = {
 
     Marketplace = {
         Enabled = true, -- Enables or disables the marketplace system
-        AllowTransactionFromMenu = false, -- Allow transactions directly from the property management menu
+        AllowTransactionFromMenu = true, -- Allow transactions directly from the property management menu
 
         PriceFilter = {
-            Max = 30000000, -- Maximum price for the filter slider ($30M)
-            Step = 500000,   -- Step increment for the slider ($500K)
+            Max = 1000000, -- Maximum price for the filter slider ($1M)
+            Step = 5000,   -- Step increment for the slider ($5K)
         },
 
         Blip = {
@@ -1194,12 +1186,12 @@ Config = {
             Model = 'ig_drfriedlander',
             Coords = vector4(-1083.1598, -245.97, 37.6632, 208.5247),
             InteractDistance = 2.5,
-            Animation = { 'switch@michael@sitting', 'idle' }
+            -- Animation = { 'switch@michael@sitting', 'idle' }
         },
     },
 
     DoorLock = {
-        DrawTextUI = true,
+        DrawTextUI = false,
         Notify = true,
         SpriteIcons = {
             unlocked = {
@@ -1226,52 +1218,44 @@ Config = {
         ipl = {
             label = 'IPL',
             enabled = true,
-            image = 'https://r2.fivemanage.com/acP9u7gLziIbHCwCT6NVX/57CYSM.jpg',
-            jobs = { -- If you want to restrict the building creation to certain jobs
-                ["realestate"] = 2,
-            }
+            image = 'https://r2.fivemanage.com/acP9u7gLziIbHCwCT6NVX/57CYSM.jpg'
         },
         shell = {
             label = 'Shell',
             enabled = true,
-            image = 'https://r2.fivemanage.com/acP9u7gLziIbHCwCT6NVX/Rm30eg.jpg',
-            jobs = { -- If you want to restrict the building creation to certain jobs
-                ["realestate"] = 1,
-            }
+            image = 'https://r2.fivemanage.com/acP9u7gLziIbHCwCT6NVX/Rm30eg.jpg'
         },
         mlo = {
             label = 'MLO',
             enabled = true,
-            image = 'https://r2.fivemanage.com/acP9u7gLziIbHCwCT6NVX/kddbLu.png',
-            jobs = { -- If you want to restrict the building creation to certain jobs
-                ["realestate"] = 3,
-            }
+            image = 'https://r2.fivemanage.com/acP9u7gLziIbHCwCT6NVX/kddbLu.png'
         },
         building = {
             label = 'Building',
             enabled = true,
             image = 'https://r2.fivemanage.com/acP9u7gLziIbHCwCT6NVX/HTu5AH.jpg',
-            jobs = { -- If you want to restrict the building creation to certain jobs
-                ["realestate"] = 2,
-            }
+            -- jobs = { -- If you want to restrict the building creation to certain jobs
+            --     ["realestate"] = 1,
+            -- }
         }
     },
 
     --- Toggle HUD
     ---@param toggle boolean true to show, false to hide
     ToggleHud = function(toggle)
-        if toggle then
-            exports['InsaneScripts_hud']:showHud()
-        else
-            exports['InsaneScripts_hud']:hideHud()
+        if GetResourceState("tgg-hud") == "started" then
+            exports["tgg-hud"]:ToggleHud(toggle)
+            return
         end
-        --exports["17mov_Hud"]:ToggleDisplay(toggle)
+
+        DisplayHud(toggle)
+        DisplayRadar(toggle)
     end,
 
     RaidProperty = function()
         local result = false
 
-        local success = lib.skillCheck({ 'easy', 'hard', 'hard' }, { 'w', 'a', 's', 'd' })
+        local success = lib.skillCheck({ 'easy', 'easy' }, { 'w', 'a', 's', 'd' })
         if success then
             success = lib.progressCircle({
                 duration = math.random(10000, 20000),
@@ -1298,7 +1282,6 @@ Config = {
     ManualSQLInjection = false, -- Enable manual SQL injection
     CheckForUpdates = true,     -- Check for updates on start
 }
-
 
 if Config.Framework == 'auto' then
     lib.print.debug('Detecting framework...')
