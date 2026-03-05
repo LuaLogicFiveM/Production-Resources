@@ -61,9 +61,9 @@ Config.notifyPolice      = {
         duration = 20    -- Duration of blip on map (In seconds)
     },
     policeJobs = {       -- Jobs that are considered police to notify
-        'police',
-        'sheriff',
-        --      'highway'
+        'bcso',
+        'sasp',
+        'gov'
     }
 }
 
