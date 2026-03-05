@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Techworkzs & Collections</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body style="display: none;">
+    <div id="menu-container">
+        <div id="menu-header">
+            <img src="image/left_controller.png" alt="Left Techworkz" class="header-icon controller-logo">
+            <img src="image/techworkz.png" alt="Techworkz Logo" class="header-logo">
+            <img src="image/right_controller.png" alt="Right Techworkz" class="header-icon controller-logo">
+            <button id="close-button">X</button>
+        </div>
+        <div id="menu"></div>
+    </div>
+
+    <div id="crafting-container" style="display: none;">
+        <div id="crafting-header">
+            <img src="image/left_controller.png" alt="Left Techworkz" class="header-icon controller-logo">
+            <img src="image/techworkz.png" alt="Techworkz Logo" class="header-logo">
+            <img src="image/right_controller.png" alt="Right Techworkz" class="header-icon controller-logo">
+            <button id="close-crafting-button">X</button>
+        </div>
+        <div id="crafting-menu"></div>
+        <button id="more-info-button" class="themed-button">More Info</button>
+        <div id="loading-spinner" class="spinner" style="display: none;">
+            <i class="fas fa-cog spinner-icon"></i>
+        </div>
+    </div>
+
+    <!-- New UI container moved out as a sibling -->
+<!-- New UI container -->
+<div id="newui-container" style="display: none;">
+    <div id="newui-header">
+        <div class="header-row">
+            <img src="image/left_controller.png" alt="Left Techworkz" class="header-icon controller-logo">
+            <img src="image/techworkz_jailbreak.png" alt="Techworkz Logo" class="header-logo">
+            <img src="image/right_controller.png" alt="Right Techworkz" class="header-icon controller-logo">
+            <button id="close-newui-button">X</button>
+        </div>
+    </div>
+    
+    <div id="newui-menu"></div>
+    <!-- New button to open the modal -->
+    <button id="open-modal-button" class="themed-button">Find out how this works?!</button>
+    
+    <div id="newui-loading-spinner" class="spinner" style="display: none;">
+        <i class="fas fa-cog spinner-icon"></i>
+    </div>
+</div>
+
+
+<div id="modal-container" class="modal">
+    <div class="modal-content">
+         <span class="modal-close">&times;</span>
+         <div class="modal-images">
+             <img src="image/vortex_x.png" alt="First image">
+             <span class="modal-arrow">&#8594;</span>
+             <img src="image/vortex_x_jailbreak.png" alt="Second image">
+         </div>
+         <!-- Description box (read-only) -->
+         <div class="modal-description">
+             Simply grab a console plug the USB in jailbreak the console and then sell it to clients around the city for a profit!, Remember though this sh!t is illegal so be careful out there!
+         </div>
+    </div>
+</div>
+
+
+
+    <div id="info-container" style="display: none;">
+        <div id="info-header">
+            <img src="image/techworkz.png" alt="Techworkz Logo" class="header-logo">
+            <button id="close-info-button">X</button>
+        </div>
+        <div id="info-content">
+            <h1>What can I do with my crafted techworkz consoles & accessories</h1>
+            <h2>
+                Techworkzs collected here can be sold to clients around the city in two ways! 
+                The first way is using /sellTechworkzs which will make clients come to you to sell!
+                The second way is to buy a client phone & use that to deliver the Techworkzs across the city, 
+                which usually earns more money!
+            </h2>
+        </div>
+    </div>
+    <div id="notification-container"></div>
+    <script src="script.js"></script>
+</body>
