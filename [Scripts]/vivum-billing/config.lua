@@ -63,13 +63,14 @@ Config.DefaultApp = true
 -- The requireed grade to send/pay company invoices. Default is "boss"
 --  ** If you want to disable a certain grade from paying or cancelling invoices, specify a table with `false` as a second value as so: { "my_grade", false }
 Config.Grades = {
-	sheriff = { "boss", "depcom", "astdep", "command", "swat", "k9", "gang", "moto", "supervisor", "major", "captain", "lieutenant", "srsergeant", "sergeant", "corporal", "recruit" },
-	sahp = { "boss", "major", "captain", "swat", "lieutenant", "sergeant", "corporal", "trooper_sr", "trooper", "cadet" },
+	bcso = { "all" },
+	sasp = { "all" },
+	gov = { "all" },
 }
 
 Config.Avatars = {
-	sheriff = "https://static.wikia.nocookie.net/nopixel/images/2/2a/LSPD4.png",
-	sahp = "https://static.wikia.nocookie.net/nopixel/images/2/2a/LSPD4.png",
+	bcso = "https://static.wikia.nocookie.net/nopixel/images/2/2a/LSPD4.png",
+	sasp = "https://static.wikia.nocookie.net/nopixel/images/2/2a/LSPD4.png",
 }
 
 -- You can specify societies which should be blacklisted from the billing funcitonality.
@@ -79,34 +80,41 @@ Config.Blacklisted = {
 
 -- You can add commission rates for each grade for every invoice they send, especially handy for car dealerships and similar professions.
 Config.Commission = {
-	sahp = {
+	sasp = {
 		cadet = 0.3,
 		trooper = 0.3,
 		trooper_sr = 0.3,
 		corporal = 0.3,
 		sergeant = 0.3,
+		sr_sergeant = 0.3,
+		supervisor = 0.3,
+		sr_supervisor = 0.3,
 		lieutenant = 0.3,
-		swat = 0.3,
 		captain = 0.3,
 		major = 0.3,
 		boss = 0.3,
 	},
-	sheriff = {
+	bcso = {
 		recruit = 0.3,
 		corporal = 0.3,
+		sergeant = 0.3,
 		srsergeant = 0.3,
 		lieutenant = 0.3,
 		captain = 0.3,
 		major = 0.3,
 		supervisor = 0.3,
-		moto = 0.3,
-		gang = 0.3,
-		k9 = 0.3,
-		swat = 0.3,
 		command = 0.3,
 		astdep = 0.3,
 		depcom = 0.3,
 		boss = 0.3,
+	},
+	gov = {
+		boss = 0.3,
+		dmv = 0.3,
+		atf = 0.3,
+		dea = 0.3,
+		prosecutor = 0.3,
+		lawyer = 0.3,
 	},
 }
 

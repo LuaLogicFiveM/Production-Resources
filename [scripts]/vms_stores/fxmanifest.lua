@@ -8,7 +8,7 @@ game 'gta5'
 lua54 'yes'
 author 'vames™'
 description 'vms_stores'
-version '1.1.2'
+version '1.1.3'
 shared_scripts {
 	'config/config.lua',
 	'config/config.robbery.lua',
@@ -27,7 +27,7 @@ client_scripts {
 	'config/config.camera.lua',
 }
 server_scripts {
-	'@oxmysql/lib/MySQL.lua',
+	'@mysql-async/lib/MySQL.lua',
 	'config/config.server.lua',
 	'server/*.lua',
 }

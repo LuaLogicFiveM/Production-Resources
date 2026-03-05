@@ -1,26 +1,26 @@
 SV = {}
 
 SV.Webhooks = {
-    ['PURCHASE'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['PURCHASED_STORE'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['SELL_STORE'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['CREATE_ORDER'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['DELIVERY_ORDER'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['EMPLOYEE_BONUS'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['EMPLOYEE_CHANGE_GRADE'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['EMPLOYEE_FIRE'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['EMPLOYEE_HIRE'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['ALARM'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['INSURANCE'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['LEVELUP'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['MONEY_ESCORT'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['WITHDRAW'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['DEPOSIT'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['ANNOUNCEMENT'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['DESTROY_CAMERAS'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['START_ROBBERY'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['REWARD_ROBBERY'] = "https://discord.com/api/webhooks/xxxxxxxxx",
-    ['RESELL'] = "https://discord.com/api/webhooks/xxxxxxxxx",
+    ['PURCHASE'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['PURCHASED_STORE'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['SELL_STORE'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['CREATE_ORDER'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['DELIVERY_ORDER'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['EMPLOYEE_BONUS'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['EMPLOYEE_CHANGE_GRADE'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['EMPLOYEE_FIRE'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['EMPLOYEE_HIRE'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['ALARM'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['INSURANCE'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['LEVELUP'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['MONEY_ESCORT'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['WITHDRAW'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['DEPOSIT'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['ANNOUNCEMENT'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['DESTROY_CAMERAS'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['START_ROBBERY'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['REWARD_ROBBERY'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
+    ['RESELL'] = "https://discord.com/api/webhooks/1478846595544911975/o_t0RGIbbC8oK-CBixRtpTYJGb55P4lU6EXNpHvdMVXNxVkKyxrNCqxh_3_VBvi38fDH",
 }
 
 SV.WebhookText = {
@@ -237,7 +237,7 @@ SV.setPlayerJob = function(src, xPlayer, jobName, grade, isOffline)
             elseif Config.Core == "QB-Core" then
                 if GetResourceState('qbx_core') == 'started' then
                     if xPlayer.PlayerData.source then
-                        xPlayer.Functions.SetJob(jobName, grade)
+                        xPlayer.Functions.SetJob('unemployed')
                     else
                         TriggerClientEvent("vms_stores:notification", src, TRANSLATE('notify.employees:player_is_offline'), 4500, 'error')
                         return false
@@ -258,7 +258,7 @@ SV.setPlayerJob = function(src, xPlayer, jobName, grade, isOffline)
             elseif Config.Core == "QB-Core" then
                 if GetResourceState('qbx_core') == 'started' then
                     if xPlayer.PlayerData.source then
-                        xPlayer.Functions.SetJob(jobName, grade)
+                        xPlayer.Functions.SetJob('unemployed')
                     else
                         TriggerClientEvent("vms_stores:notification", src, TRANSLATE('notify.employees:player_is_offline'), 4500, 'error')
                         return false
@@ -300,15 +300,20 @@ SV.removeAllEmployees = function(src, jobName)
             return
         end
         
+        local gradeData = unemployedJob.grades['0'] or unemployedJob.grades[0]
+        if not gradeData then
+            return warn(('^1[WARNING] ^7Unemployed job does not have grade 0, please add it to avoid errors.'):format(jobName))
+        end
+        
         local playerJob = {}
         playerJob.onduty = unemployedJob.defaultDuty
         playerJob.type = unemployedJob.type or 'none'
         playerJob.label = unemployedJob.label
-        playerJob.payment = unemployedJob.grades['0'].payment
+        playerJob.payment = gradeData.payment
         playerJob.name = 'unemployed'
         playerJob.grade = {
             level = 0,
-            name = unemployedJob.grades['0'].name
+            name = gradeData.name
         }
         playerJob.isboss = false
 
