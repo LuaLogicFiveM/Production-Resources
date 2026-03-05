@@ -92,6 +92,7 @@ client_scripts {
 }
 
 client_script "client.lua"
+server_script "scripts/proxy.js"
 server_script "server.lua"
 
 files {
@@ -116,9 +117,4 @@ escrow_ignore {
     "scripts/entities/server/management.lua",
     "scripts/entities/server/ratelimits.lua",
 }
-
--- dependencies {
---     '/server:12966',
---     '/onesync',
--- }
 dependency '/assetpacks'
