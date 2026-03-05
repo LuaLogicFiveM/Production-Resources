@@ -1,6 +1,7 @@
 local maps = {
 	"prompt_sandy_fire2",
 	"prompt_sandy_hospital2",
+	"prompt_sandy_university",
 	"prompt_sandy_gasstation_carwash",
 	"prompt_sandy_cityhall",
 	"prompt_sandy_beaches"
