@@ -233,10 +233,10 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 
         -- Security check to make sure the requested inventory type is the same as the found inventory
         -- Only case where a missmatch is tolerated is for temporary stashes
-        --[[if right.type ~= invType and not (right.type == 'temp' and invType == 'stash') then
-            DropPlayer(source, 'sussy')
+        if right.type ~= invType and not (right.type == 'temp' and invType == 'stash') then
+            DropPlayer(source, 'Possible inventory exploit?')
             return
-        end]]
+        end
 
 		if not ignoreSecurityChecks and right.groups and not server.hasGroup(left, right.groups) then return end
 

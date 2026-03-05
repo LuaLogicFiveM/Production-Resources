@@ -14,31 +14,31 @@ return {
 		blip = {
 			id = 59, colour = 69, scale = 0.65
 		}, inventory = {
-			{ name = 'gps', price = 5000 },
-			{ name = 'diamond_dice', price = 250 },
-			{ name = 'wooden_dice', price = 250 },
-			{ name = 'god_dice', price = 250 },
-			{ name = 'death_dice', price = 250 },
-			{ name = 'outfitbag', price = 500 },
-			{ name = 'phone', price = 2500 },
-			{ name = 'tablet', price = 5000 },
-			{ name = 'radio', price = 2500 },
-			{ name = 'cups', price = 1000 },
-			{ name = 'kq_tow_rope', price = 250 },
-			{ name = 'kq_winch', price = 250 },
+			{ name = 'binoculars', price = 1000 },
+			{ name = 'backpack', price = 100 },
+			{ name = 'tirekit', price = 250 },
+			{ name = 'repairkit', price = 1000 },
+			{ name = 'advancedrepairkit', price = 1500 },
+			{ name = 'cleaningkit', price = 250 },
+			{ name = 'gps', price = 500 },
+			{ name = 'diamond_dice', price = 25 },
+			{ name = 'wooden_dice', price = 25 },
+			{ name = 'god_dice', price = 25 },
+			{ name = 'death_dice', price = 25 },
+			{ name = 'outfitbag', price = 50 },
+			{ name = 'phone', price = 250 },
+			{ name = 'tablet', price = 500 },
+			{ name = 'radio', price = 250 },
+			{ name = 'cups', price = 100 },
+			{ name = 'kq_tow_rope', price = 100 },
+			{ name = 'kq_winch', price = 350 },
 			{ name = 'banana', price = 1000 },
 			{ name = 'bed1', price = 1000 },
 			{ name = 'circle', price = 1000 },
 			{ name = 'inflatable', price = 1000 },
 			{ name = 'parasailing', price = 1000 },
 			{ name = 'ski', price = 1000 },
-			{ name = 'binoculars', price = 1000 },
-			{ name = 'backpack', price = 5000 },
-			{ name = 'tirekit', price = 500 },
-			{ name = 'repairkit', price = 750 },
-			{ name = 'advancedrepairkit', price = 1000 },
-			{ name = 'cleaningkit', price = 100 },
-			{ name = 'parachute', price = 1000 },
+			{ name = 'parachute', price = 1500 },
 		}, locations = {
 			vec3(42.7479, -1490.0276, 29.7974), -- Addon Forum
 			vec3(2004.0485, 3783.9221, 32.2032), -- Addon Sandy
@@ -139,7 +139,7 @@ return {
 		}
 	},
 
-	Ammunation = {
+	--[[Ammunation = {
 		name = 'Ammu-Nation',
 		blip = {
 			id = 110, colour = 69, scale = 0.8
@@ -147,8 +147,8 @@ return {
 			{ name = 'WEAPON_HELLCAT', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
 			{ name = 'WEAPON_G41', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
 			{ name = 'WEAPON_TANFNX45', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
-			{ name = 'WEAPON_DRACO', price = math.random(50000, 75000), metadata = { registered = true }, license = 'weapons_license' },
-			{ name = 'WEAPON_KNUCKLE', price = math.random(50000, 75000), metadata = { registered = true }, license = 'weapons_license' },
+			{ name = 'WEAPON_DRACO', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
+			{ name = 'WEAPON_KNUCKLE', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
 			{ name = 'ammo-9', price = math.random(5, 10) },
 			{ name = 'ammo-45', price = math.random(8, 14) },
 			{ name = 'ammo-762', price = math.random(15, 22) },
@@ -163,7 +163,7 @@ return {
 			vec3(842.2874, -1033.9380, 28.1948), -- Popular St. Gun (769) 
         	vec3(1693.3412, 3759.9043, 34.7053), -- Sandy Gun (285)
 		}
-	},
+	},]]
 
 	--[[IDShop = {
 		name = 'License Shop',
@@ -184,7 +184,7 @@ return {
 	Paintball = {
 		name = 'Paintball Store',
 		inventory = {
-			{ name = 'WEAPON_PAINTBALL', price = 1000 },
+			{ name = 'WEAPON_PAINTBALL', price = 100 },
 			{ name = 'ammo-paintballs', price = 5 },
 		}, locations = {
 			vec3(588.3597, 2752.5881, 42.1425),
@@ -196,31 +196,31 @@ return {
 		blip = {
 			id = 52, colour = 46, scale = 0.8
 		}, inventory = {
-			{ name = 'hydrogen_peroxide', price = math.random(2500, 3000), currency = 'black_money' },
-			{ name = 'gruppesechstablet', price = math.random(5000, 10000), currency = 'black_money' },
-			{ name = 'graffiti_spray', price = math.random(1500, 2000), currency = 'black_money' },
-			{ name = 'graffiti_remover', price = math.random(1500, 2000), currency = 'black_money' },
-			{ name = 'glass_cutter', price = math.random(5000, 10000), currency = 'black_money' },
-			{ name = 'cable_cutter', price = math.random(5000, 10000), currency = 'black_money' },
-			{ name = 'screwdriver_bank', price = math.random(5000, 10000), currency = 'black_money' },
-			{ name = 'screwdriver_jewelry', price = math.random(5000, 10000), currency = 'black_money' },
-			{ name = 'drill', price = math.random(500, 1000), currency = 'black_money' },
-			{ name = 'hacking_device', price = math.random(500, 1000), currency = 'black_money' },
+			{ name = 'hydrogen_peroxide', price = math.random(350, 500), currency = 'black_money' },
+			{ name = 'gruppesechstablet', price = math.random(1000, 1250), currency = 'black_money' },
+			{ name = 'graffiti_spray', price = math.random(450, 500), currency = 'black_money' },
+			{ name = 'graffiti_remover', price = math.random(450, 500), currency = 'black_money' },
+			{ name = 'glass_cutter', price = math.random(2500, 3000), currency = 'black_money' },
+			{ name = 'cable_cutter', price = math.random(2500, 3000), currency = 'black_money' },
+			{ name = 'screwdriver_bank', price = math.random(350, 500), currency = 'black_money' },
+			{ name = 'screwdriver_jewelry', price = math.random(350, 500), currency = 'black_money' },
+			{ name = 'drill', price = math.random(50, 75), currency = 'black_money' },
+			{ name = 'hacking_device', price = math.random(150, 225), currency = 'black_money' },
 			--{ name = 'rope', price = math.random(35000, 50000), currency = 'black_money' },
 			--{ name = 'knife', price = math.random(20000, 25000), currency = 'black_money' },
 			--{ name = 'grinder', price = math.random(25000, 30000), currency = 'black_money' },
-            { name = 'lockpick', price = math.random(2500, 5000), currency = 'black_money' },
-            { name = 'lockpick_door', price = math.random(2500, 5000), currency = 'black_money' },
-            { name = 'lockpick_house', price = math.random(2500, 5000), currency = 'black_money' },
-            { name = 'bobby_pin', price = math.random(10000, 15000), currency = 'black_money' },
+            { name = 'lockpick', price = math.random(350, 500), currency = 'black_money' },
+            { name = 'lockpick_door', price = math.random(350, 500), currency = 'black_money' },
+            { name = 'lockpick_house', price = math.random(350, 500), currency = 'black_money' },
+            { name = 'bobby_pin', price = math.random(25, 50), currency = 'black_money' },
 		}, locations = {
 			vec3(412.0476, 315.0938, 103.1327),
 		},
 	},
 
 	Sheriff = {
-		name = 'Sheriff Armory',
-		groups = {['sheriff'] = 0},
+		name = 'Sheriff\'s Armory',
+		groups = {['bcso'] = 0},
 		inventory = {
 			{ name = 'armour', price = 0 },
 			{ name = 'bodycam', price = 0 },
@@ -255,27 +255,27 @@ return {
 			{ name = 'WEAPON_KS1', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 5 },
 			{ name = 'WEAPON_LBRS', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 6 },
 			{ name = 'WEAPON_SIG516', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 7 },
-			{ name = 'WEAPON_P90', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 9 },
-			{ name = 'WEAPON_HEAVYSNIPER', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 11 },
+			{ name = 'WEAPON_P90', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 8 },
+			{ name = 'WEAPON_HEAVYSNIPER', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 9 },
 			{ name = 'WEAPON_STUNGUN', price = 0, metadata = { registered = true, serial = 'POL'} },
 			{ name = 'WEAPON_FLASHLIGHT', price = 0, metadata = { registered = true, serial = 'POL'} },
 			{ name = 'WEAPON_BEANBAG', price = 0, metadata = { registered = true, serial = 'POL'} },
 			{ name = 'taser_cartridge', price = 3, },
 			{ name = 'ammo-beanbag', price = 3, },
 			{ name = 'ammo-9', price = 3, },
-			{ name = 'ammo-10', price = 25, },
-			{ name = 'ammo-556', price = 50, },
-			{ name = 'ammo-762', price = 50, },
-			{ name = 'ammo-12', price = 80, grade = 1 },
-			{ name = 'ammo-50', price = 1000, grade = 11 },
+			{ name = 'ammo-10', price = 5, },
+			{ name = 'ammo-556', price = 7, },
+			{ name = 'ammo-762', price = 7, },
+			{ name = 'ammo-12', price = 10, grade = 1 },
+			{ name = 'ammo-50', price = 100, grade = 9 },
 		}, locations = {
 			vec3(2808.6812, 4722.2500, 48.6273)
 		}
 	},
 
-	SAHP = {
+	StatePatrol = {
 		name = 'State Patrol Armory',
-		groups = {['sahp'] = 0},
+		groups = {['sasp'] = 0},
 		inventory = {
 			{ name = 'armour', price = 0 },
 			{ name = 'bodycam', price = 0 },
@@ -310,19 +310,19 @@ return {
 			{ name = 'WEAPON_KS1', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 5 },
 			{ name = 'WEAPON_LBRS', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 6 },
 			{ name = 'WEAPON_SIG516', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 7 },
-			{ name = 'WEAPON_P90', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 9 },
-			{ name = 'WEAPON_HEAVYSNIPER', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 8 },
+			{ name = 'WEAPON_P90', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 8 },
+			{ name = 'WEAPON_HEAVYSNIPER', price = 0, metadata = { registered = true, serial = 'POL' }, grade = 9 },
 			{ name = 'WEAPON_STUNGUN', price = 0, metadata = { registered = true, serial = 'POL'} },
 			{ name = 'WEAPON_FLASHLIGHT', price = 0, metadata = { registered = true, serial = 'POL'} },
 			{ name = 'WEAPON_BEANBAG', price = 0, metadata = { registered = true, serial = 'POL'} },
-			{ name = 'taser_cartridge', price = 5 },
-			{ name = 'ammo-beanbag', price = 5 },
-			{ name = 'ammo-9', price = 3 },
-			{ name = 'ammo-10', price = 25, },
-			{ name = 'ammo-556', price = 50, },
-			{ name = 'ammo-762', price = 50, },
-			{ name = 'ammo-12', price = 80, grade = 1 },
-			{ name = 'ammo-50', price = 1000, grade = 11 },
+			{ name = 'taser_cartridge', price = 3, },
+			{ name = 'ammo-beanbag', price = 3, },
+			{ name = 'ammo-9', price = 3, },
+			{ name = 'ammo-10', price = 5, },
+			{ name = 'ammo-556', price = 7, },
+			{ name = 'ammo-762', price = 7, },
+			{ name = 'ammo-12', price = 10, grade = 1 },
+			{ name = 'ammo-50', price = 100, grade = 9 },
 		}, locations = {
 			vec3(838.6940, -1282.7787, 21.2467)
 		}

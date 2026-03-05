@@ -16,7 +16,7 @@ return {-- make a new line here and paste after copying ->
 	{ --098
 		coords = vec3(2806.3313, 4708.5767, 48.6274),
 		name = 'evidencewcso3',
-		groups = 'sheriff',
+		groups = 'bcso',
 		label = 'Lockers Safe',
 		owner = true,
 		slots = 100,
@@ -26,7 +26,7 @@ return {-- make a new line here and paste after copying ->
 	{ --098
 		coords = vec3(2805.4739, 4712.4116, 48.6273),
 		name = 'evidencewcso2',
-		groups = 'sheriff',
+		groups = 'bcso',
 		label = 'Evidence Safe',
 		owner = false,
 		slots = 100,
@@ -92,17 +92,17 @@ return {-- make a new line here and paste after copying ->
 	{--sheriff
 		coords = vec3(2801.1035, 4706.7314, 48.6275),
 		name = 'bcso_lockers',
-		label = 'Sheriff Lockers',
+		label = 'BCSO Locker',
 		owner = true,
 		slots = 100,
 		weight = 500000
 	},
 
-	{--sheriff
+	{--sasp
 		coords = vec3(849.3484, -1288.5409, 26.7212),
 		name = 'sahp_lockers',
-		label = 'SAHP Lockers',
-		groups = 'sahp',
+		label = 'SASP Locker',
+		groups = 'sasp',
 		owner = true,
 		slots = 100,
 		weight = 500000

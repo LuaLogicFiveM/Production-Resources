@@ -59,7 +59,7 @@ end
 
 ---@diagnostic disable-next-line: duplicate-set-field
 function server.hasLicense(inv, name)
-	return Inventory.GetItemCount(inv, name) > 0
+	return MySQL.scalar.await('SELECT 1 FROM `user_licenses` WHERE `type` = ? AND `owner` = ?', { name, inv.owner })
 end
 
 ---@diagnostic disable-next-line: duplicate-set-field
