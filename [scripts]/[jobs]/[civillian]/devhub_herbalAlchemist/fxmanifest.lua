@@ -6,10 +6,7 @@ lua54 "yes" -- needed for Reaper
 fx_version 'cerulean'
 games {'gta5'}
 lua54 'yes'
-
-author 'DEVHUB (store.devhub.gg)'
-description 'DH MULTIPLAYER HERBAL ALCHEMIST JOB'
-version '1.1.1'
+version '1.1.2'
  
 ui_page "html/index.html"
 
