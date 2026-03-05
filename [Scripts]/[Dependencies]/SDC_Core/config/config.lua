@@ -41,6 +41,14 @@ SDC.NotificationSystem = "ox_lib" --[[ SET UP YOUR NOTIFICATIONS HERE
 
 ]]
 
+SDC.BankingResource = "framework" --[[ SET UP YOUR BANKING HERE
+
+    Can Be Anyone Of The Following Options Below:
+
+    "framework" --This will use the framework functions (WORKS FOR ALMOST EVERY ONE)
+    "omes_banking" --This will use the omes_banking functions
+
+]]
 
 SDC.ProgressBar = "ox_lib" --[[ SET UP YOUR PROGRESS BAR HERE
 
@@ -63,7 +71,7 @@ SDC.GarageResource = "framework" --[[ SET UP YOUR GARAGE RESOURCE HERE
     "vms_garages" --This will use the vms garages setup
 
 ]]
-SDC.DefaultGarage = "legion" --[[ Choose Your Default Garage Here
+SDC.DefaultGarage = "legionsquare" --[[ Choose Your Default Garage Here
 
     Can be any of the garage names set inside your garage resource
 
@@ -103,6 +111,6 @@ SDC.RandomPlateSettings = { --SET UP YOUR PLATE SETTINGS HERE
 }
 
 SDC.WebhookSettings = { --SET UP YOUR WEBHOOK SETTINGS HERE
-    Username = "Server Logs", --Username for the webhook bot
+    Username = "Logs", --Username for the webhook bot
     AvatarUrl = "" --Avatar Image for webhoom bot
 }
