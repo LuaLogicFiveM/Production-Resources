@@ -80,12 +80,12 @@ Config.AirdropTemplates = {
             -- If an item's capture time is not specified, it will use the default capture time in Config.Airdrops.
             -- If an item's itemType is not specified, it will interpret it as a item. Types: "item", "weapon", "money".
             -- The higher an item's chance, the more likely it is to spawn in the airdrop container. 
-            {chance = 2, itemType = "item", name = "WEAPON_AUTOMATICPISTOL", count = 1}, -- Range is the randomization of how much of the item is spawned in the slot.
-            {chance = 5, itemType = "item", name = "WEAPON_G41", count = 1},
-            {chance = 5, itemType = "item", name = "WEAPON_G26SWITCH", count = 1},
-            {chance = 5, itemType = "item", name = "WEAPON_PLR", count = 1},
-            {chance = 5, itemType = "item", name = "WEAPON_DRACO", count = 1},
-            {chance = 5, itemType = "item", name = "WEAPON_SCARSC", count = 1},
+            {chance = 2, itemType = "item", name = "WEAPON_357SNUB", count = 1}, -- Range is the randomization of how much of the item is spawned in the slot.
+            {chance = 5, itemType = "item", name = "WEAPON_BAGGLOCK", count = 1},
+            {chance = 5, itemType = "item", name = "WEAPON_G22", count = 1},
+            {chance = 5, itemType = "item", name = "WEAPON_SLEDGEH", count = 1},
+            {chance = 5, itemType = "item", name = "WEAPON_GREENKNIFE", count = 1},
+            {chance = 5, itemType = "item", name = "WEAPON_MARP", count = 1},
             {chance = 10, itemType = "item", name = "black_money", range = {1000, 5000}},
             {chance = 10, itemType = "item", name = "money", range = {1000, 5000}},
         },
@@ -170,8 +170,6 @@ Config.AirdropTemplates = {
         unlockTime = 60, -- Time in seconds to unlock the airdrop container. If set to 0, it will use the default unlock time in Config.Airdrops.
         items = {
             {chance = 15, itemType = "item", name = "switch", range = {1, 5}},
-            {chance = 15, itemType = "item", name = "percocet_pill", range = {5, 10}},
-            {chance = 15, itemType = "item", name = "ecstasy_pill", range = {5, 10}},
             {chance = 15, itemType = "item", name = "hightimebrownies", range = {5, 10}},
             {chance = 15, itemType = "item", name = "blazebites", range = {5, 10}},
             {chance = 15, itemType = "item", name = "kushkrisps", range = {5, 10}},

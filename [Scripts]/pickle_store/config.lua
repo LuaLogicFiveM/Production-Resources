@@ -40,27 +40,11 @@ Config.DailySpin = {
             chance = 1
         },
         {
-            text = "x1 MP9-A", 
-            commands = { 
-                {"pts_giveitem WEAPON_MP9A 1", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/WEAPON_MP9A.png", 
-            chance = 10
-        },
-        {
             text = "x3 ATM Hacking Device", 
             commands = { 
                 {"pts_giveitem hacking_device 3", {}}
             }, 
             image = Config.ItemImageFolder .. "/hacking_device.png", 
-            chance = 10
-        },
-        {
-            text = "x50 Iron Ingots", 
-            commands = { 
-                {"pts_giveitem ls_iron_ingot 50", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/ls_iron_ingot.png", 
             chance = 10
         },
         {
@@ -80,51 +64,11 @@ Config.DailySpin = {
             chance = 5
         },
         {
-            text = "x1 Automatic Pistol", 
-            commands = { 
-                {"pts_giveitem WEAPON_AUTOMATICPISTOL 1", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/WEAPON_AUTOMATICPISTOL.png", 
-            chance = 10
-        },
-        {
-            text = "x1 Kel-Tec PLR", 
-            commands = { 
-                {"pts_giveitem WEAPON_PLR 1", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/WEAPON_PLR.png", 
-            chance = 10
-        },
-        {
-            text = "x5 AR Pistol Grips", 
-            commands = { 
-                {"pts_giveitem arpistol_grip 5", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/arpistol_grip.png", 
-            chance = 15
-        },
-        {
-            text = "x1 Glock 17 Switch", 
-            commands = { 
-                {"pts_giveitem WEAPON_GLOCK17 1", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/WEAPON_GLOCK17.png", 
-            chance = 5
-        },
-        {
             text = "x500 9mm", 
             commands = { 
                 {"pts_giveitem ammo-9 500", {}}
             }, 
             image = Config.ItemImageFolder .. "/ammo-9.png", 
-            chance = 10
-        },
-        {
-            text = "x1 SCAR-SC", 
-            commands = { 
-                {"pts_giveitem WEAPON_SCARSC 1", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/WEAPON_SCARSC.png", 
             chance = 10
         },
         {
@@ -142,14 +86,6 @@ Config.DailySpin = {
             }, 
             image = Config.ItemImageFolder .. "/ammo-556.png", 
             chance = 10
-        },
-        {
-            text = "x5 Handgun Barrels", 
-            commands = { 
-                {"pts_giveitem handgun_barrel 5", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/handgun_barrel.png", 
-            chance = 15
         },
         {
             text = "x5 Mango Whippets", 
@@ -173,14 +109,6 @@ Config.DailySpin = {
                 {"pts_giveitem sim 10", {}}
             }, 
             image = Config.ItemImageFolder .. "/sim.png", 
-            chance = 10
-        },
-        {
-            text = "x3 Hacking Drill", 
-            commands = { 
-                {"pts_giveitem drill 3", {}}
-            }, 
-            image = Config.ItemImageFolder .. "/drill.png", 
             chance = 10
         },
     }

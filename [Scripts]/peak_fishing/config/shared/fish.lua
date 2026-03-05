@@ -44,7 +44,7 @@ return {
                 label = 'Bitterling',
                 description = 'A small freshwater fish common in calm waters.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'freshwater'
             },
 
@@ -52,7 +52,7 @@ return {
                 label = 'Pale Chub',
                 description = 'A modest-sized fish found in streams and rivers.',
                 weight = { min = 0.2, max = 0.5 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'freshwater'
             },
 
@@ -60,7 +60,7 @@ return {
                 label = 'Dace',
                 description = 'A river fish most active during evening and early morning.',
                 weight = { min = 0.2, max = 0.5 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'river'
             },
             
@@ -68,7 +68,7 @@ return {
                 label = 'Carp',
                 description = 'A large pond-dwelling fish found year-round.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -76,7 +76,7 @@ return {
                 label = 'Goldfish',
                 description = 'A classic small pond fish.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -84,7 +84,7 @@ return {
                 label = 'Killifish',
                 description = 'A small pond fish found during spring and summer.',
                 weight = { min = 0.1, max = 0.2 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -92,7 +92,7 @@ return {
                 label = 'Crawfish',
                 description = 'A crustacean found in ponds during spring and summer.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -100,7 +100,7 @@ return {
                 label = 'Tadpole',
                 description = 'A young amphibian found in ponds during spring.',
                 weight = { min = 0.05, max = 0.1 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
             
@@ -108,7 +108,7 @@ return {
                 label = 'Frog',
                 description = 'An amphibian found in ponds during late spring and summer.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -116,7 +116,7 @@ return {
                 label = 'Freshwater Goby',
                 description = 'A small river fish most active during evening hours.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -124,7 +124,7 @@ return {
                 label = 'Loach',
                 description = 'A river fish found during spring.',
                 weight = { min = 0.3, max = 0.5 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -132,7 +132,7 @@ return {
                 label = 'Bluegill',
                 description = 'A small river fish active during daytime.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -140,7 +140,7 @@ return {
                 label = 'Yellow Perch',
                 description = 'A river fish found during winter and early spring.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -148,7 +148,7 @@ return {
                 label = 'Black Bass',
                 description = 'A large and common river fish found year-round.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -156,7 +156,7 @@ return {
                 label = 'Tilapia',
                 description = 'A river fish found during summer months.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -164,7 +164,7 @@ return {
                 label = 'Pond Smelt',
                 description = 'A small river fish found in winter months.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -172,7 +172,7 @@ return {
                 label = 'Sweetfish',
                 description = 'A river fish found during summer months.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -180,7 +180,7 @@ return {
                 label = 'Anchovy',
                 description = 'A small, silvery marine fish often found in schools.',
                 weight = { min = 0.1, max = 0.2 },
-                price = { min = 75, max = 150 },
+                price = { min = 75, max = 125 },
                 habitat = 'sea'
             },
             
@@ -188,7 +188,7 @@ return {
                 label = 'Horse Mackerel',
                 description = 'A common marine fish found in large schools.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 75, max = 150 },
+                price = { min = 75, max = 125 },
                 habitat = 'sea'
             },
 
@@ -196,7 +196,7 @@ return {
                 label = 'Sea Bass',
                 description = 'A common large marine fish found year-round.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 150 },
+                price = { min = 75, max = 125 },
                 habitat = 'sea'
             },
 
@@ -204,7 +204,7 @@ return {
                 label = 'Dab',
                 description = 'A flatfish found in marine environments.',
                weight = { min = 0.1, max = 0.3 },
-               price = { min = 75, max = 150 },
+               price = { min = 75, max = 125 },
                 habitat = 'sea'
             },
 
@@ -212,7 +212,7 @@ return {
                 label = 'Olive Flounder',
                 description = 'A large flatfish found in marine environments.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 150 },
+                price = { min = 75, max = 125 },
                 habitat = 'sea'
             },
 
@@ -230,7 +230,7 @@ return {
                 label = 'Koi',
                 description = 'A colorful and sought-after ornamental carp.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'freshwater'
             },
 
@@ -238,7 +238,7 @@ return {
                 label = 'Pop-eyed Goldfish',
                 description = 'A unique goldfish variant with prominent eyes.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -246,7 +246,7 @@ return {
                 label = 'Ranchu Goldfish',
                 description = 'A round-bodied goldfish breed.',
                 weight = { min = 0.3, max = 0.5 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -254,7 +254,7 @@ return {
                 label = 'Angelfish',
                 description = 'A tropical river fish with distinctive shape.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -262,7 +262,7 @@ return {
                 label = 'Betta',
                 description = 'A colorful river fish known for its vibrant fins.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -270,7 +270,7 @@ return {
                 label = 'Neon Tetra',
                 description = 'A small, brightly colored river fish.',
                 weight = { min = 0.1, max = 0.2 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -278,7 +278,7 @@ return {
                 label = 'Rainbowfish',
                 description = 'A colorful river fish active during late spring and summer.',
                 weight = { min = 0.2, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
             
@@ -286,7 +286,7 @@ return {
                 label = 'Sea Butterfly',
                 description = 'A delicate marine creature found in winter seas.',
                 weight = { min = 0.1, max = 0.2 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -294,7 +294,7 @@ return {
                 label = 'Seahorse',
                 description = 'A unique marine fish with a distinctive shape.',
                 weight = { min = 0.1, max = 0.2 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -302,7 +302,7 @@ return {
                 label = 'Clownfish',
                 description = 'A small, brightly colored tropical marine fish.',
                 weight = { min = 0.1, max = 0.2 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -310,7 +310,7 @@ return {
                 label = 'Surgeonfish',
                 description = 'A colorful marine fish with distinctive markings.',
                 weight = { min = 0.3, max = 0.5 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -318,7 +318,7 @@ return {
                 label = 'Butterfly Fish',
                 description = 'A vibrant tropical marine fish with unique patterns.',
                 weight = { min = 0.2, max = 0.4 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -326,7 +326,7 @@ return {
                 label = 'Zebra Turkeyfish',
                 description = 'A unique marine fish with striking striped patterns.',
                 weight = { min = 0.3, max = 0.5 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -334,7 +334,7 @@ return {
                 label = 'Barred Knifejaw',
                 description = 'A distinctive marine fish with unique markings.',
                weight = { min = 0.1, max = 0.3 },
-               price = { min = 75, max = 100 },
+               price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -342,7 +342,7 @@ return {
                 label = 'Red Snapper',
                 description = 'A prized marine fish with distinctive red coloration.',
                weight = { min = 0.1, max = 0.3 },
-               price = { min = 75, max = 100 },
+               price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
             
@@ -350,7 +350,7 @@ return {
                 label = 'Moray Eel',
                 description = 'A serpentine marine creature found in rocky areas.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -358,7 +358,7 @@ return {
                 label = 'Ribbon Eel',
                 description = 'A colorful and unique marine eel species.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             }
         },
@@ -368,7 +368,7 @@ return {
                 label = 'Sturgeon',
                 description = 'An ancient species known for its size and caviar.',
               weight = { min = 0.1, max = 0.3 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'freshwater'
             },
             
@@ -376,7 +376,7 @@ return {
                 label = 'Giant Snakehead',
                 description = 'A large and distinctive pond fish.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -384,7 +384,7 @@ return {
                 label = 'Golden Trout',
                 description = 'A rare and beautiful trout with golden coloring.',
                weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -392,7 +392,7 @@ return {
                 label = 'Stringfish',
                 description = 'A large clifftop river fish found in winter.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -400,7 +400,7 @@ return {
                 label = 'King Salmon',
                 description = 'The largest and most prestigious salmon species.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -408,7 +408,7 @@ return {
                 label = 'Napoleonfish',
                 description = 'A large, distinctive marine fish found during summer.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -416,7 +416,7 @@ return {
                 label = 'Dorado',
                 description = 'A powerful predatory river fish from South America.',
                weight = { min = 0.1, max = 0.3 },
-               price = { min = 50, max = 75 },
+               price = { min = 25, max = 35 },
                 habitat = 'river'
             },
 
@@ -424,7 +424,7 @@ return {
                 label = 'Gar',
                 description = 'A prehistoric-looking fish found in ponds during summer.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 25, max = 50 },
+                price = { min = 15, max = 35 },
                 habitat = 'pond'
             },
 
@@ -432,7 +432,7 @@ return {
                 label = 'Arapaima',
                 description = 'A massive river fish from the Amazon basin.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 50, max = 75 },
+                price = { min = 25, max = 35 },
                 habitat = 'river'
             },
             
@@ -440,7 +440,7 @@ return {
                 label = 'Tuna',
                 description = 'A large, powerful marine fish prized by anglers.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -448,7 +448,7 @@ return {
                 label = 'Blue Marlin',
                 description = 'A massive and powerful oceanic predator.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -456,7 +456,7 @@ return {
                 label = 'Giant Trevally',
                 description = 'A large and aggressive marine game fish.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -464,7 +464,7 @@ return {
                 label = 'Mahi-Mahi',
                 description = 'A colorful and fast-swimming tropical marine fish.',
                weight = { min = 0.1, max = 0.3 },
-               price = { min = 75, max = 100 },
+               price = { min = 50, max = 75 },
                 habitat = 'sea'
             },
 
@@ -472,7 +472,7 @@ return {
                 label = 'Ray',
                 description = 'A flat marine creature gliding through the waters.',
                 weight = { min = 0.1, max = 0.3 },
-                price = { min = 75, max = 100 },
+                price = { min = 50, max = 75 },
                 habitat = 'sea'
             }
         },
