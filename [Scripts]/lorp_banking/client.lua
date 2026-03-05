@@ -95,7 +95,8 @@ local function ShowNotification(message, type)
 end
 
 local function ShowHelpNotification(message)
-    lib.showTextUI(message)
+    AddTextEntry("banking", message)
+    DisplayHelpTextThisFrame("banking", false)
 end
 
 local bankerPed = nil
@@ -559,11 +560,6 @@ Citizen.CreateThread(function()
                     end
                 end
             end
-        end
-        
-
-        if not canInteract then
-            lib.hideTextUI()
         end
         
         Wait(sleep)
