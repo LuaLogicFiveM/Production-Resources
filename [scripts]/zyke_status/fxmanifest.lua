@@ -1,7 +1,14 @@
+shared_script "@ReaperV4/imports/bypass.js"
+shared_script "@ReaperV4/imports/bypass.lua"
+shared_script "@ReaperV4/imports/bypass_s.lua"
+shared_script "@ReaperV4/imports/bypass_c.lua"
+lua54 "yes" -- needed for Reaper
+
 fx_version "cerulean"
 game "gta5"
 lua54 "yes"
-version "0.3.16"
+author "discord.gg/zykeresources"
+version "0.3.17"
 
 files {
     "locales/*.lua",
