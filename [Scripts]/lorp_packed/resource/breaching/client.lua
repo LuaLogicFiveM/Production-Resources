@@ -81,7 +81,7 @@ CreateThread(function()
             name = 'useStormram',
             label = 'Use Breaching Ram',
             icon = 'fas fa-user-lock',
-            groups = {['sheriff'] = 10, ['sahp'] = 7},
+            groups = {['bcso'] = 7, ['sasp'] = 7, ['gov'] = 0},
             items = 'police_stormram',
             distance = 1.5,
             canInteract = function(entity) 
@@ -95,7 +95,7 @@ CreateThread(function()
             name = 'closeDoor',
             label = 'Lock Door',
             icon = 'fas fa-user-lock',
-            groups = {['sheriff'] = 10, ['sahp'] = 7},
+            groups = {['bcso'] = 7, ['sasp'] = 7, ['gov'] = 0},
             items = 'police_stormram',
             distance = 1.5,
             canInteract = function(entity) 
