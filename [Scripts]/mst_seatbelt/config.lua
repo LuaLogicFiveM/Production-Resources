@@ -8,12 +8,15 @@ Config.Debug = false -- Enable only when troubleshooting; disables most debug pr
 Config.VersionCheck = true -- Keep true to get important update and bug fix notifications
 
 Config.Seatbelt = {
+    enabled = true, -- If false, only the seatbelt command works; no key/button toggles seatbelt
     type = "keymapping", -- "keymapping" (players can rebind in Settings > Key Bindings) or "control" (direct control ID check)
     key = "B", -- Default key (e.g., "B", "F1", "G") - only used if enabled = true
     controlId = 29, -- Control ID for B (used if enabled = false and controlEnabled = true), Reference: https://docs.fivem.net/docs/game-references/controls/
     disableAnimation = false, -- If true, disables the seatbelt animation
     disableProp = false -- If true, disables the seatbelt prop (visual object)
 }
+
+Config.BlockExitWhenBuckled = false -- If true: cannot exit while seatbelt on. If false: one F press unbuckles and exits
 
 Config.QuickExit = {
     enabled = true, -- Enable/disable double-F quick exit feature
