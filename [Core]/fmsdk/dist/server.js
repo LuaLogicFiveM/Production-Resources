@@ -24811,6 +24811,10 @@ function startImageFeature() {
 var import_winston = __toESM(require_winston());
 
 // features/utils/common/config.ts
+var EventConfigSchema = object({
+  enabled: boolean(),
+  dataset: string([minLength(1)])
+});
 var ConfigSchema = object({
   logs: object({
     level: string([minLength(1)]),
@@ -24819,10 +24823,12 @@ var ConfigSchema = object({
     enableCloudLogging: boolean(),
     appendPlayerIdentifiers: boolean(),
     excludedPlayerIdentifiers: array(string([minLength(1)])),
-    playerEvents: boolean(),
-    baseEvents: boolean(),
-    chatEvents: boolean(),
-    txAdminEvents: boolean()
+    excludeInDepthMetadata: boolean(),
+    playerEvents: EventConfigSchema,
+    baseEvents: EventConfigSchema,
+    chatEvents: EventConfigSchema,
+    txAdminEvents: EventConfigSchema,
+    oxInventoryEvents: EventConfigSchema
   })
 });
 function loadConfig() {
@@ -26254,10 +26260,11 @@ function getFormattedPlayerIdentifiers(playerSrc) {
 }
 
 // features/logs/server/player.ts
-if (config.logs.playerEvents) {
+if (config.logs.playerEvents.enabled) {
+  const dataset = config.logs.playerEvents.dataset;
   on("playerConnecting", (name) => {
     const _source = global.source;
-    log("info", `player ${name} is connecting`, {
+    ingest(dataset, "info", `player ${name} is connecting`, {
       playerSource: _source,
       playerName: name
     });
@@ -26265,7 +26272,7 @@ if (config.logs.playerEvents) {
   on("playerDropped", (reason) => {
     const _source = global.source;
     const playerName = GetPlayerName(_source.toString());
-    log("info", `player ${playerName} dropped`, {
+    ingest(dataset, "info", `player ${playerName} dropped`, {
       playerSource: _source,
       playerName,
       reason
@@ -26274,7 +26281,7 @@ if (config.logs.playerEvents) {
   on("playerJoining", (source) => {
     const _source = global.source;
     const playerName = GetPlayerName(_source.toString());
-    log("info", `player ${playerName} is joining`, {
+    ingest(dataset, "info", `player ${playerName} is joining`, {
       playerSource: source,
       playerName
     });
@@ -26282,9 +26289,10 @@ if (config.logs.playerEvents) {
 }
 
 // features/logs/server/chat.ts
-if (config.logs.chatEvents) {
+if (config.logs.chatEvents.enabled) {
+  const dataset = config.logs.chatEvents.dataset;
   onNet("chatMessage", (src, playerName, content) => {
-    log("info", `chat message from ${playerName}`, {
+    ingest(dataset, "info", `chat message from ${playerName}`, {
       playerSource: src,
       chatMessage: content,
       playerName
@@ -26390,11 +26398,12 @@ var PedType = /* @__PURE__ */ ((PedType2) => {
   PedType2[PedType2["Human"] = 26] = "Human";
   return PedType2;
 })(PedType || {});
-if (config.logs.baseEvents) {
+if (config.logs.baseEvents.enabled) {
+  const dataset = config.logs.baseEvents.dataset;
   onNet("baseevents:onPlayerDied", (killerType, deathCoords) => {
     const _source = global.source;
     const playerName = GetPlayerName(_source.toString());
-    log("info", `player ${playerName} died`, {
+    ingest(dataset, "info", `player ${playerName} died`, {
       playerSource: _source,
       playerName,
       killerType,
@@ -26413,7 +26422,7 @@ if (config.logs.baseEvents) {
       killerPosition: deathData.killerpos,
       killerInVehicle: deathData.killerinveh
     };
-    log("info", `player ${playerName} killed`, {
+    ingest(dataset, "info", `player ${playerName} killed`, {
       playerSource: _source,
       playerName,
       killer: {
@@ -26421,6 +26430,60 @@ if (config.logs.baseEvents) {
         playerName: killerName ?? PedType[formattedData.killerType]
       },
       deathData: formattedData
+    });
+  });
+}
+
+// features/logs/server/third-party/ox-inventory.ts
+if (config.logs.oxInventoryEvents.enabled) {
+  const exp = global.exports;
+  const dataset = config.logs.oxInventoryEvents.dataset;
+  exp.ox_inventory.registerHook("buyItem", (_data) => {
+    const data = _data;
+    const toInventory = Number.isInteger(data.toInventory) ? getFormattedPlayerIdentifiers(data.toInventory) : data.toInventory;
+    ingest(dataset, "info", "ox_inventory.buyItem", {
+      fromSlot: {
+        price: data.fromSlot.price,
+        name: data.fromSlot.name
+      },
+      toInventory,
+      price: data.price,
+      currency: data.currency,
+      shopType: data.shopType,
+      shopId: data.shopId,
+      count: data.count,
+      itemName: data.itemName,
+      totalPrice: data.totalPrice,
+      metadata: data.metadata,
+      resource: "ox_inventory"
+    });
+  });
+  exp.ox_inventory.registerHook("swapItems", (_data) => {
+    const data = _data;
+    const fromInventory = Number.isInteger(data.fromInventory) ? getFormattedPlayerIdentifiers(data.source) : data.fromInventory;
+    const toInventory = Number.isInteger(data.toInventory) ? getFormattedPlayerIdentifiers(data.toInventory) : data.toInventory;
+    const toPlayerName = Number.isInteger(data.toInventory) ? GetPlayerName(data.toInventory.toString()) : null;
+    const fromPlayerName = Number.isInteger(data.fromInventory) ? GetPlayerName(data.fromInventory.toString()) : null;
+    ingest(dataset, "info", "ox_inventory.swapItems", {
+      toSlot: {
+        name: data.toSlot.name,
+        label: data.toSlot.label,
+        count: data.toSlot.count,
+        metadata: data.toSlot.metadata
+      },
+      fromSlot: {
+        name: data.fromSlot.name,
+        label: data.fromSlot.label,
+        count: data.fromSlot.count,
+        metadata: data.fromSlot.metadata
+      },
+      action: data.action,
+      fromInventory,
+      fromPlayerName,
+      toInventory,
+      toPlayerName,
+      fromType: data.fromType,
+      resource: "ox_inventory"
     });
   });
 }
@@ -26461,77 +26524,49 @@ var LogSchema = object({
   message: string([minLength(1)]),
   metadata: record(unknown())
 });
-function log(level, message, metadata = {}, _internalOpts) {
-  try {
-    parse(LogSchema, { level, message, metadata });
-    const meta = {
-      ...metadata,
-      _resourceName: GetInvokingResource(),
-      _serverSessionId: globalThis.serverSessionId
-    };
-    if (config.logs.appendPlayerIdentifiers) {
-      if (meta.playerSource) {
-        meta._playerIdentifiers = getFormattedPlayerIdentifiers(
-          meta.playerSource
-        );
-      }
-      if (meta.targetSource) {
-        meta._targetIdentifiers = getFormattedPlayerIdentifiers(
-          meta.targetSource
-        );
-      }
+function processMetadata(metadata) {
+  const meta = { ...metadata };
+  if (config.logs.appendPlayerIdentifiers) {
+    if (meta.playerSource) {
+      meta._playerIdentifiers = getFormattedPlayerIdentifiers(meta.playerSource);
     }
-    logger.log(level, message, {
-      resource: (_internalOpts == null ? void 0 : _internalOpts._internal_RESOURCE) ?? meta._resourceName,
-      metadata: meta,
-      datasetId: "default"
-    });
-  } catch (error2) {
-    if (error2 instanceof ValiError) {
-      console.error(
-        "Invalid log params:\n",
-        flatten(error2).nested
-      );
-      return;
+    if (meta.targetSource) {
+      meta._targetIdentifiers = getFormattedPlayerIdentifiers(meta.targetSource);
     }
-    console.error("Error executing log", error2);
   }
+  return meta;
 }
-function ingest(datasetId, level, message, metadata = {}, _internalOpts) {
+function executeLog(level, message, metadata, datasetId, _internalOpts) {
   try {
     parse(LogSchema, { level, message, metadata });
-    const meta = {
-      ...metadata,
-      _resourceName: GetInvokingResource(),
-      _serverSessionId: globalThis.serverSessionId
-    };
-    if (config.logs.appendPlayerIdentifiers) {
-      if (meta.playerSource) {
-        meta._playerIdentifiers = getFormattedPlayerIdentifiers(
-          meta.playerSource
-        );
-      }
-      if (meta.targetSource) {
-        meta._targetIdentifiers = getFormattedPlayerIdentifiers(
-          meta.targetSource
-        );
-      }
-    }
+    const meta = processMetadata(metadata);
+    const resourceName = GetInvokingResource() || "fmsdk";
     logger.log(level, message, {
-      resource: (_internalOpts == null ? void 0 : _internalOpts._internal_RESOURCE) ?? meta._resourceName,
+      resource: (_internalOpts == null ? void 0 : _internalOpts._internal_RESOURCE) ?? resourceName,
       metadata: meta,
       datasetId
     });
   } catch (error2) {
     if (error2 instanceof ValiError) {
-      console.error(
-        "Invalid log params:\n",
-        flatten(error2).nested
-      );
+      console.error("Invalid log params:\n", flatten(error2).nested);
       return;
     }
     console.error("Error executing log", error2);
   }
+}
+function log(level, message, metadata = {}, _internalOpts) {
+  const meta = {
+    ...metadata,
+    serverSessionId: config.logs.excludeInDepthMetadata ? null : globalThis.serverSessionId
+  };
+  executeLog(level, message, meta, "default", _internalOpts);
+}
+function ingest(datasetId, level, message, metadata = {}, _internalOpts) {
+  const meta = {
+    ...metadata,
+    serverSessionId: config.logs.excludeInDepthMetadata ? null : globalThis.serverSessionId
+  };
+  executeLog(level, message, meta, datasetId, _internalOpts);
 }
 function info(datasetId, message, metadata = {}, _internalOpts) {
   ingest(datasetId, "info", message, metadata, _internalOpts);

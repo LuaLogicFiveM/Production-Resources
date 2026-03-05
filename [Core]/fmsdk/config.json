@@ -6,10 +6,27 @@
 		"console": true,
 		"enableCloudLogging": true,
 		"appendPlayerIdentifiers": true,
-		"excludedPlayerIdentifiers": [],
-		"playerEvents": false,
-		"chatEvents": false,
-		"baseEvents": true,
-		"txAdminEvents": true
+		"excludedPlayerIdentifiers": ["ip"],
+		"excludeInDepthMetadata": true,
+		"playerEvents": {
+			"enabled": true,
+			"dataset": "default"
+		},
+		"chatEvents": {
+			"enabled": true,
+			"dataset": "default"
+		},
+		"baseEvents": {
+			"enabled": true,
+			"dataset": "default"
+		},
+		"txAdminEvents": {
+			"enabled": true,
+			"dataset": "txAdmin"
+		},
+		"oxInventoryEvents": {
+			"enabled": true,
+			"dataset": "Inventory"
+		}
 	}
 }
