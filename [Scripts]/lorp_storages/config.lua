@@ -30,25 +30,25 @@ Config.UpgradeLevels = {
         level = 2,
         slots = 15,
         weight = 100,
-        price = 250000
+        price = 25000
     },
     {
         level = 3,
         slots = 25,
         weight = 200,
-        price = 500000
+        price = 50000
     },
     {
         level = 4,
         slots = 35,
         weight = 300,
-        price = 750000
+        price = 75000
     },
     {
         level = 5,
         slots = 45,
         weight = 400,
-        price = 1000000
+        price = 100000
     }
 }
 
