@@ -39,6 +39,10 @@ function GetJobGrade()
 end
 
 function GetCompanyData()
+    if PlayerJob.name == "unemployed" then
+        return
+    end
+
     local jobData = {
         job = PlayerJob.name,
         jobLabel = PlayerJob.label,

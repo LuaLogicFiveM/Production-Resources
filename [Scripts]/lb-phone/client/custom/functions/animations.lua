@@ -193,6 +193,51 @@ function RefreshAnimationsInterval()
 end
 
 -- Handle phone object
+
+---@class AttachPhoneOptions
+---@field phone? number # The phone object to attach, if not provided will use the existing phone object
+---@field ped? number # If not provided, will use the player ped
+---@field variation? number
+---@field landscape? boolean # Whether the phone is in landscape mode or not
+
+---@param options? AttachPhoneOptions
+function AttachPhone(options)
+    local phone = options and options.phone
+    local ped = options and options.ped
+    local variation = options and options.variation
+    local landscape = options and options.landscape
+
+    if not phone then
+        if not phoneObject then
+            return
+        end
+
+        phone = phoneObject
+    end
+
+    if not ped then
+        ped = PlayerPedId()
+        variation = phoneVariation
+    end
+
+    local itemData = variation and Config.Item.Names and Config.Item.Names[variation]
+    local phoneOffset = itemData and itemData.offset or Config.PhoneOffset or vector3(0.0, -0.005, 0.0)
+    local phoneRotation = itemData and itemData.rotation or Config.PhoneRotation or vector3(0.0, 0.0, 180.0)
+
+    if landscape then
+        phoneOffset = itemData and itemData.landscapeOffset or Config.LandscapeOffset or vector3(-0.03, -0.005, -0.02)
+        phoneRotation = itemData and itemData.landscapeRotation or Config.LandscapeRotation or vector3(0.0, 90.0, 180.0)
+    end
+
+    AttachEntityToEntity(
+        phone, ped,
+        GetPedBoneIndex(ped, 28422),
+        phoneOffset.x, phoneOffset.y, phoneOffset.z,
+        phoneRotation.x, phoneRotation.y, phoneRotation.z,
+        false, false, false, false, 2, true
+    )
+end
+
 local function CreatePhoneObject()
     if phoneObject and DoesEntityExist(phoneObject) then
         return
@@ -255,8 +300,8 @@ local function CreatePhoneObject()
     end
 
     SetEntityCollision(phoneObject, false, false)
-    AttachEntityToEntity(phoneObject, playerPed, GetPedBoneIndex(playerPed, 28422), offset.x, offset.y, offset.z, rotation.x, rotation.y, rotation.z, false, false, false, false, 2, true)
     SetModelAsNoLongerNeeded(phoneModel)
+    AttachPhone()
 
     if Config.PropSpawn ~= "state" then
         TriggerServerEvent("phone:setPhoneObject", NetworkGetNetworkIdFromEntity(phoneObject))
@@ -264,12 +309,17 @@ local function CreatePhoneObject()
 end
 
 local function DeletePhoneObject()
-    if phoneObject then
-        DeleteEntity(phoneObject)
-        TriggerServerEvent("phone:setPhoneObject", nil)
-
-        phoneObject = nil
+    if not phoneObject then
+        return
     end
+
+    DeleteEntity(phoneObject)
+
+    if Config.PropSpawn ~= "state" then
+        TriggerServerEvent("phone:setPhoneObject", nil)
+    end
+
+    phoneObject = nil
 end
 
 ---@return number?
@@ -362,7 +412,7 @@ function TogglePhoneAnimation(enabled, action)
 
     if enabled then
         SetPhoneAction(action or "default")
-    else
+    elseif action ~= "camera" then
         PlayCloseAnim()
     end
 

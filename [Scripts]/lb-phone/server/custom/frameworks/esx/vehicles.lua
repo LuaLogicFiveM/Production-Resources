@@ -57,25 +57,6 @@ function GetPlayerVehicles(source)
                     impounder = impoundInfo.charname
                 }
             end
-        elseif GetResourceState("op-garages") == "started" then
-            debugprint("Using op-garages")
-            vehicle.stored = not vehicle.stored
-
-            local garage = exports['op-garages']:getGarageByIndex(tostring(vehicle.vehicleGarage))
-            vehicle.garage = garage and garage.Label or "Garage"
-
-            if vehicle.isTowedOut then
-                local impound = exports['op-garages']:getImpoundByIndex(tostring(vehicle.vehicleImpound))
-                vehicle.stored = false
-                vehicle.pound = impound and impound.Label or "Impound"
-
-                vehicle.impoundReason = {
-                    reason = vehicle.impoundReason,
-                    retrievable = vehicle.retrievable,
-                    price = vehicle.towedPrice,
-                    impounder = vehicle.towedOutBy
-                }
-            end
         end
 
         if GetResourceState("qs-advancedgarages") == "started" then
@@ -145,9 +126,6 @@ function GetVehicle(source, plate)
         storedColumn = "garage"
         storedValue = "OUT"
         outValue = "OUT"
-    elseif GetResourceState("op-garages") == "started" then
-        storedValue = 0
-        outValue = 1
     end
 
     storedCheck = storedCheck:format(storedColumn)

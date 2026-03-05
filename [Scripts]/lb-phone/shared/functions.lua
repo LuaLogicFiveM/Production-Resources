@@ -57,6 +57,10 @@ function debugprint(...)
     print("^6[LB Phone " .. phoneVersion .. "] ^3[Debug] ^5[" .. GetGameTimer() .. "]^7: " .. str)
 end
 
+if Config.Camera?.Enabled and Config.Camera.Walkable == nil then
+    Config.Camera.Walkable = true
+end
+
 if Config.HouseScript == "auto" then
     Config.HouseScript = false
 

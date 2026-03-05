@@ -153,7 +153,7 @@ RegisterNUICallback("Services", function(data, cb)
         TriggerCallback("services:deleteChannel", cb, data.id)
     end
 
-    if Config.Framework == "qb" then
+    if Config.Framework == "qb" and GetResourceState("qb-menu") == "started" then
         local timer = GetGameTimer() + 1500
         while GetGameTimer() < timer do
             Wait(100)

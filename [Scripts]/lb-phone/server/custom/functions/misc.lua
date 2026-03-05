@@ -13,6 +13,18 @@ function CanCreateStory(source, username)
     return true
 end
 
+AddEventHandler("ox_inventory:usedItem", function(source, itemName)
+    if Config.Item.Name and itemName == Config.Item.Name then
+        TriggerClientEvent("phone:toggleOpen", source, true)
+    elseif Config.Item.Names and IsItemAPhone(itemName) then
+        for i = 1, #Config.Item.Names do
+            if itemName == Config.Item.Names[i].name then
+                TriggerClientEvent("phone:usedPhoneVariation", source, i)
+            end
+        end
+    end
+end)
+
 if not Config.Item.Unique then
     Wait(100)
 

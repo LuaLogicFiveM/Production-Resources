@@ -35,11 +35,17 @@ RegisterNetEvent("esx:setJob", function(job)
 end)
 
 function GetCompanyData()
+    local job = ESX.PlayerData.job
+
+    if job.name == "unemployed" then
+        return
+    end
+
     local companyData = {
-        job = ESX.PlayerData.job.name,
-        jobLabel = ESX.PlayerData.job.label,
-        isBoss = ESX.PlayerData.job.grade_name == "boss",
-        duty = ESX.PlayerData.job.onDuty
+        job = job.name,
+        jobLabel = job.label,
+        isBoss = job.grade_name == "boss",
+        duty = job.onDuty
     }
 
     if not companyData.isBoss then
@@ -51,7 +57,7 @@ function GetCompanyData()
                     break
                 end
 
-                companyData.isBoss = table.contains(company.bossRanks, ESX.PlayerData.job.grade_name)
+                companyData.isBoss = table.contains(company.bossRanks, job.grade_name)
 
                 break
             end

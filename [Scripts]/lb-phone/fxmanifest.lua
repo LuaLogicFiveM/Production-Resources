@@ -6,7 +6,7 @@ lua54 "yes" -- needed for Reaper
 fx_version "cerulean"
 game "gta5"
 lua54 "yes"
-version "2.5.3"
+version "2.5.4"
 shared_script {
     "config/*.lua",
     "shared/**/*.lua"

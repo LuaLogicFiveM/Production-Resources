@@ -53,7 +53,9 @@ Config.Item.Name = "phone" -- name of the phone item
 --         model = `lb_phone_prop`,
 --         textureVariation = 0,
 --         rotation = vector3(0.0, 0.0, 180.0),
---         offset = vector3(0.0, -0.005, 0.0)
+--         offset = vector3(0.0, -0.005, 0.0),
+--         landscapeOffset = vector3(-0.03, -0.005, -0.02),
+--         landscapeRotation = vector3(0.0, 90.0, 180.0)
 --     },
 --     {
 --         name = "phone_green",
@@ -61,7 +63,9 @@ Config.Item.Name = "phone" -- name of the phone item
 --         frameColor = "#3cff00",
 --         textureVariation = 0,
 --         rotation = vector3(0.0, 0.0, 0.0),
---         offset = vector3(0.0, -0.005, 0.0)
+--         offset = vector3(0.0, -0.005, 0.0),
+--         landscapeOffset = vector3(-0.03, -0.005, -0.02),
+--         landscapeRotation = vector3(0.0, 90.0, 0.0)
 --     },
 --     {
 --         name = "phone_orange",
@@ -69,11 +73,13 @@ Config.Item.Name = "phone" -- name of the phone item
 --         frameColor = "#ffa142",
 --         textureVariation = 2,
 --         rotation = vector3(0.0, 0.0, 0.0),
---         offset = vector3(0.0, -0.005, 0.0)
+--         offset = vector3(0.0, -0.005, 0.0),
+--         landscapeOffset = vector3(-0.03, -0.005, -0.02),
+--         landscapeRotation = vector3(0.0, 90.0, 0.0)
 --     }
 -- }
 
-Config.Item.Unique = false -- should each phone be unique? https://docs.lbscripts.com/phone/configuration/#unique-phones
+Config.Item.Unique = true -- should each phone be unique? https://docs.lbscripts.com/phone/configuration/#unique-phones
 Config.Item.Inventory = "auto" --[[
     The inventory you use, IGNORE IF YOU HAVE Config.Item.Unique DISABLED.
 
@@ -98,6 +104,8 @@ Config.PropSpawn = "state" --[[
 Config.PhoneModel = `lb_phone_prop` -- the prop of the phone, if you want to use a custom phone model, you can change this here
 Config.PhoneRotation = vector3(0.0, 0.0, 180.0) -- the rotation of the phone when attached to a player
 Config.PhoneOffset = vector3(0.0, -0.005, 0.0) -- the offset of the phone when attached to a player
+Config.LandscapeRotation = vector3(0.0, 90.0, 180.0) -- the rotation of the phone when in landscape mode (camera)
+Config.LandscapeOffset = vector3(-0.03, -0.005, -0.02) -- the offset of the phone when in landscape mode (camera)
 
 Config.DisableOpenNUI = true -- disable the phone from opening if another script has NUI focus?
 
@@ -165,8 +173,8 @@ Config.Companies.DeleteConversations = true -- allow employees to delete convers
 Config.Companies.AllowNoService = false -- allow players to call & message companies even if they have no phone service (reception)?
 Config.Companies.Services = {
     {
-        job = "sheriff",
-        name = "Sheriff",
+        job = "bcso",
+        name = "BCSO",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
         canCall = true, -- if true, players can call the company
         canMessage = false, -- if true, players can message the company
@@ -189,8 +197,8 @@ Config.Companies.Services = {
         -- end
     },
     {
-        job = "sahp",
-        name = "San Andreas Highway Patrol",
+        job = "sasp",
+        name = "San Andreas State Patrol",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
         canCall = true, -- if true, players can call the company
         canMessage = false, -- if true, players can message the company
@@ -224,7 +232,7 @@ Config.Companies.Services = {
         },
         quickReplies = {
             ["Budget inquiry"] = "What is your budget?",
-            ["Meet at office"] = "Meet me here at the real estate agency office",
+            ["Meet at the office"] = "Meet me here at the Real Estate Agency Office",
         },
     },
     {
@@ -235,34 +243,34 @@ Config.Companies.Services = {
         canMessage = true, -- if true, players can message the company
         bossRanks = {"boss"}, -- ranks that can manage the company
         location = {
-            name = "Los Santos",
+            name = "San Andreas",
             coords = {
-                x = 293.6984,
-                y = -1407.4742
+                x = 1702.1639,
+                y = 3588.5635
             }
         },
         quickReplies = {
             ["APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.MESSAGE",
-            ["Emergency services en route"] = "An ambulance is on the way",
+            ["Emergency Services en-route"] = "An ambulance is on the way",
         },
     },
     {
-        job = "safd",
-        name = "SAFD",
-        icon = "https://cdn-icons-png.flaticon.com/128/1032/1032989.png",
+        job = "impound_ls",
+        name = "Los Santos Impound",
+        icon = "https://i.ibb.co/QjFLND59/tow-truck.png",
         canCall = true, -- if true, players can call the company
         canMessage = true, -- if true, players can message the company
         bossRanks = {"boss"}, -- ranks that can manage the company
         location = {
-            name = "San Andreas",
+            name = "Los Santos",
             coords = {
-                x = 1690.2843,
-                y = 3574.2388
+                x = -303.2749,
+                y = -1170.2109
             }
         },
         quickReplies = {
             ["APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.TITLE"] = "APPS.SERVICES.QUICK_REPLIES.REQUEST_LOCATION.MESSAGE",
-            ["Fire services en route"] = "A fire truck is on the way",
+            ["Tow truck en-route"] = "A tow truck is on the way",
         },
     }
 }
@@ -468,8 +476,8 @@ Config.Locations = { -- Locations that'll appear in the maps app.
     },
     {
         position = vector2(833.9344, -1292.6493),
-        name = "SAHP",
-        description = "San Andreas Highway Patrol Office",
+        name = "State Patrol",
+        description = "San Andreas State Patrol Office",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
     },
     {
@@ -478,7 +486,13 @@ Config.Locations = { -- Locations that'll appear in the maps app.
         description = "Los Santos Medical Hospital",
         icon = "https://cdn-icons-png.flaticon.com/128/1032/1032989.png",
     },
-}
+    {
+        position = vector2(-303.274, -1170.2109),
+        name = "Impound Lot",
+        description = "Los Santos Impound Lot",
+        icon = "https://i.ibb.co/QjFLND59/tow-truck.png",
+    },
+} 
 
 Config.Locales = { -- If your desired language isn't here, you may contribute at https://github.com/lbphone/lb-phone-locales
     {
