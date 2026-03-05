@@ -7,11 +7,11 @@ function GetJob()
     return playerData and playerData.job and {name = playerData.job.name, grade = playerData.job.grade} or false
 end
 
---[[RegisterNetEvent("esx:setJob") 
+RegisterNetEvent("esx:setJob") 
 AddEventHandler('esx:setJob', function(job, lastJob)
     if not LocalPlayer.state.trustZone then return end
     zonePermissionReset(job)
-end)]]
+end)
 
 --[[RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded',function(xPlayer, isNew, skin)

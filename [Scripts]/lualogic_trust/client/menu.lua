@@ -41,8 +41,8 @@ local function OwnedVehicleOptions(vehicle)
             title = 'Spawn',
             icon = 'wand-magic-sparkles',
             iconColor = 'FF5EFF00',
-            disabled = not IsModelInCdimage(vehicle),
-            --disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
+            --disabled = not IsModelInCdimage(vehicle),
+            disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
             onSelect = function()
                 SpawnVehicle(vehicle, GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), true)
             end
@@ -54,8 +54,8 @@ local function OwnedVehicleOptions(vehicle)
             title = 'Trade',
             icon = 'right-left',
             iconColor = '#00ffae',
-            disabled = not GlobalState.owner_trade,
-            --disabled = not GlobalState.owner_trade or not zonePermission('owner_trade'),
+            --disabled = not GlobalState.owner_trade,
+            disabled = not GlobalState.owner_trade or not zonePermission('owner_trade'),
             onSelect = function()
                 local input = lib.inputDialog('Ownership Trade', {
                     {type = 'number', label = 'Player ID', description = 'The ID of the player you want to trade ownership with', icon = 'hashtag'}
@@ -79,8 +79,8 @@ local function OwnedVehicleOptions(vehicle)
             title = 'Transfer',
             icon = 'hand-holding-hand',
             iconColor = '#7c00ad',
-            disabled = not GlobalState.owner_transfer,
-            --disabled = not GlobalState.owner_transfer or not zonePermission('owner_transfer'),
+            --disabled = not GlobalState.owner_transfer,
+            disabled = not GlobalState.owner_transfer or not zonePermission('owner_transfer'),
             onSelect = function()
                 local input = lib.inputDialog('Transfer Ownership', {
                     {type = 'number', label = 'Player ID', description = 'The game id of the player you want to transfer ownership to', icon = 'hashtag'},
@@ -104,8 +104,8 @@ local function OwnedVehicleOptions(vehicle)
             title = 'Give',
             icon = 'hand-holding-dollar',
             iconColor = '#ffe100',
-            disabled = not GlobalState.trust_give,
-            --disabled = not GlobalState.trust_give or not zonePermission('trust_give'),
+            --disabled = not GlobalState.trust_give,
+            disabled = not GlobalState.trust_give or not zonePermission('trust_give'),
             onSelect = function()
                 local input = lib.inputDialog('Give Trust', {
                     {type = 'number', label = 'Player ID', description = 'The game id of the player you want to give trust to', icon = 'hashtag'},
@@ -125,8 +125,8 @@ local function OwnedVehicleOptions(vehicle)
             title = 'Remove',
             icon = 'ban',
             iconColor = 'red',
-            disabled = not GlobalState.owner_remove,
-            --disabled = not GlobalState.owner_remove or not zonePermission('owner_remove'),
+            --disabled = not GlobalState.owner_remove,
+            disabled = not GlobalState.owner_remove or not zonePermission('owner_remove'),
             args = {
                 vehicle = vehicle,
             },
@@ -396,7 +396,7 @@ CreateThread(function()
         options = {}
     }
 
-    --[[if config.modules.preview.enabled then
+    if config.modules.preview.enabled then
         menu.options[#menu.options+1] = {
             title = 'Setup Preview',
             icon = 'camera-rotate',
@@ -406,7 +406,7 @@ CreateThread(function()
                 PreviewVehiclesMenu()
             end
         }
-    end]]
+    end
 
     if config.modules.owner.enabled then
         menu.options[#menu.options+1] = {
@@ -787,8 +787,8 @@ if config.modules.system.admin.enabled then
                 title = 'Set Ownership',
                 icon = icon,
                 iconColor = color,
+                --disabled = not GlobalState.owner_set,
                 disabled = not GlobalState.owner_set,
-                --disabled = not GlobalState.owner_set or not zonePermission('owner_set'),
                 onSelect = function()
                     SetOwnership()
                 end
@@ -817,8 +817,8 @@ if config.modules.system.admin.enabled then
                 title = 'Clear Ownership',
                 icon = icon,
                 iconColor = color,
+                --disabled = not GlobalState.owner_clear,
                 disabled = not GlobalState.owner_clear,
-                --disabled = not GlobalState.owner_clear or not zonePermission('owner_clear'),
                 onSelect = function()
                     ClearOwnership()
                 end
@@ -849,8 +849,8 @@ if config.modules.system.admin.enabled then
                 title = 'Remove Ownership',
                 icon = icon,
                 iconColor = color,
+                --disabled = not GlobalState.owner_remove,
                 disabled = not GlobalState.owner_remove,
-                --disabled = not GlobalState.owner_remove or not zonePermission('owner_remove'),
                 onSelect = function()
                     RemoveOwnership()
                 end
@@ -890,8 +890,8 @@ if config.modules.system.admin.enabled then
                 title = 'Set Trust',
                 icon = icon,
                 iconColor = color,
+                --disabled = not GlobalState.trust_set,
                 disabled = not GlobalState.trust_set,
-                --disabled = not GlobalState.trust_set or not zonePermission('trust_set'),
                 onSelect = function()
                     SetTrust()
                 end
@@ -920,8 +920,8 @@ if config.modules.system.admin.enabled then
                 title = 'Clear Trust',
                 icon = icon,
                 iconColor = color,
+                --disabled = not GlobalState.trust_clear,
                 disabled = not GlobalState.trust_clear,
-                --disabled = not GlobalState.trust_clear or not zonePermission('trust_clear'),
                 onSelect = function()
                     ClearTrust()
                 end
@@ -952,8 +952,8 @@ if config.modules.system.admin.enabled then
                 title = 'Remove Trust',
                 icon = icon,
                 iconColor = color,
+                --disabled = not GlobalState.trust_remove,
                 disabled = not GlobalState.trust_remove,
-                --disabled = not GlobalState.trust_remove or not zonePermission('trust_remove'),
                 onSelect = function()
                     RemoveTrust()
                 end
@@ -1052,8 +1052,8 @@ if config.modules.trust.give.enabled then
                 title = 'Spawn',
                 icon = 'wand-magic-sparkles',
                 iconColor = 'FF5EFF00',
-                disabled = not IsModelInCdimage(vehicle),
-                --disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
+                --disabled = not IsModelInCdimage(vehicle),
+                disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
                 onSelect = function()
                     SpawnVehicle(vehicle, GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), true)
                 end
@@ -1065,8 +1065,8 @@ if config.modules.trust.give.enabled then
                 title = 'Trade',
                 icon = 'right-left',
                 iconColor = '#00ffae',
-                disabled = not GlobalState.trust_trade,
-                --disabled = not GlobalState.trust_trade or not zonePermission('trust_trade'),
+                --disabled = not GlobalState.trust_trade,
+                disabled = not GlobalState.trust_trade or not zonePermission('trust_trade'),
                 onSelect = function()
                     local input = lib.inputDialog('Trust Trade', {
                         {type = 'number', label = 'Player ID', description = 'The ID of the player you want to trade trust with', icon = 'hashtag'}
@@ -1090,8 +1090,8 @@ if config.modules.trust.give.enabled then
                 title = 'Remove',
                 icon = 'ban',
                 iconColor = 'red',
-                disabled = not GlobalState.trust_remove,
-                --disabled = not GlobalState.trust_remove or not zonePermission('trust_remove'),
+                --disabled = not GlobalState.trust_remove,
+                disabled = not GlobalState.trust_remove or not zonePermission('trust_remove'),
                 onSelect = function()
                     local alert = lib.alertDialog({
                         header = 'Trust System',
@@ -1186,6 +1186,16 @@ if config.modules.system.enabled then
                 end
             }
         end
+
+        menu.options[#menu.options+1] = {
+            title = 'Transfer Vehicles to Garage',
+            description = 'This will transfer all your owned vehicles to your garage to roleplay outside of trust zones.',
+            icon = 'arrow-left',
+            iconColor = 'red',
+            onSelect = function()
+                ExecuteCommand('transfer_vehicles_owned')
+            end
+        }
 
         if config.modules.system.search.enabled then
             menu.options[#menu.options+1] = {

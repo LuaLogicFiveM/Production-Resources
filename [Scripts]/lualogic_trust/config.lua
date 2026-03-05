@@ -23,23 +23,19 @@ return {
         enabled = true,
         locations = {
             { -- Roxwood
-                debug = false,
-                thickness = 50,
+                debug = true,
+                thickness = 100,
                 permissions = {
-                    enabled = true,
-                    ['sheriff'] = {
-                        ['spawn'] = 1,
-                        ['preview'] = 2,
-                        ['trust_set'] = 0,
-                        ['trust_give'] = 0,
-                        ['trust_trade'] = 0,
-                        ['trust_clear'] = 0,
-                        ['trust_remove'] = 0,
-                        ['owner_set'] = 0,
-                        ['owner_trade'] = 0,
-                        ['owner_transfer'] = 3,
-                        ['owner_remove'] = 0,
-                        ['owner_clear'] = 0,
+                    enabled = false,
+                    ['default'] = {
+                        ['spawn'] = true,
+                        ['preview'] = true,
+                        ['trust_give'] = true,
+                        ['trust_trade'] = true,
+                        ['trust_remove'] = true,
+                        ['owner_trade'] = true,
+                        ['owner_transfer'] = true,
+                        ['owner_remove'] = true,
                     }
                 },
                 points = {
@@ -56,15 +52,15 @@ return {
                     vec(602.5103, 6731.0977, 25.0)
                 },
                 blip = {
-                    enabled = false,
+                    enabled = true,
                     coords = vec3(-565.8764, 7352.7822, 18.5576),
-                    label = 'Trust Zone',
+                    label = '[Trust Zone] - Roxwood',
                     sprite = 474,
-                    scale = 0.5,
+                    scale = 1.0,
                     color = 30
                 },
                 radius = {
-                    enabled = false,
+                    enabled = true,
                     opacity = 85,
                     radius = 600.0,
                     color = 30
@@ -74,7 +70,7 @@ return {
     },
     modules = {
         preview = {
-            enabled = true,
+            enabled = false,
             limit = 5,
             alpha = 150, -- set to false to disable
             freeze = true,
@@ -115,7 +111,7 @@ return {
                 name = {
                     enabled = true, -- enable/disable player name search to view their data, can be changed live through admin panel.
                     command = 'search_name',
-                    permissionType = 'group', -- group/discord
+                    permissionType = 'discord', -- group/discord
                     permission = '1413587611179683890', -- ace perm or false for everyone
                 },
                 vehicle = {
@@ -127,7 +123,7 @@ return {
                 identifier = {
                     enabled = true, -- enable/disable player name search to view their data, can be changed live through admin panel.
                     command = 'search_identifier',
-                    permissionType = 'group', -- group/discord
+                    permissionType = 'discord', -- group/discord
                     permission = '1413587611179683890', -- ace perm or false for everyone
                 }
             },
@@ -147,7 +143,7 @@ return {
             set = {
                 enabled = true,-- default state of setting ownership, can be changed live through admin panel.
                 command = 'owner_set',
-                permissionType = 'group', -- group/discord
+                permissionType = 'discord', -- group/discord
                 permission = '1413587733095514132', -- ace perm or false for everyone
                 limits = {
                     enabled = true,
@@ -176,7 +172,7 @@ return {
                 admin = { -- admin menu system/command to remove ownership from a player
                     enabled = true,
                     command = 'owner_remove_admin',
-                    permissionType = 'group', -- group/discord
+                    permissionType = 'discord', -- group/discord
                     permission = '1413587797591199894', -- ace perm or false for everyone
                 },
                 locations = {
@@ -187,7 +183,7 @@ return {
             clear = {
                 enabled = true, -- default state of clearing ownership, can be changed live through admin panel.
                 command = 'owner_clear',
-                permissionType = 'group', -- group/discord
+                permissionType = 'discord', -- group/discord
                 permission = '1413588031285362749', -- ace perm or false for everyone
                 locations = {
                     enabled = false,
@@ -569,7 +565,7 @@ return {
             set = {
                 enabled = true,-- default state of setting trust, can be changed live through admin panel.
                 command = 'trust_set',
-                permissionType = 'group', -- group/discord
+                permissionType = 'discord', -- group/discord
                 permission = '1413588090911461457', -- ace perm or false for everyone
                 locations = {
                     enabled = false,
@@ -765,7 +761,7 @@ return {
                 admin = { -- admin menu system/command to remove trust from a player even if the admin doesnt have ownership
                     enabled = true,
                     command = 'trust_remove_admin',
-                    permissionType = 'group', -- group/discord
+                    permissionType = 'discord', -- group/discord
                     permission = '1413588118845657088', -- ace perm or false for everyone
                 },
                 locations = {
@@ -776,13 +772,13 @@ return {
             clear = { -- clears the vehicles trust and ownership
                 enabled = true, -- default state of deleting ownership, can be changed live through admin panel.
                 command = 'trust_clear',
-                permissionType = 'group', -- group/discord
+                permissionType = 'discord', -- group/discord
                 permission = '1413588178794844160', -- ace perm or false for everyone
             },
             trade = {
                 enabled = true,
                 command = 'trust_trade',
-                permissionType = 'group', -- group/discord
+                permissionType = 'discord', -- group/discord
                 permission = '1413588193231507579', -- ace perm or false for everyone
                 locations = {
                     enabled = false,

@@ -1,6 +1,5 @@
 local config = require 'config'
 
---[[
 local trustSetConfig = config.modules.trust.set
 
 if trustSetConfig.enabled then
@@ -18,9 +17,9 @@ if trustSetConfig.enabled then
 			return Notify(src, 'You are unable to access this', 'error')
 		end
 
-		if src ~= 0 and zoneCheck(source, 'trust_set') then
-			return Notify(src, 'You are not permitted to use this command in this area.', 'error')
-		end
+		--if src ~= 0 and zoneCheck(source, 'trust_set') then
+		--	return Notify(src, 'You are not permitted to use this command in this area.', 'error')
+		--end
 
 		local tgt = args[1]
 		local vehicle = args[2]
@@ -150,9 +149,9 @@ if ownerRemoveConfig.enabled then
 			return Notify(src, 'You are unable to access this', 'error')
 		end
 
-		if not zoneCheck(src, 'owner_remove') then
-			return Notify(src, 'You are not permitted to use this command in this area.', 'error')
-		end
+		--if not zoneCheck(src, 'owner_remove') then
+		--	return Notify(src, 'You are not permitted to use this command in this area.', 'error')
+		--end
 
 		local vehicle = args[1]
 
@@ -227,9 +226,9 @@ if ownerSetConfig.enabled then
 			return Notify(src, 'You are unable to access this', 'error')
 		end
 
-		if src ~= 0 and not zoneCheck(src, 'owner_set') then
-			return Notify(src, 'You are not permitted to use this command in this area.', 'error')
-		end
+		--if src ~= 0 and not zoneCheck(src, 'owner_set') then
+		--	return Notify(src, 'You are not permitted to use this command in this area.', 'error')
+		--end
 
 		local tgt = args[1]
 		local vehicle = args[2]
@@ -255,9 +254,9 @@ if ownerClearConfig.enabled then
 			return Notify(src, 'You are unable to access this', 'error')
 		end
 
-		if src ~= 0 and not zoneCheck(src, 'owner_clear') then
-			return Notify(src, 'You are not permitted to use this command in this area.', 'error')
-		end
+		--if src ~= 0 and not zoneCheck(src, 'owner_clear') then
+		--	return Notify(src, 'You are not permitted to use this command in this area.', 'error')
+		--end
 
 		local vehicle = args[1]
 
@@ -294,9 +293,9 @@ if adminConfig.enabled then
 	lib.callback.register('lualogic_trust:server:requestPermission', function(source, type, role)
 		return HasPermission(source, type, role)
 	end)
-end]]
+end
 
-function HasDiscordRole(source, role)
+--[[function HasDiscordRole(source, role)
 	local roles = exports.lorp_discord_api:GetUserRoles(source)
 	return roles[role] or false
 end
@@ -410,9 +409,9 @@ if config.modules.trust.clear.enabled then
 			return Notify(src, 'You are unable to access this', 'error')
 		end
 
-		--[[if config.modules.trust.clear.locations.enabled and not IsInZone(src, 'trust_clear') then
-			return Notify(src, 'You are not in a clear trust zone.', 'error')
-		end]]
+		--if config.modules.trust.clear.locations.enabled and not IsInZone(src, 'trust_clear') then
+		--	return Notify(src, 'You are not in a clear trust zone.', 'error')
+		--end
 
 		local vehicle = args[1]
 
@@ -566,4 +565,4 @@ if config.modules.system.admin.enabled then
 	lib.callback.register('lualogic_trust:server:requestPermission', function(source, role)
 		return HasDiscordRole(source, role)
 	end)
-end
+end]]

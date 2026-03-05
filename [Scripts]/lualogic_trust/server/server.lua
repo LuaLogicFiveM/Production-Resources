@@ -168,7 +168,7 @@ local function HasVehicleSlots(source, data)
 	local playerRoles = GetDiscordRoles(src)
 
 	if playerRoles then
-		for limitCount, discordRole in pairs(limitConfig.whitelist) do
+		for limitCount, discordRole in ipairs(limitConfig.whitelist) do
 			if playerRoles[discordRole] then
 				limit = limitCount
 			end
@@ -479,7 +479,6 @@ function SetTrust(source, target, vehicle)
 		return
 	end
 
-	--table.insert(player_vehicles, {vehicle = veh, owner = false})
 	player_vehicles[veh] = false
 	vehicles[identifier] = player_vehicles
 	Notify(src, 'You have set the trust of vehicle '..veh..' to player '..targetName, 'success')
@@ -1236,17 +1235,27 @@ end
 
 local transferred = {}
 
-RegisterCommand('transfer_vehicles_owned', function(source, args)
-	if source >= 1 then return end
+local function IsTransferredOwned(identifier)
+	local row = MySQL.prepare.await('SELECT `transferred_owned` FROM `lualogic_trust` WHERE `identifier` = ? LIMIT 1', { identifier })
+	return row or false
+end
 
-	local targetSource = args[1] and args[1] or false
+RegisterCommand('transfer_vehicles_owned', function(source, args)
+	--if source >= 1 then return end
+
+	local targetSource = source
 
 	if targetSource then
 		if transferred[targetSource] then
 			return Notify(source, 'This players vehicles are already transferred', 'error')
 		end
 
-		local identifier = GetIdentifier(targetSource) or targetSource
+		local identifier = GetIdentifier(targetSource)
+
+		if IsTransferredOwned(identifier) == 'true' then
+			return Notify(source, 'This players vehicles are already transferred', 'error')
+		end
+
 		local player_vehicles = identifier and vehicles[identifier] or false
 
 		if player_vehicles then
@@ -1255,15 +1264,15 @@ RegisterCommand('transfer_vehicles_owned', function(source, args)
 			for vehicle, owned in pairs(player_vehicles) do
 				if owned == true then
 					local properties = {plate = GenerateUniquePlate(), model = GetHashKey(vehicle)}
-					queries[#queries+1] = { query = 'INSERT INTO `owned_vehicles` (owner, plate, vehicle, type) VALUES (?, ?, ?, ?)', values = { identifier, properties.plate, json.encode(properties), 'car' } }
+					queries[#queries+1] = { query = 'INSERT INTO `owned_vehicles` (owner, plate, vehicle, type) VALUES (?, ?, ?, ?)', values = { GetIdentifierFramework(targetSource), properties.plate, json.encode(properties), 'car' } }
 				end
 			end
 
 			MySQL.transaction(queries, function(success)
 				if success then
 					transferred[targetSource] = true
+					MySQL.update('UPDATE lualogic_trust SET transferred_owned = ? WHERE identifier = ?', { 'true', identifier })
 					Notify(source, ('You have transferred all the vehicles to the garages for %s (%i)'):format(GetPlayerName(targetSource), targetSource), 'success')
-					Notify(targetSource, ('Your owned vehicles have been transferred the garages by %s (%i)'):format(source ~= 0 and GetPlayerName(source) or 'Server Console', source), 'success')
 				else
 					Notify(source, 'The player already has one of his owned vehicles in the garages', 'error')
 				end
@@ -1322,4 +1331,23 @@ RegisterCommand('updatecacheruntime', function(source, args)
 	end
 
 	UpdateCacheRuntime(targetIdentifier, data)
+end, true)
+
+RegisterCommand('convertidentifierstolicense', function(source)
+	if source ~= 0 then return end
+
+	local response = MySQL.prepare.await('SELECT `identifier`, `data` FROM `lualogic_trust`')
+
+	if response then
+		for _, profile in ipairs(response) do
+			local noCharString = profile.identifier:match("^char%d+:(.+)$")
+			local licenseFormatted = ('license:%s'):format(noCharString)
+
+			MySQL.update('UPDATE lualogic_trust SET identifier = ? WHERE identifier = ?', { licenseFormatted, profile.identifier }, function(affectedRows)
+				if affectedRows == 1 then
+					lib.print.info('Successfully updated identifier: ', profile.identifier)
+				end
+			end)
+		end
+	end
 end, true)

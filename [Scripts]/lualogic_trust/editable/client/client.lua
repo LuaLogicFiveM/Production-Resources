@@ -2,22 +2,18 @@ local config = require 'config'
 local playerPermissions = {
     ['spawn'] = false,
     ['preview'] = false,
-    ['trust_set'] = false,
     ['trust_give'] = false,
     ['trust_trade'] = false,
-    ['trust_clear'] = false,
     ['trust_remove'] = false,
-    ['owner_set'] = false,
     ['owner_trade'] = false,
     ['owner_transfer'] = false,
     ['owner_remove'] = false,
-    ['owner_clear'] = false,
 }
 
 function zonePermission(action)
     local permGrade = action and playerPermissions[action] or false
     local playerJob = GetJob()
-    return permGrade and playerJob and playerJob.grade >= permGrade or false
+    return permGrade and playerJob and type(permGrade) == "boolean" and permGrade == true or permGrade ~= false and playerJob.grade >= permGrade
 end
 
 function Notify(message, type)
@@ -28,19 +24,22 @@ lib.callback.register('lualogic_trust:client:loaded', function(vehicle)
     return IsModelInCdimage(vehicle)
 end)
 
---[[
 local function onEnter(self)
     LocalPlayer.state.trustZone = self.id
 
     local zoneData = config.zones.locations[self.id]
 
-    if zoneData and zoneData.permissions.enabled then
+    if zoneData then
 	    local playerJob = GetJob()
-        local permData = playerJob and zoneData.permissions[playerJob.name] or false
+        local permData = playerJob and (zoneData.permissions[playerJob.name] or zoneData.permissions['default']) or false
+
+        print(json.encode(permData))
 
         if permData then
             playerPermissions = permData
         end
+
+        TriggerServerEvent('lualogic_trust:server:zone', 'enter', self.id)
     end
 end
 
@@ -55,18 +54,25 @@ local function onExit(self)
             playerPermissions = {
                 ['spawn'] = false,
                 ['preview'] = false,
-                ['trust_set'] = false,
                 ['trust_give'] = false,
                 ['trust_trade'] = false,
-                ['trust_clear'] = false,
                 ['trust_remove'] = false,
-                ['owner_set'] = false,
                 ['owner_trade'] = false,
                 ['owner_transfer'] = false,
                 ['owner_remove'] = false,
-                ['owner_clear'] = false,
             }
         end
+    else
+        playerPermissions = {
+            ['spawn'] = false,
+            ['preview'] = false,
+            ['trust_give'] = false,
+            ['trust_trade'] = false,
+            ['trust_remove'] = false,
+            ['owner_trade'] = false,
+            ['owner_transfer'] = false,
+            ['owner_remove'] = false,
+        }
     end
 
     if vehicle then
@@ -77,6 +83,8 @@ local function onExit(self)
             Notify('You are not allowed to leave trust zones with owned or trusted vehicles unless spawned from a garage.', 'warning')
         end
     end
+
+    TriggerServerEvent('lualogic_trust:server:zone', 'exit', self.id)
 end
 
 --local function inside(self)
@@ -97,23 +105,40 @@ end
 function zonePermissionReset(jobData)
     local locationData = config.zones.locations[LocalPlayer.state.trustZone]
 
-    if locationData.permissions[jobData.name] then
-        local locationPerms = locationData.permissions[jobData.name]
+    if locationData.permissions.enabled then
+        if locationData.permissions[jobData.name] then
+            local locationPerms = locationData.permissions[jobData.name]
 
-        playerPermissions = locationPerms
+            playerPermissions = locationPerms
+        else
+            playerPermissions = {
+                ['spawn'] = false,
+                ['preview'] = false,
+                ['trust_set'] = false,
+                ['trust_give'] = false,
+                ['trust_trade'] = false,
+                ['trust_clear'] = false,
+                ['trust_remove'] = false,
+                ['owner_set'] = false,
+                ['owner_trade'] = false,
+                ['owner_transfer'] = false,
+                ['owner_remove'] = false,
+                ['owner_clear'] = false,
+            }
+        end
     else
         playerPermissions = {
-            ['spawn'] = false,
-            ['preview'] = false,
+            ['spawn'] = true,
+            ['preview'] = true,
             ['trust_set'] = false,
-            ['trust_give'] = false,
-            ['trust_trade'] = false,
+            ['trust_give'] = true,
+            ['trust_trade'] = true,
             ['trust_clear'] = false,
-            ['trust_remove'] = false,
+            ['trust_remove'] = true,
             ['owner_set'] = false,
-            ['owner_trade'] = false,
-            ['owner_transfer'] = false,
-            ['owner_remove'] = false,
+            ['owner_trade'] = true,
+            ['owner_transfer'] = true,
+            ['owner_remove'] = true,
             ['owner_clear'] = false,
         }
     end
@@ -145,9 +170,9 @@ CreateThread(function()
 		end
 	end
 end)
-]]
 
-CreateThread(function()
+
+--[[CreateThread(function()
 	if config.modules.trust.give.locations.enabled then
 		for _, blipData in pairs(config.modules.trust.give.locations.zones) do
 			if blipData.radius.enable then
@@ -399,17 +424,17 @@ CreateThread(function()
             end
 		end
 	end
-end)
+end)]]
 
---[[function IsInZone(type)
+function IsInZone(type)
 	local playerJob = GetJob()
     local permData = type and playerPermissions[type] or false
 
-	return LocalPlayer.state.trustZone and permData and playerJob and permData <= playerJob.grade or false
-end]]
+	return LocalPlayer.state.trustZone and permData and playerJob and (permData <= playerJob.grade or permData == true) or false
+end
 
 lib.onCache('seat', function(seat)
     if seat ~= -1 then return end
-    --if not LocalPlayer.state.trustZone then return end
+    if not LocalPlayer.state.trustZone then return end
     TriggerServerEvent('lualogic_trust:server:enteredVehicle', VehToNet(cache.vehicle))
 end)

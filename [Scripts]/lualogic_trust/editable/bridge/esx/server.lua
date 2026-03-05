@@ -3,7 +3,7 @@ if GetResourceState('es_extended') ~= 'started' then return end
 local ESX = exports.es_extended:getSharedObject()
 local config = require 'config'
 
-function GetIdentifier(src)
+--[[function GetIdentifier(src)
     local xPlayer = ESX.GetPlayerFromId(src)
 
     if not xPlayer then
@@ -11,23 +11,37 @@ function GetIdentifier(src)
     end
 
     return xPlayer.identifier
+end]]
+
+function GetIdentifierFramework(src)
+    local xPlayer = ESX.GetPlayerFromId(src)
+
+    if not xPlayer then
+        return DebugPrint('[GetIdentifierFramework] - xPlayer was unable to be found for id '..src, 'error')
+    end
+
+    return xPlayer.identifier
+end
+
+function GetIdentifier(src)
+    return GetPlayerIdentifierByType(src, 'license')
 end
 
 function GetJob(src)
     local xPlayer = ESX.GetPlayerFromId(src)
 
     if not xPlayer then
-        return DebugPrint('[GetIdentifier] - xPlayer was unable to be found for id '..src, 'error')
+        return DebugPrint('[GetJob] - xPlayer was unable to be found for id '..src, 'error')
     end
 
     return xPlayer.getJob()
 end
 
-function GetJob(src)
+function GetGroup(src)
     local xPlayer = ESX.GetPlayerFromId(src)
 
     if not xPlayer then
-        return DebugPrint('[GetIdentifier] - xPlayer was unable to be found for id '..src, 'error')
+        return DebugPrint('[GetJob] - xPlayer was unable to be found for id '..src, 'error')
     end
 
     return xPlayer.getGroup()
@@ -35,7 +49,8 @@ end
 
 if config.cache.names then
     RegisterNetEvent('esx:playerLoaded', function(player, xPlayer)
-        local data = MySQL.query.await('SELECT `name` FROM `lualogic_trust` WHERE `identifier` = ? LIMIT 1', { xPlayer.identifier })
+        local identifier = GetIdentifier(player)
+        local data = MySQL.query.await('SELECT `name` FROM `lualogic_trust` WHERE `identifier` = ? LIMIT 1', { identifier })
 
         if not data then return end
 
@@ -48,7 +63,7 @@ if config.cache.names then
             end
         end
 
-        MySQL.update('UPDATE lualogic_trust SET name = ? WHERE identifier = ?', { playerName, GetIdentifier(player) }, false)
+        MySQL.update('UPDATE lualogic_trust SET name = ? WHERE identifier = ?', { playerName, identifier }, false)
     end)
 end
 

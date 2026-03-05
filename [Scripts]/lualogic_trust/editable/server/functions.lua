@@ -23,6 +23,11 @@ end
 
 local discordType = config.core.discord
 
+function GetDiscordRoles(source)
+	local playerRoles = exports.lorp_discord_api:GetUserRoles(source)
+	return playerRoles and playerRoles or false
+end
+
 function HasPermission(source, type, permission)
 	if type == 'discord' then
 		if not discordType then return end
@@ -31,8 +36,8 @@ function HasPermission(source, type, permission)
 			local playerRoles = exports.Badger_Discord_API:GetDiscordRoles(source)
 			return playerRoles and permission and playerRoles[permission] or false
 		elseif discordType == 'custom' then
-			print('You need to put your discord api in lualogic_trust/editable/core/functions.lua')
-			return true
+			local playerRoles = GetDiscordRoles(source)
+			return playerRoles and permission and playerRoles[permission] or false
 		elseif discordType == 'none' then
 			return true
 		end
@@ -69,9 +74,4 @@ function GetDiscordIdentifier(source)
 	if src == 0 then return 'N/A' end
 	local discord = GetPlayerIdentifierByType(src, 'discord')
 	return discord:sub(9)
-end
-
-function GetDiscordRoles(source)
-	local roles = exports.lorp_discord_api:GetUserRoles(source)
-	return roles or false
 end
