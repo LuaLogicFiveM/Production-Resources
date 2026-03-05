@@ -53,23 +53,7 @@ end
 -- ██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║███████╗███████║███████║    ██████╔╝██║  ██║██║  ██║
 -- ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 CL.ProgressBar = function(label, time)
-    lib.progressBar({
-        duration = time,
-        label = label,
-        useWhileDead = false,
-        canCancel = false,
-        disable = {
-            car = true,
-            move = true,
-            combat = true,
-        },
-        anim = {
-            dict = 'mp_player_intdrink',
-            clip = 'loop_bottle'
-        },
-
-    })
-    --[[exports['progressbar']:Progress({
+    exports['progressbar']:Progress({
         name = 'installation',
         label = label,
         duration = time,
@@ -80,7 +64,7 @@ CL.ProgressBar = function(label, time)
             disableCarMovement = true,
             disableCombat = true,
         }
-    })]]
+    })
 end
 
 
@@ -91,8 +75,8 @@ end
 -- ███████║██║  ██╗██║███████╗███████╗    ██████╔╝██║  ██║██║  ██║
 -- ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
 CL.Skillbar = function(cb)
-    --local finished = exports["tgiann-skillbar"]:taskBar(3000)
-    --cb(finished)
+    local finished = exports["tgiann-skillbar"]:taskBar(3000)
+    cb(finished)
 end
 
 

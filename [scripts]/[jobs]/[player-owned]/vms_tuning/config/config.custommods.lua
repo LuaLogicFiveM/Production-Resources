@@ -28,17 +28,17 @@ Config.StanceCustomValues = {
         -- [7] = {}, -- Super
         [8] = false, -- Motorcycles: (Setting false will prevent any modification of the wheels stance)
         -- [9] = {}, -- Off-road
-        --[10] = false, -- Industrial
-        --[11] = false, -- Utility
-        --[12] = false, -- Vans
+        [10] = false, -- Industrial
+        [11] = false, -- Utility
+        [12] = false, -- Vans
         [13] = false, -- Cycles
         [14] = false, -- Boats
         [15] = false, -- Helicopters
         [16] = false, -- Planes
-        --[17] = false, -- Service
+        [17] = false, -- Service
         [18] = false, -- Emergency
         [19] = false, -- Military
-        --[20] = false, -- Commercial
+        [20] = false, -- Commercial
         [21] = false, -- Trains
         [22] = false, -- Open Wheel
     },
@@ -47,12 +47,12 @@ Config.StanceCustomValues = {
     byModels = {
         [GetHashKey('adder')] = false, -- By setting false for a model that is not plotted in byClasses, you prevent stance wheels from tuning in it
 
-        --[[[GetHashKey('zr350')] = {
+        [GetHashKey('zr350')] = {
             ['offset-front'] = {min = 70, max = 99},
             ['offset-rear'] = {min = 70, max = 99},
             ['rotation-front'] = {min = 0, max = 40},
             ['rotation-rear'] = {min = 0, max = 40},
-        },]]
+        },
     }
 }
 
@@ -115,13 +115,13 @@ Config.EngineSwaps = {
     {label = '7.0 V12',               soundModel = 'penetrator',       tax = 'tuning', price = 174000},
     {label = '7.2 V12',               soundModel = 'gp1',              tax = 'tuning', price = 174000},
     {label = '8.0 W16',               soundModel = 'btype2',           tax = 'tuning', price = 250000},
-    {label = 'Übermacht (N55 V6)',    soundModel = 'n55b30t0',         tax = 'tuning', price = 260000},
-    {label = 'Übermacht (S55 V6)',    soundModel = 's55b30',           tax = 'tuning', price = 270000},
-    {label = 'Benefactor (M113 V8)',  soundModel = 'mercedesm113',     tax = 'tuning', price = 280000},
-    {label = 'Benefactor (M155 V8)',  soundModel = 'mercedesm155',     tax = 'tuning', price = 290000},
-    {label = 'Benefactor (M177 V8)',  soundModel = 'ta176m177',        tax = 'tuning', price = 300000},
-    {label = 'Benefactor (M178 V8)',  soundModel = 'ta178amgb',        tax = 'tuning', price = 310000},
-    {label = 'Pegassi (L539 V12)',    soundModel = 'ta023l539',        tax = 'tuning',price = 320000},
+    {label = 'Übermacht (N55 V6)',    soundModel = 'n55b30t0',         tax = 'tuning', price = 1},
+    {label = 'Übermacht (S55 V6)',    soundModel = 's55b30',           tax = 'tuning', price = 1},
+    {label = 'Benefactor (M113 V8)',  soundModel = 'mercedesm113',     tax = 'tuning', price = 1},
+    {label = 'Benefactor (M155 V8)',  soundModel = 'mercedesm155',     tax = 'tuning', price = 1},
+    {label = 'Benefactor (M177 V8)',  soundModel = 'ta176m177',        tax = 'tuning', price = 1},
+    {label = 'Benefactor (M178 V8)',  soundModel = 'ta178amgb',        tax = 'tuning', price = 1},
+    {label = 'Pegassi (L539 V12)',    soundModel = 'ta023l539',        tax = 'tuning', price = 1},
 }
 
 ---@class VehiclesSwaps in this section, you can configure the availability of the engine swap option for a specific vehicle model
@@ -132,13 +132,13 @@ Config.VehiclesSwaps = {
 ---@class VehiclesSwapsByClass in this section, you can configure the availability of engine swap options for specific classes of vehicles
 Config.VehiclesSwapsByClass = {
     [0] = {'blista', 'pony', 'futo', 'buffalo'}, -- Compacts
-    [1] = {'pony', 'futo', 'buffalo', 'kuruma', 'brawler'}, -- Sedans
+    [1] = {'pony', 'futo', 'buffalo', 'kuruma', 'brawler', 'n55b30t0', 's55b30', 'mercedesm113', 'mercedesm155', 'ta176m177', 'ta178amgb'}, -- Sedans
     [2] = {'pony', 'futo', 'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2'}, -- SUVs
-    [3] = {'pony', 'futo', 'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2'}, -- Coupes
+    [3] = {'pony', 'futo', 'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'n55b30t0', 's55b30', 'mercedesm113', 'mercedesm155', 'ta176m177', 'ta178amgb'}, -- Coupes
     [4] = {'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'btype2'}, -- Muscle
-    [5] = {'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'btype2'}, -- Sports Classics
-    [6] = {'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'penetrator', 'gp1', 'btype2'}, -- Sports
-    [7] = {'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'penetrator', 'gp1', 'btype2'}, -- Super
+    [5] = {'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'btype2', 'n55b30t0', 's55b30', 'mercedesm113', 'mercedesm155', 'ta176m177', 'ta178amgb', 'ta023l539'}, -- Sports Classics
+    [6] = {'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'penetrator', 'gp1', 'btype2', 'n55b30t0', 's55b30', 'mercedesm113', 'mercedesm155', 'ta176m177', 'ta178amgb', 'ta023l539'}, -- Sports
+    [7] = {'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2', 'penetrator', 'gp1', 'btype2', 'n55b30t0', 's55b30', 'mercedesm113', 'mercedesm155', 'ta176m177', 'ta178amgb', 'ta023l539'}, -- Super
     [8] = nil, -- Motorcycles
     [9] = {'buffalo', 'kuruma', 'brawler', 'casco', 'blade', 'ratloader2'}, -- Off-road
     [10] = nil, -- Industrial

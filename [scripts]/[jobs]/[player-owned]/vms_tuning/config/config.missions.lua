@@ -14,7 +14,7 @@ Config.RefreshNewMissions = 7 * 60 * 1000 -- 7 Minutes
 Config.MissionMoneyToSocietyPercent = 0
 
 ---@param MissionMoneyToMechanicPercent number: What percentage of a player's earnings from a mission should go to him
-Config.MissionMoneyToMechanicPercent = 50
+Config.MissionMoneyToMechanicPercent = 100
 
 Config.MissionBlips = {
     ['mission'] = {

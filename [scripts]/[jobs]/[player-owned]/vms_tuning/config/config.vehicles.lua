@@ -267,29 +267,29 @@ Config.Vehicles = {
 
 ---@class VehiclesPricesByClass You can set the price for the vehicle class separately, based on which the cost of tuning parts will be calculated
 Config.VehiclesPricesByClass = {
-    [0] = 65000, -- Compacts
-    [1] = 90000, -- Sedans
-    [2] = 110000, -- SUVs
-    [3] = 110000, -- Coupes
-    [4] = 80000, -- Muscle
-    [5] = 100000, -- Sports Classics
-    [6] = 150000, -- Sports
-    [7] = 180000, -- Super
-    [8] = 40000, -- Motorcycles
-    [9] = 65000, -- Off-road
-    [10] = 50000, -- Industrial
-    [11] = 50000, -- Utility
-    [12] = 50000, -- Vans
-    [13] = 2000, -- Cycles
-    [14] = 250000, -- Boats
-    [15] = 400000, -- Helicopters
-    [16] = 500000, -- Planes
-    [17] = 50000, -- Service
-    [18] = 50000, -- Emergency
-    [19] = 50000, -- Military
-    [20] = 50000, -- Commercial
-    [21] = 50000, -- Trains
-    [22] = 50000, -- Open Wheel
+    [0]  = 45500,  -- Compacts
+    [1]  = 63000,  -- Sedans
+    [2]  = 77000,  -- SUVs
+    [3]  = 77000,  -- Coupes
+    [4]  = 56000,  -- Muscle
+    [5]  = 70000,  -- Sports Classics
+    [6]  = 105000, -- Sports
+    [7]  = 126000, -- Super
+    [8]  = 28000,  -- Motorcycles
+    [9]  = 45500,  -- Off-road
+    [10] = 35000,  -- Industrial
+    [11] = 35000,  -- Utility
+    [12] = 35000,  -- Vans
+    [13] = 1400,   -- Cycles
+    [14] = 175000, -- Boats
+    [15] = 280000, -- Helicopters
+    [16] = 350000, -- Planes
+    [17] = 35000,  -- Service
+    [18] = 35000,  -- Emergency
+    [19] = 35000,  -- Military
+    [20] = 35000,  -- Commercial
+    [21] = 35000,  -- Trains
+    [22] = 35000   -- Open Wheel 
 }
 
 

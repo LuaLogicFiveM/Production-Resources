@@ -84,7 +84,6 @@ CL.Target = function(type, data, cb)
         elseif type == "remove_entity" then
             exports['qb-target']:RemoveTargetEntity(data.entity, data.targetId)
         elseif type == "point" then
-            print('vms_vehicleshopv2-'..data.uniqueName)
             exports['qb-target']:AddBoxZone('vms_vehicleshopv2-'..data.uniqueName, vec(data.coords.x, data.coords.y, data.coords.z), data.size.x, data.size.y, {
                 name = 'vms_vehicleshopv2-'..data.uniqueName,
                 heading = data.rotation - 90.0 or 0.0,

@@ -317,6 +317,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['CZ'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -632,6 +633,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['DE'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -947,6 +949,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['FR'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -1262,6 +1265,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['ES'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -1577,6 +1581,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['PT'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -1892,6 +1897,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['PL'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -2207,6 +2213,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['TR'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -2522,6 +2529,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     },
     ['IT'] = {
         ['notify.wait'] = "Wait before next action...",
@@ -2837,6 +2845,7 @@ Config.Translate = {
         ['null_replacement.modTrimB'] = 'Trim B %s',
         ['null_replacement.modTank'] = 'Tank %s',
         ['null_replacement.modWindows'] = 'Windows %s',
+        ['null_replacement.modLightbar'] = 'Light Bar %s',
     }
 }
 

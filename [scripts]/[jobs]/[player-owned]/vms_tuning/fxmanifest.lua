@@ -8,7 +8,7 @@ game 'gta5'
 lua54 'yes'
 author 'vames™'
 description 'vms_tuning'
-version '2.1.3'
+version '2.1.5'
 shared_scripts {
 	'config/config.lua',
 	'config/config.missions.lua',
@@ -23,7 +23,7 @@ client_scripts {
 	'config/config.vehicles.lua',
 }
 server_scripts {
-	'@oxmysql/lib/MySQL.lua',
+	'@mysql-async/lib/MySQL.lua',
 	'config/config.server.lua',
 	'server/*.lua',
 	'server/custom_mods/*.lua',

@@ -30,30 +30,30 @@ SV.Database = {
 -- ╚███╔███╔╝███████╗██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║  ██╗███████║
 --  ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝
 SV.Webhooks = {
-    ['BILL'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['TUNING'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
+    ['BILL'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
+    ['TUNING'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
     
-    ['GENERATED_DISCOUNT_CODE_BY_ADMIN'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['REMOVED_DISCOUNT_CODE_BY_ADMIN'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['GENERATED_DISCOUNT_CODE'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['REMOVED_DISCOUNT_CODE'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
+    ['GENERATED_DISCOUNT_CODE_BY_ADMIN'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
+    ['REMOVED_DISCOUNT_CODE_BY_ADMIN'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
+    ['GENERATED_DISCOUNT_CODE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
+    ['REMOVED_DISCOUNT_CODE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
 
-    ['EMPLOYEE_BONUS'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['EMPLOYEE_CHANGE_GRADE'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['EMPLOYEE_FIRE'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['EMPLOYEE_HIRE'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['WITHDRAW'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['DEPOSIT'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
-    ['ANNOUNCEMENT'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx",
+    ['EMPLOYEE_BONUS'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
+    ['EMPLOYEE_CHANGE_GRADE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
+    ['EMPLOYEE_FIRE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
+    ['EMPLOYEE_HIRE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
+    ['WITHDRAW'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
+    ['DEPOSIT'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
+    ['ANNOUNCEMENT'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
 
     -- Individual webhooks:
-    -- ['BennyS'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx"
-    -- ['BennyS-Paintshop'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx"
-    -- ['LSCustoms1'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx"
-    -- ['LSCustoms2'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx"
-    -- ['LSCustoms3'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx"
-    -- ['AutoRepairs'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx"
-    -- ['BeekersGarage'] = "https://ptb.discord.com/api/webhooks/1372937043637964931/YRwtI_DvqzEfozv5HHIT_pLaSld6IeFLW0UloPxVyWD6qSLCLYGs852arftEYkEUluMx"
+    -- ['BennyS'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
+    -- ['BennyS-Paintshop'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
+    -- ['LSCustoms1'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
+    -- ['LSCustoms2'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
+    -- ['LSCustoms3'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
+    -- ['AutoRepairs'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
+    -- ['BeekersGarage'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
 }
 
 SV.WebhookText = {
@@ -367,6 +367,7 @@ SV.updateVehicle = function(xPlayer, cache)
         }, function(result)
             if result then
                 local vehiclePropsDB = json.decode(result[SV.Database['esx-column:vehicle']])
+
                 if vehiclePropsDB.model == cache.currentProperties['model'] then
                     MySQL.Async.execute(('UPDATE %s SET %s = @vehicle, %s = @newPlate WHERE %s = @lastPlate'):format(
                         SV.Database['esx-table:owned_vehicles'],
@@ -387,8 +388,6 @@ SV.updateVehicle = function(xPlayer, cache)
                         end
                     end
                 end
-            else
-                
             end
         end)
     elseif Config.Core == "QB-Core" then
@@ -488,18 +487,81 @@ end
 -- ▀▄▄ ▀▄█ ▄██  █  ▀▄▀ █ ▀ █   █▄█ █▀█ █▄▄ █▀█ █ ▀█ ▀▄▄ █▄▄
 -- @getSocietyMoney: custom function, it is used when you don't use Config.UseBuildInCompanyBalance, you should customize your company money storage system, cb is supposed to return a number
 SV.getSocietyMoney = function(societyName, cb)
-    local society = exports['cs_bossmenu']:GetAccount(societyName)
-    cb(society)
+    if GetResourceState('cs_bossmenu') == "started" then
+        local society = exports['cs_bossmenu']:GetAccount(societyName)
+        cb(society)
+        
+    elseif GetResourceState('okokBanking') == "started" then
+        local society = exports['okokBanking']:GetAccount(societyName)
+        cb(society)
+
+    elseif GetResourceState('qb-banking') == "started" then
+        local society = exports['qb-banking']:GetAccountBalance(societyName)
+        cb(society)
+
+    elseif GetResourceState('qb-management') == "started" then
+        local society = exports['qb-management']:GetAccount(societyName)
+        cb(society)
+
+    elseif GetResourceState('esx_society') == "started" then
+        TriggerEvent('esx_addonaccount:getSharedAccount', societyName, function(account)
+            cb(account.money)
+        end)
+
+    else
+        print('^5[INFO] ^7No society found for your server, go to vms_tuning/config/config.server.lua and adjust ^2SV.getSocietyMoney^7!')
+        
+    end
 end
 
 -- @addSocietyMoney: custom function, it is used when you don't use Config.UseBuildInCompanyBalance, you should customize your company money storage system
 SV.addSocietyMoney = function(societyName, amount)
-    exports['cs_bossmenu']:AddMoney(societyName, amount)
+    if GetResourceState('cs_bossmenu') == "started" then
+        exports['cs_bossmenu']:AddMoney(societyName, amount)
+        
+    elseif GetResourceState('okokBanking') == "started" then
+        exports['okokBanking']:AddMoney(societyName, amount)
+
+    elseif GetResourceState('qb-banking') == "started" then
+        exports['qb-banking']:AddMoney(societyName, amount)
+
+    elseif GetResourceState('qb-management') == "started" then
+        exports['qb-management']:AddMoney(societyName, amount)
+
+    elseif GetResourceState('esx_society') == "started" then
+        TriggerEvent('esx_addonaccount:getSharedAccount', societyName, function(account)
+            account.addMoney(amount)
+        end)
+        
+    else
+        print('^5[INFO] ^7No society found for your server, go to vms_tuning/config/config.server.lua and adjust ^2SV.addSocietyMoney^7!')
+        
+    end
 end
 
 -- @removeSocietyMoney: custom function, it is used when you don't use Config.UseBuildInCompanyBalance, you should customize your company money storage system
 SV.removeSocietyMoney = function(societyName, amount)
-    exports['cs_bossmenu']:RemoveMoney(societyName, amount)
+    if GetResourceState('cs_bossmenu') == "started" then
+        exports['cs_bossmenu']:RemoveMoney(societyName, amount)
+        
+    elseif GetResourceState('okokBanking') == "started" then
+        exports['okokBanking']:RemoveMoney(societyName, amount)
+
+    elseif GetResourceState('qb-banking') == "started" then
+        exports['qb-banking']:RemoveMoney(societyName, amount)
+
+    elseif GetResourceState('qb-management') == "started" then
+        exports['qb-management']:RemoveMoney(societyName, amount)
+
+    elseif GetResourceState('esx_society') == "started" then
+        TriggerEvent('esx_addonaccount:getSharedAccount', societyName, function(account)
+            account.removeMoney(amount)
+        end)
+        
+    else
+        print('^5[INFO] ^7No society found for your server, go to vms_tuning/config/config.server.lua and adjust ^2SV.removeSocietyMoney^7!')
+        
+    end
 end
 
 -- @banPlayer: is executed when a player tries to upgrade a vehicle using cheats, you can set for example your ban event or DropPlayer function
@@ -509,7 +571,7 @@ end
 
 -- ██▀ ▄▀▀ ▀▄▀   ▄▀▀ ▄▀▄ ▄▀▀ █ ██▀ ▀█▀ ▀▄▀   █▀▄ ██▀ ▄▀  █ ▄▀▀ ▀█▀ ██▀ █▀▄
 -- █▄▄ ▄██ █ █   ▄██ ▀▄▀ ▀▄▄ █ █▄▄  █   █    █▀▄ █▄▄ ▀▄█ █ ▄██  █  █▄▄ █▀▄
---[[Citizen.CreateThread(function() -- Registration esx_society
+Citizen.CreateThread(function() -- Registration esx_society
     Citizen.Wait(1000)
     if not Config.UseBuildInCompanyBalance and not Config.RemoveBalanceFromMenu then
         for k, v in pairs(Config.TuningPoints) do
@@ -518,4 +580,4 @@ end
             end
         end
     end
-end)]]
+end)

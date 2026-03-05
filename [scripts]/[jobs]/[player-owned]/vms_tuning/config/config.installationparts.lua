@@ -325,6 +325,30 @@ Config.InstallationPartsPoints = {
         ['engineSwap'] = vector3(-2077.1960, -467.4511, 12.0988 + 1.0), -- Engine
         [23] = vector3(-2077.1960, -467.4511, 12.0988 + 1.0), -- Wheels
     },
+    ['mlo526'] = {
+        ['clean'] = vector3(768.0231, 1300.2014, 360.2946 + 1.0),
+        ['repair'] = vector3(768.0231, 1300.2014, 360.2946 + 1.0),
+
+        ['color1'] = vector3(773.4854, 1299.8834, 360.2947 + 1.0),
+        ['color2'] = vector3(773.4854, 1299.8834, 360.2947 + 1.0),
+        ['pearlescentColor'] = vector3(773.4854, 1299.8834, 360.2947 + 1.0),
+        ['wheelColor'] = vector3(773.4854, 1299.8834, 360.2947 + 1.0),
+        ['plateIndex'] = vector3(773.4854, 1299.8834, 360.2947 + 1.0),
+        ['neonColor'] = vector3(773.4854, 1299.8834, 360.2947 + 1.0),
+
+        [0] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Spoilers
+        [1] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Front Bumper
+        [2] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Rear Bumper
+        [4] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Exhaustx
+        [7] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Hood
+
+        [11] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Engine
+        [12] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Brakes
+        [13] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Transmission
+        [15] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Suspension
+        ['engineSwap'] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Engine
+        [23] = vector3(761.4608, 1287.0819, 360.2945 + 1.0), -- Wheels
+    },
 }
 
 ---@field UseAdvancedEngineInstallation: Advanced engine installation with engine on stand
@@ -422,8 +446,19 @@ Config.AdvancedInstallationsProps = {
 
         installationPointDirection = 'front',
         installationOffset = vec(0.0, 0.2, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+            [joaat('buffalo4')] = vec(0.0, 0.12, 0.2),
+        },
+
         installationPointDirectionBackEngine = 'rear',
         installationOffsetBackEngine = vec(0.0, -0.2, 0.2),
+        installationOffsetsBackEngineByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
+
         installationAnimation = {"mini@repair", "fixing_a_ped"},
         installationTime = 4000,
         openDoors = {4},
@@ -446,12 +481,20 @@ Config.AdvancedInstallationsProps = {
         time = 3000,
         standInstallationPointDirection = 'front-left',
         standInstallationOffset = vec(0.1, -2.0, 0.2),
+        standInstallationOffsetByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         standInstallationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         
         installation = {
             [1] = {
                 pointDirection = "rear",
                 offset = vec(0.4, 0.1, 0.2),
+                offsetByModel = {
+                    -- Add custom offsets for specific models here, example:
+                    -- [joaat("model_name")] = vec(x, y, z)
+                },
                 animation = {"amb@world_human_vehicle_mechanic@male@base", "base"},
                 time = 6000,
                 pedDirection = 'front',
@@ -459,6 +502,10 @@ Config.AdvancedInstallationsProps = {
             [2] = {
                 pointDirection = "front",
                 offset = vec(0.0, -0.1, 0.2),
+                offsetByModel = {
+                    -- Add custom offsets for specific models here, example:
+                    -- [joaat("model_name")] = vec(x, y, z)
+                },
                 animation = {"amb@world_human_vehicle_mechanic@male@base", "base"},
                 time = 6000,
                 pedDirection = 'rear',
@@ -484,12 +531,22 @@ Config.AdvancedInstallationsProps = {
         
         standInstallationPointDirection = 'front-left',
         standInstallationOffset = vec(0.1, -2.0, 0.2),
+        standInstallationOffsetByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+            [joaat('adder')] = vec(1.5, -4.5, 0.2)
+        },
         standInstallationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         
         installation = {
             [1] = {
                 pointDirection = "front",
                 offset = vec(0.0, -0.1, 0.2),
+                offsetByModel = {
+                    -- Add custom offsets for specific models here, example:
+                    -- [joaat("model_name")] = vec(x, y, z)
+                    [joaat('adder')] = vec(0.0, -0.1, 0.2),
+                },
                 animation = {"amb@world_human_vehicle_mechanic@male@base", "base"},
                 time = 6000,
                 pedDirection = 'rear',
@@ -515,12 +572,20 @@ Config.AdvancedInstallationsProps = {
 
         standInstallationPointDirection = 'front-left',
         standInstallationOffset = vec(0.1, -2.0, 0.2),
+        standInstallationOffsetByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         standInstallationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         
         installation = {
             [1] = {
                 pointDirection = "rear",
                 offset = vec(0.4, 0.1, 0.2),
+                offsetByModel = {
+                    -- Add custom offsets for specific models here, example:
+                    -- [joaat("model_name")] = vec(x, y, z)
+                },
                 animation = {"amb@world_human_vehicle_mechanic@male@base", "base"},
                 time = 6000,
                 pedDirection = 'front',
@@ -528,6 +593,10 @@ Config.AdvancedInstallationsProps = {
             [2] = {
                 pointDirection = "front",
                 offset = vec(0.0, -0.1, 0.2),
+                offsetByModel = {
+                    -- Add custom offsets for specific models here, example:
+                    -- [joaat("model_name")] = vec(x, y, z)
+                },
                 animation = {"amb@world_human_vehicle_mechanic@male@base", "base"},
                 time = 6000,
                 pedDirection = 'rear',
@@ -552,8 +621,18 @@ Config.AdvancedInstallationsProps = {
 
         installationPointDirection = 'front',
         installationOffset = vec(0.0, 0.2, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
+
         installationPointDirectionBackEngine = 'rear',
         installationOffsetBackEngine = vec(0.0, -0.2, 0.2),
+        installationOffsetsBackEngineByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
+
         installationAnimation = {"mini@repair", "fixing_a_ped"},
         installationTime = 4000,
         openDoors = {4},
@@ -578,6 +657,10 @@ Config.AdvancedInstallationsProps = {
 
         standInstallationPointDirection = 'front-left',
         standInstallationOffset = vec(0.1, -2.0, 0.2),
+        standInstallationOffsetByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         standInstallationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         
         hash = joaat('prop_wheel_rim_01'),
@@ -632,6 +715,10 @@ Config.InstallationPartsPropsList = {
         propPlacement = {0.0, 0.0, -0.01, 90.0, 0.0, 0.0},
         installationPointDirection = 'front-left',
         installationOffset = vec(0.1, -0.75, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"amb@world_human_maid_clean@", "base"},
         installationTime = 4000,
         
@@ -643,10 +730,21 @@ Config.InstallationPartsPropsList = {
         hash = joaat("prop_tool_wrench"),
         boneAttach = 57005,
         propPlacement = {0.119, -0.072, -0.05, -90.0, 120.0, 12.0},
+
         installationPointDirection = 'front',
         installationOffset = vec(0.4, 0.1, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
+        
         installationPointDirectionBackEngine = 'rear',
         installationOffsetBackEngine = vec(0.0, -0.1, 0.2),
+        installationOffsetsBackEngineByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
+
         installationAnimation = {"mini@repair", "fixing_a_ped"},
         installationTime = 4000,
         openDoors = {4},
@@ -669,6 +767,10 @@ Config.InstallationPartsPropsList = {
         propPlacement = {0.119, -0.072, -0.05, -90.0, 120.0, 12.0},
         installationPointDirection = 'front-left',
         installationOffset = vec(-0.4, 0.15, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@business@weed@weed_inspecting_lo_med_hi@", "weed_spraybottle_stand_spraying_01_inspector"},
         installationTime = 4000,
         
@@ -682,6 +784,10 @@ Config.InstallationPartsPropsList = {
         propPlacement = {0.119, -0.072, -0.05, -90.0, 120.0, 12.0},
         installationPointDirection = 'front-right',
         installationOffset = vec(-0.4, 0.15, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@business@weed@weed_inspecting_lo_med_hi@", "weed_spraybottle_stand_spraying_01_inspector"},
         installationTime = 4000,
         
@@ -695,6 +801,10 @@ Config.InstallationPartsPropsList = {
         propPlacement = {0.119, -0.072, -0.05, -90.0, 120.0, 12.0},
         installationPointDirection = 'front-left',
         installationOffset = vec(-0.4, 0.15, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@business@weed@weed_inspecting_lo_med_hi@", "weed_spraybottle_stand_spraying_01_inspector"},
         installationTime = 4000,
         
@@ -708,6 +818,10 @@ Config.InstallationPartsPropsList = {
         propPlacement = {0.119, -0.072, -0.05, -90.0, 120.0, 12.0},
         installationPointDirection = 'front-left',
         installationOffset = vec(-0.4, 0.15, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@business@weed@weed_inspecting_lo_med_hi@", "weed_spraybottle_stand_spraying_01_inspector"},
         installationTime = 4000,
         
@@ -722,6 +836,10 @@ Config.InstallationPartsPropsList = {
         animation = {"anim@heists@box_carry@", "idle"},
         installationPointDirection = 'rear',
         installationOffset = vec(0.0, -0.15, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         installationTime = 4000,
         
@@ -736,6 +854,10 @@ Config.InstallationPartsPropsList = {
         animation = {"anim@heists@box_carry@", "idle"},
         installationPointDirection = 'front-left',
         installationOffset = vec(0.2, -2.25, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         installationTime = 4000,
         
@@ -750,6 +872,10 @@ Config.InstallationPartsPropsList = {
         animation = {"anim@heists@box_carry@", "idle"},
         installationPointDirection = 'rear',
         installationOffset = vec(0.0, -0.1, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"mini@repair", "fixing_a_ped"},
         installationTime = 4000,
         
@@ -764,6 +890,10 @@ Config.InstallationPartsPropsList = {
         animation = {"anim@heists@box_carry@", "idle"},
         installationPointDirection = 'front',
         installationOffset = vec(0.0, 0.1, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         installationTime = 4000,
         
@@ -778,6 +908,10 @@ Config.InstallationPartsPropsList = {
         animation = {"anim@heists@box_carry@", "idle"},
         installationPointDirection = 'rear',
         installationOffset = vec(0.0, -0.1, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         installationTime = 4000,
         
@@ -791,6 +925,10 @@ Config.InstallationPartsPropsList = {
         propPlacement = {-0.04, -0.03, 0.09, 200.0, 220.0, 12.0},
         installationPointDirection = 'rear',
         installationOffset = vec(0.0, -0.1, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         installationTime = 4000,
         
@@ -805,6 +943,10 @@ Config.InstallationPartsPropsList = {
         animation = {"anim@heists@box_carry@", "idle"},
         installationPointDirection = 'front',
         installationOffset = vec(0.0, 0.1, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"mini@repair", "fixing_a_ped"},
         installationTime = 4000,
         
@@ -819,6 +961,10 @@ Config.InstallationPartsPropsList = {
         animation = {"anim@heists@box_carry@", "idle"},
         installationPointDirection = 'front-left',
         installationOffset = vec(0.15, -1.65, 0.2),
+        installationOffsetsByModel = {
+            -- Add custom offsets for specific models here, example:
+            -- [joaat("model_name")] = vec(x, y, z)
+        },
         installationAnimation = {"anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer"},
         installationTime = 4000,
         

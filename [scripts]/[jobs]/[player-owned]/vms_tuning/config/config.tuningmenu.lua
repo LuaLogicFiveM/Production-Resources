@@ -62,6 +62,7 @@ Config.TuningMenu = {
             {label = 'Wings', icon = 'other.webp', modType = 44, tax = 'tuning', priceMultiplier = 0.08},
             {label = 'Tank', icon = 'other.webp', modType = 45, tax = 'tuning', priceMultiplier = 0.06},
             {label = 'Windows', icon = 'windows.webp', modType = 46, tax = 'tuning', priceMultiplier = 0.05},
+            {label = 'Light bars', icon = 'lightbars.webp', modType = 49, tax = 'tuning', priceMultiplier = 0.05},
         }
     },
     ["inside"] = {
@@ -193,7 +194,7 @@ Config.TuningMaxValues = {
         [12] = 3, -- Brakes
         [15] = 3 -- Suspension
     },
-    --[[[joaat('buffalo5')] = { -- Model available for GTA+, blocked HSW parts
+    [joaat('buffalo5')] = { -- Model available for GTA+, blocked HSW parts
         [11] = 4, -- Engine
         [12] = 3, -- Brakes
         [13] = 3, -- Transmission
@@ -278,7 +279,7 @@ Config.TuningMaxValues = {
         [11] = 4, -- Engine
         [12] = 3, -- Brakes
         [15] = 4 -- Suspension
-    },]]
+    },
 
 }
 

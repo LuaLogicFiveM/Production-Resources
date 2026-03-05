@@ -177,7 +177,7 @@ Config.BlacklistArmedMods = {
 Config.VehiclePropertiesStateBag = "VehicleProperties"
 
 ---@field DefaultVehiclePrice number: Default price if the vehicle is not defined in Config.Vehicles (config.vehicles.lua)
-Config.DefaultVehiclePrice = 50000
+Config.DefaultVehiclePrice = 15000
 
 ---@field ForMotorcyclesOnlyMotoWheels boolean: When a player wants to tune the wheels of a motorcycle, he will only be able to choose from the 'Motorcycle' section, because by using other types of rims, there may be problems for motorcycles
 Config.ForMotorcyclesOnlyMotoWheels = true
@@ -292,6 +292,124 @@ Config.InsuredVehicleDiscount = 20 -- Vehicles with valid insurance will have 20
 Config.UseTuningPoints = true
 
 Config.TuningPoints = {
+    ['mlo526'] = { -- BennyS: Interior Benny'S.
+    --[[useIndividualWebhooks = false,
+    individualWebhooks = {
+        ['BILL'] = true,
+        ['TUNING'] = true,
+
+        ['GENERATED_DISCOUNT_CODE_BY_ADMIN'] = true,
+        ['GENERATED_DISCOUNT_CODE'] = true,
+
+        ['EMPLOYEE_BONUS'] = true,
+        ['EMPLOYEE_CHANGE_GRADE'] = true,
+        ['EMPLOYEE_FIRE'] = true,
+        ['EMPLOYEE_HIRE'] = true,
+
+        ['WITHDRAW'] = true,
+        ['DEPOSIT'] = true,
+
+        ['ANNOUNCEMENT'] = true,
+    },]]
+    blip = {
+        enabled = false,
+        sprite = 72,
+        display = 4,
+        scale = 0.85,
+        color = 83,
+        coords = vec(-1144.6677, -2080.6841, 13.4069),
+        name = "LS Customs",
+    },
+    marker = {
+        enabled = true,
+        id = 1,
+        size = vec(2.7, 2.7, 0.25),
+        color = {r=87, g=60, b=250, a=125},
+        rotate = false,
+        distanceToSee = 15.0,
+        distanceToAccess = 1.9
+    },
+    --[[markerBossMenu = {
+        enabled = false,
+        id = 29,
+        coords = vector3(-197.97, -1341.61, 34.7),
+        size = vec(0.55, 0.55, 0.55),
+        color = {r=87, g=60, b=250, a=125},
+        rotate = true,
+        distanceToSee = 15.0,
+        distanceToAccess = 1.3,
+    },
+    whitelist = { -- https://docs.vames-store.com/assets/vms_tuning/guides/
+        vehicleClasses = {
+            [0] = true, -- Compacts
+            [1] = true, -- Sedans
+            [2] = true, -- SUVs
+            [3] = true, -- Coupes
+            [4] = true, -- Muscle
+            [5] = true, -- Sports Classics
+            [6] = true, -- Sports
+            [7] = true, -- Super
+            [8] = true, -- Motorcycles
+            [9] = true, -- Off-road
+            -- [10] = true, -- Industrial
+            -- [11] = true, -- Utility
+            [12] = true, -- Vans
+            [13] = true, -- Cycles
+            -- [14] = true, -- Boats
+            -- [15] = true, -- Helicopters
+            -- [16] = true, -- Planes
+            -- [17] = true, -- Service
+            [18] = true, -- Emergency
+            -- [19] = true, -- Military
+            [20] = true, -- Commercial
+            -- [21] = true, -- Trains
+            -- [22] = true, -- Open Wheel
+        },
+        -- indexedColors = {},
+        -- menus = {},
+        -- parts = {},
+        -- actions = {},
+    },
+    blacklist = { -- https://docs.vames-store.com/assets/vms_tuning/guides/
+        -- vehicleClasses = {},
+        -- indexedColors = {
+        --     ['chameleon'] = true,
+        -- },
+        -- menus = {},
+        -- parts = {},
+        -- actions = {},
+    },]]
+    points = { --# Points where you can tune vehicles
+        [1] = vector3(770.3914, 1300.8390, 359.3622),
+        -- [2] = vector3(-223.26, -1323.21, 29.89),
+        -- [3] = vector(0.0, 0.0, 0.0),
+    },
+    --[[jobGradesToSet = {
+        {grade = 0, label = 'Recruit'},
+        {grade = 1, label = 'Employee'},
+        {grade = 2, label = 'Manager', needToBeBoss = true}, -- needToBeBoss means that only the boss can give this grade, the manager will not be able to do so
+        {grade = 3, label = 'Boss', needToBeBoss = true}, -- needToBeBoss means that only the boss can give this grade, the manager will not be able to do so
+    },
+
+    vehicleSpawn = vector4(-181.4, -1289.19, 30.3, 175.67), -- The point where the vehicle with which you will be going on the mission is spawned
+
+    client_can_select_tuning = true, -- This results in each player being able to select parts for his vehicle, and then paying, he selects the nearest mechanic who will install all the selected parts for him.
+
+    send_bill_to_player = true, -- This allows the mechanic to send a bill for the nearest player to whom he is tuning the vehicle
+
+    pay_from_society_money = false, -- Do you want the payment to be made with money from the society, if so, you need to enter the account name in society_name
+    society_name = 'society_mechanic', -- Society name will be requiered for pay_from_society_money or for Config.AddSocietyMoneyForTuningPercent or for Config.BillMoneyToSocietyPercent only if you are using esx_society/qb-management | example: 'society_mechanic',
+
+    -- Job Configuration common errors: https://docs.vames-store.com/assets/vms_tuning/common-errors#i-dont-see-tuning-points
+    --job = 'mechanic', -- job name - not required if you want to use this public removing this line.
+    grades_access = nil, -- nil: for every user with job, string: 'name', table: {'name', 'name2'}
+    manager_grades = 'manager', -- string: 'name', table: {'name', 'name2'}
+    boss_grades = 'boss', -- string: 'name', table: {'name', 'name2'}
+    cityhall_grades = { -- Grades for sections from vms_cityhall
+        ['resumes'] = {'manager', 'boss'}, -- string: 'name', table: {'name', 'name2'}
+        ['taxes'] = {'manager', 'boss'}, -- string: 'name', table: {'name', 'name2'}
+    },]]
+},
     ['mlo685'] = { -- BennyS: Interior Benny'S.
     --[[useIndividualWebhooks = false,
     individualWebhooks = {
@@ -616,7 +734,7 @@ Config.TuningPoints = {
         -- actions = {},
     },]]
     points = { --# Points where you can tune vehicles
-        [1] = vector3(181.9515, 2774.4675, 42.5230),
+        [1] = vector3(181.8319, 2774.2329, 42.5230),
         -- [2] = vector3(-223.26, -1323.21, 29.89),
         -- [3] = vector(0.0, 0.0, 0.0),
     },
