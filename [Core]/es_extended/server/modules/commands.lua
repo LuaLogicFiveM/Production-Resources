@@ -257,7 +257,7 @@ ESX.RegisterCommand(
         if not args.playerId then
             args.playerId = xPlayer.source
         end
-        if args.group == "owner" and xPlayer.getGroup() ~= 'owner' then
+        if args.group == "owner" and xPlayer and xPlayer.getGroup() ~= 'owner' then
             ESX.DiscordLogFields("UserActions", "Player tried to set owner group", "pink", {
                 { name = "Player", value = xPlayer and xPlayer.name or "Server Console", inline = true },
                 { name = "ID", value = xPlayer and xPlayer.source or "Unknown ID", inline = true },
