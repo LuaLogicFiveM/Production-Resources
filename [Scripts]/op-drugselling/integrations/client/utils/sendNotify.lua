@@ -27,8 +27,7 @@ Citizen.CreateThread(function()
             local data = {
                 description = title,
                 duration = time,
-                type = type,
-                position = 'top'
+                type = type
             }
             lib.notify(data)
         elseif Config.Misc.Notify == "QBOX" then

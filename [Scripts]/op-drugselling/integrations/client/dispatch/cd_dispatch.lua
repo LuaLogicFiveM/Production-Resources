@@ -1,19 +1,14 @@
 if Config.dispatchScript == "cd_dispatch" then
 
     function sendDispatchAlert(title, message, blipData)
-        local currentPos = GetEntityCoords(PlayerPedId())
-        local locationInfo = getStreetandZone(currentPos)
+        local data = exports['cd_dispatch']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
-            job_table = {'police', 'sahp', 'sheriff'}, 
-            coords = currentPos,
+            job_table = {'police', 'bcso', 'sasp' }, 
+            coords = data and data.coords or GetEntityCoords(cache.ped),
             title = title,
             message = message, 
-            location = {
-                label = locationInfo,
-                coords = vector2(currentPos.x, currentPos.y)
-            },
             flash = 0,
-            unique_id = data.unique_id,
+            unique_id = data and data.unique_id or math.random(1, 1000),
             sound = 1,
             blip = {
                 sprite = blipData.sprite, 
