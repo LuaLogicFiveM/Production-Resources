@@ -105,6 +105,12 @@ Config.AdminMenu = {
 
 Config.AdminPanelPlayers = {
     ['discord:1005645750077771797'] = true,
+    ['discord:492117034407165955'] = true,
+    ['discord:694700039678722090'] = true,
+    ['discord:226489725584801792'] = true,
+    ['discord:1166814047849676945'] = true,
+    ['discord:1023318068572737598'] = true,
+    ['discord:701263493977866290'] = true,
 }
 
 ----------------------------------------------------------------------------
@@ -117,10 +123,10 @@ Config.IV = {
     -- Each job will be able to tow vehicles only for configurated impound locations in garage admin!
     -- You can setup impound locations for selected jobs in garage admin.
     jobsList = {
-        ['sheriff'] = 0, -- Job name & grade.
-        ['sahp'] = 0, -- Job name & grade.
+        ['bcso'] = 0, -- Job name & grade.
+        ['sasp'] = 0, -- Job name & grade.
         ['gov'] = 0, -- Job name & grade.
-        ['lsimpound'] = 0, -- Job name & grade.
+        ['impound_ls'] = 0, -- Job name & grade.
     },
     commandName = "impoundmenu", -- Command Name
     allowPriceBeforeImpoundDate = true, -- Allows setting the vehicle release price *before* the impound date. (The player who impounded the vehicle can also set it to 0 to disable the fee.)
