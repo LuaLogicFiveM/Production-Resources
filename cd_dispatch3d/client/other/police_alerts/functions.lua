@@ -226,7 +226,7 @@ function HasWitnessCalledPolice(victimn)
                     if DoesEntityExist(ped) and not IsEntityDead(ped) then
                         DrawPedSphere(ped, debug_radius + 0.08, 0, 255, 0, 170)
                         local c = GetEntityCoords(ped)
-                        Draw3DText(c.x, c.y, c.z + 1.05, 'CALLING POLICE')
+                        Draw3DText(vector3(c.x, c.y, c.z + 1.05), 'CALLING POLICE')
                     end
                 end
             end

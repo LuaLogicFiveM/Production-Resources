@@ -15,6 +15,7 @@ if ESX == nil then
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 end
 
+-- Check if the framework is loaded
 function HasFrameworkLoaded()
     return ESX ~= nil
 end
@@ -38,15 +39,11 @@ function GetIdentifier(source)
     return Player.identifier
 end
 
--- Get the license identifier of a player
-function GetLicenseIdentifier(source)
-    return GetPlayerIdentifierByType(source, 'license')
-end
-
 -- Get the source from a unique identifier
 function GetSourceFromIdentifier(identifier)
     local players = ESX.GetPlayers()
     for _, src in pairs(players) do
+        src = tonumber(src)
         local Player = GetPlayer(src)
         if Player and Player.identifier == identifier then
             return src
@@ -78,36 +75,6 @@ function GetAdminPerms(source)
     if not Player then return end
 
     return Player.getGroup()
-end
-
--- Check if a player has admin permissions
-function HasAdminPerms(source, perms)
-    if not perms then return false end
-
-    local playerPerm = GetAdminPerms(source)
-    if not playerPerm then return false end
-
-    local p = tostring(playerPerm):lower()
-    local t = type(perms)
-
-    if t == 'string' then
-        return p == perms:lower()
-    end
-
-    if t == 'table' then
-        for key, value in pairs(perms) do
-
-            if type(key) == 'string' and key:lower() == p then
-                return true
-            end
-
-            if type(value) == 'string' and value:lower() == p then
-                return true
-            end
-        end
-    end
-
-    return false
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐
@@ -163,69 +130,6 @@ function GetJobDuty(source)
     return Player.job.onDuty
 end
 
--- Check if a player has the job
-function HasJob(source, job)
-    local myJob = GetJobName(source)
-    if not myJob or not GetJobDuty(source) or not GetJobGrade(source) then return false end
-
-    local myGrade = tonumber(GetJobGrade(source))
-    local jobType = type(job)
-
-    if jobType == 'string' then
-        return myJob == job
-    end
-
-    if jobType ~= 'table' then
-        return false
-    end
-
-    local minOnly = tonumber(job.min or job.minimum)
-    if minOnly then
-        return myGrade >= minOnly
-    end
-
-    local keyed = job[myJob]
-    if keyed ~= nil then
-        if type(keyed) == 'boolean' then
-            return keyed == true
-        end
-
-        local required = tonumber(keyed)
-        if required then
-            return myGrade >= required
-        end
-
-        return true
-    end
-
-    local isGradesOnly = (#job > 0)
-    if isGradesOnly then
-        for cd = 1, #job do
-            if tonumber(job[cd]) == nil then
-                isGradesOnly = false
-                break
-            end
-        end
-    end
-
-    if isGradesOnly then
-        for cd = 1, #job do
-            if myGrade == tonumber(job[cd]) then
-                return true
-            end
-        end
-        return false
-    end
-
-    for _, value in ipairs(job) do
-        if value == myJob then
-            return true
-        end
-    end
-
-    return false
-end
-
 -- ┌──────────────────────────────────────────────────────────────────┐
 -- │                                GANG                              │
 -- └──────────────────────────────────────────────────────────────────┘
@@ -275,15 +179,20 @@ function GetPlayerMoney(source, money_type)
 end
 
 -- Add money to a player
-function AddPlayerMoney(source, amount, money_type)
+function AddPlayerMoney(source, amount, money_type, reason)
     local Player = GetPlayer(source)
     if not Player then return end
+    reason = reason or ''
+
+    if Cfg.Banking ~= 'none'then
+        LogTransaction(source, amount, money_type, reason, 'deposit')
+    end
 
     if money_type == 'bank' then
-        Player.addAccountMoney('bank', amount)
+        Player.addAccountMoney('bank', amount, reason)
 
     elseif money_type == 'cash' then
-        Player.addAccountMoney('money', amount)
+        Player.addAccountMoney('money', amount, reason)
     end
 end
 
@@ -299,12 +208,16 @@ function RemovePlayerMoney(source, amount, money_type, reason)
         return false
     end
 
+    if Cfg.Banking ~= 'none'then
+        LogTransaction(source, amount, money_type, reason, 'withdraw')
+    end
+
     if money_type == 'bank' then
-        Player.removeAccountMoney('bank', amount)
+        Player.removeAccountMoney('bank', amount, reason)
         return true
 
     elseif money_type == 'cash' then
-        Player.removeAccountMoney('money', amount)
+        Player.removeAccountMoney('money', amount, reason)
         return true
     end
 end

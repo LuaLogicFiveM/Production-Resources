@@ -5,7 +5,13 @@ function SpawnNetworkedVehicle(props, coords, playerInVehicle, giveKeys)
 
     local plate = props.plate
     local heading = coords.w or coords.h or 0.0
-    local vehicle = FrameworkCreateVehicle(model, coords)
+
+    local vehicle
+    if Cfg.Framework == 'esx' and #(GetEntityCoords(PlayerPedId()) - vector3(coords.x, coords.y, coords.z)) > 424 then
+        vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, true)
+    else
+        vehicle = FrameworkCreateVehicle(model, coords)
+    end
 
     if not DoesEntityExist(vehicle) then
         SetModelAsNoLongerNeeded(model)
@@ -288,19 +294,21 @@ function GetPlayersInVehicle(vehicle, includeSelf)
 end
 
 -- Kicks players out of vehicle.
-function KickPlayersOutOfVehicle(vehicle)
+function KickPlayersOutOfVehicle(vehicle, forceKickout)
     local playersInVehicle = GetPlayersInVehicle(vehicle, true)
     if playersInVehicle then
-        exports.cd_bridge:Callback('cd_bridge:KickOutPlayersInVehicle', playersInVehicle)
+        exports.cd_bridge:Callback('cd_bridge:KickOutPlayersInVehicle', playersInVehicle,  forceKickout, NetworkGetNetworkIdFromEntity(vehicle))
     end
     return playersInVehicle
 end
 
 -- Despawns a networked vehicle.
-function DespawnNetworkedVehicle(vehicle)
+function DespawnNetworkedVehicle(vehicle, forceKickout)
     if not DoesEntityExist(vehicle) then return end
+    local plate = GetVehiclePlate(vehicle)
 
-    KickPlayersOutOfVehicle(vehicle)
+    UnRegisterPersistentVehicle(vehicle, plate)
+    KickPlayersOutOfVehicle(vehicle, forceKickout)
     EnsureNetworkControl(vehicle)
 
     if DoesEntityExist(vehicle) then

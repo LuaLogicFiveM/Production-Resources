@@ -17,6 +17,9 @@ function GiveVehicleKeys(plate, vehicle) -- Triggered when giving keys to a vehi
     elseif keysResource == 'fivecode_carkeys' then
         exports.fivecode_carkeys:GiveKey(vehicle, false, true)
 
+    elseif keysResource == 'jc_vehiclekeys' then
+        exports['jc_vehiclekeys']:GiveKeys(plate)
+
     elseif keysResource == 'mk_vehiclekeys' then
         exports['mk_vehiclekeys']:AddKey(vehicle)
 
@@ -82,6 +85,9 @@ function RemoveVehicleKeys(plate, vehicle) -- Triggered when removing keys from 
 
     elseif keysResource == 'fivecode_carkeys' then
         exports.fivecode_carkeys:StoreVehicleKey(vehicle, true)
+
+    elseif keysResource == 'jc_vehiclekeys' then
+        exports['jc_vehiclekeys']:RemoveKeys(plate)
 
     elseif keysResource == 'mk_vehiclekeys' then
         exports['mk_vehiclekeys']:RemoveKey(vehicle)

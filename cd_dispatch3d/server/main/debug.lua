@@ -70,7 +70,7 @@ CreateThread(function()
         ERROR('configuration_error_found', 'Config.lua Syntax Error')
     end
     if LocalesTable[Config.Language] == nil then
-        ERROR('configuration_error_found', 'Config.Language/locales.lua Typo : ['..Config.Language..']')
+        ERROR('configuration_error_found', 'No ['..Config.Language..'] locale found in configs/locales.lua. Reverting back to EN.')
     end
     if GetCurrentResourceName() ~= 'cd_dispatch3d' then
         ERROR('configuration_error_found', 'Resource Name Changed : ['..GetCurrentResourceName()..']')

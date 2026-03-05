@@ -1,58 +1,42 @@
-if Cfg.Framework ~= 'vrp' then return end
-
 -- ┌──────────────────────────────────────────────────────────────────┐
--- │                            INITIALIZE                            │
+-- │                              PLAYER                              │
 -- └──────────────────────────────────────────────────────────────────┘
 
--- Check if the framework is loaded
-function HasFrameworkLoaded()
-    return true
+-- Get a players character name
+local CharacterName = nil
+function GetCharacterName()
+    if CharacterName then
+        return CharacterName
+    end
+
+    CharacterName = exports.cd_bridge:Callback('cd_bridge:GetCharacterName')
+    return CharacterName
 end
 
--- Check if the player has loaded (after character selection).
-function HasPlayerLoadedIn()
-    return true
+-- ┌──────────────────────────────────────────────────────────────────┐
+-- │                               PERMS                              │
+-- └──────────────────────────────────────────────────────────────────┘
+
+-- Get the admin permissions/group of a player
+function GetAdminPerms()
+    return exports.cd_bridge:Callback('cd_bridge:GetAdminPerms')
+end
+
+-- Check if a player has admin permissions
+function HasAdminPerms(perms)
+    if not perms then
+        return false
+    end
+    return exports.cd_bridge:Callback('cd_bridge:HasAdminPerms', perms)
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐
 -- │                                JOB                               │
 -- └──────────────────────────────────────────────────────────────────┘
 
--- Get the job name of the player
-function GetJobName()
-    return 'unemployed'
-end
-
--- Get the job label of the player
-function GetJobLabel()
-    return 'Unemployed'
-end
-
--- Get the job grade of the player
-function GetJobGrade()
-    return 0
-end
-
--- Get the job grade label of the player
-function GetJobGradeLabel()
-    return 'Unemployed'
-end
-
--- Get if the player is on duty
-function GetJobDuty()
-    if Cfg.DisableDuty then
-        return true
-    end
-
-    local customDuty = GetCustomJobDuty()
-    if customDuty ~= nil then
-        return customDuty
-    end
-
-    return true
-end
-
 -- Check if a player has the job
+--- @param job string|table     The job name or a table of job names.
+--- @return boolean             --True if the player has the job, false otherwise.
 function HasJob(job)
     local myJob = GetJobName()
     if not myJob or not GetJobDuty() or not GetJobGrade() then return false end
@@ -116,41 +100,29 @@ function HasJob(job)
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐
--- │                                GANG                              │
+-- │                               ITEMS                              │
 -- └──────────────────────────────────────────────────────────────────┘
 
--- Get the gang name of the player
-function GetGangName()
-    local customGang = GetCustomGang()
-    if customGang ~= nil then
-        return customGang.name
-    end
-    return 'none'
+function HasItem(item, amount)
+    return exports.cd_bridge:Callback('cd_bridge:HasItem', item, amount)
 end
 
--- Get the gang label of the player
-function GetGangLabel()
-    local customGang = GetCustomGang()
-    if customGang ~= nil then
-        return customGang.label
-    end
-    return 'No Gang'
-end
-
--- Get the gang grade of the player
-function GetGangGrade()
-    local customGang = GetCustomGang()
-    if customGang ~= nil then
-        return customGang.grade
-    end
-    return 0
+function HasItemThenRemove(item, amount)
+    return exports.cd_bridge:Callback('cd_bridge:HasItemThenRemove', item, amount)
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐
--- │                              VEHICLE                             │
+-- │                           GET SHARED DATA                        │
 -- └──────────────────────────────────────────────────────────────────┘
 
-function FrameworkCreateVehicle(model, coords)
-    local heading = coords.w or coords.h or 0.0
-    return CreateVehicle(model, coords.x, coords.y, coords.z, heading, true, false)
+-- Get a formatted table of all shared vehicles
+--- @return table         --A table of all shared vehicles.
+local SharedVehicles = {}
+function GetSharedVehicles()
+    if next(SharedVehicles) ~= nil then
+        return SharedVehicles
+    else
+        SharedVehicles = exports.cd_bridge:Callback('cd_bridge:GetSharedVehicles')
+        return SharedVehicles
+    end
 end

@@ -28,16 +28,12 @@ function GetIdentifier(source)
     return Player.PlayerData.citizenid
 end
 
--- Get the license identifier of a player
-function GetLicenseIdentifier(source)
-    return GetPlayerIdentifierByType(source, 'license')
-end
-
 -- Get the source from a unique identifier
 function GetSourceFromIdentifier(identifier)
     local players = exports['qbx_core']:GetPlayersData()
     for _, Player in pairs(players) do
-        if Player and Player.PlayerData.citizenid == identifier then
+        src = tonumber(Player.source)
+        if Player and Player.citizenid == identifier then
             return Player.source
         end
     end
@@ -64,61 +60,6 @@ end
 -- Get the admin permissions/group of a player
 function GetAdminPerms(source)
     return exports['qbx_core']:GetPermission(source)
-end
-
--- Check if a player has admin permissions
-function HasAdminPerms(source, perms)
-    if not perms then return false end
-
-    local playerPerm = GetAdminPerms(source)
-    if not playerPerm then return false end
-
-    local tPerms = type(perms)
-
-    local function norm(v)
-        return tostring(v):lower()
-    end
-
-    local function listHasPerm(list, target)
-        local lt = type(list)
-        target = norm(target)
-
-        if lt == 'string' or lt == 'number' then
-            return norm(list) == target
-        elseif lt == 'table' then
-            for k, v in pairs(list) do
-                if type(k) == 'string' and norm(k) == target then
-                    return true
-                end
-                if type(v) == 'string' or type(v) == 'number' then
-                    if norm(v) == target then
-                        return true
-                    end
-                end
-            end
-        end
-
-        return false
-    end
-
-    if tPerms == 'string' or tPerms == 'number' then
-        return listHasPerm(playerPerm, perms)
-    end
-
-    if tPerms == 'table' then
-        for k, v in pairs(perms) do
-            if type(k) == 'string' and listHasPerm(playerPerm, k) then
-                return true
-            end
-            if type(v) == 'string' or type(v) == 'number' then
-                if listHasPerm(playerPerm, v) then
-                    return true
-                end
-            end
-        end
-    end
-
-    return false
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐
@@ -172,69 +113,6 @@ function GetJobDuty(source)
     if not Player then return false end
 
     return Player.PlayerData.job.onduty
-end
-
--- Check if a player has the job
-function HasJob(source, job)
-    local myJob = GetJobName(source)
-    if not myJob or not GetJobDuty(source) or not GetJobGrade(source) then return false end
-
-    local myGrade = tonumber(GetJobGrade(source))
-    local jobType = type(job)
-
-    if jobType == 'string' then
-        return myJob == job
-    end
-
-    if jobType ~= 'table' then
-        return false
-    end
-
-    local minOnly = tonumber(job.min or job.minimum)
-    if minOnly then
-        return myGrade >= minOnly
-    end
-
-    local keyed = job[myJob]
-    if keyed ~= nil then
-        if type(keyed) == 'boolean' then
-            return keyed == true
-        end
-
-        local required = tonumber(keyed)
-        if required then
-            return myGrade >= required
-        end
-
-        return true
-    end
-
-    local isGradesOnly = (#job > 0)
-    if isGradesOnly then
-        for cd = 1, #job do
-            if tonumber(job[cd]) == nil then
-                isGradesOnly = false
-                break
-            end
-        end
-    end
-
-    if isGradesOnly then
-        for cd = 1, #job do
-            if myGrade == tonumber(job[cd]) then
-                return true
-            end
-        end
-        return false
-    end
-
-    for _, value in ipairs(job) do
-        if value == myJob then
-            return true
-        end
-    end
-
-    return false
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐
@@ -300,6 +178,10 @@ function AddPlayerMoney(source, amount, money_type, reason)
     if not Player then return end
     reason = reason or ''
 
+    if Cfg.Banking ~= 'none'then
+        LogTransaction(source, amount, money_type, reason, 'deposit')
+    end
+
     if money_type == 'bank' then
         exports['qbx_core']:AddMoney(source, 'bank', amount, reason)
 
@@ -318,6 +200,10 @@ function RemovePlayerMoney(source, amount, money_type, reason)
     local balance = GetPlayerMoney(source, money_type)
     if balance < amount then
         return false
+    end
+
+    if Cfg.Banking ~= 'none'then
+        LogTransaction(source, amount, money_type, reason, 'withdraw')
     end
 
     if money_type == 'bank' then

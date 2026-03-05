@@ -17,6 +17,8 @@ local function Include(path)
     if not ok then error(runtimeErr, 0) end
 end
 
+HasBridgeLoaded = false
+
 --client/core
 Include('client/core/error_handling.lua')
 Include('client/core/functions.lua')
@@ -37,7 +39,10 @@ Include('client/integrations/vehicle_keys.lua')
 
 --client/framework
 Include(('client/framework/%s.lua'):format(Cfg.Framework:lower()))
+Include('client/framework/framework_functions.lua')
 
 if Cfg.BridgeDebug then
     Citizen.Trace(('^2[cd_bridge] Client bridge loaded into: ^7%s\n'):format(GetCurrentResourceName()))
 end
+
+HasBridgeLoaded = true

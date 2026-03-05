@@ -68,3 +68,58 @@ function GetInventoryImages()
     end
     return InventoryImages
 end
+
+-- Returns the first item containing the item name
+function ReturnFirstItem(source, item_name)
+    local inventory = exports["tgiann-inventory"]:GetInventory(source)
+    for _, item in pairs(inventory) do
+        if string.find(item.name, item_name) then
+            return item.name, item.slot
+        end
+    end
+    return nil
+end
+
+-- Adds quality to first item that matches item_name and has quality nil
+function AddQualityToItem(source, item_name, hp, slot)
+    local inventory = exports["tgiann-inventory"]:GetInventory(source)
+    if slot ~= nil then
+        inventory[slot].durability = hp
+    end
+    for _, item in pairs(inventory) do
+        if item.name == item_name and item.durability == nil then
+            item.durability = hp
+            return
+        end
+    end
+    return nil
+end
+
+-- Returns the first item quality it finds
+function GetItemQuality(source, item_name, slot)
+    local inventory = exports["tgiann-inventory"]:GetInventory(source)
+    if slot ~= nil then
+        return inventory[slot].durability
+    end
+    for _, items in pairs(inventory) do
+        if item.name == item_name then
+            return item.durability
+        end
+    end
+    return nil
+end
+
+-- Sets quality to the first item thats not nil and is > 0 
+function SetItemQuality(source, item_name, hp, slot)
+    local inventory = exports["tgiann-inventory"]:GetInventory(source)
+    if slot ~= nil then
+        inventory[slot].durability = hp
+    end
+    for _, item in pairs(PlayerItems) do
+        if item.name == item_name and item.durability ~= nil and item.durability > 0 then
+            item.durability = hp
+            return
+        end
+    end
+    return nil
+end

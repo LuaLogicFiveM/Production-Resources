@@ -227,13 +227,13 @@ function RequestEntityCollision(entity, coords)
 end
 
 -- Draws 3D text.
-function Draw3DText(x, y, z, text)
-    local onScreen, sx, sy = World3dToScreen2d(x, y, z)
+function Draw3DText(coords, text)
+    local onScreen, sx, sy = World3dToScreen2d(coords.x, coords.y, coords.z)
     if not onScreen then return end
     SetTextScale(0.32, 0.32)
     SetTextFont(4)
-    SetTextProportional(1)
-    SetTextCentre(1)
+    SetTextProportional(true)
+    SetTextCentre(true)
     SetTextEntry('STRING')
     AddTextComponentString(text)
     DrawText(sx, sy)
@@ -311,28 +311,39 @@ end
 
 -- Notification wrapper.
 function Notif(action, locale_key, ...)
-    if not TypeCheck(action, 'number', '3001', 'action missing from Notif functiion, 1st arg. Locale Key: '..(locale_key  or 'nil')) then
+    if not TypeCheck(action, 'number', '3001', 'action missing from Notif function, 1st arg. Locale Key: '..(locale_key or 'nil')) then
         return
     end
 
     if action < 1 or action > 3 then
-        return ERROR('3002', 'action not valid in Notif function, 1st arg: '..(action or 'nil')..'. Locale Key: '..(locale_key or 'nil'))
+        return ERROR('3002', 'action not valid in Notif function, 1st arg: '..tostring(action)..'. Locale Key: '..(locale_key or 'nil'))
     end
 
-    if not TypeCheck(locale_key, 'string', '3002', 'locale_key missing from Notif functiion, 2nd arg. Locale Key: '..(locale_key or 'nil')) then
+    if not TypeCheck(locale_key, 'string', '3002', 'locale_key missing from Notif function, 2nd arg. Locale Key: '..(locale_key or 'nil')) then
         return
     end
 
-    local lang = Config.Language or 'EN'
+    local preferred = tostring(Config.Language):upper()
 
-    local function get(tbl)
+    local function getFromOneTable(tbl, langKey)
         if not tbl then return nil end
-        return (tbl[lang] and tbl[lang][locale_key]) or (tbl.EN and tbl.EN[locale_key])
+        if tbl[langKey] and tbl[langKey][locale_key] then
+            return tbl[langKey][locale_key]
+        end
+        return nil
     end
 
-    local template = get(LocalesTable) or get(Locales) or get(BridgeLocalesTable)
+    local function findTemplate(langKey)
+        return getFromOneTable(LocalesTable, langKey) or getFromOneTable(Locales, langKey) or getFromOneTable(BridgeLocalesTable, langKey)
+    end
+
+    local template = findTemplate(preferred)
+    if not template and preferred ~= 'EN' then
+        template = findTemplate('EN')
+    end
+
     if not template then
-        return ERROR('3003', 'locale not found in locales.lua: '..(locale_key or 'nil'))
+        return ERROR('3003', 'locale not found in any locale table: '..tostring(locale_key)..' (lang tried: '..preferred..' -> EN)')
     end
 
     local message = template
@@ -340,7 +351,7 @@ function Notif(action, locale_key, ...)
     if select('#', ...) > 0 then
         local ok, formatted = pcall(string.format, template, ...)
         if not ok then
-            return ERROR('3004', 'Format failed for key: ' .. (locale_key or 'nil'))
+            return ERROR('3004', 'Format failed for key: ' .. tostring(locale_key))
         end
         message = formatted
     end

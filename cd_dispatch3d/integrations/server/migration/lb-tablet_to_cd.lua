@@ -54,13 +54,33 @@ local function ConvertDispatchData(source, data)
 end
 
 
-RegisterLegacyExport('lb-tablet', 'AddDispatch', function(source, data)
-    local convertedData = ConvertDispatchData(source, data)
-    TriggerEvent('cd_dispatch:AddNotification', convertedData)
-end)
+local function RegisterEvents()
+    RegisterLegacyExport('lb-tablet', 'AddDispatch', function(source, data)
+        local convertedData = ConvertDispatchData(source, data)
+        TriggerEvent('cd_dispatch:AddNotification', convertedData)
+    end)
 
-RegisterServerEvent('lb-tablet:addDispatch', function(data)
-    local source = source
-    local convertedData = ConvertDispatchData(source, data)
-    TriggerEvent('cd_dispatch:AddNotification', convertedData)
+    RegisterServerEvent('lb-tablet:addDispatch', function(data)
+        local source = source
+        local convertedData = ConvertDispatchData(source, data)
+        TriggerEvent('cd_dispatch:AddNotification', convertedData)
+    end)
+end
+
+local resourceRegistered = false
+local function TryRegisterResource()
+    if resourceRegistered then return end
+    local state = GetResourceState('lb-tablet')
+    if state ~= 'started' and state ~= 'starting' then
+        resourceRegistered = true
+        RegisterEvents()
+    end
+end
+
+TryRegisterResource()
+
+AddEventHandler('onResourceStart', function(resName)
+    if resName == 'lb-tablet' then
+        TryRegisterResource()
+    end
 end)

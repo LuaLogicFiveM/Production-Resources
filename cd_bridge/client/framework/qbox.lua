@@ -5,15 +5,19 @@ local JobData = {}
 local LastJobData = {}
 local GangData = {}
 local LastGangData = {}
-local SharedVehicles = {}
-local CharacterName = nil
 
 -- ┌──────────────────────────────────────────────────────────────────┐
 -- │                            INITIALIZE                            │
 -- └──────────────────────────────────────────────────────────────────┘
 
+-- Check if the framework is loaded
 function HasFrameworkLoaded()
     return QBX ~= nil
+end
+
+-- Check if the player has loaded (after character selection).
+function HasPlayerLoadedIn()
+    return LocalPlayer.state.isLoggedIn
 end
 
 -- Initialize the framework object
@@ -148,42 +152,6 @@ end
 initateFramework()
 
 -- ┌──────────────────────────────────────────────────────────────────┐
--- │                              PLAYER                              │
--- └──────────────────────────────────────────────────────────────────┘
-
--- Get a players character name
-function GetCharacterName()
-    if CharacterName then
-        return CharacterName
-    end
-
-    CharacterName = exports.cd_bridge:Callback('cd_bridge:GetCharacterName')
-    return CharacterName
-end
-
--- Check if the player has loaded (after character selection).
-function HasPlayerLoaded()
-    return exports['qbx_core']:GetPlayerData() ~= nil
-end
-
--- ┌──────────────────────────────────────────────────────────────────┐
--- │                               PERMS                              │
--- └──────────────────────────────────────────────────────────────────┘
-
--- Get the admin permissions/group of a player
-function GetAdminPerms()
-    return exports.cd_bridge:Callback('cd_bridge:GetAdminPerms')
-end
-
--- Check if a player has admin permissions
-function HasAdminPerms(perms)
-    if not perms then
-        return false
-    end
-    return exports.cd_bridge:Callback('cd_bridge:HasAdminPerms', perms)
-end
-
--- ┌──────────────────────────────────────────────────────────────────┐
 -- │                                JOB                               │
 -- └──────────────────────────────────────────────────────────────────┘
 
@@ -313,20 +281,6 @@ function GetGangGrade()
         return customGang.grade
     end
     return GangData.grade
-end
-
--- ┌──────────────────────────────────────────────────────────────────┐
--- │                           GET SHARED DATA                        │
--- └──────────────────────────────────────────────────────────────────┘
-
--- Get a formatted table of all shared vehicles
-function GetSharedVehicles()
-    if next(SharedVehicles) ~= nil then
-        return SharedVehicles
-    else
-        SharedVehicles = exports.cd_bridge:Callback('cd_bridge:GetSharedVehicles')
-        return SharedVehicles
-    end
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐

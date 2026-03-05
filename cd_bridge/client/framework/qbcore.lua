@@ -5,15 +5,19 @@ local JobData = {}
 local LastJobData = {}
 local GangData = {}
 local LastGangData = {}
-local SharedVehicles = {}
-local CharacterName = nil
 
 -- ┌──────────────────────────────────────────────────────────────────┐
 -- │                            INITIALIZE                            │
 -- └──────────────────────────────────────────────────────────────────┘
 
+-- Check if the framework is loaded
 function HasFrameworkLoaded()
     return QBCore ~= nil
+end
+
+-- Check if the player has loaded (after character selection).
+function HasPlayerLoadedIn()
+    return LocalPlayer.state.isLoggedIn
 end
 
 -- Initialize the framework object
@@ -152,43 +156,6 @@ end
 initateFramework()
 
 -- ┌──────────────────────────────────────────────────────────────────┐
--- │                              PLAYER                              │
--- └──────────────────────────────────────────────────────────────────┘
-
--- Get a players character name
-function GetCharacterName()
-    if CharacterName then
-        return CharacterName
-    end
-
-    CharacterName = exports.cd_bridge:Callback('cd_bridge:GetCharacterName')
-    return CharacterName
-end
-
--- Check if the player has loaded (after character selection).
-function HasPlayerLoaded()
-    return QBCore.Functions.GetPlayerData() ~= nil
-end
-
--- ┌──────────────────────────────────────────────────────────────────┐
--- │                               PERMS                              │
--- └──────────────────────────────────────────────────────────────────┘
-
--- Get the admin permissions/group of a player
-function GetAdminPerms()
-    return exports.cd_bridge:Callback('cd_bridge:GetAdminPerms')
-end
-
--- Check if a player has admin permissions
-print('ok')
-function HasAdminPerms(perms)
-    if not perms then
-        return false
-    end
-    return exports.cd_bridge:Callback('cd_bridge:HasAdminPerms', perms)
-end
-
--- ┌──────────────────────────────────────────────────────────────────┐
 -- │                                JOB                               │
 -- └──────────────────────────────────────────────────────────────────┘
 
@@ -321,19 +288,8 @@ function GetGangGrade()
 end
 
 -- ┌──────────────────────────────────────────────────────────────────┐
--- │                           GET SHARED DATA                        │
+-- │                              VEHICLE                             │
 -- └──────────────────────────────────────────────────────────────────┘
-
--- Get a formatted table of all shared vehicles
-function GetSharedVehicles()
-    if next(SharedVehicles) ~= nil then
-        return SharedVehicles
-    else
-        SharedVehicles = exports.cd_bridge:Callback('cd_bridge:GetSharedVehicles')
-        return SharedVehicles
-    end
-end
-
 
 function FrameworkCreateVehicle(model, coords)
     local p = promise.new()

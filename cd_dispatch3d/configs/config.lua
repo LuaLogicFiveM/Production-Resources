@@ -17,22 +17,24 @@ Config.AllowedJobs = { --Jobs who are allowed to use the dispatch.
     --  • See each other on the dispatch UI
     --  • See each other on the pause menu and minimap blips
 
-    {'sheriff', 'sahp', 'safd'}, -- Police & Ambulance share one dispatch group
+    {'bcso', 'sasp', 'gov', 'safd'}, -- Police & Ambulance share one dispatch group
     {'dot'},            -- Mechanic-only dispatch group
     -- {'job1', 'job2'},      -- Add more job groups as needed
 }
 
 Config.Perms = {
     Dispatcher = { --The permissions table for those who can be a dispatcher, based off jobs and job grades.
-        ['sahp'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
-        ['sheriff'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
+        ['sasp'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
+        ['bcso'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
+        ['gov'] = { 0, 1, 2, 3, 4, 5, },
         ['safd'] = { 0, 1, 2, 3, 4, 5 },
         ['dot'] = { 0, 1, 2, 3, 4, 5 },
     },
 
     Planner = { --The permissions table for those who can use the planner, based off jobs and job grades.
-        ['sahp'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
-        ['sheriff'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
+        ['sasp'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
+        ['bcso'] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
+        ['gov'] = { 0, 1, 2, 3, 4, 5, },
         ['safd'] = { 0, 1, 2, 3, 4, 5 },
     },
 }
@@ -77,7 +79,7 @@ Config.PanicButton = {
     ENABLE = true, --Do you want to allow dispatch users to use the built-in panic button?
     command = 'panic', --The chat command.
     key = '', --The key press. This is not used by default. You can choose keys here - https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/.
-    job_table = {'sheriff', 'sahp', 'safd'}, --A list of jobs who can use the panic button. (every job in this list will be notified if a panic button is pressed).
+    job_table = {'bcso', 'sasp', 'safd', 'gov'}, --A list of jobs who can use the panic button. (every job in this list will be notified if a panic button is pressed).
     cooldown = 10, --(in seconds) This cooldown is to prevent a player spamming the panic button.
     play_sound_in_distance = true --Do you want the panic button sound to play to all nearby players?
 }
@@ -87,8 +89,8 @@ Config.GpsTracker = { -- Used for kidnapping scenarios, if the gps tracker item 
     item_name = 'tablet', -- The name of the inventory item.
     item_check_timer = 10, -- Time in seconds to check for the item in the inventory.
     AllowedJobs = { -- Jobs that are allowed to use the GPS tracker features.
-        'sheriff',
-        'sahp',
+        'bcso',
+        'sasp',
         'safd'
     }
 }
@@ -152,8 +154,9 @@ Config.PauseMenuBlips = {
 
     blip_colours = { --If you add more jobs, you need to add them here too. More colours can be found at the bottom of this page - https://docs.fivem.net/docs/game-references/blips.
         --pausemenu_blip_colour: The colour of the player blips on the gta mini-map and pause menu. The 1st one is the default colour and the 2nd one is the flashing colour.
-        ['sahp']      = {3, 1},
-        ['sheriff']     = {3, 1},
+        ['sasp']      = {3, 1},
+        ['bcso']     = {3, 1},
+        ['gov']     = {3, 1},
         ['safd']   = {1, 0},
         ['dot']    = {2, 0},
     }
@@ -170,7 +173,7 @@ Config.JobCallCommands = {
     --command: The chat command.
     --job_table: The jobs who can see the calls. (you can add multiple).
     Civilian_Commands = {
-        { command = '911',          job_label = 'Police',       job_table = {'sahp', 'sheriff'} },
+        { command = '911',          job_label = 'Police',       job_table = {'bcso', 'sasp'} },
         { command = '911fire',       job_label = 'Ambulance',    job_table = {'safd'} },
         { command = 'dot',       job_label = 'DOT',    job_table = {'dot'} },
     },
@@ -185,13 +188,13 @@ Config.JobCallCommands = {
 Config.small_ui = {
     ENABLE = true, --Do you want to enable the small UI?
     command = 'dispatchsmall', --The chat command.
-    key = 'u' --The key press. You can choose other keys here - https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/.
+    key = '' --The key press. You can choose other keys here - https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/keyboard/.
 }
 
 Config.large_ui = {
     ENABLE = true, --Do you want to enable the large map UI?
     command = 'dispatchlarge',
-    key = 'l'
+    key = ''
 }
 
 Config.respond = {
@@ -218,8 +221,8 @@ Config.small_ui_right = {
 
 Config.PoliceAlerts = {
     ENABLE = false, --Do you want to use the built in police alerts?
-    police_jobs = {'sheriff', 'sahp'}, --The jobs who will be notified from these police alerts.
-    whitelisted_jobs = {'sheriff', 'sahp', 'safd', }, --These jobs will NOT trigger these police alerts.
+    police_jobs = {'bcso', 'sasp', 'gov'}, --The jobs who will be notified from these police alerts.
+    whitelisted_jobs = {'bcso', 'sasp', 'gov', 'safd', }, --These jobs will NOT trigger these police alerts.
     add_bolos = false, --(requires cd_radar) Do you want to add a bolo for the vehicle that was used in the crime?
 
     WitnessPeds = {

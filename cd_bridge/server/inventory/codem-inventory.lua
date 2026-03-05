@@ -64,3 +64,58 @@ function GetInventoryImages()
     end
     return InventoryImages
 end
+
+-- Returns the first item containing the item name
+function ReturnFirstItem(source, item_name)
+    local inventory = exports['codem-inventory']:GetInventory(source)
+    for _, item in pairs(inventory) do
+        if string.find(item.name, item_name) then
+            return item.name, item.slot
+        end
+    end
+    return nil
+end
+
+-- Adds quality to first item that matches item_name and has quality nil
+function AddQualityToItem(source, item_name, hp, slot)
+    local inventory = exports['codem-inventory']:GetInventory(source)
+    if slot ~= nil then
+        inventory[slot].info.quality= hp
+    end
+    for _, item in pairs(inventory) do
+        if item.name == item_name and item.info.quality == nil then
+            item.info.quality = hp
+            return
+        end
+    end
+    return nil
+end
+
+-- Returns the first item quality it finds
+function GetItemQuality(source, item_name, slot)
+    local inventory = exports['codem-inventory']:GetInventory(source)
+    if slot ~= nil then
+        return inventory[slot].info.quality
+    end
+    for _, items in pairs(inventory) do
+        if item.name == item_name then
+            return item.info.quality
+        end
+    end
+    return nil
+end
+
+-- Sets quality to the first item thats not nil and is > 0 
+function SetItemQuality(source, item_name, hp, slot)
+    local inventory = exports['codem-inventory']:GetInventory(source)
+    if slot ~= nil then
+        inventory[slot].info.quality = hp
+    end
+    for _, item in pairs(PlayerItems) do
+        if item.name == item_name and item.info.quality ~= nil and item.info.quality > 0 then
+            item.info.quality = hp
+            return
+        end
+    end
+    return nil
+end

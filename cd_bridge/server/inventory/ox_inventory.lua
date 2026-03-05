@@ -73,3 +73,60 @@ function GetInventoryImages()
     end
     return InventoryImages
 end
+
+-- Returns the first item containing the item name
+function ReturnFirstItem(source, item_name)
+    local playerItems = exports.ox_inventory:GetInventoryItems(source)
+    for _, item in pairs(playerItems) do
+        if string.find(item.name, item_name) then
+            return item.name, item.slot
+        end
+    end
+    return nil
+end
+
+-- Adds quality to first item that matches item_name and has quality nil
+function AddQualityToItem(source, item_name, hp, slot)
+    local playerItems = exports.ox_inventory:GetInventoryItems(source)
+    if slot ~= nil and playerItems[slot].durability == nil then
+        playerItems[slot].durability = hp
+        return
+    end
+    AddItem(source, item_name, 1)
+    for _, item in pairs(playerItems) do
+        if item.name == item_name and item.duribility == nil then
+            item.durability = hp
+            return
+        end
+    end
+end
+
+-- Returns the first item quality it finds
+function GetItemQuality(source, item_name, slot)
+    local playerItems = exports.ox_inventory:GetInventoryItems(source)
+    if slot ~= nil then
+        return playerItems[slot].metadata.durability
+    end
+    for _, item in pairs(playerItems) do
+        if item.name == item_name then
+            return item.metadata.durability
+        end
+    end
+    return nil
+end
+
+-- Sets quality to the first item thats not nil and is > 0 
+function SetItemQuality(source, item_name, hp, slot)
+    local playerItems = exports.ox_inventory:GetInventoryItems(source)
+    if slot ~= nil then
+        exports['ox_inventory']:SetDurability(source, slot, hp)
+        return
+    end
+    for _, item in pairs(playerItems) do
+        if item.name == item_name then
+            exports['ox_inventory']:SetDurability(source, item.slot, hp)
+            return
+        end
+    end
+    return nil
+end

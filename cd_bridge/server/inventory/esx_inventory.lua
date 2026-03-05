@@ -79,3 +79,32 @@ end
 function GetInventoryImages()
     return {}
 end
+
+-- Returns the first item containing the item name (esx doesn't have a slot system)
+function ReturnFirstItem(source, item_name)
+    local Player = GetPlayer(source)
+    if not Player then return end
+
+    local inventory = Player.inventory
+    for _, item in pairs(inventory) do
+        if item.count > 0 and item.name == item_name then
+            return item.name, 1
+        end
+    end
+    return nil
+end
+
+-- Adds quality to first item that matches item_name and has quality nil (esx doesn't support quality/durability of items)
+function AddQualityToItem(source, item_name, hp, slot)
+    return nil
+end
+
+-- Returns the first item quality it finds (esx doesn't support quality/durability of items)
+function GetItemQuality(source, item_name, slot)
+    return 100
+end
+
+-- Sets quality to the first item thats not nil and is > 0  (esx doesn't support quality/durability of items)
+function SetItemQuality(source, item_name, hp, slot)
+    return nil
+end

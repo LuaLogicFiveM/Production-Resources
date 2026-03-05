@@ -8,7 +8,7 @@ fx_version 'cerulean'
 game 'gta5'
 author 'discord.gg/codesign'
 description 'Codesign bridge'
-version '1.0.22'
+version '1.0.23'
 lua54 'yes'
 
 shared_scripts {
@@ -28,11 +28,17 @@ server_scripts {
 }
 
 exports {
-    'Callback'
+    'Callback',
+    'RegisterClientCallback',
+    'StoreError',
+    'GetErrors',
 }
 
 server_exports {
+    'Callback',
     'RegisterServerCallback',
+    'StoreError',
+    'GetErrors',
     'ReadDirectory'
 }
 

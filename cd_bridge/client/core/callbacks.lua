@@ -1,3 +1,4 @@
+-- server callback handler (called from client)
 local CB_SEQ = 0
 local PENDING = {}
 
@@ -56,3 +57,39 @@ function Callback(action, ...)
 
     return result.data
 end
+
+-- client callback handler (called from server)
+local CLIENT_ROUTES = {}
+
+function RegisterClientCallback(action, fn)
+    CLIENT_ROUTES[action] = fn
+end
+
+RegisterNetEvent('cd_bridge:ClientCallback', function(id, action, ...)
+    local handler = CLIENT_ROUTES[action]
+    local function respond(success, data, error_message)
+        TriggerServerEvent('cd_bridge:ClientCallback', id, success, data, error_message)
+    end
+
+    if not handler then
+        respond(false, nil, 'callback_not_registered')
+        return
+    end
+
+    local ok_exec, result = pcall(handler, ...)
+    if not ok_exec then
+        respond(false, nil, ('error_in_handler - %s'):format(result))
+    else
+        respond(true, result, nil)
+    end
+end)
+
+
+
+
+
+--client callbacks
+
+RegisterClientCallback('cd_bridge:GetClientErrorCodes', function(...)
+    return exports.cd_bridge:GetErrors()
+end)

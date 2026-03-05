@@ -56,14 +56,34 @@ local function ConvertDispatchData(source, data)
     }
 end
 
-RegisterServerEvent('redutzu-mdt:server:addDispatchToMDT', function(data)
-    local src = source or 0
-    local converted = ConvertDispatchData(src, data)
-    TriggerEvent('cd_dispatch:AddNotification', converted)
-end)
+local function RegisterEvents()
+    RegisterServerEvent('redutzu-mdt:server:addDispatchToMDT', function(data)
+        local src = source or 0
+        local converted = ConvertDispatchData(src, data)
+        TriggerEvent('cd_dispatch:AddNotification', converted)
+    end)
 
-RegisterServerEvent('redutzu-mdt:server:sendDispatchMessage', function(data)
-    local src = source
-    local converted = ConvertDispatchData(src, data)
-    TriggerEvent('cd_dispatch:AddNotification', converted)
+    RegisterServerEvent('redutzu-mdt:server:sendDispatchMessage', function(data)
+        local src = source
+        local converted = ConvertDispatchData(src, data)
+        TriggerEvent('cd_dispatch:AddNotification', converted)
+    end)
+end
+
+local resourceRegistered = false
+local function TryRegisterResource()
+    if resourceRegistered then return end
+    local state = GetResourceState('redutzu-mdt')
+    if state ~= 'started' and state ~= 'starting' then
+        resourceRegistered = true
+        RegisterEvents()
+    end
+end
+
+TryRegisterResource()
+
+AddEventHandler('onResourceStart', function(resName)
+    if resName == 'redutzu-mdt' then
+        TryRegisterResource()
+    end
 end)

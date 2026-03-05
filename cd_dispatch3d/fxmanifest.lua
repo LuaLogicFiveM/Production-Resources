@@ -7,7 +7,7 @@ fx_version 'cerulean'
 game 'gta5'
 author 'discord.gg/codesign'
 description 'Police Dispatch 3D'
-version '1.2.0'
+version '1.2.2'
 lua54 'yes'
 
 dependency 'cd_bridge'
@@ -22,13 +22,13 @@ shared_scripts {
 
 client_scripts {
     '@cd_bridge/client/init.lua',
-    'integrations/client/*.lua',
+    'integrations/client/**/*.lua',
     'client/**/*.lua'
 }
 
 server_scripts {
     '@cd_bridge/server/init.lua',
-    'integrations/server/*.lua',
+    'integrations/server/**/*.lua',
     'configs/server_webhooks.lua',
     'server/**/*.lua'
 }
@@ -71,6 +71,7 @@ server_exports {
     'GetAllDispatchNotifications',
     'GetPlayersDispatchData',
     'GetConfig',
+    'GetDispatchCalls_PS'
 }
 
 escrow_ignore {

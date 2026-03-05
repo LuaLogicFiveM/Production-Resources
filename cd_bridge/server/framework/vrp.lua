@@ -270,16 +270,41 @@ function GetPlayerMoney(source, money_type)
     end
 end
 
--- Remove money from a player
-function RemovePlayerMoney(source, amount, money_type, reason)
+-- Add money to a player
+function AddPlayerMoney(source, amount, money_type, reason)
     local Player = GetPlayer(source)
     if not Player then return end
+
     if amount <= 0 then return end
     reason =  reason or ''
 
     local balance = GetPlayerMoney(source, money_type)
     if balance < amount then
         return false
+    end
+
+    if Cfg.Banking ~= 'none'then
+        LogTransaction(source, amount, money_type, reason, 'deposit')
+    end
+
+    vRP.tryPayment({Player, amount})
+end
+
+-- Remove money from a player
+function RemovePlayerMoney(source, amount, money_type, reason)
+    local Player = GetPlayer(source)
+    if not Player then return end
+
+    if amount <= 0 then return end
+    reason =  reason or ''
+
+    local balance = GetPlayerMoney(source, money_type)
+    if balance < amount then
+        return false
+    end
+
+    if Cfg.Banking ~= 'none'then
+        LogTransaction(source, amount, money_type, reason, 'withdraw')
     end
 
     vRP.tryPayment({Player, amount})

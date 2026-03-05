@@ -17,6 +17,8 @@ local function Include(path)
     if not ok then error(runtimeErr, 0) end
 end
 
+HasBridgeLoaded = false
+
 --server/core
 Include('server/core/database.lua')
 Include('server/core/error_handling.lua')
@@ -28,15 +30,18 @@ Include('shared/functions.lua')
 Include('shared/locales.lua')
 
 --server/integrations
+Include('server/integrations/banking.lua')
 Include('server/integrations/callsign.lua')
 Include('server/integrations/gang.lua')
 Include('server/integrations/job_duty.lua')
 Include('server/integrations/notifications.lua')
 Include('server/integrations/phone_number.lua')
+Include('server/integrations/society.lua')
 Include('server/integrations/vehicle_shop.lua')
 
 --server/framework
 Include(('server/framework/%s.lua'):format(Cfg.Framework:lower()))
+Include('server/framework/framework_functions.lua')
 
 --server inventory
 Include(('server/inventory/%s.lua'):format(Cfg.Inventory:lower()))
@@ -44,3 +49,5 @@ Include(('server/inventory/%s.lua'):format(Cfg.Inventory:lower()))
 if Cfg.BridgeDebug then
     Citizen.Trace(('^2[cd_bridge] Server bridge loaded into: ^7%s\n'):format(GetCurrentResourceName()))
 end
+
+HasBridgeLoaded = true

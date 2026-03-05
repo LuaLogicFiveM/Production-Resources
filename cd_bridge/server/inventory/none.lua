@@ -34,3 +34,23 @@ end
 function GetInventoryImages()
     return {}
 end
+
+-- Returns the first item containing the item name
+function ReturnFirstItem(source, item_name)
+    return nil
+end
+
+-- Adds quality to first item that matches item_name and has quality nil
+function AddQualityToItem(source, item_name, hp, slot)
+    return nil
+end
+
+-- Returns the first item quality it finds
+function GetItemQuality(source, item_name, slot)
+    return 100
+end
+
+-- Sets quality to the first item thats not nil and is > 0
+function SetItemQuality(source, item_name, hp, slot)
+    return nil
+end
