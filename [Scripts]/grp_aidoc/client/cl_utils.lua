@@ -52,6 +52,10 @@ function IsPlayerDead()
         local isDead = exports["osp_ambulance"]:isDead()
         debugPrint('OSP Ambulance death check: ' .. tostring(isDead))
         return isDead
+    elseif Config.AmbulanceJob == "tk_ambulancejob" then
+        local isDead = exports.tk_ambulancejob:isDead()
+        debugPrint('tk_ambulancejob death check: ' .. tostring(isDead))
+        return isDead
     elseif Config.AmbulanceJob == "default" then
         local isDead = GRP.GetIsPlayerDead()
         debugPrint('GRP Bridge death check: ' .. tostring(isDead))
@@ -114,7 +118,6 @@ end
 
 function RevivePlayer()
     debugPrint('Attempting to revive player using ' .. Config.AmbulanceJob)
-    local playerId = GetPlayerServerId(PlayerId())
     if Config.AmbulanceJob == "VisnAre" then
         debugPrint('Using VisnAre revive system')
         TriggerEvent('visn_are:resetHealthBuffer')
@@ -137,11 +140,19 @@ function RevivePlayer()
         TriggerEvent('grp_ai_doctor:client:ResetEMSCall')
     elseif Config.AmbulanceJob == "osp_ambulance" then
         debugPrint('Using OSP Ambulance revive system')
+        local playerId = GetPlayerServerId(PlayerId())
         TriggerServerEvent('osp_ambulance:revive', playerId)
+        StopScreenEffect('DeathFailOut')
+        TriggerEvent('grp_ai_doctor:client:ResetEMSCall')
+    elseif Config.AmbulanceJob == "tk_ambulancejob" then
+        debugPrint('Client: Triggering server event to revive with tk_ambulancejob')
+        local playerId = GetPlayerServerId(PlayerId())
+        TriggerServerEvent('grp:server:reviveTkAmbulance', playerId)
         StopScreenEffect('DeathFailOut')
         TriggerEvent('grp_ai_doctor:client:ResetEMSCall')
     elseif Config.AmbulanceJob == "default" then
         debugPrint('Using GRP Bridge default revive system')
+        local playerId = GetPlayerServerId(PlayerId())
         TriggerServerEvent('grp_aidoc:server:revivePlayer', playerId)
         StopScreenEffect('DeathFailOut')
         TriggerEvent('grp_ai_doctor:client:ResetEMSCall')
@@ -150,9 +161,7 @@ function RevivePlayer()
         StopScreenEffect('DeathFailOut')
         TriggerEvent('grp_ai_doctor:client:ResetEMSCall')
     end
-
-    TriggerServerEvent('ak47_crutch:set', playerId, 10)
-    --exports.lorp_packed:ForceCrutch(10)
+    
 
     if Config.SetHealthAmount then
         Citizen.Wait(1000)
@@ -174,59 +183,15 @@ end
 
 function setVehicleFuel(vehicle, fuelLevel)
     if not DoesEntityExist(vehicle) then
-        if Config.Debug then
-            print('^3[DEBUG]^7 Failed to set fuel: Vehicle does not exist')
-        end
+        debugPrint('Failed to set fuel: Vehicle does not exist')
         return
     end
 
-    local fuelSystem = Config.Fuel or 'cdn-fuel'
-    if Config.Debug then
-        print('^3[DEBUG]^7 Setting fuel using system: ' .. fuelSystem)
-    end
-
-    if fuelSystem == 'ox_fuel' then
-        Entity(vehicle).state.fuel = fuelLevel
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using ox_fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'LegacyFuel' then
-        SetVehicleFuelLevel(vehicle, fuelLevel)
-        exports['LegacyFuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using LegacyFuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'ps-fuel' then
-        SetVehicleFuelLevel(vehicle, fuelLevel)
-        exports['ps-fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using ps-fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'cdn-fuel' then
-        SetVehicleFuelLevel(vehicle, fuelLevel)
-        exports['cdn-fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using cdn-fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'lj-fuel' then
-        SetVehicleFuelLevel(vehicle, fuelLevel)
-        exports['lj-fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using lj-fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'BigDaddy-Fuel' then
-        exports['BigDaddy-Fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using BigDaddy-Fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'esx-sna-fuel' then
-        exports['esx-sna-fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using esx-sna-fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'lc_fuel' then
-        exports['lc_fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using lc_fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'okokGasStation' then
-        exports['okokGasStation']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using okokGasStation: ' .. fuelLevel) end
-    elseif fuelSystem == 'qb-fuel' then
-        exports['qb-fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using qb-fuel: ' .. fuelLevel) end
-    elseif fuelSystem == 'qs-fuelstations' then
-        exports['qs-fuelstations']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using qs-fuelstations: ' .. fuelLevel) end
-    elseif fuelSystem == 'Renewed-Fuel' then
-        exports['Renewed-Fuel']:SetFuel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using Renewed-Fuel: ' .. fuelLevel) end
+    if GRP and GRP.SetFuel then
+        GRP.SetFuel(vehicle, fuelLevel)
+        debugPrint('Set fuel using GRP Bridge: ' .. tostring(fuelLevel))
     else
         SetVehicleFuelLevel(vehicle, fuelLevel)
-        if Config.Debug then print('^3[DEBUG]^7 Set fuel using native function: ' .. fuelLevel) end
+        debugPrint('Set fuel using native (GRP Bridge not available): ' .. tostring(fuelLevel))
     end
 end

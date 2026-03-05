@@ -1,4 +1,4 @@
-local WEBHOOK_URL = 'https://discord.com/api/webhooks/1369868353426030693/TQ6Rx-V-mkdqFtkFJrrUbvMYmT09quiULVz02UxXY8MpJaRb3V0mtvB9gaM-RKXl3gNY'
+local WEBHOOK_URL = 'https://discord.com/api/webhooks/1310912647931105290/D0lWBQDG4KcfrOClFH1x4mu_65KsCZledcrQHuz1CnuKo7jkHUo-H6Iypzk56zhqx3v5'
 
 local COLORS = {
     EMS_CALL = 16711680,  -- Red
@@ -42,7 +42,7 @@ local function SendToDiscord(title, description, color)
             ["type"] = "rich",
             ["color"] = color,
             ["footer"] = {
-                ["text"] = " I Doctor V2 | " .. os.date("%Y-%m-%d %H:%M:%S")
+                ["text"] = "GRP AI Doctor V2 | " .. os.date("%Y-%m-%d %H:%M:%S")
             },
             ["thumbnail"] = {
                 ["url"] = "https://r2.fivemanage.com/LDQTygtOvrin949qtfwJG/grp_store.png"
@@ -59,7 +59,7 @@ local function SendToDiscord(title, description, color)
             debugPrint('Webhook sent successfully')
         end
     end, 'POST', json.encode({
-        username = "AI Doctor",
+        username = "GRP AI Doctor",
         embeds = embed
     }), { ['Content-Type'] = 'application/json' })
 end

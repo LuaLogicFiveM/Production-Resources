@@ -6,13 +6,11 @@ Config = {}
 Config.Debug = false -- Enable debug prints in console (set to false in production for cleaner logs)
 Config.Language = 'en' -- Language selection: 'en' for English, 'bn' for Bengali
 Config.Notify = 'ox' -- Notification system: 'qb', 'esx', 'qbx', 'ox', 'custom' (custom = built-in UI)
-Config.Fuel = 'lc_fuel' -- Fuel system integration: 'ox_fuel', 'LegacyFuel', 'ps-fuel', 'cdn-fuel', 'lj-fuel', 'BigDaddy-Fuel', 'esx-sna-fuel', 'lc_fuel', 'okokGasStation', 'qb-fuel', 'qs-fuelstations', 'Renewed-Fuel'
 
 -- ===========================================
 -- AMBULANCE JOB SETTINGS
 -- ===========================================
 Config.AmbulanceJob = "default"  -- Ambulance job integration: "default" (uses framework functions), "VisnAre", "wasabi_ambulance", "brutal_ambulancejob", "ars_ambulancejob", "osp_ambulance"
-Config.AllowAIEMSWithOffDuty = true  -- Allow AI EMS calls even when ambulance workers are off-duty
 Config.AlivePlayerCanCall = false  -- Allow living players to call AI EMS (normally only dead players can call)
 
 -- ===========================================
@@ -26,9 +24,10 @@ Config.SubModel = "Submersible"    -- Submarine model for underwater EMS
 -- ===========================================
 -- DOCTOR & REVIVE SETTINGS
 -- ===========================================
-Config.Doctor = 0                  -- Max online doctors before AI EMS is disabled (0 = AI works only when no doctors online)
-Config.CallPayment = 5000           -- Cost for regular players to call EMS (doctors calling for others = FREE)
-Config.RevivePayment = 1500        -- Payment received by ambulance society after successful revive
+Config.DisableAIEMSAboveDoctorCount = 3  -- AI EMS is disabled when more than this many doctors are online (0 = AI only when no doctors online)
+Config.CountOnlyOnDutyDoctors = false     -- When true, only on-duty ambulance workers count toward the limit; off-duty are ignored
+Config.CallPayment = 500           -- Cost for regular players to call EMS (doctors calling for others = FREE)
+Config.RevivePayment = 1000        -- Payment received by ambulance society after successful revive
 Config.ReviveTime = 5000           -- Time in milliseconds for revive animation (5000 = 5 seconds)
 Config.EMSArrivalTime = 60         -- Time in seconds for EMS vehicle to arrive after call
 Config.UseProgressBar = true       -- Show progress bar during revive process
@@ -48,12 +47,16 @@ Config.KeepItemsOnRevive = {           -- Items that will NOT be removed during 
 -- KEYBINDS & COMMANDS
 -- ===========================================
 Config.RegisterKeybind = true          -- Enable keybind registration for opening EMS menu
-Config.Keybind = 'G'                   -- Key to open EMS menu when dead
+Config.Keybind = 'H'                   -- Key to open EMS menu when dead
 
 -- Quick Action Settings (Instant EMS call with single keypress)
 Config.QuickAction = false              -- Enable quick action keybind
 Config.QuickActionKey = ''            -- Key for instant EMS call
 Config.QuickActionCommand = 'car'      -- Default vehicle type for quick action: 'car', 'heli', 'boat', 'sub'
+
+Config.WalkingNPCMode = true         -- When true, only walking doctor NPC (no vehicles); command/keybind/quickaction call doctor directly
+Config.WalkingNPCSpawnRadius = 50     -- Search radius in meters for doctor spawn point when WalkingNPCMode is true
+Config.AutoSelectEMSType = true     -- When true, auto-selects vehicle type (heli/car/boat/sub) from player location when none is specified (command without args, quick action, or menu Auto option). Mountain = heli, ground = car, surface water = boat, deep water = sub.
 
 -- Command Settings
 Config.CallCommand = "ems"           -- Main command for calling AI EMS
@@ -72,6 +75,8 @@ Config.SendEMSCommand = "emsrequest"      -- Doctor-only command to call EMS for
 Config.HeliSpawnHeight = 100       -- Height above player where helicopter spawns (units)
 Config.HeliDescendDistance = 15     -- Distance above player where helicopter hovers before landing
 Config.CarSpawnRange = 100          -- Search radius for suitable road spawn location (meters)
+Config.CarExitDistanceOutdoor = 10  -- Distance (meters) for doctor to exit car when player is outdoors
+Config.CarExitDistanceMLO = 70      -- Distance (meters) for doctor to exit car when player is inside MLO/interior
 Config.BoatSpawnRange = 200         -- Search radius for suitable water spawn location (meters)
 Config.SubSpawnRange = 50           -- Search radius for suitable underwater spawn location (meters)
 
@@ -135,7 +140,8 @@ Config.BlipSettings = {
     car = {sprite = 61, color = 5, flash = true},    -- Ambulance car blip
     boat = {sprite = 410, color = 5, flash = true},  -- Rescue boat blip
     heli = {sprite = 43, color = 5, flash = true},   -- Helicopter blip
-    sub = {sprite = 308, color = 5, flash = true}    -- Submarine blip
+    sub = {sprite = 308, color = 5, flash = true},    -- Submarine blip
+    walking = {sprite = 61, color = 5, flash = true} -- Walking doctor blip (uses ambulance sprite)
 }
 
 -- ===========================================

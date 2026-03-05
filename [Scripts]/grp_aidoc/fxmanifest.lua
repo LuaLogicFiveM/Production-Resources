@@ -7,7 +7,10 @@ fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
 
-version '2.0.2'
+description 'GRP AI EMS SYSTEM'
+author 'APOLLO'
+
+version '2.0.3'
 
 client_scripts {
     'client/cl_utils.lua',
@@ -46,5 +49,4 @@ dependencies {
     'grp_bridge',
     'ox_lib'
 }
-
 dependency '/assetpacks'
