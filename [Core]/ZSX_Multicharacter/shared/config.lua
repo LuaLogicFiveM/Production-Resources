@@ -113,7 +113,7 @@ Config.Identity.SetInBucketOnAppearance = true  -- [BOOL] Set player in Multicha
 Config.StarterItems = {
     {
         item = 'money',
-        amount = 10000
+        amount = 5000
     }, {
         item = 'phone',
         amount = 1
