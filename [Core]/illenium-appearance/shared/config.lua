@@ -1069,7 +1069,7 @@ Config.ClothingRooms = {
 
 Config.PlayerOutfitRooms = {
     {
-        job = "sheriff",
+        job = "bcso",
         coords = vector4(287.28, -573.41, 43.16, 79.61),
         size = vector3(4, 4, 4),
         rotation = 45,
@@ -1087,7 +1087,7 @@ Config.PlayerOutfitRooms = {
 }
 
 Config.Outfits = {
-    ["sheriff"] = {
+    ["bcso"] = {
         ["Male"] = {
             --[[{
                 name = "Worker",
