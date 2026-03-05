@@ -33,21 +33,22 @@ Config.DefaultUISettings = {
 -- Channels restricted to specific jobs.
 -- Players without the specified job will not be able to connect.
 Config.JobOnlyChannels = {
-    ['1'] = { 'sheriff', 'sahp', 'safd', 'fire' }, -- Only players with the 'police' or 'lspd' job can access channel '1'
-    ['2'] = { 'sheriff', 'sahp', 'safd', 'fire' },
-    ['3'] = { 'sheriff', 'sahp', 'safd', 'fire' },
-    ['4'] = { 'sheriff', 'sahp', 'safd', 'fire' },
-    ['5'] = { 'sheriff', 'sahp', 'safd', 'fire' },
-    ['6'] = { 'sheriff', 'sahp', 'safd', 'fire' },
-    ['7'] = { 'sheriff', 'sahp', 'safd', 'fire' },
-    ['8'] = { 'sheriff', 'sahp', 'safd', 'fire', 'dot' },
-    ['9'] = { 'sheriff', 'sahp', 'safd', 'fire', 'dot' },
-    ['10'] = { 'sheriff', 'sahp', 'safd', 'fire', 'dot' },
+    ['1'] = { 'bcso', 'sasp', 'gov', 'safd',  }, -- Only players with the 'police' or 'lspd' job can access channel '1'
+    ['2'] = { 'bcso', 'sasp', 'gov', 'safd',  },
+    ['3'] = { 'bcso', 'sasp', 'gov', 'safd',  },
+    ['4'] = { 'bcso', 'sasp', 'gov', 'safd',  },
+    ['5'] = { 'bcso', 'sasp', 'gov', 'safd',  },
+    ['6'] = { 'bcso', 'sasp', 'gov', 'safd',  },
+    ['7'] = { 'bcso', 'sasp', 'gov', 'safd',  },
+    ['8'] = { 'bcso', 'sasp', 'gov', 'safd', 'impound_ls' },
+    ['9'] = { 'bcso', 'sasp', 'gov', 'safd', 'impound_ls' },
+    ['10'] = { 'bcso', 'sasp', 'gov', 'safd', 'impound_ls' },
 }
 
 Config.AllowCallSignChangeJobs = {
-    sheriff = true,
-    sahp = true,
+    bcso = true,
+    sasp = true,
+    gov = true,
     ems = true,
     fire = true,
     dot = true,

@@ -32,12 +32,16 @@ Config.TargetScript = 'qtarget' -- don't change if you are using ox_target
 Config.ShowDistance = 5.0
 
 Config.GiveIdCommandAccessByJob = {
-    ['sahp'] = {
+    ['sasp'] = {
         minimumrank = 5,
-        items = {'id_card', 'weapons_license', 'hunting_license', 'boating_license', 'fishing_license', 'sahp_badge'}
+        items = {'id_card', 'weapons_license', 'hunting_license', 'boating_license', 'fishing_license', 'sasp_badge'}
     },
-    ['sheriff'] = {
-        minimumrank = 7,
+    ['bcso'] = {
+        minimumrank = 5,
+        items = {'id_card', 'weapons_license', 'hunting_license', 'boating_license', 'fishing_license', 'sheriff_badge'}
+    },
+    ['gov'] = {
+        minimumrank = 0,
         items = {'id_card', 'weapons_license', 'hunting_license', 'boating_license', 'fishing_license', 'sheriff_badge'}
     },
     ['safd'] = {
@@ -74,8 +78,8 @@ Config.Cards = {
             clip = 'cop_badge_1_clip',
         },
     },
-    sahp_badge = {
-        label           = "SAHP BADGE",
+    sasp_badge = {
+        label           = "SASP BADGE",
         titleColor      = "#ffffff",
         textColorLight  = "#ffffff",
         textColorBold   = "#ffffff",
