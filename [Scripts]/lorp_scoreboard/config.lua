@@ -52,20 +52,26 @@ return {
     -- Group list shown in the scoreboard
     groups = {
         {
-            label = 'Sheriff',
-            groups = {'sheriff'},
+            label = 'BCSO',
+            groups = {'bcso'},
             icon = 'ic:round-local-police',
             includeOffDuty = false,
         },
         {
-            label = 'SAHP',
-            groups = {'sahp'},
+            label = 'SASP',
+            groups = {'sasp'},
             icon = 'ic:round-local-police',
             includeOffDuty = false,
         },
         {
             label = 'SAFD',
             groups = {'safd'},
+            icon = 'ic:round-emergency',
+            includeOffDuty = false,
+        },
+        {
+            label = 'LS Impound',
+            groups = {'impound_ls'},
             icon = 'ic:round-emergency',
             includeOffDuty = false,
         },
@@ -78,7 +84,7 @@ return {
             label = 'Jewelry Heist',
             icon = 'mdi:store',
             groupTrigger = {
-                groups = {'sheriff', 'sahp'},
+                groups = {'bcso', 'sasp'},
                 minimumCount = 3,
                 includeOffDuty = false,
             },
@@ -88,7 +94,7 @@ return {
             label = 'Store Robbery',
             icon = 'mdi:store',
             groupTrigger = {
-                groups = {'sheriff', 'sahp'},
+                groups = {'bcso', 'sasp'},
                 minimumCount = 2,
                 includeOffDuty = false,
             },
