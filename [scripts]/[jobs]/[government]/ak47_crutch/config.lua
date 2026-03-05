@@ -14,8 +14,9 @@ Config.NeverDetach = false
 
 Config.Whitelistedjobs = {
 	ems = true,
-	sahp = true,
-	sheriff = true,
+	sasp = true,
+	bcso = true,
+	gov = true,
 	safd = true
 }
 
