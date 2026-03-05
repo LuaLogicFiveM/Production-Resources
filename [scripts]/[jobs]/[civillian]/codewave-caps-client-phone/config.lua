@@ -36,19 +36,18 @@ Config.DeliveryLocations = {
 
 -- Define required items for delivery and their prices (ENSURE TO CHANGE PRICES TO YOUR SERVER!)
 Config.RequiredItems = {
-    { name = 'ls_black_cap', price = 300 }, -- Reward for delivering item
-    { name = 'la_black_cap', price = 325 }, 
-    { name = 'corkers_black_cap', price = 310 }, 
-    { name = 'swingers_black_cap', price = 245 }, 
-    { name = 'packers_black_cap', price = 185 }, 
-    { name = 'sky_flyers', price = 255 }, 
-    { name = 'bandits_black_cap', price = 255 }, 
-    { name = 'red_cap', price = 255 }, 
-    { name = 'black_cap', price = 255 }, 
-    { name = 'blue_cap', price = 255 }, 
-    { name = 'orange_cap', price = 520 }, 
-    { name = 'quality_black_cap', price = 255 }, 
-    { name = 'quality_purple_hat', price = 255 }, 
-    { name = 'quality_blue_cap', price = 255 }, 
-    { name = 'quality_green_cap', price = 255 }
+    { name =  'ls_black_cap', price = 20 },
+    { name =  'la_black_cap', price = 22 },
+    { name =  'corkers_black_cap', price = 25 },
+    { name =  'swingers_black_cap', price = 23 },
+    { name =  'packers_black_cap', price = 20 },
+    { name =  'bandits_black_cap', price = 15 },
+    { name =  'red_cap', price = 12 },
+    { name =  'black_cap', price = 13 },
+    { name =  'blue_cap', price = 14 },
+    { name =  'orange_cap', price = 15 },
+    { name =  'quality_black_cap', price = 25 },
+    { name =  'quality_purple_hat', price = 26 },
+    { name =  'quality_blue_cap', price = 27 },
+    { name =  'quality_green_cap', price = 28 }
 }

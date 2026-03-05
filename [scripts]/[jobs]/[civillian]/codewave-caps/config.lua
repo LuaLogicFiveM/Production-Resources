@@ -9,7 +9,7 @@ Config = {}
 Config.Framework = 'ESX' -- 'ESX' or 'QBCore' (case sensitive)
 Config.InteractionType = 'ox_target' -- ox_target | 3dtext
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
-Config.TimeToCraft = 8000 -- Time it takes to make a hat/cap
+Config.TimeToCraft = 15000 -- Time it takes to make a hat/cap
 Config.DebugMode = false  -- Set to true to enable debug messages
 
 ---- ## QB OX INVENTORY (ENABLE THIS IF USING OX INVENTORY ON QB CORE, DO NOT ENABLE IF USING ESX)
@@ -57,10 +57,10 @@ Config.NPC = {
 
 -- Add anything you want here (For example if you want a new required item you can add it here for them to purchase!)
 Config.Items = {
-    { name = "Cotton Assortment", id = "cotton_assortment", img = "image/cotton_assortment.png", price = 100 }, -- You don't really need too touch anything apart from PRICE
-    { name = "Sewing Kits - Caps", id = "sewing_kits_caps", img = "image/sewing_kits_caps.png", price = 100 },
-    { name = "Cap City Client Phone", id = "cap_client_phone", img = "image/cap_client_phone.png", price = 3000 },
-    { name = "Cap City Work Table", id = "capcity_table", img = "image/capcity_table.png", price = 500 }
+    { name = "Cotton Assortment", id = "cotton_assortment", img = "image/cotton_assortment.png", price = math.random(25, 35) }, -- You don't really need too touch anything apart from PRICE
+    { name = "Sewing Kits - Caps", id = "sewing_kits_caps", img = "image/sewing_kits_caps.png", price = math.random(50, 70) },
+    { name = "Cap City Client Phone", id = "cap_client_phone", img = "image/cap_client_phone.png", price = math.random(750, 1000) },
+    { name = "Cap City Work Table", id = "capcity_table", img = "image/capcity_table.png", price = math.random(150, 200) }
 }
 
 
@@ -96,20 +96,20 @@ Config.MinItemsToSell = 1
 Config.MaxItemsToSell = 3
 -- NPC SALES USING COMMAND PRICES, Min/Max Values
 Config.RequiredItems = {
-    { item = 'ls_black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'la_black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'corkers_black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'swingers_black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'packers_black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'bandits_black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'red_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'blue_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'orange_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'quality_black_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'quality_purple_hat', priceMin = 600, priceMax = 1000 },
-    { item = 'quality_blue_cap', priceMin = 600, priceMax = 1000 },
-    { item = 'quality_green_cap', priceMin = 600, priceMax = 1000 }
+    { item = 'ls_black_cap', priceMin = 10, priceMax = 15 },
+    { item = 'la_black_cap', priceMin = 8, priceMax = 18 },
+    { item = 'corkers_black_cap', priceMin = 12, priceMax = 17 },
+    { item = 'swingers_black_cap', priceMin = 10, priceMax = 22 },
+    { item = 'packers_black_cap', priceMin = 12, priceMax = 16 },
+    { item = 'bandits_black_cap', priceMin = 10, priceMax = 20 },
+    { item = 'red_cap', priceMin = 15, priceMax = 25 },
+    { item = 'black_cap', priceMin = 18, priceMax = 20 },
+    { item = 'blue_cap', priceMin = 5, priceMax = 20 },
+    { item = 'orange_cap', priceMin = 12, priceMax = 30 },
+    { item = 'quality_black_cap', priceMin = 20, priceMax = 30 },
+    { item = 'quality_purple_hat', priceMin = 35, priceMax = 50 },
+    { item = 'quality_blue_cap', priceMin = 15, priceMax = 20 },
+    { item = 'quality_green_cap', priceMin = 18, priceMax = 25 }
 }
 
 

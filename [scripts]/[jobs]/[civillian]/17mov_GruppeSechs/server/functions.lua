@@ -210,7 +210,7 @@ function IsEnoughPolice()
         local xPlayers = Core.GetPlayers()
         for i = 1, #xPlayers, 1 do
             local xPlayer = Core.GetPlayerFromId(xPlayers[i])
-            if xPlayer and xPlayer.job.name == "sheriff" or xPlayer.job.name == "sahp" then
+            if xPlayer and xPlayer.job.name == "bcso" or xPlayer.job.name == "sasp" or xPlayer.job.name == "gov" then
                 counter = counter + 1
             end
         end

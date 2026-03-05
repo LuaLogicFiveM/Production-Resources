@@ -8,9 +8,9 @@ Config.letBossSplitReward = true                    -- If it's true, then boss c
 Config.multiplyRewardWhileWorkingInGroup = true     -- If it's false, then reward will stay by default. For example $1000 for completing whole job. If you'll set it to true, then the payout will depend on how many players is there in the group. For example, if for full job there's $1000, then if player will work in 4 member group, the reward will be $4000. (baseReward * partyCount)
 Config.UseTarget = false                -- Change it to true if you want to use a target system. All setings about the target system are under target.lua file.
 Config.RequiredJob = "none"             -- Set to "none" if you dont want using jobs. If you are using target, you have to set "job" parameter inside every export in target.lua
-Config.RequireJobAlsoForFriends = true          -- If it's false, then only host needs to have the job, if it's true then everybody from group needs to have the Config.RequiredJob
+Config.RequireJobAlsoForFriends = false          -- If it's false, then only host needs to have the job, if it's true then everybody from group needs to have the Config.RequiredJob
 Config.RequireOneFriendMinimum = false  -- Set to true if you want to force players to create teams
-Config.Reward = math.random(10000, 15000)                    -- Complete transport will give the team this value. 
+Config.Reward = math.random(500, 750)                    -- Complete transport will give the team this value. 
 Config.GiveRewardAfterHeist = true      -- Set to false, if you don't want to give players money after they have got robbed.
 Config.JobCooldown = 0 * 60 -- 10 * 60            -- 0 minutes cooldown between making jobs (in brackets there's example for 10 minutes)
 Config.GiveKeysToAllLobby = true                -- Set to false if you want to give keys only for group creator while starting job
@@ -56,7 +56,7 @@ Config.InteractionKey = {
 Config.OpenDoorsTextBackwardOffset = -3.5       -- Backward offset to draw "Open Doors" text. Leave default if you're using default stockade as job vehicle model
 Config.OpenDoorTextUpDownOffset = 1.5           -- Backward offset to draw "Open Doors" text. Leave default if you're using default stockade as job vehicle model
 
-Config.PenaltyAmount = 500                      -- Penalty that is levied when a player finishes work without a company vehicle or not completed
+Config.PenaltyAmount = 100                      -- Penalty that is levied when a player finishes work without a company vehicle or not completed
 Config.DeleteVehicleWithPenalty = true         -- Delete Vehicle even if its not company veh, and player accepted the penalty
 
 Config.TrolleyModel = "prop_tea_trolly"         -- Trolleys model inside vault
@@ -310,7 +310,7 @@ Config.HintNotifications = {
 
 Config.BankLocations = {
     [1] = {
-        rewardBonus = 0,
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -325,7 +325,7 @@ Config.BankLocations = {
         BlipCoords = vector3(29.32, -1346.2, 29.5),
     },
     [2] = {
-        rewardBonus = 0,
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -340,7 +340,7 @@ Config.BankLocations = {
         BlipCoords = vector3(-43.7612, -1749.1018, 29.4228),
     },
     [3] = {
-        rewardBonus = 0,
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -355,7 +355,7 @@ Config.BankLocations = {
         BlipCoords = vector3(1159.7603, -314.5881, 69.2068),
     },
     [4] = {
-        rewardBonus = 0,
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -370,7 +370,7 @@ Config.BankLocations = {
         BlipCoords = vector3(374.2690, 333.4674, 100.4544),
     },
     [5] = {
-        rewardBonus = 0,
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -385,7 +385,7 @@ Config.BankLocations = {
         BlipCoords = vector3(-707.5557, -909.1103, 19.2200),
     },
     [7] = {
-        rewardBonus = 0,
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -399,7 +399,7 @@ Config.BankLocations = {
         BlipCoords = vector3(-1223.6763, -909.6431, 12.3263),
     },
     [8] = {
-        rewardBonus = 0,
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -414,7 +414,7 @@ Config.BankLocations = {
         BlipCoords = vector3(1130.6715, -982.7417, 46.4158),
     },
     [9] = {
-        rewardBonus = math.random(2500, 5000),
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -429,7 +429,7 @@ Config.BankLocations = {
         BlipCoords = vector3(2671.7705, 3282.9985, 52.1291),
     },
     [10] = {
-        rewardBonus = math.random(2500, 5000),
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting
@@ -444,7 +444,7 @@ Config.BankLocations = {
         BlipCoords = vector3(1956.4257, 3746.2012, 29.2317),
     },
     [11] = {
-        rewardBonus = math.random(2500, 5000),
+        rewardBonus = math.random(50, 75),
         isVault = false,
         ObjectsToDelete = {
             -- Add here what props you want to delete from ur interior, for example some locked doors or somehting

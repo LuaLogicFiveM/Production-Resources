@@ -16,7 +16,7 @@ Config.RequireOneFriendMinimum = false          -- Set to true if you want to fo
 
 Config.JobVehicleModel = "17mov_WindowCar"                 -- Model of the company car
 Config.EnableVehicleTeleporting = true          -- If its true, then the script will teleport the host to the company vehicle. If its false, then the company vehicle will apeear, but the whole squad need to go enter the car manually
-Config.PenaltyAmount = 500                      -- Penalty that is levied when a player finishes work without a company vehicle
+Config.PenaltyAmount = 100                      -- Penalty that is levied when a player finishes work without a company vehicle
 Config.DeleteVehicleWithPenalty = true         -- Delete Vehicle even if its not company veh
 Config.DontPayRewardWithoutVehicle = false      -- Set to true if you want to dont pay reward to players who want's to end without company vehicle (accepting the penalty)
 Config.JobCooldown = 0 * 60 -- 10 * 60            -- 0 minutes cooldown between making jobs (in brackets there's example for 10 minutes)
@@ -101,7 +101,7 @@ Config.Locations = {       -- Here u can change all of the base job locations.
 
 Config.SpawnPoint = vec4(-1231.34, -1225.93, 6.9, 73.52)  -- Company car spawn point
 
-Config.Price = math.random(250, 500)            -- Means $5 per one window, so the full reward depends on current location
+Config.Price = math.random(25, 50)            -- Means $5 per one window, so the full reward depends on current location
 
 Config.EnableCloakroom = false                                 -- if false, then you can't see the Cloakroom button under Work Menu
 Config.Clothes = {

@@ -3,8 +3,8 @@ Config = {}
 Config.UseTarget = false
 Config.UseBuiltInNotifications = true
 
-Config.OneGasPercentWorth = math.random(75, 125)                     -- How much script should pay for one percent of collected gas.
-Config.OneQuestPercentWorth = math.random(50, 125)                    -- How much script should pay for one percent of side quests done.
+Config.OneGasPercentWorth = math.random(25, 50)                     -- How much script should pay for one percent of collected gas.
+Config.OneQuestPercentWorth = math.random(100, 150)                    -- How much script should pay for one percent of side quests done.
 
 -- Reward is being calculated like that: math.floor(gasProgress * Config.OneGasPercentWorth) + math.floor(questProgress * Config.OneQuestPercentWorth)
 -- Please remember about some mulitplers like Config.multiplyRewardWhileWorkingInGroup etc..
@@ -17,7 +17,7 @@ Config.RequireOneFriendMinimum = false              -- Set to true if you want t
 Config.letBossSplitReward = true                    -- If it's true, then boss can manage whole party rewards percent in menu. If set to false, then everybody will get same amount. Avalible only in modern UI
 Config.multiplyRewardWhileWorkingInGroup = true     -- If it's false, then reward will stay by default. For example $1000 for completing whole job. If you set it to true, then the payout will depend on how many players is there in the group. For example, if for full job there's $1000, then if player works in a 4 member group, the reward will be $4000. (baseReward * partyCount)
 
-Config.PenaltyAmount = 1000                          -- Penalty that is levied when a player finishes work without a company vehicle
+Config.PenaltyAmount = 100                          -- Penalty that is levied when a player finishes work without a company vehicle
 Config.DontPayRewardWithoutVehicle = false          -- Set to true if you want to not pay reward to players who want to end without company vehicle (accepting the penalty)
 Config.DeleteVehicleWithPenalty = true             -- Delete Vehicle even if its not company vehicle
 Config.JobCooldown = 0 * 60 -- 10 * 60              -- 0 minutes cooldown between making jobs (in brackets there's example for 10 minutes)
