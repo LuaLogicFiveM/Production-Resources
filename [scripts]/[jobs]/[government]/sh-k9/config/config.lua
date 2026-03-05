@@ -54,9 +54,9 @@ return {
 		]]
 		jobs = {
 			-- Format: ['job_name'] = {grade1, grade2, grade3, ...}
-			['sheriff'] = {10, 11, 12, 13, 14, 15}, -- All police grades (0-9)
-			['sahp'] = {7, 8, 9, 10, 11, 12, 13}, -- All police grades (0-9)
-			-- ['sheriff'] = {2, 3, 4, 5}, -- Example
+			['bcso'] = {10, 11, 12, 13, 14, 15}, -- All police grades (0-9)
+			['sasp'] = {7, 8, 9, 10, 11, 12, 13}, -- All police grades (0-9)
+			['gov'] = {0, 1, 2, 3, 4, 5}, -- Example
 		}
 	},
 

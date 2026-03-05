@@ -37,25 +37,30 @@ Config.DisableFugitivePage = false -- false / true, disable the fugitive page in
 
 Config.AdminGroups = { -- group names that count as admins (can use jail commands, etc.)
     owner = true,
+    manager = true,
 }
 Config.TeleportIfAdmin = true -- should you be teleported back to prison when going too far even if you are an admin
 
 Config.PoliceJobs = {
     jail = { -- jobs that can use jail command
-        sheriff = 0, -- job name, min grade
-        sahp = 0,
+        bcso = 0, -- job name, min grade
+        sasp = 0,
+        gov = 0,
     },
     lockup = { -- jobs that can use lockup command
-        sheriff = 5,
-        sahp = 5,
+        bcso = 5,
+        sasp = 5,
+        gov = 0,
     },
     unjail = { -- jobs that can use unjail command
-        sheriff = 0,
-        sahp = 0,
+        bcso = 0,
+        sasp = 0,
+        gov = 0,
     },
     other = {
-        sheriff = 0,
-        sahp = 0,
+        bcso = 0,
+        sasp = 0,
+        gov = 0,
     },
 }
 
