@@ -1,3 +1,6 @@
+local config <const> = require "config"
+local logger <const> = require "server.logger"
+local framework <const> = require "common.frameworks.framework"
 local ObservableRadioFreq <const> = require "server.wiretap.classes.observable_radio_freq"
 local knownRadioFrequencies = {}
 
@@ -18,11 +21,19 @@ RegisterNetEvent("pma-voice:setTalkingOnRadio", function(talking)
 end)
 
 lib.callback.register("evidences:observeObservableRadioFreq", function(observer, arguments)
+    if not framework.hasPermission(config.wiretap.radio.permissions, observer) then
+        return {
+            success = false,
+            response = "laptop.notifications.no_permission.description"
+        }
+    end
+
     if arguments and arguments.channel then
         local observableRadioFreq <const> = knownRadioFrequencies[arguments.channel] or ObservableRadioFreq:new(arguments.channel)
         knownRadioFrequencies[arguments.channel] = observableRadioFreq
         observableRadioFreq:addObserver(observer)
     end
+
 end)
 
 lib.callback.register("evidences:ignoreObservableRadioFreq", function(observer, arguments)

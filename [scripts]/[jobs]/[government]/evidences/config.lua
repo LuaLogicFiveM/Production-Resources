@@ -51,8 +51,9 @@ config.wiretap = {
         -- Allowed jobs and their minimum grades required to intercept phone calls.
         -- If permissions = {} the phone call section is disabled for everyone.
         permissions = {
-            sheriff = 5,
-            sahp = 5
+            bcso = 5,
+            sasp = 5,
+            gov = 0
         }
     },
 
@@ -64,8 +65,9 @@ config.wiretap = {
         -- Allowed jobs and their minimum grades required to listen to spy microphones. If they destroy them, they get the spy microphone item back into their inventory.
         -- If permissions = {} the spy microphones section is disabled for everyone.
         permissions = {
-            sheriff = 5,
-            sahp = 5
+            bcso = 5,
+            sasp = 5,
+            gov = 0
         }
     },
 
@@ -73,8 +75,9 @@ config.wiretap = {
         -- Allowed jobs and their minimum grades required to intercept radio channels.
         -- If permissions = {} the radio section is disabled for everyone.
         permissions = {
-            sheriff = 5,
-            sahp = 5
+            bcso = 5,
+            sasp = 5,
+            gov = 0
         }
     }
 }
@@ -83,23 +86,27 @@ config.wiretap = {
 -- Defines the conditions a player must match to perform specific actions of this script.
 config.permissions = {
     pickup = {
-        sheriff = 0,
-        sahp = 0
+        bcso = 0,
+        sasp = 0,
+        gov = 0
     },
 
     place = {
-        sheriff = 0,
-        sahp = 0
+        bcso = 0,
+        sasp = 0,
+        gov = 0
     },
 
     access = {
-        sheriff = 0,
-        sahp = 0
+        bcso = 0,
+        sasp = 0,
+        gov = 0
     },
 
     collect = {
-        sheriff = 0,
-        sahp = 0
+        bcso = 0,
+        sasp = 0,
+        gov = 0
     }
 }
 
@@ -168,5 +175,39 @@ function config.notify(translation, notifyType, duration)
         duration = duration or 3000
     })
 end
+
+config.logging = {
+    enabled = false,
+
+    -- By default every event is logged.
+    -- You can disable logging for specific events here.
+    loggedEvents = {
+        ["Evidences cleared"] = true,
+        ["Biometric data taken"] = true,
+        ["Biometric data linked to citizen"] = true,
+        ["Citizen created"] = true,
+        ["Citizen updated"] = true,
+        ["Citizen deletion requested"] = true,
+        ["Note created"] = true,
+        ["Note edited"] = true,
+        ["Note deletion requested"] = true,
+        ["Evidence destroyed"] = true,
+        ["Evidence collected"] = true,
+        ["Fingerprint scanned"] = true,
+        ["Observation started"] = true,
+        ["Observation ended"] = true,
+        ["Spy microphone placed"] = true,
+        ["Spy microphone picked up"] = true
+    },
+
+    -- Define which logging service you want to use if enabled.
+    -- You can choose between "ox_lib" (it supports Datadog, Grafana Loki and Fivemanage, see https://coxdocs.dev/ox_lib/Modules/Logger/Server) and "discord".
+    service = "discord",
+
+    -- If the logging service is set to "discord", you have to define a webhook url and your txAdmin web interface url.
+    -- Refer to https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks.
+    webhook = "",
+    txAdminUrl = "https://YOUR-IP.NET:40120/players?playerModal="
+}
 
 return config

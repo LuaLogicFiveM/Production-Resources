@@ -1,3 +1,6 @@
+local config <const> = require "config"
+local framework <const> = require "common.frameworks.framework"
+local logger <const> = require "server.logger"
 local eventHandler <const> = require "common.events.handler"
 local phoneNumber <const> = require "server.wiretap.registry.calls.bridge.phone_number"
 local ObservableCall <const> = require "server.wiretap.classes.observable_call"
@@ -7,7 +10,7 @@ local activeCalls = {}
 -- init: get all calls already running when the script gets started
 for _, playerId in ipairs(GetPlayers()) do
     local callChannel <const> = Player(playerId).state.callChannel
- 
+
     if callChannel and callChannel ~= 0 then
         local observableCall <const> = activeCalls[callChannel] or ObservableCall:new(callChannel)
         activeCalls[callChannel] = observableCall
@@ -53,11 +56,25 @@ eventHandler.on("observationTargetRemoved", function(event)
     end
 end)
 
-lib.callback.register("evidences:getActiveCalls", function()
+lib.callback.register("evidences:getActiveCalls", function(source)
+    if not framework.hasPermission(config.wiretap.calls.permissions, source) then
+        return {
+            success = false,
+            response = "laptop.notifications.no_permission.description"
+        }
+    end
+
     return activeCalls
 end)
 
 lib.callback.register("evidences:observeObservableCall", function(observer, arguments)
+    if not framework.hasPermission(config.wiretap.calls.permissions, observer) then
+        return {
+            success = false,
+            response = "laptop.notifications.no_permission.description"
+        }
+    end
+
     if arguments and arguments.channel then
         local observableCall <const> = activeCalls[arguments.channel]
         return observableCall and observableCall:addObserver(observer)

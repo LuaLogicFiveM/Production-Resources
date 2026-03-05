@@ -1,9 +1,10 @@
 local database <const> = require "server.database"
+local QBCore <const> = exports["qb-core"]:GetCoreObject()
 
 local framework = {}
 
 function framework.getIdentifier(playerId)
-    local player <const> = exports.qbx_core:GetPlayer(playerId)
+    local player <const> = QBCore.Functions.GetPlayer(playerId)
 
     if player then
         local playerData <const> = player.PlayerData
@@ -14,7 +15,7 @@ function framework.getIdentifier(playerId)
 end
 
 function framework.getPlayerName(playerId)
-    local player <const> = exports.qbx_core:GetPlayer(playerId)
+    local player <const> = QBCore.Functions.GetPlayer(playerId)
 
     if player then
         local playerData <const> = player.PlayerData
@@ -29,16 +30,22 @@ function framework.getPlayerName(playerId)
 end
 
 function framework.getGrade(job, playerId)
-    local player <const> = exports.qbx_core:GetPlayer(playerId)
+    local player <const> = QBCore.Functions.GetPlayer(playerId)
 
     if player then
         local playerData <const> = player.PlayerData
-        return playerData and playerData.jobs[job] or false
+
+        if playerData then
+            if playerData.job then
+                return playerData.job.name == job and playerData.job.grade.level or false
+            end
+        end
     end
 
     return false
 end
 
+-- https://github.com/qbcore-framework/qb-core/blob/36d8986b4298b3e762c9e799b23241b56eaf78b5/qbcore.sql
 function framework.getCitizens(searchText, offset)
     local pattern <const> = "%" .. searchText:sub(1, 25):gsub("\\", "\\\\"):gsub("%%", "\\%%"):gsub("_", "\\_") .. "%"
 

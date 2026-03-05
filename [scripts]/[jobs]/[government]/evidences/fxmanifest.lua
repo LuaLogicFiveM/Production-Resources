@@ -8,7 +8,7 @@ game 'gta5'
 lua54 'yes'
 author 'noobsystems'
 description 'Advanced FiveM evidence script'
-version '1.2.0'
+version '1.2.2'
 dependencies {
     '/onesync',
     'oxmysql',
