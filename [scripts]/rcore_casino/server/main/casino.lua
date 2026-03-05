@@ -1604,11 +1604,6 @@ AddEventHandler("rcore_casino:FuseBoxFixed", function()
     BroadcastCasino("rcore_casino:FuseBoxStateChanged", false, false)
 end)
 
-local assets = GetResourceState("rcore_casino_assets")
-if assets ~= "started" then
-    print("^1[Casino] Please install dependency `rcore_casino_assets`, and make sure it starts before rcore_casino!^7")
-end
-
 RegisterCommand("casinoversion", function()
     PrintInfo()
 end, false)

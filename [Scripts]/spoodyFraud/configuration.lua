@@ -63,7 +63,7 @@ Configuration = {
     Selling = {
         Clones = {
             Rewards = {
-                Reward = {min = 500, max = 1500}, -- Randomized between values of $350 & $3500
+                Reward = {min = 50, max = 75}, -- Randomized between values of $350 & $3500
                 Account = "dirty", -- cash, bank or dirty money?
             },
 
@@ -80,7 +80,7 @@ Configuration = {
 
         Checks = {
             Rewards = {
-                Reward = {min = 500, max = 1500}, -- Randomized between values of $350 & $3500
+                Reward = {min = 50, max = 125}, -- Randomized between values of $350 & $3500
                 Account = "dirty", -- cash, bank or dirty money?
             },
 
@@ -100,7 +100,7 @@ Configuration = {
 
         Sims = {
             Rewards = {
-                Reward = {min = 1350, max = 2000}, -- Randomized between values of $350 & $3500
+                Reward = {min = 100, max = 200}, -- Randomized between values of $350 & $3500
                 Account = "dirty", -- cash, bank or dirty money?
             },
 
@@ -133,10 +133,10 @@ Configuration = {
                 },
 
                 Items = {
-                    { Item = "msr", Image = "nui://ox_inventory/web/images/msr.png", Label = "MSR Swiper", Count = 1, Price = 5000 },
-                    { Item = "blank", Image = "nui://ox_inventory/web/images/blank.png", Label = "Blank Cards", Count = 5, Price = 500 },
-                    { Item = "checkpaper", Image = "nui://ox_inventory/web/images/checkpaper.png", Label = "Checkpaper", Count = 5, Price = 500 },
-                    { Item = "simcard", Image = "nui://ox_inventory/web/images/simcard.png", Label = "Sim Card", Count = 5, Price = 500 },
+                    { Item = "msr", Image = "nui://ox_inventory/web/images/msr.png", Label = "MSR Swiper", Count = 1, Price = 100 },
+                    { Item = "blank", Image = "nui://ox_inventory/web/images/blank.png", Label = "Blank Cards", Count = 5, Price = 25 },
+                    { Item = "checkpaper", Image = "nui://ox_inventory/web/images/checkpaper.png", Label = "Checkpaper", Count = 5, Price = 5 },
+                    { Item = "simcard", Image = "nui://ox_inventory/web/images/simcard.png", Label = "Sim Card", Count = 5, Price = 15 },
                 }
             },
 
