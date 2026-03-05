@@ -35,6 +35,7 @@ function lib.showTextUI(text, options)
 end
 
 function lib.hideTextUI()
+    print(GetInvokingResource())
     SendNUIMessage({
         action = 'textUiHide'
     })
