@@ -56,11 +56,11 @@ Config.Shops = {
         hour = { min = 6, max = 18 },
         account = 'dirty', -- Give 'cash', 'bank' or 'dirty' money when selling here?
         allowlist = {
-            ['golden_banana'] = { label = 'Golden Banana', price = math.random(5000, 7500) },
-            ['emerald'] = { label = 'Emerald', price = math.random(1000, 2500) },
-            ['ruby_necklace'] = { label = 'Ruby Necklace', price = math.random(1000, 2500) },
-            ['panther'] = { label = 'Panther', price = math.random(1000, 2500) },
-            ['ruby'] = { label = 'Ruby', price = math.random(1000, 2500) },
+            ['golden_banana'] = { label = 'Golden Banana', price = math.random(500, 750) },
+            ['emerald'] = { label = 'Emerald', price = math.random(100, 250) },
+            ['ruby_necklace'] = { label = 'Ruby Necklace', price = math.random(100, 250) },
+            ['panther'] = { label = 'Panther', price = math.random(100, 250) },
+            ['ruby'] = { label = 'Ruby', price = math.random(100, 250) },
             ['jewels'] = { label = 'Jewels', price = math.random(50, 100) },
         },
         -- If placeholders = true then the "slots" amount above will be overridden
