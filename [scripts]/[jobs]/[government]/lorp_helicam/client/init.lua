@@ -29,8 +29,8 @@ local markers = {}
 local markerBlips = {}
 
 Config.Jobs = {
-	sheriff = true,
-	sahp = true,
+	bcso = true,
+	sasp = true,
 }
 
 Config.Marker = {

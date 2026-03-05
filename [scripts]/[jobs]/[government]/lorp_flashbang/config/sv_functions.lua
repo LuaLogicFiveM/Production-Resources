@@ -4,7 +4,7 @@ function CanDetonateFlashbang(source)
     local xPlayer = ESX.GetPlayerFromId(source)
     if not xPlayer then return false end
     local xPlayerJob = xPlayer.getJob()
-    return xPlayerJob and xPlayerJob.name == 'sheriff' or xPlayerJob.name == 'sahp' or false
+    return xPlayerJob and xPlayerJob.name == 'bcso' or xPlayerJob.name == 'sasp' or false
 end
 
 -- Implement your own Anticheat logic here.

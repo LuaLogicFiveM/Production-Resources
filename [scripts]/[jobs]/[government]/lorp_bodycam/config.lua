@@ -41,7 +41,7 @@ Config.PropLoc = {  -- Change prop position according to ur clothing pack.
 }
 
 Config.AllowedJobs = { -- Only these jobs can use bodycam/dashcam item.
-    'sheriff', 'sahp'
+    'bcso', 'sasp', 'gov'
 }
 
 Config.AllowedClass = {18} -- Vehicle classes allowed to use the dashcam feature.
@@ -51,21 +51,21 @@ Config.WatchLoc = {
         coords = vector3(2803.3315, 4723.3696, 48.6274), 
         rad = 1.5, 
         debug = false,
-        targetAuth = {'sheriff'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
-        jobCam = {'sheriff'},  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
+        targetAuth = {'bcso'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
+        jobCam = {'bcso'},  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
         carCam = {                        -- false = able to view all the dashcams
-            job = {'sheriff'},             -- Jobs that activate dashcams shown in the list | false excludes.
+            job = {'bcso'},             -- Jobs that activate dashcams shown in the list | false excludes.
             class = {18}                  -- Dashcam activated on these vehicleclass shown in the list | false excludes.
         },
     },
     [2] = {
         coords = vector3(832.7230, -1285.0138, 31.7655), 
-        rad = 1.5, 
+        rad = 1.5,
         debug = false,
-        targetAuth = {'sahp'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
-        jobCam = {'sahp'},  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
+        targetAuth = {'sasp'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
+        jobCam = {'sasp'},  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
         carCam = {                        -- false = able to view all the dashcams
-            job = {'sahp'},             -- Jobs that activate dashcams shown in the list | false excludes.
+            job = {'sasp'},             -- Jobs that activate dashcams shown in the list | false excludes.
             class = {18}                  -- Dashcam activated on these vehicleclass shown in the list | false excludes.
         },
     }
