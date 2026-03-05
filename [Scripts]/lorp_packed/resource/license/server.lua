@@ -1,7 +1,8 @@
 local licenses = {}
 local allowedJobs = {
-	['sheriff'] = true,
-	['sahp'] = true
+	['bcso'] = true,
+	['sasp'] = true,
+	['gov'] = true
 }
 
 MySQL.ready(function()

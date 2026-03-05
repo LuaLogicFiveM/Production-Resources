@@ -1,4 +1,4 @@
-local Jobs = {['sheriff'] = true, ['sahp'] = true}
+local Jobs = {['bcso'] = true, ['sasp'] = true, ['gov'] = true}
 local PlayerJob
 local WhitelistedWeapons = {
     [`WEAPON_PROLASER4`] = true,

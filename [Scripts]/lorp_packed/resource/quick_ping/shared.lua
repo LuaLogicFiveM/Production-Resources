@@ -12,13 +12,19 @@ return {
     },
 
     Jobs = {
-        ['sheriff'] = {
+        ['bcso'] = {
             duration = 15000,
             color = { r = 0, g = 0, b = 255, a = 150 },
             blipColor = 4
         },
 
-        ['sahp'] = {
+        ['sasp'] = {
+            duration = 15000,
+            color = { r = 0, g = 0, b = 255, a = 150 },
+            blipColor = 4
+        },
+
+        ['gov'] = {
             duration = 15000,
             color = { r = 0, g = 0, b = 255, a = 150 },
             blipColor = 4

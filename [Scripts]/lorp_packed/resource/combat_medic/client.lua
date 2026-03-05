@@ -2,7 +2,7 @@ local cl_utils = lib.require('utils.client')
 local ak47_ambulancejob = exports.ak47_ambulancejob
 
 local function combatMedic()
-    if cl_utils.hasJobGrade({['sheriff'] = 10, ['sahp'] = 5}) then
+    if cl_utils.hasJobGrade({['bcso'] = 5, ['sasp'] = 5, ['gov'] = 0}) then
         local playerCoords = GetEntityCoords(cache.ped)
         local targetPlayer = lib.getClosestPlayer(playerCoords, 3.0, false)
         if targetPlayer then
