@@ -177,7 +177,7 @@ RegisterNetEvent('cfx-tcd-starterpack:Server:ClaimVehicle', function(vehicleData
             return
         end
 
-        giveVehicle(identifier, vehicleData, false)
+        giveVehicle(identifier, vehicleData, 0)
     end)
 end)
 

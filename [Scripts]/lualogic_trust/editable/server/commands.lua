@@ -79,7 +79,7 @@ if trustRemoveConfig.enabled then
 
 		local veh = args[1]
 
-		RemoveTrust(src, src, veh, false)
+		RemoveTrust(src, src, veh)
 	end, false)
 end
 
@@ -101,7 +101,7 @@ if trustRemoveConfig.admin.enabled then
 		local tgt = args[1]
 		local vehicle = args[2]
 
-		RemoveTrust(src, tgt, vehicle, true)
+		RemoveTrust(src, tgt, vehicle)
 	end, false)
 end
 

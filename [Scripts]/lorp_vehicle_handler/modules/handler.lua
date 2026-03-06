@@ -239,6 +239,15 @@ function Handler:basicfix(fixtype)
     end
 end
 
+function Handler:repairFix(vehicle)
+    local coords = GetEntityCoords(cache.ped)
+    return self:fixVehicle(vehicle, coords, 'bigkit')
+end
+
+exports('repairFix', function(vehicle)
+    Handler:repairFix(vehicle)
+end)
+
 function Handler:basicwash()
     if not cache.ped then return false end
 
