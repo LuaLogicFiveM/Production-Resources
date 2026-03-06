@@ -204,17 +204,17 @@ Config.ComputerTableItem = 'techworkz_station' --- The table item
 Config.PropItemName = 'gkms_prop_pctable' -- You can change this if you want (to basically any prop, make it make sense though!)
 
 Config.RequiredItems = {
-    { item = 'vortex_x', priceMin = 180, priceMax = 220 },
-    { item = 'prodigy_5', priceMin = 180, priceMax = 220 },
-    { item = 'prodigy_5_controller', priceMin = 180, priceMax = 220 },
-    { item = 'vortex_x_controller', priceMin = 180, priceMax = 220 },
-    { item = 'novadeck', priceMin = 180, priceMax = 220 },
-    { item = 'phantom', priceMin = 180, priceMax = 220 },
+    { item = 'vortex_x', priceMin = 800, priceMax = 830 },
+    { item = 'prodigy_5', priceMin = 800, priceMax = 830 },
+    { item = 'novadeck', priceMin = 545, priceMax = 575 },
+    { item = 'phantom', priceMin = 545, priceMax = 575 },
+    { item = 'vortex_x_controller', priceMin = 130, priceMax = 160 },
+    { item = 'prodigy_5_controller', priceMin = 130, priceMax = 160 },
 
-    { item = 'vortex_x_jailbreak', priceMin = 180, priceMax = 220 },
-    { item = 'phantom_jailbreak', priceMin = 180, priceMax = 220 },
-    { item = 'novadeck_jailbreak', priceMin = 180, priceMax = 220 },  
-    { item = 'prodigy_5_jailbreak',    priceMin = 180, priceMax = 220 }
+    { item = 'vortex_x_jailbreak', priceMin = 900, priceMax = 1000 },
+    { item = 'phantom_jailbreak', priceMin = 800, priceMax = 900 },
+    { item = 'novadeck_jailbreak', priceMin = 800, priceMax = 900 },  
+    { item = 'prodigy_5_jailbreak',    priceMin = 900, priceMax = 1000 }
 }
 
 

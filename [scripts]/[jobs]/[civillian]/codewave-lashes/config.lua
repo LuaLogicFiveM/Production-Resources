@@ -67,11 +67,11 @@ Config.lasheTableItem = 'lashes_table' --- The table item
 Config.PropItemName = 'prop_ven_market_table1' -- You can change this if you want (to basically any prop, make it make sense though!)
 
 Config.RequiredItems = {
-    { item = 'ellipse_lashes', priceMin = 18, priceMax = 25 },
-    { item = 'faux_mink_lashes', priceMin = 15, priceMax = 20 },
-    { item = 'mink_lashes', priceMin = 20, priceMax = 25 },
-    { item = 'silk_lashes', priceMin = 10, priceMax = 15 },
-    { item = 'synthetic_lashes', priceMin = 15, priceMax = 20 },
-    { item = 'volume_lashes', priceMin = 25, priceMax = 30 }
+    { item = 'ellipse_lashes', priceMin = 200, priceMax = 230 },
+    { item = 'faux_mink_lashes', priceMin = 200, priceMax = 230 },
+    { item = 'mink_lashes', priceMin = 200, priceMax = 230 },
+    { item = 'silk_lashes', priceMin = 200, priceMax = 230 },
+    { item = 'synthetic_lashes', priceMin = 200, priceMax = 230 },
+    { item = 'volume_lashes', priceMin = 200, priceMax = 230 },
 }
 

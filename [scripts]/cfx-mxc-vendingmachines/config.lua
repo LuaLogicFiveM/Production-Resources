@@ -57,7 +57,7 @@ Config.Translations = {
 Config.Items = {
     --#region coffee
     coffee = { -- Used only for payment and to give the item
-        price = 100
+        price = 10
     },
     --#endregion
 
@@ -72,309 +72,309 @@ Config.Items = {
     chips_cheese = {
         label = "Chips: Big Cheese",
         model = "mxc_vend_prop_item_chips1",
-        price = 100
+        price = 10
     },
     chips_paprika = {
         label = "Chips: Paprika",
         model = "mxc_vend_prop_item_chips2",
-        price = 100
+        price = 10
     },
     chips_ribs = {
         label = "Chips: Sticky Ribs",
         model = "mxc_vend_prop_item_chips3",
-        price = 100
+        price = 10
     },
     chips_salt = {
         label = "Chips: Salt & Sauce",
         model = "mxc_vend_prop_item_chips4",
-        price = 100
+        price = 10
     },
     chips_supersalt = {
         label = "Chips: Super Salt",
         model = "mxc_vend_prop_item_chips5",
-        price = 100
+        price = 10
     },
     chips_habanero = {
         label = "Chips: Habanero",
         model = "mxc_vend_prop_item_chips6",
-        price = 100
+        price = 10
     },
     chocolate_meteorite = {
         label = "Chocolate: Meteorite",
         model = "mxc_vend_prop_item_chocolate1",
-        price = 100
+        price = 10
     },
     chocolate_captain = {
         label = "Chocolate: Captain's Log",
         model = "mxc_vend_prop_item_chocolate2",
-        price = 100
+        price = 10
     },
     condom = {
         label = "Condom: Soth Lags",
         model = "mxc_vend_prop_item_preservatives",
-        price = 100,
+        price = 10,
         zoffset = -0.02
     },
     candy_zebra = {
         label = "Candy: Zebrabar",
         model = "mxc_vend_prop_item_candybar1",
-        price = 100
+        price = 10
     },
     candy_psqs = {
         label = "Candy: P's & Q's",
         model = "mxc_vend_prop_item_candybar2",
-        price = 100
+        price = 10
     },
     medicine_laxmax = {
         label = "Medicine: Lax to the Max",
         model = "mxc_vend_prop_item_medical1",
-        price = 100
+        price = 10
     },
     medicine_alcopatch = {
         label = "Medicine: AlcoPatch",
         model = "mxc_vend_prop_item_medical2",
-        price = 100
+        price = 10
     },
     medicine_mollis = {
         label = "Medicine: Mollis",
         model = "mxc_vend_prop_item_medical3",
-        price = 100
+        price = 10
     },
     medicine_betta = {
         label = "Medicine: Betta",
         model = "mxc_vend_prop_item_medical4",
-        price = 100
+        price = 10
     },
     gum_peppermint = {
         label = "Gum: Peppermint",
         model = "mxc_vend_prop_item_gum1",
-        price = 100
+        price = 10
     },
     gum_cinnamon = {
         label = "Gum: Cinnamon",
         model = "mxc_vend_prop_item_gum2",
-        price = 100
+        price = 10
     },
     gum_spearmint = {
         label = "Gum: Spearmint",
         model = "mxc_vend_prop_item_gum3",
-        price = 100
+        price = 10
     },
     --#endregion
     --#region soda
     bottle_cola = {
         label = "Cola",
         model = "mxc_vend_prop_item_bottle1",
-        price = 100
+        price = 10
     },
     bottle_junk = {
         label = "Junk",
         model = "mxc_vend_prop_item_bottle2",
-        price = 100
+        price = 10
     },
     bottle_orang = {
         label = "Orang Tang",
         model = "mxc_vend_prop_item_bottle3",
-        price = 100
+        price = 10
     },
     bottle_tonic = {
         label = "Tonic",
         model = "mxc_vend_prop_item_bottle4",
-        price = 100
+        price = 10
     },
     bottle_water = {
         label = "Water",
         model = "mxc_vend_prop_item_bottle5",
-        price = 100
+        price = 10
     },
     bottle_sprunk = {
         label = "Sprunk",
         model = "mxc_vend_prop_item_bottle6",
-        price = 100
+        price = 10
     },
     can_cola = {
         label = "Cola Can",
         model = "mxc_vend_prop_item_cansoda1",
-        price = 100
+        price = 10
     },
     can_orang = {
         label = "Orang Tang Can",
         model = "mxc_vend_prop_item_cansoda2",
-        price = 100
+        price = 10
     },
     can_junk = {
         label = "Junk Can",
         model = "mxc_vend_prop_item_cansoda3",
-        price = 100
+        price = 10
     },
     can_sprunk = {
         label = "Sprunk Can",
         model = "mxc_vend_prop_item_cansoda4",
-        price = 100
+        price = 10
     },
     can_logger = {
         label = "Logger Can",
         model = "mxc_vend_prop_item_canbeer1",
-        price = 100
+        price = 10
     },
     can_blarneys = {
         label = "Blarneys Can",
         model = "mxc_vend_prop_item_canbeer2",
-        price = 100
+        price = 10
     },
     can_hoplivion = {
         label = "Hoplivion Can",
         model = "mxc_vend_prop_item_canbeer3",
-        price = 100
+        price = 10
     },
     can_cerbeza = {
         label = "Cerbeza Can",
         model = "mxc_vend_prop_item_canbeer4",
-        price = 100
+        price = 10
     },
     --#endregion
     --#region svapo
     sand_evapebox = {
         label = "E-Vape Box",
         model = "mxc_smoking_prop_evape_2a",
-        price = 100
+        price = 10
     },
     grey_evapebox = {
         label = "E-Vape 2 Box",
         model = "mxc_smoking_prop_evape_2f",
-        price = 100
+        price = 10
     },
     pink_smokebox = {
         label = "Smoke Box",
         model = "mxc_smoking_prop_smoke_1d",
-        price = 100
+        price = 10
     },
     red_smokebox = {
         label = "Vaporglow Box",
         model = "mxc_smoking_prop_smoke_1b",
-        price = 100
+        price = 10
     },
     black_notankatomizer = {
         label = "Black NO-Tank Atomizer",
         model = "mxc_smoking_prop_atom_3c",
-        price = 100
+        price = 10
     },
     grey_shortatomizer = {
         label = "Short Grey Atomizer",
         model = "mxc_smoking_prop_atom_2f",
-        price = 100
+        price = 10
     },
     pink_shortatomizer = {
         label = "Short Pink Atomizer",
         model = "mxc_smoking_prop_atom_2e",
-        price = 100
+        price = 10
     },
     red_shortatomizer = {
         label = "Short Red Atomizer",
         model = "mxc_smoking_prop_atom_2b",
-        price = 100
+        price = 10
     },
     orange_stickevape = {
         label = "Orange Stick E-Vape",
         model = "mxc_smoking_prop_evape_1c",
-        price = 100
+        price = 10
     },
     yellow_stickevape = {
         label = "Yellow Stick E-Vape",
         model = "mxc_smoking_prop_evape_1c",
-        price = 100
+        price = 10
     },
     blue_stickevape = {
         label = "Blue Stick E-Vape",
         model = "mxc_smoking_prop_evape_1c",
-        price = 100
+        price = 10
     },
     green_stickevape = {
         label = "Green Stick E-Vape",
         model = "mxc_smoking_prop_evape_1c",
-        price = 100
+        price = 10
     },
     black_vaporglowvape = {
         label = "Black VaporGlow",
         model = "mxc_smoking_prop_vaporglow_1f",
-        price = 100
+        price = 10
     },
     lightgrey_vaporglowvape = {
         label = "Light Grey VaporGlow",
         model = "mxc_smoking_prop_vaporglow_1e",
-        price = 100
+        price = 10
     },
     red_vaporglowvape = {
         label = "Red VaporGlow",
         model = "mxc_smoking_prop_vaporglow_1b",
-        price = 100
+        price = 10
     },
     pink_vaporglowvape = {
         label = "Pink VaporGlow",
         model = "mxc_smoking_prop_vaporglow_1d",
-        price = 100
+        price = 10
     },
     orange_sumovape = {
         label = "Orange Sumo",
         model = "mxc_smoking_prop_sumo_1g",
-        price = 100
+        price = 10
     },
     green_sumovape = {
         label = "Green Sumo",
         model = "mxc_smoking_prop_sumo_1c",
-        price = 100
+        price = 10
     },
     lightgrey_sumovape = {
         label = "Light Grey Sumo",
         model = "mxc_smoking_prop_sumo_1e",
-        price = 100
+        price = 10
     },
     blue_sumovape = {
         label = "Blue Sumo",
         model = "mxc_smoking_prop_sumo_1a",
-        price = 100
+        price = 10
     },
     --#endregion
 
     cigs_redwood = {
         label = "Cigarettes: Redwood",
         model = "v_ret_ml_cigs",
-        price = 100
+        price = 10
     },
     cigs_redwood2 = {
         label = "Cigarettes: Redwood2",
         model = "v_ret_ml_cigs2",
-        price = 100
+        price = 10
     },
     cigs_debonaireb = {
         label = "Cigarettes: Debonaire Blue",
         model = "v_ret_ml_cigs3",
-        price = 100
+        price = 10
     },
     cigs_debonaireg = {
         label = "Cigarettes: Debonaire Green",
         model = "v_ret_ml_cigs4",
-        price = 100
+        price = 10
     },
     cigs_cardiaque = {
         label = "Cigarettes: Cardiaque",
         model = "v_ret_ml_cigs5",
-        price = 100
+        price = 10
     },
     cigs_69brand = {
         label = "Cigarettes: 69Brand",
         model = "v_ret_ml_cigs6",
-        price = 100
+        price = 10
     },
     cigs_cok = {
         label = "Cigarettes: CoK",
         model = "mxc_vend_prop_item_cigs1",
-        price = 100
+        price = 10
     },
     cigs_estancia = {
         label = "Cigars: Estancia",
         model = "prop_cigar_pack_01",
-        price = 100
+        price = 10
     }
 }
 

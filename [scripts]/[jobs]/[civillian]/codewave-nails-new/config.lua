@@ -49,7 +49,7 @@ Config.Items = {
 -- Quantity is the amount of that item required to craft.
 Config.CraftingRecipes = {
     { name = "Set Of Coffin Nails", id = "cfn-nails", img = "image/coffin-nail.png", requiredItems = { { id = "acrylic-liquid", quantity = 2 }, { id = "acrylic-nails", quantity = 2 }, { id = "acrylic-powder", quantity = 1 } } },
-    { name = "Set Of Stiletto Nails", id = "sti-nails", img = "image/stiletto-nail.png", requiredItems = { { id = "acrylic-liquid", quantity = 2 }, { id = "acrylic-nails", quantity = 2 }, { id = "acrylic-nails", quantity = 1 } } },
+    { name = "Set Of Stiletto Nails", id = "sti-nails", img = "image/stiletto-nail.png", requiredItems = { { id = "acrylic-liquid", quantity = 2 }, { id = "acrylic-nails", quantity = 2 }, { id = "acrylic-powder", quantity = 1 } } },
     { name = "Set Of Almond Nails", id = "alm-nails", img = "image/almond-nail.png", requiredItems = { { id = "acrylic-liquid", quantity = 2 }, { id = "acrylic-nails", quantity = 2 }, { id = "acrylic-powder", quantity = 1 } } },
     { name = "Set Of Lipstick Nails", id = "lip-nails", img = "image/lipstick-nail.png", requiredItems = { { id = "acrylic-liquid", quantity = 2 }, { id = "acrylic-nails", quantity = 2 }, { id = "acrylic-powder", quantity = 1 } } },
     { name = "Set Of Ballerina Nails", id = "bal-nails", img = "image/ballerina-nail.png", requiredItems = { { id = "acrylic-liquid", quantity = 2 }, { id = "acrylic-nails", quantity = 2 }, { id = "acrylic-powder", quantity = 1 } } },
@@ -64,12 +64,12 @@ Config.nailTableItem = 'nailtable' --- The table item
 Config.PropItemName = 'prop_ven_market_table1' -- You can change this if you want (to basically any prop, make it make sense though!)
 
 Config.RequiredItems = {
-    { item = 'cfn-nails', priceMin = 18, priceMax = 25 },
-    { item = 'sti-nails', priceMin = 15, priceMax = 20 },
-    { item = 'alm-nails', priceMin = 12, priceMax = 18 },
-    { item = 'lip-nails', priceMin = 10, priceMax = 15 },
-    { item = 'bal-nails', priceMin = 5, priceMax = 30 },
-    { item = 'squ-nails', priceMin = 25, priceMax = 35 },
-    { item = 'fla-nails', priceMin = 20, priceMax = 30 }
+    { item = 'cfn-nails', priceMin = 270, priceMax = 300 },
+    { item = 'alm-nails', priceMin = 270, priceMax = 300 },
+    { item = 'lip-nails', priceMin = 270, priceMax = 300 },
+    { item = 'bal-nails', priceMin = 270, priceMax = 300 },
+    { item = 'squ-nails', priceMin = 270, priceMax = 300 },
+    { item = 'fla-nails', priceMin = 270, priceMax = 300 },
+    { item = 'sti-nails', priceMin = 295, priceMax = 325 },
 }
 
