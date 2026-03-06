@@ -56,8 +56,8 @@ Config.rocksAmount = {
 
 -- Grass spawn settings
 Config.grassAmount = {
-    min = 10,
-    max = 25,
+    min = 5,
+    max = 15,
 }
 
 -- Minimum required task completion to get paid

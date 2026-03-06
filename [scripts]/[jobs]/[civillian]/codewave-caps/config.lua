@@ -96,20 +96,20 @@ Config.MinItemsToSell = 1
 Config.MaxItemsToSell = 3
 -- NPC SALES USING COMMAND PRICES, Min/Max Values
 Config.RequiredItems = {
-    { item = 'la_black_cap', priceMin = 35, priceMax = 65 },
-    { item = 'corkers_black_cap', priceMin = 35, priceMax = 65 },
-    { item = 'swingers_black_cap', priceMin = 35, priceMax = 65 },
-    { item = 'red_cap', priceMin = 35, priceMax = 65 },
-    { item = 'orange_cap', priceMin = 35, priceMax = 65 },
-    { item = 'quality_black_cap', priceMin = 35, priceMax = 65 },
-    { item = 'quality_purple_hat', priceMin = 35, priceMax = 65 },
-    { item = 'quality_blue_cap', priceMin = 35, priceMax = 65 },
-    { item = 'ls_black_cap', priceMin = 50, priceMax = 75 },
-    { item = 'packers_black_cap', priceMin = 50, priceMax = 75 },
-    { item = 'bandits_black_cap', priceMin = 50, priceMax = 75 },
-    { item = 'black_cap', priceMin = 50, priceMax = 75 },
-    { item = 'blue_cap', priceMin = 50, priceMax = 75 },
-    { item = 'quality_green_cap', priceMin = 50, priceMax = 75 },
+    { item = 'la_black_cap', priceMin = 150, priceMax = 180 },
+    { item = 'corkers_black_cap', priceMin = 150, priceMax = 180 },
+    { item = 'swingers_black_cap', priceMin = 150, priceMax = 180 },
+    { item = 'red_cap', priceMin = 150, priceMax = 180 },
+    { item = 'orange_cap', priceMin = 150, priceMax = 180 },
+    { item = 'quality_black_cap', priceMin = 150, priceMax = 180 },
+    { item = 'quality_purple_hat', priceMin = 150, priceMax = 180 },
+    { item = 'quality_blue_cap', priceMin = 150, priceMax = 180 },
+    { item = 'ls_black_cap', priceMin = 135, priceMax = 165 },
+    { item = 'packers_black_cap', priceMin = 135, priceMax = 165 },
+    { item = 'bandits_black_cap', priceMin = 135, priceMax = 165 },
+    { item = 'black_cap', priceMin = 135, priceMax = 165 },
+    { item = 'blue_cap', priceMin = 135, priceMax = 165 },
+    { item = 'quality_green_cap', priceMin = 135, priceMax = 165 },
 }
 
 
