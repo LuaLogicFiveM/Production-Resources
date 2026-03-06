@@ -1,1 +1,1 @@
-{"tsunami":false,"weather":"CLEAR","instantweather":false,"hours":5,"instanttime":false,"weathermethod":"game","freeze":false,"blackout":false,"dynamic":true,"mins":40,"timemethod":"game"}
+{"tsunami":false,"weathermethod":"game","instantweather":false,"blackout":false,"dynamic":true,"instanttime":false,"mins":16,"freeze":false,"hours":16,"weather":"CLOUDS","timemethod":"game"}

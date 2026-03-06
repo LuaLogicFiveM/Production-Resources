@@ -1,0 +1,25 @@
+---@diagnostic disable: duplicate-set-field
+if GetResourceState("qb-target") ~= "started" then
+	return
+end
+
+Target = {}
+Target.AddTargetBoxZone = function(name, coords, size, heading, options, debug)
+	if GetResourceState("qb-target") ~= "started" or type(options) ~= "table" then
+		return
+	end
+	for k, v in pairs(options) do
+		options[k].action = v.onSelect
+	end
+
+	exports["qb-target"]:AddBoxZone(name, coords, size, size, {
+		name = name,
+		debugPoly = debug,
+		heading = heading,
+		minZ = coords.z - (size * 0.5),
+		maxZ = coords.z + (size * 0.5),
+	}, {
+		options = options,
+		distance = 1.5,
+	})
+end
