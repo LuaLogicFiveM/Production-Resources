@@ -78,7 +78,7 @@ Config.AutoExecuteQuery = false
 Config.Debug = false
 
 ---@field UseProgressbar boolean: If you want to use a progress bar for part installation, you can do so below.
-Config.UseProgressBar = true
+Config.UseProgressBar = false
 
 ---@field UseSkillbar boolean: If you want to use the skill bar to install parts, you can do so below.
 Config.UseSkillbar = false
