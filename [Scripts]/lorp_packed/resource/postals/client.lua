@@ -1,7 +1,7 @@
 local postals = require 'data.postals'
 
 RegisterNetEvent("lorp_postals:client:requestWaypoint", function(selectedPostal)
-    local userPostal = string.upper(selectedPostal)
+    local userPostal = tonumber(selectedPostal)
     local setPostal = postals[userPostal]
 
     if not setPostal then
