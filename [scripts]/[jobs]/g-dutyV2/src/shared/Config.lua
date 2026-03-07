@@ -8,10 +8,10 @@ Config.SystemSettings = {
 	-- en - English | es - spanish | de - German | fr = French | pt = portuguese | tr - Turkish | ru - Russian
 	Language = "en",
 	Debug = false,
-	theme = "theme3",     -- gblue | theme2 | theme3 | theme4 | theme5 - defalt theme
+	theme = "theme5",     -- gblue | theme2 | theme3 | theme4 | theme5 - defalt theme
 	OpenMenuVia = "textui", -- target | textui | custom
-	ClockItems = true,    -- if this true SV_CONFIG.Items will add/remove when ever player clock in or out
-	ForceJobUpdate = false, -- If true, the player's job will be updated in the database whenever they clock in, clock out, or use the setjob command. Not recommended for production use; intended for testing only.
+	ClockItems = false,    -- if this true SV_CONFIG.Items will add/remove when ever player clock in or out
+	ForceJobUpdate = true, -- If true, the player's job will be updated in the database whenever they clock in, clock out, or use the setjob command. Not recommended for production use; intended for testing only.
 }
 
 Config.clockDuration = 5 -- clock in or out progress time 5 = 5 seconds
@@ -43,8 +43,7 @@ Config.DutySystem = {
 			-- user
 			duty = {
 				coords = {
-					vec4(437.0450, -986.5495, 30.6896, 349.8869),
-					-- add more coords if you want
+					vec4(2828.1711, 4712.6313, 48.6273, 12.1099),
 				},
 				EnablePed = true,
 				model = "s_m_y_cop_01",     -- https://docs.fivem.net/docs/game-references/ped-models/
@@ -54,13 +53,12 @@ Config.DutySystem = {
 			boss = {
 				allowedGrades = { 10, 11 },
 				coords = {
-					vec3(451.7888488769531, -972.6823120117188, 30.72463035583496),
-					-- add more coords if you want
+					vec3(2786.8657, 4739.6084, 48.6274),
 				},
 			},
 		},
 		Blip = {
-			Enable = true,
+			Enable = false,
 			BlipSprite = 408, -- https://docs.fivem.net/docs/game-references/blips/
 			BlipScale = 0.8,
 			BlipColor = 26,
@@ -74,7 +72,7 @@ Config.DutySystem = {
 			-- user
 			duty = {
 				coords = {
-					vec4(437.0450, -986.5495, 30.6896, 349.8869),
+					vec4(836.5297, -1295.3843, 26.8965, 357.7525),
 					-- add more coords if you want
 				},
 				EnablePed = true,
@@ -85,13 +83,13 @@ Config.DutySystem = {
 			boss = {
 				allowedGrades = { 10, 11 },
 				coords = {
-					vec3(451.7888488769531, -972.6823120117188, 30.72463035583496),
+					vec3(835.0731, -1286.5104, 31.7655),
 					-- add more coords if you want
 				},
 			},
 		},
 		Blip = {
-			Enable = true,
+			Enable = false,
 			BlipSprite = 408, -- https://docs.fivem.net/docs/game-references/blips/
 			BlipScale = 0.8,
 			BlipColor = 26,
@@ -104,21 +102,21 @@ Config.DutySystem = {
 		Station = {
 			duty = {
 				coords = {
-					vec4(294.0028, -597.4308, 43.2904, 58.5312),
+					vec4(1681.4703, 3580.5217, 35.7300, 206.7306),
 				},
 				EnablePed = true,
 				model = "s_m_m_doctor_01",
 				scenario = "WORLD_HUMAN_CLIPBOARD",
 			},
 			boss = {
-				allowedGrades = { 3 },
+				allowedGrades = { 5, 6 },
 				coords = {
-					vec3(297.287, -588.770, 42.710),
+					vec3(1662.0447, 3588.7351, 35.7301),
 				},
 			},
 		},
 		Blip = {
-			Enable = true,
+			Enable = false,
 			BlipSprite = 408, -- https://docs.fivem.net/docs/game-references/blips/
 			BlipScale = 0.8,
 			BlipColor = 6,
@@ -127,7 +125,7 @@ Config.DutySystem = {
 	},
 }
 
-Config.DutySelect = "V2" -- V1: Classic Menu (Default) | V2: Fingerprint Scanner (Modern & Realistic)
+Config.DutySelect = "V1" -- V1: Classic Menu (Default) | V2: Fingerprint Scanner (Modern & Realistic)
 Config.fingerprintColorSchemes = "green" -- blue | green | red | purple | orange | cyan | teal | pink
 -- Rewards
 Config.EnableLeaderBoard = true
@@ -138,7 +136,7 @@ Config.LeaderBoard = {
 	-- Coordinates for where you want to display the leaderboard and rewards menu.
 	["bcso"] = {
 		Coords = {
-			vec4(427.9968, -986.4164, 30.7118, 356.7822), -- add more coords if you want
+			vec4(2829.8735, 4712.8882, 48.6274, 15.5170), -- add more coords if you want
 		},
 		Peds = {
 			EnablePed = true,
@@ -146,7 +144,7 @@ Config.LeaderBoard = {
 			scenario = "WORLD_HUMAN_CLIPBOARD", -- https://gtaforums.com/topic/796181-list-of-scenarios-for-peds/
 		},
 		Blip = {
-			Enable = true,
+			Enable = false,
 			BlipSprite = 515, -- https://docs.fivem.net/docs/game-references/blips/
 			BlipScale = 0.5,
 			BlipColor = 26,
@@ -155,7 +153,7 @@ Config.LeaderBoard = {
 	},
 	["sasp"] = {
 		Coords = {
-			vec4(427.9968, -986.4164, 30.7118, 356.7822), -- add more coords if you want
+			vec4(837.7642, -1281.7025, 31.7655, 83.0195), -- add more coords if you want
 		},
 		Peds = {
 			EnablePed = true,
@@ -172,7 +170,7 @@ Config.LeaderBoard = {
 	},
 	["safd"] = {
 		Coords = {
-			vec4(287.2109, -588.2889, 43.1209, 252.0593), -- add more coords if you want
+			vec4(1667.8326, 3579.2070, 35.7283, 228.1019), -- add more coords if you want
 		},
 		Peds = {
 			EnablePed = true,
@@ -180,7 +178,7 @@ Config.LeaderBoard = {
 			scenario = "WORLD_HUMAN_CLIPBOARD", -- https://gtaforums.com/topic/796181-list-of-scenarios-for-peds/
 		},
 		Blip = {
-			Enable = true,
+			Enable = false,
 			BlipSprite = 515, -- https://docs.fivem.net/docs/game-references/blips/
 			BlipScale = 0.5,
 			BlipColor = 26,
