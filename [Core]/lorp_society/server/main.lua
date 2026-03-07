@@ -155,30 +155,35 @@ end)
 
 ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, society)
 	local employees = {}
+	print(society)
 
 	local xPlayers = ESX.GetExtendedPlayers('job', society)
 
-	for i=1, #(xPlayers) do 
-		local xPlayer = xPlayers[i]
+	if xPlayers then
+		for i=1, #(xPlayers) do 
+			local xPlayer = xPlayers[i]
 
-		local name = xPlayer.getName()
-		if Config.EnableESXIdentity and name == GetPlayerName(xPlayer.src) then
-			name = xPlayer.get('firstName') .. ' ' .. xPlayer.get('lastName')
+			if xPlayer then
+				local name = xPlayer.getName()
+				if Config.EnableESXIdentity and name == GetPlayerName(xPlayer.src) then
+					name = xPlayer.get('firstName') .. ' ' .. xPlayer.get('lastName')
+				end
+
+				local job = xPlayer.getJob()
+
+				table.insert(employees, {
+					name = name,
+					identifier = xPlayer.getIdentifier(),
+					job = {
+						name = society,
+						label = job.label,
+						grade = job.grade,
+						grade_name = job.grade_name,
+						grade_label = job.grade_label
+					}
+				})
+			end
 		end
-
-		local job = xPlayer.getJob()
-
-		table.insert(employees, {
-			name = name,
-			identifier = xPlayer.getIdentifier(),
-			job = {
-				name = society,
-				label = job.label,
-				grade = job.grade,
-				grade_name = job.grade_name,
-				grade_label = job.grade_label
-			}
-		})
 	end
 		
 	local query = "SELECT identifier, job_grade FROM `users` WHERE `job`= ? ORDER BY job_grade DESC"
@@ -187,8 +192,7 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
 		query = "SELECT identifier, job_grade, firstname, lastname FROM `users` WHERE `job`= ? ORDER BY job_grade DESC"
 	end
 
-	MySQL.query(query, {society},
-	function(result)
+	MySQL.query(query, {society}, function(result)
 		for k, row in pairs(result) do
 			local alreadyInTable
 			local identifier = row.identifier
