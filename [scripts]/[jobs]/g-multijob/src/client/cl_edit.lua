@@ -127,7 +127,6 @@ CreateThread(function()
     if openType ~= "location" then
         return
     end
-    print("OpenType: " .. tostring(openType))
     local locationCoords = Config.MultiJob.Location.coords
 
     if locationCoords then

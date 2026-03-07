@@ -80,6 +80,12 @@ function G.Server.SetPlayerJob(src, jobName, grade, oldJob)
 end
 
 function G.Server.CommandsAdd(name, help, arguments, arg, callback, permission, ...)
+
+    if name == 'addmultijob' then
+        name = 'addjob'
+        permission = 'admin'
+    end
+
     ESX.RegisterCommand(name, permission, function(xPlayer, args, showError)
         callback(xPlayer.source, args)
     end, false, {
