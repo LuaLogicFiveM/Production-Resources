@@ -135,7 +135,7 @@ local function repairVehicle()
         canCancel = true,
         disable = { move = true, car = true, mouse = false, combat = true, },
     }) then 
-        exports['lorp_vehicle_handler']:FixVehicle(cache.vehicle)
+        exports['lorp_vehicle_handler']:repairFix(cache.vehicle)
         stevo_lib.Notify(locale("notify.vehicleRepaired"), 'success', 3000)
         lib.showContext('stevo_jobgarages_mechanic')
     else
