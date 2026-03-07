@@ -196,7 +196,7 @@ function AddPaycheckByIdentifier(identifier, job, amount, payType, isBonus, appr
 end
 
 function MultiJobFireEmployee(identifier, job)
-    TriggerEvent('randol_multijob:server:FireEmployeeByIdentifier', identifier, job)
+    --TriggerEvent('randol_multijob:server:FireEmployeeByIdentifier', identifier, job)
     if GetResourceState("g-multijob") == "started" then
         exports['g-multijob']:RemoveJob(identifier, job, true)
     end

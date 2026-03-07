@@ -119,7 +119,9 @@ if openType == "location" then
     end
 elseif openType == 'custom' then
     --  custom
-    -- OpenMultiJobMenu()
+    RegisterCommand('jobs', function()
+        OpenMultiJobMenu()
+    end, false)
 end
 
 -- Do not touch if you don't know what you're doing.
