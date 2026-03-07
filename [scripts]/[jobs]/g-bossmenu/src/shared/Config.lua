@@ -198,7 +198,7 @@ Config.Menu = {
                     scenario = "WORLD_HUMAN_CLIPBOARD", -- https://gtaforums.com/topic/796181-list-of-scenarios-for-peds/
                 },
                 coords = {
-                    vec4(848.6661, -1301.1399, 31.7642, 277.0236),
+                    vec4(832.7867, -1295.3660, 26.8965, 359.1221),
                 }
             },
             vehicleShop = {
@@ -210,6 +210,69 @@ Config.Menu = {
                     },
                     coords = {
                         vec4(871.7104, -1330.6006, 26.3395, 178.0441)
+                    },
+                },
+                ShowcaseLocation = vec4(797.25, -3000.18, -69.63, 242.65),
+                VehicleCam = vec3(803.05, -3004.78, -67.7) -- player position
+            }
+        },
+        ["safd"] = {
+            isGang = false, -- (if ESX Framework leave this as false) enable this if the job is a gang
+            secondaryJobsAllowManage = false,
+            -- use this for your multiple jobs
+            secondaryJobs = {
+                -- this can be empty {}
+                -- its for multiple jobs support ['job_name'] = {grade1, grade2, grade3, ...},
+                -- ['mechanic'] = { 3, 4 },
+            },
+            EnableUserMenu = true,       -- if you want to disable the user menu just set it to false
+            -- Example: allowedGrades = { 3 } means that only players with grade 3
+            allowedGrades = { 5, 6 }, -- rank required to access the bossmenu
+            -- bossmenu coords
+            coords = {
+                vec4(1662.9036, 3585.5918, 35.7300, 317.5958)
+            },
+            pages = {
+                enable_job_application = true,
+                enable_reports = true,
+                enable_leave_management = true,
+                enable_vehicle_management = true,
+            },
+            permissions = {
+                ['ACCOUNT_BALANCE'] = { 10, 11 },
+                ['GIVE_BONUS'] = { 9, 10, 11 },
+                ['WITHDRAW_MONEY'] = { 10, 11 },
+                ['DEPOSIT_MONEY'] = { 8, 9, 10, 11 },
+                ['HIRE_EMPLOYEE'] = { 8, 9, 10, 11 },
+                ['FIRE_EMPLOYEE'] = { 10, 11 },
+                ['PROMOTE_EMPLOYEE'] = { 10, 11 },
+                ['MANAGE_SALARIES'] = { 11 },
+                ['VIEW_TRANSACTIONS'] = { 10, 11 },
+                ['MANAGE_REPORTS'] = { 7, 8, 9, 10, 11 },
+                ['MANAGE_VEHICLES'] = { 10, 11 },
+                ['MANAGE_ANNOUNCEMENT'] = { 9, 10, 11 },
+                ['MANAGE_SETTINGS'] = { 10, 11 }
+            },
+            JobApplication = {
+                enabled = true,
+                ped = {
+                    enable = true,                      -- if you want to disable the ped just set it to false
+                    model = "s_m_y_cop_01",             -- https://docs.fivem.net/docs/game-references/ped-models/
+                    scenario = "WORLD_HUMAN_CLIPBOARD", -- https://gtaforums.com/topic/796181-list-of-scenarios-for-peds/
+                },
+                coords = {
+                    vec4(1683.1877, 3581.5171, 35.7299, 203.2391),
+                }
+            },
+            vehicleShop = {
+                enable = true,
+                vehicleMenu = {
+                    ped = {
+                        spawn = true,
+                        model = "ig_car3guy1",
+                    },
+                    coords = {
+                        vec4(1690.8173, 3599.5869, 35.3894, 303.1224)
                     },
                 },
                 ShowcaseLocation = vec4(797.25, -3000.18, -69.63, 242.65),
