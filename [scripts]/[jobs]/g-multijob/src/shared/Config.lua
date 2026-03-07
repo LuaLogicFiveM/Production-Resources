@@ -28,7 +28,7 @@ Config.MultiJob = {
     --[[
       if open type is "custom" then you need to write a custom logic to open the menu in src/client/cl_edit.lua
     ]]
-    OpenType = "command", -- command | keybind | location | custom
+    OpenType = "custom", -- command | keybind | location | custom
 
     Command = {
         name = "jobs", -- command name
