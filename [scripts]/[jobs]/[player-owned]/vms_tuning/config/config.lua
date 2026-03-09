@@ -616,7 +616,7 @@ Config.TuningPoints = {
         -- actions = {},
     },]]
     points = { --# Points where you can tune vehicles
-        [1] = vector3(-2061.5737, -471.3734, 13.1860),
+        [1] = vector3(-2061.5737, -471.3734, 12.1860),
         -- [2] = vector3(-223.26, -1323.21, 29.89),
         -- [3] = vector(0.0, 0.0, 0.0),
     },

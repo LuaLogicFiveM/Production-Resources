@@ -285,7 +285,7 @@ Config.Cards = {
         imgBorderColor  = "#000000",
         imgBgColor      = "#ff5121",
         classes = {
-            "Pistol", "Shotgun", "SMG", "AR", "Sniper"
+            "Handgun", "Shotgun", "SMG", "Rifle", "Sniper"
         },
         prop = {
             model = 'prop_weaponlicense',
@@ -309,7 +309,7 @@ Config.Shops = {
             	item = "id_card",
             	label = "ID Card",
             	description = "Your citizenship id card",
-            	price = 5000,
+            	price = 100,
             	account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
             	licenseclass = nil,
             	expire = 6,
@@ -318,7 +318,7 @@ Config.Shops = {
             	item = "driver_license",
             	label = "DRIVER LICENSE",
             	description = "Drivers License Class C",
-            	price = 8000,
+            	price = 1000,
             	account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
             	licenseclass = "C",
             	expire = 1,
@@ -345,45 +345,81 @@ Config.Shops = {
         },
         scenario = 'WORLD_HUMAN_COP_IDLES' -- if nil then ped will not play any scenario
 	},
-    --[[{
+    {
         name = "Weapon Licenses",
-        blip = {enable = true, id = 498, color = 1, scale = 0.8},
+        blip = {enable = false, id = 498, color = 1, scale = 0.8},
         items = {
             {
                 item = "weapons_license", 
-                label = "LICENSE TO CARRY", 
-                description = "Firearms License Class [Handgun]",
-                price = 25000, 
+                label = "License to Carry - 1 Month",
+                description = "Class: Handgun",
+                price = 15000, 
                 account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
                 licenseclass = "Handgun",
                 expire = 1, -- in month
             },
             {
                 item = "weapons_license", 
-                label = "LICENSE TO CARRY", 
-                description = "Firearms License Class [Shotgun]",
-                price = 50000, 
-                account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
-                licenseclass = "Shotgun",
-                expire = 1, -- in month
-            },
-            {
-                item = "weapons_license", 
-                label = "LICENSE TO CARRY", 
-                description = "Firearms License Class [SMG]",
-                price = 75000, 
+                label = "License to Carry - 1 Month",
+                description = "Class: SMG",
+                price = 25000, 
                 account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
                 licenseclass = "SMG",
                 expire = 1, -- in month
             },
             {
                 item = "weapons_license", 
-                label = "LICENSE TO CARRY", 
-                description = "Firearms License Class [Rifle]",
-                price = 250, 
+                label = "License to Carry - 1 Month",
+                description = "Class: Rifle",
+                price = 50000, 
                 account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
                 licenseclass = "Rifle",
                 expire = 1, -- in month
+            },
+            {
+                item = "weapons_license", 
+                label = "License to Carry - 1 Month",
+                description = "Class: Shotgun",
+                price = 100000, 
+                account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
+                licenseclass = "Shotgun",
+                expire = 1, -- in month
+            },
+            {
+                item = "weapons_license", 
+                label = "License to Carry - 3 Months",
+                description = "Class: Handgun",
+                price = 37500, 
+                account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
+                licenseclass = "Handgun",
+                expire = 3, -- in month
+            },
+            {
+                item = "weapons_license", 
+                label = "License to Carry - 3 Months",
+                description = "Class: SMG",
+                price = 60000, 
+                account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
+                licenseclass = "SMG",
+                expire = 3, -- in month
+            },
+            {
+                item = "weapons_license", 
+                label = "License to Carry - 3 Months",
+                description = "Class: Rifle",
+                price = 125000, 
+                account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
+                licenseclass = "Rifle",
+                expire = 3, -- in month
+            },
+            {
+                item = "weapons_license", 
+                label = "License to Carry - 3 Months",
+                description = "Class: Shotgun",
+                price = 250000, 
+                account = 'cash', -- 'cash', 'bank', 'black_money', 'coin'
+                licenseclass = "Shotgun",
+                expire = 3, -- in month
             },
         },
         zones = {
@@ -392,11 +428,11 @@ Config.Shops = {
                 size = vector3(2.0, 2.0, 2.0),
             },
         },
-        target = {label = "Weapons Licenses", icon = 'fa-id-card', distance = 2.0},
+        target = {label = "Weapon Licenses", icon = 'fa-id-card', distance = 2.0},
         peds = { --if empty then there will be no ped. Only polyzone
             's_m_y_ammucity_01',
         },
         scenario = 'WORLD_HUMAN_COP_IDLES' -- if nil then ped will not play any scenario
-    },]]
+    },
 }
 
