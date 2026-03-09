@@ -139,19 +139,17 @@ return {
 		}
 	},
 
-	--[[Ammunation = {
+	Ammunation = {
 		name = 'Ammu-Nation',
 		blip = {
 			id = 110, colour = 69, scale = 0.8
 		}, inventory = {
-			{ name = 'WEAPON_HELLCAT', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
-			{ name = 'WEAPON_G41', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
-			{ name = 'WEAPON_TANFNX45', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
-			{ name = 'WEAPON_DRACO', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
-			{ name = 'WEAPON_KNUCKLE', price = math.random(5000, 7500), metadata = { registered = true }, license = 'weapons_license' },
+			{ name = 'WEAPON_COMBATPISTOL', price = math.random(10000, 15000), metadata = { registered = true }, license = 'weapons_license', license_class = 'Handgun' },
+			{ name = 'WEAPON_SNSPISTOL', price = math.random(10000, 15000), metadata = { registered = true }, license = 'weapons_license', license_class = 'Handgun' },
+			{ name = 'WEAPON_APPISTOL', price = math.random(10000, 15000), metadata = { registered = true }, license = 'weapons_license', license_class = 'Handgun' },
+			{ name = 'WEAPON_HEAVYPISTOL', price = math.random(10000, 15000), metadata = { registered = true }, license = 'weapons_license', license_class = 'Handgun' },
+			{ name = 'WEAPON_MICROSMG', price = math.random(25000, 30000), metadata = { registered = true }, license = 'weapons_license', license_class = 'SMG' },
 			{ name = 'ammo-9', price = math.random(5, 10) },
-			{ name = 'ammo-45', price = math.random(8, 14) },
-			{ name = 'ammo-762', price = math.random(15, 22) },
 		}, locations = {
 			vec3(-662.2047, -934.9218, 21.8292), -- Little Seoul (726)
 			--vec3(818.0451, -2154.9829, 28.9313), -- Docks Gun (807)
@@ -163,7 +161,7 @@ return {
 			vec3(842.2874, -1033.9380, 28.1948), -- Popular St. Gun (769) 
         	vec3(1693.3412, 3759.9043, 34.7053), -- Sandy Gun (285)
 		}
-	},]]
+	},
 
 	--[[IDShop = {
 		name = 'License Shop',
