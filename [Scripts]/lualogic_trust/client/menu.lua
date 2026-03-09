@@ -1152,6 +1152,44 @@ if config.modules.trust.give.enabled then
     end
 end
 
+local function PurchaseTrustedVehicles()
+    local purchasedVehicles, trustedVehicles = lib.callback.await('lualogic_trust:server:requestBoughtVehicles', false)
+    local menu = {
+        id = 'vehicle_options_trusted',
+        title = 'Available Trusted Vehicles',
+        menu = 'vehicle_options',
+        options = {}
+    }
+
+    for _, vehicle in ipairs(trustedVehicles) do
+        menu.options[#menu.options+1] = {
+            title = vehicle,
+            disabled = purchasedVehicles and purchasedVehicles[vehicle] or not IsModelInCdimage(vehicle),
+            onSelect = function()
+                local confirm = lib.alertDialog({
+                    header = 'Trusted Vehicle Transfer',
+                    content = ('## Transfer Fee  \n **$10,000**  \n ## Vehicle  \n **%s**'):format(vehicle),
+                    centered = true,
+                    cancel = true
+                })
+
+                if confirm == 'confirm' then
+                    TriggerServerEvent('lualogic_trust:server:purchaseTrustedVehicle', vehicle)
+                    Wait(100)
+                    PurchaseTrustedVehicles()
+                else
+                    PurchaseTrustedVehicles()
+                end
+            end
+        }
+    end
+
+    lib.registerContext(menu)
+    lib.showContext(menu.id)
+end
+
+RegisterNetEvent('lualogic_trust:client:trustedTransferMenu', PurchaseTrustedVehicles)
+
 if config.modules.system.enabled then
     CreateThread(function()
         local menu = {
@@ -1188,12 +1226,23 @@ if config.modules.system.enabled then
         end
 
         menu.options[#menu.options+1] = {
-            title = 'Transfer Vehicles to Garage',
+            title = 'Transfer Owned Vehicles',
             description = 'This will transfer all your owned vehicles to your garage to roleplay outside of trust zones.',
             icon = 'arrow-left',
             iconColor = 'red',
             onSelect = function()
                 ExecuteCommand('transfer_vehicles_owned')
+            end
+        }
+
+        menu.options[#menu.options+1] = {
+            title = 'Transfer Trusted Vehicles',
+            description = 'Transfer trusted vehicles to your garage for a $10,000 transfer fee per vehicle.',
+            icon = 'arrow-left',
+            iconColor = 'yellow',
+            arrow = true,
+            onSelect = function()
+                PurchaseTrustedVehicles()
             end
         }
 

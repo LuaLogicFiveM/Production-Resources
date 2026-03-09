@@ -143,7 +143,7 @@ local function IsVehicleValid(source, vehicle)
 	return validVehicle
 end
 
-lib.callback.register('lualogic_trust:server:requestTrusted', function(source)
+local function getTrustedVehicles(source)
 	local src = source
 	local identifier = GetIdentifier(src)
 	local identifierProfile = vehicles[identifier] or {}
@@ -156,6 +156,10 @@ lib.callback.register('lualogic_trust:server:requestTrusted', function(source)
 	end
 
 	return GetTableSize(result) ~= 0 and result or false
+end
+
+lib.callback.register('lualogic_trust:server:requestTrusted', function(source)
+	return getTrustedVehicles(source)
 end)
 
 local limitConfig = config.modules.owner.set.limits
@@ -1239,6 +1243,64 @@ local function IsTransferredOwned(identifier)
 	local row = MySQL.prepare.await('SELECT `transferred_owned` FROM `lualogic_trust` WHERE `identifier` = ? LIMIT 1', { identifier })
 	return row or false
 end
+
+local function GetBoughtVehicles(identifier)
+	local response = MySQL.prepare.await('SELECT `bought_trusted` FROM `lualogic_trust` WHERE `identifier` = ? LIMIT 1', { identifier })
+
+	if not response then
+		lib.print.info('Requesting purchased trusted vehicles returned nil', response)
+		return
+	end
+
+	return json.decode(response)
+end
+
+lib.callback.register('lualogic_trust:server:requestBoughtVehicles', function(source)
+	local identifier = GetIdentifier(source)
+
+	return GetBoughtVehicles(identifier), getTrustedVehicles(source)
+end)
+
+RegisterNetEvent('lualogic_trust:server:purchaseTrustedVehicle', function(vehicle)
+	local source = source
+	local sourceIdentifier = GetIdentifier(source)
+
+	if not sourceIdentifier then
+		lib.print.error('Unable to fetch identifier for source: ', source)
+		return
+	end
+
+	local sourceVehicles = vehicles[sourceIdentifier]
+
+	if not sourceVehicles then
+		Notify(source, 'You do not have any vehicles', 'error')
+		return
+	end
+
+	if sourceVehicles[vehicle] == nil or sourceVehicles[vehicle] == true then
+		Notify(source, 'You do not have the provided vehicle or you own the provided vehicle', 'error')
+		return
+	end
+
+	local purchasedVehicles = GetBoughtVehicles(sourceIdentifier) or {}
+
+	if purchasedVehicles[vehicle] then
+		Notify(source, 'This vehicle was already purchased', 'error')
+		return
+	end
+
+	if not exports.ox_inventory:RemoveItem(source, 'money', 10000) then
+		Notify(source, 'You were not able to afford the vehicle', 'error')
+		return
+	end
+
+	purchasedVehicles[vehicle] = true
+	local properties = {plate = GenerateUniquePlate(), model = GetHashKey(vehicle)}
+	MySQL.insert('INSERT INTO `owned_vehicles` (owner, plate, vehicle, type) VALUES (?, ?, ?, ?)', { GetIdentifierFramework(source), properties.plate, json.encode(properties), 'car' }, false)
+	MySQL.update('UPDATE lualogic_trust SET bought_trusted = ? WHERE identifier = ?', { json.encode(purchasedVehicles), sourceIdentifier })
+	Notify(source, ('You have transferred %s to your garage for $10,000'):format(vehicle), 'success')
+	TriggerClientEvent('lualogic_trust:client:trustedTransferMenu', source)
+end)
 
 RegisterCommand('transfer_vehicles_owned', function(source, args)
 	--if source >= 1 then return end
