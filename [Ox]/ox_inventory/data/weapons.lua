@@ -225,6 +225,71 @@ return {
 
 		--Job--
 
+		--Gunstore--
+
+		['WEAPON_COMBATPISTOL'] = {
+			label = 'Combat Pistol',
+			weight = 2500,
+			durability = 0.08,
+			ammoname = 'ammo-9',
+		},
+
+		['WEAPON_SNSPISTOL'] = {
+			label = 'SNS Pistol',
+			weight = 2000,
+			durability = 0.08,
+			ammoname = 'ammo-9',
+		},
+
+		['WEAPON_APPISTOL'] = {
+			label = 'AP Pistol',
+			weight = 2500,
+			durability = 0.08,
+			ammoname = 'ammo-9',
+		},
+
+		['WEAPON_HEAVYPISTOL'] = {
+			label = 'Heavy Pistol',
+			weight = 2500,
+			durability = 0.08,
+			ammoname = 'ammo-9',
+		},
+
+		['WEAPON_CARBINERIFLE'] = {
+			label = 'Carbine Rifle',
+			weight = 8500,
+			durability = 0.08,
+			ammoname = 'ammo-556',
+		},
+
+		['WEAPON_MICROSMG'] = {
+			label = 'Micro SMG',
+			weight = 3500,
+			durability = 0.08,
+			ammoname = 'ammo-9',
+		},
+
+		['WEAPON_SMG_MK2'] = {
+			label = 'SMG MK2',
+			weight = 4000,
+			durability = 0.08,
+			ammoname = 'ammo-45',
+		},
+
+		['WEAPON_SMGMK2'] = {
+			label = 'SMG MK2',
+			weight = 4000,
+			durability = 0.08,
+			ammoname = 'ammo-45',
+		},
+
+		['WEAPON_SMG'] = {
+			label = 'SMG',
+			weight = 3500,
+			durability = 0.08,
+			ammoname = 'ammo-10',
+		},
+
 		--LEO--
 
 		['WEAPON_PEPPERSPRAY'] = {
