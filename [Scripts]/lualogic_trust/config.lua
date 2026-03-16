@@ -23,8 +23,8 @@ return {
         enabled = true,
         locations = {
             { -- Roxwood
-                debug = true,
-                thickness = 100,
+                debug = false,
+                thickness = 500,
                 permissions = {
                     enabled = false,
                     ['default'] = {
@@ -39,21 +39,22 @@ return {
                     }
                 },
                 points = {
-                    vec(922.4901, 6617.3384, 25.0),
-                    vec(1290.1780, 7367.8027, 25.0),
-                    vec(692.4575, 8107.3730, 25.0),
-                    vec(-27.2193, 9558.0547, 25.0),
-                    vec(-1642.7335, 9358.9209, 25.0),
-                    vec(-2054.3293, 8292.8154, 25.0),
-                    vec(-972.6224, 6212.4468, 25.0),
-                    vec(-633.3741, 6289.2788, 25.0),
-                    vec(22.5890, 7121.4136, 25.0),
-                    vec(22.3242, 7238.6782, 25.0),
-                    vec(602.5103, 6731.0977, 25.0)
+                    vec(730.2391, 6776.8145, 80.0),
+                    vec(1028.1685, 6867.9937, 80.0),
+                    vec(-1190.8450, 9885.4629, 80.0),
+                    vec(-3368.4697, 9084.2139, 80.0),
+                    vec(-4445.4199, 9662.8848, 80.0),
+                    vec(-6540.4502, 8413.9854, 80.0),
+                    vec(-3863.2163, 5862.8364, 80.0),
+                    vec(-3333.1313, 5811.3364, 80.0),
+                    vec(-665.5718, 6586.6934, 80.0),
+                    vec(-469.9490, 6557.2524, 80.0),
+                    vec(-161.8474, 6903.6997, 80.0),
+                    vec(-11.7041, 7502.3965, 80.0),
                 },
                 blip = {
                     enabled = true,
-                    coords = vec3(-565.8764, 7352.7822, 18.5576),
+                    coords = vec3(-565.8764, 7352.7822, 50.0),
                     label = '[Trust Zone] - Roxwood',
                     sprite = 474,
                     scale = 1.0,
@@ -146,7 +147,7 @@ return {
                 permissionType = 'discord', -- group/discord
                 permission = '1413587733095514132', -- ace perm or false for everyone
                 limits = {
-                    enabled = true,
+                    enabled = false,
                     count = 20, -- default limit for owned vehicles
                     whitelistType = '', -- group/discord/identifier
                     whitelist = {
@@ -191,12 +192,12 @@ return {
                 }
             },
             transfer = {
-                enabled = true,
+                enabled = false,
                 command = 'owner_transfer',
                 permissionType = 'group', -- group/discord
                 permission = false, -- ace perm or false for everyone
                 locations = {
-                    enabled = true,
+                    enabled = false,
                     zones = {
                         {
                             coords = vec3(-741.9594, 5876.9243, 16.6307), -- 013
