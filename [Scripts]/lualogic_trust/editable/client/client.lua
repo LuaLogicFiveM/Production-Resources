@@ -435,6 +435,6 @@ end
 
 lib.onCache('seat', function(seat)
     if seat ~= -1 then return end
-    if not LocalPlayer.state.trustZone then return end
+    --if not LocalPlayer.state.trustZone then return end
     TriggerServerEvent('lualogic_trust:server:enteredVehicle', VehToNet(cache.vehicle))
 end)
