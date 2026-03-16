@@ -155,20 +155,15 @@ end)
 
 ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, society)
 	local employees = {}
-	print(society)
-
 	local xPlayers = ESX.GetExtendedPlayers('job', society)
 
+	print(json.encode(xPlayers, {indent=true}))
 	if xPlayers then
-		for i=1, #(xPlayers) do 
+		for i=1, #(xPlayers) do
 			local xPlayer = xPlayers[i]
 
 			if xPlayer then
-				local name = xPlayer.getName()
-				if Config.EnableESXIdentity and name == GetPlayerName(xPlayer.src) then
-					name = xPlayer.get('firstName') .. ' ' .. xPlayer.get('lastName')
-				end
-
+				local name = GetPlayerName(xPlayer.source)
 				local job = xPlayer.getJob()
 
 				table.insert(employees, {
@@ -223,6 +218,8 @@ ESX.RegisterServerCallback('esx_society:getEmployees', function(source, cb, soci
 				})
 			end
 		end
+
+		print(json.encode(employees))
 
 		cb(employees)
 	end)

@@ -48,7 +48,7 @@ Config.TerminationExclusionFuelPercent = 70
 Config.AutomaticSellPercentageFromPrice = 40
 
 -- @AbilityEmployeesToCreateOrders: Employee to be able to create new order to take care of business
-Config.AbilityEmployeesToCreateOrders = true
+Config.AbilityEmployeesToCreateOrders = false
 
 -- @LevelsBenefits: What it will give to the store for the upgrade, here you can adjust the values that stores will be able to use at the concurrent upgrade level
 Config.LevelsBenefits = {
@@ -110,10 +110,10 @@ Config.VMSCityHallResource = 'vms_cityhall'
 Config.UseVMSCityHall = GetResourceState(Config.VMSCityHallResource) == 'started'
 
 ---@field UseCityHallResumes boolean: If you are using vms_cityhall and using the job center section and want players to send resumes to companies, set true
-Config.UseCityHallResumes = true
+Config.UseCityHallResumes = false
 
 ---@field UseCityHallTaxes boolean: If you are using vms_cityhall and you use the tax option and want companies to have to pay tax on the money they earn, set true
-Config.UseCityHallTaxes = true
+Config.UseCityHallTaxes = false
 
 ---@field UseCityHallIncludedTaxes boolean: If you use taxes, do you want the taxes to be included in the default amounts you configure in vms_barber, or do you want them to be price + tax paid by the customer
 Config.UseCityHallIncludedTaxes = false

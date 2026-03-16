@@ -1000,6 +1000,7 @@ window.addEventListener('message', function(event){
         $('.buy-business').hide(120)
         
     } else if (item.action == "openReceipt") {
+        console.log(item.items);
         currentMenu = 'receipt';
         $('.receipt > .receipt-texts .list').empty();
         $('.receipt').show();

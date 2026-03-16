@@ -1,7 +1,7 @@
 const config = {}
 
 // example of iconsCustomPath: "nui://qs-inventory/html/items/" 
-config.iconsCustomPath = null
+config.iconsCustomPath = "nui://ox_inventory/web/images/"
 
 config.purchaseInformations = {
     [1]: {

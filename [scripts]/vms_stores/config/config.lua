@@ -120,13 +120,13 @@ Config.DisableRunWithBoxInHands = false
     -1 = Unlimited
     0 = No player can buy
 ]]
-Config.StoresLimitPerPlayer = -1
+Config.StoresLimitPerPlayer = 1
 
 ---@field RequiredJobToBeHired string | nil: Do you want to prevent the employment of a player who has another job, if so, you can require the employment of only the person who has a job for example - unemployed
 Config.RequiredJobToBeHired = nil
 
 ---@field SaveTimeout number: Time every time the stores should refresh to save the status or delete it when the liquidation time has passed
-Config.SaveTimeout = 5 * 60000
+Config.SaveTimeout = 30 * 60000
 
 ---@field PurchasesTimeout number: Prevent multiple purchases of products by the same person so that fiends don't scoop up product sales for their own store
 Config.PurchasesTimeout = 3600 -- 3600 seconds = 1 hour
