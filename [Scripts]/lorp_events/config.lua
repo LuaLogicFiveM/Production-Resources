@@ -7,7 +7,8 @@ Config.FadeTeleport = true
 Config.EventExpiresMinutes = 120
 Config.TeleportZOffset = 0.5
 Config.Permissions = {
-    ['1333507094988455967'] = true, -- Event Team
+    ['1480279542613410023'] = true, -- Event Team | Manager
+    ['1333507094988455967'] = true, -- Event Team | Host
     ['1082487500871843860'] = true, -- Developer
 }
 
