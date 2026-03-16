@@ -23,8 +23,8 @@ Config.Permissions = {
     { label = "Drag Racer", roleid = 1180029634239287386, groupname = "group.drag"},
     { label = "Drag Manager", roleid = 1180029520426827827, groupname = "group.drag_manager"},
 
-    { label = "Pilots License", roleid = 1109680343218397244, groupname = "group.license_pilots"},
-    { label = "Commercial License", roleid = 1109679619071819796, groupname = "group.license_commercial"},
+    { label = "Pilots License", roleid = 1482111025061826610, groupname = "group.license_pilots"},
+    { label = "Commercial License", roleid = 1482110827409707039, groupname = "group.license_commercial"},
 
     { label = "Law Enforcement", roleid = 1083264517523394591, groupname = "group.leo"},
     { label = "Emergency Services", roleid = 1329895621355765811, groupname = "group.ems"},

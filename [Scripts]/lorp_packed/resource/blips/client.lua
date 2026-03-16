@@ -496,8 +496,8 @@ local blips = {
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 $HAMO_x Kustoms',
-            description = 'Owner: $HAMO_x',
+            title = '🔧 Velocity Performance',
+            description = 'Owner: Monarch',
         },
     },
     {
@@ -618,8 +618,8 @@ local blips = {
         scale = 0.8,
         color = 0,
         data = {
-            title = '🏠 SAXTON\'S TRAP',
-            description = 'Owner: Saxton',
+            title = '🏠 Dumbo\'S TRAP',
+            description = 'Owner: Jay',
         },
     },
     {
