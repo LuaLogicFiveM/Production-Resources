@@ -71,6 +71,13 @@ return {
                             iconColor = '#7a5f15',
                             mods = {livery = 2, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
                         },
+                        {
+                            model = 'lib19fpiu',
+                            label = '2016 Ford Explorer',
+                            icon = 'circle',
+                            iconColor = '#7a5f15',
+                            mods = {livery = 2, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
+                        },
                     }
                 },
                 {
@@ -118,6 +125,13 @@ return {
                         {
                             model = 'lib14tahoest',
                             label = '2014 Chevrolet Tahoe (Slicktop)',
+                            icon = 'circle',
+                            iconColor = '#7a5f15',
+                            mods = {livery = 2, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
+                        },
+                        {
+                            model = 'lib19fpiust',
+                            label = '2016 Ford Explorer (Slicktop)',
                             icon = 'circle',
                             iconColor = '#7a5f15',
                             mods = {livery = 2, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
@@ -246,18 +260,55 @@ return {
                     gradeRequired = 8,
                     vehicles = {
                         {
-                            model = 'lib19fpiu',
-                            label = '2019 Ford Explorer',
+                            model = 'lib23charger',
+                            label = '2023 Dodge Charger',
                             icon = 'circle',
                             iconColor = '#7a5f15',
                             mods = {livery = 2, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
                         },
+                    }
+                },
+                {
+                    name = 'SWAT Division',
+                    icon = 'fire',
+                    iconColor = 'FF058B00',
+                    gradeRequired = 8,
+                    vehicles = {
                         {
-                            model = 'lib19fpiust',
-                            label = '2019 Ford Explorer (Slicktop)',
+                            model = 'mrap',
+                            label = 'MRAP',
                             icon = 'circle',
                             iconColor = '#7a5f15',
-                            mods = {livery = 2, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
+                            mods = {livery = 2, extras = {{id = 1, disabled = false}, {id = 2, disabled = false}, {id = 3, disabled = false}, {id = 4, disabled = false}, {id = 5, disabled = false}, {id = 6, disabled = false}, {id = 7, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}} }
+                        },
+                    }
+                },
+                {
+                    name = 'Motorcycle Division',
+                    icon = 'fire',
+                    iconColor = 'FF058B00',
+                    gradeRequired = 8,
+                    vehicles = {
+                        {
+                            model = 'mbu1flagbb',
+                            label = 'MBU 1',
+                            icon = 'circle',
+                            iconColor = '#7a5f15',
+                            mods = {livery = 1, extras = {{id = 1, disabled = false}, {id = 2, disabled = false}, {id = 3, disabled = false}, {id = 4, disabled = false}, {id = 5, disabled = false}, {id = 6, disabled = false}, {id = 7, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}} }
+                        },
+                        {
+                            model = 'mbu2bb',
+                            label = 'MBU 2',
+                            icon = 'circle',
+                            iconColor = '#7a5f15',
+                            mods = {livery = 1, extras = {{id = 1, disabled = false}, {id = 2, disabled = false}, {id = 3, disabled = false}, {id = 4, disabled = false}, {id = 5, disabled = false}, {id = 6, disabled = false}, {id = 7, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}} }
+                        },
+                        {
+                            model = 'mbu3bb',
+                            label = 'MBU 3',
+                            icon = 'circle',
+                            iconColor = '#7a5f15',
+                            mods = {livery = 1, extras = {{id = 1, disabled = false}, {id = 2, disabled = false}, {id = 3, disabled = false}, {id = 4, disabled = false}, {id = 5, disabled = false}, {id = 6, disabled = false}, {id = 7, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}} }
                         },
                     }
                 }
@@ -340,6 +391,13 @@ return {
                             iconColor = '#7a5f15',
                             mods = {livery = 4, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
                         },
+                        {
+                            model = 'lib19fpiu',
+                            label = '2016 Ford Explorer',
+                            icon = 'circle',
+                            iconColor = '#7a5f15',
+                            mods = {livery = 4, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
+                        },
                     }
                 },
                 {
@@ -387,6 +445,13 @@ return {
                         {
                             model = 'lib14tahoest',
                             label = '2014 Chevrolet Tahoe (Slicktop)',
+                            icon = 'circle',
+                            iconColor = '#7a5f15',
+                            mods = {livery = 4, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
+                        },
+                        {
+                            model = 'lib19fpiust',
+                            label = '2016 Ford Explorer (Slicktop)',
                             icon = 'circle',
                             iconColor = '#7a5f15',
                             mods = {livery = 4, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
@@ -515,15 +580,8 @@ return {
                     gradeRequired = 8,
                     vehicles = {
                         {
-                            model = 'lib19fpiu',
-                            label = '2019 Ford Explorer',
-                            icon = 'circle',
-                            iconColor = '#7a5f15',
-                            mods = {livery = 4, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }
-                        },
-                        {
-                            model = 'lib19fpiust',
-                            label = '2019 Ford Explorer (Slicktop)',
+                            model = 'lib23charger',
+                            label = '2023 Dodge Charger',
                             icon = 'circle',
                             iconColor = '#7a5f15',
                             mods = {livery = 4, extras = {{id = 1, disabled = true}, {id = 2, disabled = false}, {id = 8, disabled = false}, {id = 9, disabled = false}, {id = 10, disabled = false}, {id = 11, disabled = false}, {id = 12, disabled = false}} }

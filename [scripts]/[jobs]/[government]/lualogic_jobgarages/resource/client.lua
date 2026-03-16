@@ -7,7 +7,16 @@ local garagePoints = {}
 local textUIShowing = false
 local menuOpen = false
 local spawnCoords = vec4(0.0, 0.0, 0.0, 0.0)
+local PlayerJob = {}
 
+RegisterNetEvent('esx:playerLoaded', function (xPlayer, skin)
+    PlayerJob = xPlayer.job
+end)
+
+RegisterNetEvent("esx:setJob") 
+AddEventHandler('esx:setJob', function(job,lastJob)
+    PlayerJob = job
+end)
 
 local function toggleExtra(data)
     SetVehicleExtra(cache.vehicle, data.extra, data.state)
@@ -105,9 +114,7 @@ local function changeColor(data)
 end
 
 local function changePlate()
-    local groupInfo = stevo_lib.GetPlayerGroupInfo(true)
-
-    if groupInfo.grade < config.minimumPlateGrade then lib.showContext('stevo_jobgarages_mechanic') return stevo_lib.Notify(locale("notify.notAuthorized"), "error", 5000) end 
+    if PlayerJob.grade < config.minimumPlateGrade then lib.showContext('stevo_jobgarages_mechanic') return stevo_lib.Notify(locale("notify.notAuthorized"), "error", 5000) end 
 
     local vehicle = GetVehiclePedIsIn(cache.ped, false)
 
@@ -166,27 +173,26 @@ local function selectVehicle(data)
         return
     end
 
-    local groupInfo = stevo_lib.GetPlayerGroupInfo(true)
-    if groupInfo.name ~= data.groupRequired then
+    if PlayerJob.name ~= data.groupRequired then
         lib.showContext(data.garageMenuId)
         return
     end
 
     local model = lib.requestModel(data.model)
     local coords = spawnCoords
-    local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, coords.w, false, true)
+    local vehiclePreview = CreateVehicle(model, coords.x, coords.y, coords.z, coords.w, false, true)
 
-	SetVehicleNumberPlateText(vehicle, 'PREVIEW')
-	SetPedIntoVehicle(cache.ped, vehicle, -1)
-	SetVehicleEngineOn(vehicle, false, false, true)
-    SetVehicleHandbrake(vehicle, true)
-    SetVehicleInteriorlight(vehicle, true)
-    FreezeEntityPosition(vehicle, true)
-    SetEntityAsMissionEntity(vehicle, true, true)
-    SetVehicleDirtLevel(vehicle, 0)
+	SetVehicleNumberPlateText(vehiclePreview, 'PREVIEW')
+	SetPedIntoVehicle(cache.ped, vehiclePreview, -1)
+	SetVehicleEngineOn(vehiclePreview, false, false, true)
+    SetVehicleHandbrake(vehiclePreview, true)
+    SetVehicleInteriorlight(vehiclePreview, true)
+    FreezeEntityPosition(vehiclePreview, true)
+    SetEntityAsMissionEntity(vehiclePreview, true, true)
+    SetVehicleDirtLevel(vehiclePreview, 0)
 
 	if data.mods then
-    	applyMods(vehicle, data.mods)
+    	applyMods(vehiclePreview, data.mods)
     end
 
     local alert = lib.alertDialog({
@@ -201,13 +207,13 @@ local function selectVehicle(data)
     })
 
     if alert ~= 'confirm' then 
-        DeleteVehicle(vehicle)
+        DeleteVehicle(vehiclePreview)
         lib.showContext(data.categoryMenuId)
         return stevo_lib.Notify(locale("notify.cancelledSpawn"), "error", 3000)
     end 
 
     math.random()
-    DeleteVehicle(vehicle)
+    DeleteVehicle(vehiclePreview)
     local vehicle = CreateVehicle(model, coords.x, coords.y, coords.z, coords.w, true, true)
 
     SetVehicleNumberPlateText(vehicle, data.plate)
@@ -222,17 +228,13 @@ local function selectVehicle(data)
 end
 
 local function openCategory(data)
-    local groupInfo = stevo_lib.GetPlayerGroupInfo(true)
-
-    if groupInfo.grade < data.gradeRequired then lib.showContext(data.garageMenuId) return stevo_lib.Notify(locale("notify.notAuthorized"), "error", 5000) end 
+    if PlayerJob.grade < data.gradeRequired then lib.showContext(data.garageMenuId) return stevo_lib.Notify(locale("notify.notAuthorized"), "error", 5000) end 
 
     lib.showContext(data.categoryMenuId)
 end
 
 local function onEnter(self)
-    local groupInfo = stevo_lib.GetPlayerGroupInfo(true)
-    self.playerGroup = groupInfo.name
-
+    self.playerGroup = PlayerJob.name
 end
  
 local function onExit(self)
@@ -264,11 +266,11 @@ local function nearby(self)
 end
 
 local function initGarages()
-    for garageId, garage in pairs(config.garages) do 
+    for garageId, garage in ipairs(config.garages) do
         local garageCategories = {}
         local garageMenuId = 'stevo_jobgarages_'..garageId
 
-        for categoryId, category in pairs(garage.categories) do 
+        for categoryId, category in ipairs(garage.categories) do 
             local categoryMenuId = 'stevo_jobgarages_'..garageId..'_'..categoryId
             local categoryVehicles = {}
             local newCategory = {
@@ -434,7 +436,8 @@ RegisterNetEvent('stevo_lib:playerLoaded', function()
     initGarages()
 end)
 
-RegisterNetEvent('esx:setJob', function()
+RegisterNetEvent('esx:setJob', function(job, newJob)
+    print('job updated')
     initGarages()
 end)
 
