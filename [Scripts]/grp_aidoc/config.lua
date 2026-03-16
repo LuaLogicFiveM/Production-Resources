@@ -46,7 +46,7 @@ Config.KeepItemsOnRevive = {           -- Items that will NOT be removed during 
 -- ===========================================
 -- KEYBINDS & COMMANDS
 -- ===========================================
-Config.RegisterKeybind = true          -- Enable keybind registration for opening EMS menu
+Config.RegisterKeybind = false          -- Enable keybind registration for opening EMS menu
 Config.Keybind = 'H'                   -- Key to open EMS menu when dead
 
 -- Quick Action Settings (Instant EMS call with single keypress)
@@ -59,7 +59,7 @@ Config.WalkingNPCSpawnRadius = 50     -- Search radius in meters for doctor spaw
 Config.AutoSelectEMSType = true     -- When true, auto-selects vehicle type (heli/car/boat/sub) from player location when none is specified (command without args, quick action, or menu Auto option). Mountain = heli, ground = car, surface water = boat, deep water = sub.
 
 -- Command Settings
-Config.CallCommand = "ems"           -- Main command for calling AI EMS
+Config.CallCommand = "emsai"           -- Main command for calling AI EMS
 Config.VehicleArgs = {                 -- Vehicle type arguments for /aiems command
     Heli = "heli",                     -- Helicopter EMS
     Car = "car",                       -- Ambulance car
