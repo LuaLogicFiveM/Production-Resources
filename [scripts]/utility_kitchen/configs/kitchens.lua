@@ -7,7 +7,7 @@ Config.Kitchens = {
             -- OR
             -- 
             -- "mechanic", -- job_name
-            "drivein_lapuerta"
+            --"drivein_lapuerta"
         },
         required = {
             resource = "cfx-mxc-drivein"
@@ -81,7 +81,7 @@ Config.Kitchens = {
             -- OR
             -- 
             -- "mechanic", -- job_name
-            "drivein_paleto"
+            --"drivein_paleto"
         },
         required = {
             resource = "cfx-mxc-drivein"
