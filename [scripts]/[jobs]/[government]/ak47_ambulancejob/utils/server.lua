@@ -1,17 +1,10 @@
-for i, v in pairs(Config.JobNames) do
+--[[for i, v in pairs(Config.JobNames) do
 	TriggerEvent('esx_society:registerSociety', i, i, 'society_'..i, 'society_'..i, 'society_'..i, {type = 'public'})
-end
+end]]
 
 ESX.RegisterServerCallback('ak47_ambulancejob:emscount', function(source, cb)
-    local xPlayers = ESX.GetPlayers()
-    local ems = 0
-    for i, v in pairs(xPlayers) do
-        local xPlayer = ESX.GetPlayerFromId(v)
-        if xPlayer and xPlayer.job and xPlayer.job.name and Config.JobNames[xPlayer.job.name] then
-            ems += 1
-        end
-    end
-    cb(ems)
+    local safd = ESX.GetExtendedPlayers('job', 'safd')
+    cb(#safd)
 end)
 
 RegisterNetEvent('ak47_ambulancejob:CombatLogPunishment', function()
@@ -186,15 +179,8 @@ lib.callback.register('ak47_ambulancejob:hasdocmoney', function(source, total)
 end)
 
 lib.callback.register('ak47_ambulancejob:getdoccount', function()
-	local xPlayers = ESX.GetPlayers()
-    local ems = 0
-    for i, v in pairs(xPlayers) do
-        local xPlayer = ESX.GetPlayerFromId(v)
-        if xPlayer and xPlayer.job and xPlayer.job.name and Config.JobNames[xPlayer.job.name] then
-            ems += 1
-        end
-    end
-    return ems
+	local safd = ESX.GetExtendedPlayers('job', 'safd')
+    return #safd
 end)
 
 RegisterNetEvent('ak47_ambulancejob:removedocmoney', function(total)
@@ -208,9 +194,10 @@ GetItemLabel = function(item)
 end
 
 function addSocietyMoney(money)
-	TriggerEvent('esx_addonaccount:getSharedAccount', 'society_safd', function(account)
+	exports['g-bossmenu']:DepositMoney('safd', money)
+	--[[TriggerEvent('esx_addonaccount:getSharedAccount', 'society_safd', function(account)
 		account.addMoney(money)
-	end)
+	end)]]
 end
 
 AddEventHandler('txAdmin:events:healedPlayer', function(eventData)
@@ -222,14 +209,14 @@ ESX.RegisterServerCallback('ak47_ambulancejob:getwebhook', function(source, cb)
 	cb(ScreenshotWebhook)
 end)
 
-ESX.RegisterCommand('revive', 'admin', function(xPlayer, args, showError)
+ESX.RegisterCommand('revive', 'tmod', function(xPlayer, args, showError)
 	args.playerId.triggerEvent('ak47_ambulancejob:revive')
 	args.playerId.triggerEvent('ak47_ambulancejob:skellyfix')
 end, true, {help = _U('revivecmd'), validate = true, arguments = {
 	{name = 'playerId', help = _U('playerid'), type = 'player'}
 }})
 
-ESX.RegisterCommand('skellyfix', 'admin', function(xPlayer, args, showError)
+ESX.RegisterCommand('skellyfix', 'tmod', function(xPlayer, args, showError)
 	args.playerId.triggerEvent('ak47_ambulancejob:skellyfix')
 end, true, {help = _U('skellyfix'), validate = true, arguments = {
 	{name = 'playerId', help = _U('playerid'), type = 'player'}
@@ -242,16 +229,16 @@ end, true, {help = _U('healcmd'), validate = true, arguments = {
 	{name = 'playerId', help = _U('playerid'), type = 'player'}
 }})
 
-ESX.RegisterCommand('healall', 'admin', function(xPlayer, args, showError)
+ESX.RegisterCommand('healall', 'manager', function(xPlayer, args, showError)
 	TriggerClientEvent('ak47_ambulancejob:heal', -1)
 	TriggerClientEvent('ak47_ambulancejob:skellyfix', -1)
 end, true, {help = _U('healall'), validate = true, arguments = {}})
 
-ESX.RegisterCommand('reviveall', 'admin', function(xPlayer, args, showError)
+ESX.RegisterCommand('reviveall', 'manager', function(xPlayer, args, showError)
 	TriggerClientEvent('ak47_ambulancejob:revive', -1)
 	TriggerClientEvent('ak47_ambulancejob:skellyfix', -1)
 end, true, {help = _U('reviveall'), validate = true, arguments = {}})
 
-ESX.RegisterCommand('skellyfixall', 'admin', function(xPlayer, args, showError)
+ESX.RegisterCommand('skellyfixall', 'manager', function(xPlayer, args, showError)
 	TriggerClientEvent('ak47_ambulancejob:skellyfix', -1)
 end, true, {help = _U('skellyfixall'), validate = true, arguments = {}})
