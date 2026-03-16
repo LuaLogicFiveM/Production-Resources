@@ -24,7 +24,6 @@ files  {
     'data/audio/7C470ED0_game.dat151.rel',
     'data/audio/7C470ED0sfxdoor_game.dat151.rel',
     'stream/amb_rox_02_dikinbaus_int/metadata/amb_rox_02_int_dikinbaus_metadata_props.ytyp',
-    'int_corporate.ytyp',
     'data/audio/1C89A910_game.dat151.rel',
     'data/audio/D9C32A36_game.dat151.rel',
 }
@@ -47,7 +46,6 @@ data_file 'AUDIO_GAMEDATA' 'data/audio/7C470ED0_game.dat'
 data_file 'AUDIO_GAMEDATA' 'data/audio/7C470ED0sfxdoor_game.dat'
 data_file 'INTERIOR_PROXY_ORDER_FILE' 'data/meta/interiorproxies.meta'
 data_file 'DLC_ITYP_REQUEST' 'stream/amb_rox_02_dikinbaus_int/metadata/amb_rox_02_int_dikinbaus_metadata_props.ytyp'
-data_file 'DLC_ITYP_REQUEST' 'h4_dlc_int_05_h4.ytyp'
 data_file 'AUDIO_GAMEDATA' 'data/audio/1C89A910_game.dat'
 data_file 'AUDIO_GAMEDATA' 'data/audio/D9C32A36_game.dat'
 

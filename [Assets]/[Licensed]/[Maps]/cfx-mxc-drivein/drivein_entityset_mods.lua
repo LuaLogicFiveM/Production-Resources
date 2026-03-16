@@ -1,36 +1,36 @@
 local interiors = {
 
     ["mxc_drivein-lossantos"] = {
-        coords = vec3(-344.8173, -1463.35, 26.83),
+        coords = vec3(-344.8136, -1463.35327, 26.8373127),
         sets = {
-            ["kitchen_on"] = true,
-            ["kitchen_off"] = false,
+            ["kitchen_on"] = false,
+            ["kitchen_off"] = true,
             ["foodsdecoration"] = true,
         }
     },
     ["mxc_drivein-paletobay"] = {
-        coords = vec3(73.4, 6517.91, 38.2),
+        coords = vec3(73.43056, 6517.916, 38.2475777),
         sets = {
-            ["kitchen_on"] = true,
-            ["kitchen_off"] = false,
+            ["kitchen_on"] = false,
+            ["kitchen_off"] = true,
             ["foodsdecoration"] = true,
         }
-    }
+    },
 }
+
 
 for name, v in pairs(interiors) do
     RequestIpl(name)
-    local interior = GetInteriorAtCoordsWithType(v.coords, "mxc_drive-in_col")
-print(interior)
-print(IsValidInterior(interior))
+    local interior = GetInteriorAtCoords(v.coords)
+ print(name, interior)
     if IsValidInterior(interior) then
-        for name, enable in pairs(v.sets) do
+        print(name, "valid")
+        for name2, enable in pairs(v.sets) do
+            print(name, name2, enable)
             if enable then
-                ActivateInteriorEntitySet(interior, name)
-                print("enable", interior, name)
+                ActivateInteriorEntitySet(interior, name2)
             else
-                DeactivateInteriorEntitySet(interior, name)
-                print("disable", interior, name)
+                DeactivateInteriorEntitySet(interior, name2)
             end
         end
 
