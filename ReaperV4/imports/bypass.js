@@ -19,7 +19,13 @@ global.onNet = (eventName, callback) => {
 }
 
 if (IsDuplicityVersion()) {
+    global.TriggerClientEvent = (event_name, playerId, ...args) => {
+        return exports.ReaperV4.TriggerClientEvent(event_name, playerId, ...args)
+    }
 
+    global.TriggerLatentClientEvent = (event_name, playerId, bps, ...args) => {
+        return exports.ReaperV4.TriggerLatentClientEvent(event_name, playerId, bps, ...args)
+    }
 } else {
     const PlayerId = global.PlayerId;
     const GetConvar = global.GetConvar;
