@@ -373,6 +373,30 @@ Config.InstallationPartsPoints = {
         ['engineSwap'] = vector3(1324.8157, 2639.5347, 39.2984 + 1.0), -- Engine
         [23] = vector3(1333.3555, 2625.8787, 39.2984 + 1.0), -- Wheels
     },
+        ['mlo013/1079'] = {
+        ['clean'] = vector3(-770.4035, 5884.2070, 16.8577 + 1.0),
+        ['repair'] = vector3(-770.4035, 5884.2070, 16.8577 + 1.0),
+
+        ['color1'] = vector3(-771.6630, 5881.8350, 16.8577 + 1.0),
+        ['color2'] = vector3(-771.6630, 5881.8350, 16.8577 + 1.0),
+        ['pearlescentColor'] = vector3(-771.6630, 5881.8350, 16.8577 + 1.0),
+        ['wheelColor'] = vector3(-771.6630, 5881.8350, 16.8577 + 1.0),
+        ['plateIndex'] = vector3(-771.6630, 5881.8350, 16.8577 + 1.0),
+        ['neonColor'] = vector3(-771.6630, 5881.8350, 16.8577 + 1.0),
+
+        [0] = vector3(-768.8811, 5886.7773, 16.8577 + 1.0), -- Spoilers
+        [1] = vector3(-768.8811, 5886.7773, 16.8577 + 1.0), -- Front Bumper
+        [2] = vector3(-768.8811, 5886.7773, 16.8577 + 1.0), -- Rear Bumper
+        [4] = vector3(-768.8811, 5886.7773, 16.8577 + 1.0), -- Exhaustx
+        [7] = vector3(-768.8811, 5886.7773, 16.8577 + 1.0), -- Hood
+
+        [11] = vector3(-767.5978, 5889.0063, 16.8444 + 1.0), -- Engine
+        [12] = vector3(-767.5978, 5889.0063, 16.8444 + 1.0), -- Brakes
+        [13] = vector3(-767.5978, 5889.0063, 16.8444 + 1.0), -- Transmission
+        [15] = vector3(-767.5978, 5889.0063, 16.8444 + 1.0), -- Suspension
+        ['engineSwap'] = vector3(-767.5978, 5889.0063, 16.8444 + 1.0), -- Engine
+        [23] = vector3(-767.5978, 5889.0063, 16.8444 + 1.0), -- Wheels
+    },
 }
 
 ---@field UseAdvancedEngineInstallation: Advanced engine installation with engine on stand
