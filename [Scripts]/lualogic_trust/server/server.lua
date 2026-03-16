@@ -1383,7 +1383,7 @@ RegisterCommand('updatecacheruntime', function(source, args)
 		return
 	end
 
-	local targetIdentifier = string.sub(target, 1, 4) == 'char' and target or GetIdentifier(target)
+	local targetIdentifier = string.sub(target, 1, 7) == 'license' and target or GetIdentifier(target)
 
 	lib.print.info(target, type(target), targetIdentifier, string.sub(target, 1, 4))
 
