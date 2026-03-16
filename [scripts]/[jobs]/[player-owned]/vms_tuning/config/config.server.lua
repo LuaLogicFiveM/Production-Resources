@@ -30,30 +30,30 @@ SV.Database = {
 -- ╚███╔███╔╝███████╗██████╔╝██║  ██║╚██████╔╝╚██████╔╝██║  ██╗███████║
 --  ╚══╝╚══╝ ╚══════╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝
 SV.Webhooks = {
-    ['BILL'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
-    ['TUNING'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
+    ['BILL'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['TUNING'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
     
-    ['GENERATED_DISCOUNT_CODE_BY_ADMIN'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
-    ['REMOVED_DISCOUNT_CODE_BY_ADMIN'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
-    ['GENERATED_DISCOUNT_CODE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
-    ['REMOVED_DISCOUNT_CODE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXXXXX",
+    ['GENERATED_DISCOUNT_CODE_BY_ADMIN'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['REMOVED_DISCOUNT_CODE_BY_ADMIN'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['GENERATED_DISCOUNT_CODE'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['REMOVED_DISCOUNT_CODE'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
 
-    ['EMPLOYEE_BONUS'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
-    ['EMPLOYEE_CHANGE_GRADE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
-    ['EMPLOYEE_FIRE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
-    ['EMPLOYEE_HIRE'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
-    ['WITHDRAW'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
-    ['DEPOSIT'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
-    ['ANNOUNCEMENT'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX",
+    ['EMPLOYEE_BONUS'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['EMPLOYEE_CHANGE_GRADE'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['EMPLOYEE_FIRE'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['EMPLOYEE_HIRE'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['WITHDRAW'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['DEPOSIT'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
+    ['ANNOUNCEMENT'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU",
 
     -- Individual webhooks:
-    -- ['BennyS'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
-    -- ['BennyS-Paintshop'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
-    -- ['LSCustoms1'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
-    -- ['LSCustoms2'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
-    -- ['LSCustoms3'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
-    -- ['AutoRepairs'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
-    -- ['BeekersGarage'] = "https://discord.com/api/webhooks/XXXXXXXXXXXXXXXXX"
+    -- ['BennyS'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU"
+    -- ['BennyS-Paintshop'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU"
+    -- ['LSCustoms1'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU"
+    -- ['LSCustoms2'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU"
+    -- ['LSCustoms3'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU"
+    -- ['AutoRepairs'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU"
+    -- ['BeekersGarage'] = "https://discord.com/api/webhooks/1483232115301814402/zc7Q27GI-azpYxwFusOYHVY0XWyBNgL8cP7GlLNAXSAKT75mpTlepdfPvnUjppl6r8fU"
 }
 
 SV.WebhookText = {
