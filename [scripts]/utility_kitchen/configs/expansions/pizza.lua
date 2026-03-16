@@ -152,7 +152,7 @@ Config.Kitchens = {
             -- OR
             -- 
             -- "mechanic", -- job_name
-            -- "mechanic2"
+            "pizza_pier"
         },
         required = {
             resource = "cfx-mxc-pizzathis",

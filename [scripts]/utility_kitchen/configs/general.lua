@@ -1,9 +1,9 @@
 Config = {}
 
 Config.Debug = false
-Config.RequireItems = false -- Enable the items requirements and usage
+Config.RequireItems = true -- Enable the items requirements and usage
 Config.KitchenSpecificJobs = true -- Enable kitchen specific job requirements (if you dont have kitchen specific jobs you can disable this to improve performance)
-Config.CheckItems = false -- Check if items are available in your inventory (do not disable if you do not know what you are doing)
+Config.CheckItems = true -- Check if items are available in your inventory (do not disable if you do not know what you are doing)
 Config.FirePropagateToPlayers = false -- Fire will propagate to all players (also causing fire damage)
 
 Config.Recovery = true -- When a player with a pickup in hand left the server, the server will try to retrieve the pickup and reposition it where it was taken, if that slot is not empty it will be cleared.
@@ -15,22 +15,97 @@ Config.CustomTargetResource = "" -- if you have a custom target (ox_target and q
 
 Config.KitchenCreator = {
     command = "kitchen_creator",
-    enabled = false -- Enabling this will expose some internal functions that can enable exploits, disable when not needed
+    enabled = true -- Enabling this will expose some internal functions that can enable exploits, disable when not needed
 }
 
 -- Help us translate!
 --  You can contribute by improving existing translations or adding translations for new languages
 --  https://localazy.com/p/mxc
-Config.Language = "en"
+Config.Language = "en" -- Set to nil to disable localazy fetching, you will need to provide all translations manually! 
 
 -- Uncomment only if you want to ovverride the default translations provided by localazy
 Config.Translations = {
-    --["error_no_space"] = "~r~You dont have enough space in your inventory",
+    --["add_bacon_hamburger"] = "Add bacon",
+    --["add_bread_on_hamburger"] = "Add bread bottom",
+    --["add_cheddar_hamburger"] = "Add cheddar",
+    --["add_ketchup_hamburger"] = "Add ketchup",
+    --["add_lettuce_hamburger"] = "Add lettuce",
+    --["add_mayonnaise_hamburger"] = "Add mayonnaise",
+    --["add_onions_hamburger"] = "Add onions",
+    --["add_patty_on_hamburger"] = "Add patty",
+    --["add_pickles_hamburger"] = "Add pickles",
+    --["add_tomatoes_hamburger"] = "Add tomatoes",
+
+    --["bin_trash_item"] = "Trash",
+    --["cancel_hamburger"] = "Cancel hamburger creation",
+    --["containers_take_patty"] = "Take patty",
+    --["drop_fries_on_table"] = "Drop Fries",
+
     --["error_hamburger_layers"] = "~r~You can't add more layers to this hamburger",
+    --["error_no_space"] = "~r~You dont have enough space in your inventory",
+
+    --["finish_hamburger"] = "Finish hamburger creation",
+    --["give_name"] = "Give it a name",
+    --["open_inventory"] = "Open inventory",
+    --["pickup_general"] = "Pickup",
+
+    --["pizza_close_box"] = "Close",
+    --["pizza_close_oven"] = "Close",
+    --["pizza_drop_fries"] = "Drop fries",
+    --["pizza_finish_pizza"] = "Finish Pizza",
+    --["pizza_open_box"] = "Open",
+    --["pizza_open_oven"] = "Open",
+
+    --["pizza_pizza_station"] = "~y~ %d~w~/30 Toppings\n\n~INPUT_WEAPON_WHEEL_PREV~~INPUT_WEAPON_WHEEL_NEXT~ Rotate topping\n~INPUT_VEH_MELEE_LEFT~ Add selected topping\n~INPUT_MAP_POI~ Remove closest topping\n\n~INPUT_CELLPHONE_CANCEL~ Exit",
 
     --["pizza_pizzabox_interactions"] = "~INPUT_PICKUP~ Slice the pizza\n~INPUT_JUMP~ Open/close the pizza box\n\n~INPUT_CELLPHONE_CANCEL~ Put away the pizza",
-    --["pizza_pizza_station"] = "~y~ %d~w~/30 Toppings\n\n~INPUT_WEAPON_WHEEL_PREV~~INPUT_WEAPON_WHEEL_NEXT~ Rotate topping\n~INPUT_VEH_MELEE_LEFT~ Add selected topping\n~INPUT_MAP_POI~ Remove closest topping\n\n~INPUT_CELLPHONE_CANCEL~ Exit"
-    --["give_name"] = "Give it a name"
+
+    --["pizza_place_default_toppings"] = "Place default toppings",
+    --["pizza_place_dough"] = "Place dough",
+    --["pizza_place_in_oven"] = "Place",
+    --["pizza_place_pizza"] = "Place pizza",
+    --["pizza_place_toppings"] = "Place toppings",
+
+    --["pizza_roll_out_dough"] = "Roll out dough",
+    --["pizza_store_dough"] = "Store dough",
+    --["pizza_take_dough"] = "Take dough",
+
+    --["place_item"] = "Place",
+    --["pour_frozen_fries"] = "Pour frozen fries",
+    --["pour_oil_fryer"] = "Pour frying oil",
+
+    --["put_down_general"] = "Put down",
+    --["put_down_shovel"] = "Put down",
+
+    --["refill_fries_shovel"] = "Pick Fries",
+    --["start_hamburger"] = "Start hamburger creation",
+    --["store_fryer"] = "Store",
+
+    --["table_fries_insert_fries"] = "Insert Fries",
+    --["throw_away_oil"] = "Throw away frying oil",
+    --["trash_fries_from_table"] = "Trash Fries",
+    
+    --["kebab_take_spit"] = "Take doner spit",
+    --["kebab_store_spit"] = "Store doner spit",
+
+    --["kebab_finish"] = "Press ~INPUT_PICKUP~ to finish the doner kebab",
+
+    --["add_mais"] = "Add mais",
+    --["add_yogurt"] = "Add yogurt",
+    --["add_hotsauce"] = "Add hot sauce",
+    --["add_doner_kebab"] = "Add doner kebab",
+    --["toggle_door"] = "Toggle door",
+
+    --["pour_falafels"] = "Pour frozen falafels",
+    
+    --["kebab_grill_bread_pita"] = "Add pita",
+    --["kebab_grill_bread_wrap"] = "Add wrap",
+    --["kebab_cut_spit"] = "Shave doner",
+    
+    --["table_falafels_insert_falafels"] = "Insert falafels",
+    --["refill_falafels_shovel"] = "Pick falafels",
+    --["drop_falafels_on_table"] = "Drop falafels",
+    --["trash_falafels_from_table"] = "Trash falafels",
 
     --["creator_snapping_free"] = "Free",
     --["creator_ppm"] = "Prop placing",
@@ -53,21 +128,6 @@ Config.Translations = {
 
     --["creator_confirm"] = "Confirm",
     --["creator_confirm_name"] = "Give it a name!",
-
-    ["kebab_take_spit"] = "Take doner spit",
-    ["kebab_store_spit"] = "Store doner spit",
-
-    ["kebab_finish"] = "Press ~INPUT_PICKUP~ to finish the doner kebab",
-
-    ["add_mais"] = "Add mais",
-    ["add_yogurt"] = "Add yogurt",
-    ["add_hotsauce"] = "Add hot sauce",
-    ["add_doner_kebab"] = "Add doner kebab",
-    ["toggle_door"] = "Toggle door",
-
-    ["kebab_grill_bread_pita"] = "Start cooking pita",
-    ["kebab_grill_bread_wrap"] = "Start cooking wrap",
-    ["kebab_cut_spit"] = "Shave doner",
 }
 
 -- Used only if Config.RequireItems = true
@@ -92,7 +152,7 @@ Config.CookingItems = {
 
 Config.AllowCustomName = {
     enabled = true,
-    oxlib = false -- Use ox_lib input dialog?
+    oxlib = true -- Use ox_lib input dialog?
 }
 
 -- Global job checking

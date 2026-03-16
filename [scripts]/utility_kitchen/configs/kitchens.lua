@@ -1,58 +1,4 @@
 Config.Kitchens = {
-    ["Rex\'s Diner"] = {
-        jobs = {'rexs'},
-        required = {},
-        exec = function()
-            CreateEntityHider(vec3(2540.706, 2582.085, 38.444), vec3(0,0,0), {model = "prop_turkey_leg_01"})
-            CreateEntityHider(vec3(2540.767, 2582.186, 38.443), vec3(0,0,0), {model = "prop_turkey_leg_01"})
-            CreateEntityHider(vec3(2540.738, 2582.271, 38.443), vec3(0,0,0), {model = "prop_turkey_leg_01"})
-            CreateEntityHider(vec3(2541.036, 2581.855, 38.418), vec3(0,0,0), {model = "prop_cs_burger_01"})
-            CreateEntityHider(vec3(2541.218, 2581.872, 38.417), vec3(0,0,0), {model = "prop_cs_burger_01"})
-            CreateEntityHider(vec3(2541.223, 2581.672, 38.418), vec3(0,0,0), {model = "prop_cs_burger_01"})
-            CreateEntityHider(vec3(2541.055, 2581.693, 38.418), vec3(0,0,0), {model = "prop_cs_burger_01"})
-            CreateEntityHider(vec3(2541.028, 2581.519, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2540.617, 2581.451, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2540.622, 2581.219, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2540.82, 2581.277, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2540.634, 2580.979, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2540.815, 2581.089, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2540.807, 2580.91, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2541.007, 2580.977, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2541.062, 2580.819, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2541.226, 2580.819, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2541.225, 2580.971, 38.44), vec3(0,0,0), {model = "as_rex_foodprop_steak"})
-            CreateEntityHider(vec3(2541.057, 2581.291, 38.44), vec3(0,0,0), {model = "v_res_fa_bread03"})
-            CreateEntityHider(vec3(2541.033, 2581.137, 38.44), vec3(0,0,0), {model = "v_res_fa_bread03"})
-            CreateEntityHider(vec3(2541.245, 2581.124, 38.44), vec3(0,0,0), {model = "v_res_fa_bread03"})
-            CreateEntityHider(vec3(2541.245, 2581.124, 38.44), vec3(0,0,0), {model = "v_res_fa_bread03"})
-            CreateEntityHider(vec3(2541.225, 2581.291, 38.44), vec3(0,0,0), {model = "v_res_fa_bread03"})
-            CreateEntityHider(vec3(2539.809, 2578.783, 37.497), vec3(0,0,0), {model = "prop_bin_10b"})
-            CreateEntityHider(vec3(2541.028, 2582.717, 37.497), vec3(0,0,0), {model = "prop_bin_10a"})
-            CreateGriddle(vec3(2540.755, 2581.601, 38.056), vec3(0.0, 0.0, -0.479), {tableHidden = true})
-            CreateEntityHider(vec3(2537.597, 2583.532, 37.496), vec3(0,0,0), {model = "prop_ff_counter_01"})
-            CreateEntityHider(vec3(2537.538, 2583.359, 38.482), vec3(0,0,0), {model = "as_rex_foodprop_noodle_02"})
-            CreateEntityHider(vec3(2537.506, 2583.549, 38.482), vec3(0,0,0), {model = "as_rex_foodprop_noodle_01"})
-            CreateEntityHider(vec3(2537.093, 2583.62, 38.419), vec3(0,0,0), {model = "prop_microwave_1"})
-            CreateEntityHider(vec3(2537.007, 2583.593, 39.194), vec3(0,0,0), {model = "v_ret_247_noodle2"})
-            CreateEntityHider(vec3(2537.05, 2583.513, 38.567), vec3(0,0,0), {model = "v_ret_247_noodle1"})
-            CreateEntityHider(vec3(2536.407, 2583.544, 37.626), vec3(0,0,0), {model = "prop_fridge_01"})
-            CreateEntityHider(vec3(2535.598, 2583.544, 37.626), vec3(0,0,0), {model = "prop_fridge_01"})
-            CreateEntityHider(vec3(2535.605, 2583.362, 39.924), vec3(0,0,0), {model = "v_ind_meatboxsml"})
-            CreateFryer(vec3(2535.547, 2583.447, 38.283), vec3(0.0, 0.0, -89.214), {tableHidden = false})
-            CreateChipsTable(vec3(2536.667, 2583.554, 37.846), vec3(0.0, 0.0, 90.181), {tableHidden = false})
-            CreatePattyWarmer(vec3(2536.851, 2581.464, 39.124), vec3(0.0, 0.0, -90.481), {tableHidden = false})
-            CreateBurgerTable(vec3(2537.895, 2583.556, 37.852), vec3(0.0, 0.0, 89.573), {tableHidden = false})
-            CreateMeatContainer(vec3(2537.569, 2581.447, 38.497), vec3(0.0, 0.0, -90.676), {tableHidden = false})
-            CreateBin(vec3(2540.958, 2582.718, 37.495), vec3(0.0, 0.0, 90.858), {tableHidden = false})
-            CreateBin(vec3(2539.921, 2578.745, 37.495), vec3(0.0, 0.0, -2.221), {tableHidden = false})
-            CreateEntityHider(vec3(2535.154, 2581.048, 37.691), vec3(0,0,0), {model = "prop_bread_rack_01"})
-            CreateBurgerTable(vec3(2535.145, 2581.051, 37.843), vec3(0.0, 0.0, -0.612), {tableHidden = false})
-            CreateSpatula(vec3(2537.242, 2581.482, 38.424), vec3(0.0, 0.0, 1.748), {tableHidden = false})
-            CreatePattyWarmer(vec3(2536.464, 2579.146, 38.542), vec3(0.0, 0.0, -89.401), {tableHidden = false})
-            CreatePattyWarmer(vec3(2535.643, 2579.137, 38.542), vec3(0.0, 0.0, -90.268), {tableHidden = false})
-            CreatePattyWarmer(vec3(2534.843, 2579.147, 38.542), vec3(0.0, 0.0, -90.626), {tableHidden = false})
-        end
-    },
     ["mxc-drivein-lapuerta"] = {
         jobs = {
             -- ["mechanic"] = 1, -- [job_name] = job_grade
@@ -61,7 +7,7 @@ Config.Kitchens = {
             -- OR
             -- 
             -- "mechanic", -- job_name
-            "greasy"
+            "drivein_lapuerta"
         },
         required = {
             resource = "cfx-mxc-drivein"
@@ -135,7 +81,7 @@ Config.Kitchens = {
             -- OR
             -- 
             -- "mechanic", -- job_name
-            -- "mechanic2"
+            "drivein_paleto"
         },
         required = {
             resource = "cfx-mxc-drivein"
@@ -315,7 +261,7 @@ Config.Kitchens = {
             -- ["mechanic2"] = 1
             --
             -- OR
-            -- 
+            --
             -- "mechanic", -- job_name
             -- "mechanic2"
         },
@@ -323,37 +269,9 @@ Config.Kitchens = {
             resource = "map4all-rexs-diner"
         },
         exec = function()
-            CreateBurgerTable(vec3(2538.357, 2586.34058, 37.89484), vec3(0.0, 0.0, 20.0), {
-                tableHidden = true,
-                containers = {
-                    [1] = "mxc_kitchen_prop_burger_littlecontainer_salad",
-                    [2] = "mxc_kitchen_prop_burger_littlecontainer_bacon",
-                    [3] = "mxc_kitchen_prop_burger_littlecontainer_tomatoes",
-                    [4] = "mxc_kitchen_prop_burger_littlecontainer_cheddar",
-                    [5] = "mxc_kitchen_prop_burger_littlecontainer_pickles",
-                    [6] = "mxc_kitchen_prop_burger_littlecontainer_onions",
-                    [7] = "prop_food_ketchup",
-                    [8] = "prop_food_mustard",
-                }
-            })
-            CreateBurgerTable(vec3(2538.69922, 2585.40015, 37.89484), vec3(0.0, 0.0, 20.0), {
-                tableHidden = true,
-                containers = {
-                    [1] = "mxc_kitchen_prop_burger_littlecontainer_salad",
-                    [2] = "mxc_kitchen_prop_burger_littlecontainer_bacon",
-                    [3] = "mxc_kitchen_prop_burger_littlecontainer_tomatoes",
-                    [4] = "mxc_kitchen_prop_burger_littlecontainer_cheddar",
-                    [5] = "mxc_kitchen_prop_burger_littlecontainer_pickles",
-                    [6] = "mxc_kitchen_prop_burger_littlecontainer_onions",
-                    [7] = "prop_food_ketchup",
-                    [8] = "prop_food_mustard",
-                }
-            })
-
-            CreateChipsTable(vec3(2535.16528, 2587.71655, 37.89384), vec3(0.0, 0.0, 200.0), {
-                tableHidden = true,
-            })
-
+            CreateBurgerTable(vec3(2538.357, 2586.34058, 37.89484), vec3(0.0, 0.0, 20.0), { tableHidden = true })
+            CreatePattyWarmer(vec3(2538.795, 2585.309, 38.564), vec3(0.0, 0.0, 20.195), { tableHidden = false })
+            CreateChipsTable(vec3(2535.16528, 2587.71655, 37.89384), vec3(0.0, 0.0, 200.0), { tableHidden = true, })
             CreateFryer(vec3(2535.58325, 2586.66382, 38.3216476), vec3(0.0, 0.0, 20.0))
             CreateFryer(vec3(2535.88062, 2585.85181, 38.3216476), vec3(0.0, 0.0, 20.0))
             CreateBin(vec3(2536.6530, 2583.128, 37.55), vec3(0.0, 0.0, 25.0))
@@ -663,33 +581,108 @@ Config.Kitchens = {
         required = {
             resource = "wxmaps_burgershot"
         },
-        
+
         exec = function()
-            CreateFryer(vec3(-1203.543, -896.526, 13.539), vec3(0.0, 0.0, 34.0), {tableHidden = true})
-            CreateFryer(vec3(-1203.987, -895.848, 13.545), vec3(0.0, 0.0, 34.0), {tableHidden = true})
-            CreateChipsTable(vec3(-1204.776, -894.894, 13.13), vec3(0.0, 0.0, -146.0), {tableHidden = true})
-            CreateGriddle(vec3(-1202.699, -897.638, 13.333), vec3(0.0, 0.0, -146.0), {tableHidden = true})
-            CreateBin(vec3(-1198.977, -899.362, 12.799), vec3(0.0, 0.0, 31.56), {tableHidden = false})
-            CreateBurgerTable(vec3(-1200.382, -896.604, 13.129), vec3(0.0, 0.0, 35.0), {tableHidden = true})
-            CreateBurgerTable(vec3(-1200.964, -895.753, 13.13), vec3(0.0, 0.0, 35.0), {tableHidden = true})
-            CreatePattyWarmer(vec3(-1201.533, -894.977, 13.793), vec3(0.0, 0.0, 123.455), {tableHidden = false})
-            CreateMeatContainer(vec3(-1195.965, -899.143, 13.903), vec3(0.0, 0.0, 128.867), {tableHidden = false})
-            CreateMeatContainer(vec3(-1195.714, -899.532, 13.902), vec3(0.0, 0.0, 23.952), {tableHidden = false})
-            CreateSpatula(vec3(-1203.071, -898.154, 14.362), vec3(90.0, 0.0, 130.0), {tableHidden = false})
-            CreateEntityHider(vec3(-1200.772, -896.646, 13.723), vec3(0,0,0), {model = "prop_food_bs_chips"})
-            CreateEntityHider(vec3(-1203.987, -895.848, 13.545), vec3(0,0,0), {model = "wx_burgershot_r02_oil"})
-            CreateEntityHider(vec3(-1200.661, -896.419, 13.723), vec3(0,0,0), {model = "prop_food_bs_chips"})
-            CreateEntityHider(vec3(-1200.588, -896.538, 13.723), vec3(0,0,0), {model = "prop_food_bs_chips"})
-            CreateEntityHider(vec3(-1200.846, -895.957, 13.698), vec3(0,0,0), {model = "prop_food_bs_burg3"})
-            CreateEntityHider(vec3(-1200.612, -895.929, 13.698), vec3(0,0,0), {model = "prop_food_bs_burg3"})
-            CreateEntityHider(vec3(-1200.741, -895.756, 13.699), vec3(0,0,0), {model = "prop_food_bs_burg1"})
-            CreateEntityHider(vec3(-1201.095, -895.958, 13.776), vec3(0,0,0), {model = "prop_food_bs_bag_01"})
-            CreateEntityHider(vec3(-1201.368, -895.622, 13.699), vec3(0,0,0), {model = "prop_food_bs_burg1"})
-            CreateEntityHider(vec3(-1201.197, -894.954, 13.699), vec3(0,0,0), {model = "prop_food_bs_burg1"})
-            CreateEntityHider(vec3(-1201.809, -894.919, 13.698), vec3(0,0,0), {model = "prop_food_bs_burg3"})
-            CreateEntityHider(vec3(-1201.634, -894.75, 13.698), vec3(0,0,0), {model = "prop_food_bs_burg3"})
-            CreateEntityHider(vec3(-1201.463, -894.9, 13.779), vec3(0,0,0), {model = "prop_food_bs_bag_02"})
-            CreateEntityHider(vec3(-1203.437, -897.75, 14.399), vec3(0,0,0), {model = "prop_utensil"})
+            --LOCATION(Vespucci)
+            CreateEntityHider(vec3(-1203.987, -895.848, 13.545), vec3(0, 0, 0), { model = "wx_burgershot_r02_oil" })
+            CreateEntityHider(vec3(-1203.437, -897.75, 14.399), vec3(0, 0, 0), { model = "prop_utensil" })
+            CreateFryer(vec3(-1203.543, -896.526, 13.539), vec3(0.0, 0.0, 34.0), { tableHidden = true })
+            CreateFryer(vec3(-1203.987, -895.848, 13.545), vec3(0.0, 0.0, 34.0), { tableHidden = true })
+            CreateChipsTable(vec3(-1204.776, -894.894, 13.13), vec3(0.0, 0.0, -146.0), { tableHidden = true })
+            CreateGriddle(vec3(-1202.699, -897.638, 13.333), vec3(0.0, 0.0, -146.0), { tableHidden = true })
+            CreateBin(vec3(-1198.977, -899.362, 12.799), vec3(0.0, 0.0, 31.56), { tableHidden = false })
+            CreateBurgerTable(vec3(-1200.382, -896.604, 13.129), vec3(0.0, 0.0, 35.0), { tableHidden = true })
+            CreateBurgerTable(vec3(-1200.964, -895.753, 13.13), vec3(0.0, 0.0, 35.0), { tableHidden = true })
+            CreatePattyWarmer(vec3(-1201.533, -894.977, 13.793), vec3(0.0, 0.0, 123.455), { tableHidden = false })
+            CreateMeatContainer(vec3(-1195.965, -899.143, 13.903), vec3(0.0, 0.0, 128.867), { tableHidden = false })
+            CreateMeatContainer(vec3(-1195.714, -899.532, 13.902), vec3(0.0, 0.0, 23.952), { tableHidden = false })
+            CreateSpatula(vec3(-1203.071, -898.154, 14.362), vec3(90.0, 0.0, 130.0), { tableHidden = false })
+            --LOCATION(mirror)
+            CreateEntityHider(vec3(1109.071, -879.866, 53.208), vec3(0, 0, 0), { model = "wx_burgershot_r02_oil" })
+            CreateBurgerTable(vec3(1111.795, -882.392, 51.669), vec3(0.0, 0.0, -0.03), { tableHidden = true })
+            CreateBurgerTable(vec3(1111.792, -881.382, 51.67), vec3(0.0, 0.0, 0.694), { tableHidden = true })
+            CreatePattyWarmer(vec3(1111.801, -880.377, 52.34), vec3(0.0, 0.0, -90.5), { tableHidden = false })
+            CreateGriddle(vec3(1109.263, -881.931, 51.871), vec3(0.0, 0.0, -179.619), { tableHidden = true })
+            CreateSpatula(vec3(1108.586, -882.217, 52.823), vec3(90.0, 0.0, 90.5), { tableHidden = false })
+            CreateBin(vec3(1111.25, -885.447, 51.32), vec3(0.0, 0.0, -177.971), { tableHidden = false })
+            CreateChipsTable(vec3(1109.116, -878.507, 51.668), vec3(0.0, 0.0, -179.816), { tableHidden = true })
+            CreateFryer(vec3(1109.217, -879.732, 52.076), vec3(0.0, 0.0, -0.022), { tableHidden = true })
+            CreateFryer(vec3(1109.218, -880.536, 52.081), vec3(0.0, 0.0, 0.162), { tableHidden = true })
+            CreateMeatContainer(vec3(1114.114, -886.943, 52.44), vec3(0.0, 0.0, 99.011), { tableHidden = false })
+            CreateMeatContainer(vec3(1114.082, -887.44, 52.434), vec3(0.0, 0.0, -21.53), { tableHidden = false })
+            --LOCATION(zancudo)
+            CreateEntityHider(vec3(-2465.76, 2350.257, 33.198), vec3(0, 0, 0), { model = "wx_burgershot_r02_oil" })
+            CreateBurgerTable(vec3(-2467.729, 2352.414, 32.529), vec3(0.0, 0.0, -179.87), { tableHidden = true })
+            CreateBurgerTable(vec3(-2467.746, 2351.344, 32.526), vec3(0.0, 0.0, -179.934), { tableHidden = true })
+            CreatePattyWarmer(vec3(-2467.731, 2350.385, 33.199), vec3(0.0, 0.0, 179.709), { tableHidden = false })
+            CreateChipsTable(vec3(-2465.095, 2348.436, 32.533), vec3(0.0, 0.0, 0.351), { tableHidden = true })
+            CreateFryer(vec3(-2465.218, 2350.556, 32.934), vec3(0.0, 0.0, 179.492), { tableHidden = true })
+            CreateFryer(vec3(-2465.223, 2349.761, 32.934), vec3(0.0, 0.0, 179.895), { tableHidden = true })
+            CreateGriddle(vec3(-2465.307, 2351.965, 32.731), vec3(0.0, 0.0, -0.439), { tableHidden = true })
+            CreateSpatula(vec3(-2464.615, 2351.709, 33.688), vec3(89.371, -0.261, -89.997), { tableHidden = false })
+            CreateBin(vec3(-2467.263, 2355.421, 32.195), vec3(0.0, 0.0, -18.582), { tableHidden = false })
+            CreateMeatContainer(vec3(-2470.013, 2357.181, 33.298), vec3(0.0, 0.0, -116.502), { tableHidden = false })
+            --LOCATION(paleto)
+            CreateEntityHider(vec3(-303.546, 6123.152, 31.540), vec3(0, 0, 0), { model = "wx_burgershot_r02_oil" })
+            CreateBurgerTable(vec3(-304.056, 6120.014, 30.869), vec3(0.318, 0.124, -43.481), { tableHidden = true })
+            CreateBurgerTable(vec3(-303.328, 6120.738, 30.87), vec3(0.318, 0.124, -44.842), { tableHidden = true })
+            CreatePattyWarmer(vec3(-302.615, 6121.378, 31.548), vec3(0.318, 0.124, -44.842), { tableHidden = false })
+            CreateChipsTable(vec3(-303.136, 6124.66, 30.872), vec3(0.318, -0.014, 134.646), { tableHidden = true })
+            CreateFryer(vec3(-304.523, 6123.081, 31.276), vec3(-0.316, -0.032, -44.929), { tableHidden = true })
+            CreateFryer(vec3(-303.961, 6123.65, 31.272), vec3(-0.308, 0.08, -44.89), { tableHidden = true })
+            CreateGriddle(vec3(-305.51, 6122.109, 31.076), vec3(0.317, 0.02, 135.035), { tableHidden = true })
+            CreateSpatula(vec3(-305.768, 6122.7, 32.032), vec3(89.744, 0.253, 43.636), { tableHidden = false })
+            CreateBin(vec3(-306.452, 6118.184, 30.529), vec3(0.0, 0.0, -72.109), { tableHidden = false })
+            CreateMeatContainer(vec3(-305.58, 6115.166, 31.641), vec3(0.0, 0.0, 3.906), { tableHidden = false })
+            CreateMeatContainer(vec3(-305.937, 6114.813, 31.649), vec3(0.0, 0.0, -69.289), { tableHidden = false })
+        end
+    },
+    ["gn_burgershot_sandy"] = {
+        jobs = {},
+        required = {
+            resource = "cfx_gn_burgershot_sandy"
+        },
+
+        exec = function()
+            CreateEntityHider(vec3(1595.632, 3751.285, 34.434), vec3(0, 0, 0), { model = "gn_bs_mp_kitchen_efc" })
+            CreateEntityHider(vec3(1595.632, 3751.285, 34.434), vec3(0, 0, 0), { model = "gn_bs_mp_kitchen_foodporn" })
+            CreateEntityHider(vec3(1595.632, 3751.285, 34.434), vec3(0, 0, 0), { model = "gn_bs_mp_kitchen_skirt" })
+            CreateEntityHider(vec3(1596.245, 3749.24, 34.351), vec3(0, 0, 0), { model = "prop_griddle_02" })
+            CreateEntityHider(vec3(1592.729, 3752.491, 33.888), vec3(0, 0, 0), { model = "v_serv_waste_bin1" })
+            CreateEntityHider(vec3(1590.99, 3754.902, 33.766), vec3(0, 0, 0), { model = "v_serv_waste_bin1" })
+            CreateEntityHider(vec3(1599.887, 3751.723, 34.66), vec3(0, 0, 0), { model = "prop_crate_11b" })
+            CreateGriddle(vec3(1594.9, 3748.575, 33.969), vec3(0.0, 0.0, -54.056), { tableHidden = true })
+            CreateChipsTable(vec3(1596.273, 3749.236, 33.787), vec3(0.0, 0.0, -53.806), { tableHidden = true })
+            CreateBurgerTable(vec3(1593.286, 3753.052, 33.777), vec3(0.0, 0.0, 125.489), { tableHidden = true })
+            CreateFryer(vec3(1597.120, 3749.982, 34.220), vec3(0.0, 0.0, 125.600), {tableHidden = false})
+            CreateFryer(vec3(1597.785, 3750.457, 34.220), vec3(0.0, 0.0, 125.600), {tableHidden = false})
+            CreateBurgerTable(vec3(1592.753, 3754.14, 33.777), vec3(0.0, 0.0, -54.056), { tableHidden = true })
+            CreatePattyWarmer(vec3(1594.285, 3754.16, 34.450), vec3(0.0, 0.0, 125.493), { tableHidden = false })
+            CreatePattyWarmer(vec3(1593.98, 3754.599, 34.450), vec3(0.0, 0.0, -54.544), { tableHidden = false })
+            CreateBin(vec3(1590.979, 3754.93, 33.422), vec3(0.0, 0.0, -95.572), { tableHidden = false })
+            CreateBin(vec3(1592.743, 3752.458, 33.567), vec3(0.0, 0.0, 168.538), { tableHidden = false })
+            CreateSpatula(vec3(1596.717, 3749.134, 35.081), vec3(90.119, -0.017, -145.822), { tableHidden = true })
+            CreateMeatContainer(vec3(1600.228, 3751.979, 34.716), vec3(0.0, 0.0, 159.782), { tableHidden = false })
+            CreateMeatContainer(vec3(1599.775, 3751.668, 34.708), vec3(0.0, 0.0, 42.446), { tableHidden = false })
+        end
+    },
+    ["mirror"] = {
+        jobs = {},
+        required = {
+            resource = "cfx-mxc-mirror"
+        },
+
+        exec = function()
+            CreateEntityHider(vec3(-1352.08, -1079.925, 7.078), vec3(0, 0, 0), { model = "prop_bin_11a" })
+            CreateBurgerTable(vec3(-1353.115, -1081.944, 7.402), vec3(0.0, 0.0, -150.05), { tableHidden = true })
+            CreateMeatContainer(vec3(-1352.632, -1082.494, 8.021), vec3(0.0, 0.0, -138.048), { tableHidden = false })
+            CreateChipsTable(vec3(-1350.676, -1084.903, 7.436), vec3(0.0, 0.0, -60.11), { tableHidden = true })
+            CreateBurgerTable(vec3(-1352.397, -1083.218, 7.402), vec3(0.0, 0.0, -149.618), { tableHidden = true })
+            CreateFryer(vec3(-1350.46, -1083.002, 7.864), vec3(0.0, 0.0, -149.789), { tableHidden = true })
+            CreateFryer(vec3(-1350.869, -1082.294, 7.867), vec3(0.0, 0.0, -150.013), { tableHidden = true })
+            CreateGriddle(vec3(-1351.799, -1080.929, 7.65), vec3(0.0, 0.0, 29.666), { tableHidden = true })
+            CreateBin(vec3(-1352.08, -1079.925, 7.078), vec3(0.0, 0.0, -150.0), { tableHidden = false })
+            CreateSpatula(vec3(-1352.747, -1083.474, 8.531), vec3(90.907, 0.0, 123.124), {tableHidden = false})
         end
     },
 }

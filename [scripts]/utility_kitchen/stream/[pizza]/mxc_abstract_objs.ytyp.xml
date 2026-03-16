@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CMapTypes>
+ <extensions />
+ <archetypes>
+  <Item type="CBaseArchetypeDef">
+   <lodDist value="60" />
+   <flags value="131616" />
+   <specialAttribute value="0" />
+   <bbMin x="0.0" y="0.0" z="0.0" />
+   <bbMax x="1.0" y="1.0" z="1.0" />
+   <bsCentre x="0" y="0" z="0" />
+   <bsRadius value="1.0" />
+   <hdTextureDist value="40" />
+   <name>mxc_dealer</name>
+   <textureDictionary />
+   <clipDictionary />
+   <drawableDictionary />
+   <physicsDictionary />
+   <assetType>ASSET_TYPE_DRAWABLE</assetType>
+   <assetName>mxc_dealer</assetName>
+   <extensions />
+  </Item>
+ </archetypes>
+ <name>mxc_abstract_objs</name>
+ <dependencies />
+ <compositeEntityTypes itemType="CCompositeEntityType" />
+</CMapTypes>

@@ -45,7 +45,6 @@ shared_scripts {
     "build/shared/*.lua"
 }
 files {
-    "imgs/**.*",
     "audiodirectory/**.*",
     "configs/expansions/*.lua",
 }
