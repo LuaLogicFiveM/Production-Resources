@@ -1,7 +1,7 @@
 Config.AiDoc = {
 	enable = true,
 	command = 'doctor',
-	bankCost = 5000,
+	bankCost = 100,
 	docModel = `s_m_m_doctor_01`,
 	vehicleModel = `faggio`,
 	vehicleColor = 111,
