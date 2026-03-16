@@ -1161,26 +1161,34 @@ local function PurchaseTrustedVehicles()
         options = {}
     }
 
-    for _, vehicle in ipairs(trustedVehicles) do
-        menu.options[#menu.options+1] = {
-            title = vehicle,
-            disabled = purchasedVehicles and purchasedVehicles[vehicle] or not IsModelInCdimage(vehicle),
-            onSelect = function()
-                local confirm = lib.alertDialog({
-                    header = 'Trusted Vehicle Transfer',
-                    content = ('## Transfer Fee  \n **$10,000**  \n ## Vehicle  \n **%s**'):format(vehicle),
-                    centered = true,
-                    cancel = true
-                })
+    if trustedVehicles then
+        for _, vehicle in ipairs(trustedVehicles) do
+            menu.options[#menu.options+1] = {
+                title = vehicle,
+                disabled = purchasedVehicles and purchasedVehicles[vehicle] or not IsModelInCdimage(vehicle),
+                onSelect = function()
+                    local confirm = lib.alertDialog({
+                        header = 'Trusted Vehicle Transfer',
+                        content = ('## Transfer Fee  \n **$10,000**  \n ## Vehicle  \n **%s**'):format(vehicle),
+                        centered = true,
+                        cancel = true
+                    })
 
-                if confirm == 'confirm' then
-                    TriggerServerEvent('lualogic_trust:server:purchaseTrustedVehicle', vehicle)
-                    Wait(100)
-                    PurchaseTrustedVehicles()
-                else
-                    PurchaseTrustedVehicles()
+                    if confirm == 'confirm' then
+                        TriggerServerEvent('lualogic_trust:server:purchaseTrustedVehicle', vehicle)
+                        Wait(100)
+                        PurchaseTrustedVehicles()
+                    else
+                        PurchaseTrustedVehicles()
+                    end
                 end
-            end
+            }
+        end
+    else
+        menu.options[#menu.options+1] = {
+            title = 'Trusted Vehicles Unavailable',
+            description = 'No vehicles could be found or there was an error fetching them',
+            readOnly = true
         }
     end
 
