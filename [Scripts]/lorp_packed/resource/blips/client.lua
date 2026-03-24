@@ -441,8 +441,8 @@ local blips = {
         scale = 0.8,
         color = 0,
         data = {
-            title = '🔧 B&H Customs',
-            description = 'Owner: haydenzeee',
+            title = '🔧 $̷H̷̷A̷̷M̷̷O_X Customs',
+            description = 'Owner: $̷H̷̷A̷̷M̷̷O_X',
         },
     },
     {

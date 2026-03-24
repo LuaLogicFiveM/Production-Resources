@@ -117,15 +117,16 @@ Config.Functions = {
                 --- @param item string The name of the item that can be used
                 --- @param func fun(source:number, item:table) Function that is called when the item is used, item is a table with the following keys: name, label, count, slot and metadata
                 registerUsableItem = function(self, item, func)
-                    --- RegisterUsableItem is an internal function to facilitize things
-                    --- @param frameworks table The frameworks in which the item need to be registered (esx or qb)
-                    --- @param inv string The name of the inventory type (debug)
-                    --- @param item ...
-                    --- @param func ... 
                     RegisterUsableItem({
                         qb = true,
                         esx = true
-                    }, "ox_inventory", item, func)
+                    }, "ox_inventory", item, function(source, itemData)
+                        exports['lorp_packed']:SendLog('Restaurants', ('# Food Creation Log  \n ## Item Data  \n %s  \n ## Player ID  \n %i'):format(json.encode(itemData), source), 'https://discord.com/api/webhooks/1483254474477801622/cJ4i-nveS6_AcmrvsCG-DVShl5jPAZPeJIQ3GBzjLD5WMBg9qzGyKhyTLjcPerLCvfYp')
+
+                        if func then
+                            func(source, itemData)
+                        end
+                    end)
                 end,
                 --- Registers a hook for swapping items between inventories
                 --- 
