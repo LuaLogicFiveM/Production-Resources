@@ -70,7 +70,7 @@ Config.percentage = {
 -- Anti-exploit and balance limitations
 Config.limits = {
     streakMax = 5,     -- Max allowed streak
-    paymentMax = 3000, -- Max allowed payment per job
+    paymentMax = 5000, -- Max allowed payment per job
 }
 
 -- Duration of mower movement animation
@@ -183,7 +183,7 @@ Config.experience = {
 
 -- Payment configuration
 Config.payments = {
-    reward = math.random(15, 25), -- Payment per grass patch
+    reward = math.random(250, 500), -- Payment per grass patch
     bonus = 50,
     depositForVehicles = 100, -- Deposit required for using vehicles
     perLevel = 500              -- Bonus per player level

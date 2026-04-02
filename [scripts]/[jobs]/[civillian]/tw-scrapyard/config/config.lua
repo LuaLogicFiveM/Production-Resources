@@ -138,7 +138,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(500, 750),
+                money = math.random(5000, 7500),
                 xp = 1000,
                 onlineJobExtraAwards = 1,
                 bonusExtraMoney = 500,

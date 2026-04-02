@@ -9,7 +9,7 @@ Config = {}
 Config.Framework = 'ESX' -- 'ESX' or 'QBCore' (case sensitive)
 Config.InteractionType = 'ox_target' -- ox_target | 3dtext
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
-Config.TimeToCraft = 15000 -- Time it takes to make a hat/cap
+Config.TimeToCraft = 7500 -- Time it takes to make a hat/cap
 Config.DebugMode = false  -- Set to true to enable debug messages
 
 ---- ## QB OX INVENTORY (ENABLE THIS IF USING OX INVENTORY ON QB CORE, DO NOT ENABLE IF USING ESX)

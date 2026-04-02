@@ -1,9 +1,9 @@
 Config = {}
-Config.IssueHelper = false -- [DEF. false] [BOOLEAN] Use that if you need help on discord. Gathers config data and non-sensitive data.
+Config.IssueHelper = true -- [DEF. false] [BOOLEAN] Use that if you need help on discord. Gathers config data and non-sensitive data.
 Config.Characters = {}
 Config.Characters.Free = 2
 Config.Characters.IdentifierType = "license"
-Config.Debug = false
+Config.Debug = true
 Config.DebugTimers = false
 Config.CheckIntegration = false
 Config.BringMinimap = true     -- [DEF. false] Bring minimap after Multicharacter finishes

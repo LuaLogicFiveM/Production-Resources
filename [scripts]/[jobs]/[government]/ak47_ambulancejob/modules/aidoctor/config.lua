@@ -7,6 +7,6 @@ Config.AiDoc = {
 	vehicleColor = 111,
 	waitTimeMultiplierByNearestHospitalDistance = 0.1,
 	disableWithEmsOnline = 3,
-	setCrutchOnRevive = true, -- requires ak47_crutch
+	setCrutchOnRevive = false, -- requires ak47_crutch
 	crutchTime = 10, --minutes
 }

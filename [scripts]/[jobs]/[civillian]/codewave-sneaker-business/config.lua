@@ -14,7 +14,7 @@ Config.InteractionType = 'ox_target' -- ox_target | 3dtext | qb-target
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
 Config.UseQbTargetForNpc = false  -- Set to true to use qb-target for NPC interaction
 
-Config.TimeToCraft = 15000
+Config.TimeToCraft = 7500
 Config.DebugMode = false  -- Set to true to enable debug messages
 
 -- "custom", "esx", "qbcore", "pNotify", "mythic_notify", "okokNotify", "default", "ox_lib"

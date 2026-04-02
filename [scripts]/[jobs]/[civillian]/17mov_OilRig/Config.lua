@@ -3,8 +3,8 @@ Config = {}
 Config.UseTarget = false
 Config.UseBuiltInNotifications = true
 
-Config.OneGasPercentWorth = math.random(25, 50)                     -- How much script should pay for one percent of collected gas.
-Config.OneQuestPercentWorth = math.random(100, 150)                    -- How much script should pay for one percent of side quests done.
+Config.OneGasPercentWorth = math.random(50, 75)                     -- How much script should pay for one percent of collected gas.
+Config.OneQuestPercentWorth = math.random(150, 225)                    -- How much script should pay for one percent of side quests done.
 
 -- Reward is being calculated like that: math.floor(gasProgress * Config.OneGasPercentWorth) + math.floor(questProgress * Config.OneQuestPercentWorth)
 -- Please remember about some mulitplers like Config.multiplyRewardWhileWorkingInGroup etc..

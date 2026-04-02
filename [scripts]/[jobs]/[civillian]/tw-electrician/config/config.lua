@@ -126,7 +126,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(500, 750),
+                money = math.random(2500, 3500),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 1000,
@@ -205,7 +205,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(500, 750),
+                money = math.random(3500, 5000),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 1000,
@@ -284,7 +284,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(500, 750),
+                money = math.random(5000, 7500),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 1000,
@@ -363,7 +363,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(750, 1000),
+                money = math.random(7500, 8500),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 1000,
@@ -441,7 +441,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(750, 1000),
+                money = math.random(8500, 10000),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 1000,
@@ -519,7 +519,7 @@ Config.Job                = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(750, 1000),
+                money = math.random(10000, 12500),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 1000,

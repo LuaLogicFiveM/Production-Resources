@@ -9,7 +9,7 @@ Config = {}
 Config.Framework = 'ESX' -- 'ESX' or 'QBCore' (case sensitive)
 Config.InteractionType = 'ox_target' -- ox_target | 3dtext
 Config.UseOxTargetForNpc = true -- Set to true to enable ox_target, false to use key press interaction
-Config.TimeToCraft = 15000
+Config.TimeToCraft = 7500
 Config.DebugMode = false  -- Set to true to enable debug messages
 
 -- ONLY FOR NPC SALES.

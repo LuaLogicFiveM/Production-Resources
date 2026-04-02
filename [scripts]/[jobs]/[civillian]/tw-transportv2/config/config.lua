@@ -133,7 +133,7 @@ Config.Job                   = {
                 regionMinimumLevel = 0
             },
             regionAwards = {
-                money = math.random(500, 750),
+                money = math.random(3500, 5000),
                 xp = 1000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -214,7 +214,7 @@ Config.Job                   = {
                 regionMinimumLevel = 2
             },
             regionAwards = {
-                money = math.random(750, 1000),
+                money = math.random(5000, 7500),
                 xp = 3000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -288,7 +288,7 @@ Config.Job                   = {
                 regionMinimumLevel = 4
             },
             regionAwards = {
-                money = math.random(1250, 1500),
+                money = math.random(7500, 10000),
                 xp = 5000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,
@@ -363,7 +363,7 @@ Config.Job                   = {
                 regionMinimumLevel = 6
             },
             regionAwards = {
-                money = math.random(1500, 1750),
+                money = math.random(10000, 12500),
                 xp = 10000,
                 onlineJobExtraAwards = 2,
                 bonusExtraMoney = 500,

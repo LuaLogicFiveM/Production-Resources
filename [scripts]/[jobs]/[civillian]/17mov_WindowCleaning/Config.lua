@@ -101,7 +101,7 @@ Config.Locations = {       -- Here u can change all of the base job locations.
 
 Config.SpawnPoint = vec4(-1231.34, -1225.93, 6.9, 73.52)  -- Company car spawn point
 
-Config.Price = math.random(25, 50)            -- Means $5 per one window, so the full reward depends on current location
+Config.Price = math.random(100, 175)            -- Means $5 per one window, so the full reward depends on current location
 
 Config.EnableCloakroom = false                                 -- if false, then you can't see the Cloakroom button under Work Menu
 Config.Clothes = {
