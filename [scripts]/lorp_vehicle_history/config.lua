@@ -32,7 +32,7 @@ Config.PhysicalReport = {
         coords = vec3(241.4962, -1394.3303, 30.1211),
         size = vec3(6.0, 6.0, 4.0),
         rotation = 0.0,
-        debug = true
+        debug = false
     },
     target = {
         label = 'target_carfax_request',
