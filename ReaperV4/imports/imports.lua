@@ -1,1 +1,0 @@
--- This file is loaded into every resource on resource start. You can use Reaper API functions inside of this file to add extra security to scripts
