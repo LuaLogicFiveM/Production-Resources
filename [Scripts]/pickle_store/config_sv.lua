@@ -1,7 +1,7 @@
 ConfigSV = {}
 ConfigSV.Webhooks = {
     ["onCoinProductPurchase"] = { 
-        url = "https://discord.com/api/webhooks/1409396226948075602/fRsQMSdo4DO2vfVSpZYD3lJk1ISWH7iEvVvQgHMGSfQQMApWSTe6TTKwdZ9FbzTpBO6q",
+        url = "",
         title = "Coin Product Purchase", 
         fields = {
             { name = "Product ID", value = "productId", inline = false },
@@ -12,7 +12,7 @@ ConfigSV.Webhooks = {
         } 
     },
     ["onCoinAdded"] = { 
-        url = "https://discord.com/api/webhooks/1409396226948075602/fRsQMSdo4DO2vfVSpZYD3lJk1ISWH7iEvVvQgHMGSfQQMApWSTe6TTKwdZ9FbzTpBO6q",
+        url = "",
         title = "Coin(s) Added to Player",
         fields = {
             { name = "Player", value = "player", inline = false },
@@ -21,7 +21,7 @@ ConfigSV.Webhooks = {
         }
     },
     ["onCoinRemoved"] = { 
-        url = "https://discord.com/api/webhooks/1409396226948075602/fRsQMSdo4DO2vfVSpZYD3lJk1ISWH7iEvVvQgHMGSfQQMApWSTe6TTKwdZ9FbzTpBO6q",
+        url = "",
         title = "Coin(s) Removed from Player",
         fields = {
             { name = "Player", value = "player", inline = false },

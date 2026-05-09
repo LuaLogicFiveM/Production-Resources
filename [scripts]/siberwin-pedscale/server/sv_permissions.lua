@@ -1,4 +1,5 @@
 local ESX, QBCore = nil, nil
+local botToken = ''
 
 local function getPlayerDiscordId(source)
     local identifiers = GetPlayerIdentifiers(source)
@@ -31,7 +32,7 @@ local function checkDiscordRole(discordId, callback)
         end
         callback(false)
     end, 'GET', '', {
-        ['Authorization'] = 'Bot MTQ1MjQwNDMzNzU1MTc0MDk1OA.G2wUUW.dXW6H6jqgDAgukpewXGed5R5EEllRygVWz9dik',
+        ['Authorization'] = 'Bot '..botToken,
         ['Content-Type'] = 'application/json'
     })
 end
@@ -75,7 +76,7 @@ local function sendAdminDiscordLog(title, description, adminName, adminId, targe
         ["embeds"] = embed
     }
     
-    PerformHttpRequest('https://discord.com/api/webhooks/1489351992143908874/0ziAEF30gpKlS9nHsB1Cma8pvqwGNi_fRrSwlu72xxx5SUk9RWPdVDVDWFodC0xLzFhq', function(err, text, headers) end, 'POST', json.encode(payload), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest('', function(err, text, headers) end, 'POST', json.encode(payload), { ['Content-Type'] = 'application/json' })
 end
 
 CreateThread(function()

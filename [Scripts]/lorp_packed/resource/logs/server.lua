@@ -22,7 +22,7 @@ AddEventHandler('playerConnecting', function(t,t2,t3)
     local did = GetPlayerIdentifierByType(source, 'discord')
     if did then
         local discord = string.gsub(did, 'discord:', '') or 'N/A'
-        SendLog('__**Connection Logs**__', "### Name \n**"..name.. "**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**", 'https://ptb.discord.com/api/webhooks/1173404494411878440/cW-T0XXoKaxglcblnXg7urTfKUYFTd2kyX8E4JmE44DSTXCng3gxWGtVs9R76ox1RnCu')
+        SendLog('__**Connection Logs**__', "### Name \n**"..name.. "**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**", '')
     end
 end)
 
@@ -43,9 +43,9 @@ AddEventHandler('playerDropped', function(reason)
         local ped = GetPlayerPed(source)
         local coords = ped and GetEntityCoords(ped) or 'N/A'
 
-        SendLog('__**Leave Logs**__', "### Reason\n**"..reason.. "**\n### Identifier\n**"..identifier.. "**\n### Name \n**"..name.. " ("..source..")**\n### Character Name\n**"..charName.."**\n### Character Job\n**"..job.label.."**\n### Character Job Rank\n**"..job.grade_label.." ("..job.grade..")**\n### Cash\n**"..cash.."**\n### Bank\n**"..bank.."**\n### Dirty Cash\n**"..dirty.."**\n### Coords\n**"..coords.."**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**", 'https://ptb.discord.com/api/webhooks/1173404494411878440/cW-T0XXoKaxglcblnXg7urTfKUYFTd2kyX8E4JmE44DSTXCng3gxWGtVs9R76ox1RnCu')
+        SendLog('__**Leave Logs**__', "### Reason\n**"..reason.. "**\n### Identifier\n**"..identifier.. "**\n### Name \n**"..name.. " ("..source..")**\n### Character Name\n**"..charName.."**\n### Character Job\n**"..job.label.."**\n### Character Job Rank\n**"..job.grade_label.." ("..job.grade..")**\n### Cash\n**"..cash.."**\n### Bank\n**"..bank.."**\n### Dirty Cash\n**"..dirty.."**\n### Coords\n**"..coords.."**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**", '')
     else
-        SendLog('__**Leave Logs**__', "### Reason \n**"..reason.. "**\n### Name \n**"..name.. " ("..source..")**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**", 'https://ptb.discord.com/api/webhooks/1173404494411878440/cW-T0XXoKaxglcblnXg7urTfKUYFTd2kyX8E4JmE44DSTXCng3gxWGtVs9R76ox1RnCu')
+        SendLog('__**Leave Logs**__', "### Reason \n**"..reason.. "**\n### Name \n**"..name.. " ("..source..")**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**", '')
     end
 end)
 
@@ -61,11 +61,11 @@ AddEventHandler('esx:playerLoaded', function(playerId, xPlayer, isNew)
     local cash = ox_inventory:GetItemCount(target, 'money')
     local dirty = ox_inventory:GetItemCount(target, 'black_money')
 
-    SendLog('__**Join Logs**__', "### Identifier\n**"..xPlayer.identifier.. "**\n### Name \n**"..name.. " ("..target..")**\n### Character Name\n**"..charName.."**\n### Character Job\n**"..job.label.."**\n### Character Job Rank\n**"..job.grade_label.." ("..job.grade..")**\n### Cash\n**"..cash.."**\n### Bank\n**"..bank.."**\n### Dirty Cash\n**"..dirty.."**"..bank.."**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**\n### Ping\n**"..playerPing.. "**", 'https://ptb.discord.com/api/webhooks/1173404494411878440/cW-T0XXoKaxglcblnXg7urTfKUYFTd2kyX8E4JmE44DSTXCng3gxWGtVs9R76ox1RnCu')
+    SendLog('__**Join Logs**__', "### Identifier\n**"..xPlayer.identifier.. "**\n### Name \n**"..name.. " ("..target..")**\n### Character Name\n**"..charName.."**\n### Character Job\n**"..job.label.."**\n### Character Job Rank\n**"..job.grade_label.." ("..job.grade..")**\n### Cash\n**"..cash.."**\n### Bank\n**"..bank.."**\n### Dirty Cash\n**"..dirty.."**"..bank.."**\n### Discord \n<@"..discord.. ">\n### Identifiers \n**"..json.encode(identifiers).. "**\n### Ping\n**"..playerPing.. "**", '')
 end)
 
 RegisterNetEvent('lorp_packed:server:handling', function(data)
     if data then
-        SendLog('__**Handling Logs**__', '### Data: ' ..json.encode(data), 'https://discord.com/api/webhooks/1247321910946168842/7KTLs5M4x3vBppj7YNP1BjfeU3CmCV_7DpiNX4R-i51ulvPTdn1__wt0_uf8d0PIQZR1')
+        SendLog('__**Handling Logs**__', '### Data: ' ..json.encode(data), '')
     end
 end)

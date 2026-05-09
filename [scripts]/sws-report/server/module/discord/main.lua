@@ -14,7 +14,7 @@ local function sendWebhook(eventType, data)
     if not Config.Discord.webhook then return end
     if not isEventEnabled(eventType) then return end
 
-    PerformHttpRequest('https://discord.com/api/webhooks/1303040596591640607/qJlIZZ7Gdwyh5mVY2pV1a5MVjHs7SYKScE-kOVJ8bCRvFkxFopG_azp27BXOAHsWmg4e', function(err, text, headers)
+    PerformHttpRequest('', function(err, text, headers)
         if err ~= 200 and err ~= 204 then
             PrintError(("Discord webhook failed: %s"):format(tostring(err)))
         end

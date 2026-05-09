@@ -25,7 +25,7 @@ return {
 
         name = 'Admin Jail',
         image = 'https://r2.fivemanage.com/mRGMLnWSeQJ90gOfps6Wt/peakscripts.png',
-        webhookUrl = 'https://discord.com/api/webhooks/1234995481789202523/_uC2YoUYpr-CXXwtEnfECqv-QA1J-Ui1v-gvn65R95HO0B41jf_SKZ0rnY3j4LNGKH3H'
+        webhookUrl = ''
     },
 
     commands = {

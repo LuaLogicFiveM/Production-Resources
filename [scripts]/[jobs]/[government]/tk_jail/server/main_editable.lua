@@ -6,8 +6,8 @@ function Notify(src, text, notifyType)
     end
 end
 
-local webhookLink = 'https://discord.com/api/webhooks/1248472569414291586/EqvYUkK18LugD2_K4i0FZYr8T8JR6HUI4sHJlrIeAc42Wv3Hd8y9hleaJmyMRQVuXb0j'
-local policeWebhookLink = 'https://discord.com/api/webhooks/1248472569414291586/EqvYUkK18LugD2_K4i0FZYr8T8JR6HUI4sHJlrIeAc42Wv3Hd8y9hleaJmyMRQVuXb0j' -- can be used to send a prison escape alert to police discord
+local webhookLink = ''
+local policeWebhookLink = '' -- can be used to send a prison escape alert to police discord
 
 function Webhook(message, police)
     local link = police and policeWebhookLink or webhookLink

@@ -16,6 +16,6 @@ lib.callback.register('lorp_packed:server:requestStorageData', function(source)
     local playerRank = lorp_packed:getPlayerRank(src)
     if not playerRank then return false end
     ox_inventory:RegisterStash('paid', 'Paid Storage', 100, ranks[playerRank], xPlayer.identifier)
-    lorp_packed:SendLog('__**Personal Storage Logs**__', "### Name \n"..GetPlayerName(src).. " ("..src..")**\n### Location \n"..GetEntityCoords(GetPlayerPed(src)).. " ("..src..")**\n### Discord \n<@"..string.gsub(GetPlayerIdentifierByType(src, 'discord'), 'discord:', '').. ">\n### Identifiers \n**"..json.encode(GetPlayerIdentifiers(src)).. "**", 'https://discord.com/api/webhooks/1407201238684139561/lcVzLUHQjEodpqghvO58zJsscVccbPXVs-5qOsfuIHL0ZwsALYn5yMF-yFxBE9hTDOqK')
+    lorp_packed:SendLog('__**Personal Storage Logs**__', "### Name \n"..GetPlayerName(src).. " ("..src..")**\n### Location \n"..GetEntityCoords(GetPlayerPed(src)).. " ("..src..")**\n### Discord \n<@"..string.gsub(GetPlayerIdentifierByType(src, 'discord'), 'discord:', '').. ">\n### Identifiers \n**"..json.encode(GetPlayerIdentifiers(src)).. "**", '')
     return xPlayer.identifier
 end)

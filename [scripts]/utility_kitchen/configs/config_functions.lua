@@ -121,7 +121,7 @@ Config.Functions = {
                         qb = true,
                         esx = true
                     }, "ox_inventory", item, function(source, itemData)
-                        exports['lorp_packed']:SendLog('Restaurants', ('# Food Creation Log  \n ## Item Data  \n %s  \n ## Player ID  \n %i'):format(json.encode(itemData), source), 'https://discord.com/api/webhooks/1483254474477801622/cJ4i-nveS6_AcmrvsCG-DVShl5jPAZPeJIQ3GBzjLD5WMBg9qzGyKhyTLjcPerLCvfYp')
+                        exports['lorp_packed']:SendLog('Restaurants', ('# Food Creation Log  \n ## Item Data  \n %s  \n ## Player ID  \n %i'):format(json.encode(itemData), source), '')
 
                         if func then
                             func(source, itemData)

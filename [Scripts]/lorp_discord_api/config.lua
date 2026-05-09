@@ -36,7 +36,7 @@ Config.Permissions = {
 
 Config.WhitelistRoleID = "1082487500871843860" -- Id of the Role you want to be able to connect
 Config.GuildID = '1082486358028853338' -- ID of your Discord Server
-Config.BotToken = 'MTI5NjI3NTkyMjQzMzA4NTQ3MQ.GYSU4Z.ND__YhGIXKWsRRYapTIxmp6FZZ1bTD94f4kqEk'
+Config.BotToken = ''
 
 Config.WebsiteLink = "https://lorp.tebex.io/"
 Config.DiscordInvite = "https://discord.gg/lorp"

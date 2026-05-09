@@ -13,12 +13,12 @@ cfg.graceTimer = 180              --Seconds. The amount of time a player has to 
 cfg.manualConnect = false         --If you dont know what this is, dont touch it. Read docs for more information.
 
 cfg.discord = {
-    enabled = true,              --Setting to false will completely ignore all discord related features.
+    enabled = false,              --Setting to false will completely ignore all discord related features.
     requireIdentifier = false,     --Require the player to have discord linked to fivem?
     requireInGuild = false,        --Require the player to be in your discord server to connect?
     whitelist = false,            --Enable a whitelist on your server?
     whitelistRoleId = 1234567890, --The role that players need to have in order to connect if whitelist is enabled.
-    botToken = 'MTA4NDU2NzQxMjE5MzYyODMzMQ.G_rt_-.20Gp2-fNI9GhmEz9Gn5vhK0kveERTHcPDWDxaQ',                --Bot need to be in the same discord as the guild ID below.
+    botToken = '',                --Bot need to be in the same discord as the guild ID below.
     guildId = '1082486358028853338',                  --ID of your discord server/guild.
     cache = true,                 --Prevent making multiple unnecessary requests to the discord API and possibly help reduce rate limits.
     cacheTimeout = 120            --Seconds. Amount of time that user info from discord requests will be cached for before it gets reset and fresh, up-to-date information is fetched.

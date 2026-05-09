@@ -1,7 +1,7 @@
 if not Config.AntiCheat then return end
 
-local bannedWordWebhook = 'https://discord.com/api/webhooks/1418829434508542033/bHi4rsKZKXIyVSku8bCq5oFXdi6aH8oaJOrX_ATXkvMyZAJ5ccVodwdYoOB8wpQmgwT2' --Add your Discord webhook URL here
-local eventSpamWebhook = 'https://discord.com/api/webhooks/1418829434508542033/bHi4rsKZKXIyVSku8bCq5oFXdi6aH8oaJOrX_ATXkvMyZAJ5ccVodwdYoOB8wpQmgwT2' --Add your Discord webhook URL here
+local bannedWordWebhook = '' --Add your Discord webhook URL here
+local eventSpamWebhook = '' --Add your Discord webhook URL here
 
 function bannedWordDiscordLog(source, eventName, bannedWord, flaggedMessage)
     if bannedWordWebhook ~= nil and #bannedWordWebhook > 10 then

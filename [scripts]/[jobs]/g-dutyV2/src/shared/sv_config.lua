@@ -9,26 +9,26 @@ SV_CONFIG.AutoSaveHours = 4 -- 4 = 4hours save all duty time every 4 hours auto
 SV_CONFIG.Webhooks = {
 	["DUTY_LOGS"] = {
 		["safd"] = {
-			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
+			webhook = "",
 		},
 		["bcso"] = {
-			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
+			webhook = "",
 		},
 		["gsp"] = {
-			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
+			webhook = "",
 		},
 	},
 	["DUTY_ITEMS_LOG"] = {
 		["bcso"] = {
-			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
+			webhook = "",
 			Title = "BCSO Duty Logs",
 		},
 		["gsp"] = {
-			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
+			webhook = "",
 			Title = "GSP Duty Logs",
 		},
 		["safd"] = {
-			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
+			webhook = "",
 			Title = "SAFD Duty Logs",
 		},
 	},

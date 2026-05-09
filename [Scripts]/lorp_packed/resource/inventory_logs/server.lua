@@ -2,14 +2,14 @@ local ox_inventory = exports.ox_inventory
 local fmsdk = exports.fmsdk
 local types = {}
 --[[local webhooks = {
-    ['drop'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
-    ['pickup'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
-    ['give'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
-    ['stash'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
-    ['glovebox'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
-    ['gloveboxplayer'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
-    ['trunk'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
-    ['playertrunk'] = 'https://discord.com/api/webhooks/1245194741545566298/GKFB1CcZOEQVYy5qTmonRLay4punZNhZ4CjgHQvB3QYXwJeW-5k9q_aTL8_xeDk9sPD4',
+    ['drop'] = '',
+    ['pickup'] = '',
+    ['give'] = '',
+    ['stash'] = '',
+    ['glovebox'] = '',
+    ['gloveboxplayer'] = '',
+    ['trunk'] = '',
+    ['playertrunk'] = '',
 }
 
 local function sendWebhook(webhook, data)

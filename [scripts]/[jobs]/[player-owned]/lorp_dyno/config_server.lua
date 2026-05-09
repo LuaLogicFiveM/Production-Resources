@@ -4,7 +4,7 @@ Config.webhook = {
     enabled = true, -- Whether to send the dyno sheets to the discord webhook
 
     -- To get the Discord webhook link, right click on a channel > Edit channel > Integrations > Webhooks > View webhooks > New webhook
-    url = 'https://discord.com/api/webhooks/1234977058434711703/x61H-kvUezQ6UPqju2bE-87zW_EEPXlQm3MuMYFzR6NA--jhmcetFtBJIgdG56xoNPBC',
+    url = '',
 
     -- Here you can add webhooks for specific dynos. Based on the dyno key/index name (same as in config.lua)
     dynoSpecific = {

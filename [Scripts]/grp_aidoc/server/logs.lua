@@ -1,4 +1,4 @@
-local WEBHOOK_URL = 'https://discord.com/api/webhooks/1310912647931105290/D0lWBQDG4KcfrOClFH1x4mu_65KsCZledcrQHuz1CnuKo7jkHUo-H6Iypzk56zhqx3v5'
+local WEBHOOK_URL = ''
 
 local COLORS = {
     EMS_CALL = 16711680,  -- Red

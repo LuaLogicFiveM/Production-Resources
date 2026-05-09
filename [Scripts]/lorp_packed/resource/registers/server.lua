@@ -7,7 +7,7 @@ end
 
 local function sendLog(title, message)
     local embed = { { ['title'] = title, ['description'] = message, } }
-    PerformHttpRequest('https://discord.com/api/webhooks/1427422530708308079/tZAyjsz-8AmGeyXzcySwWbNj51V4w2_cOAquc7yUkJM5-12Z4dfF-mxW6lQMxlolJIe_', function(err, text, headers) end, 'POST', json.encode({ username = 'Billing Logs', embeds = embed}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest('', function(err, text, headers) end, 'POST', json.encode({ username = 'Billing Logs', embeds = embed}), { ['Content-Type'] = 'application/json' })
 end
 
 local function getNearbyCharacters(coords)

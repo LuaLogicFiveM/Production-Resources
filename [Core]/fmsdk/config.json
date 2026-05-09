@@ -1,31 +1,31 @@
 {
 	"$schema": "./config.schema.json",
 	"logs": {
-		"level": "info",
+		"level": "error",
 		"levels": ["error", "warn", "info", "debug"],
 		"console": true,
-		"enableCloudLogging": true,
-		"appendPlayerIdentifiers": true,
+		"enableCloudLogging": false,
+		"appendPlayerIdentifiers": false,
 		"excludedPlayerIdentifiers": ["ip"],
-		"excludeInDepthMetadata": true,
+		"excludeInDepthMetadata": false,
 		"playerEvents": {
-			"enabled": true,
+			"enabled": false,
 			"dataset": "default"
 		},
 		"chatEvents": {
-			"enabled": true,
+			"enabled": false,
 			"dataset": "default"
 		},
 		"baseEvents": {
-			"enabled": true,
+			"enabled": false,
 			"dataset": "default"
 		},
 		"txAdminEvents": {
-			"enabled": true,
+			"enabled": false,
 			"dataset": "txAdmin"
 		},
 		"oxInventoryEvents": {
-			"enabled": true,
+			"enabled": false,
 			"dataset": "Inventory"
 		}
 	}

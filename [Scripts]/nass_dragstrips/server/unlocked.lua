@@ -8,7 +8,7 @@
 
 https://discord.gg/nass
 ]]
-local webhook = "https://discord.com/api/webhooks/1370914424898195546/MPTd7bc5YmvW57bF2HGV_4lBgxuv9FMyl-X7f336x8KlyJP7B51UWcqsP9RFSH4H_OXs"
+local webhook = ""
 --add_ace group.admin command.dragstrips allow
 RegisterCommand("dragstrips", function(source)
     TriggerClientEvent("nass_dragstrips:openDragstripMenu", source)

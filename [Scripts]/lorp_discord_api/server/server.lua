@@ -142,7 +142,8 @@ CreateThread(function()
 	end
 end)
 
-AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
+-- uncomment this if you plan on using this script
+--[[AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
     deferrals.defer()
     local src = source
     local license = GetIdentifier(src, 'license')
@@ -201,7 +202,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
     end
 
     deferrals.done()
-end)
+end)]]
 
 --[[AddEventHandler('playerConnecting', function(name, setKickReason, deferrals)
     deferrals.defer()

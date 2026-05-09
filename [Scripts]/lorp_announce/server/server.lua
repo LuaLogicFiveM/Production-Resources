@@ -200,7 +200,7 @@ AddEventHandler('lorp_announce:createAnnounce', function(data)
     end
 
     lib.notify(source, { title = 'Announcements', position = 'top', description = string.format(Config.Texts.Notifications.PublishSuccess, categoryMessage, visibilityMessage), type = 'success' })
-    exports.lorp_packed:SendLog('__**Announcement Logs**__', '### Name: '..GetPlayerName(source)..'\n ### Coords: ' ..json.encode(data.playerCoords)..'\n ### Message: ' ..content..'\n ### Restriction: '..visibilityMessage, 'https://discord.com/api/webhooks/1243736312624971828/Eq0Nxrex5qn6hL4QSWEODgryYJQcx1G4aI8fHkVGwFe2cTYFmNge87QoOESEYX1pxgir')
+    exports.lorp_packed:SendLog('__**Announcement Logs**__', '### Name: '..GetPlayerName(source)..'\n ### Coords: ' ..json.encode(data.playerCoords)..'\n ### Message: ' ..content..'\n ### Restriction: '..visibilityMessage, '')
 end)
 
 -- Initialize jobs cache on resource start

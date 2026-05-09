@@ -34,22 +34,22 @@ DiscordConfig = {
     Logs = {
         Turfs = {
             Enabled = true, --- Log all turf wins?
-            Webhook = 'https://discord.com/api/webhooks/1492005552186720256/NMEQVy9ZPZ2V1g0YeI675OcLFaUBaiV9Ifbkcs5J63FNEFIjqN0xpnDy7VhiorvGMKP0',
+            Webhook = '',
         },
 
         Wars = {
             Enabled = true, --- Log gang wars information?
-            Webhook = 'https://discord.com/api/webhooks/1492005552186720256/NMEQVy9ZPZ2V1g0YeI675OcLFaUBaiV9Ifbkcs5J63FNEFIjqN0xpnDy7VhiorvGMKP0',
+            Webhook = '',
         },
 
         Manager = {
             Enabled = true, --- Log gang management system?
-            Webhook = 'https://discord.com/api/webhooks/1492005552186720256/NMEQVy9ZPZ2V1g0YeI675OcLFaUBaiV9Ifbkcs5J63FNEFIjqN0xpnDy7VhiorvGMKP0',
+            Webhook = '',
         },
 
         Admin = {
             Enabled = true, --- Long all gang admin information?
-            Webhook = 'https://discord.com/api/webhooks/1492005552186720256/NMEQVy9ZPZ2V1g0YeI675OcLFaUBaiV9Ifbkcs5J63FNEFIjqN0xpnDy7VhiorvGMKP0',
+            Webhook = '',
         }
     }
 }

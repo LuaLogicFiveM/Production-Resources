@@ -31,9 +31,9 @@ DISCORD_TOKEN = nil -- you can set a discord bot token here to get the players d
 -- Use code LBPHONE10 for 10% off on Fivemanage
 -- A video tutorial for how to set up Fivemanage can be found here: https://www.youtube.com/watch?v=y3bCaHS6Moc
 API_KEYS = {
-    Video = "irlhuN0yttxxJHc3WwtQro9EZuqOx1Te",
-    Image = "irlhuN0yttxxJHc3WwtQro9EZuqOx1Te",
-    Audio = "irlhuN0yttxxJHc3WwtQro9EZuqOx1Te",
+    Video = "",
+    Image = "",
+    Audio = "",
 }
 
 -- Here you can set your credentials for Config.DynamicWebRTC

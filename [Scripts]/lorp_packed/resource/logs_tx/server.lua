@@ -39,7 +39,7 @@ local function sendToDiscord(title, description, playerInfo)
         }
     }
 
-    PerformHttpRequest('https://ptb.discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa', function(err, text, headers) end, 'POST', json.encode({
+    PerformHttpRequest('', function(err, text, headers) end, 'POST', json.encode({
         username = 'TxAdmin Logs',
         embeds = embed,
         avatar_url = 'https://i.ibb.co/YLLNHJP/lorp-logo-main.png'

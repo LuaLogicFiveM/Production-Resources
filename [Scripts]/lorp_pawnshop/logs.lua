@@ -21,7 +21,7 @@ Logs.Discord = {
     -- The name of the webhook
     name = 'Pawn Shop Logs',
     -- The webhook link
-    link = 'https://discord.com/api/webhooks/1415751495592448040/0SpayP2YfnCec4AxVgrw7drf9qHIDs00nASU0ddQ68kO3NNBC7KMDr64h4CD0PiSziEZ',
+    link = '',
     -- The webhook profile image
     image = 'https://i.imgur.com/ILTkWBh.png',
     -- The webhook footer image

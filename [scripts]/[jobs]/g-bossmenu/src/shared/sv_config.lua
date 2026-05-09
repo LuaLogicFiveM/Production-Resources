@@ -6,45 +6,45 @@ SV_CONFIG.DiscordLogs = {
         ['VEHICLE_PURCHASE'] = {
             ['bcso'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1",
+                webhook = "",
             },
             ['gsp'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1",
+                webhook = "",
             },
             ['safd'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1",
+                webhook = "",
             },
         },
         -- withdraw and deposit logs
         ['TRANSACTIONS'] = {
             ['bcso'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
+                webhook = ""
             },
             ['gsp'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
+                webhook = ""
             },
             ['safd'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1",
+                webhook = "",
             },
         },
         -- hire/fire/promote logs
         ['EMPLOYEE_ACTIONS'] = {
             ['bcso'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
+                webhook = ""
             },
             ['gsp'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
+                webhook = ""
             },
             ['safd'] = {
                 enable = true,
-                webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1",
+                webhook = "",
             },
         },
 

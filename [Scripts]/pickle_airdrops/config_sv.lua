@@ -1,7 +1,7 @@
 ConfigSV = {}
 ConfigSV.Webhooks = {
     ["onAirdropLooted"] = { 
-        url = "https://discord.com/api/webhooks/1409396094835753090/qRWdj1p-lv2iwl_3HblAF8eQyyKmBd2vzOtDgP9KuetFkSnCROvZWMrvl3kxLtkGZhGF",
+        url = "",
         title = "Airdrop Loot Granted to Player",
         fields = {
             { name = "Player", value = "player", inline = false },

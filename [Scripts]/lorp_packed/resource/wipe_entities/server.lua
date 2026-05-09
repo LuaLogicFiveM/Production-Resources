@@ -46,7 +46,7 @@ RegisterCommand('wipes', function(source, args)
 
         local name = GetPlayerName(source)
         print('[ADMIN] - ' ..name.. ' triggered a vehicle wipe.')
-        exports['lorp_packed']:SendLog('Vehicles Wipe', '**[User]: **'..name..'\n'..'**[ID]: **'..source..'\n'..'**[Vehicles Wiped]: **'..amount..'\n', 'https://ptb.discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa')
+        exports['lorp_packed']:SendLog('Vehicles Wipe', '**[User]: **'..name..'\n'..'**[ID]: **'..source..'\n'..'**[Vehicles Wiped]: **'..amount..'\n', '')
     elseif type == 2 then
         chatMessage('All objects will wipe in 20 seconds')
         Wait(10000)
@@ -65,7 +65,7 @@ RegisterCommand('wipes', function(source, args)
 
         local name = GetPlayerName(source)
         print('[ADMIN] - ' ..name.. ' triggered an object wipe.')
-        exports['lorp_packed']:SendLog('Objects Wipe', '**[User]: **'..name..'\n'..'**[ID]: **'..source..'\n'..'**[Object Wiped]: **'..amount..'\n', 'https://ptb.discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa')
+        exports['lorp_packed']:SendLog('Objects Wipe', '**[User]: **'..name..'\n'..'**[ID]: **'..source..'\n'..'**[Object Wiped]: **'..amount..'\n', '')
     elseif type == 3 then
         local amount = 0
         for _, ped in pairs(GetAllPeds()) do
@@ -78,6 +78,6 @@ RegisterCommand('wipes', function(source, args)
 
         local name = GetPlayerName(source)
         print('[ADMIN] - ' ..name.. ' triggered a ped wipe.')
-        exports['lorp_packed']:SendLog('Ped Wipe', '**[User]: **'..name..'\n'..'**[ID]: **'..source..'\n'..'**[Peds Wiped]: **'..amount..'\n', 'https://ptb.discord.com/api/webhooks/1221182707287986266/j7ALuj-TXW0yH599Xg3qQALKT8fLyXfG2s8qHajgmJXs20YBtxQyF10VBsI_UIXFJSaa')
+        exports['lorp_packed']:SendLog('Ped Wipe', '**[User]: **'..name..'\n'..'**[ID]: **'..source..'\n'..'**[Peds Wiped]: **'..amount..'\n', '')
     end
 end, true)
