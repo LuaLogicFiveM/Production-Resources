@@ -9,7 +9,7 @@ game 'gta5'
 lua54 'yes'
 description 'Properties system for FiveM.'
 author 'NoLag Development'
-version '2.4.6'
+version '2.4.4'
 shared_scripts {
   '@ox_lib/init.lua',
   'config.lua',
@@ -52,15 +52,12 @@ nui_callback_strict_mode 'true'
 files {
   'web/build/index.html',
   'web/build/**/*',
-  'custom/shells/*.json',
   'locales/*.json',
   'data/nolag_properties.dat54.rel',
-	'audiodirectory/properties_sounds.awc',
-  'stream/nolag_switches.ytyp'
+	'audiodirectory/properties_sounds.awc'
 }
 data_file 'AUDIO_WAVEPACK' 'audiodirectory'
 data_file 'AUDIO_SOUNDDATA' 'data/nolag_properties.dat'
-data_file 'DLC_ITYP_REQUEST' 'stream/nolag_switches.ytyp'
 escrow_ignore {
   'client/frameworks/*.lua',
   'client/Editable.lua',

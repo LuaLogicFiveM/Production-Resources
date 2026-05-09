@@ -30,7 +30,8 @@ local markerBlips = {}
 
 Config.Jobs = {
 	bcso = true,
-	sasp = true,
+	gsp = true,
+	gov = true,
 }
 
 Config.Marker = {

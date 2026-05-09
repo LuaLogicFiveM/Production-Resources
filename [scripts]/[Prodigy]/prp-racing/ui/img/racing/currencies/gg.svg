@@ -1,0 +1,14 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 739">
+<rect width="48" height="48" rx="24" fill="#212121"/>
+<rect width="48" height="48" rx="24" fill="url(#paint0_radial_4558_122)" fill-opacity="0.2"/>
+<path id="Vector" d="M11.6516 31.7024L21.5891 21.5342H17.6088C18.5832 18.8924 21.0764 17.0133 23.9992 17.0133C25.8851 17.0133 27.5916 17.7959 28.827 19.0605L34.2238 13.5379C31.6071 10.8608 27.9921 9.20474 23.9992 9.20474C16.0132 9.20474 9.53955 15.8286 9.53955 23.9999C9.53955 26.8219 10.3115 29.4587 11.6516 31.7024Z" fill="white"/>
+<path id="Vector_2" d="M36.3484 16.2973L26.4105 26.4657H30.3912C29.4168 29.107 26.9232 30.9863 24.0006 30.9863C22.1149 30.9863 20.4084 30.2039 19.1726 28.9394L13.7758 34.4615C16.3927 37.1392 20.0077 38.7953 24.0006 38.7953C31.9864 38.7953 38.4605 32.171 38.4605 23.9995C38.4605 21.1779 37.6881 18.5407 36.3484 16.2973Z" fill="white"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_4558_122" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(24 25.3551) rotate(52.4282) scale(22.3887)">
+<stop stop-color="#EEEEEE"/>
+<stop offset="0.725"/>
+</radialGradient>
+</defs>
+</svg>

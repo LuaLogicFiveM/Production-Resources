@@ -62,7 +62,7 @@ Config.Functions = {
 
     StartAlarm = function(storeId)
         TriggerEvent('cd_dispatch:AddNotification', {
-            job_table = {'bcso', 'sasp', 'gov'},
+            job_table = {'bcso', 'gsp', 'gov'},
             coords = { x = -623.6997, y = -234.6382, z = 0.0},
             title = '10-37 - Bank Heist',
             message = 'Person reported robbing a jewlery store',

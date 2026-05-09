@@ -11,6 +11,10 @@ local playerPermissions = {
 }
 
 function zonePermission(action)
+    if not config.zones.enabled then
+        return true
+    end
+
     local permGrade = action and playerPermissions[action] or false
     local playerJob = GetJob()
     return permGrade and playerJob and type(permGrade) == "boolean" and permGrade == true or permGrade ~= false and playerJob.grade >= permGrade
@@ -426,15 +430,15 @@ end)
 	end
 end)]]
 
-function IsInZone(type)
+--[[function IsInZone(type)
 	local playerJob = GetJob()
     local permData = type and playerPermissions[type] or false
 
-	return LocalPlayer.state.trustZone and permData and playerJob and (permData <= playerJob.grade or permData == true) or false
-end
+    print(not config.zones.enabled or LocalPlayer.state.trustZone and permData and playerJob and (permData <= playerJob.grade or permData == true) or false)
+	return not config.zones.enabled or LocalPlayer.state.trustZone and permData and playerJob and (permData <= playerJob.grade or permData == true) or false
+end]]
 
 lib.onCache('seat', function(seat)
     if seat ~= -1 then return end
-    --if not LocalPlayer.state.trustZone then return end
     TriggerServerEvent('lualogic_trust:server:enteredVehicle', VehToNet(cache.vehicle))
 end)

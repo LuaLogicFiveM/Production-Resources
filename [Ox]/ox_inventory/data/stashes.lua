@@ -89,20 +89,20 @@ return {-- make a new line here and paste after copying ->
 		weight = 500000
 	},
 
-	{--sheriff
+	--[[{--sheriff
 		coords = vec3(2801.1035, 4706.7314, 48.6275),
 		name = 'bcso_lockers',
 		label = 'BCSO Locker',
 		owner = true,
 		slots = 100,
 		weight = 500000
-	},
+	},]]
 
-	{--sasp
-		coords = vec3(849.3484, -1288.5409, 26.7212),
+	{--gsp
+		coords = vec3(1544.7018, 815.3115, 77.6451),
 		name = 'sahp_lockers',
-		label = 'SASP Locker',
-		groups = 'sasp',
+		label = 'Law Enforcement Locker',
+		groups = 'gsp',
 		owner = true,
 		slots = 100,
 		weight = 500000

@@ -68,7 +68,7 @@ function sendDispatchAlert(title, message, coordsData)
         jobs = {
             police = true,
             sheriff = true,
-            sasp = true,
+            gsp = true,
         },
 
         type = "Alert",

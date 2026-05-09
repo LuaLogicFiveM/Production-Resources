@@ -1,14 +1,14 @@
 local spawnLimits <const> = {
-    ["ped"] = RateLimit:new("Entities/Peds", 10, 10000),
-    ["object"] = RateLimit:new("Entities/Objects", 10, 10000),
-    ["vehicle"] = RateLimit:new("Entities/Vehicles", 10, 10000)
+    ["ped"] = RateLimit:new("Entities/Peds", 10, 10000, true),
+    ["object"] = RateLimit:new("Entities/Objects", 10, 10000, true),
+    ["vehicle"] = RateLimit:new("Entities/Vehicles", 10, 10000, true)
 }
 
 ---@param entity EntityData
 EntityManagement:addEvaluateHook(function(entity)
     local limiter = spawnLimits[entity.type_name]
 
-    if not limiter or entity.is_npc then
+    if not limiter or entity.is_npc or Entities:isModelWhitelisted(entity.model) then
         return
     end
 

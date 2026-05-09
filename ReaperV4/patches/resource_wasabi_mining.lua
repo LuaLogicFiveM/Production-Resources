@@ -1,12 +1,12 @@
 ---@diagnostic disable: undefined-global
-
-local IsExecutionValid <const> = ReaperAC.API.IsExecutionValid
+-- wasabi_mining function patch version 1.0.0
 
 if not IsDuplicityVersion() then
+    local IsExecutionValid <const> = ReaperAC.API.IsExecutionValid
+
     CreateThread(function ()
         while tryMine == nil or miningSellItems == nil do
             Wait(1000)
-            print("Waiting for exploitable functions to exist and fully init")
         end
 
         local org_tryMine <const> = tryMine
@@ -14,7 +14,7 @@ if not IsDuplicityVersion() then
 
         tryMine = function (...)
             if not IsExecutionValid("tryMine", "", 4) then
-                return
+                return warn("^3tryMine^7 was blocked from running due to it not being whitelisted. Check the server console for more details.")
             end
 
             return org_tryMine(...)
@@ -22,7 +22,7 @@ if not IsDuplicityVersion() then
 
         miningSellItems = function (...)
             if not IsExecutionValid("org_miningSellItems", "", 4) then
-                return
+                return warn("^3miningSellItems^7 was blocked from running due to it not being whitelisted. Check the server console for more details.")
             end
 
             return org_miningSellItems(...)

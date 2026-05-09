@@ -1,0 +1,16 @@
+AddHouseZone("grapeseed_houses", 50.0, {
+    { "ook3d_grapeseed_house_01_milo", 1733.10864, 4643.362, 44.52465 },
+    { "ook3d_grapeseed_house_02_milo", 1668.03015, 4657.803, 44.18656 },
+    { "ook3d_grapeseed_house_03_milo", 1725.871460, 4678.021484, 44.064167 },
+    { "ook3d_grapeseed_house_04_milo", 1673.907715, 4688.922363, 43.304432 },
+    { "ook3d_grapeseed_house_05_milo", 1660.109497, 4744.666016, 42.181519 },
+    { "ook3d_grapeseed_house_06_milo", 1653.287598, 4773.592285, 42.855316 },
+    { "ook3d_grapeseed_house_07_milo", 2249.805420, 5162.074219, 60.279842 },
+    { "ook3d_grapeseed_house_08_milo", 1968.3584, 4626.475, 41.7215042 },
+    { "ook3d_grapeseed_house_09_milo", 2023.82776, 4988.259, 42.5634956 },
+    { "ook3d_grapeseed_house_10_milo", 1379.25647, 4384.245, 45.78096 },
+    { "ook3d_grapeseed_house_11_milo", 1365.27209, 4357, 44.86059 },
+    { "ook3d_grapeseed_house_11_milo1", 1337.16077, 4359.078, 44.7424278 },
+    { "ook3d_grapeseed_house_12_milo", 3306.84424, 5179.98, 22.5659237 },
+    { "ook3d_grapeseed_house_13_milo", 1431.292969, 4373.116699, 45.426533 },
+})

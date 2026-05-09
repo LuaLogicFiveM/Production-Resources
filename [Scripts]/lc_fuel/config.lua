@@ -39,7 +39,7 @@ Config.Accounts = {
 -- Players inside these jobs will receive the specified discounts
 Config.JobDiscounts = {
     ["bcso"] = 50, 			-- The job name (NOT THE LABEL), and the discount amount in % this job will receive
-    ["sasp"] = 50,
+    ["gsp"] = 50,
     ["gov"] = 50,
     ["safd"] = 50,
 }

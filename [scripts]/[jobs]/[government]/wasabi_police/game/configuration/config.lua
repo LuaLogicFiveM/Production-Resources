@@ -157,7 +157,7 @@ Config.CCTVCameras = { -- CCTV Cameras
     saveToDatabase = true, -- Save CCTV data to database? (If false, data will be stored in server memory/reset on server restarts)
     jobs = {            -- Jobs & minimum ranks that can add/modify/delete CCTV Cameras
         bcso = 13,
-        sasp = 8,
+        gsp = 8,
         gov = 0
     },
     destoryable = true, -- Can players destroy CCTV Cameras?
@@ -297,7 +297,7 @@ Config.RadarPosts = {           -- Radar posts for speed detection
 
     jobs = {                    -- Jobs & minimum ranks that can add/modify/delete radar posts
         -- Must be in Config.policeJobs as well
-        sasp = 5,
+        gsp = 5,
         bcso = 5,
         gov = 0
     },
@@ -401,7 +401,7 @@ Config.TrackingBracelet = { -- Tracking Bracelet
     enabled = true,          -- Enable tracking bracelet?
     jobLock = false, -- Job lock? or access to all police jobs by using false
     jobs = {
-        sasp = 0,
+        gsp = 0,
         bcso = 0,
         gov = 0
     },
@@ -418,7 +418,7 @@ Config.TrackingBracelet = { -- Tracking Bracelet
 
 Config.policeJobs = { -- Police jobs
     'bcso',
-    'sasp',
+    'gsp',
     'gov'
 }
 
@@ -467,7 +467,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = false,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -478,7 +478,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = false,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -489,7 +489,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = false,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -500,7 +500,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,                 -- Make prop unmovable
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -511,7 +511,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,                 -- Make prop unmovable
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -522,7 +522,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,                 -- Make prop unmovable
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -533,7 +533,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -544,7 +544,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -555,7 +555,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = false,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -566,7 +566,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = false,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -577,7 +577,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = false,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -588,7 +588,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -599,7 +599,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -610,7 +610,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -621,7 +621,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -632,7 +632,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -643,7 +643,7 @@ Config.Props = { -- What props are avaliable in the "Place Objects" section of t
         freeze = true,
         groups = {                     -- ['job_name'] = min_rank
             ['bcso'] = 0,
-            ['sasp'] = 0,
+            ['gsp'] = 0,
             ['gov'] = 0,
         }
     },
@@ -869,7 +869,7 @@ Config.Locations = {
             }
         }
     },
-    SASP = {
+    gsp = {
         blip = {
             enabled = false,
             coords = vec3(464.57, -992.0, 30.69),
@@ -881,7 +881,7 @@ Config.Locations = {
 
         clockInAndOut = {
             enabled = false,                        -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for each e.x. offpolice for police  for  AND have grades for each pd grade - QBCORE REQUIRES NOTHING)
-            jobLock = 'sasp',                    -- This must be set to which job will be utilizing (ESX MUST HAVE OFF DUTY JOB / GRADES FOR THIS - ex. offpolice or )
+            jobLock = 'gsp',                    -- This must be set to which job will be utilizing (ESX MUST HAVE OFF DUTY JOB / GRADES FOR THIS - ex. offpolice or )
             coords = vec3(464.87, -977.37, 30.69), -- Location of where to go on and off duty(If not using target)
             label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
             distance = 3.0,                        -- Distance to display text UI(If not using target)
@@ -900,7 +900,7 @@ Config.Locations = {
 
         bossMenu = {
             enabled = false,                        -- Enable boss menu?
-            jobLock = 'sasp',                    -- Lock to specific police job? Set to false if not desired
+            jobLock = 'gsp',                    -- Lock to specific police job? Set to false if not desired
             coords = vec3(460.64, -985.64, 30.73), -- Location of boss menu (If not using target)
             label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
             distance = 3.0,                        -- Distance to allow access/prompt with text UI (If not using target)
@@ -934,13 +934,13 @@ Config.Locations = {
                 minZ = 30.73 - 0.9,
                 maxZ = 30.73 + 0.9
             },
-            jobLock = 'sasp',                                                                          -- Allow only one of Config.policeJob listings / Set to false if allow all Config.policeJobs
+            jobLock = 'gsp',                                                                          -- Allow only one of Config.policeJob listings / Set to false if allow all Config.policeJobs
             weapons = { }
         },
 
         cloakroom = {
             enabled = false,                        -- WILL NOT SHOW IN QBCORE INSTEAD USE QB-CLOTHING CONFIG! Set to false if you don't want to use (Compatible with esx_skin & wasabi fivem-appearance fork)
-            jobLock = 'sasp',                    -- Allow only one of Config.policeJob listings / Set to false if allow all Config.policeJobs
+            jobLock = 'gsp',                    -- Allow only one of Config.policeJob listings / Set to false if allow all Config.policeJobs
             coords = vec3(462.36, -999.62, 30.69), -- Coords of cloakroom
             label = '[E] - Change Clothes',        -- String of text ui of cloakroom
             range = 2.0,                           -- Range away from coords you can use.
@@ -951,7 +951,7 @@ Config.Locations = {
         --        Custom inventories can easily be added in wasabi_bridge/inventories/
         personalLocker = {
             enabled = false,                       -- Enable personal locker for this station?
-            jobLock = 'sasp',                    -- Job lock?
+            jobLock = 'gsp',                    -- Job lock?
             coords = vec3(462.64, -995.88, 30.69), -- Area to prompt personal locker
             range = 2.0,                           -- Range it will prompt from coords above
             label = '[E] - Access Personal Locker',
@@ -970,7 +970,7 @@ Config.Locations = {
 
         evidenceLocker = {
             enabled = false,                      -- Enable evidence locker for this station?
-            jobLock = 'sasp',                   -- Job lock?
+            jobLock = 'gsp',                   -- Job lock?
             coords = vec3(472.5, -991.21, 26.27), -- Area to prompt personal locker
             range = 2.0,                          -- Range it will prompt from coords above
             label = '[E] - Access Evidence Locker',
@@ -990,7 +990,7 @@ Config.Locations = {
 
         vehicles = {                                   -- Vehicle Garage
             enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
-            jobLock = 'sasp',                        -- Job lock? or access to all police jobs by using false
+            jobLock = 'gsp',                        -- Job lock? or access to all police jobs by using false
             zone = {
                 coords = vec3(2758.1533, 4834.1816, 47.3718), -- Area to prompt vehicle garage
                 range = 2.5,                           -- Range it will prompt from coords above

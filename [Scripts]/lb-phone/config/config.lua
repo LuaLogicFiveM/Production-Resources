@@ -197,8 +197,8 @@ Config.Companies.Services = {
         -- end
     },
     {
-        job = "sasp",
-        name = "San Andreas State Patrol",
+        job = "gsp",
+        name = "Georgia State Patrol",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
         canCall = true, -- if true, players can call the company
         canMessage = false, -- if true, players can message the company

@@ -1302,7 +1302,7 @@ RegisterNetEvent('lualogic_trust:server:purchaseTrustedVehicle', function(vehicl
 	TriggerClientEvent('lualogic_trust:client:trustedTransferMenu', source)
 end)
 
-RegisterCommand('transfer_vehicles_owned', function(source, args)
+--[[RegisterCommand('transfer_vehicles_owned', function(source, args)
 	--if source >= 1 then return end
 
 	local targetSource = source
@@ -1345,7 +1345,7 @@ RegisterCommand('transfer_vehicles_owned', function(source, args)
 	else
 		return Notify(source, 'Invalid command usage (/transfer_vehicles_owned [id])', 'error')
 	end
-end, false)
+end, false)]]
 
 -- MARK: Cache Updating
 

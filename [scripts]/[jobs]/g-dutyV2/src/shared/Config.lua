@@ -65,14 +65,14 @@ Config.DutySystem = {
 			BlipName = "Police Duty Station",
 		},
 	},
-	["sasp"] = {
+	["gsp"] = {
 		theme = "gblue",
 		RestrictedGrades = {}, -- These are the grades that are not allowed to use the duty system
 		Station = {
 			-- user
 			duty = {
 				coords = {
-					vec4(836.5297, -1295.3843, 26.8965, 357.7525),
+					vec4(1532.0219, 807.9866, 77.6455, 208.0161),
 					-- add more coords if you want
 				},
 				EnablePed = true,
@@ -83,7 +83,7 @@ Config.DutySystem = {
 			boss = {
 				allowedGrades = { 10, 11 },
 				coords = {
-					vec3(835.0731, -1286.5104, 31.7655),
+					vec3(1548.7102, 802.2862, 82.7058),
 					-- add more coords if you want
 				},
 			},
@@ -151,9 +151,9 @@ Config.LeaderBoard = {
 			BlipName = "BCSO Rewards Station",
 		},
 	},
-	["sasp"] = {
+	["gsp"] = {
 		Coords = {
-			vec4(837.7642, -1281.7025, 31.7655, 83.0195), -- add more coords if you want
+			vec4(1530.8827, 812.9021, 77.6452, 146.5538), -- add more coords if you want
 		},
 		Peds = {
 			EnablePed = true,
@@ -165,7 +165,7 @@ Config.LeaderBoard = {
 			BlipSprite = 515, -- https://docs.fivem.net/docs/game-references/blips/
 			BlipScale = 0.5,
 			BlipColor = 26,
-			BlipName = "SASP Rewards Station",
+			BlipName = "GSP Rewards Station",
 		},
 	},
 	["safd"] = {
@@ -195,9 +195,9 @@ Config.DutyZones = {
 		coords = vec3(439.9292, -983.7081, 30.6896),
 		range = 70.0,
 	},
-	['sasp'] = {
+	['gsp'] = {
 		-- Take coordinates from the center of the building
-		coords = vec3(439.9292, -983.7081, 30.6896),
+		coords = vec3(1534.5807, 801.5668, 77.6503),
 		range = 70.0,
 	},
 	['safd'] = {

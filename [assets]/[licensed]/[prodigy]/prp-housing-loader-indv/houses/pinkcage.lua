@@ -1,0 +1,16 @@
+AddHouseZone("pinkcage_houses", 50.0, {
+    { "prp_pinkcage_motel_1_1_milo_", 349.4365, -204.926, 58.8085 },
+    { "prp_pinkcage_motel_1_2_milo_", 345.6418, -214.809, 58.8085 },
+    { "prp_pinkcage_motel_1_3_milo_", 341.8479, -224.6919, 58.8085 },
+    { "prp_pinkcage_motel_1_4_milo_", 349.4365, -204.926, 55.01204 },
+    { "prp_pinkcage_motel_1_5_milo_", 345.6418, -214.809, 55.0116 },
+    { "prp_pinkcage_motel_1_6_milo_", 341.8479, -224.6919, 55.01206 },
+    { "prp_pinkcage_motel_1_7_milo_", 304.8073, -208.0804, 58.80912 },
+    { "prp_pinkcage_motel_1_8_milo_", 308.6015, -198.1963, 58.80947 },
+    { "prp_pinkcage_motel_1_9_milo_", 304.8073, -208.0804, 55.01151 },
+    { "prp_pinkcage_motel_1_10_milo_", 308.6012, -198.197, 55.01156 },
+    { "prp_pinkcage_motel_1_11_milo_", 320.9854, -192.1294, 58.8097 },
+    { "prp_pinkcage_motel_1_12_milo_", 320.9854, -192.1294, 55.01136 },
+    { "prp_pinkcage_motel_1_14_milo_", 309.6581, -222.3124, 58.81036},
+    { "prp_pinkcage_motel_1_15_milo_", 329.7471, -230.0271, 58.80954 },
+})

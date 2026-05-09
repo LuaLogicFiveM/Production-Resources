@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+:root {
+    --bg: linear-gradient(135deg, #111 -4.34%, #232323 71.32%, #141414 93.96%, #161616 96.05%, #282828 187.75%);
+}
+
+@font-face {
+    font-family: digitalnumbers-mono;
+    src: url(digital-mono.ttf);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    width: 1024px;
+    height: 512px;
+    background: transparent;
+}
+
+.texture {
+    width: 1024px;
+    height: 512px;
+    display: flex;
+    flex-direction: column;
+    background: black;
+    position: relative;
+}
+
+.screen {
+    width: 100%;
+    flex: 1;
+    background: black;
+
+    font-family: "digitalnumbers-mono";
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    --color: #87DA21;
+    --dimColor: #87DA2128;
+    color: var(--color);
+    font-size: 16rem;
+}
+
+.screen.red {
+    background: #4c1919;
+}
+
+.screen.green {
+    background: #364b1c;
+}
+.segment {
+    font-family: digitalnumbers-mono;
+    position: relative;
+    font-size: 16rem;
+    letter-spacing: .25ex;
+    text-align: center;
+    isolation: isolate;
+}
+
+.segment::after {
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    color: var(--dimColor);
+    z-index: -1;
+    content: "88:88";
+}
+
+.segment.blinking {
+    span {
+        animation: blink 1s steps(2, start) infinite;
+    }
+}
+
+.text {
+    white-space: nowrap;
+    transform-origin: center center;
+
+}
+
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

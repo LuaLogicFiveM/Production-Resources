@@ -1,3 +1,6 @@
+---@diagnostic disable: undefined-global
+-- monitor event & function patch version 1.0.0
+
 if not IsDuplicityVersion() then
     local CancelEvent <const> = CancelEvent
     local GetInvokingResource <const> = GetInvokingResource

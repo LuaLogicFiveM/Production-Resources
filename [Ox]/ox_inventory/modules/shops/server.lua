@@ -222,7 +222,7 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 				end
 			end
 
-			if fromData.license and server.hasLicense and not server.hasLicense(playerInv, fromData.license, fromData.license_class) then
+			if fromData.license and server.hasLicense and not server.hasLicense(playerInv, fromData.license) then
 				return false, false, { type = 'error', description = locale('item_unlicensed') }
 			end
 

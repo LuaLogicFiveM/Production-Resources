@@ -20,7 +20,7 @@ return {
         command = 'transfer_vehicles',
     },
     zones = {
-        enabled = true,
+        enabled = false,
         locations = {
             { -- Roxwood
                 debug = false,

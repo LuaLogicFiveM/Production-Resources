@@ -1687,7 +1687,7 @@ local function isGiveTargetValid(ped, coords)
         return true
     end
 
-    local entity = Utils.Raycast(1|2|4|8|16, coords + vec3(0, 0, 0.5), 0.2)
+    local entity = Utils.Raycast(1|4|8|16, coords + vec3(0, 0, 0.5), 0.2)
 
     return entity == ped and IsEntityVisible(ped)
 end
@@ -1698,7 +1698,9 @@ RegisterNUICallback('giveItem', function(data, cb)
     if usingItem then return end
 
 	if client.giveplayerlist then
-		local nearbyPlayers = lib.getNearbyPlayers(GetEntityCoords(playerPed), 3.0)
+		local coords = cache.vehicle and GetWorldPositionOfEntityBone(playerPed, 0) or GetEntityCoords(playerPed)
+	
+		local nearbyPlayers = lib.getNearbyPlayers(coords, 3.0)
         local nearbyCount = #nearbyPlayers
 
 		if nearbyCount == 0 then return end
@@ -1717,10 +1719,10 @@ RegisterNUICallback('giveItem', function(data, cb)
 			local option = nearbyPlayers[i]
 
             if isGiveTargetValid(option.ped, option.coords) then
-				local playerName = GetPlayerName(option.id)
+				local playerName = Utils.getPlayerName(option.id)
 				option.id = GetPlayerServerId(option.id)
                 ---@diagnostic disable-next-line: inject-field
-				option.label = ('[%s] %s'):format(option.id, playerName)
+				option.label = playerName
 				n += 1
 				giveList[n] = option
 			end

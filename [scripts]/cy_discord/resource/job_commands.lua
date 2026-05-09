@@ -79,18 +79,39 @@ CreateThread(function()
         })
 
         client:createCommand({
+            name = "jobcount",
+            description = "Search a job for the active online count",
+            options = {
+                {
+                    name = "job",
+                    description = "The job code (not label, eg. bcso, lspd, gsp, cbfw, pizza_pier, etc.)",
+                    type = OptionType.STRING,
+                    required = true
+                }
+            }
+        })
+
+        client:createCommand({
+            name = "groupcount",
+            description = "Search a group for the active online count",
+            options = {
+                {
+                    name = "group",
+                    description = "The group name (not label, eg. tmod, mod, admin, manager)",
+                    type = OptionType.STRING,
+                    required = true
+                }
+            }
+        })
+
+        client:createCommand({
             name = "embed",
             description = "Send an embed"
         })
     end)
 
     client:on("interactionCreate", function(interaction)
-        if not interaction:hasRole({ "1082487503967232000", "1082487500871843860" }) then
-            interaction:reply("You do not have permissions to use this command", true)
-            return
-        end
-
-        if interaction.data.name == 'jobsearch' then
+        if interaction.data.name == 'jobsearch' and interaction:hasRole({ "1082487503967232000", "1082487500871843860" }) then
             local searchedJob = jobs[interaction.data.options[1].value]
 
             if not searchedJob then
@@ -113,7 +134,57 @@ CreateThread(function()
             return
         end
 
-        if interaction.data.name == 'jobs' then
+        if interaction.data.name == 'jobcount' then
+            local countJob = interaction.data.options[1].value
+
+            if not countJob or not jobs[interaction.data.options[1].value] then
+                interaction:reply('This job was unable to be found, please be sure you are using the job code not label.', true)
+                return
+            end
+
+            local countJobAmount = ESX.GetExtendedPlayers('job', countJob)
+
+            local jobCountEmbed = Embed:new()
+                :setTitle("Job Count")
+                :setDescription(('There are currently %i %s online'):format(#countJobAmount, countJob))
+                :setColor(0x00FF00)
+                :setFooter("LuaLogic", "https://i.ibb.co/Xrv6s0nm/Lua-Logic-Logo.png")
+
+            interaction:reply({
+                embeds = {
+                    jobCountEmbed
+                }
+            }, false)
+
+            return
+        end
+
+        if interaction.data.name == 'groupcount' then
+            local countGroup = interaction.data.options[1].value
+
+            if not countGroup then
+                interaction:reply('This job was unable to be found, please be sure you are using the job code not label.', true)
+                return
+            end
+
+            local countGroupAmount = ESX.GetExtendedPlayers('group', countGroup)
+
+            local groupCountEmbed = Embed:new()
+                :setTitle("Group Count")
+                :setDescription(('There are currently %i %s online'):format(#countGroupAmount, countGroup))
+                :setColor(0x00FF00)
+                :setFooter("LuaLogic", "https://i.ibb.co/Xrv6s0nm/Lua-Logic-Logo.png")
+
+            interaction:reply({
+                embeds = {
+                    groupCountEmbed
+                }
+            }, false)
+
+            return
+        end
+
+        if interaction.data.name == 'jobs' and interaction:hasRole({ "1082487503967232000", "1082487500871843860" }) then
             local actionButtons = ActionRow:new()
 
             local embed = Embed:new()

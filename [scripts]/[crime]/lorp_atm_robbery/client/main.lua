@@ -52,7 +52,7 @@ end)
 local function DispatchAlert()
     local data = exports['cd_dispatch3d']:GetPlayerInfo()
     TriggerServerEvent('cd_dispatch:AddNotification', {
-        job_table = {'bcso', 'sasp'},
+        job_table = {'bcso', 'gsp', 'gov'},
         coords = data.coords,
         title = '10-38 - ATM Robbery',
         message = 'A '..data.sex..' robbing a store at '..data.street,

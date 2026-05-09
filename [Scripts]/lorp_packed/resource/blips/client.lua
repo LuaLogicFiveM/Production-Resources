@@ -1,5 +1,83 @@
 local blips = {
     {
+        label = 'Warehouse Heist', ---@location 019
+        coords = vec3(1447.613, -1412.612, -25.911),
+        sprite = 473,
+        scale = 0.8,
+        color = 1,
+        data = {
+            title = '📦 Warehouse Heist (Illegal)',
+            description = 'A two-mission cooperative crime pack. The Warehouse Robbery sends a group into a faction-controlled underground warehouse to crack safes, loot crates, and navigate armed guards. The Ocean Run is a multi-stage smuggling operation: retrieve a NAS device by boat, transport it to Cayo Perico, extract hard drives from server racks, defend a 5-minute upload, then escape with the reward crate.',
+        },
+    },
+    {
+        label = 'Sea Battles', ---@location 019
+        coords = vec3(803.2399, -493.3851, 29.6049),
+        sprite = 755,
+        scale = 0.8,
+        color = 44,
+        data = {
+            title = '⚔️ Sea Battles (Illegal)',
+            description = 'A naval heist mission where a group boards a boat, locates a contraband crate buoyed at sea, attaches it to their vessel with a rope, tows it to a delivery contact, and waits out the GPS tracker removal before collecting their reward. Guard boats patrol the crate location and rival players can intercept and steal any active crate.',
+        },
+    },
+    {
+        label = 'Sea Hunt Mission', ---@location 019
+        coords = vec3(803.2399, -493.3851, 29.6049),
+        sprite = 427,
+        scale = 0.8,
+        color = 14,
+        data = {
+            title = '🛥️ Sea Hunt Mission (Illegal)',
+            description = 'A group crime mission where players receive a tip-off about sunken valuables, dive down to underwater wreck sites, search the debris and sell the recovered loot.',
+        },
+    },
+    {
+        label = 'Aerial Run', ---@location 019
+        coords = vec3(-1323.3483, -1234.7263, 3.6234),
+        sprite = 251,
+        scale = 0.8,
+        color = 26,
+        data = {
+            title = '🛩️ Aerial Run (Illegal)',
+            description = 'A multi-stage group crime mission where a crew hijacks an air-freight operation: they decrypt stolen intel, then pilot a cargo plane over a drop zone and kick out supply crates for their crew on the ground to secure - all while rival gangs and police try to intercept.',
+        },
+    },
+    {
+        label = 'Drug Drops', ---@location 019
+        coords = vec3(-897.0804, -1312.9518, 5.4152),
+        sprite = 514,
+        scale = 0.8,
+        color = 11,
+        data = {
+            title = '⚗️ Drop Drops (Illegal)',
+            description = 'A timed drug delivery mission for groups of 2-3 players. Groups load drugs into a starting crate at a dealer\'s location, receive a vehicle with the packaged product in the trunk, then drive a route of dead drop points to make deliveries. Completion speed determines the reward tier - the faster the run, the richer the cut.',
+        },
+    },
+    {
+        label = 'Drug Store', ---@location 019
+        coords = vec3(-1171.99, -1575.79, 3.39),
+        sprite = 59,
+        scale = 0.8,
+        color = 51,
+        data = {
+            title = '🛒 Drug Store (Illegal)',
+            description = 'A standalone open‑world drug production system for FiveM focused on field farming and multi‑stage processing. Players can find and cultivate raw materials (weed, coca), harvest and dry those materials, then run multi‑step cooking/processing flows to produce sellable products. The resource models realistic workflows: growing/maintaining plants, drying and prepping raw product, mixing and refining for cocaine, and multi‑stage meth lab cooking with dedicated lab equipment and safety/consumable mechanics.',
+        },
+    },
+    {
+        label = 'Gun Smuggling', ---@location 019
+        coords = vec3(2867.463, -1404.555, 2.390),
+        sprite = 229,
+        scale = 0.8,
+        color = 1,
+        data = {
+            title = '🚙 Gun Smuggling (Illegal)',
+            description = 'a multi-stage group crime script centred around smuggling illegal firearms. Players obtain a contract, transport gun parts by boat to a drop-off contact, process them through a CNC machine into a finished gun crate, strip the tracker at an airfield, and finally drive a truck to a safe house to collect weapon-part rewards.',
+        },
+    },
+
+    {
         label = 'Los Santos Impound',
         coords = vec3(-319.0945, -1173.9307, 23.0),
         sprite = 68,
@@ -398,7 +476,7 @@ local blips = {
         color = 0,
         data = {
             title = '🔧 StancedEnuff Customs',
-            description = 'Owner: Coleslaw',
+            description = 'Owner: JDM Jesse',
         },
     },
     {
@@ -674,7 +752,7 @@ local blips = {
         color = 0,
         data = {
             title = '🏠 StancedEnuff House',
-            description = 'Owner: Coleslaw',
+            description = 'Owner: JDM Jesse',
         },
     },
     {

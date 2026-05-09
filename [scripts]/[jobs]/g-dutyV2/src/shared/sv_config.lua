@@ -14,7 +14,7 @@ SV_CONFIG.Webhooks = {
 		["bcso"] = {
 			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
 		},
-		["sasp"] = {
+		["gsp"] = {
 			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
 		},
 	},
@@ -23,9 +23,9 @@ SV_CONFIG.Webhooks = {
 			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
 			Title = "BCSO Duty Logs",
 		},
-		["sasp"] = {
+		["gsp"] = {
 			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
-			Title = "SASP Duty Logs",
+			Title = "GSP Duty Logs",
 		},
 		["safd"] = {
 			webhook = "https://discord.com/api/webhooks/1479569299583668315/csxRUIcMHbdGlh8skdzqTAN-HfzBnfzBVWjyBMcswhCH8poHbPNKIS1_xmNSOCF_IxhD",
@@ -39,7 +39,7 @@ SV_CONFIG.GoogleSheetsLogs = {
 	Api = "https://sheetdb.io/api/v1/",
 	Sheets = {
 		["bcso"] = "4qyw1ixy2y8do", -- sheet id - replace this link with your sheetdb.io link (https://sheetdb.io/)
-		["sasp"] = "risqug9ug6sjy", -- sheet id - replace this link with your sheetdb.io link (https://sheetdb.io/)
+		["gsp"] = "risqug9ug6sjy", -- sheet id - replace this link with your sheetdb.io link (https://sheetdb.io/)
 	},
 }
 
@@ -64,7 +64,7 @@ SV_CONFIG.AdminSlashCommands = {
 		help = "Reset total duty time for all players in the specified job.",
 		params = { {
 			name = "job",
-			help = "The job name to reset (e.g., bcso, sasp, safd)",
+			help = "The job name to reset (e.g., bcso, gsp, safd)",
 		} },
 	},
 
@@ -74,7 +74,7 @@ SV_CONFIG.AdminSlashCommands = {
 		params = {
 			{
 				name = "job",
-				help = "The job name to delete (e.g., bcso, sasp, safd)",
+				help = "The job name to delete (e.g., bcso, gsp, safd)",
 			},
 		},
 	},
@@ -101,7 +101,7 @@ SV_CONFIG.Items = {
 			}
 		},
 	},
-	["sasp"] = {
+	["gsp"] = {
 		Add = {
 			{
 				item = "bandage",
@@ -225,7 +225,7 @@ SV_CONFIG.Rewards = {
 			args = {},
 		},
 	},
-	["sasp"] = { -- job name
+	["gsp"] = { -- job name
 		[4] = {
 			required_hours = 4,
 			type = "item",

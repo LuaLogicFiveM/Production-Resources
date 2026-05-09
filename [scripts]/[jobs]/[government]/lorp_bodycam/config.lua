@@ -41,7 +41,7 @@ Config.PropLoc = {  -- Change prop position according to ur clothing pack.
 }
 
 Config.AllowedJobs = { -- Only these jobs can use bodycam/dashcam item.
-    'bcso', 'sasp', 'gov'
+    'bcso', 'gsp', 'gov'
 }
 
 Config.AllowedClass = {18} -- Vehicle classes allowed to use the dashcam feature.
@@ -62,10 +62,10 @@ Config.WatchLoc = {
         coords = vector3(832.7230, -1285.0138, 31.7655), 
         rad = 1.5,
         debug = false,
-        targetAuth = {'sasp'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
-        jobCam = {'sasp'},  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
+        targetAuth = {'gsp'},          -- jobs mentioned here can use this location from target | false = everyone can access this location
+        jobCam = {'gsp'},  -- jobs mentioned here are shown in the list | false = able to view all the bodycams
         carCam = {                        -- false = able to view all the dashcams
-            job = {'sasp'},             -- Jobs that activate dashcams shown in the list | false excludes.
+            job = {'gsp'},             -- Jobs that activate dashcams shown in the list | false excludes.
             class = {18}                  -- Dashcam activated on these vehicleclass shown in the list | false excludes.
         },
     }

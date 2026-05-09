@@ -58,13 +58,13 @@ function server.syncInventory(inv)
 end
 
 ---@diagnostic disable-next-line: duplicate-set-field
-function server.hasLicense(inv, name, class)
-	return exports['ak47_idcardv2']:HasLicense(inv.id, name, class)
+function server.hasLicense(inv, name)
+	return MySQL.scalar.await('SELECT 1 FROM `user_licenses` WHERE `type` = ? AND `owner` = ?', { name, inv.owner })
 end
 
 ---@diagnostic disable-next-line: duplicate-set-field
 function server.buyLicense(inv, license)
-	if server.hasLicense(inv, license.name, license.class) then
+	if server.hasLicense(inv, license.name) then
 		return false, 'already_have'
 	elseif Inventory.GetItemCount(inv, 'money') < license.price then
 		return false, 'can_not_afford'

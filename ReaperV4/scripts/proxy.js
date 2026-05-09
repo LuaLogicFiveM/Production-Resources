@@ -175,7 +175,10 @@ const createProxy = () => {
 
                 const response = await fetch(`${PROXY_TARGET}/ReaperV4${request.url}`, {
                     method: request.method,
-                    headers
+                    headers: headers,
+                    body: request.body != null
+                        ? (typeof request.body === 'string' ? request.body : JSON.stringify(request.body))
+                        : undefined
                 });
 
                 const body = await response.text();

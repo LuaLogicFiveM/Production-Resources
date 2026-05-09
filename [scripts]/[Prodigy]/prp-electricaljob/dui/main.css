@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    width: 512px;
+    height: 512px;
+    background: transparent;
+}
+
+.texture {
+    width: 512px;
+    height: 512px;
+    padding-left: 482px;
+    font-family: "VT323";
+    display: grid;
+    padding: 158px 0;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(86deg, #111 -4.34%, #232323 71.32%, #141414 93.96%, #161616 96.05%, #282828 187.75%);
+
+    color: #F2E800;
+    text-shadow: 0px 4px 12px rgba(255, 251, 150, 0.25), 0px 4px 24px rgba(242, 232, 0, 0.25);
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    font-size: 3rem;
+}
+
+.screen .text {
+    width: 70%;
+}
+
+.state {
+    margin-left: auto;
+    width: 4rem;
+    height: 4rem;
+
+    border-radius: 0.3125rem;
+    border: 3px solid #F2E800;
+    transition: all .2s ease;
+}
+
+.state.fill {
+    background: #F2E800;
+    box-shadow: 0px 0px 8px 0px rgba(255, 225, 67, 0.25);
+}
+
+.progbar {
+    width: 100%;
+    height: 4rem;
+
+    border-radius: 0.3125rem;
+    border: 3px solid #F2E800;
+    transition: all .2s ease;
+    overflow: hidden;
+}
+
+#bar {
+    width: 100%;
+    height: 100%;
+
+    background: #F2E800;
+    transition: all .2s ease;
+    scale: var(--progress, 0) 1;
+    transform-origin:  left;
+}

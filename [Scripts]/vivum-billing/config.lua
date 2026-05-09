@@ -64,13 +64,13 @@ Config.DefaultApp = true
 --  ** If you want to disable a certain grade from paying or cancelling invoices, specify a table with `false` as a second value as so: { "my_grade", false }
 Config.Grades = {
 	bcso = { "all" },
-	sasp = { "all" },
+	gsp = { "all" },
 	gov = { "all" },
 }
 
 Config.Avatars = {
 	bcso = "https://static.wikia.nocookie.net/nopixel/images/2/2a/LSPD4.png",
-	sasp = "https://static.wikia.nocookie.net/nopixel/images/2/2a/LSPD4.png",
+	gsp = "https://static.wikia.nocookie.net/nopixel/images/2/2a/LSPD4.png",
 }
 
 -- You can specify societies which should be blacklisted from the billing funcitonality.
@@ -80,7 +80,7 @@ Config.Blacklisted = {
 
 -- You can add commission rates for each grade for every invoice they send, especially handy for car dealerships and similar professions.
 Config.Commission = {
-	sasp = {
+	gsp = {
 		cadet = 0.3,
 		trooper = 0.3,
 		trooper_sr = 0.3,

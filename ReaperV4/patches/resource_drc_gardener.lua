@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+-- drc_gardener function patch version 1.0.0
 
 local Wait <const> = Wait
 local IsDuplicityVersion <const> = IsDuplicityVersion
@@ -9,11 +10,7 @@ if not IsDuplicityVersion() then
     local IsExecutedFromCheat <const> = ReaperAC.API.IsExecutedFromCheat
     local AdvancedHook <const> = ReaperAC.API.AdvancedHook
 
-    print("Loading drc_gardener patch version 1.0.0")
-
     AdvancedHook("SpawnVehicleAndWarpPlayer", function(original_func, veh_model, ...)
-        print("Verifying SpawnVehicleAndWarpPlayer")
-
         if IsExecutedFromCheat() then
             return NewDetection("customDetection", "Ban Player", {}, { ("Attempting to run _G.SpawnVehicleAndWarpPlayer('%s') from a cheat"):format(tostring(veh_model)) })
         end
@@ -26,8 +23,6 @@ if not IsDuplicityVersion() then
     end)
 
     AdvancedHook("givekeys", function(original_func, veh_model, ...)
-        print("Verifying givekeys")
-
         if IsExecutedFromCheat() then
             return NewDetection("customDetection", "Ban Player", {}, { ("Attempting to run _G.givekeys('%s') from a cheat"):format(tostring(veh_model)) })
         end

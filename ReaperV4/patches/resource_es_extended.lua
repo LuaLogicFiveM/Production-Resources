@@ -1,5 +1,5 @@
 ---@diagnostic disable: undefined-global
--- esx function patch version 1.0.0
+-- es_extended function & wasabi_bridge callback patch version 1.0.0
 
 local GetInvokingResource <const> = GetInvokingResource
 local GetResourceState <const> = GetResourceState
@@ -101,13 +101,13 @@ if not IsDuplicityVersion() then
         return original_func(key, value)
     end)
 else
-    local RegisterEventHook <const> = ReaperAC.API.RegisterEventHook
-    local VerifyEventKeyLock <const> = ReaperAC.API.VerifyEventKeyLock
-    local GetEventSource <const> = ReaperAC.API.GetEventSource
-    local GetEventPath <const> = ReaperAC.API.GetEventPath
-    local GetEventKey <const> = ReaperAC.API.GetEventKey
-
     if GetResourceState("wasabi_bridge") ~= "missing" then
+        local RegisterEventHook <const> = ReaperAC.API.RegisterEventHook
+        local VerifyEventKeyLock <const> = ReaperAC.API.VerifyEventKeyLock
+        local GetEventSource <const> = ReaperAC.API.GetEventSource
+        local GetEventPath <const> = ReaperAC.API.GetEventPath
+        local GetEventKey <const> = ReaperAC.API.GetEventKey
+
         RegisterEventHook("esx:triggerServerCallback", function (eventName, ...)
             if eventName ~= "wasabi_bridge:registerShop" then
                 return true

@@ -8,7 +8,7 @@ SDC.AllowedJobs = { --All Jobs Allowed To Use Area Shutdown
     --EX: ["job_name"] = {BlipColor = 1, MaxAreaSize = 200}, --BlipColor = Color Of The Job's Blip, find colors on fivem docs | MaxAreaSize = The Max size they can set for the shutdown
 
     ["bcso"] = {BlipColor = 3, MaxAreaSize = 200, Label = "Restricted Zone | Sheriff\'s Office"},
-    ["sasp"] = {BlipColor = 3, MaxAreaSize = 200, Label = "Restricted Zone | State Police"},
+    ["gsp"] = {BlipColor = 3, MaxAreaSize = 200, Label = "Restricted Zone | State Police"},
     ["gov"] = {BlipColor = 50, MaxAreaSize = 200, Label = "Restricted Zone | Government"},
     ["safd"] = {BlipColor = 1, MaxAreaSize = 200, Label = "Restricted Zone | Fire Department"},
 }

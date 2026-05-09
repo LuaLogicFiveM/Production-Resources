@@ -12,10 +12,10 @@ function getPlayers()
 end
 
 function getCopCount()
-    local bcso = ESX.GetExtendedPlayers('job', 'bcso')
-    local sasp = ESX.GetExtendedPlayers('job', 'sasp')
+    --local bcso = ESX.GetExtendedPlayers('job', 'bcso')
+    local gsp = ESX.GetExtendedPlayers('job', 'gsp')
 
-    return (#bcso + #sasp)
+    return #gsp
 end
 
 function getPlayerName(target)

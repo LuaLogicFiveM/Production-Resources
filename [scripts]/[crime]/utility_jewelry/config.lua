@@ -31,7 +31,7 @@ Config.Shutters = {
         -- OR
         -- 
         "bcso",
-        "sasp",
+        "gsp",
         "gov"
     }
 }
@@ -177,7 +177,7 @@ Config.Cops = {
     required = 3, -- Number of cops required
 
     jobs = {
-        esx = {"bcso", "sasp", "gov"}, -- job.name
+        esx = {"bcso", "gsp", "gov"}, -- job.name
         qbcore = {"leo"}, -- job.type
     }
 }

@@ -28,7 +28,7 @@ SDC.WebhooksEnabled = { --All Webhook Settings
 
 SDC.PoliceJobs = { --All Police Jobs
     ["bcso"] = true,
-    ["sasp"] = true,
+    ["gsp"] = true,
     ["gov"] = true
 }
 ---------------------------------------------------------------------------------

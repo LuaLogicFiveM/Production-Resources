@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+-- drc_uwucafe function patch version 1.0.0
 
 local Wait <const> = Wait
 local IsDuplicityVersion <const> = IsDuplicityVersion
@@ -14,7 +15,6 @@ if not IsDuplicityVersion() then
     CreateThread(function ()
         while _G.SpawnVehicle == nil do
             Wait(1000)
-            print("Waiting for _G.SpawnVehicle to exist and fully init")
         end
 
         local SpawnVehicle <const> = _G.SpawnVehicle
@@ -27,7 +27,7 @@ if not IsDuplicityVersion() then
             end
 
             if not IsExecutionValid("SpawnVehicle", tostring(vehicleData.vehicle.model), 4) then
-                return warn("^SpawnVehicle^7 was blocked from running due to it not being whitelisted. Check the server console for more details.")
+                return warn("^3SpawnVehicle^7 was blocked from running due to it not being whitelisted. Check the server console for more details.")
             end
 
             return SpawnVehicle(vehicleData, ...)

@@ -42,7 +42,7 @@ local function OwnedVehicleOptions(vehicle)
             icon = 'wand-magic-sparkles',
             iconColor = 'FF5EFF00',
             --disabled = not IsModelInCdimage(vehicle),
-            disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
+            disabled = not IsModelInCdimage(vehicle) or not zonePermission('spawn'),
             onSelect = function()
                 SpawnVehicle(vehicle, GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), true)
             end
@@ -1053,7 +1053,7 @@ if config.modules.trust.give.enabled then
                 icon = 'wand-magic-sparkles',
                 iconColor = 'FF5EFF00',
                 --disabled = not IsModelInCdimage(vehicle),
-                disabled = not IsModelInCdimage(vehicle) or not LocalPlayer.state.trustZone or not zonePermission('spawn'),
+                disabled = not IsModelInCdimage(vehicle)  or not zonePermission('spawn'),
                 onSelect = function()
                     SpawnVehicle(vehicle, GetEntityCoords(cache.ped), GetEntityHeading(cache.ped), true)
                 end
@@ -1233,7 +1233,7 @@ if config.modules.system.enabled then
             }
         end
 
-        menu.options[#menu.options+1] = {
+        --[[menu.options[#menu.options+1] = {
             title = 'Transfer Owned Vehicles',
             description = 'This will transfer all your owned vehicles to your garage to roleplay outside of trust zones.',
             icon = 'arrow-left',
@@ -1241,7 +1241,7 @@ if config.modules.system.enabled then
             onSelect = function()
                 ExecuteCommand('transfer_vehicles_owned')
             end
-        }
+        }]]
 
         menu.options[#menu.options+1] = {
             title = 'Transfer Trusted Vehicles',

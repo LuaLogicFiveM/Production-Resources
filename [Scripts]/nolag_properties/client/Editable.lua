@@ -31,7 +31,6 @@ RegisterCommand(Config.ToggleBlipsCommand, function()
             elseif selected == 6 then
                 Client.blipsVisibility.keyholder = checked
             end
-            SetResourceKvp('blips_visibility', json.encode(Client.blipsVisibility))
             PropertyManager:refreshBlips()
             BuildingManager:refreshBlips()
 

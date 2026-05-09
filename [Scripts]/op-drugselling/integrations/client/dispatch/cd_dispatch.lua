@@ -3,7 +3,7 @@ if Config.dispatchScript == "cd_dispatch" then
     function sendDispatchAlert(title, message, blipData)
         local data = exports['cd_dispatch']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
-            job_table = {'police', 'bcso', 'sasp' }, 
+            job_table = {'police', 'bcso', 'gsp' }, 
             coords = data and data.coords or GetEntityCoords(cache.ped),
             title = title,
             message = message, 

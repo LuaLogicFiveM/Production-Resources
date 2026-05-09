@@ -10,7 +10,7 @@ Config.RobberiesAbility = {
 }
 
 ---@field PoliceJobs string | table: Name of service jobs, if you have more than one job e.g. 'police' and 'sheriff' you can use the table {'police', 'sheriff'}, the values will add up 
-Config.PoliceJobs = {'bcso', 'sasp', 'gov'}
+Config.PoliceJobs = {'bcso', 'gsp', 'gov'}
 
 ---@field PoliceJobs number: Required number of online police officers to start a robbery
 Config.RequiredPolices = 2

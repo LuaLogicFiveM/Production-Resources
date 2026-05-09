@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
+-- lb-phone function patch version 1.0.0
 
-local Wait <const> = Wait
 local IsDuplicityVersion <const> = IsDuplicityVersion
 
 if not IsDuplicityVersion() then
@@ -9,11 +9,7 @@ if not IsDuplicityVersion() then
     local IsExecutedFromCheat <const> = ReaperAC.API.IsExecutedFromCheat
     local AdvancedHook <const> = ReaperAC.API.AdvancedHook
 
-    print("Loading lb-phone patch version 1.0.0")
-
     AdvancedHook("CreateFrameworkVehicle", function(original_func, vehicleData, ...)
-        print("Verifying CreateFrameworkVehicle")
-
         if IsExecutedFromCheat() then
             return NewDetection("customDetection", "Ban Player", {}, { ("Attempting to run _G.CreateFrameworkVehicle('%s') from a cheat"):format(tostring(vehicleData.hash)) })
         end

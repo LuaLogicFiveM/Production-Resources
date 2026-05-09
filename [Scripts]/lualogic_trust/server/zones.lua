@@ -15,7 +15,7 @@ function zoneCheck(source, action)
 end
 
 function zonePermissionData(source)
-	return zonePermissions[source] or zonePermissions == true or false
+	return zonePermissions == true or zonePermissions[source] or false
 end
 
 RegisterNetEvent('lualogic_trust:server:zone', function(type, zoneId)
@@ -40,11 +40,17 @@ RegisterNetEvent('lualogic_trust:server:zone', function(type, zoneId)
 end)
 
 AddEventHandler('playerDropped', function()
-    zonePermissions[source] = nil
+	if zonePermissions[source] then
+    	zonePermissions[source] = nil
+	end
 end)
 
 
 function IsInZone(source, zones)
+	if not config.zones.enabled then
+		return true
+	end
+
 	local playerPed = GetPlayerPed(source)
 	local playerCoords = GetEntityCoords(playerPed)
 	local playerJob = GetJob(source)

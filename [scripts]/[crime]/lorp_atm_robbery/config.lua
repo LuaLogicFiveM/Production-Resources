@@ -48,7 +48,7 @@ Config.Reward = {
 Config.Police = {
     notify = true,
     required = 0,
-    Job = {'bcso', 'sasp', 'gov'},
+    Job = {'bcso', 'gsp', 'gov'},
 }
 
 Config.Dispatch = 'custom'

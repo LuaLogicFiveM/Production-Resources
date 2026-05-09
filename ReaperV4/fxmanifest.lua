@@ -63,9 +63,15 @@ server_scripts {
     "scripts/entities/server/metrics.lua",
     "scripts/entities/server/ratelimits.lua",
 
+    -- "oneSync"
+    "scripts/oneSync/StateBags.lua",
+    "scripts/oneSync/StateBags_Falcon.lua",
+
     -- "scripts/server"
     "scripts/server/installer.lua",
     "scripts/server/pro-addon.lua",
+
+    "resource/server/translations.lua"
 }
 
 client_scripts {
@@ -87,8 +93,9 @@ client_scripts {
     "classes/client/NativeChecks.lua",
     "classes/client/Entities.lua",
     "scripts/**/client.lua",
+    "scripts/entities/client/npc_population.lua",
     "scripts/detections/pro_detections/*.lua",
-    "scripts/tests.lua"
+    "resource/client/anti_godmode.lua"
 }
 
 client_script "client.lua"

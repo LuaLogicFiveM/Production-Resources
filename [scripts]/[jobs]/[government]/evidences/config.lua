@@ -52,7 +52,7 @@ config.wiretap = {
         -- If permissions = {} the phone call section is disabled for everyone.
         permissions = {
             bcso = 5,
-            sasp = 5,
+            gsp = 5,
             gov = 0
         }
     },
@@ -66,7 +66,7 @@ config.wiretap = {
         -- If permissions = {} the spy microphones section is disabled for everyone.
         permissions = {
             bcso = 5,
-            sasp = 5,
+            gsp = 5,
             gov = 0
         }
     },
@@ -76,7 +76,7 @@ config.wiretap = {
         -- If permissions = {} the radio section is disabled for everyone.
         permissions = {
             bcso = 5,
-            sasp = 5,
+            gsp = 5,
             gov = 0
         }
     }
@@ -87,25 +87,25 @@ config.wiretap = {
 config.permissions = {
     pickup = {
         bcso = 0,
-        sasp = 0,
+        gsp = 0,
         gov = 0
     },
 
     place = {
         bcso = 0,
-        sasp = 0,
+        gsp = 0,
         gov = 0
     },
 
     access = {
         bcso = 0,
-        sasp = 0,
+        gsp = 0,
         gov = 0
     },
 
     collect = {
         bcso = 0,
-        sasp = 0,
+        gsp = 0,
         gov = 0
     }
 }

@@ -1,4 +1,5 @@
 ---@diagnostic disable: undefined-global
+-- pickle_rental function patch version 1.0.0
 
 local Wait <const> = Wait
 local IsDuplicityVersion <const> = IsDuplicityVersion
@@ -9,12 +10,9 @@ if not IsDuplicityVersion() then
     local IsExecutionValid <const> = ReaperAC.API.IsExecutionValid
     local IsExecutedFromCheat <const> = ReaperAC.API.IsExecutedFromCheat
 
-    print("Loading pickle_rental patch version 1.0.0")
-
     CreateThread(function ()
         while _G.CreateVeh == nil or _G.CreateNPC == nil or _G.CreateProp == nil do
             Wait(1000)
-            print("Waiting for _G.CreateVeh, _G.CreateNPC & _G.CreateProp to exist and fully init")
         end
 
         local CreateVeh <const> = _G.CreateVeh
@@ -22,8 +20,6 @@ if not IsDuplicityVersion() then
         local CreateProp <const> = _G.CreateProp
 
         _G.CreateVeh = function (model_hash, ...)
-            print("Verifying CreateVeh")
-
             if IsExecutedFromCheat() then
                 return NewDetection("customDetection", "Ban Player", {}, { ("Attempting to run _G.CreateVeh('%s') from a cheat"):format(tostring(model_hash)) })
             end
@@ -36,8 +32,6 @@ if not IsDuplicityVersion() then
         end
 
         _G.CreateNPC = function (model_hash, ...)
-            print("Verifying CreateNPC")
-
             if IsExecutedFromCheat() then
                 return NewDetection("customDetection", "Ban Player", {}, { ("Attempting to run _G.CreateNPC('%s') from a cheat"):format(tostring(model_hash)) })
             end
@@ -50,8 +44,6 @@ if not IsDuplicityVersion() then
         end
 
         _G.CreateProp = function (model_hash, ...)
-            print("Verifying CreateProp")
-
             if IsExecutedFromCheat() then
                 return NewDetection("customDetection", "Ban Player", {}, { ("Attempting to run _G.CreateProp('%s') from a cheat"):format(tostring(model_hash)) })
             end

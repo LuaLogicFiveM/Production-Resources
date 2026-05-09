@@ -163,7 +163,7 @@ return {
 		}
 	},
 
-	--[[IDShop = {
+	ID = {
 		name = 'License Shop',
 		inventory = {
 			{ name = 'id_card', price = 500 },
@@ -177,7 +177,7 @@ return {
 		}, locations = {
 			vec3(1753.8656, 3806.2524, 35.4485),
 		}
-	},]]
+	},
 
 	Paintball = {
 		name = 'Paintball Store',
@@ -204,9 +204,6 @@ return {
 			{ name = 'screwdriver_jewelry', price = math.random(350, 500), currency = 'black_money' },
 			{ name = 'drill', price = math.random(50, 75), currency = 'black_money' },
 			{ name = 'hacking_device', price = math.random(150, 225), currency = 'black_money' },
-			--{ name = 'rope', price = math.random(35000, 50000), currency = 'black_money' },
-			--{ name = 'knife', price = math.random(20000, 25000), currency = 'black_money' },
-			--{ name = 'grinder', price = math.random(25000, 30000), currency = 'black_money' },
             { name = 'lockpick', price = math.random(350, 500), currency = 'black_money' },
             { name = 'lockpick_door', price = math.random(350, 500), currency = 'black_money' },
             { name = 'lockpick_house', price = math.random(350, 500), currency = 'black_money' },
@@ -216,7 +213,7 @@ return {
 		},
 	},
 
-	Sheriff = {
+	--[[Sheriff = {
 		name = 'Sheriff\'s Armory',
 		groups = {['bcso'] = 0},
 		inventory = {
@@ -269,11 +266,11 @@ return {
 		}, locations = {
 			vec3(2808.6812, 4722.2500, 48.6273)
 		}
-	},
+	},]]
 
 	StatePatrol = {
 		name = 'State Patrol Armory',
-		groups = {['sasp'] = 0},
+		groups = {['gsp'] = 0},
 		inventory = {
 			{ name = 'armour', price = 0 },
 			{ name = 'bodycam', price = 0 },
@@ -287,6 +284,10 @@ return {
 			{ name = 'evidence_box', price = 0 },
 			{ name = 'hydrogen_peroxide', price = 0 },
 			{ name = 'fingerprint_scanner', price = 0 },
+			{ name = 'spikesbox', price = 0 },
+			{ name = 'spikebox_pilot', price = 0 },
+			{ name = 'shootable_gps', price = 0 },
+			{ name = 'placeable_gps', price = 0 },
 			{ name = 'spy_microphone', price = 0, grade = 6 },
 			{ name = 'forensic_kit', price = 0, grade = 6 },
 			{ name = 'WEAPON_PROLASER4', price = 0 },
@@ -322,7 +323,7 @@ return {
 			{ name = 'ammo-12', price = 10, grade = 1 },
 			{ name = 'ammo-50', price = 100, grade = 9 },
 		}, locations = {
-			vec3(838.6940, -1282.7787, 21.2467)
+			vec3(1529.3103, 807.7013, 72.1706)
 		}
 	},
 
@@ -351,5 +352,241 @@ return {
 			vec3(732.9742, -781.1617, 26.3664), -- Rusty's Garage (Codeine/Random)
 			vec3(753.6370, 1285.2328, 360.2946), -- Stance Andreas - 526 - (Codeine/Random)
 		}
+	},
+
+	["FarmingEquipment"] = {
+		name = "Farming Equipment",
+		blip = {
+			id = 59, colour = 39, scale = 0.65
+		},
+		inventory = {
+			{ name = "farm_pot_small",  price = 250 },
+			{ name = "farm_pot_medium", price = 500 },
+			{ name = "farm_pot_large",  price = 750 },
+			{ name = "farm_water_can",  price = 1000 },
+			{ name = "farm_fertilizer", price = 1500 },
+			{ name = "weapon_scanner",  price = 1500 },
+		},
+		locations = {
+		   vector3(2436.34, 5009.56, 46.77), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vec3(2436.34, 5009.56, 45.77), heading = 318.99 },
+		},
+	},
+
+	["FishingShop"] = {
+		name = "Fishing Supply Store",
+		blip = {
+			id = 59, colour = 47, scale = 0.65
+		},
+		inventory = {
+			-- Rods
+			{ name = "basic_fishing_rod",        price = 100  },
+			{ name = "sport_fishing_rod",        price = 200  },
+			{ name = "professional_fishing_rod", price = 550  },
+			{ name = "aqua_fishing_rod",         price = 750  },
+			{ name = "golden_fishing_rod",       price = 1000 },
+			-- Bait
+			{ name = "fishing_bait_worm",        price = 10   },
+			{ name = "fishing_bait_lugworm",     price = 15   },
+			{ name = "fishing_bait_radiated",    price = 25   },
+		},
+		locations = {
+		   vector3(-1710.5709, -1110.9550, 14.1523),
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vector3(-1710.5709, -1110.9550, 13.1523), heading = 103.1455 },
+		},
+	},
+
+	["LumberjackShop"] = {
+		name = "Lumberjack Shop",
+		blip = {
+			id = 59, colour = 31, scale = 0.65
+		},
+		inventory = {
+			{ name = "WEAPON_BATTLEAXE", price = 250 },
+			{ name = "WEAPON_CHAINSAW",  price = 500 },
+		},
+		locations = {
+		   vector3(-679.3509, 5834.3735, 18.3313), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vector3(-679.3509, 5834.3735, 17.3313), heading = 135.3508 },
+		},
+	},
+
+	["MDetectorEquipment"] = {
+		name = "Metal Detection Shop",
+		blip = {
+			id = 59, colour = 33, scale = 0.65
+		},
+		inventory = {
+			{ name = "metaldetector", price = 130 },
+			{ name = "weapon_shovel", price = 50 }
+		},
+		locations = {
+		   vector3(-1342.64, -1258.98, 4.9), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vec3(-1342.64, -1258.98, 3.9), heading = 114.93 },
+		},
+	},
+
+	["MiningShop"] = {
+		name = "Mining Shop",
+		blip = {
+			id = 59, colour = 42, scale = 0.65
+		},
+		inventory = {
+			{ name = "WEAPON_PICKAXE",       price = 250  },
+			{ name = "WEAPON_DRILL",         price = 500  },
+			{ name = "WEAPON_DRILL_COBALT",  price = 750  },
+			{ name = "WEAPON_DRILL_HSS",     price = 1000 },
+			{ name = "WEAPON_DRILL_DIAMOND", price = 1500 },
+		},
+		locations = {
+		   vector3(2707.3118, 2776.8994, 38.8780), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vector3(2707.3118, 2776.8994, 37.8780), heading = 27.8579 },
+		},
+	},
+
+	["Pressurewash"] = {
+		name = "Pressure Washing Shop",
+		inventory = {
+			{ name = 'WEAPON_PRESSUREWASHER', price = 10 },
+			{ name = 'pressurewash', price = 10 },
+			{ name = 'petrolcan', price = 10 },
+			{ name = 'watercanister', price = 10 },
+		},
+	},
+
+	["Racing"] = {
+		name = "Racing Shop",
+		blip = {
+			id = 59, colour = 36, scale = 0.65
+		},
+		inventory = {
+			{ name = "racing_tablet", price = 150 }
+		},
+		locations = {
+		   vector3(-200.11, -1309.38, 31.29), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vec3(-200.11, -1309.38, 30.29), heading = 3.28 },
+		},
+	},
+
+	["SecurityEquipment"] = {
+		name = "Security Devices",
+		blip = {
+			id = 59, colour = 18, scale = 0.65
+		},
+		inventory = {
+			{ name = "security_camera", price = 200 },
+			{ name = "motion_sensor",   price = 500 },
+			{ name = "privacy_tool",    price = 50 }
+		},
+		locations = {
+		   vector3(392.93, -831.93, 29.29), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vec3(392.93, -831.93, 28.29), heading = 230.72 },
+		},
+	},
+
+	["Drugs"] = {
+		name = "Drug Shop",
+		blip = {
+			id = 59, colour = 15, scale = 0.65
+		},
+		inventory = {
+			-- Farming
+			{ name = "drugs_pot_small",         price = 250 },
+			{ name = "drugs_pot_medium",        price = 500 },
+			{ name = "drugs_pot_large",         price = 750 },
+			{ name = "farm_water_can",          price = 1000 },
+			{ name = "farm_fertilizer",         price = 1500 },
+			{ name = "weapon_scanner",          price = 1500 },
+			{ name = "seeds_cocaine",           price = 50 },
+			{ name = "seeds_weed_1a",           price = 50 },
+			{ name = "seeds_weed_1b",           price = 50 },
+			{ name = "seeds_weed_2a",           price = 50 },
+			{ name = "seeds_weed_2b",           price = 50 },
+			{ name = "seeds_weed_2c",           price = 50 },
+	
+			-- Weed
+			{ name = "rolling_paper",           price = 100 },
+	
+			-- Meth
+			{ name = "meth_hose",               price = 50 },
+			{ name = "meth",                    price = 50 },
+			{ name = "meth_ammonia_barrel",     price = 50 },
+			{ name = "meth_slop",               price = 50 },
+			{ name = "meth_explosive",          price = 50 },
+			{ name = "meth_kit",                price = 50 },
+			{ name = "meth_pseudo",             price = 50 },
+			{ name = "meth_redpowder",          price = 50 },
+			{ name = "meth_lithium",            price = 50 },
+			{ name = "meth_lab_card",           price = 50 },
+			{ name = "plastic",                 price = 50 },
+	
+			-- Cocaine
+			{ name = "cocaine_container",       price = 50 },
+			{ name = "cocaine_solvent",         price = 50 },
+			{ name = "cocaine_leaf",            price = 50 },
+			{ name = "cocaine_drying_rack",     price = 50 },
+			{ name = "cocaine_paste",           price = 50 },
+			{ name = "cocaine_smelter",         price = 50 },
+			{ name = "limestone_dust",          price = 50 },
+			{ name = "cocaine_powder",          price = 50 },
+			{ name = "cocaine_brick",           price = 50 },
+			{ name = "cocaine",                 price = 50 },
+			{ name = "wood_log",                price = 50 },
+			{ name = "wood_plank",              price = 50 }
+		},
+		locations = {
+		   vector3(-1171.99, -1575.79, 5.39), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vec3(-1171.99, -1575.79, 3.39), heading = 127.28 },
+		},
+	},
+
+	["Outposts"] = {
+		name = "Outposts Clues Shop",
+		blip = {
+			id = 59, colour = 25, scale = 0.65
+		},
+		inventory = {
+			{ name = "outposts_clue_taxi",          price = 50 },
+			{ name = "outposts_clue_delivery",      price = 50 },
+			{ name = "outposts_clue_washing",       price = 50 }
+		},
+		locations = {
+		   vector3(33.13, -645.49, 10.77), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vec3(33.13, -645.49, 9.77), heading = 340.76 },
+		},
+	},
+
+	["PettyCrime"] = {
+		name = "Petty Crime Shop",
+		blip = {
+			id = 59, colour = 15, scale = 0.65
+		},
+		inventory = {
+			{ name = "lockpick", price = 50 }
+		},
+		locations = {
+		   vector3(-229.73, -1377.25, 32.26), -- example location
+		},
+		targets = {
+			{ ped = `s_m_m_strvend_01`, scenario = "WORLD_HUMAN_STAND_IMPATIENT", loc = vec3(-229.73, -1377.25, 31.26), heading = 216.56 },
+		},
 	},
 }

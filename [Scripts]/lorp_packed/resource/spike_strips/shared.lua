@@ -31,7 +31,7 @@ return {
 	Job = {
 		RequirePlace = true, -- require job to place a spike strip?
 		RequireRemove = true, -- require job to remove placed spike strips?
-		Allowed = { ["bcso"] = true, ["sasp"] = true, ["gov"] = true }
+		Allowed = { ["bcso"] = true, ["gsp"] = true, ["gov"] = true }
 	},
 
 	PickupKey = {

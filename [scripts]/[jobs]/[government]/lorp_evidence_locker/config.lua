@@ -11,7 +11,7 @@ Config.EvidenceLockers = {
         stashWeight = 500000,
         stashSlots = 20,
     },
-    ["sasp"] = {
+    ["gsp"] = {
         coords = vector3(845.4921875, -1276.8676757812, 21.036548614502),
         clearRank = 5,
         deleteRank = 5,

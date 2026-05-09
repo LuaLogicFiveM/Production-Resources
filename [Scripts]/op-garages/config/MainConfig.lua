@@ -124,7 +124,7 @@ Config.IV = {
     -- You can setup impound locations for selected jobs in garage admin.
     jobsList = {
         ['bcso'] = 0, -- Job name & grade.
-        ['sasp'] = 0, -- Job name & grade.
+        ['gsp'] = 0, -- Job name & grade.
         ['gov'] = 0, -- Job name & grade.
         ['impound_ls'] = 0, -- Job name & grade.
     },

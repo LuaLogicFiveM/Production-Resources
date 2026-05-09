@@ -1,0 +1,15 @@
+AddHouseZone("north_houses", 50.0, {
+    { "ook3d_north_house1_milo", 1518.2294, 6324.625, 24.901045 },
+    { "ook3d_north_house2_milo", 1541.7603, 6319.474, 25.587505 },
+    { "ook3d_north_house3_milo", 3808.9863, 4485.2344, 6.935259 },
+    { "ook3d_north_house4_milo", 3725.9758, 4532.5557, 23.087027 },
+    { "ook3d_north_house5_milo", 3679.8423, 4565.2866, 26.002987 },
+    { "ook3d_north_house6_milo", 714.0839, 4190.4253, 41.57493 },
+    { "ook3d_north_house7_milo", 746.520691, 4178.176270, 41.890934 },
+    { "ook3d_north_house8_milo", 783.253784, 4184.000488, 42.444580 },
+    { "ook3d_north_house9_milo", 2561.138428, 4278.710938, 42.353210 },
+    { "ook3d_north_house10_milo", 2642.614746, 4239.213867, 45.903690 },
+    { "ook3d_north_house11_milo", 2731.133301, 4282.365234, 49.512527 },
+    { "ook3d_north_house12_milo", 2739.123779, 4283.840332, 49.059757 },
+    { "ook3d_north_house13_milo", 2731.722412, 4143.646484, 44.655781 },
+})

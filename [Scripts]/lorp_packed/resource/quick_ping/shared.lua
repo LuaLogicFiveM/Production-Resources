@@ -18,7 +18,7 @@ return {
             blipColor = 4
         },
 
-        ['sasp'] = {
+        ['gsp'] = {
             duration = 15000,
             color = { r = 0, g = 0, b = 255, a = 150 },
             blipColor = 4

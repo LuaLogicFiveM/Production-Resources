@@ -368,21 +368,8 @@ Config.Services.Management = {
 
 Config.Services.Companies = { -- the companies that are shown in the app
     {
-        job = "bcso",
-        name = "Sheriff\'s Office",
-        icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
-        canMessage = true, -- if true, players can message the company
-        location = {
-            name = "Blaine County",
-            coords = {
-                x = 428.9,
-                y = -984.5,
-            }
-        }
-    },
-    {
-        job = "sasp",
-        name = "San Andreas State Patrol Office",
+        job = "gsp",
+        name = "Georgia State Patrol Office",
         icon = "https://cdn-icons-png.flaticon.com/512/7211/7211100.png",
         canMessage = true, -- if true, players can message the company
         location = {
@@ -689,7 +676,7 @@ Config.Police.Permissions = {
             view = 0,
         }
     },
-    ["sasp"] = {
+    ["gsp"] = {
         home = {
             view = 0,
         },

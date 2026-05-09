@@ -1,3 +1,6 @@
+---@diagnostic disable: undefined-global
+-- qb-core wasabi_bridge callback patch version 1.0.0
+
 if IsDuplicityVersion() then
     local RegisterEventHook <const> = ReaperAC.API.RegisterEventHook
     local GetEventSource <const> = ReaperAC.API.GetEventSource

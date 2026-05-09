@@ -29,7 +29,7 @@ Configuration = {
         },
 
         Police = {
-            PoliceJob = "sahp",
+            PoliceJob = "gsp",
             DrawBlip = false, -- Draw a blip on their map when an alert happens?
 
             Online = {

@@ -95,7 +95,7 @@ Config.Admin = {
     },
     jobs = { -- Jobs that can remove gas processors that are placed.
         ["bcso"] = 13,
-        ["sasp"] = 13,
+        ["gsp"] = 13,
         ["gov"] = 0
     },
 }

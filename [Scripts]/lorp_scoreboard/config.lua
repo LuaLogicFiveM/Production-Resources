@@ -51,15 +51,15 @@ return {
 
     -- Group list shown in the scoreboard
     groups = {
-        {
+        --[[{
             label = 'BCSO',
             groups = {'bcso'},
             icon = 'ic:round-local-police',
             includeOffDuty = false,
-        },
+        },]]
         {
-            label = 'SASP',
-            groups = {'sasp'},
+            label = 'GSP',
+            groups = {'gsp'},
             icon = 'ic:round-local-police',
             includeOffDuty = false,
         },
@@ -84,7 +84,7 @@ return {
             label = 'Jewelry Heist',
             icon = 'mdi:store',
             groupTrigger = {
-                groups = {'bcso', 'sasp'},
+                groups = {'gov', 'gsp'},
                 minimumCount = 3,
                 includeOffDuty = false,
             },
@@ -94,7 +94,7 @@ return {
             label = 'Store Robbery',
             icon = 'mdi:store',
             groupTrigger = {
-                groups = {'bcso', 'sasp'},
+                groups = {'gov', 'gsp'},
                 minimumCount = 2,
                 includeOffDuty = false,
             },

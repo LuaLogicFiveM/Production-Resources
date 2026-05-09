@@ -15,7 +15,7 @@ local detection_config = {
     inventory = {
         drop_limit = 500000,
         jobCheck = true, -- Open Inventory Detection
-        allowed_jobs = { ['bcso'] = true, ['sasp'] = true, ['gov'] = true } -- Open Inventory Detection
+        allowed_jobs = { ['bcso'] = true, ['gsp'] = true, ['gov'] = true } -- Open Inventory Detection
     },
 
     entities = {

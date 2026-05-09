@@ -1,7 +1,7 @@
 local licenses = {}
 local allowedJobs = {
 	['bcso'] = true,
-	['sasp'] = true,
+	['gsp'] = true,
 	['gov'] = true
 }
 

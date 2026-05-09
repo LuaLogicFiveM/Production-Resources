@@ -62,6 +62,10 @@ function createFuelConsumptionThread()
     end)
 end
 
+lib.callback.register('lc_fuel:client:fuelVehicle', function(vehicle, level)
+    return SetFuel(vehicle or cache.vehicle, level or 100.0)
+end)
+
 function HandleFuelConsumption(vehicle, fuelType)
     -- If no decorator exists, set a random fuel %
     if not DecorExistOn(vehicle, fuelDecor) then

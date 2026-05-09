@@ -154,7 +154,7 @@ Config.Menu = {
                 VehicleCam = vec3(803.05, -3004.78, -67.7) -- player position
             }
         },
-        ["sasp"] = {
+        ["gsp"] = {
             isGang = false, -- (if ESX Framework leave this as false) enable this if the job is a gang
             secondaryJobsAllowManage = false,
             -- use this for your multiple jobs
@@ -570,7 +570,7 @@ Config.Menu = {
             secondaryJobsAllowManage = false,
             secondaryJobs = {},
             EnableUserMenu = true,
-            allowedGrades = { 3 },
+            allowedGrades = { 3, 4 },
             coords = {
                 vec4(-1513.3668, -905.6477, 10.1822, 68.6515)
             },
@@ -581,19 +581,19 @@ Config.Menu = {
                 enable_vehicle_management = true,
             },
             permissions = {
-                ['ACCOUNT_BALANCE'] = { 3 },
-                ['GIVE_BONUS'] = { 3 },
-                ['WITHDRAW_MONEY'] = { 3 },
-                ['DEPOSIT_MONEY'] = { 3 },
-                ['HIRE_EMPLOYEE'] = { 3 },
-                ['FIRE_EMPLOYEE'] = { 3 },
-                ['PROMOTE_EMPLOYEE'] = { 3 },
-                ['MANAGE_SALARIES'] = { 3 },
-                ['VIEW_TRANSACTIONS'] = { 3 },
-                ['MANAGE_REPORTS'] = { 3 },
-                ['MANAGE_VEHICLES'] = { 3 },
-                ['MANAGE_ANNOUNCEMENT'] = { 3 },
-                ['MANAGE_SETTINGS'] = { 3 }
+                ['ACCOUNT_BALANCE'] = { 3, 4 },
+                ['GIVE_BONUS'] = { 3, 4 },
+                ['WITHDRAW_MONEY'] = { 4 },
+                ['DEPOSIT_MONEY'] = { 3, 4 },
+                ['HIRE_EMPLOYEE'] = { 3, 4 },
+                ['FIRE_EMPLOYEE'] = { 3, 4 },
+                ['PROMOTE_EMPLOYEE'] = { 3, 4 },
+                ['MANAGE_SALARIES'] = { 4 },
+                ['VIEW_TRANSACTIONS'] = { 3, 4 },
+                ['MANAGE_REPORTS'] = { 3, 4 },
+                ['MANAGE_VEHICLES'] = { 3, 4 },
+                ['MANAGE_ANNOUNCEMENT'] = { 3, 4 },
+                ['MANAGE_SETTINGS'] = { 4 }
             },
             JobApplication = {
                 enabled = false,

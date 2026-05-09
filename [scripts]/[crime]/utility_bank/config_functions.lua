@@ -78,9 +78,9 @@ Config.Functions = {
     -- Return true if the player can start the robbery
     CanStartRobbery = function(source, bankId)
         if ESX then
-            local bcso = ESX.GetExtendedPlayers('job', 'bcso')
-            local sasp = ESX.GetExtendedPlayers('job', 'sasp')
-            local count = #bcso + #sasp
+            --local bcso = ESX.GetExtendedPlayers('job', 'bcso')
+            local gsp = ESX.GetExtendedPlayers('job', 'gsp')
+            local count = #gsp
 
             if count < Config.MinCops then
                 local xPlayer = ESX.GetPlayerFromId(source)

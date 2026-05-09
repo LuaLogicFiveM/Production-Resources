@@ -62,7 +62,7 @@ Config.notifyPolice      = {
     },
     policeJobs = {       -- Jobs that are considered police to notify
         'bcso',
-        'sasp',
+        'gsp',
         'gov'
     }
 }

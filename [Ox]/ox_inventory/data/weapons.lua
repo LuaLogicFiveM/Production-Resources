@@ -1,5 +1,121 @@
 return {
 	Weapons = {
+		-- Prodigy
+		-- Chainsaw (weapon)
+		['WEAPON_CHAINSAW'] = {
+			label = 'Chainsaw',
+			weight = 1134,
+			durability = 0.0,
+		},
+		['WEAPON_BATTLEAXE'] = {
+			label = 'Battle Axe',
+			weight = 2500,
+			durability = 0.0,
+		},
+		['WEAPON_FIREWORKGRENADE'] = {
+			label = 'Fireworks Grenade',
+			weight = 400,
+			throwable = true,
+		},
+		['WEAPON_FREEZESMOKE'] = {
+			label = 'Freeze Smoke',
+			weight = 400,
+			throwable = true,
+		},
+		['WEAPON_HELLGRENADE'] = {
+			label = 'Hell Grenade',
+			weight = 400,
+			throwable = true,
+		},
+		['WEAPON_FREEZEGRENADE'] = {
+			label = 'Freeze Grenade',
+			weight = 400,
+			throwable = true,
+		},
+		['WEAPON_FLASHBANG'] = {
+			label = 'Flashbang',
+			weight = 400,
+			throwable = true,
+		},
+		
+		['WEAPON_GPSLAUNCHER'] = {
+			label = 'GPS Launcher',
+			weight = 3400,
+		},
+		
+		['WEAPON_SMOK2GRENADE'] = {
+			label = 'Smoke Grenade',
+			weight = 400,
+			throwable = true,
+		},
+		
+		-- Optional
+		--['WEAPON_FREEZEGRENADE'] = {
+		--    label = 'Freeze Grenade',
+		--    weight = 400,
+		--    throwable = true,
+		--},
+		--
+		--['WEAPON_HELLGRENADE'] = {
+		--    label = 'Hell Grenade',
+		--    weight = 400,
+		--    throwable = true,
+		--},
+		--
+		--['WEAPON_FREEZESMOKE'] = {
+		--    label = 'Freeze Smoke',
+		--    weight = 400,
+		--    throwable = true,
+		--},
+		--
+		--['WEAPON_FIREWORKGRENADE'] = {
+		--    label = 'Firework Grenade',
+		--    weight = 400,
+		--    throwable = true,
+		--},
+		['WEAPON_PICKAXE'] = {
+			label = 'Pickaxe',
+			weight = 1134,
+			durability = 0.0,
+		},
+		['WEAPON_DRILL'] = {
+			label = 'Drill',
+			weight = 1134,
+			durability = 0.0,
+		},
+		['WEAPON_DRILL_COBALT'] = {
+			label = 'Cobalt Drill Bit',
+			weight = 500,
+			durability = 0.0,
+		},
+		['WEAPON_DRILL_HSS'] = {
+			label = 'HSS Drill Bit',
+			weight = 500,
+			durability = 0.0,
+		},
+		['WEAPON_DRILL_DIAMOND'] = {
+			label = 'Diamond Drill Bit',
+			weight = 500,
+			durability = 0.0,
+		},
+		["weapon_shovel"] = {
+			label = "Shovel",
+			weight = 2000,
+			stack = false,
+		},
+		["WEAPON_SCANNER"] = {
+			label = "Scanner",
+			weight = 250
+		},
+		["WEAPON_DIGISCANNER"] = {
+			label = "Digital Scanner",
+			weight = 250
+		},
+		['WEAPON_PRESSUREWASHER'] = {
+			label = 'Pressure Washer',
+			weight = 3000,
+			durability = 0.0,
+		},
 		-- V2
 		['WEAPON_SWP238S'] = { label = '.38 Special', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },
 		['WEAPON_SWP23DGLOCK'] = { label = '3D Printed Glock Switch Glowing', weight = 100, stack = false, durability = 0.01, ammoname = 'ammo-9' },             -- **BANK$ON PREMIUM PACK ITEM**

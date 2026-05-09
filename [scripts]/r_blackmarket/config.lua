@@ -14,7 +14,7 @@ Cfg.NuiColor = 'violet' -- Colors: 'dark', 'gray', 'red', 'pink', 'grape', 'viol
 Cfg.VersionCheck = true -- Intermittent version checking (boolean)
 Cfg.Debug = false        -- Debug prints, not recommended for live servers (boolean)
 
-Cfg.NightOnly = true          -- Enable night only operation of the black market (boolean)
+Cfg.NightOnly = false          -- Enable night only operation of the black market (boolean)
 Cfg.ItemNeeded = false        -- Require a specific item to access the black market (string or false)
 Cfg.MoveInterval = 30         -- Time in minutes between the van changing locations (number)
 Cfg.CurrencyType = 'account'  -- Type of currency used for transactions in the black market ('account' or 'item')
@@ -30,10 +30,10 @@ Cfg.Blip = {
 
 Cfg.Locations = { -- Locations where the black market van can spawn (vec4)
     vec4(235.9342, 3164.6233, 42.6178, 104.1081),
-    vec4(-138.1597, -31.5596, 58.0673, 175.0),
+    --[[vec4(-138.1597, -31.5596, 58.0673, 175.0),
     vec4(166.1195, -1929.2626, 21.0126, 232.2999),
     vec4(945.9032, -255.1279, 67.5305, 150.9437),
-    vec4(17.8651, 6507.9990, 31.5144, 43.8171),
+    vec4(17.8651, 6507.9990, 31.5144, 43.8171),]]
 }
 
 Cfg.Categories = { -- Black market item categories
@@ -79,7 +79,7 @@ Cfg.DispatchResource = 'cd_dispatch' -- Dispatch system (linden_outlawalert, ps-
 Cfg.DispatchOdds = 15                       -- Percent chance of a dispatch alert being triggered (number or false)
 Cfg.PoliceJobs = {                          -- Police jobs that will recieve dispatch alerts
     'bcso',
-    'sasp',
+    'gsp',
 }
 
 -- Logging configuration can be set in:

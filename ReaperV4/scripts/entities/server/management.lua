@@ -2,13 +2,18 @@
 local whitelist_enabled = false
 local auto_whitelist_enabled = false
 local under_attack_mode = false
+local onesync_entities_enabled = false
 
 -- Register settings listeners
 local PICKUP_EVENTS = Convar.getByName("reaper_block_pickup_events")
 Convar.getByName("reaper_entity_whitelist"):subscribe(function (convar) whitelist_enabled = convar:getAsBool() end)
 Convar.getByName("reaper_auto_entity_whitelist"):subscribe(function (convar) auto_whitelist_enabled = convar:getAsBool() end)
 Convar.getByName("reaper_under_attack_mode"):subscribe(function (convar) under_attack_mode = convar:getAsBool() end)
-Convar.getByName("reaper_entity_npc_enabled"):subscribe(function (convar) Entities:setOnesyncPopulation(convar:getAsBool()) end)
+Convar.getByName("reaper_entity_npc_enabled"):subscribe(function (convar)
+    local value <const> = convar:getAsBool()
+    onesync_entities_enabled = value
+    Entities:setOnesyncPopulation(convar:getAsBool())
+end)
 
 -- Pickups are abused by cheaters to spawn entity "models" on players
 -- Server owners can enable/disable this feature by adjusting the convar
@@ -30,17 +35,6 @@ EntityManagement:addEvaluateHook(function (entity, mutate)
         return { reason = "under_attack_mode_enabled", spawn_data = entity }
     end
 
-    -- Verify that the player is authorized, if not delete
-    if 
-        whitelist_enabled and
-        (entity.model == 225514697 and entity.type == 1) == false and
-        (entity.type == 3 and entity.model ~= 0) and
-        entity.is_npc == false and
-        (auto_whitelist_enabled and not player:getMeta("authorized_" .. entity.type_name .. ":" .. entity.model)) and not Entities:isModelWhitelisted(entity.model)
-    then
-        return { reason = "player_not_authorized", spawn_data = entity }
-    end 
-
     -- Check if the model is blacklisted
     local blacklisted_entry <const> = Entities:isModelBlacklisted(entity.model)
     
@@ -51,5 +45,26 @@ EntityManagement:addEvaluateHook(function (entity, mutate)
         }, { blacklisted_entry.model }, blacklisted_entry.action)
 
         return { reason = "model_blacklisted", spawn_data = entity }
+    end
+
+    -- Verify that the player is authorized, if not delete
+    if whitelist_enabled then
+        if (entity.model == 225514697 and entity.type == 1) or (entity.type == 3 and entity.model == 0) then
+            return
+        end
+
+        -- Check if its a NPC entity and if they are enabled, allow the spawn
+        if entity.is_npc and onesync_entities_enabled == true then
+            return
+        end
+        if
+            (auto_whitelist_enabled and ((player:getMeta("authorized_" .. entity.type_name .. ":" .. entity.model) or (Entities:isModelATrain(entity.model) and player:getMeta("authorized_train")))) or
+            Entities:isModelWhitelisted(entity.model) or
+            Entities:isModelTempAllowed(entity.model))
+        then
+            return
+        end
+
+        return { reason = "player_not_authorized", spawn_data = entity }
     end
 end)

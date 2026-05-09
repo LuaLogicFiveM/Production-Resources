@@ -8,7 +8,7 @@ SV_CONFIG.DiscordLogs = {
                 enable = true,
                 webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1",
             },
-            ['sasp'] = {
+            ['gsp'] = {
                 enable = true,
                 webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1",
             },
@@ -23,7 +23,7 @@ SV_CONFIG.DiscordLogs = {
                 enable = true,
                 webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
             },
-            ['sasp'] = {
+            ['gsp'] = {
                 enable = true,
                 webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
             },
@@ -38,7 +38,7 @@ SV_CONFIG.DiscordLogs = {
                 enable = true,
                 webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
             },
-            ['sasp'] = {
+            ['gsp'] = {
                 enable = true,
                 webhook = "https://discord.com/api/webhooks/1479569429045186801/PqzGrxFP7UGmq6k-Ch6Jhvn9ehAlkiiSEsvFqrqRT9E0t6mqqToMnAVD7JJ66SbDDvd1"
             },

@@ -1,6 +1,6 @@
 Framework = {
     Object = exports['es_extended']:getSharedObject(),
-    BlacklistedJobs = {['bcso'] = true, ['sasp'] = true, ['safd'] = true, ['gov'] = true},
+    BlacklistedJobs = {['bcso'] = true, ['gsp'] = true, ['safd'] = true, ['gov'] = true},
 
     Functions = {
         IsPlayerAllowedToSteal = function(playerId)

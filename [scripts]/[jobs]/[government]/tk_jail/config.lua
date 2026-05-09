@@ -44,22 +44,22 @@ Config.TeleportIfAdmin = true -- should you be teleported back to prison when go
 Config.PoliceJobs = {
     jail = { -- jobs that can use jail command
         bcso = 0, -- job name, min grade
-        sasp = 0,
+        gsp = 0,
         gov = 0,
     },
     lockup = { -- jobs that can use lockup command
         bcso = 5,
-        sasp = 5,
+        gsp = 5,
         gov = 0,
     },
     unjail = { -- jobs that can use unjail command
         bcso = 0,
-        sasp = 0,
+        gsp = 0,
         gov = 0,
     },
     other = {
         bcso = 0,
-        sasp = 0,
+        gsp = 0,
         gov = 0,
     },
 }
