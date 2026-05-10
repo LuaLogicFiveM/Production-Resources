@@ -1,8 +1,8 @@
 --- This file is loaded on the server side and cannot be accessed by cheaters
 DiscordConfig = {
     Secret = {
-        Token = 'MTQ1MjQwNDMzNzU1MTc0MDk1OA.G2wUUW.dXW6H6jqgDAgukpewXGed5R5EEllRygVWz9dik', --- Your bot token
-        Guild = '1082486358028853338', --- Your server ID
+        Token = GetConvar('discord_token', ""), --- Your bot token
+        Guild = GetConvar('discord_guild_id', ""), --- Your server ID
     },
 
     Leaderboards = {

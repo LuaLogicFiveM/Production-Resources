@@ -78,7 +78,7 @@ Config.Discord = {
     -- Discord Role Permission Settings
     rolePermission = {
         enabled = true, -- Enable/disable Discord role permission system
-        guildId = "1082486358028853338", -- Your Discord server (guild) ID
+        guildId = GetConvar('discord_guild_id', ""), -- Your Discord server (guild) ID
         roleId = "1489351543919607888", -- Required role ID for scale menu access
         botToken = "" -- Bot token from server.cfg
     },
