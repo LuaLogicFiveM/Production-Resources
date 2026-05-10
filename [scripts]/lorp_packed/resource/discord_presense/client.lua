@@ -1,0 +1,16 @@
+CreateThread(function()
+    local name = GetPlayerName(cache.playerId)
+    local players = GetConvar('sv_maxclients', '100')
+    while true do
+        SetDiscordAppId('1229916761143509053')
+        SetDiscordRichPresenceAsset('logo')
+        SetDiscordRichPresenceAssetText('discord.gg/lorp')
+        SetDiscordRichPresenceAssetSmall('logo')
+        SetDiscordRichPresenceAssetSmallText('Leaned Out RP')
+        SetDiscordRichPresenceAssetText(('ID: %s | %s'):format(cache.serverId, name))
+        SetRichPresence(('[%s/%s]'):format(GlobalState.playerCount, players))
+        SetDiscordRichPresenceAction(0, 'Discord', 'https://discord.gg/lorp')
+        SetDiscordRichPresenceAction(1, 'Connect', 'https://cfx.re/join/56ymv6')
+        Wait(30 * 1000)
+    end
+end)

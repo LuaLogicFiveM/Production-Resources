@@ -1,0 +1,36 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"Lua.runtime.version": "Lua 5.4",
+		"Lua.runtime.plugin": "~\\AppData\\Roaming\\Code\\User\\globalStorage\\communityox.cfxlua-vscode-cox\\plugin.lua",
+		"Lua.runtime.nonstandardSymbol": [
+			"/**/",
+			"`",
+			"+=",
+			"-=",
+			"*=",
+			"/=",
+			"<<=",
+			">>=",
+			"&=",
+			"|=",
+			"^="
+		],
+		"Lua.workspace.ignoreDir": [
+			".vscode",
+			".git",
+			".github",
+			"node_modules",
+			"\\[cfx\\]"
+		],
+		"Lua.workspace.library": [
+			"~\\AppData\\Roaming\\Code\\User\\globalStorage\\communityox.cfxlua-vscode-cox\\library\\runtime",
+			"~\\AppData\\Roaming\\Code\\User\\globalStorage\\communityox.cfxlua-vscode-cox\\library\\natives\\CFX-NATIVE",
+			"~\\AppData\\Roaming\\Code\\User\\globalStorage\\communityox.cfxlua-vscode-cox\\library\\natives\\GTAV"
+		]
+	}
+}

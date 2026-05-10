@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+</html>
+
+
+<div class="popup">
+  <button id="closepopup"><i class="fa-regular fa-circle-xmark"></i></button>
+  <div class="inner-text">
+      <h1><i class="fa-solid fa-triangle-exclamation"></i id="warning">Warning</h1>
+      <p id="warning_p">If you leave, your lobby will be deleted!</p>
+      <button id="stay">Stay</button>
+      <button id="leave">Delete Lobby</button>
+  </div>
+</div>
+
+
+<div class="passwordpopup">
+  <button id="closepassword"><i class="fa-regular fa-circle-xmark"></i></button>
+  <div class="password-text">
+      <h1><i class="fa-solid fa-triangle-exclamation"></i id="enterpass">Enter Password</h1>
+      <input class="passwordinput" placeholder="Enter Password">
+      <button id="submitpassword">Submit</button>
+  </div>
+</div>
+
+
+<div class="topleftteams">
+  <ul class="teamui">
+      <!--<li><span class="teamcolor"></span><span class="teamlives">Players: 1</span></li>
+      <li><span class="teamcolor" style="background-color: rgba(41, 226, 24, 0.979);"></span><span class="teamlives">Players: 1</span></li>
+      <li><span class="teamcolor" style="background-color: rgba(24, 61, 226, 0.979);"></span><span class="teamlives">Players: 1</span></li>-->
+  </ul>
+  <div class="teamuilives"></div>
+  <div class="health-bar">
+    <i id="healthbar-heart" class="fa-solid fa-heart"></i>
+    <div id="health" class="health-bar-fill"></div>
+</div>
+</div>
+
+<div id="timer"></div>
+
+<div class="paintballui" style="display: none;">
+<section>
+    <div class="headerboxtext">
+        <h1 id="title">Paintball</h1>
+        <h1 id="titleselector">Lobby Selector</h1>
+    </div>
+    <ul class="lobbylist" id="lobbylist">
+    </ul>
+    <button class="createlobby" onclick="lobbysettings()">Create Lobby</button>
+</section>
+
+
+<menu class="lobbycreator">
+  <div class="carouselcont" style="display: none" >
+    <div id="myCarousel" class="carousel slide" data-interval="false"  >
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>-->
+      </ol>
+  
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <!--<div class="item active">
+          <img id="map1" class="mapthumb" src="https://i.imgur.com/OlxjxRE.png">
+          <div class="carousel-caption">
+            <h3>map test 1</h3>
+          </div>
+        </div>
+      
+        <div class="item">
+          <img id="map2" class="mapthumb" src="https://i.imgur.com/OlxjxRE.png">
+          <div class="carousel-caption">
+            <h3>map test 2</h3>
+          </div>
+        </div>-->
+      </div>
+
+  
+      <!-- Left and right controls -->
+      <a id="prev" class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a id="next" class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>
+
+
+<div class="options">
+  <div class="wagebox">
+    <input id="wage" name="wage" placeholder="Wager Amount"  required min="0">
+    <span class="errorpopup" id="errorpopup">Please enter a number greater than 0!</span>
+  </div>
+  <div class="teamamount">
+    <div class="indicator"></div>
+    <button class="switch-button teams" id="teambutton" onclick="toggleSwitch('teams')"><span id="switchteams" class="text">Teams</button>
+    <button class="switch-button ffa" id="ffa" onclick="toggleSwitch('ffa')"><span id="switchffa" class="text">Free For All</button>
+    <button class="switch-button arcade" id="arcade" onclick="toggleSwitch('arcade')"><span id="switcharcade" class="text">Arcade</button>
+  </div>
+  <div class="teamcount">
+    <select name="teams" id="teams">
+      <option value="2">2 Teams</option>
+      <option value="3">3 Teams</option>
+      <option value="4">4 Teams</option>
+      <option value="5">5 Teams</option>
+      <option value="6">6 Teams</option>
+      <option value="7">7 Teams</option>
+      <option value="8">8 Teams</option>
+    </select>
+
+    <select name="arcade" id="arcademodes">
+      <option value="CTF">Capture the Flag</option>
+      <option value="Gun Game">Gun Game</option>
+      <option value="Dog Tags">Dog Tags</option>
+      <option value="Team Deathmatch">Team Deathmatch</option>
+    </select>
+
+    <select name="weaponselect" id="weaponselect">
+    </select>
+  </div>
+  <div class="livecount">
+    <select name="lives" id="lives">
+    </select>
+    <select name="time" id="time">
+    </select>
+    <select name="score" id="score">
+    </select>
+  </div>
+  <div class="spectating">
+    <input type="checkbox" id="spectating" name="spectating" value="spectate">
+    <label class="speclabel" for="spectating">Allow Spectating</label>
+
+    <input type="checkbox" id="private" name="private" value="private">
+    <label class="privatelabel" for="private">Private Lobby</label>
+    <input id="password" placeholder="Set Password" name="password" >
+  </div>
+</div>
+
+<div class="players">
+  <ul class="playerlist">
+  </ul>
+  <ul class="teamlist">
+  </ul>
+</div>
+
+  <div class="creationbuttons">
+    <button id="createlobby" class="create">Create</button>
+    <button id="cancellobby" class="cancellobby">Cancel</button>
+    <span class="errorpopup2" id="errorpopup2">Invalid player amount</span>
+    <span class="errorpopup2" id="errorpopup3">Insufficient Funds</span>
+  </div>
+</menu>
+</div>
+
+<div class="leaderboard">
+  <div class="leaderboard-titles">
+      <h1 id="titleRank">Rank</h1>
+      <h1 id="titleName">Name</h1>
+      <h1 id="titleKills">Kills</h1>
+      <h1 id="titleDeaths">Deaths</h1>
+      <h1 id="titleWeapon">Weapon</h1>
+      <h1 id="titleKD">K/D</h1>
+  </div>
+  <ul class="boardPlayerlist">
+      <!--<li><span id="leadrank">1</span><span id="leadName">Rayyan</span><span id="leadKills">20</span><span id="leadDeaths">5</span><span id="leadWeapon">Paintball Gun</span><span id="leadKD">1.34</span></li>
+      <li><span id="leadrank">1</span><span id="leadName">Rayyan</span><span id="leadKills">20</span><span id="leadDeaths">5</span><span id="leadWeapon">Paintball Gun</span><span id="leadKD">1.34</span></li>
+      <li><span id="leadrank">1</span><span id="leadName">Rayyan</span><span id="leadKills">20</span><span id="leadDeaths">5</span><span id="leadWeapon">Paintball Gun</span><span id="leadKD">1.34</span></li>
+      <li><span id="leadrank">1</span><span id="leadName">Rayyan</span><span id="leadKills">20</span><span id="leadDeaths">5</span><span id="leadWeapon">Paintball Gun</span><span id="leadKD">1.34</span></li>
+      <li><span id="leadrank">1</span><span id="leadName">Rayyan</span><span id="leadKills">20</span><span id="leadDeaths">5</span><span id="leadWeapon">Paintball Gun</span><span id="leadKD">1.34</span></li>-->
+  </ul>
+
+  <div class="userStats">
+
+  </div>
+</div>
+
+<div class="feedCont">
+  <ul class="feedList">
+  </ul>
+</div>
+
+<div class="teamleaderboard">
+  <div class="teamleaderboardList">
+  </div>
+</div>
+
+<div class="dogTags">
+  <div class="dog-teams">
+      <h1 id="dog-one">Red</h1><img class="firstImg" id="dogimg" src="images/dogtag.png"><span id="dogcount-red">0</span>
+      <h1 id="dog-two">Blue</h1><img class="secondImg" id="dogimg" src="images/dogtag.png"><span id="dogcount-blue">0</span>
+  </div>
+</div>

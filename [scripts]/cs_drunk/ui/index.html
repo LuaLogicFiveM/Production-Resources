@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <img src="image/tester.png" class="tester-img" />
+            <div class="main-inside">
+                <div class="wait-screen">
+                    <p class="wait-text wait-txt">Wait</p>
+                    <div id="progressBar">
+                        <span id="progressBar-value"></span>
+                    </div>
+                </div>
+                <div class="blow-screen">
+                    <p class="wait-text blow-txt">Blow</p>
+                    <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                        <p class="wait-text">Air</p>
+                        <img src="image/inhaler.png" />
+                    </div>
+                </div>
+                <div class="result-screen" id="green">
+                    <p class="time-text">88%</p>
+                    <p class="bac-text">% BAC</p>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="button-1" id="power">
+                    <img src="image/power-on.png" class="power-button" />
+                </div>
+                <div class="button-1" id="reset">
+                    <img src="image/reload.png" class="power-button" />
+                </div>
+            </div>
+            <div class="blow-tip">
+                <span class="tooltiptext blow-txt">BLOW</span>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>

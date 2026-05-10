@@ -1,0 +1,16 @@
+return {
+	search_name = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	search_vehicle = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	search_id = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	owner_set = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	owner_remove = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	owner_clear = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	owner_trade = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	owner_transfer = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	trust_give = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	trust_remove = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	trust_trade = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	trust_clear = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	transfer_data = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+	admin_menu = 'https://discord.com/api/webhooks/1232403596885098547/so6EmSkmCVv-gJz6Jk5-2wxIYfb-W2xrAeTYpo_Kl_nxDlo4UGhUWaTyN1kfKPAl9pNC',
+}
